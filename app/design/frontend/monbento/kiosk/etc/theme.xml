@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<theme>
+    <parent>monbento/default</parent>
+    <layout>
+        <updates>
+            <monbento_kiosk>
+                <file>monbentokiosk.xml</file>
+            </monbento_kiosk>
+        </updates>
+    </layout>
+</theme>

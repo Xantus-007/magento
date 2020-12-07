@@ -1,0 +1,33 @@
+.validation-advice {clear:both; min-height:13px; margin:3px 0 0; padding-left:17px; font-size:10px; line-height:13px; background:url(../images/validation_advice_bg.gif) 2px 1px no-repeat; color:#f00; display: block; bottom: 0px; border: 1px solid red; padding: 3px;}
+.validation-failed{border:1px dashed #f00 !important;background:#faebe7 !important;}
+.please-wait {position: absolute; width:100%; text-align: center; padding-top: 15px; }
+.c-price__shoppingCart .please-wait {text-align: left;}
+.checkout-onepage-index .please-wait {display:block;}
+.agreement-content {margin-top: 20px; padding: 5px; background: #fff; border: 1px solid #999; overflow-y: scroll;max-width: 80%;}
+#checkout-agreements ol, #order_review_form ol {list-style-type: none; margin-left: 0px;}
+.search-autocomplete {z-index:999; background: #f65e7a; max-width: 50%; max-height: 300px; overflow-y: scroll; padding-top: 55px; }
+.search-autocomplete ul li {color: #fff; list-style: none; border-bottom: 1px dotted #fff; cursor: pointer;}
+.search-autocomplete ul li .amount::before {content: "(";}
+.search-autocomplete ul li .amount::after {content: ")"; margin-right: 10px;}
+#checkoutStepsContent .sp-methods .form-list {background: none !important;}
+.zopim {right: 100px !important;}
+.dbm_country_switcher a {color: #f65e7a;}
+.dbm_country_switcher a:hover {color: #f65e7a; text-decoration: underline;}
+.c-slider--pageHeader .js-bxslider > div, .c-slider--pageHeader .c-bxslider--pager {display:none;}
+.shipping-tracking-popup .button {
+    display: inline-block;
+    float: right;
+    width: auto;
+    height: 3.5625rem;
+    padding: .5rem 1.875rem .625rem;
+    font-family: "sofia-pro",sans-serif;
+    font-size: 1rem;
+    border-radius: 1.25rem;
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    color: #fff;
+    background-color: #f65e7a;
+    box-shadow: .0625rem 0 .3125rem rgba(246,94,122,0.6);
+}
+.shipping-tracking-popup .label {background-color: #f65e7a; padding: 0px 20px; line-height: 3;}
+.grecaptcha-badge {display: none;}

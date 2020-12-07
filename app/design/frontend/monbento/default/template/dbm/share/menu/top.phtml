@@ -1,0 +1,21 @@
+<?php 
+//Patch to keep selected menu inside blog pages
+$block = $this->getLayout()->getBlock('root');
+$classes = $block->getBodyClass();
+$isBlog = strstr($classes, 'club-blog');
+$paramIsForm = Mage::app()->getFrontController()->getRequest()->getParam('club') == 1;
+$forceIsProfile = $this->getIsLoginForm() == 1 && $paramIsForm;
+
+if($this->getIsLoginForm() == 1 && $paramIsForm || !$this->hasData('is_login_form')):
+?><div id="clubMenuTop">
+    <div class="clubWrapped">
+        <a class="logo" href="<?php echo $this->getUrl('blog/') ?>" title=""><img src="<?php echo $this->getSkinUrl('images/club/logo.png') ?>" /></a>
+        <ul>
+<?php foreach($this->getLinks() as $url => $link): ?>
+    <?php $isCurrent = $this->isCurrentUrl($url); ?>
+            <li class="<?php echo ($isCurrent || ($isBlog && isset($link['class']) && $link['class'] == 'club-blog') || (isset($link['class']) && $link['class'] == 'club-profile' && $forceIsProfile)) ? 'selected' : 'not-selected' ;  ?> <?php if(isset($link['class'])): echo $link['class']; endif; ?>"><a href="<?php echo $url; ?>" ><span><img src="<?php echo $link['image'] ?>" /></span><?php echo $this->__($link['label']); ?></a><?php if($isCurrent || ($isBlog && isset($link['class']) && $link['class'] == 'club-blog') || (isset($link['class']) && $link['class'] == 'club-profile' && $forceIsProfile)): ?><img src="<?php echo $this->getSkinUrl('images/club/menu/triangle.png') ?>" /><?php endif; ?></li>
+<?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,106 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getChildHtml('breadcrumbs') ?>
+
+<div class="c-landscape--mif">
+    <div class="o-table">
+        <div class="o-table__cell--valignMiddle">
+        </div>
+    </div>
+</div>
+<div class="o-section--mif o-section--noPaddingBottom--noPaddingLeft--noPaddingRight">
+    <section>
+        <div class="row">
+            <div class="column">               
+                <div class="c-testimonial--about">
+                    <div class="c-title--group">
+                        <h1 class="c-main">MB Original : <?php echo $this->__('le best-seller signé monbento devient made in France !'); ?></h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-section--noPaddingTop--noPaddingBottom">
+        <div class="row">
+            <article class="c-item__team">
+                <div class="column large-5 medium-6 large-push-7 medium-push-6">
+                    <div class="c-product__cover"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-product--monbento.png'); ?>" alt=""></div>
+                </div>
+                <div class="column large-5 medium-6 large-pull-6 medium-pull-6">
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle">
+                            <div class="c-team__member">
+                                <div class="c-member__name"><?php echo $this->__('Faire rimer « French design »<br>avec « Made in France »') ?></div>
+                                <div class="c-separator"></div>
+                                <div class="c-member__description">
+                                    <p><?php echo $this->__('Après plusieurs années de recherche pour faire rimer French&nbsp;design avec Made in France, le challenge vient d’être relevé ! Le bento MB Original est désormais fabriqué avec passion au coeur même de notre région, l’Auvergne-Rhône-Alpes.') ?><br><br><?php echo $this->__('Une production de proximité, un partenaire au savoir-faire français expert dans son secteur, la même matière haute qualité préservée : tout est réuni pour que chacune de nos pièces reflète l’excellence à la française.') ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <section class="o-section--noPaddingTop--noPaddingBottom">
+        <div class="row">
+            <article class="c-item__team">
+                <div class="column js-team__equalizer large-5 medium-6">
+                    <div style="background-image:url(<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--Fabien.jpg'); ?>)" class="c-member__cover"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--Fabien.jpg'); ?>" alt=""></div>
+                </div>
+                <div class="column js-team__equalizer large-5 medium-6">
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle">
+                            <div class="c-team__member">
+                                <div class="c-member__name"><?php echo $this->__('about.madeinfrance.lemot') ?></div>
+                                <div class="c-separator"></div>
+                                <div class="c-member__description">
+                                    <p><?php echo $this->__('« Produire en France était une volonté depuis la création de la société. Avec l’essor grandissant de monbento et son développement à l’international, nos volumes de production nous ont permis de reprendre les recherches de partenaires de fabrication locaux.') ?><br><br><?php echo $this->__('Nos exigences étaient nombreuses : préserver l’ADN de notre bento phare, gagner encore en qualité, maîtriser nos coûts de production… Le chemin a été long mais les efforts ont payé.') ?><br><br><?php echo $this->__('En parfait accord avec nos valeurs, nous sommes fiers aujourd’hui de pouvoir favoriser l’économie locale tout en réduisant notre empreinte carbone. Mais nous ne comptons pas nous en arrêter là : cette première collection Made in France signe le départ d’une nouvelle ère pour notre société ! »') ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+</div>
+
+<?php
+$listing_mif = Mage::getBlockSingleton('monbento_site/mif');
+if ($listing_mif->getCollectionCount() > 0):
+?>
+    <section class="o-section--bkgGrey c-crossSelling">
+        <div class="c-title--group">
+            <div class="c-main"><?php echo $this->__('Choisissez le vôtre !') ?></div>
+            <div class="c-baseline"><?php echo $this->__('Une petite sélection de nos bentos « Made in France »') ?></div>
+        </div>
+
+        <?php echo $this->getChildHtml('listing_mif') ?>
+
+    </section>
+<?php  endif; ?>

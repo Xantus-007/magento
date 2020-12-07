@@ -1,0 +1,300 @@
+// ========================================= //
+// blocks.form
+// ========================================= //
+
+.o-layout__account select option {
+    color: $black;
+}
+
+.o-layout__account {
+    .field.no-display {
+        display: none !important;
+    }
+
+    .form-list label em {
+        color: $mainBranding !important;
+    }
+
+    .form-list.c-fieldset {
+        li { margin-bottom: rem(14); }
+    }
+
+    p.required {
+        font-style: italic;
+        font-size: rem(12);
+        color: $grey--03;
+        font-family: $fontAlt;
+
+        &:first-letter {
+            color: $mainBranding;
+        }
+    }
+
+    .buttons-set {
+        clear: both;
+    }
+
+    .button {
+        display: inline-block;
+        float: right;
+        width: auto;
+        height: rem(57);
+        padding: rem(8) rem(30) rem(10);
+        font-family: $fontBody;
+        font-size: rem(16);
+        border-radius: rem(20);
+        transition: $ease;
+        color: $white;
+        background-color: $mainBranding;
+        box-shadow: rem(1) 0 rem(5) rgba($mainBranding, .6);
+    }
+}
+
+.c-account, .c-sponsorship {
+    label {
+        width: 100%;
+        font-family: $fontBody;
+        font-weight: 700;
+        font-size: rem(14);
+        color: $subBranding;
+        text-transform: uppercase;
+        letter-spacing: rem(2);
+        text-align: left;
+        cursor: text;
+        transition: $ease;
+    }
+
+    .fieldset {
+        margin-bottom: rem(20) !important;
+
+        .form-list {
+            li.fields, & > li {
+                display: block;
+                //max-width: rem(350);
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+
+                .field {
+                    display: block;
+                    width: 100%;
+                    float: none;
+                }
+
+                .input-box {
+                    margin-bottom: rem(8);
+                    width: 100% !important;
+                    @include clearfix();
+
+                    label {
+                        font-size: rem(13);
+                    }
+
+                    .input-text {
+                        width: 100% !important;
+                        background: $white;
+                    }
+
+                    .selector {
+                        padding-left: 0;
+
+                        &, &#uniform-prefix {
+                            width: 100% !important;
+
+                            span { width: 100% !important; }
+                        }
+
+                    }
+                }
+
+                .name-prefix {
+                    select {
+                        font-size: rem(13);
+                        padding: 4px 2px;
+                        height: rem(30);
+                    }
+                }
+            }
+
+            .customer-dob {
+                @include clearfix;
+
+                input {
+                    margin-bottom: 0;
+                    height: rem(58);
+                    border: solid rem(2) $grey--06;
+                    font-weight: 300;
+                    font-size: rem(18);
+                    font-family: $fontBody;
+                    padding-left: rem(12);
+                    padding-right: rem(12);
+                }
+
+                label {
+                    font-size: rem(14);
+                    padding-left: rem(5);
+                    color: $grey--04;
+                }
+
+                .dob-day,
+                .dob-month {
+                    float: left;
+                    width: 25%;
+
+                    input {
+                        border-right: none;
+                    }
+                }
+
+                .dob-year {
+                    float: left;
+                    width: 50%;
+                }
+            }
+        }
+
+        .control {
+            strong { display: block; }
+
+            label {
+                text-transform: initial;
+
+                strong {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+#form-validate {
+    #uniform-prefix {
+        width: 100% !important;
+
+        span { width: 100% !important; }
+    }
+
+    .form-list {
+        .input-box {
+            @include bp-lt($xmedium) {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+#firstname, #company, #lastname, #street_1, #street_2 {
+    @include bp-lt($xmedium) {
+        width: 100% !important;
+    }
+}
+
+.c-wishlist {
+    textarea {
+        height: rem(75);
+        width: 100%;
+        margin-top: rem(20);
+        resize: none;
+        padding: rem(8) rem(10);
+        border-radius: rem(2);
+        @include placeholder-color($mainFont);
+    }
+}
+
+.c-sponsorship {
+    .form-list {
+        input.input-text, textarea {
+            @include bp-lt($small) {
+                width: 100% !important;
+            }
+        }
+
+        .input-box {
+            @include bp-lt($small) {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+html .auguria-sponsorship-index-index #sponsorship textarea {
+    @include bp-lt($small) {
+        width: 100% !important;
+    }
+}
+
+.auguria-sponsorship-index-index {
+    #sponsorship {
+        textarea {
+            width: 100% !important;
+        }
+    }
+}
+
+.my-account {
+    #form-validate {
+        .fieldset {
+            @include bp-lt($small) {
+                min-height: 0;
+                height: auto !important;
+            }
+
+            .form-list {
+                width: 100% !important;
+
+                @include bp-lt($small) {
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.newsletter-manage-index {
+    .my-account #form-validate .fieldset {
+        min-height: 0;
+    }
+}
+
+.customer-account-pages {
+    .my-account {
+        #form-validate {
+            .fieldset {
+                @include bp-lt($medium) {
+                    width: 50% !important;
+                    padding: rem(10);
+                }
+
+                @include bp-lt($small) {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
+.form-list {
+    .customer-name-prefix {
+        .name-firstname,
+        .name-lastname {
+            width: 100% !important;
+        }
+    }
+
+    li.wide {
+        textarea {
+            width: 100% !important;
+        }
+    }
+}
+
+.field {
+    &.name-lastname, &.name-firstname {
+        .input-box {
+            input#lastname,
+            input#firstname {
+                width: 100% !important;
+            }
+        }
+    }
+}

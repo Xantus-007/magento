@@ -1,0 +1,188 @@
+<?php
+if (Mage::getSingleton('dbm_customer/session')->getIsMobileOptim())
+{
+    Mage::app()->getFrontController()->getResponse()->setRedirect(Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB) . 'dbm-customer/mobile/unswitch/?mode=cart');
+}
+?>
+<div class="cart">
+    <div class="page-title title-buttons">
+        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+    <?php if ($this->getContinueShoppingUrl()): ?>
+        <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><em>&lt;</em> <?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <?php endif; ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="shopping-cart-form">
+        <fieldset>
+            <div id="mobile-cart-table-head" class="show-for-small-down"><?php echo $this->__('Cart content'); ?></div>
+            <table id="shopping-cart-table" class="data-table cart-table">
+                <col width="1" />
+                <col width="1" />
+                <col />
+                <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                    <col width="1" />
+                <?php endif ?>
+                <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col width="1" />
+                <?php endif; ?>
+                <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col width="1" />
+                <?php endif; ?>
+                <col width="1" />
+                <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col width="1" />
+                <?php endif; ?>
+                <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                    <col width="1" />
+                <?php endif; ?>
+
+                <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <thead>
+                    <tr class="cart-table-head">
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Remove') ?></th>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                            <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                        <?php endif ?>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                        <tr>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                            <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                            <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        </tr>
+                    <?php endif; ?>
+                </thead>
+                <tbody>
+                    <?php foreach ($this->getItems() as $_item): ?>
+                        <?php echo $this->getItemHtml($_item) ?>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    <div class="cart-collaterals">
+        <div class="col2-set">
+            <div class="col-1">
+                <?php
+                $itemsInCart = Mage::getModel('checkout/cart')->getQuote()->getAllItems();
+                $grandTotalWithoutShipping = 0;
+                foreach ($itemsInCart as $_item)
+                {
+                    $grandTotalWithoutShipping += $_item->getRowTotalInclTax(); //$_item->getBaseCalculationPrice()* $_item->getQty() + $_item->getBaseTaxAmount();
+                }
+                ?>
+                <?php if (ceil($grandTotalWithoutShipping) < 60) : ?>
+                    <p class="order-for"><?php echo $this->__('Order for') ?> <strong><?php echo Mage::helper('checkout')->formatPrice(60 - $grandTotalWithoutShipping) ?></strong> <?php echo "de plus et bénéficiez des frais de port gratuits<br />(pour une livraison en France métropolitaine)"; //echo $this->__('more and get the free shipping (for delivery in France)')     ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="<?php echo $this->getContinueShoppingUrl() ?>"><?php echo $this->__('Continue Shopping') ?> ?</a></p>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('crosssell') ?>
+            </div>
+            <div class="col-2">
+                <?php echo $this->getChildHtml('coupon') ?>
+                <?php echo $this->getChildHtml('ugiftcert') ?>
+                <div class="totals">
+                    <?php echo $this->getChildHtml('totals'); ?>
+                    <?php $totals = Mage::helper('checkout/cart')->getCart()->getQuote()->getTotals(); ?>
+                    <?php if (!isset($totals['shipping']['value'])) : ?><p id="before-shipping"><?php echo $this->__('Before calculating shipping cost') ?></p><?php endif; ?>
+                </div>
+                <?php if (!$this->hasError()): ?>
+                    <?php
+                    $date = new Zend_Date(
+                            /* array(
+                              'year' => 2011,
+                              'month' => 8,
+                              'day' => 8,
+                              'hour' => 12,
+                              'minute' => 35,
+                              'second' => 0
+                              ) */
+                            );
+                    $date->setTimezone('Europe/Paris');
+
+                    if ($date->isLater('16:30', Zend_Date::TIME_SHORT))
+                    {
+                        $date->addDay(1); // L'envoi partira demain
+                    }
+
+                    if ((int) $date->get(Zend_Date::WEEKDAY_8601) <= 3)
+                    { // du lundi au mercredi
+                        $date->addDay(2);
+                    } elseif ((int) $date->get(Zend_Date::WEEKDAY_8601) == 7)
+                    {
+                        $date->addDay(3);
+                    } else
+                    {
+                        $date->addDay(4);
+                    }
+
+                    $jour = $date->toString(Zend_Date::WEEKDAY, 'fr_FR');
+                    ?>
+                    <p class="livraison">Livraison estimée : <?php echo ucwords($jour) ?> prochain (F.Métropolitaine)</p>
+                    <ul class="checkout-types">
+                        <?php foreach ($this->getMethods('methods') as $method): ?>
+                            <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                                <li><?php echo $methodHtml; ?></li>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="block-cms"><?php echo $this->getChildHtml('cms_checkout') ?></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function ($) {
+        $('.submit.minus, .submit.plus').bind('click', function (e) {
+            e.preventDefault();
+            var val_max = parseInt($(this).parent().children("[name=max]").val());
+            var val_maxsales = parseInt($(this).parent().children("[name=maxsales]").val());
+            var val_act = parseInt($(this).parent().children(":text").val());
+            var qtyInputName = $(this).parent().find('input[type=text]').attr('name');
+            var itemId = /\[(\d*)\]/g.exec(qtyInputName)[1];
+            var $qtyInput = $('input[name="cart['+itemId+'][qty]"]');
+            var val_new = val_act;
+
+            if ($(this).val() == '+') {
+                if (val_act < val_max) {
+                    val_new = val_act+1;
+                    $(this).parent().children(":text").val(val_act + 1);
+                    var change = true;
+                }
+
+                if (val_act == val_max) {
+                    if (val_act == val_maxsales) {
+                        alert('Vous ne pouvez pas commander plus de ' + val_maxsales + ' produit(s)');
+                    }
+                    else {
+                        alert('La quantité demandée n\'est pas disponible');
+                    }
+                }
+            }
+            else if ($(this).val() == '-') {
+                if (val_act > 0) {
+                    val_new = val_act-1;
+                    $(this).parent().children(":text").val(val_act - 1);
+                    var change = true;
+                }
+            }
+
+            if (change == true) {
+                $qtyInput.val(val_new);
+
+                $('.submit.minus, .submit.plus').unbind('click');
+                $('.btn-proceed-checkout').hide();
+                $('#shopping-cart-form').submit();
+            }
+        });
+    });
+//]]>
+</script>

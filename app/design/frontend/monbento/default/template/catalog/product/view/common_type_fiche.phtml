@@ -1,0 +1,148 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_product = $this->getProduct(); ?>
+<?php echo $this->getChildHtml('dbm_gtm.product'); ?>
+<?php echo $this->getChildHtml('products.reassurance'); ?>
+<section class="c-product__presentation">
+    <div class="row collapse">
+        <div class="columns medium-4 js-itemEqualizer">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <div class="c-content__aside">
+                        <div class="c-title"><?php echo $_product->getTitreDescription(); ?></div>
+                        <!-- change color here-->
+                        <div style="color: #<?php echo $_product->getCodeHexa(); ?>;" class="c-separator"><i class="c-fonticon__icon--wave"></i></div>
+                        <div class="c-wysiwyg">
+                            <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getDescription()); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="columns medium-8 js-itemEqualizer">
+            <?php echo $this->getChildHtml('media_description') ?>
+        </div>
+    </div>
+</section>
+<?php if($_product->getTexteCaracteristiques()): ?>
+    <section class="o-section c-product__tabs c-infos-caractéristiques">
+        <div class="row">
+            <div class="c-infos-caractéristiques__header"><?php echo __("Informations et caractéristiques"); ?></div>
+        </div>
+        <div class="row c-infos-caractéristiques__content">
+
+            <div class="columns medium-4 c-infos-caractéristiques__info">
+                <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getTexteDimensions()); ?>
+            </div>
+            <div class="columns medium-4 c-infos-caractéristiques__c">
+                <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getTexteCaracteristiques()); ?>
+            </div>
+            <div class="columns medium-4 c-infos-caractéristiques__img">
+                <?php if ($_product->getData('visuel_bloc_caracteristiques') != 'no_selection' && !is_null($_product->getData('visuel_bloc_caracteristiques'))): ?>
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'catalog/product' . $_product->getData('visuel_bloc_caracteristiques'); ?>"
+                         alt="">
+                <?php endif; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>
+<?php if($_product->getData('visuel_icone_presentation_1') != 'no_selection' && !is_null($_product->getData('visuel_icone_presentation_1'))): ?>
+<section class="o-section c-product__presentationIcon">
+    <div class="row">
+        <?php for($i=1;$i<4;$i++): ?>
+        <div class="columns medium-4">
+            <div class="c-content">
+                <div class="c-picture">
+                    <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/product'.$_product->getData('visuel_icone_presentation_'.$i); ?>" alt="<?php echo $_product->getData('titre_icone_presentation_'.$i); ?>">
+                </div>
+                <div class="c-title"><?php echo $_product->getData('titre_icone_presentation_'.$i); ?></div>
+                <!-- change color here-->
+                <div style="background-color: #<?php echo $_product->getCodeHexa(); ?>;" class="c-separator"></div>
+                <div class="c-desc"><?php echo $_product->getData('texte_icone_presentation_'.$i); ?></div>
+            </div>
+        </div>
+        <?php endfor; ?>
+    </div>
+</section>
+<?php endif; ?>
+<?php if($_product->getDisplayBandeauPerso() && $_product->getData('visuel_bandeau_perso') != 'no_selection' && !is_null($_product->getData('visuel_bandeau_perso'))): ?>
+<section class="c-product__personalize">
+    <div class="row collapse">
+        <div class="columns large-8 js-itemEqualizer text-center">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <img src="<?php echo ($_product->getData('visuel_bandeau_perso') != 'no_selection') ? Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/product'.$_product->getData('visuel_bandeau_perso') : $this->getSkinUrl('proto/app/assets/media/images/c-img__product--960x600.jpg'); ?>" alt="<?php echo $_product->getMediaGalleryImages()->getItemByColumnValue('file', $_product->getData('visuel_bandeau_perso'))->getLabel(); ?>" />
+                </div>
+            </div>
+        </div>
+        <div class="columns large-4 js-itemEqualizer">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <div class="c-content__aside">
+                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getTexteBandeauPerso()); ?>
+                        <div class="c-separator">
+                            <svg xmlns="xlink" x="0px" y="0px" width="120px" height="23.3px" viewbox="0 0 120 23.3" enable-background="new 0 0 120 23.3" xml="space">
+                                <path fill="#CECCCC" d="M118.3,4.3L54.2,0.8c0,0-0.1,0-0.1,0c0,0-0.1,0-0.1,0L27.1,2.7c-0.3,0-0.5,0.1-0.8,0.2                      c-1-0.6-12.3-7.3-23.5,2C2.5,5.2,2.3,5.7,2.3,6.3c0,0.5,0.2,1,0.6,1.4c4.5,3.7,9,4.9,12.8,4.9c5.7,0,10-2.5,10.7-2.9                      c0.2,0.1,0.5,0.2,0.8,0.2L54,11.5c0,0,0.1,0,0.1,0c0,0,0.1,0,0.1,0l64.1-3.6c0.9-0.1,1.7-0.8,1.7-1.8C120,5.2,119.3,4.4,118.3,4.3z                      M7.1,6.3c7.4-4.8,14.3-2,16.6-0.8l0,1.5C21.4,8.2,14.4,11.1,7.1,6.3z M29,6.3l0-0.2l23.3-1.6l0,1.7l0,1.6L29,6.3z"></path>
+                                <g class="c-colorDrop">
+                                    <path fill="#<?php echo $_product->getCodeHexa(); ?>" d="M10.5,2c-0.2-0.4-0.6-0.8-1-1c-0.5-0.2-1-0.1-1.4,0.1L1,4.7C0.4,5,0,5.6,0,6.2c0,0.7,0.3,1.3,0.9,1.6                        C3.6,9.4,8.6,12,10.5,12c0,0,0,0,0,0c0.8,0,1.5-0.4,1.9-1C12.8,10.5,13.7,9,10.5,2z"></path>
+                                    <path fill="#<?php echo $_product->getCodeHexa(); ?>" d="M10.2,15.3C10.1,15.1,9.9,15,9.7,15c-0.2,0-0.4,0.1-0.5,0.3c-0.4,0.6-2.2,3.9-2.1,5.3c0.1,0.8,0.4,1.5,1,2                        c0.5,0.5,1.2,0.7,1.9,0.7c0.1,0,0.2,0,0.2,0c1.6-0.1,2.8-1.6,2.7-3.2C13,18.7,10.7,15.8,10.2,15.3z"></path>
+                                </g>
+                            </svg>
+                        </div>
+                        <?php echo Mage::helper('cms')->getBlockTemplateProcessor()->filter($_product->getTexteBandeauPersoBas()); ?>
+                        <a href="<?php echo Mage::getModel('catalog/category')->load(70)->getUrl(); ?>" class="c-button--transparentNoHover--arrowRightToRight--noPdgTopBtm"><div class="o-table"><div class="o-table__cell--valignMiddle"><?php echo $this->__('Personnalisez votre MB Original'); ?></div></div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<?php if($_product->getData('visuel_miseenavant') != 'no_selection' && !is_null($_product->getData('visuel_miseenavant'))): ?>
+<section>
+    <div class="row row--full hide-for-small">
+        <div class="columns text-center">
+            <img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/product'.$_product->getData('visuel_miseenavant'); ?>" alt="<?php if($data = $_product->getMediaGalleryImages()->getItemByColumnValue('file', $_product->getData('visuel_miseenavant'))) echo $data->getLabel(); ?>" />
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<?php echo $this->getChildHtml('products.adopter'); ?>
+<?php if(count($_product->getRelatedProductIds()) > 0): ?>
+<?php $francoAmount = Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_franco_amount'); ?>
+<section class="o-section--bkgGrey c-crossSelling">
+    <div class="c-title--group">
+        <div class="c-main"><?php echo $this->__('Vous faire encore plus plaisir'); ?></div>
+        <?php if($francoAmount > 0): ?>
+            <div class="c-baseline">
+            <?php echo $this->__('À partir de %s d\'achat, la livraison est offerte', Mage::helper('core')->currency(Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_franco_amount'))); ?>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php echo $this->getChildHtml('catalog.related') ?>
+</section>
+<?php endif; ?>

@@ -1,0 +1,72 @@
+====  Description / Для чего этот модуль? ====
+
+EN:
+1. Store owner will receive notification email after receiving new product review. 
+2. If there are pending reviews - standart notification toolbar is shown in admin.
+   Thanks for idea with toolbar to module
+   http://www.magentocommerce.com/magento-connect/clockworkgeek/extension/3853/clockworkgeek_reviewsnotification
+3. There is a function, that makes it difficult for auto bots/spammers to submit reviews.
+
+RU:
+1. При поступлении нового отзыва на товар отсылается сообщение владельцу магазина на е-майл.
+2. Если в системе есть отзывы, требующие проверки, то показывается стандартный тулбар оповещений в панели администрирования. 
+   Спасибо за идею с тулбаром этому модулю
+   http://www.magentocommerce.com/magento-connect/clockworkgeek/extension/3853/clockworkgeek_reviewsnotification
+3. Есть функция, затрудняющая автоматическим ботам/спаммерам написание отзывов.
+
+====Features / Особенности модуля====
+
+EN:
+* Open source code (no encryption and obfuscation)
+* Code follows Magento development standards
+* Extension is available on 2 languages (ru_RU, en_US) and you can easy add your own
+* All extension settings are available on admin panel
+  * Enable/Disable email notification
+  * Enable/Disable toolbar notification
+  * Notification email template can be changed
+  * Email notification to multiple recipients
+  * Enable/Disable Anti spam function
+* Theme modification is not required if you have original element names on your review form.
+
+RU:
+* Открытый исходный код
+* Код написан придерживаясь принятых стандартов в разработке для Магенто
+* Доступен на 2-ух языках (ru_RU, en_US) и легко добавляются новые переводы
+* Все настройки модуля доступны в панели администрирования
+  * Включить/отключить оповещение на е-майл
+  * Включить/отключить тулбар оповещения
+  * Редактируемый шаблон письма-оповещения
+  * Оповещение по нескольким адресам е-майл
+  * Включить/отключить анти спам функцию
+* Не требует модификации темы (если используются стандартные названия элементов в форме отзыва)
+
+
+
+====Version Compatibility / Совместимость версий====
+1.3.х (tested in 1.3.2.4.)
+1.4.x (tested in 1.4.1.1.)
+1.5.x (tested in 1.5.0.1. and 1.5.1.0)
+
+
+====Module tags:==== 
+reviews, notification, mail, admin, anti spam
+
+отзывы, оповещения, е-майл, админка, панель администрирования, анти спам
+
+====Установка/Installation====
+
+* Disable Compiler, if it is enabled (System -> Tools -> Compilation)
+* Disable cache, if it is enabled (System -> Cache Management)
+* Install the extension
+* Log off admin panel (Log Out)
+* Log into admin panel (enter your login and password)
+* Set Advanced Compare parameters (System -> Configuration -> Catalog -> Product Reviews)
+* Run compilation process and enable cache if needed
+
+* Отключите компиляцию, если включена (Система -> Инструменты -> Компиляция)
+* Отключите кэш, если включён (Система -> Управление кэшем)
+* Установите модуль
+* Выйдите из панели администрирования (Выйти)
+* Войдите в панель администрирования (введите логин/пароль)
+* Настройте параметры отображения модуля (Система -> Конфигурация -> Каталог -> Отзывы о товаре)
+* Если необходимо запустите процесс компиляции и включите кэш

@@ -1,0 +1,89 @@
+// ========================================= //
+// search
+// ========================================= //
+
+.c-search {
+    $button--width--value: 89;
+    $button--width--value--small: 56;
+    $button--width: rem($button--width--value);
+
+    position: absolute;
+    z-index: $zindex--hover;
+    left: 0;
+    width: 100%;
+    transform: translateY(-100%);
+    transition: $bezier;
+    opacity: 0;
+
+    &.is-visible {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    .c-input__holder {
+        height: auto;
+        border: none;
+        margin-bottom: 0;
+        @include clearfix;
+    }
+
+    .c-search__input {
+        width: calc(100% - #{$button--width--value*2}px);
+        height: $o-header--height;
+        float: left;
+        margin-bottom: 0;
+        box-shadow: none;
+        border: none;
+        padding: rem(8) rem(30);
+        color: $mainFont;
+        font-family: $sofiaPro;
+        font-size: rem(16);
+        text-transform: uppercase;
+        letter-spacing: rem(2);
+        transition: $ease;
+
+        @include bp-lt($tabletS) {
+            width: calc(100% - #{$button--width--value--small*2}px);
+            height: $o-header--height--small;
+        }
+    }
+
+    .c-search__submit,
+    .c-close {
+        display: block;
+        width: $button--width;
+        height: $o-header--height;
+        float: left;
+        margin-bottom: 0;
+        border: none;
+
+        @extend %links--hover--active;
+
+        @include bp-lt($tabletS) {
+            width: $o-header--height--small;
+            height: $o-header--height--small;
+        }
+    }
+
+    .c-close {
+        background: $subBranding;
+        text-align: center;
+        font-size: rem(30);
+        color: $white;
+
+        [class*='c-fonticon__icon'] {
+            position: relative;
+            top: rem(5);
+        }
+    }
+
+    .c-search__submit {
+        padding: rem(8);
+        background: $grey--light--01;
+        color: $white;
+        font-family: $sofiaPro;
+        font-size: rem(20);
+        text-transform: uppercase;
+        letter-spacing: rem(2);
+    }
+}

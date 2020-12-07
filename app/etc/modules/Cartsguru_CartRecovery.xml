@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Cartsguru_CartRecovery>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Cartsguru_CartRecovery>
+    </modules>
+</config>

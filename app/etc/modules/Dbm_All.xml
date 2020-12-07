@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Cartpromo>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Cartpromo>
+        <Dbm_Catalog>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Catalog>
+        <Dbm_Customer>
+            <active>true</active>
+            <codePool>local</codePool>
+            <priority>700</priority>
+            <depends>
+                <Aitoc_Aitpermissions />
+            </depends>
+        </Dbm_Customer>
+        <Dbm_Share>
+            <active>true</active>
+            <codePool>local</codePool>
+            <priority>700</priority>
+            <depends>
+                <Unirgy_StoreLocator />
+                <BoutikCircus_DeleteOrders />
+            </depends>
+        </Dbm_Share>
+        <Dbm_Utils>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Utils>
+        <Dbm_Store>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Store>
+        <Dbm_Map>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Map>
+        <Dbm_Fb>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Fb>
+        <Dbm_Blog>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Blog>
+        <Dbm_Permissions>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_Permissions>
+        <Dbm_Country>
+            <active>true</active>
+            <codePool>local</codePool>
+            <priority>700</priority>
+            <depends>
+                <Aitoc_Aitquantitymanager />
+            </depends>
+        </Dbm_Country>
+        <Dbm_VeInteractive>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Dbm_VeInteractive>
+    </modules>
+</config>

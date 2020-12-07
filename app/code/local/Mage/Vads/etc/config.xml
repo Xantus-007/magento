@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<!--VERSION-->
+	<modules>
+		<Mage_Vads>
+			<version>0.1.0</version>
+		</Mage_Vads>
+	</modules>
+	
+	<global>
+		<!--CUSTOM ORDER STATUS-->
+		<sales>
+			<order>
+				<statuses>
+					<pending_vads translate="label"><label>Pending Systempay</label></pending_vads>
+				</statuses>
+				<states>
+					<pending_payment>
+						<statuses>
+							<pending_vads/>
+						</statuses>
+					</pending_payment>
+				</states>
+			</order>
+		</sales>
+	
+		<!--NAMESPACE-->
+		<blocks>
+			<vads>
+				<class>Mage_Vads_Block</class>
+			</vads>
+		</blocks>
+		
+		<!--TRANSLATION HELPER-->
+		<helpers>
+            <vads>
+                <class>Mage_Vads_Helper</class>
+            </vads>
+        </helpers>
+		
+		<!--MODEL GROUP-->
+		<models>
+			<vads>
+				<class>Mage_Vads_Model</class>
+			</vads>
+		</models>
+		
+		<!--ADMIN PARAMETERS OPTIONS-->
+		<payment>
+			<vads>
+				<!-- Liste des langages supportés -->
+                <languages >
+                    <fr>
+                        <code>fr</code>
+                        <name >French</name>
+                    </fr>
+                    <en>
+                        <code>en</code>
+                        <name>English</name>
+                    </en>
+                    <es>
+                        <code>es</code>
+                        <name>Spanish</name>
+                    </es>
+                    <de>
+                        <code>de</code>
+                        <name>Allemand</name>
+                    </de>
+                    <it>
+                        <code>it</code>
+                        <name>Italian</name>
+                    </it>
+					<zh>
+                        <code>zh</code>
+                        <name>Chinese</name>
+                    </zh>
+					<ja>
+                        <code>ja</code>
+                        <name>Japanese</name>
+                    </ja>
+                    <pt>
+                        <code>pt</code>
+                        <name>Portuguese</name>
+                    </pt>
+                    <nl>
+                        <code>nl</code>
+                        <name>Dutch</name>
+                    </nl>
+                </languages>
+                
+                 <available_languages>
+                 	<all>
+                        <code></code>
+                        <name>ALL</name>
+                    </all>
+                    <fr>
+                        <code>fr</code>
+                        <name >French</name>
+                    </fr>
+                    <en>
+                        <code>en</code>
+                        <name>English</name>
+                    </en>
+                    <es>
+                        <code>es</code>
+                        <name>Spanish</name>
+                    </es>
+                    <de>
+                        <code>de</code>
+                        <name>Allemand</name>
+                    </de>
+                    <it>
+                        <code>it</code>
+                        <name>Italian</name>
+                    </it>
+					<zh>
+                        <code>zh</code>
+                        <name>Chinese</name>
+                    </zh>
+					<ja>
+                        <code>ja</code>
+                        <name>Japanese</name>
+                    </ja>
+                    <pt>
+                        <code>pt</code>
+                        <name>Portuguese</name>
+                    </pt>
+                    <nl>
+                        <code>nl</code>
+                        <name>Dutch</name>
+                    </nl>
+                </available_languages>
+				
+				<!--Mode de validation-->
+				<ctx_mode>
+					<TEST>
+                        <code>TEST</code>
+                        <name>Test</name>
+                    </TEST>
+					<PRODUCTION>
+                        <code>PRODUCTION</code>
+                        <name>Production</name>
+                    </PRODUCTION>
+                </ctx_mode>
+				
+				<!--Mode de validation-->
+				<validation_mode>
+					<DEFAUT>
+                        <code></code>
+                        <name>Back office configuration</name>
+                    </DEFAUT>
+					<AUTOMATIQUE>
+                        <code>0</code>
+                        <name>Automatic</name>
+                    </AUTOMATIQUE>
+					<MANUELLE>
+                        <code>1</code>
+                        <name>Manual</name>
+                    </MANUELLE>
+                </validation_mode>
+				
+				
+				
+				<!--Mode de retour -->
+				<return_mode>
+					<GET>
+                        <code>GET</code>
+                        <name>GET (parameters in the url)</name>
+                    </GET>
+					<POST>
+                        <code>POST</code>
+                        <name>POST (form)</name>
+                    </POST>
+                </return_mode>
+			</vads>
+		</payment>
+	</global>
+	
+	<!--Controllers mapping-->
+	<frontend>
+		<routers>
+			<vads>
+				<use>standard</use>
+				<args>
+					<module>Mage_Vads</module>
+					<frontName>vads</frontName>
+				</args>
+			</vads>
+		</routers>
+		
+		<translate>
+			<modules>
+				<Mage_Vads>
+					<files>
+						<default>Mage_Vads.csv</default>
+					</files>
+				</Mage_Vads>
+			</modules>
+		</translate>
+	</frontend>
+	
+	<!--Translation for admin-->
+	<adminhtml>
+		<translate>
+			<modules>
+				<Mage_Vads>
+					<files>
+						<default>Mage_Vads.csv</default>
+					</files>
+				</Mage_Vads>
+			</modules>
+		</translate>
+	</adminhtml>
+	
+	<!--DEFAULT CONF VALUES-->
+	<default>
+		<payment>
+			<vads>
+				<active>1</active>
+				<!--model with vads logic-->
+				<model>vads/standard</model>
+				<!--manage country specific settings-->
+				<allowspecific>0</allowspecific>
+				<!--vads title-->
+				<title>Systempay</title>
+				<sort_order>1</sort_order>
+
+				<!--vads parameters-->
+				<site_id>12345678</site_id>
+				<key_test>1111111111111111</key_test>
+				<key_prod>2222222222222222</key_prod>
+				<platform_url>https://paiement.systempay.fr/vads-payment/</platform_url>
+				
+				<url_return>vads/standard/return</url_return>
+				
+				<developed_by>Lyra network</developed_by>
+				<contact_email>supportvad@lyra-network.com</contact_email>
+				<module_version>1.0b</module_version>
+				<gateway_version>V2</gateway_version>
+				<cms_version>1.5.1.0</cms_version>
+				
+				<check_url>URL_DE_VOTRE_SITE/index.php/vads/standard/check</check_url>
+				
+				<redirect_success_timeout>5</redirect_success_timeout>
+				<redirect_success_message>Redirection vers la boutique dans quelques instants</redirect_success_message>
+				<redirect_error_timeout>5</redirect_error_timeout>
+				<redirect_error_message>Redirection vers la boutique dans quelques instants</redirect_error_message>
+				
+				<registered_order_status>processing</registered_order_status>
+				
+				<refill_cart>1</refill_cart>
+				
+				<module_information>***************************************************************************************************</module_information>
+				<magento_configuration>****************************************************************************************************</magento_configuration>
+				<gateway_access>****************************************************************************************************</gateway_access>
+				<payment_page>****************************************************************************************************</payment_page>
+				<return_options>****************************************************************************************************</return_options>
+				<amount_restrictions>****************************************************************************************************</amount_restrictions>
+				<module_settings>****************************************************************************************************</module_settings>
+			</vads>
+		</payment>
+	</default>
+</config>

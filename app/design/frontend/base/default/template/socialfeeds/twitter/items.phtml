@@ -1,0 +1,53 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+$offset = $this->getOffset();
+$limit = $this->getLimit();
+$size = Mage::getStoreConfig('dbm_feeds_config/twitter_config_general/twitter_'.$this->getSize().'_size');
+
+$twitterPosts = $this->getTwitterItemsFeed($offset, $limit);
+?>
+<?php if(count($twitterPosts) > 0 && Mage::getStoreConfig('dbm_feeds_config/twitter_config_general/twitter_enable')): ?>
+<!-- Twitter -->
+<div class="c-section__twitter">
+    <p class="titleactuhome">
+	<span><img src="<?php echo $this->getSkinUrl('images/c-icon__twitter.png') ?>"></span><br><br>
+	<span><?php echo $this->__('Twitter') ?></span>
+    </p>
+    <div class="c-twitter clearfix">
+        <?php foreach($twitterPosts as $tweet): ?>
+	<div class="c-twitter__item">
+            <a href="https://twitter.com/<?php echo $tweet->user->screen_name ?>/status/<?php echo $tweet->id_str ?>" target="_blank">
+                <div class="c-twitter__hover"></div>
+                <div class="c-twitter__date"><?php echo Mage::helper('socialfeeds')->formatDate( $tweet->created_at ) ?></div>
+                <div class="c-twitter__text"><?php echo Mage::helper('socialfeeds')->formatTweet($tweet->text) ?></div>
+                <img src="<?php echo $this->getImage($tweet->id_str, $this->getTwitterImgFolder(), $size) ?>" />
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>

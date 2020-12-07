@@ -1,0 +1,14 @@
+<?php $menu = $this->getMenu() ?>
+<ul>
+<?php foreach($menu as $item): ?>
+    <li <?php if ($item['isActive']): ?>class="active"<?php endif; ?>>
+        <a href="<?php echo $item['url'] ?>">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <span><?php echo $item['label'] ?></span>
+                </div>
+            </div>                        
+        </a>
+    </li>
+<?php endforeach; ?>
+</ul>

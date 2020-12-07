@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <cartsguru translate="title" module="cartsguru_cartrecovery">
+                <title>Cartsguru Ressource</title>
+                <model>Cartsguru_CartRecovery_Model_Cartsguru_Api_V2</model>
+                <methods>
+                    <admin translate="title" module="cartsguru_cartrecovery">
+                        <title>Cartsguru Admin</title>
+                        <acl>cartsguru/admin</acl>
+                    </admin>
+                </methods>
+            </cartsguru>
+        </resources>
+        <acl>
+            <resources>
+                <cartsguru translate="title" module="cartsguru_cartrecovery">
+                    <title>Cartsguru</title>
+                    <admin translate="title" module="cartsguru_cartrecovery">
+                        <title>Cartsguru Admin</title>
+                    </admin>
+                </cartsguru>
+            </resources>
+        </acl>
+    </api>
+</config>

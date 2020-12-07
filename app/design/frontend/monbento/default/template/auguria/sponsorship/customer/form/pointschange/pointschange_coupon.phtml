@@ -1,0 +1,65 @@
+<!--
+/**
+ * @category   Auguria
+ * @package    Auguria_Sponsorship
+ * @author     Auguria
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<?php
+$module = 'accumulated'; //$change['module'];
+$type = 'coupon'; //$change['type'];
+
+$t = Mage::helper('dbm_share');
+$change = $this->getChange();
+//$module = $change['module'];
+$Module = ucfirst($module);
+//$type = $change['type'];
+$Type = ucfirst($type);
+
+$getDispoPoints = 'get'.$Module.'Points';
+$dPoints = $this->$getDispoPoints();
+
+$PointsToCash = $this->getPointsToCashConfig($Module);
+
+echo $this->__('You have %d Pépites.',$dPoints).' ';
+
+$allowed = array();
+
+/*
+if($dPoints >= 2500)
+{
+    $allowed[] = array('price' =>  8, 'points' => 2500);
+}
+
+if($dPoints >= 5000)
+{
+    $allowed[] = array('price' =>  12, 'points' => 5000);
+}
+
+if($dPoints >= 7500)
+{
+    $allowed[] = array('price' =>  16, 'points' => 7500);
+}*/
+
+if($dPoints >= 200)
+{
+    $allowed[] = array('price' => 8, 'points' => 200);
+}
+
+?>
+<?php if(count($allowed)): ?>
+    <?php foreach($allowed as $pointData): ?>
+        <form action="<?php echo $this->getUrl('*/*/save') ?>" method="post" id="form-validate">
+            <?php echo $this->getBlockHtml('formkey')?>
+            <input type="hidden" name="club" value="<?php echo Mage::app()->getFrontController()->getRequest()->getParam('club') ?>" />
+            <input type="hidden" name="module" id="module" value="<?php echo $module ?>"/>
+            <input type="hidden" name="type" id="type" value="<?php echo $type ?>"/>
+            <input type="hidden" name="coupon_points" value="<?php echo $pointData['points'] ?>" />
+            <p><?php echo $t->__('You have a %s coupon (%spts)', Mage::helper('core')->currency($pointData['price'], true, false), $pointData['points']); ?></p>
+            <button class="button" type="submit"><span><span><?php echo $t->__('Exchange') ?></span></span></button>
+        </form>
+    <?php endforeach; ?>
+<?php else: ?>
+<br /><?php echo Mage::helper('dbm_share')->__('You do not have enough Pépites'); ?>.
+<?php endif; ?>

@@ -1,0 +1,80 @@
+#clubMenuTop {
+    margin-bottom:20px;
+}
+
+.club #clubMenuTop {
+    margin-bottom:0;
+}
+
+/* MENU */
+#clubMenuTop {
+    background:url('../../images/club/menu/background.jpg') repeat-x center center #871366;
+    color:#FFF;
+    height: 110px;
+}
+
+#clubMenuTop a {
+    color: #FFF;
+    text-decoration: none;
+}
+
+#clubMenuTop a:hover {
+    text-decoration: underline;
+}
+
+#clubMenuTop .logo {
+    margin-top:30px;
+}
+
+#clubMenuTop ul {
+    float:right;
+    margin-right: 0px;
+    padding-bottom:20px;
+}
+
+#clubMenuTop ul li {
+    display: inline-block;
+    width: 132px;
+    height:110px;
+}
+
+#clubMenuTop li a {
+    display:table-cell;
+    height:110px;
+    vertical-align: top;
+    width: 132px;
+    text-align:center;
+    font-size: 1.3em;
+}
+
+#clubMenuTop li a img {
+    display:inline-block;
+    vertical-align:middle;
+    clear:both;
+}
+
+#clubMenuTop li a span {
+    display:block;
+    vertical-align:middle;
+    line-height:80px;
+}
+
+#clubMenuTop ul li.selected,
+.club-blog #clubMenuTop ul li.club-blog {
+    background-color: #751259;
+    border-left: 1px solid #5C0E46;
+    border-right: 1px solid #5C0E46;
+    vertical-align:top;
+    position:relative;
+}
+
+#clubMenuTop ul li.not-selected {
+    padding-bottom:20px;
+}
+
+#clubMenuTop ul li.selected > img,
+.club-blog #clubMenuTop ul li.club-blog > img{
+    width:132px;
+    position:absolute;
+    left:0;
+}

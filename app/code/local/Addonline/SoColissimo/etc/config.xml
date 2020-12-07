@@ -1,0 +1,299 @@
+<?xml version="1.0"?>
+<!-- /** * Addonline_SoColissimo * * @category Addonline * @package Addonline_SoColissimo 
+	* @copyright Copyright (c) 2013 Addonline * @author Addonline (http://www.addonline.fr) 
+	*/ -->
+<config>
+	<modules>
+		<Addonline_SoColissimo>
+			<version>2.1.0</version>
+			<depends>
+				<Mage_Shipping />
+			</depends>
+		</Addonline_SoColissimo>
+	</modules>
+
+	<global>
+		<blocks>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Block</class>
+			</socolissimo>
+			<onestepcheckout>
+				<rewrite>
+					<checkout>Addonline_SoColissimo_Block_OneStepCheckout_Checkout</checkout>
+				</rewrite>
+			</onestepcheckout>
+		</blocks>
+		<helpers>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Helper</class>
+			</socolissimo>
+			<onestepcheckout>
+				<rewrite>
+					<checkout>Addonline_SoColissimo_Helper_OneStepCheckout_Checkout</checkout>
+				</rewrite>
+			</onestepcheckout>
+		</helpers>
+		<models>
+			<socolissimo>
+				<class>Addonline_SoColissimo_Model</class>
+				<resourceModel>socolissimo_mysql4</resourceModel>
+			</socolissimo>
+			<socolissimo_mysql4>
+				<class>Addonline_SoColissimo_Model_Mysql4</class>
+				<entities>
+					<liberte_relais>
+						<table>socolissimoliberte_relais</table>
+					</liberte_relais>
+					<liberte_horairesOuverture>
+						<table>socolissimoliberte_horaire_ouverture</table>
+					</liberte_horairesOuverture>
+					<liberte_periodesFermeture>
+						<table>socolissimoliberte_periode_fermeture</table>
+					</liberte_periodesFermeture>
+				</entities>
+			</socolissimo_mysql4>
+			<shipping>
+				<rewrite>
+					<rate_result>Addonline_SoColissimo_Model_Shipping_Rate_Result</rate_result>
+				</rewrite>
+			</shipping>
+		</models>
+		<resources>
+			<socolissimo_setup>
+				<setup>
+					<module>Addonline_SoColissimo</module>
+					<class>Mage_Sales_Model_Mysql4_Setup</class>
+				</setup>
+			</socolissimo_setup>
+		</resources>
+		<events>
+			<admin_user_authenticate_after>
+				<observers>
+					<Addonline_SoColissimo_Model_Observer>
+						<type>singleton</type>
+						<class>socolissimo/observer</class>
+						<method>_9cd4777ae76310fd6977a5c559c51820</method>
+					</Addonline_SoColissimo_Model_Observer>
+				</observers>
+			</admin_user_authenticate_after>
+		</events>
+	</global>
+
+	<frontend>
+		<layout>
+			<updates>
+				<socolissimo module="Addonline_SoColissimo">
+					<file>socolissimo.xml</file>
+				</socolissimo>
+			</updates>
+		</layout>
+		<secure_url>
+			<socolissimo>/socolissimo/ajax/</socolissimo>
+		</secure_url>
+		<routers>
+			<socolissimo>
+				<use>standard</use>
+				<args>
+					<module>Addonline_SoColissimo</module>
+					<frontName>socolissimo</frontName>
+				</args>
+			</socolissimo>
+		</routers>
+		<translate>
+			<modules>
+				<Addonline_SoColissimo>
+					<files>
+						<shipping>Mage_Shipping.csv</shipping>
+						<default>Addonline_SoColissimo.csv</default>
+					</files>
+				</Addonline_SoColissimo>
+			</modules>
+		</translate>
+		<events>
+			<sales_quote_collect_totals_before>
+				<observers>
+					<socolissimo_observer>
+						<type>model</type>
+						<class>socolissimo/observer</class>
+						<method>checkoutEventSocodata</method>
+					</socolissimo_observer>
+				</observers>
+			</sales_quote_collect_totals_before>
+			<checkout_type_onepage_save_order>
+				<observers>
+					<socolissimo_observer>
+						<type>singleton</type>
+						<class>socolissimo/observer</class>
+						<method>addSocoAttributesToOrder</method>
+					</socolissimo_observer>
+				</observers>
+			</checkout_type_onepage_save_order>
+			<checkout_onepage_controller_success_action>
+				<observers>
+					<socolissimo_observer>
+						<type>singleton</type>
+						<class>socolissimo/observer</class>
+						<method>resetSession</method>
+					</socolissimo_observer>
+				</observers>
+			</checkout_onepage_controller_success_action>
+		</events>
+	</frontend>
+	<admin>
+		<routers>
+			<socolissimobatch>
+				<use>admin</use>
+				<args>
+					<module>Addonline_SoColissimo</module>
+					<frontName>socolissimobatch</frontName>
+				</args>
+			</socolissimobatch>
+		</routers>
+	</admin>
+	<adminhtml>
+		<translate>
+			<modules>
+				<Addonline_SoColissimo>
+					<files>
+						<shipping>Mage_Shipping.csv</shipping>
+						<default>Addonline_SoColissimo.csv</default>
+					</files>
+				</Addonline_SoColissimo>
+			</modules>
+		</translate>
+	</adminhtml>
+	<crontab>
+		<jobs>
+			<socolissimo_liberte_import>
+				<schedule>
+					<cron_expr>0 1 * * *</cron_expr>
+				</schedule>
+				<run>
+					<model>socolissimo/liberte_batch::run</model>
+				</run>
+			</socolissimo_liberte_import>
+			<socolissimo_cities_import>
+				<schedule>
+					<cron_expr>0 4 * * 0</cron_expr>
+				</schedule>
+				<run>
+					<model>socolissimo/cities_batch::updatecities</model>
+				</run>
+			</socolissimo_cities_import>
+		</jobs>
+	</crontab>
+	<default>
+		<carriers>
+			<socolissimo>
+				<active>0</active>
+				<title>Les modes de livraison</title>
+				<model>Addonline_SoColissimo_Model_Carrier_ShippingMethod</model>
+				<contrat>liberte</contrat>
+				<international>1</international>
+				<config><![CDATA[
+# So Colissimo Livraison à domicile sans Signature (France, Monaco, Andorre) (Tarifs Mars 2013)
+{
+	label: "mon domicile",
+	code: "domicile_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:5.25, 0.5:5.80, 0.75:6.55, 1.0:7.05, 2.0:7.82, 3.0:8.59, 4.0:9.36, 5.0:10.13, 6.0:10.90, 7.0:13.67, 8.0:14.44, 9.0:13.21, 10.0:13.98, 11.0:14.75, 12.0:15.52, 13.0:16.29, 14.0:17.06, 15.0:17.83, 16.0:18.60, 17.0:19.37, 18.0:20.14, 19.0:20.91, 20.0:21.68, 21.0:22.45, 22.0:23.22, 23.0:23.99, 24.0:24.76, 25.0:25.53, 26.0:26.30, 27.0:27.07, 28.0:27.84, 29.0:28.61, 30.0:29.38}",
+}
+
+# So Colissimo Livraison à domicile avec Signature (France, Monaco, Andorre) (Tarifs Mars 2013)
+{
+	label: "mon domicile",
+	code: "domicile_sign_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:5.95, 0.5:6.70, 0.75:7.45, 1.0:7.95, 2.0:8.72, 3.0:9.49, 4.0:10.26, 5.0:11.03, 6.0:11.80, 7.0:12.57, 8.0:13.34, 9.0:14.11, 10.0:14.88, 11.0:15.65, 12.0:16.42, 13.0:17.19, 14.0:17.96, 15.0:18.73, 16.0:19.50, 17.0:20.27, 18.0:21.04, 19.0:21.81, 20.0:22.58, 21.0:23.35, 22.0:24.12, 23.0:24.89, 24.0:25.66, 25.0:26.43, 26.0:27.20, 27.0:27.97, 28.0:28.74, 29.0:29.51, 30.0:30.28}",
+}
+
+# So Colissimo Sur Rendez-vous (Paris code postal 750xx) (Tarifs Mars 2013)
+{
+	label: "mon rendez-vous",
+	code: "rdv_fr",
+	destination: "FR(/^75((0[0-1][0-9])|020|116)$/)",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*({domicile_sign_fr.fees} + 3)",
+}
+
+# So Colissimo Bureau de Poste (France, Monaco, Andorre) (Tarifs Mars 2013)
+{
+	label: "mon bureau de poste",
+	code: "poste_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<30",
+	fees: "{domicile_fr.fees}",
+}
+
+# So Colissimo Commerçant (France, Monaco, Andorre) (Tarifs Mars 2013)
+{
+	label: "mon commerçant",
+	code: "commercant_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<10",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:3.75, 0.5:4.30, 0.75:5.05, 1.0:5.55, 2.0:6.32, 3.0:7.09, 4.0:7.86, 5.0:8.63, 6.0:9.40, 7.0:10.17, 8.0:10.94, 9.0:11.71, 10.0:12.48, 11.0:13.25, 12.0:14.02, 13.0:14.79, 14.0:15.56, 15.0:16.33, 16.0:17.10, 17.0:17.87, 18.0:18.64, 19.0:19.41, 20.0:20.18, 21.0:20.95, 22.0:21.72, 23.0:22.49, 24.0:23.26, 25.0:24.03, 26.0:24.80, 27.0:25.57, 28.0:26.34, 29.0:27.11, 30.0:27.88}",
+}
+
+# So Colissimo Consigne Cityssimo (France, Monaco, Andorre) (Tarifs Mars 2013)
+{
+	label: "mon espace cityssimo",
+	code: "cityssimo_fr",
+	destination: "FR,MC,AD",
+	conditions: "{cart.weight}<20",
+	fees: "{domicile_fr.fees}",
+}
+
+# So Colissimo Livraison à domicile sans Signature (Belgique) (Tarifs Mars 2013)
+{
+	label: "mon domicile",
+	code: "domicile_be",
+	destination: "BE",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:6.65, 0.5:7.30, 0.75:8.05, 1.0:8.55, 2.0:9.32, 3.0:10.09, 4.0:10.86, 5.0:11.63, 6.0:12.40, 7.0:13.17, 8.0:13.94, 9.0:14.71, 10.0:15.48, 11.0:16.25, 12.0:17.02, 13.0:17.79, 14.0:18.56, 15.0:19.33, 16.0:20.10, 17.0:20.87, 18.0:21.64, 19.0:22.41, 20.0:23.18, 21.0:23.95, 22.0:24.72, 23.0:25.49, 24.0:26.26, 25.0:27.03, 26.0:27.80, 27.0:28.57, 28.0:29.34, 29.0:30.11, 30.0:30.88}",
+}
+
+# So Colissimo Livraison à domicile avec Signature (Belgique) (Tarifs Mars 2013)
+{
+	label: "mon domicile",
+	code: "domicile_sign_be",
+	destination: "BE",
+	conditions: "{cart.weight}<20",
+	fees: "!{free_shipping}*{table {cart.weight} in 0.25:7.45, 0.5:8.20, 0.75:8.95, 1.0:9.45, 2.0:10.22, 3.0:10.99, 4.0:11.76, 5.0:12.53, 6.0:13.30, 7.0:14.07, 8.0:14.84, 9.0:15.61, 10.0:16.38, 11.0:17.15, 12.0:17.92, 13.0:18.69, 14.0:19.46, 15.0:20.23, 16.0:21.0, 17.0:21.77, 18.0:22.54, 19.0:23.31, 20.0:24.08, 21.0:24.85, 22.0:25.62, 23.0:26.39, 24.0:27.16, 25.0:27.93, 26.0:28.70, 27.0:29.47, 28.0:30.24, 29.0:31.01, 30.0:31.78}",
+}
+
+# So Colissimo Bureau de Poste (Belgique) (Tarifs Mars 2013)
+{
+	label: "mon bureau de poste",
+	code: "poste_be",
+	destination: "BE",
+	conditions: "{cart.weight}<30",
+	fees: "{domicile_be.fees}",
+}
+
+# So Colissimo Commerçant (Belgique) (Tarifs Mars 2013)
+{
+	label: "mon commerçant",
+	code: "commercant_be",
+	destination: "BE",
+	conditions: "{cart.weight}<10",
+	fees: "{domicile_be.fees}",
+}
+]]></config>
+				<tracking_view_url>http://www.colissimo.fr/portail_colissimo/suivre.do?colispart={tracking_number}</tracking_view_url>
+				<display_when_unavailable>0</display_when_unavailable>
+				<stop_to_first_match>0</stop_to_first_match>
+				<shipping_period>1</shipping_period>
+				<testws_socolissimo_flexibilite>0</testws_socolissimo_flexibilite>
+				<rep_fichier_liberte>var/import/socolissimoliberte</rep_fichier_liberte>
+				<sort_order>1</sort_order>
+			</socolissimo>
+		</carriers>
+		<socolissimo>
+			<licence>
+				<serial>DISABLED</serial>
+			</licence>
+		</socolissimo>
+	</default>
+</config>

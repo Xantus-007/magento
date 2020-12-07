@@ -1,0 +1,85 @@
+<?php if(!$this->isCustomerLoggedIn()): ?>
+    <div id="checkout-login-popup" class="popup" style="display: none;">
+        <a href="#" class="button button-close close-popup">X</a>
+        <h3>Login</h3>
+        <p>Have an account already? Log in.</p>
+        <form id="checkout-login-popup-form" method="post" action="<?php echo $this->getPostActionUrl()?>">
+            <fieldset>
+                <?php echo $this->getBlockHtml('formkey') ?>
+                <ul class="form-list">
+                    <li class="field">
+                        <label for="">Email <em class="required">*</em></label>
+                        <input type="text" class="input-text validate-email validation-email-ajax required-entry" value="" id="login-username" name="login[username]">
+                    </li>
+                    <li class="field">
+                        <label for="">Password <em class="required">*</em></label>
+                        <input type="password" class="input-text required-entry" value="" id="login-password" name="login[password]">
+                    </li>
+                </ul>
+                <div class="buttons-set">
+                    <a href="#" class="show-forgot-popup">Forgot your password?</a>
+                    <button type="submit" class="button button-primary" id="" name="">Login</button>
+                </div>
+            </fieldset>
+        </form>
+        <?php echo $this->getChildHtml('oye_socialauth_checkout'); ?>
+    </div>
+    <div id="checkout-forgot-popup" class="popup" style="display: none;">
+        <a href="#" class="button button-close close-popup">X</a>
+        <h3>Forgot password</h3>
+        <p>Enter your email below to get a new password.</p>
+        <form method="post" action="<?php echo $this->getForgotPasswordActionUrl()?>">
+            <fieldset>
+                <ul class="form-list">
+                    <li class="field">
+                        <label for="">Email <em class="required">*</em></label>
+                        <input type="text" class="input-text validate-email required-entry" value="" id="" name="email">
+                    </li>
+                </ul>
+                <div class="buttons-set">
+                    <a href="#" class="show-login-popup">Back</a>
+                    <button type="submit" class="button button-primary" id="" name="">Login</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+    <script type="text/javascript">
+        function showPopup(type){
+            $$('.popup').first().hide();
+            if($('overlay') !== null){
+                $('overlay').remove();
+            }
+            $('checkout-' + type + '-popup').show();
+            $$('body').first().insert('<div id="overlay"></div>');
+        }
+
+        function closePopup(event, type){
+            if(typeof type == 'undefined'){
+                var eventElement = Event.element(event);
+                var popup = $(eventElement).up('.popup');
+            }else{
+                var popup = $('checkout-' + type + '-popup');
+            }
+            popup.hide();
+            if($('overlay') !== null){
+                $('overlay').remove();
+            }
+        }
+
+        $$('.show-login-popup').invoke('observe', 'click', function(event){
+            Event.stop(event);
+            closePopup(event, 'forgot');
+            showPopup('login');
+        });
+        $$('.show-forgot-popup').first().observe('click',function(event){
+            Event.stop(event);
+            closePopup(event, 'login');
+            showPopup('forgot');
+        });
+
+        $$('.close-popup').invoke('observe', 'click', function(event){
+            Event.stop(event);
+            closePopup(event);
+        });
+    </script>
+<?php endif; ?>

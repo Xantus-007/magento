@@ -1,0 +1,229 @@
+// ========================================= //
+// product
+// ========================================= //
+
+$gutter--product: rem(26);
+
+@mixin productHover {
+    background: $white;
+
+    // [class*='c-button--transparentNoHover'] {
+    //     background-color: $mainBranding;
+    //     border-color: $mainBranding;
+    //     color: $white;
+
+    //     &[class*='--arrowRightToRight'] {
+    //         background-image: url(#{$img}c-icon_arrowRight--white.svg);
+    //     }
+    // }
+}
+
+.c-item__product {
+    position: relative;
+    display: block;
+    padding: $gutter--product;
+    background: transparent;
+    text-align: center;
+    transition: $ease;
+
+    @include bp-lt($tablet) {
+        padding: rem(10);
+    }
+
+    @include bp-lt($small) {
+        @include productHover;
+    }
+
+    &:hover {
+        @include productHover;
+    }
+
+    &.is-outOfStock {
+        .c-thumb,
+        .c-title,
+        .c-baseline,
+        .c-priceBox,
+        [class*='c-button'] {
+            opacity: .5;
+        }
+    }
+
+    &.is-mif {
+        .c-flag--mif {
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                top: -8px;
+                transform: translateX(-50%);
+                left: 50%;
+                width: 40px;
+                height: 5px;
+                background-image: url(#{$img}c-vector__mifFlag.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+
+    h2 {
+        margin: 0 0 rem(5) !important;
+        line-height: rem(25);
+
+        @include bp-lt($desktop) { line-height: rem(20); }
+        @include bp-lt($mobileL) { line-height: rem(15); }
+    }
+
+    [class*='c-label'] {
+        position: absolute;
+        top: $gutter--product;
+        right: $gutter--product;
+
+        @include bp-lt($desktop) {
+            top: rem(10);
+            right: rem(10);
+        }
+
+        @include bp-lt($mobileL) {
+            right: 0;
+        }
+    }
+
+    .c-thumb {
+        margin-bottom: rem(14);
+
+        img {
+            display: block;
+            max-width: rem(220);
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    }
+
+    .c-title {
+        font-family: $sofiaPro;
+        font-size: rem(24);
+        color: $mainFont;
+        font-weight: 700;
+        display: inline;
+        position: relative;
+        transition: $bezier;
+        margin-bottom: 0;
+        border-bottom: solid rem(2) rgba($subBranding, 0);
+
+        @include bp-lt($desktop) {
+            font-size: rem(18);
+        }
+
+        @include bp-lt($mobileL) {
+            font-size: rem(14);
+        }
+
+        &:hover, &.active {
+            border-bottom: solid rem(2) rgba($subBranding, 1);
+        }
+    }
+
+    [class*="c-baseline"] {
+        font-family: $sofiaPro;
+        font-size: rem(20);
+        color: $mainFont;
+        font-weight: 300;
+        margin-bottom: rem(14);
+        opacity: .77;
+
+        @include bp-lt($desktop) {
+            font-size: rem(16);
+        }
+
+        @include bp-lt($mobileL) {
+            font-size: rem(12);
+        }
+
+        &[class*="--medium"] {
+            font-size: rem(18);
+
+            @include bp-lt($desktop) {
+                font-size: rem(16);
+            }
+
+            @include bp-lt($mobileL) {
+                font-size: rem(12);
+            }
+        }
+    }
+
+    .c-priceBox {
+        margin-bottom: rem(14);
+    }
+
+    [class*='c-button'] {
+        padding-top: 0;
+        padding-bottom: 0;
+
+        @include bp-lt($large) {
+            width: 100%;
+            max-width: rem(225);
+            padding-left: rem(10);
+            padding-right: rem(50);
+        }
+
+        @include bp-lt($desktop) {
+            font-size: rem(14);
+            margin-bottom: rem(7);
+        }
+
+        @include bp-lt($mobileL) {
+            padding-right: rem(35);
+        }
+
+        &[class*='--arrowRightToRight'] {
+            @include bp-lt($mobileL) {
+                background-position: top 50% right rem(10);
+
+                &:hover, &:focus, &.is-active {
+                    background-position: top 50% right rem(5);
+                }
+            }
+        }
+    }
+}
+
+.de .c-item__product {
+    [class*='c-button'] {
+        @include bp-lt($mobileL) {
+            line-height: rem(14);
+        }
+    }
+}
+
+.c-product__awards {
+    margin-top: rem(40);
+
+    @include bp-lt($medium) {
+        margin-top: rem(30);
+    }
+
+    @include bp-lt($small) {
+        margin-top: rem(15);
+    }
+
+    [class*="c-award"] {
+        text-align: center;
+
+        img {
+            @include bp-lt($medium) {
+                max-height: rem(80);
+            }
+
+            @include bp-lt($xmedium) {
+                max-height: rem(60);
+            }
+
+            @include bp-lt($small) {
+                max-height: rem(40);
+            }
+        }
+    }
+}

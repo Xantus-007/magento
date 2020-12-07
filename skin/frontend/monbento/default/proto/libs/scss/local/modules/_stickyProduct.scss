@@ -1,0 +1,209 @@
+// ========================================= //
+// stickyProduct
+// ========================================= //
+
+$height__sticky: rem(84);
+
+.c-sticky__product {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: $height__sticky;
+    background: $white;
+    z-index: $zindex--fixed;
+    border-bottom: rem(1) solid rgba($subBranding, .1);
+    transform: translateY(-100%);
+    transition: $ease;
+    @include clearfix;
+
+    &.is-visible {
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .c-quantity,
+    .c-priceBox__sticky,
+    [class*='c-button'] {
+        height: $height__sticky;
+        float: right;
+    }
+
+    .c-product__view {
+        width: 40%;
+        height: $height__sticky;
+        float: left;
+        @include clearfix;
+
+        @include bp-lt($tablet) {
+            width: calc(100% - 194px);
+        }
+
+        @include bp-lt($mobileM) {
+            width: calc(100% - 164px);
+        }
+
+        @include bp-lt($mobileL) {
+        }
+
+        .c-thumb {
+            width: $height__sticky;
+            height: $height__sticky;
+            float: left;
+            text-align: center;
+            margin-right: rem(7);
+
+            @include bp-lt($mobileM) {
+                width: rem(60);
+            }
+
+            &.perso {
+                position: relative;
+
+                img {
+                    position: relative;
+                    width: calc(100% - 1px);
+                }
+
+                .element {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: top 10px left 0;
+                }
+            }
+        }
+
+        img { width: rem(70); }
+
+        .c-content {
+            float: left;
+            height: $height__sticky;
+            width: calc(100% - 93px);
+
+            @include bp-lt($mobileM) {
+                width: calc(100% - 73px);
+            }
+        }
+
+        .c-title {
+            font-family: $sofiaPro;
+            font-size: rem(24);
+            font-weight: 700;
+            color: $mainFont;
+
+            @include bp-lt($medium) {
+                font-size: rem(16);
+            }
+
+            @include bp-lt($tabletS) {
+                font-size: rem(14);
+            }
+
+            @include bp-lt($mobileM) {
+                font-size: rem(12);
+            }
+        }
+
+        .c-baseline {
+            font-family: $sofiaPro;
+            font-size: rem(20);
+            font-weight: 300;
+            color: $mainFont;
+
+            @include bp-lt($medium) {
+                font-size: rem(14);
+            }
+
+            @include bp-lt($tabletS) {
+                font-size: rem(12);
+            }
+
+            @include bp-lt($mobileL) {
+                display: none;
+            }
+        }
+    }
+
+    .c-priceBox__sticky {
+        width: percentage(1/6);
+
+        @include bp-lt($medium) {
+            width: rem(110);
+        }
+
+        @include bp-lt($mobileL) {
+            width: rem(80);
+        }
+
+        .c-priceBox {
+            padding-left: 0;
+            padding-right: 0;
+            text-align: center;
+        }
+
+        .c-price--alt,
+        .c-price {
+            display: block;
+            text-align: center;
+            white-space: nowrap;
+            width: 100%;
+
+            @include bp-lt($mobileL) {
+                font-size: rem(14);
+            }
+        }
+
+        .c-price {
+            &:before {
+                margin-left: 0;
+            }
+        }
+
+        .c-price--alt:before {
+            @include bp-lt($mobileL) {
+                top: rem(-6);
+            }
+        }
+    }
+
+    .c-quantity {
+        padding-top: rem(22);
+        margin-left: rem(14);
+        margin-right: rem(14);
+
+        @include bp-lt($tablet) {
+            display: none;
+        }
+    }
+
+    [class*='c-button'] {
+        width: 100%;
+        max-width: rem(260);
+        padding-top: 0;
+        padding-bottom: 0;
+        border-radius: 0;
+        box-shadow: none;
+        font-size: rem(18);
+
+        @include bp-lt($medium) {
+            width: rem(160);
+            font-size: rem(14);
+            padding-left: rem(10);
+            padding-right: rem(50);
+            text-align: center;
+        }
+
+        @include bp-lt($tablet) {
+            width: $height__sticky;
+            padding: 0;
+            font-size: 0;
+            background-image: url(#{$img}c-icon__bag.svg) !important;
+            background-position: 50% 50% !important;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+<a class="top-link-cart" href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>">
+    <span class="icon">&#x27;</span>
+    <span class="text"><?php echo $this->__('Basket'); ?></span>
+    <?php if (Mage::helper('checkout/cart')->getItemsCount() > 0): ?>
+        <span class="count">(<?php echo Mage::helper('checkout/cart')->getItemsCount(); ?>)</span>
+    <?php endif; ?>
+</a>

@@ -1,0 +1,37 @@
+<?php
+/**
+ * Product:     Advanced Permissions
+ * Package:     Aitoc_Aitpermissions_2.6.2_2.0.3_635589
+ * Purchase ID: kvKHKGrR2nArLn9zDhP1NEqsGPa1BPw4KDqhieWQEX
+ * Generated:   2013-07-16 07:25:55
+ * File path:   app/design/adminhtml/default/default/template/aitpermissions/options.phtml
+ * Copyright:   (c) 2013 AITOC, Inc.
+ */
+?>
+<br />
+
+<div style="background-color: whiteSmoke;">
+    <input type="checkbox"
+        <?php echo $this->canEditGlobalAttributes() ? 'checked="checked"' : '' ?>
+           name="allowupdateglobalattrs"
+           id="allowupdateglobalattrs"
+           value="1" />&nbsp;
+    <label for="allowupdateglobalattrs">
+        <b><?php echo $this->__('Allow update global attributes') ?></b>
+    </label>
+</div>
+
+<br />
+
+<div style="background-color: whiteSmoke;">
+    <input type="checkbox"
+        <?php echo $this->canEditOwnProductsOnly() ? 'checked="checked"' : '' ?>
+           name="caneditownproductsonly"
+           id="caneditownproductsonly"
+           value="1" />&nbsp;
+    <label for="caneditownproductsonly">
+        <b><?php echo $this->__('Allow manage own products only') ?></b>
+        <p>If set to "Yes", sub-admins will be able to see and manage only products created by them.<br/>
+            If set to "No", sub-admins will see the products according to their advanced permissions store and category settings. </p>
+    </label>
+</div>

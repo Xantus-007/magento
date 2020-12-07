@@ -1,0 +1,22 @@
+// Mini product block
+.products-grid,
+.block-content {
+    a {        
+        &.more {
+            @include bp-lt ($mb-medium) {  
+                float: none;
+                display: block;
+            }
+        }                                
+        
+        &.btn-cart,
+        &.btn-cart-stock {
+            @include bp-lt ($mb-medium) {      
+                display: inline-block;
+                float: none;
+                text-align: left;
+                margin-top: 3px;
+            }
+        }
+    }
+}

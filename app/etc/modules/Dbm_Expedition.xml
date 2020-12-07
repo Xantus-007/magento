@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Expedition>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Dbm_Share />
+            </depends>
+        </Dbm_Expedition>
+    </modules>
+</config>

@@ -1,0 +1,42 @@
+.o-table {
+    display: table;
+    width: 100%;
+    height: 100%;
+}
+
+[class*='o-table__cell'] {
+    display: table-cell;
+
+    &[class*='--valignMiddle'] {
+        vertical-align: middle;
+    }
+
+    &[class*='--valignBottom'] {
+        vertical-align: bottom;
+    }
+}
+
+.c-overflow__table {
+    width: 100%;
+    overflow-y: auto;
+    _overflow: auto;
+    margin: 0 0 rem(15);
+    
+    &::-webkit-scrollbar
+    {
+        -webkit-appearance: none;
+        width: rem(14);
+        height: rem(8);
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border-radius: rem(8);
+        border: rem(1) solid $white;
+        background-color: $mainBranding;
+    }
+
+    table {
+        margin-bottom: rem(3) !important;
+    }
+}

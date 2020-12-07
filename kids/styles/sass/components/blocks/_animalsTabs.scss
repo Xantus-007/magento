@@ -1,0 +1,184 @@
+// ========================================= //
+// Animal tabs (pastilles animaux)
+// ========================================= //
+
+.animaltabs {
+    @media only screen and (min-width:870px) {
+        background: url(../../styles/images/bkg_animals.jpg) no-repeat 50% 50%;
+        min-height: 635px;
+    }
+    
+    .row-tab {
+        text-align: center;
+        
+        #page-title {
+            padding-top: 50px;
+        }
+        
+        .row-animals div.content{
+            @media only screen and (min-width:680px) and (max-width:869px) {
+                width: 20%;
+                min-width: 130px;
+            }
+            @media only screen and (max-width:679px) {
+                display: table;
+                width: 100%;
+                min-width: 130px;
+            }
+        }
+        
+        @media only screen and (min-width:680px) {
+            .tab {
+                display: inline-block;
+                //width: 100%;
+                min-width: 129px;
+                min-height: 129px;
+                color: white;
+                text-align: center;
+                font-size: 16px;
+                border-radius: 50%;
+                
+                img {
+                    border-radius: 50%;
+                    box-shadow: 2px 3px 3px #aaa;
+                }
+
+                .background {
+                    display: inline-block;
+                    position: absolute;
+                    width: 129px;
+                    height: 130px;
+                    background-color: #8c3b7a;
+                    border-radius: 50%;
+                    opacity: 0;
+                    -webkit-transition: opacity 0.3s ease-in-out;
+                    -moz-transition: opacity 0.3s ease-in-out;
+                    -ms-transition: opacity 0.3s ease-in-out;
+                    -o-transition: opacity 0.3s ease-in-out;
+                    transition: opacity 0.3s ease-in-out;
+                    
+                    .title {
+                        font-family: dirty_headlineregular, Oswald, sans-serif, sans-serif;
+                        font-size: 24px;
+                        display: block;
+                        margin: 0;
+                        margin-top: 22%;
+                        margin-bottom: 7%;
+                        color: white;
+                        
+                        @media only screen and (max-width:1140px) {
+                            margin-top: 20%;
+                            margin-bottom: 2%;
+                        }
+                    }
+                }
+            }
+
+            .tab:hover {
+                cursor: pointer;
+                
+                .background {
+                    opacity: 1;
+                }
+            }
+
+            .tab-flamand, .tab-perroquet {
+                @media only screen and (min-width:870px){
+                    margin-top: 120px;
+                }
+            }
+
+            .tab-tigre {
+                @media only screen and (min-width:870px){
+                    margin-top: 80px;
+                }
+            }
+
+            .tab-singe, .tab-lion {
+                img {
+                    width: 129px;
+                    height: 129px;
+                    @media only screen and (min-width:1140px) {
+                        width: 140px;
+                        height: 140px;
+                    }
+                }
+                @media only screen and (min-width:1140px) {
+                    background-size: 140px 140px;
+                    min-height: 140px;
+                }
+                .background {
+                    @media only screen and (min-width:1140px) {
+                        width: 140px;
+                        height: 141px;
+                    }
+                }
+            }
+
+            .tab-flamand, .tab-tigre, .tab-perroquet {
+                img {
+                    width: 129px;
+                    height: 129px;
+                    @media only screen and (min-width:1140px) {
+                        width: 170px;
+                        height: 170px;
+                    }
+                }
+                @media only screen and (min-width:1140px) {
+                    background-size: 170px 170px;
+                    min-height: 170px;
+                }
+                .background {
+                    @media only screen and (min-width:1140px) {
+                        width: 170px;
+                        height: 171px;
+                    }
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width:679px) {
+        .tab {
+            @include clearfix-micro;
+            display: table;
+            position: relative;
+            margin-bottom: 15px;
+            max-height: 130px; 
+            font-size: 16px;
+            text-align: left;
+            background: no-repeat left;
+            
+            img {
+                display: inline-block;
+                position: absolute;
+                float: left;
+                left: 0;
+                width: 29%;
+                min-width: 129px;
+                max-width: 129px;
+                height: 129px;
+                border-radius: 50%;
+                box-shadow: 2px 3px 3px #aaa;
+            }
+            
+            .background {
+                display: table-cell;
+                height: 130px;
+                padding-left: 140px;
+                vertical-align: middle;
+                
+                .title {
+                    font-family: dirty_headlineregular, Oswald, sans-serif, sans-serif;
+                    font-size: 24px;
+                    margin: 0;
+                }
+            }
+        }
+    }
+    
+    .btn {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

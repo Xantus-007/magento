@@ -1,0 +1,11 @@
+<layout>
+    <adminhtml_catalog_product_edit>
+    	<reference name="product_tabs">
+    		<action method="addTab" before="tags"><name>tagadmin</name><block>tagadmin/tags</block></action>
+    		<action method="removeTab"><name>tags</name></action>
+    	</reference>
+    </adminhtml_catalog_product_edit>
+    <adminhtml_tag_edit>
+    	<block type="tagadmin/tags" name="content" />
+    </adminhtml_tag_edit>
+</layout>

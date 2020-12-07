@@ -1,0 +1,214 @@
+// ========================================= //
+// blocks.content
+// ========================================= //
+
+.c-welcome__text {
+    padding-left: rem(75);
+    padding-right: rem(75);
+    margin-bottom: rem(40);
+    text-align: center;
+    background: $white;
+    border-radius: rem(3);    
+    padding-top: rem(10);
+    padding-bottom: rem(10);
+
+    h2, p {
+        font-size: rem(15);
+        color: $mainFont;
+    }
+
+    h2 {
+        font-weight: 700 !important;
+        font-family: 'LatoBold';
+        text-transform: initial !important;
+    }
+
+    p {
+        margin-bottom: rem(10);
+    }
+}
+
+
+.c-account {
+    .data-table {
+        &#my-orders-table,
+        &#my-reviews-table {
+            margin-bottom: rem(20);
+        }
+        
+        .product-name {
+            padding-left: 0;
+        }
+        
+        .product-image {
+            float: left;
+            margin-right: rem(10);
+            margin-bottom: rem(10);
+        }
+
+        thead tr th,
+        tbody tr td {
+            font-size: rem(15);
+            vertical-align: middle;
+            color: $mainFont;
+            border-color: $grey--table--thead;
+            padding: rem(10);
+        }
+
+        thead {
+            background-color: $grey--table--thead;
+
+            tr th {
+                height: rem(50);
+            }
+        }
+
+        tbody {
+            tr {
+                background: $white;
+            }
+
+            tr td {
+                height: rem(65);
+
+                .price {
+                    width: 100%;
+                    text-align: center;
+                    font-weight: 700;
+                    color: $black;
+                    display: inline-block;
+                }
+
+                &:nth-last-of-type(2) {
+                    border-right-color: $white;
+                }
+
+                &.last {
+                    text-align: left !important;
+
+                    .separator { display: none; }
+
+                    a:nth-child(1),
+                    a.link-reorder,
+                    a.link-print {
+                        position: relative;
+                        display: inline-block;
+                        width: rem(30);
+                        height: rem(30);
+                        font-size: 0;
+                        vertical-align: top;
+                        margin-left: rem(5);
+                        margin-right: rem(5);
+                        background: none;
+
+                        &:after {
+                            position: absolute;
+                            top: 0; right: 0; bottom: 0; left: 0;
+                            width: 100%;
+                            height: 100%;
+                            padding-top: rem(1);
+                            line-height: rem(30);
+                            font-family: "iconfont";
+                            font-size: rem(25);
+                            color: $mainBranding;
+                        }
+                    }
+
+                    a:nth-child(1):after { content: "\EA06"; }
+                    a.link-reorder:after { content: "\EA07"; }
+                    a.link-print:after { content: "\EA0A"; }
+                }                
+
+                em {
+                    white-space: nowrap;
+                }
+            }
+        }
+
+        tfoot {
+            tr {
+                background: $white;
+
+                td {
+                    color: $mainFont;                    
+
+                    .price {
+                        color: $mainFont;
+                        font-weight: 700;
+                        font-size: rem(14);
+                    }
+                }
+
+                &.subtotal, &.grand_total, &.grand_total_incl {
+                    background: $mainBranding;                                  
+                    
+                    td, .price {
+                        color: $white;
+                        font-weight: 700;
+                        font-size: rem(16);
+                    }
+                }
+            }
+        }
+    }
+
+    .messages {
+        * {
+            color: $white;
+        }
+    }
+
+    .data-table__wishlist {
+        thead {
+            display: none;
+        }
+
+        tbody {
+            @include clearfix();
+
+            tr {
+                display: block;
+                width: 49%;
+                float: left;
+                margin-left: 0.5%;
+                margin-right: 0.5%;
+                margin-bottom: rem(20);
+            }
+
+            .product-thumb {}
+            .product-data {}
+            .product-desc {}
+            .product-del {}
+        }
+    }
+}
+
+.c-sale__buttons {
+    text-align: center;
+    margin-bottom: rem(30);
+
+    .link-print {
+        background: none;
+        padding-left: 0;
+    }
+}
+
+.form-account-edit {
+    .form-list {
+        height: rem(385);        
+
+        @include bp-lt($small) {
+            height: auto;            
+        }
+    } 
+}
+
+.tracking-table-popup {
+    a:hover {
+        color: $mainBranding;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+}

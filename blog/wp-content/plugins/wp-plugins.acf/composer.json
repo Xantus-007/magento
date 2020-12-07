@@ -1,0 +1,12 @@
+{
+    "name": "dbm/wp-plugins.acf",
+    "description": "Advanced Custom Fields Pro",
+    "type": "wordpress-plugin",
+    "version": "1.0.8",
+    "authors": [
+        {
+            "name": "Kévin Pignot",
+            "email": "k.pignot@debussac.net"
+        }
+    ]
+}

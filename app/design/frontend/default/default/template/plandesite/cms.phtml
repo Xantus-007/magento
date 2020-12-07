@@ -1,0 +1,8 @@
+<?php /* Monbento_Plandesite_Block_Cms */ ?>
+<?php $_pages = $this->getCollection(); ?>
+<h2>Autre pages</h2>
+<ul id="plan-cms">
+	<?php foreach ($_pages as $_page) : ?>
+	<li><a href="<?php echo $_page->getIdentifier(); ?>"><?php echo $_page->getTitle(); ?></a></li>
+	<?php endforeach; ?>
+</ul>

@@ -1,0 +1,17 @@
+section.c-carousel--product.o-section
+    .c-title--group
+        .c-main Nos petits préférés
+        .c-baseline Lorem ipsum dolor sit amet ?
+
+    .js-slick
+        - for (var i=0; i<7; i++)
+            .c-carousel__item
+                .c-thumb: img(src="#{imgDir}c-img__product--320-320__bento.jpg", alt="")
+                .c-content
+                    .c-name MBOriginal Floral
+                    .c-baseline La boite bento
+                    .c-priceBox
+                        .c-price 35,00€
+                    a.c-button--mainBranding--arrowRightToRight(href="") Ajouter au panier
+
+    a.c-button--white--arrowRightToRight.c-link__more(href="") Plus de produits

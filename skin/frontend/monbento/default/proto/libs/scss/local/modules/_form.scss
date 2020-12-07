@@ -1,0 +1,236 @@
+// ========================================= //
+// form
+// ========================================= //
+.c-formNewsletter {
+    $inputWidth: 170;
+    @include clearfix();
+    .c-input__holder {
+        border: none;
+        height: auto;
+        margin-bottom: 0;
+
+        @include bp-lt($mobileL) {
+            position: relative;
+            padding-bottom: 14px;
+            margin-bottom: 20px;
+        }
+    }
+    .c-input__text {
+        width: calc(100% - #{$inputWidth}px);
+        float: left;
+        @include bp-lt($mobileL) {
+            width: 100%;
+            float: none;
+        }
+        input {
+            display: block;
+            width: 100%;
+            height: rem(57);
+            border-radius: rem(20) 0 0 rem(20);
+            padding: rem(8) rem(25);
+            background: $subBranding;
+            font-family: $sofiaPro;
+            font-size: rem(14);
+            color: $white;
+            border: solid rem(2) $subBranding--lighten;
+            @include placeholder-color($subBranding--lighten);
+            @include bp-lt($mobileL) {
+                border-radius: rem(20) rem(20) 0 0;
+                margin-bottom: 0;
+            }
+            &:focus {
+                background: darken($subBranding, 10%);
+            }
+
+            + .validation-advice {
+                @include bp-lt($mobileL) {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    margin: 0!important;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .c-input__submit {
+        width: rem($inputWidth);
+        float: right;
+        @include bp-lt($mobileL) {
+            width: 100%;
+            float: none;
+        }
+        input,
+        button {
+            display: block;
+            width: 100%;
+            height: rem(57);
+            padding: 0 rem(50) rem(2) rem(25);
+            border-radius: 0 rem(20) rem(20) 0;
+            border: none;
+            font-family: $sofiaPro;
+            font-size: rem(16);
+            color: $white;
+            background-color: $subBranding--alt;
+            background-image: url(#{$img}c-icon_arrowRight--white.svg);
+            background-repeat: no-repeat;
+            background-position: top 50% right rem(25);
+            transition: $ease;
+            @include bp-lt($mobileL) {
+                border-radius: 0 0 rem(20) rem(20);
+            }
+            &:hover,
+            &:focus,
+            &.is-active {
+                background-position: top 50% right rem(15);
+            }
+            &:active {
+                background-color: darken($subBranding, 10%);
+            }
+        }
+    }
+}
+
+.c-fieldset {
+    margin-bottom: rem(28);
+    .c-title__fieldset {
+        margin-bottom: rem(14);
+        font-family: $merriWeather;
+        font-size: rem(14);
+        font-weight: 300;
+        color: $grey--regular--02;
+    }
+    .c-input__holder {
+        margin-bottom: 0;
+        &+.c-input__holder {
+            border-top: none;
+        }
+    }
+}
+
+.c-form__login {
+    .c-checkbox--inline {
+        [class*='c-linkCst'] {
+            position: relative;
+            top: rem(-7);
+            float: right;
+        }
+    }
+    .customer-dob {
+        margin-bottom: rem(10);
+        @include clearfix;
+        label {
+            width: 100%;
+            font-family: $sofiaPro;
+            font-weight: 700;
+            font-size: .875rem;
+            color: #273745;
+            text-transform: uppercase;
+            letter-spacing: .125rem;
+            text-align: left;
+            cursor: text;
+        }
+        .dob-day,
+        .dob-month,
+        .dob-year {
+            label {
+                padding-left: .3125rem;
+                color: #82898f;
+                font-size: .8125rem;
+                font-family: $sofiaPro;
+                font-weight: 700;
+            }
+            input {
+                margin-bottom: 0;
+                height: 3.625rem;
+                border: solid .125rem $grey--light--04;
+                font-weight: 300;
+                font-size: 1.125rem;
+                font-family: $sofiaPro;
+                padding-left: .75rem;
+                padding-right: .75rem;
+            }
+        }
+        .dob-day,
+        .dob-month {
+            float: left;
+            width: 25%;
+            input {
+                border-right: none;
+            }
+        }
+        .dob-year {
+            float: left;
+            width: 50%;
+        }
+    }
+}
+
+.c-label__info {
+    font-size: rem(12);
+    font-family: $merriWeather;
+    color: $grey--regular--02;
+    font-style: italic;
+    margin-bottom: rem(14);
+    .c-required {
+        color: $mainBranding;
+        margin-right: rem(5);
+    }
+}
+
+#contactForm {
+    .c-checkbox--inline {
+        label {
+            a {
+                color: $mainBranding;
+            }
+        }
+    }
+    .buttons-set .required {
+        margin-top: 24px;
+        float: left;
+        width: 100%;
+    }
+
+    .c-input__holder {
+        &.is-order,
+        &.is-file {
+            height: auto;
+            border: none;
+            margin-bottom: 0;
+            .c-input__holder {
+                overflow: visible;
+                height: auto;
+                border: solid rem(4) $grey--light--04;
+            }
+            .validation-advice {
+                position: absolute;
+                bottom: rem(-18);
+                margin: 0;
+                padding: 0 rem(16);
+            }
+        }
+    }
+
+    #advice-validate-consent-rgpd {
+        padding-left: 20px;
+        background-position: left 6px center;
+    }
+    .politic {
+        a {
+            color: $mainBranding;
+        }
+    }
+}
+
+#newsletter-validate-detail {
+    .politic {
+        display: none;
+    }
+}
+
+.c-form__login #advice-validate-consent-rgpd {
+    padding-left: 25px;
+    margin-top: 10px;
+    background-position: left 6px center;
+}

@@ -1,0 +1,30 @@
+<?php 
+$customer = $this->getCustomer();
+$me = Mage::helper('dbm_customer')->getCurrentCustomer();
+$cHelper = Mage::helper('dbm_customer');
+$cSizes = Mage::helper('dbm_customer/image')->getSizes();
+$cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+$customerImageUrl = $cHelper->getCustomerImageUrl($customer, $cSizes['subscriber_list_even'], $cOptions);
+$customerImageUrl = $customerImageUrl ? $customerImageUrl : $this->getSkinUrl('images/club/profile/placeholder-list.png');
+
+$customerImageUrlx2 = $cHelper->getCustomerImageUrl($customer, array(146, 146), $cOptions);
+$customerImageUrlx2 = $customerImageUrlx2 ? $customerImageUrlx2 : $this->getSkinUrl('images/club/profile/placeholder-list.png');
+
+?>
+<?php if($me->getId() != $customer->getId()): ?>
+<div class="clubElementFormSubscribe">
+    <div class="miniProfile">
+        <div class="nickname icon">
+            <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><span>
+            <img src="<?php echo $customerImageUrl ?>" class="avatar hide-for-small-only" alt="">
+            <img src="<?php echo $customerImageUrlx2 ?>" class="avatar show-for-small-only" alt="">
+            <img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-subscribers-even.png') ?>" /><?php if($customer->getProfileStatus() == 3): ?><img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini.png'); ?>" /><?php endif;?></span> <?php echo $this->escapeHtml($customer->getProfileNickname()); ?></a><br />
+            <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+        </div>
+        <div class="submit subscribe">
+            <button class="<?php echo $this->getButtonClass() ?> roundedButton customer_<?php echo $customer->getId() ?>"><?php echo $this->getLabel() ?></button>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

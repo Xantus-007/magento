@@ -1,0 +1,28 @@
+<?php
+$savType = Mage::helper('monbento_site')->getSavType();
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4><?php echo Mage::helper('core')->__('Informations de commande') ?></h4>
+    </div>
+    <fieldset>
+        <div id="<?php echo $this->getHtmlId() ?>" class="order-information-whole-order-container">
+            <table class="form-list">
+                <tr>
+                    <td class="label">
+                        <label for="type_sav" class="normal"><?php echo Mage::helper('sales')->__('Type de SAV') ?></label>
+                    </td>
+                    <td class="value">
+                        <select id="type_sav" name="order[type_sav]">
+                            <?php
+                            foreach ($savType as $key => $value) {
+                                echo '<option value="' . $key . '">' . $value . '</option>';
+                            }
+                            ?>
+                        </select>
+                    </td>             
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</div>

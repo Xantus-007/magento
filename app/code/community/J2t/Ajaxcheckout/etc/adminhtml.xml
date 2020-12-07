@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <j2tajaxcheckout_adminform>
+                                    <title>Configuration</title>
+                                </j2tajaxcheckout_adminform>
+                            </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+
+
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <j2tajaxcheckout>
+                                            <title>J2T Ajax Cart</title>
+                                        </j2tajaxcheckout>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                        <customer>
+                            <children>
+                                <j2tajaxcheckout translate="title">
+                                    <title>J2T Ajax Cart</title>
+                                    <sort_order>45</sort_order>
+                                </j2tajaxcheckout>
+                            </children>
+                        </customer>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+</config>

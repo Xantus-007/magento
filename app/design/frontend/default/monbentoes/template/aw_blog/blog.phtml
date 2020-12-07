@@ -1,0 +1,32 @@
+<?php $posts = $this->getPosts(); ?>
+<?php foreach ($posts as $post): ?>
+<div class="postWrapper">
+  <div class="postTitle">
+    <h2><a href="<?php echo rtrim($post->getAddress(), '/'); ?>" ><?php echo $post->getTitle();?></a></h2>
+	  <h3>
+		  <?php $_ct= new Zend_Date($post->getCreatedTime(), 'en_US'); Zend_Date::setOptions(array('format_type' => 'php')); echo $_ct->toString('jS F Y'); ?> |
+		  <?php echo $this->__('Post by').' '.$post->getUser(); ?>
+		</h3>
+  </div>
+  <div class="postContent"><?php echo $post->getPostContent(); ?></div>
+  <div class="postDetails">
+		<div class="tags">
+			<?php
+			$tags = str_replace('</li>', ',</li>', $this->getTagsHtml($post));
+			$tags[strrpos($tags, ',')] = '';
+			echo $tags;
+			?>
+		</div>
+		<?php if($this->getCommentsEnabled()): ?>
+			<div class="comments">
+				<?php echo $post->getCommentCount(); ?> <a href="<?php echo $post->getAddress(); ?>#commentBox" ><?php echo $this->__('Comments')?></a>
+			</div>
+		<?php endif; ?>
+        <?php echo $this->getLayout()->createBlock('core/template')
+				->setData('postUrl', $post->getAddress())
+                                ->setData('postTitle', $post->getTitle())
+				->setTemplate('callouts/blog_social.phtml')->toHtml(); ?>
+	</div>
+</div>
+<?php endforeach; ?>
+<?php $this->getPages(); ?>

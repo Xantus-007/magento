@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+
+                <ordersyncmenu translate="title">
+                    <title>Order Sync 3PL</title>
+                    <sort_order>90</sort_order>
+                    <children>
+
+                
+                <ordersync translate="title">
+                    <title>Order Sync Processor</title>
+                    <action>ordersync/index</action>
+                </ordersync>
+                
+            
+                
+                 
+                </children>
+                </ordersyncmenu>
+
+    </menu>
+</config>

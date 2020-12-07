@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Turnkeye_FacebookProductsTab>
+            <active>true</active>
+            <codePool>community</codePool>
+        </Turnkeye_FacebookProductsTab>
+    </modules>
+</config> 

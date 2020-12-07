@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Recrutement>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Monbento_Recrutement>
+    </modules>
+</config>

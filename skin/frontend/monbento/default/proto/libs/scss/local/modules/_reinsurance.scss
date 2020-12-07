@@ -1,0 +1,42 @@
+.c-reinsurance {
+    font-size: rem(28);
+    font-weight: 300;
+    font-family: $sofiaPro;
+    color: $subBranding;
+    padding-left: rem(28);
+    margin-top: rem(45);
+
+    @include bp-lt($desktop) {
+        font-size: rem(24);
+    }
+
+    @include bp-lt($medium) {
+        margin-top: rem(30);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(16);
+    }
+}
+
+.c-reinsurance__icon, .c-reinsurance__label {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.c-reinsurance__label {
+    margin-left: rem(-4);
+}
+
+.c-reinsurance__icon {
+    color: $white;
+    margin-right: rem(14);
+
+    [class*="c-fonticon"] {
+        font-size: rem(45);
+
+        @include bp-lt($small) {
+            font-size: rem(30);
+        }
+    }
+}

@@ -1,0 +1,50 @@
+[class*="c-landscape"] {
+    width: 100%;
+    height: rem(410);
+    background-size: cover;
+    background-position: 50% 80%;
+    text-align: center;
+    background-repeat: no-repeat;
+
+    @include bp-lt($medium) {
+        height: rem(250);
+    }
+
+    @include bp-lt($small) {
+        height: rem(150);
+    }
+
+    &[class*="--monbento"] {
+        background-image: url(#{$img}c-landscape--monbento.jpg);
+    }
+
+    &[class*="--team"] {
+        background-image: url(#{$img}c-landscape--team.jpg);
+        background-position: 50% 50%;
+    }
+
+    &[class*="--didYouKnow"] {
+        background-image: url(#{$img}c-landscape--didYouKnow.jpg);
+        background-position: 50% 50%;
+    }
+
+    &[class*="--mif"] {
+        background-image: url(#{$img}c-landscape--mif.jpg);
+        background-position: 50% 50%;
+    }
+
+    h1 {
+        color: $white;
+        font-size: rem(62);
+        font-family: $sofiaPro;
+        font-weight: 900;
+
+        @include bp-lt($medium) {
+            font-size: rem(40);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(30);
+        }
+    }
+}

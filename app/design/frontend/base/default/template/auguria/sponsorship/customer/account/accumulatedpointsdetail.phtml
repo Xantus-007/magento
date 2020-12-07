@@ -1,0 +1,289 @@
+<!--
+/**
+ * @category   Auguria
+ * @package    Auguria_Sponsorship
+ * @author     Auguria
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<?php
+    //initialisation des intitulés pour table orderer
+    $msgs = "{loading: '".$this->__("loading")
+            ."',emptyResults: '".$this->__("emptyResults")
+            ."',errorURL: '".$this->__("errorURL")
+            ."',errorData: '".$this->__("errorData")
+            ."',searchLabel: '".$this->__("searchLabel")
+            ."',filterLabel: '".$this->__("filterLabel")
+            ."',paginationOf: '".$this->__("paginationOf")
+            ."',paginationPages: '".$this->__("paginationPages")
+            ."',paginationFirst: '".$this->__("paginationFirst")
+            ."',paginationPrev: '".$this->__("paginationPrev")
+            ."',paginationNext: '".$this->__("paginationNext")
+            ."',paginationLast: '".$this->__("paginationLast")."'}";
+?>
+<div class="std">
+	<div class="page-title">
+    	<h1>
+        	<?php echo $this->__('Fidelity and sponsorship points'); ?>
+    	</h1>
+	</div>
+	<?php echo $this->getMessagesBlock()->getGroupedHtml(); ?>
+
+	<p>
+    	<a href="<?php echo $this->getUrl('sponsorship_info') ?>"><?php echo $this->__('Principles of Sponsorship')?></a>
+	</p>
+	<p>
+		<a href="<?php echo $this->getUrl('sponsorship') ?>"><?php echo $this->__('Sponsor friends')?></a>
+	</p>
+<?php if (Mage::helper('auguria_sponsorship/config')->getModuleMode()=='accumulated'):
+
+/****************************************************************
+ *
+ * Invitations
+ * 
+ ****************************************************************/
+		?>
+	<br/>
+	<h2 class="title"><?php echo $this->__('Your invitations') ?></h2>
+    <?php //si l'utilisateur a des invitations en cours
+        $invits = $this->getInvits();
+        if ($invits):
+    ?>
+
+
+<div id="invit-table"></div>
+
+<script type="text/javascript">
+//<![CDATA[
+invitsCols = ['<?php echo $this->__("Guest name");
+            ?>','<?php echo $this->__("Guest mail");
+            ?>','<?php echo $this->__("Date first invitation");
+            ?>','<?php echo $this->__("Date last mail");
+            ?>','<?php echo $this->__("Recall");
+            ?>'];
+invits = new Array(
+                <?php
+                    $nb = count($invits);
+                    $i = 1;
+                    foreach ($invits as $invit):
+                        echo $this->__('{"invits_name": "%s",',htmlentities($invit["child_firstname"])." ".htmlentities($invit["child_lastname"]));
+                        echo $this->__('"invits_email": "%s",',$invit["child_mail"]);
+                        echo $this->__('"invits_first_date": "%s",',$this->formatDate($invit["datetime"]));
+                        echo $this->__('"invits_last_mail": "%s",',$this->formatDate($invit["datetime_boost"]));
+                        echo $this->__('"relance":"%s"}',"<a href='".$this->getUrl("sponsorship/boost",array("sponsorship_id"=>$invit["sponsorship_id"]))."'>".$this->__("Recall")."</a>");
+                        if ($i != $nb)
+                        {
+                            echo ",
+                                ";
+                        }
+                        $i++;
+                    endforeach;
+                ?>
+    );
+		<?php if ($this->isIe8() == true): ?>
+invitsTable = new TableOrderer('invit-table',{data : invits, cols : invitsCols},<?php echo $this->__($msgs); ?>);
+		<?php else: ?>
+invitsTable = new TableOrderer('invit-table',{data : invits, cols : invitsCols, filter:'bottom', paginate:'top', pageCount:5, unsortedColumn:['relance']},<?php echo $this->__($msgs); ?>);
+		<?php endif; ?>
+
+//]]>
+</script>
+	<?php else : ?>
+	<div>
+			<?php echo $this->__("You do not have yet send invit."); ?>
+	</div>
+    <?php endif; //fin de vérifivcation invitations en cours?>
+
+    <?php
+/****************************************************************
+ *
+ * Sponsorships
+ * 
+ ****************************************************************/
+	?>
+	<br/>
+    <h2 class="title"><?php echo $this->__('Your godsons') ?></h2>
+    <?php $_parrainages = $this->getParrainages();
+    if ($_parrainages): //si l'utilisateur a déjà parrainé?>
+
+
+<div id="sponsor-table"></div>
+
+<script type="text/javascript">
+sponsorshipsCols = ['<?php echo $this->__("Godson name");
+            ?>','<?php echo $this->__("Sponsorship date");
+            ?>','<?php echo $this->__("Last order date");
+            ?>','<?php echo $this->__("Winning");
+            ?>','<?php echo $this->__("Number of sponsorships");
+            ?>'];
+sponsorships = new Array(
+                <?php
+                    $nb = count($_parrainages);
+                    $i = 1;
+                    foreach ($_parrainages as $_parrainage):
+                        $dateFDC ="";
+                        if ($dateDernCde = $this->getDateDernCde ($_parrainage['entity_id'])) {
+                		$dateFDC = $this->formatDate($dateDernCde);
+                	}
+                	else {
+                		$dateFDC = "-";
+                	}
+                        echo $this->__('{"nom": "%s",',htmlentities($_parrainage['name']));
+                        echo $this->__('"sponsorship_date": "%s",',$this->formatDate($_parrainage['created_at']));
+                        echo $this->__('"last_order_date": "%s",',$dateFDC);
+                        echo $this->__('"points": "%.4f",',$this->getBranchPoints ($_parrainage['entity_id']));
+                        echo $this->__('"sponsorship_count":"%s"}',$this->getNbParrainages ($_parrainage['entity_id']));
+                        if ($i != $nb)
+                        {
+                            echo ",
+                                ";
+                        }
+                        $i++;
+                    endforeach;
+                ?>
+    );
+			<?php if ($this->isIe8() == true): ?>
+			sponsorshipsTable = new TableOrderer('sponsor-table',{data : sponsorships, cols : sponsorshipsCols},<?php echo $this->__($msgs); ?>);
+			<?php else: ?>
+			sponsorshipsTable = new TableOrderer('sponsor-table',{data : sponsorships, cols : sponsorshipsCols, filter:'bottom', paginate:'top', pageCount:5},<?php echo $this->__($msgs); ?>);
+			<?php endif; ?>
+</script>
+<br/>
+		<?php else: //si il n'a jamais parrainé déjà parrainé ?>
+		<div>
+			<?php echo $this->__("You do not have active godson."); ?>
+		</div>
+		<?php endif; //fin verificatio si il a parrainé ?>
+
+	<?php
+/****************************************************************
+ *
+ * Points
+ * 
+ ****************************************************************/
+	?>
+	<br/>
+            <h2>
+        <?php echo $this->__('Use of your points') ?>
+            </h2>
+        <div class='points'>
+        <?php
+            	$sPoints = $this->getAccumulatedPoints();
+            	$cash = floor($this->getAccumulatedPointsValue($sPoints));
+            	$sPoints = floor($sPoints);
+            	echo $this->__('Points balance:');
+         ?>
+	         <span class='points'><?php echo $this->__('%s points', $sPoints); ?></span>
+	         <span class='cash'><?php echo $this->__('worth %s', Mage::app()->getStore()->formatPrice($cash)); ?></span>
+        </div>
+	   	<?php 
+	   		if ($this->isAccumulatedValidityEnabled()):
+	   	?>
+	   	<div class='validity'>
+	   		<span class='date'><?php echo $this->__('Your points are valid until the %s',$this->getAccumulatedValidity()); ?></span>
+	   	</div>
+	   	<?php
+	   			
+	   		endif;
+	   	?>
+         <!--Liste des mouvements de points-->
+        <div>
+        <?php
+            $movements = $this->getPointsMovement();
+            $nb = $movements->count();
+            if ($nb>0):
+                echo $this->__("Your points exchanges:");
+                
+            ?>
+
+            <div id="sponsor-change-table"></div>
+
+<script type="text/javascript">
+sponsorshipChangesCols = ['<?php echo $this->__("Date");
+            ?>','<?php echo $this->__("Points");
+            ?>','<?php echo $this->__("Value");
+            ?>'];
+sponsorshipChanges = new Array(
+                <?php
+                    
+                    $i = 1;
+                    foreach ($movements as $movement):
+
+                        //echo $this->__('{"type": "%s",',$change->getType());
+                        echo $this->__('{"date": "%s (%s)",', $this->formatDate($movement->getDatetime(),Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM), $this->getAccumulatedMovementType($movement));
+                        echo $this->__('"points": "%d",', $movement->getPoints());
+                        echo $this->__('"valeur": "%s"}', addslashes(Mage::app()->getStore()->formatPrice($this->getAccumulatedPointsValue($movement->getPoints()))));
+                        if ($i != $nb)
+                        {
+                            echo ",
+                                ";
+                        }
+                        $i++;
+                    endforeach;
+                ?>
+    );
+				<?php if ($this->isIe8() == true): ?>
+				new TableOrderer('sponsor-change-table',{data : sponsorshipChanges, cols : sponsorshipChangesCols},<?php echo $this->__($msgs); ?>);
+				<?php else: ?>
+				new TableOrderer('sponsor-change-table',{data : sponsorshipChanges, cols : sponsorshipChangesCols, filter:'bottom', paginate:'top', pageCount:5},<?php echo $this->__($msgs); ?>);
+				<?php endif; ?>
+</script>
+        <?php
+        	endif;
+        ?>
+        </div>
+        <!--Liste des échanges réalisés-->
+        <?php if ($sPoints>0): //vérification du solde des points ?>
+            <?php if ($this->isAccumulatedChangeEnabled()): //verification change actif?>
+				<div>
+				<?php echo $this->__('Change your points into:');?>
+					<ul class="disc">
+	            <?php if ($this->getAccumulatedCashConfig()):?>
+						<li>
+							<a href="<?php echo Mage::getUrl('*/*/change', Array('module'=>'accumulated','type'=>'cash')) ?>"><?php echo $this->__('Cash') ?></a>
+						</li>
+				<?php endif;?>
+				<?php if ($this->getAccumulatedCouponConfig()):?>
+						<li>
+							<a href="<?php echo Mage::getUrl('*/*/change', Array('module'=>'accumulated','type'=>'coupon')) ?>"><?php echo $this->__('Vouchers') ?></a>
+                			<?php echo $this->__(':You will receive an email with the discount code you can use on your next order.') ?>
+						</li>
+				<?php endif;?>
+				<?php if ($this->getAccumulatedGiftConfig()):?>
+						<li>
+							<a href="<?php echo Mage::getUrl('*/*/change', Array('module'=>'accumulated','type'=>'gift')) ?>"><?php echo $this->__('Gifts') ?></a>
+						</li>
+				<?php endif;?>
+	            	</ul>
+	            </div>
+            <?php endif; //change actif?>
+		<?php else: //si il n'a pas de points?>
+				<?php if ($this->isAccumulatedChangeEnabled()):?>
+				<div>
+					<?php echo $this->__('Once you will have points, you can change them into:');?>
+				</div>
+					<ul class="disc">
+					<?php if ($this->getAccumulatedCashConfig()):?>
+	            		<li>
+	            		<?php echo $this->__('Cash') ?>
+	            		</li>
+	        		<?php endif;?>
+	        		<?php if ($this->getAccumulatedCouponConfig()):?>
+	            		<li>
+	            		<?php echo $this->__('Vouchers') ?>
+                    	<?php echo $this->__(':You will receive an email with the discount code you can use on your next order.') ?>
+	            		</li>
+	            	<?php endif;?>
+	            	<?php if ($this->getAccumulatedGiftConfig()):?>
+	            		<li>
+	            		<?php echo $this->__('Gifts') ?>
+	            		</li>
+	            	<?php endif;?>
+        			</ul>
+	        	<?php endif;//change enable ?>
+		<?php endif; //fin de vérification solde des points ?>
+	<?php endif; //fin module parrainage enable ?>
+	<div class="buttons-set">
+        <p class="back-link"><a href="<?php echo $this->getBackUrl() ?>"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+    </div>
+ </div>

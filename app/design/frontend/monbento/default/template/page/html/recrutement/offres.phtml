@@ -1,0 +1,71 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $offres = $this->getOffres(); ?>
+<section class="o-section--bkgMainBranding--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight">
+    <div class="row js-recruitment c-recruitment">
+        <div class="column medium-6 medium-push-6 js-recruitment__equalizer">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <div class="c-list__jobs">
+                        <p><?php echo $this->__('Rejoignez-nous !'); ?></p>
+                        <div class="c-recruitement__description">
+                            <p>Vous êtes l’un de ces amoureux de liberté que les mots design et ingéniosité font vibrer ? Ce qui vous fait rêver dans la vie, c’est de pouvoir cultiver votre différence, simplifier votre quotidien et vivre en prenant soin de vous et de votre environnement ? Et en plus, vous êtes cet incroyable condensé d’une pincée de talent, d’une touche de passion et d’un zeste de bonne humeur ? Alors, nous en sommes sûrs, l’aventure monbento est faite pour vous !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column medium-6 medium-pull-6 js-recruitment__equalizer">
+            <div class="c-team__wanted">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle">
+                        <p><?php echo $this->__('De nouveaux talents à embarquer dans notre aventure.'); ?></p><a class="c-button--transparentNoHover--arrowRightToRight" href="<?php echo Mage::getUrl('candidature-spontanee'); ?>"><?php echo $this->__('Candidature libre'); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php if (count($offres) > 0): ?>
+    <section class="o-section--mediumPadding">
+        <div class="row">
+            <div class="column medium-10 large-8 medium-centered">
+                <h2 class="c-recruitement__title"><?php echo $this->__('Nous recherchons...'); ?></h2>
+                <?php $i = 0; foreach ($offres as $offre): ?>
+                <div class="c-job">
+                    <div href="" class="c-job__title"><?php echo $offre->getTitle(); ?></div>
+                    <div class="c-job__mission"><?php echo $this->__('Mission :'); ?></div>
+                    <div class="c-job__excerpt">
+                        <p><?php echo $offre->getContentHeading(); ?></p>
+                    </div>
+                    <a href="<?php echo Mage::getUrl($offre->getIdentifier()); ?>" class="c-linkCst--arrow--subBranding"><?php echo $this->__('En savoir plus'); ?></a>
+                </div>
+                <?php $i++; endforeach; ?>
+            </div>
+        </div>
+    </section>
+<?php endif; ?>

@@ -1,0 +1,15 @@
+{
+   "name": "dbm/project",
+   "minimum-stability": "stable",
+   "require": {
+       "dbm/wp-starter": "@dev",
+      "mailjet/mailjet-apiv3-php": "^1.4"
+   },
+   "repositories": [
+       { "type": "composer", "url": "https://packagist.dbm-agence.com/" }
+   ],
+   "extra": {
+       "webroot-dir": "wp",
+       "webroot-package": "dbm/wp-core"
+   }
+}

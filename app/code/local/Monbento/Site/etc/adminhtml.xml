@@ -1,0 +1,186 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <sales>
+                        <children>
+                            <extract>
+                                <title>Extract Monbento</title>
+                                <children>
+                                    <giftcert>
+                                        <title>Cartes cadeaux</title>
+                                    </giftcert>
+                                </children>
+                            </extract>
+                        </children>
+                    </sales>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <monbento_config>
+                                        <title>Monbento config</title>
+                                    </monbento_config>
+                                    <monbento_admin_wysiwyg>
+                                        <title>Monbento wysiwyg</title>
+                                    </monbento_admin_wysiwyg>
+                                    <monbento_customize>
+                                        <title>Monbento perso</title>
+                                    </monbento_customize>
+                                    <monbento_kiosk>
+                                        <title>Monbento kiosk</title>
+                                    </monbento_kiosk>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <monbento_site>
+                        <title>Monbento menu</title>
+                        <children>
+                            <sliders>
+                                <title>Gérer les sliders</title>
+                            </sliders>
+                            <blocs_promo>
+                                <title>Gérer les blocs promo</title>
+                            </blocs_promo>
+                            <blocs_temoignages>
+                                <title>Gérer les témoignages</title>
+                            </blocs_temoignages>
+                            <blocs_reassurance>
+                                <title>Gérer les blocs réassurance</title>
+                            </blocs_reassurance>
+                            <blocs_adopter>
+                                <title>Gérer les blocs l'adopter</title>
+                            </blocs_adopter>
+                            <blocs_presse>
+                                <title>Gérer la revue de presse</title>
+                            </blocs_presse>
+                            <blocs_ambassadeur>
+                                <title>Gérer les ambassadeurs</title>
+                            </blocs_ambassadeur>
+                            <blocs_faq>
+                                <title>Gérer les FAQ</title>
+                            </blocs_faq>
+                            <settings>
+                                <title>Configuration du site</title>
+                                <children>
+                                    <category>
+                                        <title>Gérer les catégories des blocs/sliders</title>
+                                    </category>
+                                    <post_attributes>
+                                        <title>Gérer les attributs des posts</title>
+                                    </post_attributes>
+                                    <post_types>
+                                        <title>Gérer les types de post</title>
+                                    </post_types>
+                                    <config_generale>
+                                        <title>Config générale</title>
+                                    </config_generale>
+                                    <config_wysiwyg>
+                                        <title>Textes page produit</title>
+                                    </config_wysiwyg>
+                                </children>
+                            </settings>
+                        </children>
+                    </monbento_site>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <sales>
+            <children>
+                <extract>
+                    <title>Extract Monbento</title>
+                    <sort_order>11</sort_order>
+                    <children>
+                        <giftcert>
+                            <title>Cartes cadeaux</title>
+                            <action>adminhtml/monbento_extract/giftcert</action>
+                            <sort_order>1</sort_order>
+                        </giftcert>
+                    </children>
+                </extract>
+            </children>
+        </sales>
+        <monbento_site translate="title" module="monbento_site">
+            <title>Monbento</title>
+            <sort_order>70</sort_order>
+            <children>
+                <sliders>
+                    <title>Gérer les sliders</title>
+                    <action>adminhtml/monbento_posts/index/category/4-5</action>
+                    <sort_order>1</sort_order>
+                </sliders>
+                <blocs_promo>
+                    <title>Gérer les blocs promo</title>
+                    <action>adminhtml/monbento_posts/index/category/6-7-8-9</action>
+                    <sort_order>2</sort_order>
+                </blocs_promo>
+                <blocs_temoignages>
+                    <title>Gérer les témoignages</title>
+                    <action>adminhtml/monbento_posts/index/category/10</action>
+                    <sort_order>3</sort_order>
+                </blocs_temoignages>
+                <blocs_reassurance>
+                    <title>Gérer les blocs réassurance</title>
+                    <action>adminhtml/monbento_posts/index/category/11</action>
+                    <sort_order>4</sort_order>
+                </blocs_reassurance>
+                <blocs_adopter>
+                    <title>Gérer les blocs l'adopter</title>
+                    <action>adminhtml/monbento_posts/index/category/12</action>
+                    <sort_order>5</sort_order>
+                </blocs_adopter>
+                <blocs_presse>
+                    <title>Gérer la revue de presse</title>
+                    <action>adminhtml/monbento_posts/index/category/13</action>
+                    <sort_order>6</sort_order>
+                </blocs_presse>
+                <blocs_ambassadeur>
+                    <title>Gérer les ambassadeurs</title>
+                    <action>adminhtml/monbento_posts/index/category/14</action>
+                    <sort_order>7</sort_order>
+                </blocs_ambassadeur>
+                <blocs_faq>
+                    <title>Gérer les FAQ</title>
+                    <action>adminhtml/monbento_posts/index/category/15</action>
+                    <sort_order>8</sort_order>
+                </blocs_faq>
+                <settings>
+                    <title>Configuration du site</title>
+                    <sort_order>1000</sort_order>
+                    <children>
+                        <category>
+                            <title>Gérer les catégories des blocs/sliders</title>
+                            <action>adminhtml/betterblog_category</action>
+                            <sort_order>10</sort_order>
+                        </category>
+                        <post_attributes>
+                            <title>Gérer les attributs des posts</title>
+                            <action>adminhtml/betterblog_post_attribute</action>
+                            <sort_order>20</sort_order>
+                        </post_attributes>
+                        <post_types>
+                            <title>Gérer les types de post</title>
+                            <action>adminhtml/extendBetterBlog_post_type</action>
+                            <sort_order>25</sort_order>
+                        </post_types>
+                        <config_generale>
+                            <title>Config générale</title>
+                            <sort_order>30</sort_order>
+                            <action>adminhtml/system_config/edit/section/monbento_config</action>
+                        </config_generale>
+                        <config_wysiwyg>
+                            <title>Textes du thème/Blocs promotionnels</title>
+                            <sort_order>40</sort_order>
+                            <action>adminhtml/system_config/edit/section/monbento_admin_wysiwyg</action>
+                        </config_wysiwyg>
+                    </children>
+                </settings>
+            </children>
+        </monbento_site>
+    </menu>
+</config>

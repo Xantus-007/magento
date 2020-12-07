@@ -1,0 +1,172 @@
+.c-job {
+    border-top: rem(1) solid $grey--02;
+    padding-top: rem(35);
+    padding-bottom: rem(25);
+
+    @include bp-lt($medium) {
+        padding-top: rem(30);
+        padding-bottom: rem(20);
+    }
+
+    @include bp-lt($small) {
+        padding-top: rem(20);
+        padding-bottom: rem(10);
+        padding-left: rem(30);
+        padding-right: rem(30);
+    }
+}
+
+.c-job__title {
+    color: $mainBranding;
+    font-weight: 300;
+    font-size: rem(30);
+    line-height: rem(34);
+    font-family: $sofiaPro;
+    margin-bottom: rem(30);
+
+    @include bp-lt($medium) {
+        font-size: rem(24);
+        line-height: rem(20);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(18);
+        margin-bottom: rem(15);
+    }
+}
+
+.c-job__mission {
+    font-weight: 700;
+    font-size: rem(24);
+    line-height: rem(28);
+    color: $subBranding;
+    font-family: $sofiaPro;
+    margin-bottom: rem(20);
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+        line-height: rem(24);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(16);
+        line-height: rem(20);
+        margin-bottom: rem(10);
+    }
+}
+
+.c-job__excerpt {
+    p {
+        color: $subBranding;
+        font-family: $sofiaPro;
+        font-weight: 300;
+        font-size: rem(20);
+        line-height: rem(28);
+
+        @include bp-lt($medium) {
+            font-size: rem(16);
+            line-height: rem(20);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(12);
+            line-height: rem(18);
+        }
+    }
+}
+
+.c-job__form {
+    .row.collapse {
+        margin-bottom: rem(50);
+
+        @include bp-lt($small) {
+            margin-bottom: rem(30);
+        }
+
+        .c-input__holder {
+            margin-bottom: 0;
+            height: rem(56);
+
+            label {
+                width: auto !important;
+                padding-top: rem(17) !important;
+            }
+
+            &.is-focus {
+                label {
+                    padding-top: 0 !important;
+                }
+            }
+        }
+
+        .column {
+            .c-input__holder {
+                border-width: rem(2);
+            }
+
+            &:nth-child(odd) {
+                .c-input__holder {
+                    border-top: none;
+                }
+            }
+
+            &:nth-child(even) {
+                .c-input__holder {
+                    border-left: none;
+                    border-top: none;
+
+                    @include bp-lt($small) {
+                        border-left: rem(2) solid $grey--01;
+                        border-right: rem(2) solid $grey--01;
+                    }
+                }
+            }
+
+            &:nth-child(1),
+            &:nth-child(2) {
+                .c-input__holder {
+                    border-top: rem(2) solid $grey--01;
+                }
+            }
+
+            &:nth-child(2) {
+                .c-input__holder {
+                    @include bp-lt($small) {
+                        border-top: none;
+                    }
+                }
+            }
+        }
+    }
+
+    .validation-failed {
+        border: none !important;
+        box-shadow: inset rem(6) 0 $orange;
+        background: $white !important;
+    }
+
+    .c-input {
+        position: relative;
+        height: rem(54);
+
+        input[type="file"] {
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            z-index: 99;
+        }
+
+
+        .c-input--wrapper {
+            background-color: $white;
+            background-image: url(#{$img}c-bkg__upload.svg);
+            background-repeat: no-repeat;
+            background-position: top 50% right rem(14);
+
+            input {
+                background: none;
+            }
+        }
+    }
+}

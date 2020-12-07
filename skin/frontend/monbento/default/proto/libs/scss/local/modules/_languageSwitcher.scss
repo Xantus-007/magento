@@ -1,0 +1,115 @@
+// ========================================= //
+// languageSwitcher
+// ========================================= //
+
+$height--switcher: rem(55);
+
+.c-languageSwitcher {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: $zindex--fixed;
+    width: 100%;
+    height: $height--switcher;
+    padding-left: rem(30);
+    padding-right: rem(30);
+    background: $grey--light--04;
+    transform: translateY(-100%);
+    transition: $ease;
+    @include clearfix;
+
+    @include bp-lt($medium) {
+        padding-left: rem(14);
+        padding-right: 0;
+    }
+
+    @include bp-lt($mobileL) {
+        padding-left: 0;
+    }
+
+    &.is-open {
+        transform: translateY(0);
+    }
+
+    .c-info {
+        height: $height--switcher;
+        float: left;
+        font-family: $sofiaPro;
+        font-size: rem(12);
+        color: $grey--regular--02;
+        text-transform: uppercase;
+        letter-spacing: rem(1);
+
+        @include bp-lt($tablet) {
+            font-size: rem(10);
+            width: calc(100% - 55px);
+            height: rem(27.5);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(8);
+        }
+
+        @include bp-lt($mobileL) {
+            width: 100%;
+        }
+
+        span {
+            height: $height--switcher;
+            margin-right: rem(55);
+            display: inline-block;
+
+            @include bp-lt($medium) {
+                display: block;
+                height: rem(27.5);
+            }
+
+            @include bp-lt($tablet) {
+                margin-left: rem(14);
+                margin-right: rem(14);
+                height: rem(14);
+            }
+        }
+
+        strong {
+            font-weight: 400;
+            color: $subBranding;
+            margin-left: rem(2);
+        }
+    }
+
+    [class*='c-button'] {
+        float: left;
+        height: $height--switcher;
+        padding-left: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border: none;
+        font-weight: 700;
+        color: $subBranding;
+
+        @include bp-lt($tablet) {
+            height: rem(27.5);
+            margin-left: rem(14);
+        }
+    }
+
+    .c-close--text {
+        display: inline-block;
+        height: $height--switcher;
+        float: right;
+        padding-left: rem(5);
+        padding-right: rem(5);
+
+        @include bp-lt($medium) {
+            padding-left: rem(14);
+            padding-right: rem(14);
+        }
+
+        @include bp-lt($mobileL) {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+    }
+}

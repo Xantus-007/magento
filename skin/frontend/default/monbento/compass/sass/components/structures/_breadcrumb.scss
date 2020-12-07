@@ -1,0 +1,7 @@
+.breadcrumbs {
+    margin-top: 15px;    
+    
+    @include bp-lt ($mb-small) {
+        display: none;
+    }
+}

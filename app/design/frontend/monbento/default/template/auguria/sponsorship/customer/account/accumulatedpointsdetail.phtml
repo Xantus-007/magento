@@ -1,0 +1,342 @@
+<!--
+/**
+ * @category   Auguria
+ * @package    Auguria_Sponsorship
+ * @author     Auguria
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+<div class="my-account">
+    <?php
+    $isClub = Mage::app()->getFrontController()->getRequest()->getParam('club') == 1;
+
+    $trans = Mage::helper('dbm_share');
+    //initialisation des intitulés pour table orderer
+    $msgs = "{loading: '" . $this->__("loading")
+            . "',emptyResults: '" . $this->__("emptyResults")
+            . "',errorURL: '" . $this->__("errorURL")
+            . "',errorData: '" . $this->__("errorData")
+            . "',searchLabel: '" . $this->__("searchLabel")
+            . "',filterLabel: '" . $this->__("filterLabel")
+            . "',paginationOf: '" . $this->__("paginationOf")
+            . "',paginationPages: '" . $this->__("paginationPages")
+            . "',paginationFirst: '" . $this->__("paginationFirst")
+            . "',paginationPrev: '" . $this->__("paginationPrev")
+            . "',paginationNext: '" . $this->__("paginationNext")
+            . "',paginationLast: '" . $this->__("paginationLast") . "'}";
+    ?>
+    <div class="std">
+        <div class="page-title">
+            <h1>
+                <?php echo $trans->__('My Pépites'); ?>
+            </h1>
+        </div>
+        <?php echo $this->getMessagesBlock()->getGroupedHtmlMonbento(); ?>
+
+        <p>
+            <?php if ($isClub): ?>
+                <a class="c-link" href="<?php echo $this->getUrl('dbm-customer/auguria_index/index/club/1') ?>"><?php echo $this->__('Sponsor friends') ?></a>
+            <?php else: ?>
+                <a class="c-link" href="<?php echo $this->getUrl('sponsorship') ?>"><?php echo $this->__('Sponsor friends') ?></a>
+            <?php endif; ?>
+        </p>
+        <?php
+        if (Mage::helper('auguria_sponsorship/config')->getModuleMode() == 'accumulated'):
+
+            /*             * **************************************************************
+             *
+             * Invitations
+             * 
+             * ************************************************************** */
+            ?>
+            <br/>
+            <h2 class="title"><?php echo $this->__('Your invitations') ?></h2>
+            <?php
+            //si l'utilisateur a des invitations en cours
+            $invits = $this->getInvits();
+            if ($invits):
+                ?>
+
+                <div>
+                    <table class="data-table" id="my-orders-table">
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <thead>
+                            <tr>
+                                <th><?php echo $this->__("Guest name"); ?></th>
+                                <th><?php echo $this->__('Guest mail') ?></th>
+                                <th><?php echo $this->__('Date first invitation') ?></th>
+                                <th><?php echo $this->__('Date last mail') ?></th>
+                                <th><?php echo $this->__('Recall') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $nb = count($invits);
+                            $i = 1;
+                            foreach ($invits as $invit):
+                                ?>
+                                <tr>
+                                    <td><?php echo htmlentities($invit["child_firstname"]) . " " . htmlentities($invit["child_lastname"]); ?></td>
+                                    <td><?php echo $invit["child_mail"]; ?></td>
+                                    <td><?php echo $this->formatDate($invit["datetime"]); ?></td>
+                                    <td><?php echo $this->formatDate($invit["datetime_boost"]); ?></td>
+                                    <td><a href="<?php echo $this->getUrl("sponsorship/boost", array("sponsorship_id" => $invit["sponsorship_id"])); ?>"><?php echo $this->__("Recall"); ?></a></td>
+                                </tr>
+                                <?php
+                                $i++;
+                            endforeach;
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else : ?>
+                <div>
+                    <?php echo $this->__("You do not have yet send invit."); ?>
+                </div>
+            <?php endif; //fin de vérifivcation invitations en cours?>
+
+            <?php
+            /*             * **************************************************************
+             *
+             * Sponsorships
+             * 
+             * ************************************************************** */
+            ?>
+            <br/>
+            <h2 class="title"><?php echo $this->__('Your godsons') ?></h2>
+            <?php
+            $_parrainages = $this->getParrainages();
+            if ($_parrainages): //si l'utilisateur a déjà parrainé
+                ?>
+
+
+                <div>
+                    <table class="data-table" id="my-orders-table">
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <thead>
+                            <tr>
+                                <th><?php echo $this->__("Godson name"); ?></th>
+                                <th><?php echo $this->__('Sponsorship date') ?></th>
+                                <th><?php echo $this->__('Last order date') ?></th>
+                                <th><?php echo $this->__('Winning') ?></th>
+                                <th><?php echo $this->__('Number of sponsorships') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $nb = count($_parrainages);
+                            $i = 1;
+                            foreach ($_parrainages as $_parrainage):
+                                $dateFDC = "";
+                                if ($dateDernCde = $this->getDateDernCde($_parrainage['entity_id'])) {
+                                    $dateFDC = $this->formatDate($dateDernCde);
+                                } else {
+                                    $dateFDC = "-";
+                                }
+                                ?>
+                                <tr>
+                                    <td><?php echo htmlentities($_parrainage['name']); ?></td>
+                                    <td><?php echo $this->formatDate($_parrainage['created_at']); ?></td>
+                                    <td><?php echo $dateFDC; ?></td>
+                                    <td><?php echo $this->getBranchPoints($_parrainage['entity_id']); ?></td>
+                                    <td><?php echo $this->getNbParrainages($_parrainage['entity_id']); ?></td>
+                                </tr>
+                                <?php
+                                $i++;
+                            endforeach;
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <br/>
+            <?php else: //si il n'a jamais parrainé déjà parrainé   ?>
+                <div>
+                    <?php echo $this->__("You do not have active godson."); ?>
+                </div>
+            <?php endif; //fin verificatio si il a parrainé   ?>
+
+            <?php
+            /*             * **************************************************************
+             *
+             * Points
+             * 
+             * ************************************************************** */
+            ?>
+            <br/>
+            <h2>
+                <?php echo $this->__('Your Pépites') ?>
+            </h2>
+            <div class='points'>
+                <?php
+                $sPoints = $this->getAccumulatedPoints();
+                $cash = floor($this->getAccumulatedPointsValue($sPoints));
+                $sPoints = floor($sPoints);
+                echo $this->__('Points balance:');
+                ?>
+                <span class='points'><?php echo $this->__('%s Pépites', $sPoints); ?></span>
+            </div>
+            <?php
+            if ($this->isAccumulatedValidityEnabled()):
+                ?>
+                <div class='validity'>
+                    <span class='date'><?php echo $this->__('Your points are valid until the %s', $this->getAccumulatedValidity()); ?></span>
+                </div>
+                <?php
+            endif;
+            ?>
+            <!--Liste des mouvements de points-->
+            <div>
+                <?php
+                $movements = $this->getPointsMovement();
+                $nb = $movements->count();
+                if ($nb > 0):
+                    echo $this->__("Your Pépites exchanges:");
+                    ?>
+
+
+                    <table class="data-table" id="my-orders-table">
+                        <col width="1" />
+                        <col width="1" />
+                        <col width="1" />
+                        <thead>
+                            <tr>
+                                <th><?php echo $this->__("Date"); ?></th>
+                                <th><?php echo $this->__('Points') ?></th>
+                                <th><?php echo $this->__('Promo code') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $i = 1;
+
+                            $movements = $movements->getItems();
+                            $movements = array_reverse($movements);
+
+                            $date = Mage::app()->getLocale()->date();
+                            $prettyFormat = 'dd/MM/yyyy HH:mm:ss';
+                            $customerId = Mage::helper('customer')->getCustomer()->getId();
+
+
+                            foreach ($movements as $movement):
+                                /* Fetch promo code */
+
+                                $value = $movement->getPoints() > 0 ? ' - ' : $movement->getPoints(); //addslashes(Mage::app()->getStore()->formatPrice($this->getAccumulatedPointsValue($_item->getPoints())));
+                                $date->set($movement->getDatetime(), 'yyyy-MM-dd hh:mm:ss');
+                                $start = clone($date);
+                                $end = clone($date);
+
+                                $start->subMinute(1);
+                                $end->addMinute(1);
+
+                                $dates = array(
+                                    $start,
+                                    $date,
+                                    $end
+                                );
+
+                                $promoCode = '-';
+
+                                $promoCollection = Mage::getModel('salesrule/coupon')->getCollection();
+
+                                $j = 0;
+                                foreach ($dates as $tmpDate) {
+                                    $id = $customerId . '-' . abs(intval($movement->getPoints())) . '-' . $tmpDate->toString('HHmm') . '%';
+
+                                    if ($j == 0) {
+                                        $promoCollection->getSelect()->where('code LIKE ?', $id);
+                                    } else {
+                                        $promoCollection->getSelect()->orWhere('code LIKE ?', $id);
+                                    }
+
+                                    $j++;
+                                }
+
+                                if (count($promoCollection) > 0) {
+                                    $promoCode = $promoCollection->getFirstItem()->getCode();
+                                }
+                                ?>
+                                <tr>
+                                    <td><?php echo $this->formatDate($movement->getDatetime(), Mage_Core_Model_Locale::FORMAT_TYPE_MEDIUM), $this->getAccumulatedMovementType($movement); ?></td>
+                                    <td><?php echo $movement->getPoints(); ?></td>
+                                    <td><?php echo $promoCode; ?></td>
+                                </tr>
+                                <?php
+                                $i++;
+                            endforeach;
+                            ?>
+                        </tbody>
+                    </table>
+                    <?php
+                endif;
+                ?>
+            </div>
+            <!--Liste des échanges réalisés-->
+            <?php if ($sPoints > 0): //vérification du solde des points   ?>
+                    <?php if ($this->isAccumulatedChangeEnabled()): //verification change actif   ?>
+                    <div>
+                            <?php echo $this->__('Change your Pépites into:'); ?>
+                        <ul class="disc">
+            <?php if ($this->getAccumulatedCashConfig()): ?>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('*/*/change', Array('module' => 'accumulated', 'type' => 'cash', 'club' => $isClub ? 1 : 0)) ?>"><?php echo $this->__('Cash') ?></a>
+                                </li>
+                            <?php endif; ?>
+            <?php if ($this->getAccumulatedCouponConfig()): ?>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('club-customer/auguria_Points/change', Array('module' => 'accumulated', 'type' => 'coupon', 'club' => $isClub ? 1 : 0)) ?>"><?php echo $this->__('Vouchers') ?></a>
+                                <?php echo $this->__(':You will receive an email with the discount code you can use on your next order.') ?>
+                                </li>
+                            <?php endif; ?>
+            <?php if ($this->getAccumulatedGiftConfig()): ?>
+                                <li>
+                                    <a href="<?php echo $this->getUrl('*/*/change', Array('module' => 'accumulated', 'type' => 'gift', 'club' => $isClub ? 1 : 0)) ?>"><?php echo $this->__('Gifts') ?></a>
+                                </li>
+            <?php endif; ?>
+                        </ul>
+                    </div>
+                <?php endif; //change actif?>
+            <?php else: //si il n'a pas de points  ?>
+                    <?php if ($this->isAccumulatedChangeEnabled()): ?>
+                    <div>
+            <?php echo $this->__('Once you will have points, you can change them into:'); ?>
+                    </div>
+                    <ul class="disc">
+                            <?php if ($this->getAccumulatedCashConfig()): ?>
+                            <li>
+                            <?php echo $this->__('Cash') ?>
+                            </li>
+                        <?php endif; ?>
+                            <?php if ($this->getAccumulatedCouponConfig()): ?>
+                            <li>
+                                <?php echo $this->__('Vouchers') ?>
+                            <?php echo $this->__(':You will receive an email with the discount code you can use on your next order.') ?>
+                            </li>
+                        <?php endif; ?>
+                            <?php if ($this->getAccumulatedGiftConfig()): ?>
+                            <li>
+                            <?php echo $this->__('Gifts') ?>
+                            </li>
+                    <?php endif; ?>
+                    </ul>
+                <?php endif; //change enable ?>
+            <?php endif; //fin de vérification solde des points  ?>
+<?php endif; //fin module parrainage enable     ?>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        (function ($) {
+            $(document).ready(function () {
+                $('table').addClass('data-table');
+            })
+        })(jQuery);
+        //]]>
+    </script>
+</div>

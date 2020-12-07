@@ -1,0 +1,125 @@
+.club {
+    .page {
+        .button_photo {
+            background: url('../images/club/form/button-icon.png') center left transparent!important;
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 4px;
+                left: 6px;
+                display: block;
+                width: 40px;
+                height: 31px;
+                background: url('../images/svg/clubento/add-photo.svg') no-repeat;
+            }
+        }
+
+        .clubPhoto {
+            h2 {
+                font-size: 30px;
+                font-family: 'vag';
+            }
+
+            &.bestElement {
+                box-sizing: border-box;
+                padding-left: 0;
+
+                @include bp-lt ($mb-small) {
+                    margin-bottom: 0;
+                }
+            }
+
+            .commentLike {
+                .miniLike {
+                    @include bp-lt ($mb-small) {
+                        padding: 10px;
+                    }
+                }
+            }
+        }
+
+        .shareElementList {
+            .type_photo {
+                @include bp-lt ($mb-small) {
+                    margin-bottom: 20px;
+                }
+            }
+        }
+
+        @include bp-lt($mb-medium) {
+            .shareElementList.type_photo {
+                margin-left: 0;
+            }
+            .elementCell .description {
+                bottom: 0;
+            }
+            .clubPhoto.bestElement {
+                box-sizing: border-box;
+                padding-left: 0;
+            }
+            .clubPhoto .geoloc {
+                width: 30%;
+            }
+            .clubPhoto .miniProfile {
+                width: 58%;
+                .nickname {
+                    width: 100%;
+                    min-width: auto;
+                    padding-left: auto;
+                }
+            }
+            .clubListToolbar {
+                margin-left: 0;
+            }
+            .clubElementFormButton {
+                margin-top: 15px;
+                padding-right: .9375rem;
+            }
+            .clubComments .separator {
+                margin-right: 0;
+                margin-left: 0;
+            }
+            .clubComment {
+                padding: 20px 0 20px 0;
+            }
+            .clubCommentForm {
+                padding-left: 0;
+            }
+            .clubCommentForm textarea {
+                box-sizing: border-box;
+                max-width: 100%;
+                resize: vertical;
+            }
+        }
+        .clubPhoto > * {
+            margin-left: 0;
+        }
+        .clubComments .clubCommentsHeader {
+            width: 100%;
+            margin-left: 0;
+        }
+        .elementCell {
+            .image {
+                max-width: 369px;
+                margin: auto;
+            }
+            .attributes {
+                max-width: 369px;
+                margin: auto;
+            }
+            .description {
+                bottom: -100%;
+                box-sizing: border-box;
+                width: 100%;
+                height: auto;
+                min-height: 55px;
+                transition: all .2s linear;
+            }
+            &:hover .description {
+                bottom: 0;
+            }
+        }
+    }
+}

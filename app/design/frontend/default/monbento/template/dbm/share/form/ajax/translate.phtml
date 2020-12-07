@@ -1,0 +1,28 @@
+<?php 
+    $zLocale = new Zend_Locale(Mage::helper('dbm_share')->getCurrentLocale());
+    $sLocaleData = explode('_', $this->locale);
+    $sLocaleBase = explode('_', Mage::helper('dbm_share')->getCurrentLocale());
+    $languages = $zLocale->getTranslationList('Language', $sLocaleBase[0], 2);
+?>
+
+<div class="translate_item ajax_processed" id="translate_item_<?php echo $this->locale;?>">
+    <div><h2><?php echo $this->__("%s translation", $languages[$sLocaleData[0]]); ?></h2><span class="remove"></span></div>
+    <ul>
+        <li>
+            <label for="title"><?php echo $this->__('Recipe name'); ?><span>*</span></label>
+            <input type="text" value="<?php echo $this->escapeHtml($params['title']) ?>" class="required-entry" id="title" name="title[<?php echo $this->locale ?>]" />
+        </li>
+    </ul>
+    <ul>
+        <li class="vert">
+            <label for="description"><?php echo $this->__('Your recipe') ?><span>*</span></label>
+            <textarea type="text" class="required-entry" wrap="hard" id="description" name="description[<?php echo $this->locale ?>]" rows="10" cols="70"><?php echo $this->escapeHtml($params['description']) ?></textarea>
+        </li>
+    </ul>
+    <ul>
+        <li class="vert">
+            <label for="ingredients_content"><?php echo $this->__('List of ingredients (separate them with a line break)'); ?></label>
+            <textarea type="text" wrap="hard" id="ingredients_content" name="ingredients_content[<?php echo $this->locale ?>]" rows="10" cols="70"><?php echo $this->escapeHtml($params['ingredients_content']) ?></textarea>
+        </li>
+    </ul>
+</div>

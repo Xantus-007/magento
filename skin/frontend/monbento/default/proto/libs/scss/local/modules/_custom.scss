@@ -1,0 +1,1251 @@
+// ========================================= //
+// custom
+// ========================================= //
+
+.c-page__custom__slider {
+    position: relative;
+    max-width: $layoutWidth;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include bp-lt($stablet) {
+        margin-bottom: rem(40);
+    }
+}
+
+.c-page__custom__slider__hover {
+    position: absolute;
+    z-index: $zindex--hover;
+    width: rem(524);
+    padding-left: rem(78);
+    top: calc(50% - 35px);
+    transform: translateY(-50%);
+
+    @include bp-lt($stablet) {
+        width: 100%;
+        text-align: center;
+        padding-left: rem(25);
+        padding-right: rem(25);
+        left: 50%;
+        transform: translateX(-50%);
+        top: rem(35);
+    }
+
+    .c-title {
+        margin-bottom: rem(22);
+        font-family: $sofiaPro;
+        font-weight: 700;
+        color: $white;
+        font-size: rem(36);
+        line-height: rem(40);
+    }
+
+    .c-basline {
+        margin-bottom: rem(22);
+        font-family: $sofiaPro;
+        font-weight: 300;
+        color: $subBranding;
+
+        &, span {
+            font-size: rem(20) !important;
+        }
+
+        @include bp-lt($stablet) {
+            color: $white;
+        }
+    }
+
+    [class*='c-button'] {
+        @include bp-lt($stablet) {
+            font-size: 0;
+            width: rem(57);
+            height: rem(57);
+            border-radius: 50%;
+            transform: rotate(90deg);
+            padding: 0;
+            background-position: top 50% right 50% !important;
+        }
+    }
+
+}
+
+.c-page__custom__slider__item {
+    height: rem(482);
+    padding-bottom: rem(70);
+    position: relative;
+
+    @include bp-lt($stablet) {
+        padding-bottom: 0;
+        height: auto;
+    }
+
+    .c-bkg--large,
+    .c-bkg--small {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+    }
+
+    .c-bkg--large {
+        @include bp-lt($stablet) {
+            display: none;
+        }
+    }
+
+    .c-bkg--small {
+        display: none;
+        background-position: left 50% top 0px;
+        background-size: cover;
+
+        @include bp-lt($stablet) {
+            display: block;
+        }
+    }
+
+    .c-product {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        opacity: 0;
+
+        img {
+            display: none;
+        }
+
+        @include bp-lt($medium) {
+            width: rem(500);
+        }
+
+        @include bp-lt($stablet) {
+            width: 100%;
+            position: relative;
+            padding-top: rem(320);
+            text-align: center;
+        }
+
+        @include bp-lt($small) {
+            padding-top: rem(352);
+
+        }
+
+        @include bp-lt($mobileXl) {
+            padding-top: rem(448);
+        }
+    }
+}
+
+.c-grid__product--custom {
+    @include clearfix();
+    position: relative;
+
+    .c-grid__custom--col1:before {
+        content: '';
+        position: absolute;
+        z-index: $zindex--content;
+        top: 0;
+        display: block;
+        width: 2px;
+        height: 100%;
+        background: $grey--light--06;
+
+        @include bp-lt($medium) {
+            display: none;
+        }
+    }
+
+    .columns+.columns:last-child {
+        float: left;
+    }
+
+    .c-grid__custom--col1:first-of-type:before {
+        left: 50%;
+    }
+
+    .c-grid__custom--col1:last-of-type:before {
+        left: 75%;
+    }
+
+    .c-item__product .c-baseline {
+        font-size: rem(20);
+        margin-bottom: 0;
+
+        @include bp-lt($mobileM) {
+            font-size: rem(14);
+        }
+    }
+
+    .c-grid__product__subtitle {
+        @include bp-lt($small) {
+            display: none;
+        }
+    }
+}
+
+.c-grid__custom--col2 {
+    width: 50%;
+    float: left;
+
+    @include bp-lt($medium) {
+        width: 100%;
+        float: none;
+    }
+}
+
+.c-grid__custom--col1 {
+    width: 25%;
+    float: left;
+
+    @include bp-lt($medium) {
+        width: 100%;
+        float: none;
+    }
+}
+
+.c-section--launcher {
+    padding: rem(25);
+
+    @include bp-lt($small) {
+        padding: rem(25) 0;
+
+        img { margin-bottom: rem(25); }
+    }
+
+    a {
+        display: block;
+
+    }
+}
+
+.c-section__custom {
+    .c-title--group > .c-baseline {
+        @include bp-lt($small) {
+            font-size: rem(40);
+            line-height: rem(40);
+            padding-left: rem(30);
+            padding-right: rem(30);
+        }
+
+        @include bp-lt($mobileM) {
+            font-size: rem(30);
+            line-height: rem(30);
+            padding-left: rem(20);
+            padding-right: rem(20);
+        }
+    }
+}
+
+.c-personnalize {
+    position: relative;
+    background: $grey--00;
+    width: 100%;
+    min-height: 100vh;
+    @include clearfix;
+}
+
+.c-personnalize__content {
+    padding: rem(30);
+    float: left;
+    width: 75%;
+
+    @include bp-lt($tablet) {
+        width: 65%;
+    }
+
+    @include bp-lt($small) {
+        width: 100%;
+        float: none;
+    }
+
+    @include bp-lt($mobileL) {
+        padding-bottom: 0;
+    }
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 75%;
+        display: block;
+        width: 2px;
+        height: 100%;
+        background: $white;
+
+        @include bp-lt($tablet) {
+            left: 65%;
+        }
+
+        @include bp-lt($small) {
+            display: none;
+        }
+    }
+}
+
+.c-personnalize__controler {
+    position: relative;
+    float: right;
+    width: 25%;
+    min-height: 100vh;
+
+    @include bp-lt($tablet) {
+        width: 35%;
+    }
+
+    @include bp-lt($small) {
+        width: 100%;
+        float: none;
+        min-height: 0;
+    }
+}
+
+.c-personnalize__heading {
+    position: relative;
+
+    &.is-mif:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        transform: translateY(140%);
+        display: block;
+        width: rem(35);
+        height: rem(35);
+        background-image: url(#{$img}c-logo__mif.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        background-size: 100%;
+    }
+}
+
+.c-personnalize__title {
+    font-family: $sofiaPro;
+    font-size: rem(14);
+    text-transform: uppercase;
+    color: $grey--regular--04;
+}
+
+.c-personnalize__price {
+    font-family: $sofiaPro;
+    font-size: rem(28);
+    font-weight: 300;
+    text-transform: uppercase;
+    color: $subBranding;
+}
+
+.c-personnalize__product {
+    position: relative;
+    width: 100%;
+
+    .c-img__holder {
+        position: relative;
+        max-width: rem(520);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include bp-bt(641px, $stablet) {
+            @media (orientation: landscape) {
+                max-width: rem(288);
+            }
+        }
+
+        @include bp-lt($small) {
+            max-width: rem(375);
+            height: rem(375);
+        }
+
+        @include bp-lt($small) {
+            width: rem(350);
+            height: rem(350);
+        }
+
+        @include bp-lt($mobileL) {
+            width: rem(300);
+            height: rem(300);
+        }
+
+        @include bp-lt($mobileM) {
+            width: rem(275);
+            height: rem(275);
+        }
+
+        @include bp-lt($mobileS) {
+            width: rem(250);
+            height: rem(250);
+        }
+
+    }
+
+    [id*="custombento-view"] {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: $zindex--content;
+
+        .element {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: 50% 50% !important;
+            background-size: 100% 100% !important;
+            background-repeat: no-repeat !important;
+        }
+    }
+
+    .bx-controls-direction {
+        @include bp-lt($tablet) {
+            display: none;
+        }
+    }
+
+    .bx-controls-direction .bx-prev.disabled,
+    .bx-controls-direction .bx-next.disabled {
+        opacity: .5;
+    }
+
+    .bx-controls-direction .bx-prev,
+    .bx-controls-direction .bx-next {
+        background-color: transparent;
+        transform: none;
+    }
+
+    .bx-controls-direction .bx-prev {
+        left: 0;
+    }
+
+    .bx-controls-direction .bx-next {
+        right: 0;
+    }
+
+    .bx-pager {
+        text-align: center;
+
+        .bx-pager-item {
+            display: inline-block;
+            margin-left: rem(12);
+            margin-right: rem(12);
+
+            a {
+                position: relative;
+                display: block;
+                width: rem(16);
+                height: rem(16);
+                background: $white;
+                border: solid 1px $grey--11;
+                font-size: 0;
+                border-radius: 50%;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    display: block;
+                    width: rem(10);
+                    height: rem(10);
+                    border-radius: 50%;
+                    background: $subBranding;
+                    transition: $ease;
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-50%);
+                }
+
+                &.active:before {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.c-personnalize__actions {
+    padding-top: rem(30);
+    text-align: center;
+    $side : rem(57);
+    $sideSmall : rem(47);
+
+    @include bp-lt($small) {
+        padding-top: 0;
+    }
+
+    .c-item {
+        display: inline-block;
+        margin-left: rem(25);
+        margin-right: rem(25);
+        padding-top: rem(28);
+        padding-bottom: rem(28);
+
+        @include bp-lt($tablet) {
+            margin-left: rem(10);
+            margin-right: rem(10);
+        }
+
+        @include bp-lt($small) {
+            margin-left: rem(20);
+            margin-right: rem(20);
+            padding-top: rem(20);
+            padding-bottom: rem(20);
+        }
+
+        @include bp-lt($tabletS) {
+            margin-left: rem(10);
+            margin-right: rem(10);
+        }
+
+        @include bp-lt($mobileM) {
+            margin-left: rem(5);
+            margin-right: rem(5);
+        }
+
+        a {
+            z-index: $zindex--hover;
+            display: block;
+            width: $side;
+            height: $side;
+            margin-left: auto;
+            margin-right: auto;
+            border: solid rem(2) $grey--light--03;
+            border-radius: 50%;
+            text-align: center;
+            background: transparent;
+            transition: $ease;
+
+            @include bp-lt($mobileL) {
+                width: $sideSmall;
+                height: $sideSmall;
+            }
+
+            [class*='c-fonticon__icon'] {
+                position: relative;
+                top: rem(10);
+                font-size: rem(25);
+                color: $grey--regular--02;
+
+                @include bp-lt($mobileL) {
+                    top: rem(5);
+                }
+            }
+
+            &:hover {
+                background: $white;
+            }
+        }
+    }
+}
+
+.c-personnalize__controler__list {
+    width: 100%;
+    height: 100vh;
+    overflow: scroll;
+    padding-bottom: rem(84);
+    display: block;
+
+    &.is-hidden {
+        display: none;
+    }
+
+    @include bp-lt($small) {
+        height: auto;
+        display: flex;
+        overflow-x: scroll;
+        padding-bottom: 0;
+        border-top: solid 3px $white;
+        border-bottom: solid 3px $white;
+        flex-flow: nowrap;
+    }
+
+    .c-personnalize__controler__item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: rem(98);
+        border-bottom: solid 2px $white;
+        background: transparent;
+        transition: $ease;
+        cursor: pointer;
+
+        @include bp-lt($small) {
+            min-width: rem(125);
+            height: rem(125);
+            border-bottom: none;
+            border-right: solid 3px $white;
+        }
+
+        @include bp-lt($mobileL) {
+            min-width: rem(100);
+            height: rem(100);
+            padding: rem(5);
+        }
+
+        @include bp-lt($mobileM) {
+            min-width: rem(75);
+            height: rem(75);
+        }
+
+        &:hover {
+            background: $white;
+        }
+    }
+}
+
+.c-personnalize__controler__action {
+    position: absolute;
+    z-index: $zindex--content;
+    height: rem(84);
+    bottom: 0;
+    width: 100%;
+    @include clearfix;
+
+    @include bp-lt($small) {
+        position: static;
+        height: rem(70);
+    }
+
+    [class*='c-button'] {
+        border: none;
+        box-shadow: none;
+        width: 50%;
+        margin: 0;
+        height: rem(84);
+        white-space: nowrap;
+        padding-left: 0;
+        padding-right: 0;
+        text-align: center;
+        float: left;
+
+        @include bp-lt($medium) {
+            font-size: rem(12);
+        }
+
+        @include bp-lt($mobileL) {
+            height: rem(70);
+            font-size: 0;
+        }
+
+        [class*='c-fonticon__icon'] {
+            @include bp-lt($mobileL) {
+                font-size: rem(20) !important;
+                margin-left: 0;
+                margin-right: 0;
+            }
+        }
+
+        span[class*='--arrowToRight'] {
+            margin-right: rem(10);
+            font-size: rem(25);
+            transform: rotate(180deg);
+            display: inline-block;
+        }
+
+        span[class*='--success'] {
+            margin-left: rem(10);
+        }
+    }
+
+    [class*='c-step'] {
+        &.is-hidden {
+            display: none;
+        }
+    }
+
+    .c-step--02 {
+        padding-left: rem(2);
+
+        @include bp-lt($small) {
+            padding-left: 0;
+        }
+
+        [class*='c-button'] {
+            width: 100%;
+        }
+    }
+}
+
+.c-personnalize__controler__option {
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: rem(84);
+    background: $white;
+
+    @include bp-lt($small) {
+        min-height: 0;
+        padding-bottom: 0;
+    }
+}
+
+.c-personnalize__controler__option__group {
+    position: relative;
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 5%;
+        display: block;
+        width: 90%;
+        height: 2px;
+        background: $grey--12;
+
+        @include bp-lt($small) {
+            width: 2px;
+            height: 80%;
+            bottom: 10%;
+            left: inherit;
+            right: 0;
+        }
+    }
+
+    &:last-of-type:after {
+        display: none;
+    }
+}
+
+.c-personnalize__controler__option__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: rem(98);
+    border-bottom: solid 2px $grey--00;
+    cursor: pointer;
+
+    @include bp-lt($small) {
+        display: none;
+    }
+}
+
+.c-personnalize__controler__option__content {
+    @include bp-lt($small) {
+        overflow-x: scroll;
+        white-space: nowrap;
+        display: flex;
+    }
+}
+
+.c-personnalize__controler__option__content__title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: rem(70);
+    font-family: $sofiaPro;
+    font-size: rem(14);
+    text-transform: uppercase;
+    color: $grey--regular--04;
+    letter-spacing: rem(1);
+
+    @include bp-lt($small) {
+        justify-content: flex-start;
+        padding-left: rem(15);
+        padding-right: rem(15);
+        font-size: rem(20);
+        text-align: left;
+    }
+
+    @include bp-lt($mobileL) {
+        height: rem(50);
+        font-size: rem(16);
+    }
+}
+
+.c-personnalize__controler__option__content__list {
+    display: flex;
+    flex-flow: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include bp-lt($small) {
+        flex-flow: nowrap;
+    }
+
+    li {
+        position: relative;
+        flex-basis: percentage(1/3);
+        margin-bottom: rem(25);
+        padding-left: rem(5);
+        padding-right: rem(5);
+
+        @include bp-lt($small) {
+            min-width: rem(150);
+        }
+
+        @include bp-lt($mobileL) {
+          min-width: rem(90);
+        }
+
+        a {
+            display: block;
+            background: transparent;
+            transition: $ease;
+            padding: rem(5);
+            border-radius: rem(5);
+
+            &:hover {
+                background: $grey--00;
+            }
+        }
+
+        .c-color {
+            position: relative;
+            display: block;
+            width: rem(24);
+            height: rem(24);
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: rem(10);
+            border-radius: 50%;
+            transition: $ease;
+            background-position: 50% 50% !important;
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            border: 1px solid #eee;
+
+            @include bp-lt($small) {
+                width: rem(75);
+                height: rem(75);
+            }
+
+            @include bp-lt($mobileL) {
+                width: rem(50);
+                height: rem(50);
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: rem(-1);
+                left: rem(-1);
+                z-index: $zindex--content;
+                display: block;
+                width: rem(26);
+                height: rem(26);
+                background: url(#{$img}c-icon__check.svg) no-repeat 50% 50%;
+                background-size: 80% 80%;
+                background-repeat: no-repeat;
+                border-radius: 50%;
+                border: rem(2) solid $subBranding;
+                opacity: 0;
+
+                @include bp-lt($small) {
+                    width: rem(77);
+                    height: rem(77);
+                    top: rem(-1);
+                    left: rem(-1);
+                    background-size: 60%;
+                }
+
+                @include bp-lt($mobileL) {
+                    width: rem(52);
+                    height: rem(52);
+                }
+            }
+        }
+
+        .c-label {
+            display: block;
+            width: 100%;
+            font-family: $sofiaPro;
+            font-size: rem(10);
+            text-transform: uppercase;
+            color: $grey--03;
+            letter-spacing: rem(1);
+            text-align: center;
+            line-height: rem(14);
+            transition: $ease;
+        }
+
+        .c-price {
+            display: block;
+            text-align: center;
+            font-size: rem(12);
+            transition: $ease;
+        }
+
+        &.is-active {
+            .c-color {
+                border: none;
+
+                &:after {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+}
+
+.c-row__personnalize .c-render.c-full {
+    width: calc(100% - 348px);
+    padding-right: rem(30);
+
+    @include bp-lt($medium) {
+        width: calc(100% - 305px);
+    }
+
+    @include bp-lt($tablet) {
+        width: 50%;
+    }
+
+    @include bp-lt($tabletS) {
+        width: 100%;
+        padding-right: 0;
+    }
+}
+
+.product-image.col-2 {
+    padding-top: rem(60);
+
+    @include bp-lt($medium) {
+        padding-top: 0;
+    }
+}
+
+.product-image--half {
+    width: 50%;
+    float: left;
+    padding: 0 rem(30);
+
+    @include bp-lt($medium) {
+        padding: 0 rem(10);
+        float: none;
+        width: 100%;
+        margin-bottom: rem(20);
+    }
+
+    @include bp-lt($tabletS) {
+        float: left;
+        margin-bottom: 0;
+    }
+}
+
+.c-perso__bundle__option {
+    list-style: none;
+    margin-left: 0;
+    margin-bottom: rem(10);
+
+    li {
+        display: flex;
+        width: 100%;
+        padding-bottom: rem(10);
+        padding-top: rem(10);
+        border-bottom: solid 1px $grey--02;
+
+        &:last-of-type {
+            border-bottom: solid 2px $grey--02;
+        }
+
+        span {
+            display: block;
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(14);
+            color: $grey--03;
+
+            &.c-price {
+                max-width: rem(65);
+                flex-basis: rem(65);
+                text-align: left;
+                font-size: 0;
+
+                span {
+                    font-size: rem(14);
+                }
+            }
+
+            &.c-label {
+                flex-grow: 1;
+                text-align: right;
+                padding-left: rem(10);
+            }
+        }
+    }
+}
+
+.c-product__priceBox.c-left {
+    .c-priceBox {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 0 !important;
+        max-width: 100% !important;
+
+        @include bp-lt($small) {
+            font-size: rem(24) !important;
+        }
+
+        &, * {
+            text-align: left !important;
+        }
+    }
+}
+
+.c-row__personnalize {
+    @include bp-lt($mobileM) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    ul.slick-dots {
+        text-align: center;
+        margin-left: 0;
+        list-style: none;
+        margin-bottom: rem(7);
+
+        li {
+            position: relative;
+            display: inline-block;
+            margin-left: rem(12);
+            margin-right: rem(12);
+
+            &:before {
+                content: '';
+                position: absolute;
+                z-index: $zindex--content;
+                top: 50%;
+                left: 50%;
+                display: block;
+                width: rem(10);
+                height: rem(10);
+                border-radius: 50%;
+                background: $subBranding;
+                transition: $ease;
+                opacity: 0;
+                transform: translateX(-50%) translateY(-50%);
+            }
+
+            &.slick-active:before {
+                opacity: 1;
+            }
+
+            button {
+                display: block;
+                width: rem(16);
+                height: rem(16);
+                background: $white;
+                border: solid 1px $grey--11;
+                font-size: 0;
+                border-radius: 50%;
+                padding: 0;
+                margin: 0;
+            }
+        }
+    }
+}
+
+
+// loader
+.c-personnalize__product {
+    &:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        height: 100%;
+        background: $grey--00;
+        transition: $ease;
+        z-index: $zindex--hover - 1;
+    }
+
+    .sk-folding-cube {
+        position: absolute;
+        top: calc(50% - 33px);
+        left: 50%;
+        z-index: $zindex--hover;
+        transform: translateX(-50%) translateY(-50%) rotateZ(45deg);
+        transition: $ease;
+        display: none;
+    }
+
+    &.is-loading {
+        &:after {
+            display: block;
+            opacity: .8;
+        }
+
+        .sk-folding-cube {
+            display: block;
+        }
+    }
+}
+
+.sk-folding-cube {
+    margin: 20px auto;
+    width: 40px;
+    height: 40px;
+    transform: rotateZ(45deg);
+}
+
+.sk-folding-cube .sk-cube {
+    float: left;
+    width: 50%;
+    height: 50%;
+    position: relative;
+    transform: scale(1.1);
+}
+
+.sk-folding-cube .sk-cube:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $mainBranding;
+    -webkit-animation: sk-foldCubeAngle 2.4s infinite linear both;
+    animation: sk-foldCubeAngle 2.4s infinite linear both;
+    transform-origin: 100% 100%;
+}
+
+.sk-folding-cube .sk-cube2 {
+    transform: scale(1.1) rotateZ(90deg);
+}
+
+.sk-folding-cube .sk-cube3 {
+    transform: scale(1.1) rotateZ(180deg);
+}
+
+.sk-folding-cube .sk-cube4 {
+    transform: scale(1.1) rotateZ(270deg);
+}
+
+.sk-folding-cube .sk-cube2:before {
+    -webkit-animation-delay: 0.3s;
+    animation-delay: 0.3s;
+}
+
+.sk-folding-cube .sk-cube3:before {
+    -webkit-animation-delay: 0.6s;
+    animation-delay: 0.6s;
+}
+
+.sk-folding-cube .sk-cube4:before {
+    -webkit-animation-delay: 0.9s;
+    animation-delay: 0.9s;
+}
+
+@-webkit-keyframes sk-foldCubeAngle {
+    0%, 10% {
+        -webkit-transform: perspective(140px) rotateX(-180deg);
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+    } 25%, 75% {
+        -webkit-transform: perspective(140px) rotateX(0deg);
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+    } 90%, 100% {
+        -webkit-transform: perspective(140px) rotateY(180deg);
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+@keyframes sk-foldCubeAngle {
+    0%, 10% {
+        -webkit-transform: perspective(140px) rotateX(-180deg);
+        transform: perspective(140px) rotateX(-180deg);
+        opacity: 0;
+    } 25%, 75% {
+        -webkit-transform: perspective(140px) rotateX(0deg);
+        transform: perspective(140px) rotateX(0deg);
+        opacity: 1;
+    } 90%, 100% {
+        -webkit-transform: perspective(140px) rotateY(180deg);
+        transform: perspective(140px) rotateY(180deg);
+        opacity: 0;
+    }
+}
+
+//================================================
+.customer-account-create {
+    .c-checkbox--inline {
+        &.c-condition__check {
+            label {
+                a {
+                    font-size: inherit;
+                    font-weight: inherit;
+                    color: $mainBranding;
+                }
+            }
+            .validation-advice {
+                padding-left: 20px;
+            }
+        }
+    }
+}
+
+.c-checkout__content {
+    &.c-review {
+        .c-cgv {
+            .c-checkbox {
+                a {
+                    font-size: inherit;
+                    text-transform: inherit;
+                }
+            }
+        }
+    }
+}
+
+#checkout-agreements {
+    .checkout-agreements {
+        p.agree {
+            label {
+                font-size: inherit;
+                text-transform: inherit;
+            }
+        }
+    }
+}
+#form-validate {
+    .validation-advice {
+        padding-left: 20px;
+    }
+}
+.c-account {
+    .box-account {
+        .box-title {
+            &.newsletter-box {
+                +.box-content {
+                    #form-validate {
+                        .validation-advice {
+                            padding-left: 20px;
+                        }
+                        #subscription {
+                            +label {
+                                width: 100%;
+                                margin-left: 0;
+                                margin-right: 0;
+                                position: relative;
+                                padding-left: 1.875rem;
+                                font-weight: 400;
+                                font-family: "Merriweather Sans",sans-serif;
+                                font-size: .875rem;
+                                font-weight: 300;
+                                color: #6f777e;
+                                margin-bottom: 0;
+                                vertical-align: baseline;
+                                cursor: pointer;
+                                display: inline-block;
+                                letter-spacing: 0;
+                                text-transform: initial;
+                            }
+                        }
+                        .c-checkbox--inline {
+                            label {
+                                a {
+                                    color: $mainBranding;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

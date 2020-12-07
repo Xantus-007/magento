@@ -1,0 +1,296 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <dbm translate="label">
+            <label>DBM - Modules</label>
+            <sort_order>100</sort_order>
+        </dbm>
+    </tabs>
+    <sections>
+        <dbm_feeds_config translate="label">
+            <label>Flux réseaux sociaux</label>
+            <sort_order>300</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>dbm</tab>
+            <groups>
+                <instagram_config_general translate="label">
+                    <label>Configuration instagram</label>
+                    <comment></comment>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <instagram_enable translate="label comment">
+                            <label>Activer l'affichage du bloc instagram</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_enable>
+                        <instagram_user_id translate="label comment">
+                            <label>Instagram User ID</label>
+                            <comment>User ID du flux Instagram</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_user_id>
+                        <instagram_app_username translate="label comment">
+                            <label>Instagram App Account Username</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_app_username>
+                        <instagram_app_password translate="label comment">
+                            <label>Instagram App Account Password</label>
+                            <frontend_input>text</frontend_input>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_app_password>
+                        <instagram_client_id translate="label comment">
+                            <label>Instagram Client ID</label>
+                            <comment>Client ID App Instagram</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_client_id>
+                        <instagram_client_secret translate="label comment">
+                            <label>Instagram Client Secret</label>
+                            <comment>Client Secret App Instagram</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_client_secret>
+                        <instagram_access_token translate="label comment">
+                            <label>Access token</label>
+                            <comment>Généré automatiquement</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_access_token>
+                        <instagram_renew_token translate="label">
+                            <label>Regénérer un Token</label>
+                            <frontend_type>button</frontend_type>
+                            <frontend_model>socialfeeds/renewtoken</frontend_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_renew_token>
+                        <instagram_url translate="label comment">
+                            <label>URL page Instagram</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_url>
+                        <instagram_small_size translate="label comment">
+                            <label>Taille small</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_small_size>
+                        <instagram_medium_size translate="label comment">
+                            <label>Taille medium</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_medium_size>
+                        <instagram_link_enable translate="label comment">
+                            <label>Activer le lien sur le titre</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>110</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </instagram_link_enable>
+                    </fields>
+                </instagram_config_general>
+                <twitter_config_general translate="label">
+                    <label>Configuration twitter</label>
+                    <comment></comment>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <twitter_enable translate="label comment">
+                            <label>Activer l'affichage du bloc twitter</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_enable>
+                        <twitter_consumer_key translate="label comment">
+                            <label>Consumer Key</label>
+                            <comment>Enter your Consumer Key.</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_consumer_key>
+                        <twitter_consumer_secret translate="label comment">
+                            <label>Consumer Secret</label>
+                            <comment>Enter your Consumer Secret. Keep this private, do not share it.</comment>
+                            <frontend_input>text</frontend_input>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_consumer_secret>
+                        <twitter_access_token translate="label comment">
+                            <label>Access Token</label>
+                            <comment>Enter your Access Token.</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_access_token>
+                        <twitter_access_token_secret translate="label comment">
+                            <label>Access Token Secret</label>
+                            <comment>Enter your Access Token Secret. Keep this private also, do not share it.</comment>
+                            <frontend_input>text</frontend_input>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_access_token_secret>
+                        <twitter_screen_name translate="label comment">
+                            <label>Screen Name</label>
+                            <comment>The screen name of the user for whom to return results for.</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_screen_name>
+                        <twitter_url translate="label comment">
+                            <label>URL page Twitter</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_url>
+                        <twitter_small_size translate="label comment">
+                            <label>Taille small</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_small_size>
+                        <twitter_medium_size translate="label comment">
+                            <label>Taille medium</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </twitter_medium_size>
+                    </fields>
+                </twitter_config_general>
+                <facebook_config_general translate="label">
+                    <label>Configuration facebook</label>
+                    <comment></comment>
+                    <sort_order>20</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <facebook_enable translate="label comment">
+                            <label>Activer l'affichage du bloc facebook</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>0</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_enable>
+                        <facebook_app_id translate="label comment">
+                            <label>Facebook App ID</label>
+                            <comment>App Id de l'application Facebook</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_app_id>
+                        <facebook_app_secret translate="label comment">
+                            <label>Facebook App Secret</label>
+                            <comment>App Secret de l'application Facebook</comment>
+                            <frontend_input>text</frontend_input>
+                            <frontend_type>password</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_app_secret>
+                        <facebook_page_id translate="label comment">
+                            <label>Facebook Page ID</label>
+                            <comment>ID de la page Facebook</comment>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_page_id>
+                        <facebook_url translate="label comment">
+                            <label>URL page Facebook</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_url>
+                        <facebook_small_size translate="label comment">
+                            <label>Taille small</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_small_size>
+                        <facebook_medium_size translate="label comment">
+                            <label>Taille medium</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </facebook_medium_size>
+                    </fields>
+                </facebook_config_general>
+            </groups>
+        </dbm_feeds_config>
+    </sections>
+</config>

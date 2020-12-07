@@ -1,0 +1,63 @@
+.c-history__photo, .c-history__content {
+    display: inline-block;
+
+    @include bp-lt($small) {
+        display: block;
+    }
+}
+
+.c-history__photo {
+    width: rem(233);
+
+    @include bp-lt($medium) {
+        width: rem(180);
+    }
+
+    @include bp-lt($small) {
+        width: rem(120);
+        margin: 0 auto rem(10);
+    }
+
+    .o-table {
+        @include bp-lt($small) {
+            margin: 0 auto;
+            display: block;
+        }
+    }
+}
+.c-history__content {
+    width: calc(100% - 237px);
+    margin-left: rem(-4);
+    padding-left: rem(100);
+
+    @include bp-lt($medium) {
+        padding-left: rem(50);
+        width: calc(100% - 184px);
+    }
+
+    @include bp-lt($small) {
+        padding-left: rem(30);
+        padding-right: rem(30);
+        width: 100%;
+    }
+
+    p {
+        text-align: justify;
+        font-size: rem(20);
+        line-height: rem(28);
+        font-weight: 300;
+        font-family: $sofiaPro;
+        color: $subBranding;
+
+        @include bp-lt($medium) {
+            font-size: rem(18);
+            line-height: rem(24);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(16);
+            line-height: rem(20);
+            text-align: center;
+        }
+    }
+}

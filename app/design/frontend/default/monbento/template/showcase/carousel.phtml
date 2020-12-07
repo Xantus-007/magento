@@ -1,0 +1,70 @@
+<div id="carousel">
+<div class="showcase-a">
+  <?php $i=0; $slides=0; $carousels = $this->getCarousel('showcase_shop'); if(is_array($carousels)) foreach ($carousels as $carousel): ?>
+  <?php $slides++; ?>
+  <div id="item-<?php echo $i ?>" class="item<?php echo $i==0?' active first':'' ?>">
+  </div>
+  <?php $i++; endforeach; ?>
+  <?php if ($slides>1) : ?>
+  <ul id ="showcase-nav">
+  <li id="nav-prev">Précédent</li>
+  <li id="nav-stop">Stop</li>
+  <li id="nav-next">Suivant</li>
+  </ul>
+  <?php endif; ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+Event.observe(window, 'load', function(){
+  <?php $i=0; $slides=0; if(is_array($carousels)) foreach ($carousels as $carousel): ?>
+  <?php $slides++; ?>
+  <?php
+$baseMedia = 'catalog/product/placeholder/';
+$imageUrl = $baseMedia.$carousel["image"];
+$imageResizedSmall = $baseMedia."resized/small/".$carousel["image"];
+if (!is_file(Mage::getBaseDir('media').'/'.$imageResizedSmall)&&is_file(Mage::getBaseDir('media').'/'.$imageUrl)) :
+	$imageObj = new Varien_Image(Mage::getBaseDir('media').'/'.$imageUrl);
+	$imageObj->constrainOnly(TRUE);
+	$imageObj->keepAspectRatio(TRUE);
+	$imageObj->keepFrame(FALSE);
+	$imageObj->resize(50, 50);
+	$imageObj->save(Mage::getBaseDir('media').'/'.$imageResizedSmall);
+endif; ?>
+  	<?php if (empty($carousel["url"])): ?>
+  	var item = new Element('img', {src: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$imageUrl ?>',alt :'"<?php echo $carousel["title"] ?>'});
+    <?php else : ?>
+    var item = new Element('a', {href: '<?php echo $carousel["url"] ?>'});
+  	var img = new Element('img', {src: '<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).$imageUrl ?>',alt :'"<?php echo $carousel["title"] ?>'});
+    item.insert(img);
+    <?php endif; ?>
+   $('item-<?php echo $i ?>').insert(item);
+  <?php $i++; endforeach; ?>
+  <?php if ($slides>1) : ?>
+
+	oMySlides = new iSlideShow({
+		slides 		: [
+			<?php for ($j=0;$j< $slides;$j++){ echo "'item-".$j."'," ;} ?>
+		]
+	});
+	$('nav-prev').observe('click', slideshowPrevious );
+	$('nav-stop').observe('click', slideshowStop);
+	$('nav-next').observe('click', slideshowNext);
+	function slideshowPrevious(event) {
+  		oMySlides.goPrevious();
+  		oMySlides.stop();
+	}
+	function slideshowStop(event) {
+  		oMySlides.stop();
+	}
+	function slideshowNext(event) {
+  		oMySlides.goNext();
+  		oMySlides.stop();
+	}
+	$$('.showcase-a').each(function(s) {
+        $(s).setStyle({'background': 'none'});
+    });
+  <?php endif; ?>
+});
+//]]>
+</script>
+</div>

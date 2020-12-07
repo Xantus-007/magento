@@ -1,0 +1,43 @@
+// ========================================= //
+// Gift
+// ========================================= //
+
+.gift {
+    background: url(../images/bkg_gift.jpg) repeat-x 50% 0;
+    min-height: 470px;
+
+    @include bp-lt($smedium){
+        min-height: inherit;
+        padding-bottom: 25px;
+    }
+
+    .container {
+        background: url(../images/bkg_container_gift.png) no-repeat 50% 20px;
+        padding-top: 340px;
+        text-align: center;
+
+        @include bp-lt($smedium){
+            background: url(../images/bkg_container_gift_m.png) no-repeat 50% 20px;
+            padding-top: 300px;
+        }
+    }
+
+    .btn {
+        border: solid 2px white;
+        padding-top: 25px;
+        padding-bottom: 25px;
+
+        @include bp-lt($medium){
+            width: 80%;
+        }
+    }
+}
+
+.monbentoKids_home_en .gift {
+    .container {
+        background: url(../images/bkg_container_gift_en.png) no-repeat 50% 20px;
+        @include bp-lt($smedium){
+            background: url(../images/bkg_container_gift_m_en.png) no-repeat 50% 20px;
+        }
+    }
+}

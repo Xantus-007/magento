@@ -1,0 +1,144 @@
+<?php
+
+$collection = $this->getLoadedCollection();
+
+$me = $this->getCustomer();
+$helper = Mage::helper('dbm_share');
+
+$sizes = Mage::helper('dbm_share/image')->getSizes();
+$options = Mage::helper('dbm_share/image')->getOptionsForList();
+$pOptions = Mage::helper('dbm_share/image')->getOptionsForListPhotos();
+$count = count($collection);
+
+$cHelper = Mage::helper('dbm_customer');
+$cSizes = Mage::helper('dbm_customer/image')->getSizes();
+$cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+$isMixed = $this->getIsMixed();
+$i = 0;
+
+$defaultImage = $helper->getDefaultReceipeImageUrl($sizes['list'], $options);
+
+$cellClass = '';
+if(count($collection) == 1)
+{
+    $cellClass = 'only-one';
+}
+
+?>
+<?php  echo $this->getChildHtml('dbm_share.list_toolbar') ?>
+<div class="shareElementList small-12<?php echo $this->getElementType() ? 'type_'.$this->getElementType() : ''; ?>">
+<?php if(count($collection) > 0): ?>
+<?php foreach($collection as $element): ?>
+    <?php $customer = $element->getCustomer(); ?>
+    <?php
+        $customerImageUrl = $cHelper->getCustomerImageUrl($customer, $cSizes['element_list'], $cOptions);
+        $customerImageUrl = $customerImageUrl ? $customerImageUrl : $this->getSkinUrl('images/club/profile/placeholder-mini.png');
+        
+        $customerImageUrlx2 = $cHelper->getCustomerImageUrl($customer, array(92, 92), $cOptions);
+        $customerImageUrlx2 = $customerImageUrlx2 ? $customerImageUrlx2 : $this->getSkinUrl('images/club/profile/placeholder-list.png');
+
+        $customerMiniImageUrl = $cHelper->getCustomerImageUrl($customer, $cSizes['profile_grid'], $cOptions);
+        $customerMiniImageUrl = $customerMiniImageUrl ? $customerMiniImageUrl : $this->getSkinUrl('images/club/profile/placeholder-micro.png');
+
+        $customerMiniImageUrlx2 = $cHelper->getCustomerImageUrl($customer, array(72,72), $cOptions);
+        $customerMiniImageUrlx2 = $customerMiniImageUrlx2 ? $customerMiniImageUrlx2 : $this->getSkinUrl('images/club/profile/placeholder-micro.png');
+        
+        $photo = $element->getPhotos()->getFirstItem();
+        
+        if(!$photo->getFilename())
+        {
+            $photoUrl = $defaultImage;
+        }
+        else
+        {
+            $photoUrl = $this->getImageUrl($element, $sizes['list'], $options);
+        }
+        
+    ?>
+    <?php if($element->getType() == Dbm_Share_Model_Element::TYPE_RECEIPE || $isMixed): ?>
+    <div class="elementLine type_receipe">
+        <div class="image"><img src="<?php echo $photoUrl?>" alt=""></div>
+        <div class="description">
+            <div class="general">
+                <h2><a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>"><?php echo $element->getTitle(); ?></a></h2>
+                <?php if($photo && strlen($photo->getGmapsLabel())): ?><p class="geoloc"><a href="/club/index/map/type/photo/"><?php echo $this->escapeHtml($photo->getGmapsLabel()); ?></a><p><?php endif; ?>
+            </div>
+            <div class="miniProfile">
+                <div class="nickname icon">
+                    <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><span>
+                    <img src="<?php echo $customerImageUrl ?>" class="avatar hide-for-small-only" alt="">
+                    <img src="<?php echo $customerImageUrlx2 ?>" class="avatar show-for-small-only" alt="">
+                    <img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-list.png') ?>" />
+                    <?php if($customer->getProfileStatus() == 3): ?>
+                        <img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini.png'); ?>" />
+                    <?php endif; ?></span> 
+                    <span class="hide-for-small-only"><?php echo $this->escapeHtml($customer->getProfileNickname()); ?><span></a>
+                    <br />
+                    <span class="hide-for-small-only"><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                    <div class="profil-details show-for-small-only">
+                        <?php echo $this->escapeHtml($customer->getProfileNickname()); ?>
+                        <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                    </div>
+                </div>
+                <div class="date"><?php echo $helper->getPrettyDate($element->getCreatedAt()) ?></div>
+            </div>
+        </div>
+        <div class="attributes">
+        <?php if($element->getType() == Dbm_Share_Model_Element::TYPE_RECEIPE): ?>
+            <div>
+                <div class="line">
+                    <span><img src="<?php echo $element->getPriceImage(); ?>" alt=""></span>
+                </div>
+                <div class="line">
+                    <span><img src="<?php echo $element->getLevelImage(); ?>" alt=""></span>
+                </div>
+                <div class="line last miniLike <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> element_<?php echo $element->getId() ?>">
+                    <span><span class="count"><?php echo $element->getLikeCount(); ?></span> <img src="<?php echo $element->getLikeImage($me); ?>" alt=""></span>
+                </div>
+            </div>
+        <?php else: ?>
+            <div>
+                <div class="line last <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> miniLike element_<?php echo $element->getId() ?>">
+                    <span><span class="count"><?php echo $element->getLikeCount() ?></span> <img src="<?php echo $element->getLikeImage($me); ?>" alt=""></span>
+                </div>
+            </div>
+    <?php endif; ?>
+        </div>
+    </div>
+    <?php elseif($element->getType() == Dbm_Share_Model_Element::TYPE_PHOTO): ?>
+        <?php if($i%2 == 0): ?>
+    <div class="row">
+        <?php endif; ?>
+        <div class="small-12 medium-6 columns type_photo elementCell">
+            <div class="image">
+                <a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()) ?>"><img src="<?php echo $this->getImageUrl($element, $sizes['grid'], $pOptions) ?>" alt=""></a>
+                <div class="description">
+                    <p><a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()) ?>"><?php echo $element->getTitle(); ?></a></p>
+                </div>
+            </div>
+            <div class="attributes <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> miniLike element_<?php echo $element->getId() ?>">
+                <div class="miniProfile">
+                    <div class="nickname icon">
+                        <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><span>
+                        <img src="<?php echo $customerMiniImageUrl ?>" class="avatar hide-for-small-only" alt="">
+                        <img src="<?php echo $customerMiniImageUrlx2 ?>" class="avatar show-for-small-only" alt="">
+                        <img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-grid.png') ?>" /><?php if($customer->getProfileStatus() == 3): ?><img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini.png'); ?>" /><?php endif; ?></span> <?php echo $this->escapeHtml($customer->getProfileNickname()); ?></a><br />
+                        <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                    </div>
+                </div>
+                <div class="<?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> miniLike element_<?php echo $element->getId() ?>"><span><span class="count"><?php echo $element->getLikeCount(); ?></span> <img src="<?php echo $element->getLikeImage($me); ?>" alt=""></span></div>
+            </div>
+        </div>
+        <?php if($i%2 != 0 || $i == $count-1 ): ?>
+    </div>
+        <?php endif; ?>
+    <?php endif; ?>
+<?php $i++; ?>
+<?php endforeach ?>
+<?php else: ?>
+        <div class="center noresult">Aucun élément n'a été trouvé</div>
+<?php endif; ?>
+
+</div>
+<?php echo $this->getChildHtml('dbm_share.list_toolbar') ?>

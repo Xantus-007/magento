@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<widgets>
+    <mfeaturedproducts_featured type="mfeaturedproducts/widget_featured" translate="name description" module="mfeaturedproducts">
+        <name>Catalog Featured Products</name>
+        <parameters>
+            <products_count translate="label">
+                <required>1</required>
+                <visible>0</visible>
+                <value>4</value>
+                <label>Number of Products to Display</label>
+                <type>text</type>
+            </products_count>
+            <template>
+                <visible>0</visible>
+                <label>Template</label>
+                <type>text</type>
+                <value>featuredproducts/grid.phtml</value>
+            </template>
+            <id_path_category translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Category</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_category_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Category...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>50</sort_order>
+            </id_path_category>
+            <id_path1 translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>10</sort_order>
+            </id_path1>
+            <id_path2 translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>20</sort_order>
+            </id_path2>
+            <id_path3 translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>30</sort_order>
+            </id_path3>
+            <id_path4 translate="label">
+                <visible>1</visible>
+                <required>1</required>
+                <label>Product</label>
+                <type>label</type>
+                <helper_block>
+                    <type>adminhtml/catalog_product_widget_chooser</type>
+                    <data>
+                        <button translate="open">
+                            <open>Select Product...</open>
+                        </button>
+                    </data>
+                </helper_block>
+                <sort_order>40</sort_order>
+            </id_path4>
+            <column_count>
+                <visible>0</visible>
+                <label>Columns</label>
+                <type>text</type>
+                <value>4</value>
+            </column_count>
+            <cache_lifetime translate="label description">
+                <label>Cache Lifetime (Seconds)</label>
+                <description>86400 by default, if not set. To refresh instantly, Clear the Blocks HTML Output Cache.</description>
+                <visible>1</visible>
+                <type>text</type>
+                <sort_order>60</sort_order>
+            </cache_lifetime>
+        </parameters>
+    </mfeaturedproducts_featured>
+</widgets>

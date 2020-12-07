@@ -1,0 +1,19 @@
+// ========================================= //
+// blocks.pager
+// ========================================= //
+
+ol.c-pager {
+    list-style: none;
+    text-align: center;
+
+    li {
+        display: inline-block;
+        margin-left: rem(7);
+        margin-right: rem(7);
+
+        a {
+            color: $mainBranding;
+            font-size: rem(16);
+        }
+    }
+}

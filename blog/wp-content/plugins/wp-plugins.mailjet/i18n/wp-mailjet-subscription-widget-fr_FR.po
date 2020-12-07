@@ -1,0 +1,55 @@
+#: mailjet-widget.php
+msgid "Subscription Confirmation"
+msgstr "Confirmation abonnement"
+
+#: mailjet-widget.php
+msgid "Subscription confirmation email sent."
+msgstr "Un email de confirmation vient de vous être envoyé."
+
+#: mailjet-widget.php
+msgid "Email field is empty"
+msgstr "Le champ e-mail est vide."
+
+#: mailjet-widget.php
+msgid "your@email.com"
+msgstr "votre@email.com"
+
+#: mailjet-widget.php
+msgid "Error. Token verification failed."
+msgstr "Error. Token verification failed."
+
+#: mailjet-widget.php
+msgid "Sorry %s we were not able to complete your subscription because it appears that you are already subscribed."
+msgstr "%s, l'abonnement est malheureusement impossible pour le moment"
+
+#: mailjet-widget.php
+msgid "Sorry, the contact is already subscribed"
+msgstr "Désolé, ce contact est déjà abonné"
+
+#: mailjet-widget.php
+msgid "Thanks for subscribing with %s"
+msgstr "Votre abonnement à notre newsletter a bien été pris en compte, merci."
+
+#: mailjet-widget.php
+msgid "You have entered a contact property with wrong data type, for example a string instead of a number."
+msgstr "Format incorrect."
+
+#: mailjet-widget.php
+msgid "Confirm your mailing list subscription"
+msgstr "Veuillez confirmer votre inscription à la newsletter."
+
+#: mailjet-widget.php
+msgid "Please Confirm Your Subscription To"
+msgstr "Veuillez confirmer votre inscription à la newsletter du site :"
+
+#: mailjet-widget.php
+msgid "Click here to confirm"
+msgstr "Confirmer mon inscription"
+
+#: mailjet-widget.php
+msgid "Did not ask to subscribe to this list? Or maybe you have changed your mind? Then simply ignore this email and you will not be subscribed"
+msgstr "Vous n'avez pas demandé à être inscrit à cette newsletter ou vous avez changé d'avis ? Il vous suffit de ne pas confirmer cette inscription."
+
+#: mailjet-widget.php
+msgid "Thanks,"
+msgstr "Merci,"

@@ -1,0 +1,29 @@
+section.c-testimonial--home.o-section--bkgGrey.js-test
+    .c-title--group
+        .c-main Le repas nomade réinventé
+        .c-baseline pour les amoureux de la liberté qui souhaitent...
+
+    .row
+        - var titles = ['Cultiver leur différence', 'Simplifier leur quotidien', 'Prendre soin d’eux et de l’environnement']
+        - var icons = ['c-img__testimonial--01.svg', 'c-img__testimonial--02.svg', 'c-img__testimonial--03.svg']
+        - var descs = ['Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Romatabant.', 'Ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.', 'Ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.']
+        - var quotes = ['Ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant', 'Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Romatabant', 'Bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant']
+
+        each label, index in titles
+            .columns.medium-4.c-testimonial--holder
+                .c-testimonial__item
+                    .c-title: .o-table: .o-table__cell--valignMiddle #{label}
+                    .c-content
+                        .c-icon
+                            // format image 350x240px
+                            img(src="#{imgDir}#{icons[index]}", alt="")
+                        .c-desc.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle--tabletDown #{descs[index]}
+                    .c-quote.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle
+                        | «
+                        | #{quotes[index]}
+                        | ».
+                    .c-avatar
+                        .c-thumb
+                            // format image 80x80px
+                            img(src="#{imgDir}c-avatar__80-80.jpg", alt="")
+                        .c-author: +lipsum(2, 'words')

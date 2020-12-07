@@ -1,0 +1,14 @@
+<?php $_isSecure = Mage::app()->getStore()->isCurrentlySecure() ?>
+<script type="text/javascript">
+    //<![CDATA[
+    var quickCartUrl      = '<?php echo Mage::getUrl('oyecheckout/index/quickcart', array('_forced_secure' => $_isSecure)) ?>';
+    var quickCartLabelUrl = '<?php echo Mage::getUrl('oyecheckout/index/quickcartlabel', array('_forced_secure' => $_isSecure))?>';
+    var loaderImg         = '<?php echo $this->getSkinUrl('css/oye/ajax-loader.gif') ?>';
+    var topCartLinkClass  = '.top-link-cart';
+    var oyeAjaxcart       = new oyeAjaxcart();
+    document.observe('dom:loaded', function () {
+        oyeAjaxcart.findCartButtons();
+        oyeAjaxcart.observeTopLinks();
+    });
+    //]]>
+</script>

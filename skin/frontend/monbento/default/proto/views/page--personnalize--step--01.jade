@@ -1,0 +1,48 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Personnaliser Step 01'
+    - var pageClass = ''
+    - var pageType = 'default'
+    - var headLess = true
+
+append body
+    .c-personnalize
+        .c-personnalize__content
+            .c-personnalize__heading.is-madeinfrance
+                .c-personnalize__title MB ORIGINAL 2 étages / 500ml + 500ML
+                .c-personnalize__price 35,00€
+
+            .c-personnalize__product: .js-bxSlider
+                .c-personnalize__product__item
+                    .c-img__holder
+                        img(src="#{imgDir}c-img__bento--custom--01.png", alt="")
+                .c-personnalize__product__item
+                    .c-img__holder
+                        img(src="#{imgDir}c-img__bento--custom--01.png", alt="")
+
+            .c-personnalize__actions
+                .c-item: a(href="", title="Recommencer"): i.c-fonticon__icon--rubber
+                .c-item: a(href="", title="Lancer un modèle aléatoire"): i.c-fonticon__icon--shuffle
+                .c-item: a(href="", title="Télécharger"): i.c-fonticon__icon--downloadPicture
+                .c-item: a(href="", title="Partager"): i.c-fonticon__icon--export
+
+        .c-personnalize__controler
+            .c-personnalize__controler__list
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--couverclesup.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--intermediairehaut.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--recipienthaut.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--intermediairebas.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--recipientbas.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--caissette.png", alt="")
+                a.c-personnalize__controler__item(href=""): img(src="#{imgDir}custom/c-img__custom__controler--elastique.png", alt="")
+
+            .c-personnalize__controler__action
+                a.c-button--noRadius--white.js-personnalize__cancel(href=""): .o-table: .o-table__cell--valignMiddle
+                    span.c-fonticon__icon--arrowToRight
+                    | Annuler
+                a.c-button--noRadius--mainBranding.js-personnalize__submit(href=""): .o-table: .o-table__cell--valignMiddle
+                    | J'ai terminé
+                    span.c-fonticon__icon--success

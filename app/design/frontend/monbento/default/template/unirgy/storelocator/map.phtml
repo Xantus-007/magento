@@ -1,0 +1,42 @@
+<section class="c-storeLocator--gmap is-asideOpen" id="storelocator-container">
+    <div class="c-storeLocator__toggle">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--cross">                   </i></div>
+        </div>
+    </div>
+    <div id="list_storelocator" class="c-storeLocator__list">
+        <div class="c-storeLocator__item__heading text-center">
+            <div class="c-label"><?php echo $this->__('Vous recherchez les magasins <br>à proximité du code postal...'); ?></div>
+            <div class="c-form">
+                <form method="post" action="#" id="search-location">
+                    <input type="hidden" name="url" value="<?php echo $this->getBaseUrl() . 'storelocator/location/xml'; ?>" id="url">
+                    <input type="hidden" name="searchurl" value="<?php echo $this->getBaseUrl() . 'storelocator/location/search'; ?>" id="searchurl">
+                    <input type="hidden" name="url1" value="<?php echo $this->getBaseUrl() . 'storelocator/location/infowindowdescription'; ?>" id="url1">
+                    <input type="hidden" name="url2" value="<?php echo $this->getBaseUrl() . 'storelocator/location/locationlistdescription'; ?>" id="url2">
+                    <input type="text" id="address-search" name="address" class="input-number address-aside" placeholder="<?php echo $this->__('Code postal'); ?>" />
+                    <!-- <input type="submit" class="submit-search" value="Ok" /> -->
+                    <button type="button" id="location-submit-from" class="submit-search">
+                        <div class="o-table">
+                            <div class="o-table__cell--valignMiddle"><span class="c-fonticon__icon--zoom"></span></div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="c-storeLocator__item--holder" id="list"></div>
+    </div>
+
+    <div id="loading" class="please-wait" style="text-align: center; z-index: 250; height: 100%; opacity: 0.3;">
+        <img alt="" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif'); ?>"> <?php echo $this->__('Chargement en cours ...'); ?>
+    </div>
+    <div id="map_storelocator" class="c-storeLocator__gmapHolder"></div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+            var searchForm = new VarienForm('search-location', true);
+        //]]>
+
+            window.no_location_msg = "<?php echo $this->__('Aucun magasin n\'a été trouvé près de votre recherche'); ?>";
+    </script>
+
+</section>

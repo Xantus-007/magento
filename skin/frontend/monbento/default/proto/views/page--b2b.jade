@@ -1,0 +1,157 @@
+//- layout
+extends _components-layout--b2b
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Espace Pro'
+    - var pageClass = 'c-b2b'
+    - var pageColor = '#82b9bf'
+
+append body
+
+    .c-b2b__header
+        .row
+            .column
+                - var labels = ['Espace pro', 'Home']
+                +c-breadcrumb(labels)
+
+        .row
+            .column.medium-10.medium-centered#c-login__form
+                .c-page__title
+                    h1 Espace Pro
+
+                .c-form__wrapper
+                    form(method="" action="")
+                        .row.js-equalizer__wrapper
+                            .column.medium-6.js-equalizer__item.c-b2b__registerCol
+                                .c-form__holder.has-seperator
+                                    h2 Créez votre compte
+
+                                    - list = ['Gratuit et sans engagements', 'Accès au catalogue<br> et disponibilité des produits']
+                                    ul.c-b2b__list
+                                        each item in list
+                                            li!= item
+
+
+
+                                    a.c-button--white--arrowRightToRight(href="") Créer mon compte
+
+                                    .c-separator ou
+
+                            .column.medium-6.js-equalizer__item.c-b2b__loginCol
+                                .c-form__holder.no-paddingBottom
+                                    .c-form__login
+                                        h2 Vous avez un compte
+                                        .c-subTitle faites comme chez vous
+
+                                        .c-form__noMargin
+                                            .c-input__holder.js-label__animate
+                                                label.required #[em *] Adresse e-mail
+                                                .c-input__text: input(type="text")
+
+                                            .c-input__holder.js-label__animate
+                                                label.required #[em *] Mot de passe
+                                                .c-input__text: input(type="text")
+
+                                        .c-label__info #[span.c-required *] Champs obligatoires
+
+                                        .c-checkbox--inline
+                                            .c-checkbox
+                                                input(type="checkbox", id="checkbox__001")
+                                                label(for="checkbox__001") rester connecté
+
+                                            a.c-linkCst--arrow--subBranding(href="") Mot de passe oublié
+
+                                        input.c-button--b2b--arrowRightToRight(type="submit", value="Connexion")
+
+    section.o-section--bkgGrey--noPaddingBottom.c-businessCase
+        .c-title--group
+            h2.c-main Rejoignez l'aventure monbento
+
+        .row.c-businessCase__list
+            - var titles = ['Boostez votre activité&nbsp;!', 'Faites du bien à votre image&nbsp;!', 'Agissez pour la planète&nbsp;!']
+            - var contents = ['<span>+ de trafic</span> <span>+ de chiffre d\'affaires</span>', '<span>Des clients satisfaits</span> <span>Une différenciation par rapport à vos concurrents</span>', '<span>Participation à la réduction des déchets et du gaspillage</span>']
+            - var icons = ['c-icon__graphic.svg', 'c-icon__rubis.svg', 'c-icon__environement.svg']
+
+            each label, index in titles
+                .columns.medium-4.c-businessCase__wrapper
+                    .c-businessCase__item
+                        .c-icon
+                            .c-picture
+                                // format image 32x45px
+                                img(src="#{imgDir}#{icons[index]}", alt="")
+                            .c-background: include blocks/_icon__marker--svg
+
+                        .c-container
+                            .c-title.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle!= label
+                            .c-separator(style='background: #{pageColor};')
+                            .c-content!= contents[index]
+
+        .row.js-equalizer__post.c-post__list
+            - post = ['une Boutique', 'une Entreprise', 'un Restaurant']
+            - content = ['Et si vous deveniez partenaire d’une marque française reconnue pour la qualité de ses produits et son engagement pour un quotidien plus simple et responsable ?', 'Vous souhaitez faire la différence avec un cadeau utile, responsable et qui peut même être personnalisé ?', 'Faire des économies, agir pour la planète et offrir plus de services à vos clients, ça vous tente ?']
+
+            each item, i in post
+                .column.medium-4.c-post__wrapper
+                    .c-post.js-equalizer__postItem
+                        .c-post__image
+                            img(src="#{imgDir}c-img__postB2B--0#{i+1}.jpg" alt="")
+                        .c-post__content
+                            .c-title #[span Vous êtes] #{item}
+                            | #{content[i]}
+
+                            if (i == post.length - 1)
+                                .c-post__link
+                                    a.c-linkCst--arrow--subBranding(href="" target="_blank") En savoir plus
+
+        .c-wrapper__button.text-center
+            a.js-anchor.c-button--b2b--arrowRightToRight(href="#c-login__form")
+                .o-table: .o-table__cell--valignMiddle Se connecter, créer son compte
+
+    .c-b2b__custom
+        img.c-b2b__img--custom(src="#{imgDir}c-bkg__b2b--customisation.jpg")
+        .row.collapse
+            .column.large-4.end
+                .c-item__content--intro--b2b
+                    .c-title--medium Personnalisez nos produits #[br]à votre image
+                    .c-separator
+                    .c-content
+                        p Vous souhaitez proposer à la vente un produit unique&nbsp;?
+                        p Vous organisez un événement ou un séminaire et vous voulez marquer le coup&nbsp;?
+                        p Vous êtes à la recherche d’un cadeau pour vos clients ou vos salariés&nbsp;?
+
+                    a.c-button--b2b--arrowRightToRight(href="" target="_blank")
+                        .o-table: .o-table__cell--valignMiddle Découvrir nos offres
+
+    section.o-section--bkgGrey--gradient.c-b2b__proArea
+        .row.js-equalizer__wrapper
+            .column.large-7.medium-6.js-equalizer__item
+                .o-table.c-wrapper__img
+                    .o-table__cell--valignMiddle
+                        img(src="#{imgDir}c-img__b2b--macbook.png" alt="")
+            .column.large-5.medium-6.js-equalizer__item
+                .c-item__content--intro--b2b
+                    .c-title--medium Un espace dédié #[br] aux professionnels
+                    .c-separator
+                    .c-content
+                        - items = ['Hotline & Service client dédié', 'Prise en charge sur mesure', 'Système de commande simplifié']
+                        - icons = ['hotline', 'tools', 'order']
+                        ul
+                            each item, i in items
+                                li
+                                    span(class="c-fonticon__icon--#{icons[i]}")
+                                    | #{item}
+
+                    a.c-button--b2b--arrowRightToRight.js-anchor(href="#c-login__form")
+                        .o-table: .o-table__cell--valignMiddle Se connecter, créer son compte
+
+    section.o-section--mediumPadding
+        .row
+            .column
+                .c-title--group
+                    h2.c-main Vous avez un projet spécifique ?
+                    .c-baseline Aucun souci, monbento étudie toutes les demandes !
+
+                .text-center
+                    a.c-button--b2b--arrowRightToRight(href="")
+                        .o-table: .o-table__cell--valignMiddle Nous contacter

@@ -1,0 +1,74 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page FAQ'
+    - var pageClass = ''
+
+append body
+    - var labels = ['Home', 'FAQ']
+    .row: .column.small-12.medium-10.large-8.small-centered
+        +c-breadcrumb(labels)
+    +c-title--page('Aide en ligne')
+    .c-faq__nav
+        .row: .column: ul
+            - var items = ['Produit', 'Achats en ligne', 'Clubento']
+            - var ids = ['products', 'online-shopping', 'clubento']
+            each item, index in items
+                li: a.js-anchor--offset(href="#" + "c-anchor__faq--" + ids[index])=item
+
+
+    section.o-section--bkgGrey.c-faq__recurring
+        .row
+            .column.small-12.medium-10.large-8.medium-centered
+                h2.c-faq__recurring__title Questions récurrentes
+                - var items = ['Quels sont les tarifs de livraison ?', 'Comment bénéficier de la livraison gratuite ?', 'Quels sont les délais de livraison ?', 'Comment suivre mon colis ?', 'Que faire si je souhaite annuler une commande déjà payée ?', 'Que faire si je souhaite retourner une partie seulement de ma commande ?', 'Comment procéder à l’échange d’un ou plusieurs articles ?']
+                ul.c-faq__recurring__list
+                    each item, index in items
+                        li: a.js-anchor--offset(href="#" + "c-anchor__recurring--" + index)=item
+                
+    section.o-section
+        .row
+            .column.small-12.medium-10.large-8.medium-centered.c-faq__content
+            
+                - var items = ['Produits', 'Achats en ligne', 'Clubento']
+                - var ids = ['products', 'online-shopping', 'clubento']
+                - var subItems = [['Matériaux', 'Entretien et réparation', 'Fonctionnalités', 'Collection'], ['Commandes', 'Expédition', 'Retours & Annulation', 'Programme de fidélité'], ['Matériaux', 'Entretien et réparation', 'Fonctionnalités', 'Collection']]
+                each item, index in items
+                    .c-faq__section__title.c-title--sub(id="c-anchor__faq--" + ids[index])=item
+                    each subItem, indexI in subItems[index]
+                        if(subItems[index][indexI].length)
+                            .c-faq__item
+                                .c-faq__item__header
+                                    h3.c-faq__item__title=subItem
+                                .c-faq__item__content
+                                    - for(var i = 0; i< 2; i++)
+                                        .c-faq__subItem.js-accordion__item(id="c-anchor__recurring--" + indexI)
+                                            .c-faq__subItem__header
+                                                h4.c-faq__item__subtitle Quas Armeniorum montis celsi coniunxit imosque imosque provincias in illius abstractas mare Gnaeus ambiens provincias ?
+                                            .c-faq__subItem__content
+                                                p Expert en utilisabilité des sites web et des logiciels, Jakob Nielsen souligne que l'une des limites de l'utilisation du faux-texte dans la conception de sites web est que ce texte n'étant jamais lu, il ne permet pas de vérifier sa lisibilité effective. La lecture à l'écran étant plus difficile, cet aspect est pourtant essentiel. Nielsen préconise donc l'utilisation de textes représentatifs plutôt que du lorem ipsum1. On peut aussi faire remarquer que les formules conçues avec du faux-texte ont tendance à sous-estimer l'espace nécessaire à une titraille immédiatement intelligible, ce qui oblige les rédactions à formuler ensuite des titres simplificateurs, voire inexacts, pour ne pas dépasser l'espace imparti.
+
+
+    section.o-section--bkgGrey.c-faq__contact
+        .row
+            .column.small-12
+                h2.c-faq__contact__title Vous n'avez pas trouvé de réponse à votre question ?
+                
+                .row.c-faq__contact__blocks
+                    // Item equalizer
+                    .column.small-12.medium-4: .c-faq__contact__block.js-itemEqualizer
+                        .c-faq__contact__subtitle Un conseiller peut vous répondre #[strong par téléphone]
+                        .c-faq__contact__phone 04 73 23 72 72
+                        span Lundi > Vendredi / 9H>12H / 14H>17H #[br] Heures locales
+                        
+                    .column.small-12.medium-4: .c-faq__contact__block.js-itemEqualizer
+                        .c-faq__contact__subtitle Discutez avec un conseiller #[strong en direct]
+                        a.c-linkCst--arrow(href="") Discuter en ligne
+                        span Lundi > Vendredi / 9H>12H / 14H>17H #[br] Heures locales
+                    
+                    .column.small-12.medium-4: .c-faq__contact__block.js-itemEqualizer
+                        .c-faq__contact__subtitle Envoyez-nous votre question #[strong par e-mail]
+                        a.c-linkCst--arrow(href="") Nous contacter
+                        span une réponse vous sera communiquée #[br]sous 24H (jours ouvrés)

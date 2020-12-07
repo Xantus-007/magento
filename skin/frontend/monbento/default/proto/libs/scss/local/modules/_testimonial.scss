@@ -1,0 +1,203 @@
+// ========================================= //
+// testiminial
+// ========================================= //
+
+.c-testimonial--home, .c-testimonial--about {
+    .c-testimonial--holder {
+        @include bp-lt($tablet) {
+            width: 100%;
+        }
+    }
+}
+
+.c-testimonial__item {
+    @include bp-lt($tablet) {
+        margin-bottom: rem(20);
+        padding-left: rem(10);
+        padding-right: rem(10);
+    }
+
+    @include bp-lt($small) {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .c-title {
+        height: rem(98);
+        padding-left: rem(30);
+        padding-right: rem(30);
+        background: $mainBranding;
+        color: $white;
+        font-family: $sofiaPro;
+        font-size: rem(24);
+        line-height: rem(28);
+        text-align: center;
+        letter-spacing: rem(1);
+
+        @include bp-lt($medium) {
+            font-size: rem(20);
+            line-height: rem(24);
+        }
+
+        @include bp-lt($tablet) {
+            height: rem(70);
+            font-size: rem(17);
+            line-height: rem(20);
+        }
+    }
+
+    .c-content {
+        background: $white;
+
+        @include clearfix;
+    }
+
+    .c-icon {
+        padding-top: rem(28);
+        padding-bottom: rem(28);
+        text-align: center;
+
+        @include bp-lt($tablet) {
+            width: rem(200);
+            float: left;
+            max-height: rem(200);
+            padding-top: rem(0);
+            padding-bottom: rem(0);
+        }
+
+        @include bp-lt($tabletS) {
+            width: rem(150);
+            padding-top: rem(10);
+        }
+
+        @include bp-lt($mobileXl) {
+            width: 100%;
+            padding-top: 0;
+            max-height: none;
+            float: none;
+        }
+    }
+
+    .c-desc {
+        max-width: rem(365);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: rem(20);
+        padding-right: rem(20);
+        padding-bottom: rem(20);
+        font-size: rem(20);
+        line-height: rem(26);
+        color: $mainFont;
+        font-family: $sofiaPro;
+        font-weight: 300;
+        letter-spacing: rem(1);
+
+        @include bp-lt($medium) {
+            font-size: rem(18);
+            line-height: rem(22);
+            padding-left: rem(15);
+            padding-right: rem(15);
+        }
+
+        @include bp-lt($tablet) {
+            height: rem(137) !important;
+            width: calc(100% - 200px);
+            float: right;
+            max-width: 100%;
+            padding-bottom: 0;
+            font-size: rem(15);
+            line-height: rem(18);
+        }
+
+        @include bp-lt($tabletS) {
+            width: calc(100% - 150px);
+        }
+
+        @include bp-lt($mobileXl) {
+            width: 100%;
+            float: none;
+            height: auto !important;
+            margin-bottom: rem(30);
+        }
+    }
+
+    .c-quote {
+        position: relative;
+        margin-bottom: rem(30);
+        font-family: $arbutus;
+        font-size: rem(24);
+        line-height: rem(29);
+        color: $mainBranding;
+        background: $grey--light--04;
+        padding: rem(30);
+        border-radius: 0 0 rem(25) rem(25);
+        text-align: center;
+
+        @include bp-lt($large) {
+            font-size: rem(20);
+            line-height: rem(24);
+            padding: rem(25);
+        }
+
+        @include bp-lt($medium) {
+            font-size: rem(18);
+            line-height: rem(22);
+            padding: rem(15);
+        }
+
+        @include bp-lt($tablet) {
+            height: auto !important;
+        }
+
+        @include bp-lt($mobileXl) {
+            font-size: rem(16);
+        }
+
+        &:after {
+            position: absolute;
+            bottom: rem(-14);
+            left: 0; right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            content: '';
+            display: block;
+            width: 0;
+            border-top: solid rem(14) $grey--light--04;
+            border-left: solid rem(12) transparent;
+            border-right: solid rem(12) transparent;
+        }
+    }
+
+    .c-avatar {
+        .c-thumb {
+            $side : rem(92);
+
+            width: $side;
+            height: $side;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: rem(18);
+            border-radius: 50%;
+            border: solid rem(6) $white;
+
+            img {
+                $side : rem(80);
+
+                display: block;
+                width: $side;
+                height: $side;
+                border-radius: 50%;
+            }
+        }
+
+        .c-author {
+            text-align: center;
+            font-family: $sofiaProCond;
+            font-size: rem(14);
+            text-transform: uppercase;
+            color: $grey--regular--02;
+            font-weight: 700;
+        }
+    }
+}

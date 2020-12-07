@@ -1,0 +1,52 @@
+// ========================================= //
+// logo
+// ========================================= //
+
+.c-topline {
+    .c-logo {
+        float: left;
+        display: block;
+        height: $o-header--height;
+        width: rem(143);
+        text-align: center;
+        transition: $ease;
+
+        @include bp-lt($mobileL) {
+            width: calc(100% - 280px);
+            text-align: left;
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
+        @include bp-lt($mobileS) {
+            width: calc(100% - 250px);
+        }
+
+        .o-table {
+            table-layout: fixed;
+        }
+
+        svg {
+            display: block;
+            margin-left: rem(20);
+
+            .is-small & {
+                width: 100%;
+                max-width: rem(90);
+                max-height: rem(46);
+                margin-left: 0;
+            }
+
+            @include bp-lt($tabletS) {
+                width: 100%;
+                max-width: rem(90);
+                max-height: rem(46);
+                margin-left: 0;
+            }
+        }
+
+        g {
+            transition: $ease;
+        }
+    }
+}

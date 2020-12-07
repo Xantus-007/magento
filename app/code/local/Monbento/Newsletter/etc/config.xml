@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Newsletter>
+            <version>0.0.1</version>
+        </Monbento_Newsletter>
+    </modules>
+	<global>
+		<models>
+			<confignewsletter>
+				<class>Monbento_Newsletter_Model</class>
+				<resourceModel>monbento_newsletter_resource</resourceModel>
+			</confignewsletter>
+			<newsletter>
+				<rewrite>
+					<subscriber>Monbento_Newsletter_Model_Subscriber</subscriber>
+				</rewrite>
+			</newsletter>
+		</models>
+	    <helpers>
+	        <monbentonewsletter>
+	            <class>Monbento_Newsletter_Helper</class>
+	        </monbentonewsletter>
+	    </helpers>
+	</global>
+	<frontend>
+	    <layout>
+            <updates>
+                <monbento_newsletter module="Monbento_Newsletter">
+                    <file>monbento/newsletter.xml</file>
+                </monbento_newsletter>
+            </updates>
+        </layout>
+  	</frontend>
+  	<default>
+  		<newsletter>
+			<mailjet>
+				<apikey>d1486a70a6cec7de856bde216920f7e5</apikey>
+				<secretkey>31092b4a2a3bd83e990f74220b632c79</secretkey>
+			</mailjet>
+			<registrationincentive>
+				<incentive_message_page>4</incentive_message_page>
+			</registrationincentive>
+		</newsletter>
+  	</default>
+</config>

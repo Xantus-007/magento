@@ -1,0 +1,14 @@
+{{#location}}
+<div class="c-storeLocator__item" data-markerid="{{markerid}}">
+    <div class="c-item--content">
+        <div class="c-item--count"></div>
+        <p><span class="c-item--name">{{name}}</span>{{address_display}}</p>
+        <a href="tel:{{phone}}">
+            <i class="c-fonticon__icon--phone"></i> {{phone}}
+        </a>
+        <a href="https://www.google.com/maps/dir//{{address_display}}" class="c-linkCst--arrow">
+            <span><?php echo $this->__('Itinéraire'); ?></span>
+        </a>
+    </div>
+</div>
+{{/location}}

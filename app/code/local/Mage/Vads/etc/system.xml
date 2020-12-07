@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<sections>
+		<!--show in payment tab in backend-->
+		<payment>
+			<groups>
+				<!--fieldset vads-->
+				<vads translate="label" module="vads">
+					<!--fieldset title-->
+					<label>Systempay</label>
+					<!--some magento parameters-->
+					<sort_order>321</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					
+					<fields>
+					<!--EXAMPLE : 
+						<active translate="label" module="vads">
+							label in backend
+							<label>Enabled</label>
+							input type
+							<frontend_type>select</frontend_type>
+							Model used to get options
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							field position
+							<sort_order>1</sort_order>
+							contexts the field is showed in
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>0</show_in_store>
+						</active>-->
+					
+					
+						<!--==================================
+							Module information (version, contact...)
+							==================================-->
+						<module_information translate="label" module="vads">
+                            <label>MODULE INFORMATION</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </module_information>
+						
+						<!-- author -->
+						<developed_by translate="label" module="vads">
+                            <label>Developed by</label>
+							<comment><![CDATA[<a href="http://www.lyra-network.com" target="_blank">www.lyra-network.com</a>]]></comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>11</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </developed_by>
+                        
+						<!-- email -->
+						<contact_email translate="label" module="vads">
+                            <label>Contact email</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>12</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </contact_email>
+                        
+						<!-- module version -->
+                        <module_version translate="label" module="vads">
+                            <label>Module version</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>13</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </module_version>
+                        
+						<!-- gateway version -->
+                        <gateway_version translate="label" module="vads">
+                            <label>Gateway version</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>14</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_version>
+                        
+						<!-- magento version -->
+                        <cms_version translate="label" module="vads">
+                            <label>Tested with magento</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>15</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </cms_version>
+                        
+                       
+                        
+                        <!--==================================
+							Module Settings
+							==================================-->
+						<module_settings translate="label" module="vads">
+                            <label>MODULE SETTINGS</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </module_settings>
+                        
+                        <!-- Enabled -->
+						<active translate="label" module="vads">
+							<label>Enabled</label>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+							<sort_order>21</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</active>
+                       		
+                       	<sort_order translate="label,comment" module="vads">
+                            <label>Sort order</label>
+							<comment>In the payment methods list</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>22</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </sort_order>
+                        				
+						<!-- Display name-->
+						<title translate="label" module="vads">
+							<label>Title</label>
+							<frontend_type>text</frontend_type>
+							<sort_order>23</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</title>
+						
+						<!-- Country restrictions -->
+						<allowspecific translate="label" module="vads">
+                            <label>Restrict to some countries</label>
+                            <frontend_type>allowspecific</frontend_type>
+                            <sort_order>24</sort_order>
+                            <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </allowspecific>
+                        
+						<specificcountry translate="label" module="vads">
+                            <label>Authorized countries</label>
+                            <frontend_type>multiselect</frontend_type>
+                            <sort_order>25</sort_order>
+                            <source_model>adminhtml/system_config_source_country</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </specificcountry>
+						
+
+						<!--==================================
+							Gateway access
+							==================================-->
+						<gateway_access translate="label" module="vads">
+                            <label>PAYMENT GATEWAY ACCESS</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </gateway_access>
+						
+						<!-- Site id -->
+						<site_id translate="label" module="vads">
+                            <label>Site id</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>31</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </site_id>
+						
+						<!-- Certificates -->
+						<key_test translate="label,comment" module="vads">
+                            <label>Test key</label>
+                            <comment>Available in your Systempay backoffice</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>32</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key_test>
+						
+						<key_prod translate="label" module="vads">
+                            <label>Production key</label>
+                            <comment>Available in your Systempay backoffice after test validation</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>33</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </key_prod>
+						
+						<!-- Mode -->
+                        <ctx_mode translate="label" module="vads">
+                            <label>Mode</label>
+                            <comment>TEST or PRODUCTION</comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>vads/source_ctxModes</source_model>
+                            <sort_order>34</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </ctx_mode>
+						
+						<!-- gateway url -->
+						<platform_url translate="label" module="vads">
+                            <label>Platform url</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>35</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </platform_url>
+						
+						<!--==================================
+							Payment page
+							==================================-->
+						<payment_page translate="label" module="vads">
+                            <label>PAYMENT PAGE</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment_page>
+						
+						<language translate="label,comment" module="vads">
+                            <label>Language</label>
+							<comment>Default language for payment page</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vads/source_languages</source_model>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </language>
+                        
+                        <available_languages translate="label,comment" module="vads">
+                            <label>Available languages</label>
+							<comment>Select ALL to use gateway config</comment>
+                            <frontend_type>multiselect</frontend_type>
+                            <source_model>vads/source_availableLanguages</source_model>
+                            <backend_model>vads/field_availableLanguages</backend_model>
+                            <sort_order>42</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </available_languages>
+                      
+                        <capture_delay translate="label" module="vads">
+                            <label>Delay</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>43</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </capture_delay>
+						
+                        <validation_mode translate="label,comment" module="vads">
+                            <label>Validation mode</label>
+                            <comment>If manual is selected, you will have to confirm payments manually in your bank backoffice</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>vads/source_validationTypes</source_model>
+                            <sort_order>44</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </validation_mode>
+						
+                        <payment_cards translate="label,comment" module="vads">
+                            <label>Credit Card Types</label>
+                            <comment>The card type(s) that can be used for the payment separated by semicolons</comment>
+                            <frontend_type>text</frontend_type>
+                            <backend_model>vads/field_creditCards</backend_model>
+                            <sort_order>45</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </payment_cards>
+						
+						
+						<!--==================================
+							magento generic parameters
+							==================================-->
+						<magento_configuration translate="label" module="vads">
+                            <label>AMOUNT RESTRICTIONS</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </magento_configuration>
+						
+						
+						
+						<!-- Amount restrictions -->
+						<min_order_total translate="label">
+                            <label>Minimum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>51</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </min_order_total>
+                        
+                        <max_order_total translate="label">
+                            <label>Maximum Order Total</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>52</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </max_order_total>
+						
+						
+						<!--==================================
+							Return options
+							==================================-->
+						<return_options translate="label" module="vads">
+                            <label>RETURN OPTIONS</label>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </return_options>
+						
+						<redirect_enabled translate="label,comment" module="vads">
+							<label>Automatic redirection</label>
+							<comment>Automatically redirect client to the shop at the end of the payment process</comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+						</redirect_enabled>
+						
+						<redirect_success_timeout translate="label,comment" module="vads">
+                            <label>Success redirection timeout</label>
+							<comment>If automatic redirection is enabled</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>62</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </redirect_success_timeout>
+						
+						<redirect_success_message translate="label,comment" module="vads">
+                            <label>Success redirection message</label>
+							<comment>If automatic redirection is enabled</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>63</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </redirect_success_message>
+						
+						<redirect_error_timeout translate="label,comment" module="vads">
+                            <label>Error redirection timeout</label>
+							<comment>If automatic redirection is enabled</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>64</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </redirect_error_timeout>
+						
+						<redirect_error_message translate="label,comment" module="vads">
+                            <label>Error redirection message</label>
+							<comment>If automatic redirection is enabled</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>65</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </redirect_error_message>
+						
+						<return_mode translate="label,comment" module="vads">
+                            <label>Return mode</label>
+							<comment>How the client transmit payment process result</comment>
+                            <frontend_type>select</frontend_type>
+							<source_model>vads/source_returnModes</source_model>
+                            <sort_order>66</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </return_mode>
+						
+						<url_return translate="label,comment" module="vads">
+                            <label>Return url</label>
+                            <comment>Where the client will come back. You can provide a path or an absolute url.</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>67</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_return>
+						
+						<check_url translate="label,comment" module="vads">
+                            <label>Check url</label>
+							<comment>Url to paste in Systempay backoffice</comment>
+                            <frontend_type>label</frontend_type>
+                            <sort_order>68</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </check_url>
+                        
+                        <refill_cart translate="label,comment" module="vads">
+                            <label>Refill cart on failure</label>
+							<comment>Re-create the cart after a payment failure (fix magento behaviour)</comment>
+							<frontend_type>select</frontend_type>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>69</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </refill_cart>
+                        
+						<registered_order_status translate="label,comment" module="vads">
+                            <label>Registered orders status</label>
+							<comment>Status of orders when payment succeeded. If you choose a processing status, the invoice will automatically be created.</comment>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_order_status_newprocessing</source_model>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </registered_order_status>
+                        
+					</fields>
+				</vads>
+			</groups>
+		</payment>
+	</sections>
+</config>

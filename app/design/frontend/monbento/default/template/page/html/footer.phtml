@@ -1,0 +1,75 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="c-footer--main">
+    <div class="row">
+        <div class="columns large-4 medium-6">
+            <div class="c-footer__item">
+                <div class="c-title--columns"><span class="o-whiteSpace--none"><?php echo $this->__('Besoin d\'aide ?'); ?></span> <span class="o-whiteSpace--none"><?php echo $this->__('Une question ?'); ?></span></div>
+                <a href="<?php echo (Mage::app()->getStore()->getCode() == 'es') ? $this->getUrl('preguntas-frecuentes') : $this->getUrl('faq'); ?>" class="c-linkCst--arrow"><?php echo $this->__('Consultez notre FAQ'); ?></a>
+                <?php echo $this->getChildHtml('footer_infos') ?>
+            </div>
+        </div>
+        <div class="columns large-4 medium-6">
+            <div class="c-footer__item">
+                <div class="c-title--columns"><?php echo $this->__('Newsletter'); ?></div>
+                <p><?php echo $this->__('Subscribe to the Newsletter and receive a FREE ebook of recipes'); ?></p>
+                <?php echo $this->getChildHtml('footer_newsletter') ?>
+            </div>
+        </div>
+        <div class="columns large-4">
+            <div class="c-footer__item c-footer__item--lastChild">
+                <div class="c-title--columns"><?php echo $this->__('Suivez-nous'); ?></div><a href="<?php echo Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_twitter_url'); ?>" class="c-linkHashtag">#monbento</a>
+                <ul class="c-list__social">
+                    <li><a href="<?php echo Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_facebook_url'); ?>" target="_blank"><i class="c-fonticon__icon--facebook"></i></a></li>
+                    <li><a href="<?php echo Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_twitter_url'); ?>" target="_blank"><i class="c-fonticon__icon--twitter"></i></a></li>
+                    <li><a href="<?php echo Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_instagram_url'); ?>" target="_blank"><i class="c-fonticon__icon--instagram"></i></a></li>
+                    <li><a href="<?php echo Mage::getStoreConfig('monbento_config/monbento_config_general/monbento_pinterest_url'); ?>" target="_blank"><i class="c-fonticon__icon--pinterest"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="c-footer--sub">
+    <div class="row">
+        <?php for($i=1;$i<5;$i++): ?>
+        <div class="columns medium-3 small-6 js-itemEqualizer">
+            <div class="c-footer--sub__item">
+                <?php echo $this->getChildHtml('footer_links_'.$i) ?>
+            </div>
+        </div>
+        <?php endfor; ?>
+    </div>
+    <div class="row">
+        <div class="columns text-center">
+            <div class="c-baseline"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-icon__cards.svg'); ?>" alt=""></div>
+        </div>
+    </div>
+</div>
+
+<div id="c-magnificpopup__addtobasket" class="c-mfp__addtobasket zoom-anim-dialog text-center mfp-hide">
+    <div class="row c-empty__modal"><div class="o-table"><div class="o-table__cell--valignMiddle"><span><img src="<?php echo $this->getSkinUrl('images/bx_loader.gif'); ?>" width="32" height="32" /> <?php echo $this->__('Ajout au panier en cours ...') ?></span></div></div></div>
+</div>

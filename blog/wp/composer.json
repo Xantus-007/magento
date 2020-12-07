@@ -1,0 +1,14 @@
+{
+    "name": "dbm/wp-core",
+    "description": "Mirror of latest Wordpress install",
+    "type": "webroot",
+    "require": {
+        "fancyguy/webroot-installer": "1.0.0"
+    },
+    "authors": [
+        {
+            "name": "Vincent Meron",
+            "email": "vmeron@gmail.com"
+        }
+    ]
+}

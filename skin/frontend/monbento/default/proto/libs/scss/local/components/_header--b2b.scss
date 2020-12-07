@@ -1,0 +1,269 @@
+.o-header, .o-header--b2b {
+    @include clearfix();
+    padding: rem(35) 0;
+    position: relative;
+
+    [class*="c-fonticon"] {
+        font-size: rem(20);
+        position: relative;
+        top: rem(3);
+        margin-right: rem(10);
+    }
+}
+
+.c-logo {
+    margin-left: rem(20);
+    padding-top: rem(8);
+    padding-right: $gutter;
+    width: rem(102);
+    float: left;
+}
+
+.c-header__columnWrapper {
+    float: right;
+    text-align: right;
+}
+
+
+.c-header__column {
+    display: inline-block;
+    vertical-align: top;
+    padding-left: rem(25) !important;
+    padding-right: rem(25) !important;
+    text-align: left;
+    background: url(#{$img}c-bkg__headerColumn.jpg) repeat-y top 50% left 0;
+    height: rem(75);
+
+    * {
+        letter-spacing: normal;
+        font-family: $sofiaPro;
+    }
+
+    p {
+        margin-bottom: 0;
+        line-height: rem(20);
+    }
+
+    .c-tel {
+        color: $b2b--blue;
+        font-size: rem(31);
+        margin-left: rem(15);
+    }
+
+    .c-text--small {
+        font-size: rem(12);
+        font-family: $merriWeather;
+        font-weight: 300;
+        color: $grey--03;
+    }
+}
+
+.o-header {
+    @include bp-lt($medium) {
+        padding: rem(25) 0;
+    }
+
+    @include bp-lt($mediumPersonnalize) {
+        height: rem(60);
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .c-logo {
+        @include bp-lt($desktop) {
+            padding-left: rem(5);
+            margin-left: rem(5);
+            padding-right: 0;
+            width: rem(95);
+        }
+
+        @include bp-lt($medium) {
+            width: rem(70);
+            padding-top: rem(15);
+            padding-left: 0;
+            margin-left: 0;
+        }
+
+        @include bp-lt($mediumPersonnalize) {
+            width: rem(50);
+        }
+    }
+
+    li, a, p {
+        @include bp-lt($medium) {
+            font-size: rem(14);
+        }
+    }
+
+    .c-nav__icon {
+        width: $o-header--height--small;
+        height: $o-header--height--small;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: $gutter;
+        background: none;
+        display: none;
+
+        @include bp-lt($mediumPersonnalize) {
+            display: block;
+        }
+
+        i {
+            top: rem(27);
+            left: rem(12);
+            background: $subBranding;
+
+            &, &:before, &:after {
+                background: $subBranding;
+
+                @include bp-lt($mobileS) {
+                    width: rem(25);
+                }
+            }
+        }
+    }
+
+    .c-header__columnWrapper {
+        width: calc(100% - 122px);
+
+        @include bp-lt($desktop) {
+            width: calc(100% - 102px);
+        }
+
+        @include bp-lt($medium) {
+            width: calc(100% - 70px);
+        }
+
+        @include bp-lt($mediumPersonnalize) {
+            position: fixed;
+            float: none;
+            width: rem(280);
+            top: 0;
+            right: rem(-280);
+            height: 100vh;
+            background: $subBranding;
+            z-index: 999;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+            -ms-overflow-style: none;
+            &::-webkit-scrollbar { width: 0 !important }
+            transition: $ease;
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+            color: $white;
+        }
+
+        .is-fixed & {
+            @include bp-lt($mediumPersonnalize) {
+                right: 0;
+            }
+        }
+    }
+
+    .c-header__column {
+        @include bp-lt($desktop) {
+            padding-left: rem(15) !important;
+            padding-right: rem(15) !important;
+        }
+
+        @include bp-lt($mediumPersonnalize) {
+            background: none;
+            height: auto;
+            width: 100% !important;
+        }
+
+        &:nth-child(1) {
+            width: rem(335);
+
+            @include bp-lt($desktop) {
+                width: rem(310);
+            }
+
+            @include bp-lt($medium) {
+                width: rem(280);
+            }
+
+            @include bp-lt($mediumPersonnalize) {
+                border-bottom: rem(1) solid rgba($white, 0.2);
+                padding-bottom: rem(10);
+                margin-bottom: rem(10);
+            }
+        }
+
+        &:nth-child(2) {
+            width: rem(390);
+            text-align: right;
+
+            @include bp-lt($desktop) {
+                width: rem(310);
+            }
+
+            @include bp-lt($medium) {
+                width: rem(270);
+            }
+
+            @include bp-lt($mediumPersonnalize) {
+                text-align: center;
+                border-bottom: rem(1) solid rgba($white, 0.2);
+                padding-bottom: rem(10);
+                margin-bottom: rem(10);
+            }
+        }
+
+        &:nth-child(3) {
+            width: rem(280);
+
+            @include bp-lt($desktop) {
+                width: rem(260);
+            }
+
+            @include bp-lt($medium) {
+                width: rem(245);
+            }
+
+            a {
+                [class*="c-fonticon"] {
+                    @include bp-lt($mediumPersonnalize) {
+                        color: $white;
+                    }
+                }
+            }
+        }
+
+        .c-tel {
+            @include bp-lt($desktop) {
+                font-size: rem(24);
+                margin-left: rem(5);
+            }
+
+            @include bp-lt($medium) {
+                font-size: rem(20);
+            }
+        }
+
+        .c-text--small {
+            @include bp-lt($mediumPersonnalize) {
+                color: $white;
+                opacity: 0.7;
+            }
+        }
+    }
+
+    .c-b2b__menu {
+        a {
+            @include bp-lt($mediumPersonnalize) {
+                color: $b2b--blue;
+            }
+        }
+
+        .c-link {
+            &:before {
+                @include bp-lt($mediumPersonnalize) {
+                    color: $white;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,74 @@
+// ========================================= //
+// blocks.mfp
+// ========================================= //
+
+$border: solid rem(1) $grey--light--06;
+
+.c-mfp__addtobasket {
+    max-width: rem(780);
+    background: $white;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+    .c-mfp__thumb {
+        border-right: $border;
+    }
+
+    .c-mfp__footer {
+        border-top: $border;
+    }
+
+    .c-mfp--addbasket__content {
+        padding: rem(30) rem(20);
+
+        .c-title {
+            margin-bottom: rem(14);
+            font-family: $sofiaPro;
+            font-size: rem(24);
+            color: $mainFont;
+            font-weight: 700;
+        }
+
+        .c-info {
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(20);
+            color: $mainFont;
+
+            @include bp-lt($small) {
+                font-size: rem(16);
+            }
+        }
+    }
+}
+
+[class*='o-button__addToCart'] {
+    display: block;
+    width: auto;
+    height: rem(57);
+    padding: 0 rem(20);
+    font-family: $sofiaPro;
+    font-size: rem(16);
+    text-align: center;
+    transition: $ease;
+
+    &[class*='--main'] {
+        color: $white;
+        background-color: $mainBranding;
+
+        &:hover {
+            background-color: $mainBranding--active;
+        }
+    }
+
+    &[class*='--alt'] {
+        color: $subBranding;
+        background-color: $white;
+
+        &:hover {
+            color: $white;
+            background-color: $subBranding;
+        }
+    }
+}

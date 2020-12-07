@@ -1,0 +1,73 @@
+/* reset.css */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+article, aside, dialog, figure, footer, header, hgroup, nav, section {display:block;}
+body {line-height:1.5;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+table, td, th {vertical-align:top;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+
+body
+{
+	color:#a2a2a2;
+	direction:ltr;
+	text-align:left;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	background:#fff;
+}
+
+a
+{
+	color:#c1007a;
+	text-decoration:underline;
+}
+
+.footer
+{
+	padding:0 10px;
+}
+
+.footer a
+{
+	margin-right:20px;
+}
+
+.button, .button2
+{
+	float:left;
+	padding:15px 20px 0;
+	width:243px;
+	height:47px;
+	background:url("../gfx/button.jpg") no-repeat;
+	color:#fff;
+	text-decoration:none;
+	font-weight:bold;
+	outline:none;
+	font-size:12px;
+}
+
+.button2
+{
+	background:url("../gfx/button2.jpg") no-repeat;
+}
+
+.button:hover, .button2:hover
+{
+	text-decoration:underline;
+}
+
+.checkbox
+{
+	background:url("../gfx/checkbox_normal.jpg") no-repeat;
+	padding-left:20px;
+	cursor:pointer;
+}
+
+.checkbox_checked
+{
+	background:url("../gfx/checkbox_checked.jpg") no-repeat;
+}

@@ -1,0 +1,182 @@
+// ========================================= //
+// blocks.box
+// ========================================= //
+
+%box-content {
+    min-height: rem(120);
+    padding: rem(20);
+    color: $subBranding;
+    display: table;
+    width: 100%;
+
+    p,
+    address {
+        display: table-cell;
+        vertical-align: middle;
+        font-family: $fontAlt;
+        font-weight: 300;
+        color: $grey--03;
+        font-size: rem(14);
+        font-style: normal;
+        line-height: rem(28);
+
+        strong {
+            font-family: $fontBody;
+            font-size: rem(20);
+            font-weight: 400;
+            color: $subBranding;
+        }
+
+        a {
+            color: $grey--03;
+            text-decoration: none;
+        }
+
+        .c-icon {
+            margin-bottom: rem(15);
+        }
+    }
+
+    p, td, li {
+        @include bp-lt($small) {
+            font-size: rem(13) !important;
+        }
+    }
+
+    a {
+        color: $mainBranding;
+        text-decoration: underline;
+    }
+}
+
+.c-account {
+    .box-account,
+    .order-info-box {
+        border-top: none;
+        padding: 0;
+        margin-top: 0;
+
+        @include bp-lt($small) {
+            margin-bottom: 0;
+        }
+
+        .box {
+            background: $white;
+            padding: 0;
+            margin: 0 0 rem(20) !important;
+            border-radius: rem(3);
+
+            .box-content {
+                @extend %box-content;
+            }
+        }
+
+        &.box-recent {}
+
+        &.box-info {
+            .box-head {
+                display: none;
+            }
+
+            @include bp-lt($small) {
+                width: 100%;
+            }
+        }
+
+        .data-table,
+        #my-orders-table {
+            margin-top: 0;
+
+            th, td {
+                @include bp-lt($small) {
+                    font-size: rem(13) !important;
+                }
+            }
+        }
+
+        &.box-fidelity-sponsorship {
+            width: 50%;
+            padding-right: rem(10);
+
+            @include bp-lt($small) {
+                width: 100%;
+                padding-right: 0;
+            }
+
+            .box-head {
+                text-align: left !important;
+            }
+
+            .col1-set {
+                background: $white;
+                margin-bottom: rem(20);
+                border-radius: 0 0 rem(3) rem(3);
+                @extend %box-content;
+            }
+        }
+    }
+
+    .addresses-list {
+        .c-box,
+        .box-content {
+            @extend %box-content;
+        }
+
+        .box-content {
+            padding: rem(20);
+            font-size: rem(20);
+            font-family: $fontBody;
+            color: $subBranding;
+            font-weight: 300;
+        }
+
+        .addresses-additional {
+            .c-edit, .c-delete {
+                @include bp-lt($medium) {
+                    width: rem(33);
+                    height: rem(33);
+                }
+
+                &:after {
+                    @include bp-lt($medium) {
+                        width: rem(33);
+                        height: rem(33);
+                        position: relative;
+                        top: rem(-5);
+                    }
+                }
+            }
+
+            .c-address__action {
+                @include bp-lt($medium) {
+                    width: rem(90);
+                }
+            }
+
+            address {
+                > strong {
+                    max-width: calc(100% - 155px);
+                    display: inline-block;
+                }
+            }
+        }
+    }
+
+    .box-subtitle {
+        h3 {
+            @include bp-lt($medium) {
+                padding-left: 0 !important;
+            }
+        }
+    }
+}
+
+.c-account {
+    .c-row {
+        margin-bottom: rem(20);
+    }
+
+    .text-center { text-align: center; }
+    .text-left { text-align: left; }
+    .text-right { text-align: right; }
+}

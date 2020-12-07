@@ -1,0 +1,15 @@
+.home {
+    .col-main {
+        padding-bottom: 4px;
+        margin: 0 (-(rem-calc(14)/2));
+        
+        @include bp-lt($mb-medium){
+            margin: 0;
+        }
+        
+        .columns {
+            padding-left: (rem-calc(14) / 2);
+            padding-right: (rem-calc(14) / 2);
+        }
+    }       
+}

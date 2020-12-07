@@ -1,0 +1,32 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page contenu simple'
+    - var pageClass = ''
+
+append body
+    - var labels = ['Home', 'Lorem', 'Contenu Simple']
+    +c-breadcrumb(labels)
+
+    section.o-section--peugeot
+        .row
+            .columns.medium-12.medium-centered.c-wrapper__header
+                img(src= imgDir + 'c-logo--peugeot.png' alt="Logo Peugeot")
+                h1.c-title Main dans la main avec Peugeot
+        .row
+            .columns.medium-12.large-6.right.c-wrapper__content
+                img.c-img(src=imgDir+'c-img--peugeot.jpg' alt='')
+                div
+                    h2.c-title--page Bienvenue sur le site de monbento®
+                    p.c-text__sofiaPro--light--20 Nourrie par l’envie d’aller toujours plus loin dans l’innovation, monbento est fière d’accueillir dans son actionnariat, depuis juillet 2018, le Groupe familial Peugeot, déjà actif dans l’univers des arts de la table avec sa filiale Peugeot Saveurs SNC experte en moulins à épices et autres instruments du goût.
+                    h3.c-title--page.no--nounderline Bienvenue sur le site de monbento®
+                    .c-wysiwyg: ul
+                        li Goût prononcé pour le design et le savoir-faire français,
+                        li sensibilité à la technologie et l’innovation,
+                        li rayonnement à l’international,
+                        li valorisation de la dimension humaine
+                    p.c-text__sofiaPro--light--20 sont autant de points qui rapprochent Peugeot et monbento.
+                    p.c-text__sofiaPro--light--20 De là est née l’envie d’unir les forces tout en conservant la singularité des deux entités pour avancer ensemble et relever de nouveaux challenges.
+                    a.c-button--mainBranding--arrowRightToRight(href="" alt="La Marque Peugeot Saveurs") La Marque Peugeot Saveurs

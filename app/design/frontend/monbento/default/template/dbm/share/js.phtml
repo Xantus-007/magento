@@ -1,0 +1,30 @@
+<?php 
+$t = Mage::helper('dbm_share');
+?>
+<script type="text/javascript" charset="utf-8">
+//<![CDATA[
+var Globals;
+
+(function($){
+    Globals = Klass.create(true);
+    Globals.BASE_URL = '<?php echo $this->getBaseUrl(); ?>';
+    Globals.SKIN_URL = '<?php echo $this->getSkinUrl(); ?>';
+    Globals.GFX_URL = '<?php echo $this->getSkinUrl('gfx').DS; ?>';
+    Globals.LIKE_URL = '<?php echo Mage::helper('dbm_share')->getAjaxLikeUrl(); ?>'
+    Globals.LIKE_IMAGE_0 = '<?php echo $this->getSkinUrl('images/club/element/like_0.png'); ?>';
+    Globals.LIKE_IMAGE_1 = '<?php echo $this->getSkinUrl('images/club/element/like_1.png'); ?>'
+    Globals.SUBSCRIBE_URL = '<?php echo Mage::helper('dbm_customer')->getAjaxSubscribeUrl(); ?>'
+    Globals.translations = {
+        chooseFile : '<?php echo $t->__('Choose file'); ?>',
+        fileDefault : '<?php echo $t->__('No file selected'); ?>',
+        uploadDisabled : "<?php echo $t->__('Upload not allowed, please upgrade your device') ?>",
+        subscribed : "<?php echo $t->__('Subscribed '); ?>",
+        unsubscribed : "<?php echo $t->__('Unsubscribed ') ?>",
+        subscribe : "<?php echo $t->__('Subscribe '); ?>",
+        unsubscribe : "<?php echo $t->__('Unsubscribe ') ?>"
+    }
+    Globals.LOGGED_IN_CLASS = '<?php echo Dbm_Share_Helper_Data::LOGGED_IN_CLASS ?>'
+})(jQuery);
+
+//]]>
+</script>

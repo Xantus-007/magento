@@ -1,0 +1,244 @@
+.clubReceipe {
+    padding-left:20px;
+    padding-top:20px;
+    padding-bottom:30px;
+}
+
+.clubBack {
+    padding:0px 10px 10px 0px
+}
+
+.bestTitle {
+    padding-top:10px;
+    vertical-align: middle;
+    font-weight:bold;
+    font-family: quicksand-bold;
+    color:#8A1467;
+}
+
+.bestTitle a {
+    color:#8A1467;
+}
+
+.clubReceipe .image {
+    position:relative;
+}
+
+.clubReceipe .image .title {
+    position:absolute;
+    top:0;
+    left: 0;
+    border:none;
+    width:730px;
+    background-color:#FFF;
+    opacity:0.8;
+    padding:20px;
+    font-size:1.6em;
+    display: table;
+    vertical-align:middle;
+    color:#292725;
+}
+
+.clubReceipe .image .likes {
+    text-align:right;
+}
+
+.clubReceipe .image .title  img {
+    vertical-align: -2px;
+    display:inline-block;
+}
+
+.clubReceipe .image .title h1 {
+    display:table-cell;
+    width:90%;
+}
+
+.clubReceipe .informations {
+    display: table;
+    width:100%;
+}
+
+.clubReceipe .informations > * {
+    display:table-cell;
+}
+
+.clubReceipe .miniLike {
+    font-size:1em;
+}
+
+/**
+ * Profile
+ */
+.clubReceipe .informations {
+    margin: 20px 0;
+    display: table;
+    width: 770px;
+}
+
+.clubReceipe .informations * {
+    vertical-align: middle;
+}
+
+.clubReceipe .informations > * {
+    display: table-cell;
+ }
+
+/**
+ * Attributes
+ */
+.clubReceipe .attributes {
+    font-style: italic;
+}
+
+.clubReceipe .attributes > div {
+    display:table;
+    width:100%;
+}
+
+.clubReceipe .attribute {
+    display:table-cell;
+    text-align: center;
+    border-right:1px solid #B0ABAB;
+}
+
+.clubReceipe .attribute.last {
+    border:none;
+}
+.clubReceipe .attribute p {
+    line-height:20px;
+}
+
+.clubReceipe .attribute p img {
+    padding:3px 5px;
+    vertical-align: middle;
+    display: inline;
+}
+
+
+/**
+ * Ingredients
+ */
+ .clubReceipe .receipeContents {
+    width:770px;
+ }
+
+ .clubReceipe .receipeContents > * {
+    display:table;
+    
+ }
+
+.clubReceipe .receipeContents > * {
+    display:table-cell;
+    vertical-align: top;
+}
+
+.clubReceipe .ingredients {
+    width:30%;
+    color:#8A1467;
+    font-family: quicksand;
+    font-style: italic;
+}
+
+.clubReceipe .ingredients .no-point {
+    list-style:none;
+    height: 15px;
+}
+
+.clubReceipe .ingredients p {
+    font-size:2em;
+}
+
+.clubReceipe ul {
+    list-style: disc;
+    margin-left:30px;
+}
+
+.clubReceipe .ingredients span {
+    display:block;
+    clear: both;
+    font-size:0.6em;
+    font-style: italic;
+}
+
+.clubReceipe .contents {
+    line-height: 20px;
+    color:#474747;
+    padding-left:20px;
+    word-wrap: break-word;
+    max-width: 530px;
+}
+
+/* Photo */
+.clubPhoto {
+
+}
+
+.clubPhoto.bestElement {
+    margin-bottom:30px;
+}
+
+.clubPhoto > * {
+    margin:20px 0 20px 30px;
+}
+
+.clubPhoto h2 {
+    /*margin-top:0;*/
+    font-size:2.5em;
+}
+
+.clubPhoto .h2 {
+    margin-left:30px;
+    margin-bottom:0;
+    display:block;
+}
+
+.clubPhoto .line > *
+{
+    display:table-cell;
+}
+
+.clubPhoto .miniProfile {
+    width:200px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.clubPhoto .miniProfile .nickname {
+    border-right:none;
+    border-left: 1px solid #B0ABAB;
+    padding-left:40px;
+}
+
+.clubPhoto .geoloc {
+    width:200px;
+    display:inline-block;
+}
+
+.clubPhoto .miniLike {
+    vertical-align: middle;
+    padding:20px;
+    display:table-cell;
+    white-space: nowrap;
+}
+
+.poupup_club {
+    display:none;
+    border:1px solid #F00;
+}
+
+.popup_club .popup_message {
+    text-align: center;
+}
+
+.popup_club .popup_options {
+    width:100px;
+    display:table;
+    margin:auto;
+}
+
+.popup_club .popup_option{
+    display: table-cell;
+    float: none !important;
+    padding-top: 10px;
+    text-align: center;
+}

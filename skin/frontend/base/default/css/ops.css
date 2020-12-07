@@ -1,0 +1,15 @@
+.ops-payment-paypage #ie_cc {margin-top:20px;}
+.ops-payment-paypage #ie_cc td {text-align:center;}
+
+td .ncol {
+    position: absolute;
+    left: 50%;
+    margin-left: -40px;
+    width: 40px;
+}
+
+.ops-form-list #OPS_CC_BRAND { width:260px; float: none}
+.ops-form-list label { float: none;}
+
+
+

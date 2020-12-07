@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <shipping translate="label" module="shipping">
+            <groups>
+                <inside_site_shipping translate="label">
+                    <label>Gestion de la livraison gratuite</label>
+                    <frontend_type>text</frontend_type>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <rule_id>
+                            <label>ID de la règle du calcul de la livraison gratuite</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </rule_id>
+                    </fields>
+                </inside_site_shipping>
+            </groups>
+        </shipping>
+        <tax translate="label" module="tax">
+            <groups>
+                <classes translate="label">
+                    <fields>
+                        <shipping_based_on translate="label">
+                            <label>Calcul de la taxe pour la livraison basé sur</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_tax_basedon</source_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </shipping_based_on>
+                    </fields>
+                </classes>
+            </groups>
+        </tax>
+        <dbm_utils>
+            <label>Cache</label>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <link_cache>
+                    <label>Gestion du cache CSS</label>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <token>
+                            <label>Token du cache CSS</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </token>
+                    </fields>
+                </link_cache>
+            </groups>
+        </dbm_utils>
+    </sections>
+</config>

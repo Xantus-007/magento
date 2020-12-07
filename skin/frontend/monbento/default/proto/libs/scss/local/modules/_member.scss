@@ -1,0 +1,108 @@
+.c-member__cover {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: right 50%;
+
+    @include bp-lt($small) {
+        height: rem(300);
+        background-position: 50% top;
+    }
+
+    @include bp-lt($mobileM) {
+        height: rem(200);
+    }
+
+    img { display: none; }
+}
+
+.c-member__name {
+    font-family: $sofiaPro;
+    font-size: rem(28);
+    line-height: rem(28);
+    color: $subBranding;
+    font-weight: 700;
+    margin-bottom: rem(17);
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+        line-height: rem(24);
+        margin-bottom: rem(10);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(18);
+        line-height: rem(18);
+    }
+}
+
+.c-member__status {
+    font-family: $sofiaPro;
+    font-size: rem(18);
+    line-height: rem(20);
+    color: $subBranding;
+
+    @include bp-lt($medium) {
+        font-size: rem(16);
+        line-height: rem(16);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(14);
+        line-height: rem(14);
+    }
+
+    & + .c-separator {
+        display: block;
+        width: rem(25);
+        height: rem(4);
+        background: $mainBranding;
+        position: relative;
+        left: rem(-17);
+        margin: rem(35) 0;
+
+        @include bp-lt($medium) {
+            margin: rem(25) 0;
+        }
+    }
+}
+
+.c-member__description {
+    p {
+        font-size: rem(20);
+        line-height: rem(28);
+        font-weight: 300;
+        font-family: $sofiaPro;
+        color: $subBranding;
+        text-align: justify;
+        margin-bottom: 0;
+
+        @include bp-lt($medium) {
+            font-size: rem(16);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(12);
+            line-height: rem(20);
+        }
+    }
+
+    a {
+        color: $mainBranding;
+        text-decoration: underline;
+        transition: $ease;
+        white-space: nowrap;
+
+        &:hover, &:focus {
+            color: $mainBranding--active;
+        }
+    }
+}
+
+.c-ambassador {
+    .c-member__description {
+        p {
+            text-align: left;
+        }
+    }
+}

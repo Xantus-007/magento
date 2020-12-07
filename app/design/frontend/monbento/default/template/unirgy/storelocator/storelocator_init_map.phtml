@@ -1,0 +1,22 @@
+<?php
+$storeid = Mage::app()->getStore()->getId();
+$lng = "0";
+$lat = "0";
+$markerIcon = $this->getSkinUrl('proto/app/assets/media/images/c-icon__markerGmap.png');
+$clusterIcon = $this->getSkinUrl('proto/app/assets/media/images/c-icon__markerGmap--active.png');
+$isMobile = Mage::helper('mobiledetect')->isMobile();
+if ($isMobile){
+	$lng = "0";
+	$lat = "0";
+} else {
+	$lng = "-45.9049020000";
+	$lat = "47.8992460000";
+}
+?>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function(){
+            $('#storelocator-container').storeLocator({'bounceMarker': false, 'slideMap' : false, 'fullMapStart' : true, 'defaultLoc': true, 'defaultLat': '<?php echo $lat; ?>', 'defaultLng' : '<?php echo $lng; ?>', 'markerIcon' : '<?php echo $markerIcon; ?>', 'clusterIcon' : '<?php echo $clusterIcon; ?>', 'isMobile': <?php echo ($isMobile)? 'true': 'false'; ?>});
+        });
+    }(jQuery));
+</script>

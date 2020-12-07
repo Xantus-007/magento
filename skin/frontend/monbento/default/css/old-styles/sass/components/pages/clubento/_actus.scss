@@ -1,0 +1,16 @@
+.blog-post-view.club .col-main {
+    @include bp-lt($mb-medium) {
+        width: 100% !important;
+        padding-left: 20px!important;
+        border: none;
+        padding-top: 0 !important;
+    }
+    @include bp-lt($mb-xmedium) {
+        float: none !important;
+        box-sizing: border-box;
+        width: 100% !important;
+        padding-right: .9375rem !important;
+        padding-left: .9375rem !important;
+        @include clearfix-micro;
+    }
+}

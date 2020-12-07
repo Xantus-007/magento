@@ -1,0 +1,57 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$store = Mage::app()->getStore();
+$storeCode = $store->getCode();
+?>
+<div class="block block-banner">
+    <div class="block-content">
+        <div class="block-title shipp">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('tarifs-livraison-mon-bento.html') ?>">Livraison 48/72h</a></span></strong>
+        </div>
+        <p class="shipping">
+            <?php if ($storeCode == 'fr'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('tarifs-livraison-mon-bento.html') ?>"><b>France métropolitaine:</b><br /> à partir de 4.90 €<br />Frais de port offerts dès 60€ d'achat.<br /><b>Autres pays: </b><span>Cliquez ici</span></a>
+            <?php elseif ($storeCode == 'us_fr'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('tarifs-livraison-mon-bento.html') ?>">$22 aux <b>États-Unis</b><br />Frais de port offerts dès $90 d'achat.</a>
+            <?php endif; ?>
+        </p>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('tarifs-livraison-mon-bento.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/shipping/shipping_' . $storeCode . '.png') ?>" alt="livraison mon bento" width="205" /></a>
+    </div>
+    <div class="block-content">
+        <div class="block-title paiement">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('securite-mon-bento.html') ?>">Paiement sécurisé</a></span></strong>
+        </div>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('securite-mon-bento.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/paiement/paiement_' . $storeCode . '.png') ?>" alt="Paiement sécurisé mon bento" width="205" /></a>
+    </div>
+    <?php if ($storeCode == 'fr'): ?>
+        <div class="block-content block-gift">
+            <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('carte-cadeau-mon-bento.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/gift.png') ?>" alt="carte cadeau monbento" width="210" height="113" /></a>
+        </div>
+        <div class="block-content block-satisfait">
+            <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('politique-retours-mon-bento') ?>"><img src="<?php echo $this->getSkinUrl('images/media/satisfait.jpg') ?>" alt="satisfait ou remboursé" width="205" height="59" /></a>
+        </div>
+    <?php endif; ?>
+</div>

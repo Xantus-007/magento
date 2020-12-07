@@ -1,0 +1,13 @@
+<?php
+
+switch ($_GET['lang']) {
+    case 'fr' :
+        include_once('report.phtml');
+        break;
+    case 'en' :
+        include_once('report-en.phtml');
+        break;
+    default :
+        include_once('report.phtml');
+        break;
+}

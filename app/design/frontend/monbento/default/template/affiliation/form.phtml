@@ -1,0 +1,57 @@
+<div class="page-title">
+  <h2>Proposez des bento sur votre site !</h2>
+</div>
+<p>Vous souhaitez rejoindre le programme d'affiliation de monbento.com ? Nous vous invitons à remplir le formulaire ci-dessous. Nous vous contactons dans les plus brefs délais.</p>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<form action="<?php echo $this->getFormAction(); ?>" id="affiliationForm" method="post">
+  <div class="fieldset">
+    <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+    <ul class="form-list">
+      <li class="fields">
+        <div class="field">
+          <label for="company"><?php echo $this->__('Company') ?> <span class="required">*</span></label>
+          <div class="input-box">
+            <input name="company" id="company" value="" class="required-entry input-text" type="text" />
+          </div>
+        </div>
+      </li>
+      <li class="fields">
+        <div class="field">
+          <label for="sites"><?php echo $this->__('Sites') ?> <span class="required">*</span></label>
+          <div class="input-box">
+            <textarea name="sites" id="sites" class="required-entry input-text"></textarea>
+          </div>
+        </div>
+      </li>
+      <li class="fields">
+        <div class="field">
+          <label for="email"><?php echo $this->__('Contact email') ?> <span class="required">*</span></label>
+          <div class="input-box">
+            <input name="email" id="email" value="" class="required-entry validate-email input-text" type="text" />
+          </div>
+        </div>
+      </li>
+      <li class="wide">
+        <label for="message"><?php echo $this->__('Message') ?></label>
+        <div class="input-box">
+          <textarea name="message" id="message" class="input-text"></textarea>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="buttons-set">
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    <button type="submit" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+  </div>
+</form>
+<script type="text/javascript">
+   var magazineForm = new VarienForm('affiliationForm', true);
+</script>
+<br />
+<br />
+<p><strong>Pour info : </strong></p>
+<ul>
+  <li>Notre programme d'affiliation est proplusé par la solution <img width="120" height="22" src="/media/upload/image/logo_pap__%5B1%5D.jpg" alt="PostAffiliatePro 4 pour Mon Bento"/> </li>
+  <li>Nous envisageons généralement une commission de 10% sur chaque panier attribué à l'affilié. </li>
+  <li>Nous vous fournissons images et argumentaires pour constituer votre annonce commerciale.</li>
+</ul>

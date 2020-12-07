@@ -1,0 +1,34 @@
+.c-ambassador {
+    .c-member__cover {
+        background-position: 50% 50%;
+    }
+}
+
+.c-ambassador__logo {
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width: rem(125);
+    height: rem(126);
+    top: rem(-70);
+    left: rem(205);
+    background: url(#{$img}c-vector__ambassador.svg) no-repeat 50% 50%;
+
+    @include bp-lt($medium) {
+        left: rem(120);
+        width: rem(95);
+        height: rem(96);
+        background-size: contain;
+    }
+
+    @include bp-lt($xmedium) {
+        left: rem(50);
+        top: rem(-40);
+        width: rem(65);
+        height: rem(66);
+    }
+
+    @include bp-lt($small) {
+        left: rem(30);
+    }
+}

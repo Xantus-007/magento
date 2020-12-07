@@ -1,0 +1,112 @@
+.page {
+	.postWrapper {
+		.postContent {
+			.read-more {
+				@include bp-lt ($mb-small) {
+					padding-left: 0;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+	.clubBack {
+		@include bp-lt ($mb-small) {
+			display: none;
+		}
+	}
+
+	.clubElementFormButton {
+		@include bp-lt ($mb-small) {
+			float: none;
+			padding: 0;
+			background: #8B176A;
+			@include border-radius(5px);
+		}
+
+		button {
+			@include bp-lt ($mb-small) {
+				border: none;
+			}
+		}
+	}
+	
+	.club & {
+		.clubListToolbar {
+			@include bp-lt ($mb-small) {
+				padding-left: 15px;
+				font-size: 14px;
+				text-align: center;
+			}
+
+			.perPage,
+			.paginator {
+				@include bp-lt ($mb-small) {
+					float: none;
+				}
+			}
+		}
+
+		#mobile-search-form {
+			@include bp-lt ($mb-small) {
+				display: none !important;
+			}
+		}
+
+		.toplinks {
+			@include bp-lt ($mb-small) {
+				display: none;
+			}
+		}
+	}
+	
+	.nickname {
+		span > img {
+			display: block;
+			@include border-radius(50%);		
+		}
+		.profileMask {		
+			display: none;
+		}
+	}
+
+	.clubWrapped {
+		.part {
+			&.image {
+				&.icon {
+					a > img {
+						display: block;
+						@include border-radius(50%);
+						margin: 0 auto;	
+					}
+					.profileMask {		
+						display: none;
+					}
+				}
+			}
+		}
+	}
+
+	.shareElementList {
+		.description {
+			.nickname {
+				span > img {
+					@include bp-lt ($mb-small) {
+						max-width: 50%;
+					}
+				}
+			}
+		}
+
+		.elementLine {
+			.miniProfile {
+				.stamp {
+					@include bp-lt ($mb-small) {
+						width: 15%;
+						left: 35px;
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <newsladdressimport_adminhtml_newsladdressimport_index>
+        <reference name="content">
+            <block type="newsladdressimport/adminhtml_newsladdressimport" name="newsladdressimport" />
+        </reference>
+    </newsladdressimport_adminhtml_newsladdressimport_index>
+</layout>

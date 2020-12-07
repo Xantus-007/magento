@@ -1,0 +1,137 @@
+.clubComments {
+    
+}
+
+.clubComments .miniProfile {
+    display:table-row;
+}
+
+.clubComments .miniProfile .nickname{
+    width:170px;
+}
+
+.clubComments .miniProfile .abuse {
+    width:100%;
+    text-align: right;
+    padding-right:10px;
+    vertical-align:middle;
+    font-size:0.9em;
+    color:#8A8A97;
+    display:none;
+}
+
+.clubComments .miniProfile .abuse a:hover {
+    text-decoration: underline;
+}
+
+.clubComments .separator {
+    display: block;
+    margin: 10px 0 10px 30px;
+}
+
+.clubComments > .separator {
+    margin-top:0;
+}
+
+.clubComments .clubCommentsHeader{
+    border-top:1px solid #D8D5D5;
+    margin-left:30px;
+    display: table;
+    width: 770px;
+    vertical-align:middle;
+    position: relative;
+}
+
+.clubComments.bestElement {
+    margin:0;
+}
+
+.clubComments .line > *
+{
+    display:table-cell;
+    padding:10px;
+    vertical-align:middle;
+}
+
+.clubComments .commentCount {
+    width: 130px;
+    border-right: 1px solid #D8D5D5;
+    padding: 0;
+}
+
+.clubComments .commentCount img,
+.clubComments .commentShare img{
+    margin: 0 10px;
+    vertical-align:middle;
+    position:relative;
+}
+
+.commentShare div {
+    top:10px;
+    
+    position: absolute;
+    display:none;
+}
+
+.bestElement .commentShare div {
+    top: 20px;
+}
+
+.clubComments .commentLike {
+    width: 50px;
+}
+
+.clubComments .commentAddButton {
+    text-align:right;
+}
+
+.clubComments .commentAddButton a {
+    padding-left:10px;
+}
+
+.clubCommentsHeader .miniLike {
+    text-align: right;
+}
+
+.clubComments .commentContent {
+    font-family: opensans;
+    font-style: italic;
+    color: #474747;
+    font-size:1.3em;
+    padding: 0 0 10px 0;
+}
+
+.clubComments .even {
+    background-color:#FFF;
+}
+
+.clubComments .odd {
+    background:#f6f6f6
+}
+
+.clubComment {
+    padding: 20px 0px 20px 30px;
+}
+
+.clubCommentForm {
+    padding-left:30px;
+}
+
+.clubCommentForm label {
+    display: block;
+    float:none;
+    font-family: opensans;
+    color:#8A1669;
+    font-style: italic;
+    padding:20px 0px;
+    font-size: 1.8em;
+}
+
+.clubCommentForm textarea {
+    font-size:1.2em;
+    font-family: opensans;
+}
+
+.clubCommentForm .submit {
+    margin:10px 0;
+}

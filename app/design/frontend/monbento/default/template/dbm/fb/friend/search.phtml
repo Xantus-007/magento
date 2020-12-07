@@ -1,0 +1,18 @@
+<div class="fbSearchButton">
+    <button>Trouver des amis</button>
+</div>
+<script type="text/javascript">
+
+var fbManager;
+(function($){
+    $('.fbSearchButton').live('click', function(){
+        fbManager = new Club_Fb();
+
+        $(fbManager).bind(fbManager.EVENT_SESSION_READY, function(){
+            document.location.href = '<?php echo $this->getUrl('club/fb/friends');  ?>'
+        })
+
+        fbManager.initSession();
+    })
+})(jQuery);
+</script>

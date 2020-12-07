@@ -1,0 +1,13 @@
+.messages {
+    .success-msg {
+        background: $success;
+    }
+
+    .error-msg {
+        background: $error;
+
+        span {
+            color: $white;
+        }
+    }
+}

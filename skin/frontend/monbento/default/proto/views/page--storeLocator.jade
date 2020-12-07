@@ -1,0 +1,38 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'myAwesomePageTitle'
+    - var pageClass = ''
+
+append body    
+    section.c-storeLocator--gmap.is-asideOpen
+        .c-storeLocator__toggle
+            .o-table
+                .o-table__cell--valignMiddle
+                    i.c-fonticon__icon--cross                    
+        #map_storelocator.c-storeLocator__list
+            .c-storeLocator__item__heading.text-center
+                .c-label Vous recherchez les magazins #[br]à proximité du code postal...
+                .c-form
+                    input(type="text", value="" placeholder="Code postal")
+                    button(type="button")
+                        .o-table: .o-table__cell--valignMiddle: span.c-fonticon__icon--zoom
+
+            .c-storeLocator__item--holder
+                - for (var i = 0; i < 8; i++)
+                    .c-storeLocator__item
+                        .c-item--content
+                            .c-item--count
+                            p
+                                span.c-item--name Printemps Haussman
+                                | 12 rue des Lorem Ipsum
+                                | 63000 Clermont-Ferrand
+                            a(href="") #[i.c-fonticon__icon--phone] 04 73 00 00 00                            
+                            a.c-linkCst--arrow(href=""): span Itinéraire
+
+        #list_storelocator.c-storeLocator__gmapHolder
+            // marker gmap
+            img(src="#{imgDir}c-icon__markerGmap.png", alt="")
+            img(src="#{imgDir}c-icon__markerGmap--active.png", alt="")

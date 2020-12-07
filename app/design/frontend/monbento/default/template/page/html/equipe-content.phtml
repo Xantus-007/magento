@@ -1,0 +1,139 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getChildHtml('breadcrumbs') ?>
+<div class="c-landscape--team">
+    <div class="o-table">
+        <div class="o-table__cell--valignMiddle">
+            <h1><?php echo $this->__('Équipe & Partenaires'); ?></h1>
+        </div>
+    </div>
+</div>
+<section class="o-section--bkgGrey c-section__aboutTeam">
+    <div class="row">
+        <div class="column">
+            <div class="c-title--group">
+                <h2 class="c-main">MB TEAM</h2>
+                <div class="c-separator"><span class="c-fonticon__icon--wave"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="o-section--bkgGrey--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight">
+    <div class="row">
+        <article class="c-item__team">
+            <div class="column js-team__equalizer large-5">
+                <div style="background-image:url(<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--00.jpg'); ?>);" class="c-member__cover"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--00.jpg'); ?>" alt=""></div>
+            </div>
+            <div class="column js-team__equalizer large-5 large-pull-1">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle">
+                        <div class="c-team__member">
+                            <div class="c-member__name">Emilie Creuzieux</div>
+                            <div class="c-member__status"><?php echo $this->__('Co-fondatrice'); ?></div>
+                            <div class="c-separator"></div>
+                            <div class="c-member__description">
+                                <p><?php echo $this->__('C’est pour vivre des expériences extraordinaires que cette passionnée de sports extrêmes a fait le grand saut de l’entreprenariat ! Libre, créative et concernée par le monde qui l’entoure, elle incarne les valeurs de la marque à laquelle elle a donné naissance.'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<section class="o-section--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight">
+    <div class="row">
+        <article class="c-item__team">
+            <div class="column js-team__equalizer large-5 large-push-7">
+                <div style="background-image:url(<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--01.jpg'); ?>);" class="c-member__cover"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-team__member--01.jpg'); ?>" alt=""></div>
+            </div>
+            <div class="column js-team__equalizer large-5 large-pull-6">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle">
+                        <div class="c-team__member">
+                            <div class="c-member__name">Fabien Marret</div>
+                            <div class="c-member__status"><?php echo $this->__('Co-fondateur &amp; designer'); ?></div>
+                            <div class="c-separator"></div>
+                            <div class="c-member__description">
+                                <p><?php echo $this->__('En créant monbento®, il a pu concrétiser son envie première : lancer sa propre collection de produits nomades et instaurer le design comme le fil rouge de toutes les réflexions ! Il la fait vivre au travers de produits novateurs marqués par son empreinte French design, synonyme de simplicité et d’élégance, replaçant toujours l’utilisateur au cœur des préoccupations.'); ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+<?php if(Mage::app()->getStore()->getId() == 1): ?>
+<?php echo $this->getChildHtml('equipe_offres') ?>
+<?php endif; ?>
+<?php echo $this->getChildHtml('ambassadeurs') ?>
+<section class="o-section--bkgGrey--noPaddingBottom c-section__aboutTeam">
+    <div class="row">
+        <div class="column">
+            <div class="c-title--group">
+                <h2 class="c-main"><?php echo $this->__('Ils nous font confiance'); ?></h2>
+                <div class="c-separator"><span class="c-fonticon__icon--wave"></span></div>
+            </div>
+        </div>
+    </div>
+    <div class="row collapse c-mozaic">
+        <div class="column large-8">
+            <div class="row collapse">
+                <div class="column small-6"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--00.jpg'); ?>" alt=""></div>
+                <div class="column small-6"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--01.jpg'); ?>" alt=""></div>
+            </div>
+            <div class="row collapse">
+                <div class="column medium-6"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--03.jpg'); ?>" alt=""></div>
+                <div class="column medium-6">
+                    <img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--04.jpg'); ?>" alt="">
+                    <div class="c-mozaic__block">
+                        <div class="c-mozaic__link">
+                            <div class="c-mozaic__title"><?php echo $this->__('Vous souhaitez distribuer nos produits ?'); ?></div>
+                            <a href="<?php echo $this->helper('monbento_site')->getRetailersUrl(); ?>" class="c-button--transparentNoHover--arrowRightToRight"><?php echo $this->__('Devenir revendeur'); ?></a>
+                        </div>
+                        <img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--05.jpg'); ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column large-4">
+            <div class="row collapse">
+                <div class="column large-12 medium-6 js-mozaic__equalizer"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--02.jpg'); ?>" alt=""></div>
+                <div class="column large-12 medium-6 js-mozaic__equalizer">
+                    <div class="c-mozaic__block">
+                        <div class="c-mozaic__link--white">
+                            <div class="c-mozaic__title"><?php echo $this->__('Trouvez nos produits près de chez vous'); ?></div>
+                            <a href="<?php echo $this->helper('monbento_site')->getRetailShopsUrl(); ?>" class="c-button--transparentNoHover--arrowRightToRight"><?php echo $this->__('Trouver un revendeur'); ?></a>
+                        </div>
+                        <img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__mozaic--06.jpg'); ?>">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

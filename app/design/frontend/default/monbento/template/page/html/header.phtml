@@ -1,0 +1,67 @@
+<?php 
+
+$storeCode = Mage::app()->getStore()->getCode();
+
+?><div id="header-container" class="row small-collapse">
+    
+        <?php if ($this->getIsHomePage()):?>
+        <div class="columns large-2 medium-3">
+            <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getSkinUrl('images/svg/logo.svg') ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a></h1>
+        </div>
+        <?php else:?>
+        <div class="columns large-2 medium-3">    
+            <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getSkinUrl('images/svg/logo.svg') ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+        </div>
+        <?php endif?>
+        <?php echo $this->getChildHtml('store_language'); ?>         
+        
+        <ul id="header-contact" class="hide-for-small-only">
+        <?php if($storeCode == 'fr'): ?>
+            <li class="phone">
+                <strong><?php echo $this->__("04 73 23 72 72"); ?></strong><br />
+                <span><?php echo $this->__("Lundi &gt; Vendredi - 9h&gt;12h / 14h&gt;17h"); ?></span>
+                <span><?php echo $this->__("(prix d'un appel local)"); ?></span>
+            </li>
+        <?php endif; ?>
+            <li class="mail">contact@monbento.com</li>
+        </ul>
+
+        <div class="toplinks">
+            <div class="hide-for-small-only">
+                <?php if($this->helper('customer')->isLoggedIn()) :  ?>
+                <div class="left">
+                                                                    <a href="<?php echo $this->getUrl('customer/account/'); ?>" class="link-customer"><?php echo $this->__('My Account'); ?></a>
+                                <a href="<?php echo $this->getUrl('customer/account/logout/'); ?>" class="link-logout"><?php echo $this->__('Log Out'); ?></a>
+                      </div>
+                <div class="right">
+                             <a href="<?php echo $this->getUrl('sales/order/history/'); ?>" class="ordertracking"><?php echo $this->__('Order tracking'); ?></a>
+                </div>
+                <?php else : ?>
+                <div class="right">
+                    <a href="<?php echo $this->getUrl('customer/account/login'); ?>" id="popup_link_login" class="link-customer"><?php echo $this->__('Log In'); ?></a>
+                    </div>
+                <?php endif; ?>
+                <?php echo $this->getChildHtml('cart_top'); ?> 
+            </div>
+            <?php if(!$this->helper('customer')->isLoggedIn()) :  ?>
+                <?php echo $this->getChildHtml('dbm_country_switcher', false); ?>
+            <?php endif; ?>
+            
+            <div class="header-form-search show-for-large-up"><?php echo $this->getChildHtml('topSearch'); ?></div>
+        </div>
+        <div id="mobile-search-form" class="header-form-search hide-for-large-up"><?php echo $this->getChildHtml('topSearch'); ?></div>
+
+    <?php echo $this->getChildHtml('topNavigation'); ?>
+    <div id="header-link-home" class="show-for-large-up"><a href="<?php echo $this->getUrl('') ?>"><?php echo $this->__('Home'); ?></a></div>
+    <?php echo $this->getChildHtml('newMenu'); ?>
+            
+</div>
+<?php echo $this->getChildHtml('facilelogin'); ?>
+
+<div class="row">
+    <?php echo $this->getChildHtml('topBanner'); ?>
+</div>
+
+<?php echo $this->getChildHtml('hBar'); ?>
+<?php echo $this->getChildHtml('dbm_share.topmenu'); ?>
+<?php echo $this->getChildHtml('dbm_customer.profileHeader'); ?>

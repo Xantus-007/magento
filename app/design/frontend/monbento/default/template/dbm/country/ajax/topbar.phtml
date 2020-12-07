@@ -1,0 +1,24 @@
+<div class="c-languageSwitcher <?php echo $this->getTopbarClass(); ?>">
+    <div class="c-info">
+        <span>
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle"><?php echo $this->getTopBarCountryTextContent(); ?></div>
+            </div>
+        </span>
+        <span>
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle"><?php echo $this->getTopBarLanguageTextContent(); ?></div>
+            </div>
+        </span>
+    </div>
+    <a class="close c-close--text js-close__languageSwitcher">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle"><span><?php echo $this->__('Close'); ?></span><i class="c-fonticon__icon--cross"></i></div>
+        </div>
+    </a>
+    <a class="switch_link c-button--transparentNoHover--arrowRightToRight">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle"><?php echo $this->__('Edit'); ?></div>
+        </div>
+    </a>
+</div>

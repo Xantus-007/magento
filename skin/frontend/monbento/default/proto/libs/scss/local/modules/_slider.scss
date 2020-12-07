@@ -1,0 +1,691 @@
+// ========================================= //
+// slider
+// ========================================= //
+
+.c-slider--pageHeader {
+    position: relative;
+    background: $grey--00;
+    position: relative;
+    padding-top: rem(18);
+    padding-bottom: rem(18);
+    position: relative;
+
+    @include bp-lt($medium) {
+        padding-top: 0;
+    }
+
+    .bx-wrapper {
+        //background: linear-gradient(to bottom, $grey--light--02 40%, $white 100%);
+
+        @include bp-lt($tabletS) {
+            background: $white;
+        }
+    }
+
+    .c-bxslider--pager {
+        position: absolute;
+        width: 100%;
+    }
+
+    .c-pager__item {
+        .c-pager__item--half {
+            &:after {
+                background: $grey--00;
+            }
+        }
+    }
+
+    .slick-dots {
+        width: 100%;
+        display: block;
+        position: absolute;
+        margin: 0;
+        padding: 0 0 rem(10);
+        bottom: 0;
+        left: 0;
+        list-style-type: none;
+        text-align: center;
+
+        li {
+            display: inline-block;
+            margin-left: rem(9);
+            margin-right: rem(9);
+
+            button {
+                position: relative;
+                display: inline-block;
+                width: rem(16);
+                height: rem(16);
+                margin: 0;
+                padding: 0;
+                background: $white;
+                border: solid 1px $grey--regular--01;
+                font-size: 0;
+                border-radius: 50%;
+
+                &:before {
+                    content: '';
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    display: block;
+                    width: rem(10);
+                    height: rem(10);
+                    border-radius: 50%;
+                    background: $subBranding;
+                    transition: $ease;
+                    opacity: 0;
+                    transform: translateX(-50%) translateY(-50%) scale(0) translateZ(0);
+                }
+            }
+
+            &:hover button::before,
+            &.slick-active button:before {
+                opacity: 1;
+                transform: translateX(-50%) translateY(-50%) scale(1) translateZ(0);
+            }
+        }
+    }
+}
+
+@keyframes keyframes(displayBlockToFadeOut) {
+    0% {
+        visibility: visible;
+        opacity: 1;
+    }
+    99.999% {
+        visibility: visible;
+        opacity: 0;
+    }
+    100% {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+// Rajouter slider à initialiser
+.c-slider--pageHeader .js-slider--home {
+    position: relative;
+    overflow: hidden;
+    transition: $ease, transform 0s ease;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: $zindex--hover + 5;
+        width: 100%;
+        height: 100%;
+        display: block;
+        opacity: 1;
+        visibility: visible;
+        transition: $ease;
+    }
+
+    &.is-loaded,
+    &.slick-initialized {
+        height: auto !important;
+        overflow: visible;
+
+        &::after {
+            animation: displayBlockToFadeOut 1s;
+            opacity: 0;
+            visibility: hidden;
+        }
+    }
+
+    &.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        height: 0 !important;
+        transform: scale(0) translateZ(0);
+        transform-origin: top;
+    }
+
+}
+
+.js-fitvids--yt {
+    width: 100%;
+    position: relative;
+    transition: $ease;
+    padding-top: 30px; height: 0; overflow: hidden;
+
+    &:not(.is-loaded) {
+        display: none;
+        transform: scale(0) translateZ(0);
+    }
+
+
+    #js-video--yt__video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0 rem(12);
+    }
+
+    .c-fonticon__icon--cross {
+        width: rem(40);
+        height: rem(40);
+        position: absolute;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        top: 0;
+        right: $gutter;
+        z-index: 10;
+        color: $white;
+        background: none;
+        padding: 0;
+        appearance: none;
+        border: none;
+        outline: none;
+        font-size: rem(20);
+        transition: $ease;
+
+        &:hover, &:active {
+            color: $mainBranding;
+        }
+    }
+}
+
+
+
+.c-slider--pageHeader .js-slider--home {
+    &::after {
+        background-color: $white;
+    }
+
+    &[class*="--product"] {
+        &[class*="--main"] {
+            height: rem(473);
+        }
+        &[class*="--nav"] {
+            height: rem(74);
+        }
+    }
+}
+
+.c-slider--home__item {
+    position: relative;
+
+    .c-content {
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: $zindex--content;
+        max-width: rem(585);
+        width: 100%;
+        height: 100%;
+
+        @include bp-lt($large) {
+            width: 50%;
+        }
+
+        @include bp-lt($small) {
+            width: 100%;
+            max-width: none;
+            height: auto;
+            top: auto;
+            left: 0;
+            bottom: 0;
+            right: auto;
+            padding-left: rem(20);
+            padding-right: rem(20);
+            padding-bottom: rem(20);
+            text-align: center;
+
+            .o-table__cell--valignMiddle {
+                span, div {
+                    display: none;
+                }
+            }
+        }
+
+        .c-txt--00 {
+            margin-bottom: rem(-5);
+            font-family: $sofiaProCond;
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: rem(21);
+            color: $mainBranding;
+
+            @include bp-lt($large) {
+                font-size: 1.3125vw;
+            }
+
+            @include bp-lt($tablet) {
+                font-size: rem(14);
+            }
+        }
+
+        .c-txt--01 {
+            margin-bottom: rem(-15);
+            font-family: $sofiaPro;
+            font-weight: 700;
+            font-size: rem(63);
+            color: $mainFont;
+
+            @include bp-lt($large) {
+                font-size: 3.9375vw;
+                margin-bottom: rem(-1vw);
+            }
+
+            @include bp-lt($tablet) {
+                font-size: rem(25);
+                margin-bottom: rem(-10);
+            }
+        }
+
+        .c-txt--02 {
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(45);
+
+            @include bp-lt($large) {
+                font-size: 2.8125vw;
+            }
+
+            @include bp-lt($tablet) {
+                font-size: rem(18);
+            }
+        }
+
+        .c-txt--03 {
+            margin-right: rem(25);
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(30);
+            color: $mainBranding;
+            text-transform: uppercase;
+
+            @include bp-lt($large) {
+                font-size: 1.875vw;
+            }
+
+            @include bp-lt($tablet) {
+                font-size: rem(18);
+            }
+        }
+
+        .c-txt--04 {
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(30);
+            color: $grey--regular--01;
+            text-transform: uppercase;
+
+            @include bp-lt($large) {
+                font-size: 1.875vw;
+            }
+
+            @include bp-lt($tablet) {
+                font-size: rem(18);
+            }
+        }
+
+        .slide-title-typo-spr {
+            font-family: $sofiaPro;
+            font-weight: 400;
+        }
+
+        .slide-title-typo-spb {
+            font-family: $sofiaPro;
+            font-weight: 700;
+        }
+
+        .slide-title-typo-spbc {
+            font-family: $sofiaProCond;
+            font-weight: 700;
+        }
+
+        .slide-title-typo-spl {
+            font-family: $sofiaPro;
+            font-weight: 300;
+        }
+
+        .slide-title-typo-spel {
+            font-family: $sofiaPro;
+            font-weight: 200;
+        }
+
+        .slide-title-size-huge {
+            font-size: rem(63);
+        }
+
+        .slide-title-size-big {
+            font-size: rem(45);
+        }
+
+        .slide-title-size-normal {
+            font-size: rem(30);
+        }
+
+        .slide-title-size-small {
+            font-size: rem(21);
+        }
+
+        [class*='c-button'] {
+            margin-top: rem(30);
+
+            @include bp-lt($small) {
+                margin-top: 0;
+                margin-left: auto;
+                margin-right: auto;
+                white-space: nowrap;
+            }
+        }
+    }
+
+    .c-thumb {
+        img {
+            @include bp-lt($small) {
+                display: none;
+            }
+        }
+
+        img.c-slider__picture--mobile {
+            @include bp-gt($gt--small) {
+                display: none;
+            }
+
+            @include bp-lt($small) {
+                width: 100%;
+                display: block;
+            }
+        }
+    }
+
+    &[data-video] {
+        .c-content [class*="c-button"] {
+            /* autoprefixer: off */
+            display: -webkit-inline-box;
+            display: -ms-inline-flexbox;
+            display: inline-flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            /* autoprefixer: on */
+            padding-top: rem(10);
+            background-image: none;
+
+
+            &::after {
+                width: rem(18);
+                position: relative;
+                display: block;
+                content: '\EA30';
+                right: rem(-15);
+                transform: translateX(50%);
+                -webkit-transform: translateX(50%);
+                @include animation('moveButton .3s ease 0s infinite alternate');
+                font-family: $iconFont;
+                font-size: rem(16);
+                transition: $ease;
+                -webkit-transition: $ease;
+            }
+
+            &:hover, &:active {
+                &::after {
+                    font-size: rem(18);
+                }
+            }
+        }
+    }
+}
+
+.c-bxslider--pager {
+    padding-top: rem(20);
+    text-align: center;
+
+    position: relative;
+    transform: translateY(-100%);
+
+    @include bp-lt($tablet) {
+        display: none !important;
+    }
+}
+
+$background: $white;
+// Basic layout
+.c-pager__item {
+    // CONFIG
+    $size: 24px;
+    $thickness: 4px;
+    $duration: 7s;
+    $color: $mainBranding;
+
+    position: relative;
+    display: inline-block;
+    height: $size;
+    width: $size;
+    margin-left: rem(5);
+    margin-right: rem(5);
+    overflow: hidden;
+
+    // .c-pager__item--half {
+    //     position: absolute;
+    //     height: $size;
+    //     width: $size/2;
+    //     border-radius: $size/2 0 0 $size/2;
+    //     background: $color;
+
+    //     &:nth-of-type(2) {
+    //         z-index: $zindex--background;
+    //         transform-origin: center right;
+    //         transform: rotate(180deg);
+    //     }
+
+    //     &:before {
+    //         content: '';
+    //         position: absolute;
+    //         top: $thickness;
+    //         left: $thickness;
+    //         height: $size - 2*$thickness;
+    //         width: ($size - 2*$thickness)/2;
+    //         border-radius: ($size - $thickness)/2 0 0 ($size - $thickness)/2;
+    //         background: $background;
+    //     }
+
+    //     &:after {
+    //         content: "";
+    //         position: absolute;
+    //         background: $background;
+    //         height: $size*2;
+    //         width: $size*1.5;
+    //         left: -$size;
+    //         top: -$size/2;
+    //         transform-origin: center right;
+    //     }
+    // }
+
+    .c-pager__link {
+        $side : rem(16);
+
+        position: relative;
+        z-index: $zindex--content;
+        top: rem(4);
+        left: rem(4);
+        display: block;
+        width: $side;
+        height: $side;
+        background: $white;
+        border-radius: 50%;
+        font-size: 0;
+        border: solid rem(1) $grey--regular--01;
+
+        &:before {
+            $side : 10px;
+
+            position: absolute;
+            top: rem(2);
+            left: rem(2);
+            display: block;
+            width: $side;
+            height: $side;
+            content: '';
+            border-radius: 50%;
+            background: $subBranding;
+            transform: scale(0);
+            transition: $bezier;
+        }
+    }
+
+    &:hover , &.active {
+        .c-pager__link:before {
+            transform: scale(1);
+        }
+    }
+
+    &.active {
+        transform-origin: center right;
+        .c-pager__item--half:nth-of-type(1):after {
+            animation: rotateLeftMask $duration infinite linear;
+        }
+        .c-pager__item--half:nth-of-type(2):after {
+            animation: rotateRightMask $duration infinite linear;
+        }
+    }
+}
+
+// pause animation
+.c-slider--pageHeader .c-bxslider--pager.is-paused {
+    .c-pager__item--half:nth-of-type(1):after,
+    .c-pager__item--half:nth-of-type(2):after {
+        animation-play-state: paused;
+    }
+
+}
+
+// Animations
+@keyframes rotateLeftMask {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+@keyframes rotateRightMask {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+    100% {
+        transform: rotate(180deg);
+        visibility: hidden;
+    }
+}
+
+.bx-controls-direction {
+    .bx-prev,
+    .bx-next {
+        $side : rem(57);
+        $side--medium : rem(47);
+        $side--small : rem(37);
+
+        position: absolute;
+        z-index: $zindex--hover;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        width: $side;
+        height: $side;
+        padding: 0;
+        background-color: $white;
+        background-repeat: no-repeat;
+        border: solid rem(2) $grey--light--03;
+        border-radius: 50%;
+        transition: $ease;
+        font-size: 0;
+        opacity: 1;
+        pointer-events: auto;
+
+        @include bp-lt($medium) {
+            width: $side--medium;
+            height: $side--medium;
+        }
+
+        @include bp-lt($small) {
+            width: $side--small;
+            height: $side--small;
+            background-size: 50% 50%;
+        }
+
+        &.disabled {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        &:hover, &:focus, &.is-active {
+            background-color: $grey--light--02;
+        }
+    }
+
+    .bx-prev {
+        left: calc(((100vw - 1200px) / -2) + 14px);
+        background-image: url(#{$img}c-icon__prev.svg);
+        background-position: 48% 50%;
+
+        @include bp-lt($large) {
+            left: rem(-10);
+            transform: translateX(-100%);
+        }
+
+        @include bp-lt($tablet) { left: 0; }
+
+        @include bp-lt($small) {
+            left: rem(5);
+            transform: none;
+        }
+
+        &:hover, &:focus, &.is-active {
+            background-position: 35% 50%;
+        }
+    }
+
+    .bx-next {
+        right: calc(((100vw - 1200px) / -2) + 14px);
+        background-image: url(#{$img}c-icon__next.svg);
+        background-position: 52% 50%;
+
+        @include bp-lt($large) {
+            right: rem(-10);
+            transform: translateX(100%);
+        }
+
+        @include bp-lt($tablet) { right: 0; }
+
+        @include bp-lt($small) {
+            right: rem(5);
+            transform: none;
+        }
+
+        &:hover, &:focus, &.is-active {
+            background-position: 65% 50%;
+        }
+    }
+}
+
+.c-slider--home__item {
+    padding-left: rem(7);
+    padding-right: rem(7);
+
+    @include bp-lt($small) {
+        position: relative;
+        padding-left: rem(12);
+        padding-right: rem(12);
+    }
+}

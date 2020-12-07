@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <mageplaza_betterblog>
+                        <children>
+                            <post_types translate="title" module="dbm_extendbetterblog">
+                                <title>Manage Post types</title>
+                                <sort_order>8</sort_order>
+                            </post_types>
+                        </children>
+                    </mageplaza_betterblog>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+    <menu>
+        <mageplaza_betterblog>
+            <children>
+                <post_types translate="title" module="dbm_extendbetterblog">
+                    <title>Post Types</title>
+                    <action>adminhtml/extendBetterBlog_post_type</action>
+                    <sort_order>8</sort_order>
+                </post_types>
+            </children>
+        </mageplaza_betterblog>
+    </menu>
+</config>

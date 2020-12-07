@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_StockAlert>
+            <version>0.1.0</version>
+        </Dbm_StockAlert>
+    </modules>
+    <global>
+        <models>
+            <dbm_stockalert>
+                <class>Dbm_StockAlert_Model</class>
+            </dbm_stockalert>
+        </models>
+        <events>
+            <cataloginventory_stock_item_save_before>
+                <observers>
+                    <dbm_stockalert_stock_item_save_before>
+                        <type>singleton</type>
+                        <class>dbm_stockalert/observer</class>
+                        <method>defaultNotifyStock</method>
+                    </dbm_stockalert_stock_item_save_before>
+                    <dbm_stockalert_stock_item_save_after>
+                        <type>singleton</type>
+                        <class>dbm_stockalert/observer</class>
+                        <method>lowStockReport</method>
+                    </dbm_stockalert_stock_item_save_after>
+                </observers>
+            </cataloginventory_stock_item_save_before>
+        </events>
+        <template>
+            <email>
+                <dbm_stock_alert_template translate="label" module="Dbm_StockAlert">
+                    <label>Alerte Stock</label>
+                    <file>dbm_stock_alert.html</file>
+                    <type>html</type>
+                </dbm_stock_alert_template>
+            </email>
+        </template>
+        <helpers>
+            <Dbm_StockAlert>
+                <class>Dbm_StockAlert_Helper</class>
+            </Dbm_StockAlert>
+        </helpers>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <stock_alert translate="title">
+                                            <title>DBM Alerte stock</title>
+                                            <sort_order>200</sort_order>
+                                        </stock_alert>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                     </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+</config>

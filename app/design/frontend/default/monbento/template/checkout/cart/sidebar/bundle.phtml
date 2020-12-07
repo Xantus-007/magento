@@ -1,0 +1,35 @@
+<?php $_item = $this->getItem() ?>
+<?php $productId = $_item->getProductId(); ?>
+<?php $product = Mage::getModel('catalog/product')->load($productId); ?>
+<?php if($product->getModulePersonnalisation() == 1): ?>
+        <?php if ($_options = $this->getOptionList()):?> 
+		   <?php $productUrl = $this->getProductUrl().'?'; ?> 
+		   <?php $optionsArray = array(); ?>
+            <?php foreach ($_options as $_option) : ?>
+            <?php if ($_option['type']) : ?>
+            <?php $optionsArray[$_option['type']] = $_option['productId'] ;?>  
+			<?php $productUrl = $productUrl==$this->getProductUrl().'?'?$productUrl:$productUrl.'&' ;?> 
+            <?php $productUrl = $productUrl . 'bundle-option-'. $_option['optionId'].'='. $_option['selectionId'] ;?>            
+            <?php endif; ?>
+            <?php endforeach; ?>
+            <?php echo $imageUrl;?>
+        <?php endif;?>
+<li class="item">
+        <a href="<?php echo $productUrl ?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><img src="<?php echo 
+Mage::getModel('bundle/product_type')->getCustomImage($optionsArray, 35, 35);?>" width="35" height="35" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /></a>
+    <div class="product-details">
+        <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo $this->__('Remove This Product') ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>');" class="btn-remove"><img src="<?php echo $this->getSkinUrl('images/cart-close.png'); ?>" /></a>
+    </div>
+</li>
+<?php else: ?>
+<li class="item">
+    <?php if ($this->hasProductUrl()): ?>
+        <a href="<?php echo $this->getProductUrl()?>" title="<?php echo $this->htmlEscape($this->getProductName()) ?>" class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(35, 35)->setWatermarkSize('30x10'); ?>" width="35" height="35" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /></a>
+    <?php else: ?>
+        <span class="product-image"><img src="<?php echo $this->getProductThumbnail()->resize(35, 35)->setWatermarkSize('30x10'); ?>" width="35" height="35" alt="<?php echo $this->htmlEscape($this->getProductName()) ?>" /></span>
+    <?php endif; ?>
+    <div class="product-details">
+        <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo $this->__('Remove This Product') ?>" onclick="return confirm('<?php echo $this->__('Are you sure you would like to remove this item from the shopping cart?') ?>');" class="btn-remove"><img src="<?php echo $this->getSkinUrl('images/cart-close.png'); ?>" /></a>
+    </div>
+</li>
+<?php endif; ?>

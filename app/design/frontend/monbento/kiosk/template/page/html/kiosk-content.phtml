@@ -1,0 +1,37 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="c-kiosk__content">
+    <div class="c-preventClick"></div>
+    <?php if(!empty(Mage::getStoreConfig('monbento_kiosk/general/url_video'))): ?>
+        <div class="c-kiosk__background__video"><iframe id="ytplayer" type="text/html" width="1024" height="678" src="http://www.youtube.com/embed/<?php echo Mage::getStoreConfig('monbento_kiosk/general/url_video') ?>?autoplay=1&showinfo=0&controls=0&rel=0&modestbranding=1&autohide=1&loop=1" frameborder="0"></iframe></div>
+    <?php else: ?>
+        <div class="c-kiosk__background__image" style="background-image: url(<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/kiosk/' . Mage::getStoreConfig('monbento_kiosk/general/image'), 676, 490, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)) ?>);"></div>
+    <?php endif; ?>
+
+        <a class="c-cta__kiosk__init c-button--mainBranding--arrowRightToRight" href="<?php echo $this->getUrl('catalog/category/view', array('id' => 70)) ?>"><?php echo $this->__('Commencer') ?></a>
+    </div>
+</div>

@@ -1,0 +1,64 @@
+<?php
+/**
+ * Valdecode - Cookie Law Compliance
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the The MIT License (MIT)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.valdecode.com/license/cookielaw/license.txt
+ *
+ * @category    Valdecode
+ * @package     Valdecode_CookieLaw
+ * @copyright   Copyright (c) 2014 Valdecode
+ * @license     http://www.valdecode.com/license/cookielaw/license.txt  The MIT License (MIT)
+ */
+?>
+<?php 
+
+    $_helper = Mage::helper('cookielaw'); 
+    $show = 'default'; //$_helper->getShow();
+?>
+<?php //if(Mage::app()->getStore()->getCode() == 'fr'): ?>
+<div id="v-cookielaw"
+     class="<?php echo $_helper->getType(); ?> <?php echo $_helper->getSkin(); ?> <?php echo ($_helper->getType() == 'v-bar') ? $_helper->getBarPosition() : $_helper->getBoxPosition(); ?>"
+     style="display: none">
+    <div class="v-content row">
+        <div class="v-message">
+   <?php
+                $currentStoreId = Mage::app()->getStore()->getCode();
+                $helper = Mage::helper('monbento_site/data');
+		$us = "";
+		if($currentStoreId ==="us_en") { $us = "/en"; }
+                $urlKey = $us.$helper->getKeyUrlPageCms($currentStoreId);
+                ?>
+            <?php echo ($show == 'default') ? $this->__("Monbento uses cookies for the operation of its website but also for analytical and advertising purposes. By continuing on this site, you accept the use of these cookies. You can manage these settings by clicking on <a target='blank' href='%s'>more information</a>.",$urlKey) : $_helper->getCustomMessage(); ?>
+        </div>
+        <div class="v-actions">
+            <a href="javascript:cookieLawAccept();" class="v-button v-accept">
+                <?php echo ($_helper->getShow() == 'default') ? $this->__("Accept") : $_helper->getCustomAccept(); ?>
+            </a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function cookieLawAccept() {
+        var d = null;
+        if (<?php echo $_helper->getBehaviour(); ?>) {
+            d = new Date();
+            d.setTime(d.getTime() + (<?php echo $_helper->getBehaviour(); ?> * 24 * 60 * 60 * 1000));
+        }
+        Mage.Cookies.set('cookielaw_<?php echo Mage::app()->getStore()->getStoreId(); ?>', '1', d);
+        document.getElementById('v-cookielaw').style.display = 'none';
+    }
+
+    if (!Mage.Cookies.get('cookielaw_<?php echo Mage::app()->getStore()->getStoreId(); ?>')) document.getElementById('v-cookielaw').style.display = '';
+
+    <?php if ($_helper->getAutohide()): ?>
+        setTimeout(function () {
+            cookieLawAccept();
+        }, <?php echo $_helper->getAutohide()*1000; ?>);
+    <?php endif; ?>
+</script>
+<?php //endif; ?>

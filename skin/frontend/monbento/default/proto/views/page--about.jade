@@ -1,0 +1,191 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : À propos'
+    - var pageClass = ''
+    - var menu      = false
+    - var aboutMenu = true
+
+append body
+
+    - var labels = ['Home', 'À propos', 'Monbento']
+    +c-breadcrumb(labels)
+    
+    .c-landscape--monbento
+        .o-table
+            .o-table__cell--valignMiddle
+                h1 monbento
+                
+    section.o-section--bkgGrey
+        .row
+            .column                
+                .c-testimonial--about
+                    .c-title--group
+                        h2.c-main Nos engagements
+                        .c-baseline.c-about__baseline Monbento réinvente le repas nomade pour les amoureux de liberté qui souhaitent...
+
+                    .row
+                        - var titles = ['Cultiver leur différence', 'Simplifier leur quotidien', 'Prendre soin d’eux et de l’environnement']
+                        - var icons = ['c-img__testimonial--01.svg', 'c-img__testimonial--02.svg', 'c-img__testimonial--03.svg']
+                        - var descs = ['Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Romatabant.', 'Ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.', 'Ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant.']
+                        - var quotes = ['Ingenuos advenas plerique nobilium, ut Homerici bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant', 'Illud autem non dubitatur quod cum esset aliquando virtutum omnium domicilium Romatabant', 'Bacarum suavitate Lotophagi, humanitatis multiformibus officiis retentabant']
+
+                        each label, index in titles
+                            .columns.medium-4.c-testimonial--holder
+                                .c-testimonial__item
+                                    .c-title: .o-table: .o-table__cell--valignMiddle #{label}
+                                    .c-content
+                                        .c-icon
+                                            // format image 350x240px
+                                            img(src="#{imgDir}#{icons[index]}", alt="")
+                                        .c-desc.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle--tabletDown #{descs[index]}
+                                        
+                
+    section.o-section--noPaddingLeft--noPaddingBottom--noPaddingRight.c-section__about--quality
+        .row
+            .column
+                .c-title--group
+                    h2.c-main La qualité, le design et la personnalisation #[br]au coeur de la marque            
+        
+        .row.collapse
+            .column.large-4.medium-6
+                .c-item__content--intro--mainBranding--extendToLeft--about
+                    .c-title--medium--pushed L'accent mis sur la qualité
+                    .c-separator
+                    .c-content
+                        ul
+                            li Respect de l'ensemble des #[strong normes alimentaires] internationales
+                            li Produits garantis #[strong sans BPA]
+                            li #[strong Matières plastiques de très haute qualité] : PBT (< Allemagne), Tritan&reg; (< USA) et PP
+                            li #[strong Contrôles qualité] réguliers réalisés par des organismes indépendants (Tuv, SGS...)
+                            li #[strong Extension de garantie] gratuite soit 3 ans de garantie au total
+                            
+                            
+                        .c-reinsurance
+                            .c-reinsurance__icon: span.c-fonticon__icon--umbrella
+                            .c-reinsurance__label Garantie 3 ans
+                            
+    section.c-list__awards
+        .row.js-products__about
+            .column.large-4
+                .o-section.js-awards__equalize            
+                    .c-item__product
+                        .c-thumb                        
+                            a(href=""): img(src="#{imgDir}c-img__product--mboriginal.jpg", alt="")
+                        .js-itemEqualizer
+                            a.c-title(href="") MB Original
+                            .c-baseline--medium 2012            
+                        .c-product__awards        
+                            .c-award: img(src="#{imgDir}c-img__awards--mboriginal.jpg" alt="Reddot design award")                                    
+                    
+            .column.large-4
+                .o-section.js-awards__equalize                    
+                    .c-item__product
+                        .c-thumb                        
+                            a(href=""): img(src="#{imgDir}c-img__product--mbtresor.jpg", alt="")
+                        .js-itemEqualizer
+                            a.c-title(href="") MB Tresor
+                            .c-baseline--medium 2015
+                        .c-product__awards        
+                            .c-award: img(src="#{imgDir}c-img__awards--mbtresor.jpg" alt="Design award")
+                        
+            .column.large-4
+                .c-item__content--intro--mainBranding--extendToRight--about.js-awards__equalize
+                    .o-table
+                        .o-table__cell--valignMiddle
+                            .c-title--medium--pushed Le design #[br]comme clé de voute
+                            .c-separator
+                            .c-content
+                                ul
+                                    li Avec un Co-fondateur (également Directeur Général) designer produit, le design est au centre des décisions
+                                    li Designed in France
+                                    li Plusieurs prix internationaux                            
+                                    
+                                .c-reinsurance
+                                    .c-reinsurance__icon: span.c-fonticon__icon--cock
+                                    .c-reinsurance__label French design
+                            
+    section.c-section__about--customisation
+        .row.collapse            
+            .column.large-8.large-push-4.js-itemEqualizer.c-about__column--customisation 
+            .column.large-4.large-pull-8.js-itemEqualizer
+                .c-item__content--intro--mainBranding--extendToLeft--about
+                    .c-title--medium--pushed Des produits uniques grâce au module de personnalisation
+                    .c-separator
+                    .c-content
+                        p Depuis 2012, il est possible de créer le bento MB Original de ses rêves en seulement quelques clics. Plus de 2 millions de combinaisons de couleurs sont possibles !
+                        a.c-button--transparentNoHover--arrowRightToRight(href="") Créer mon MB Original
+            
+            
+    section.c-section__about--history        
+        .row
+            .column.large-8.medium-10.medium-centered
+                .c-title--group
+                    h2.c-main La petite histoire
+                    .c-separator: i.c-fonticon__icon--wave
+                    
+                .c-history__photo.js-history__equalize
+                    .o-table
+                        .o-table__cell--valignMiddle    
+                            img(src="#{imgDir}c-img__history--emilie.png" alt="Émilie")
+                .c-history__content.js-history__equalize
+                    .o-table
+                        .o-table__cell--valignMiddle    
+                            p Kinésithérapeute de métier, Émilie découvre le bento japonais par hasard. Il lui devient rapidement indispensable au quotidien. Mais malgré sa pertinence avec le train de vie occidental, il reste difficile à trouver en Europe. Face à ce constat, en mars 2009, à tout juste 26 ans, elle s’entoure de deux associés pour créer la société monbento®.
+                            
+    section.o-section--bkgGrey
+        .row
+            .column
+                .c-title--group
+                    h2.c-main monbento en chiffre
+                    .c-baseline.c-about__baseline 00000000000 bentos vendus depuis le lancement de la marque
+                    
+        .row.collapse.c-about__keyFigures
+            .column.medium-7
+                img(src="#{imgDir}c-img__about--keyFigures--left.png" alt="")
+            .column.medium-5
+                img(src="#{imgDir}c-img__about--keyFigures--right.png" alt="")
+                
+    section.o-section 
+        .row
+            .column
+                .c-title--group
+                    h2.c-main Revue de presse
+                    .c-baseline.c-about__baseline Petite sélection des grands médias qui ont parlé de monbento #[br]et de nos produits…
+        
+        - pressTitle = ['Tendance : Le retour de la gamelleau déjeuner', 'Emilie Creuzieux, Bento maniaque jusqu’au soleil levant', 'Tout stocker en beauté !']
+        - pressYear = ['2016', '2016', '2016']
+        - pressSource = ['France 2', 'La Montagne Entreprendre', 'Femmes Actuelles']
+        
+        each title, index in pressTitle
+            .c-press__item(class= index == 0 ? 'is-video' : '') 
+                .row                    
+                    .column.large-4.medium-6(class= index % 2 != 0 ? 'large-push-4 medium-push-2' : 'medium-push-4')
+                        .c-press__content
+                            .c-press__image: img(src="#{imgDir}c-img__press--0#{index}.jpg" alt="")
+                            .c-press__year #{pressYear[index]}
+                            .c-press__source #{pressSource[index]}
+                            a.c-press__title(href="") #{title}
+                
+        .c-press__table            
+            .row
+                .column
+                    .c-title Et aussi ...
+            
+            - countries = ['France', 'Europe', 'USA', 'Asie']
+            - medias = [['Avantages', 'Le Parisien/Aujourd\'hui en France', 'Capital', 'Challenges', 'Régal', 'Grazia'], ['Myself (Allemagne)', 'Men\'s Health (Allemagne)', 'Decor Kitchens and Interiors (Royaume-Uni)'], ['Cosmopolitan', 'Vogue', 'Elle'], ['New York Times', 'Essence', 'Women\'s Health']]    
+            
+            .row.collapse
+                each country, index in countries
+                    .column.medium-3.c-press__tableColumn
+                        .c-press__table--head 
+                            .o-table: .o-table__cell--valignMiddle #{country}
+                        ul.c-press__table--list.js-press__equalize
+                            each media in medias[index]
+                                li #{media}
+                        
+        
+            
+                

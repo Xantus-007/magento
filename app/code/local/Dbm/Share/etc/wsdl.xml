@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+
+            <complexType name="dbmShareConfigEntity">
+                <all>
+                    <element name="currency" type="xsd:string" />
+                    <element name="mask_currency" type="xsd:string" />
+                    <element name="locales" type="typens:associativeArray" />
+                    <element name="customisable_product" type="xsd:int" />
+                    <element name="default_storeview" type="xsd:string" />
+                    <element name="default_locale" type="xsd:string" />
+                    <element name="bundle_background" type="xsd:string" />
+                    <element name="splash_screens" type="typens:associativeArray" />
+                    <element name="home_screens" type="typens:associativeArray" />
+                    <element name="home_buttons_left" type="typens:associativeArray" />
+                    <element name="home_buttons_right" type="typens:associativeArray" />
+                    <element name="customer_status" type="typens:associativeArray" />
+                    <element name="price_labels" type="typens:associativeArray" />
+                    <element name="news_feed" type="xsd:string" />
+                    <element name="videos_page" type="xsd:string" />
+                    <element name="default_category_id" type="xsd:int" />
+                    <element name="popular_category_id" type="xsd:int" />
+                    <element name="time_units" type="typens:associativeArray" />
+                    <element name="checkout_url" type="xsd:string" />
+                    <element name="profile_url" type="xsd:string" />
+                    <element name="register_url" type="xsd:string" />
+                    <element name="fidelity_url" type="xsd:string" />
+                    <element name="sponsorship_url" type="xsd:string" />
+                    <element name="dashboard_url" type="xsd:string" />
+                    <element name="cgv_url" type="xsd:string" />
+                    <element name="cgu_url" type="xsd:string" />
+                    <element name="mentions_url" type="xsd:string" />
+                    <element name="lost_password_url" type="xsd:string" />
+                    <element name="a_propos_url" type="xsd:string" />
+                    <element name="caracteristiques_url" type="xsd:string" />
+                    <element name="aide_clubento_url" type="xsd:string" />
+                    <element name="mentions_url" type="xsd:string" />
+                    <element name="bundle_image_url" type="xsd:string" />
+                    <element name="customer_status_images" type="typens:associativeArray" />
+                    <element name="social_plateforms" type="typens:ArrayOfString" />
+                    <element name="messages" type="typens:dbmShareMessageEntityArray" />
+                </all>
+            </complexType>
+            
+            <!-- Error messages -->
+            <complexType name="dbmShareMessageEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmShareMessageEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+        
+            <complexType name="dbmShareMessageEntity">
+                <all>
+                    <element name="key" type="xsd:string" />
+                    <element name="value" type="typens:associativeArray" />
+                </all>
+            </complexType>
+
+            <!-- Element array definition -->
+            <complexType name="dbmShareElementEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmShareElementEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmShareElementEntity">
+                <all>
+                    <element name="id" type="xsd:string" />
+                    <element name="id_customer" type="xsd:int" />
+                    <element name="type" type="xsd:string" />
+                    <element name="comment_count" type="xsd:int" />
+
+                    <element name="price" type="xsd:int" />
+                    <element name="level" type="xsd:int" />
+
+                    <element name="duration" type="xsd:int" />
+                    <element name="duration_unit" type="xsd:string" />
+                    <element name="cooking_duration" type="xsd:int" />
+                    <element name="cooking_duration_unit" type="xsd:string" />
+                    
+                    <element name="title_fr_fr" type="xsd:string" />
+                    <element name="description_fr_fr" type="xsd:string" />
+                    <element name="ingredients_content_fr_fr" type="xsd:string" />
+                    <element name="ingredients_legend_fr_fr" type="xsd:int" />
+                    
+                    <element name="title_en_gb" type="xsd:string" />
+                    <element name="description_en_gb" type="xsd:string" />
+                    <element name="ingredients_content_en_gb" type="xsd:string" />
+                    <element name="ingredients_legend_en_gb" type="xsd:int" />
+                    
+                    <element name="title_es_es" type="xsd:string" />
+                    <element name="description_es_es" type="xsd:string" />
+                    <element name="ingredients_content_es_es" type="xsd:string" />
+                    <element name="ingredients_legend_es_es" type="xsd:int" />
+                    
+                    <element name="title_pt_pt" type="xsd:string" />
+                    <element name="description_pt_pt" type="xsd:string" />
+                    <element name="ingredients_content_pt_pt" type="xsd:string" />
+                    <element name="ingredients_legend_pt_pt" type="xsd:int" />
+                    
+                    <element name="title_ja_jp" type="xsd:string" />
+                    <element name="description_ja_jp" type="xsd:string" />
+                    <element name="ingredients_content_ja_jp" type="xsd:string" />
+                    <element name="ingredients_legend_ja_jp" type="xsd:int" />
+                    
+                    <element name="like_count" type="xsd:string" />
+                    <element name="photos" type="typens:dbmSharePhotoEntityArray" />
+                    <element name="created_at" type="xsd:string" />
+
+                    <element name="i_liked" type="xsd:boolean" />
+                    <element name="author" type="typens:dbmCustomerEntity" />
+                    <element name="link" type="xsd:string" />
+                </all>
+            </complexType>
+            
+            <!-- Post data -->
+            <complexType name="dbmShareElementPostReceipeDataEntity">
+                <all>
+                    <element name="level" type="xsd:string" />
+                    <element name="price" type="xsd:string" />
+                    <element name="title" type="typens:associativeArray" />
+                    <element name="description" type="typens:associativeArray" />
+                    <element name="ingredients_legend" type="typens:associativeArray" />
+                    <element name="ingredients_content" type="typens:associativeArray" />
+                    <element name="duration" type="xsd:int" />
+                    <element name="duration_unit" type="xsd:int" />
+                    <element name="cooking_duration" type="xsd:int" />
+                    <element name="cooking_duration_unit" type="xsd:int" />
+                    <element name="photos" type="typens:dbmSharePhotoPostEntityArray" />
+                    <element name="categories" type="typens:ArrayOfInt" />
+                </all>
+            </complexType>
+            <complexType name="dbmShareElementPostPhotoDataEntity">
+                <all>
+                    <element name="title" type="typens:associativeArray" />
+                    <element name="photos" type="typens:dbmSharePhotoPostEntityArray" />
+                    <element name="categories" type="typens:ArrayOfInt" />
+                </all>
+            </complexType>
+            
+            <!-- Post photo -->
+            <complexType name="dbmSharePhotoPostEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmSharePhotoPostEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmSharePhotoPostEntity">
+                <all>
+                    <element name="filename" type="xsd:string" />
+                    <element name="data" type="xsd:string" />
+                    <element name="gmaps_label" type="xsd:string" />
+                    <element name="coords" type="typens:dbmMapCoords" minOccurs="0" />
+                </all>
+            </complexType>
+            
+            <!-- Photo array definition -->
+            <complexType name="dbmSharePhotoEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmSharePhotoEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmSharePhotoEntity">
+                <all>
+                    <element name="id" type="xsd:string" />
+                    <element name="url" type="xsd:string" />
+                    <element name="lat" type="xsd:string" />
+                    <element name="lng" type="xsd:string" />
+                    <element name="position" type="xsd:string" />
+                    <element name="thumb_100" type="xsd:string" />
+                </all>
+            </complexType>
+
+            <!-- Category array  definition-->
+            <complexType name="dbmShareCategoryEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmShareCategoryEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmShareCategoryEntity">
+                <all>
+                    <element name="id" type="xsd:string" />
+                    <element name="image" type="xsd:string" /> 
+                    <element name="title_fr_fr" type="xsd:string" />
+                    <element name="title_en_gb" type="xsd:string" />
+                    <element name="title_es_es" type="xsd:string" />
+                    <element name="title_pt_pt" type="xsd:string" />
+                    <element name="title_ja_jp" type="xsd:string" />
+                </all>
+            </complexType>
+            
+            <!-- Comments -->
+            <complexType name="dbmShareCommentEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmShareCommentEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmShareCommentEntity">
+                <all>
+                    <element name="id" type="xsd:int" />
+                    <element name="message" type="xsd:string" />
+                    <element name="created_at" type="xsd:string" />
+                    <element name="customer" type="typens:dbmCustomerEntity" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+    <!-- Global config -->
+    <message name="dbmShareGetConfigRequest" >
+        <part name="sessionId" type="xsd:string" />
+        <part name="locale" type="xsd:string" />
+    </message>
+    <message name="dbmShareGetConfigResponse">
+        <part name="result" type="typens:dbmShareConfigEntity" />
+    </message>
+    
+    <!-- Post an element -->
+    <message name="dbmSharePostReceipeRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="data" type="typens:dbmShareElementPostReceipeDataEntity" />
+    </message>
+    <message name="dbmSharePostReceipeResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    <message name="dbmSharePostPhotoRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="data" type="typens:dbmShareElementPostPhotoDataEntity" />
+    </message>
+    <message name="dbmSharePostPhotoResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <!-- Delete an element -->
+    <message name="dbmShareElementDeleteRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+    </message>
+    <message name="dbmShareElementDeleteResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <!-- Get element by ID -->
+    <message name="dbmShareGetElementByIdRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetElementByIdResponse">
+        <part name="result" type="typens:dbmShareElementEntity" />
+    </message>
+    
+    <!-- Popular element -->
+    <message name="dbmShareGetPopularElementsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetPopularElementsResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <!-- Popular element -->
+    <message name="dbmShareGetLatestElementsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetLatestElementsResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+    
+    <!-- Get followed elements -->
+    <message name="dbmShareGetFollowedElementsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetFollowedElementsResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <!-- Elements for customer -->
+    <message name="dbmShareGetElementsForCustomerRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="customerId" type="xsd:int" />
+        <part name="type" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetElementsForCustomerResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+    
+    <!-- Elements liked by customer -->
+    <message name="dbmShareGetLikedElementsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetLikedElementsResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <!-- Elements for category -->
+    <message name="dbmShareGetElementsForCategoryRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="categoryId" type="xsd:int" />
+        <part name="type" type="xsd:string" />
+        <part name="locales" type="typens:ArrayOfString" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetElementsForCategoryResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <!-- Like Element -->
+    <message name="dbmShareLikeRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+    </message>
+    <message name="dbmShareLikeResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+
+    <!-- Unlike Element -->
+    <message name="dbmShareUnlikeRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+    </message>
+    <message name="dbmShareUnlikeResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+
+    <!-- Category list -->
+    <message name="dbmShareGetCategoryListRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+    </message>
+    <message name="dbmShareGetCategoryListResponse">
+        <part name="result" type="typens:dbmShareCategoryEntityArray" />
+    </message>
+    
+    <!-- Comment element -->
+    <message name="dbmShareCommentRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+        <part name="message" type="xsd:string" />
+    </message>
+    <message name="dbmShareCommentResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <!-- Comments -->
+    <message name="dbmShareGetCommentsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareGetCommentsResponse">
+        <part name="result" type="typens:dbmShareCommentEntityArray" />
+    </message>
+    
+    <!-- Abuse element  -->
+    <message name="dbmShareAbuseElementRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idElement" type="xsd:int" />
+    </message>
+    <message name="dbmShareAbuseElementResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+
+    <!-- Abuse comment -->
+    <message name="dbmShareAbuseCommentRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idComment" type="xsd:int" />
+    </message>
+    <message name="dbmShareAbuseCommentResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+
+    <!-- Search element -->
+    <message name="dbmShareSearchRequest">
+        <part name="sessionId" type="xsd:string"  />
+        <part name="search" type="xsd:string" />
+        <part name="type" type="xsd:string" />
+        <part name="locales" type="typens:ArrayOfString" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmShareSearchResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <message name="dbmShareSearchFromBoundsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="bounds" type="typens:dbmMapBounds" />
+        <part name="type" type="xsd:string" />
+    </message>
+    <message name="dbmShareSearchFromBoundsResponse">
+        <part name="result" type="typens:dbmShareElementEntityArray" />
+    </message>
+
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmShareGetConfig">
+            <documentation>Get global config</documentation>
+            <input message="typens:dbmShareGetConfigRequest" />
+            <output message="typens:dbmShareGetConfigResponse" />
+        </operation>
+        <operation name="dbmSharePostReceipe">
+            <documentation>Post receipe</documentation>
+            <input message="typens:dbmSharePostReceipeRequest" />
+            <output message="typens:dbmSharePostReceipeResponse" />
+        </operation>
+        <operation name="dbmSharePostPhoto">
+            <documentation>Post photo</documentation>
+            <input message="typens:dbmSharePostPhotoRequest" />
+            <output message="typens:dbmSharePostPhotoResponse" />
+        </operation>
+        <operation name="dbmShareElementDelete">
+            <documentation>Delete Element</documentation>
+            <input message="typens:dbmShareElementDeleteRequest" />
+            <output message="typens:dbmShareElementDeleteResponse" />
+        </operation>
+        <operation name="dbmShareGetElementById">
+            <documentation>Get global config</documentation>
+            <input message="typens:dbmShareGetElementByIdRequest" />
+            <output message="typens:dbmShareGetElementByIdResponse" />
+        </operation>
+        <operation name="dbmShareGetPopularElements">
+            <documentation>Get latest popular shared elements</documentation>
+            <input message="typens:dbmShareGetPopularElementsRequest" />
+            <output message="typens:dbmShareGetPopularElementsResponse" />
+        </operation>
+        <operation name="dbmShareGetLatestElements">
+            <documentation>Get latest popular shared elements</documentation>
+            <input message="typens:dbmShareGetLatestElementsRequest" />
+            <output message="typens:dbmShareGetLatestElementsResponse" />
+        </operation>
+        <operation name="dbmShareGetFollowedElements">
+            <documentation>Get latest popular shared elements</documentation>
+            <input message="typens:dbmShareGetFollowedElementsRequest" />
+            <output message="typens:dbmShareGetFollowedElementsResponse" />
+        </operation>
+        <operation name="dbmShareGetElementsForCustomer">
+            <documentation>Gest all shared elements by customer ID</documentation>
+            <input message="typens:dbmShareGetElementsForCustomerRequest" />
+            <output message="typens:dbmShareGetElementsForCustomerResponse" />
+        </operation>
+        <operation name="dbmShareGetLikedElements">
+            <input message="typens:dbmShareGetLikedElementsRequest" />
+            <output message="typens:dbmShareGetLikedElementsResponse" />
+        </operation>
+        <operation name="dbmShareGetElementsForCategory">
+            <input message="typens:dbmShareGetElementsForCategoryRequest" />
+            <output message="typens:dbmShareGetElementsForCategoryResponse" />
+        </operation>
+        <operation name="dbmShareLike">
+            <documentation>Like an element</documentation>
+            <input message="typens:dbmShareLikeRequest" />
+            <output message="typens:dbmShareLikeResponse" />
+        </operation>
+        <operation name="dbmShareUnlike">
+            <documentation>Unlike an element</documentation>
+            <input message="typens:dbmShareUnlikeRequest" />
+            <output message="typens:dbmShareUnlikeResponse" />
+        </operation>
+        <operation name="dbmShareGetCategoryList">
+            <documentation>Get category list</documentation>
+            <input message="typens:dbmShareGetCategoryListRequest" />
+            <output message="typens:dbmShareGetCategoryListResponse" />
+        </operation>
+        <operation name="dbmShareComment">
+            <documentation>Comment an element</documentation>
+            <input message="typens:dbmShareCommentRequest" />
+            <output message="typens:dbmShareCommentResponse" />
+        </operation>
+        <operation name="dbmShareGetComments">
+            <documentation>Get comments for an element</documentation>
+            <input message="typens:dbmShareGetCommentsRequest" />
+            <output message="typens:dbmShareGetCommentsResponse" />
+        </operation>
+        <operation name="dbmShareAbuseElement">
+            <documentation>Send abuse to an element</documentation>
+            <input message="typens:dbmShareAbuseElementRequest" />
+            <output message="typens:dbmShareAbuseElementResponse" />
+        </operation>
+        <operation name="dbmShareAbuseComment">
+            <documentation>Send abuse to an comment</documentation>
+            <input message="typens:dbmShareAbuseCommentRequest" />
+            <output message="typens:dbmShareAbuseCommentResponse" />
+        </operation>
+        <operation name="dbmShareSearch">
+            <documentation>Send abuse to an comment</documentation>
+            <input message="typens:dbmShareSearchRequest" />
+            <output message="typens:dbmShareSearchResponse" />
+        </operation>
+        <operation name="dbmShareSearchFromBounds">
+            <documentation>Send abuse to an comment</documentation>
+            <input message="typens:dbmShareSearchFromBoundsRequest" />
+            <output message="typens:dbmShareSearchFromBoundsResponse" />
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmShareGetConfig">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmSharePostReceipe">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmSharePostPhoto">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareElementDelete">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetElementById">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetPopularElements">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetLatestElements">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetFollowedElements">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetElementsForCustomer">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetLikedElements">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetElementsForCategory">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareLike">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareUnlike">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetCategoryList">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareComment">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareGetComments">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareAbuseElement">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareAbuseComment">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareSearch">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmShareSearchFromBounds">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

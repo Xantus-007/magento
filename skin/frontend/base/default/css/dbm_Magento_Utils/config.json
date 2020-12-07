@@ -1,0 +1,48 @@
+{
+    "bower" : {
+        "libs" : "bower_components",
+        "foundation_styles" : "bower_components/foundation/scss/**",
+        "jquery" : [
+            "bower_components/jquery/dist/jquery.min.js"
+        ]
+    },
+
+    "styles" : {
+        "local_libs" : "libs/scss/local/*.scss",
+        "local_build" : "app/assets/styles/local",
+        "vendor_libs" : "libs/scss/vendor",
+        "vendor_build" : "app/assets/styles/vendor"
+    },
+
+    "views" : {
+        "src" : [
+            "views/*.jade",
+            "!views/_*.jade"
+        ],
+        "tpl" : "views",
+        "build" : "app"
+    },
+
+    "scripts" : {
+        "src" : "app/assets/scripts/local/*.js",
+        "build" : "app/assets/scripts/vendor"
+    },
+
+    "iconfont" : {
+        "src" : "app/assets/media/icons/",
+        "build" : "app/assets/media/fonts/iconfont/",
+        "tpl" : "libs/tpl/",
+        "dist" : "../../media/fonts/iconfont/"
+    },
+
+    "browserslist" : ["> 5%", "last 2 versions", "ie 9"],
+
+    "themeColor" : "#FFFFFF",
+
+    "faviconPath" : {
+        "src" : "app/assets/media/favicon/favicon.png",
+        "dest" : "app/assets/media/favicon"
+    },
+
+    "projectName" : "My Awesome projectName"
+}

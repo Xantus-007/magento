@@ -1,0 +1,113 @@
+.header .links li {
+    position: relative;
+}
+#ajax-top-cart {
+    position: absolute;
+    z-index: 999999;
+    top: 20px;
+    right: 0;
+    width: 300px;
+    padding: 0;
+    margin: 0;
+    border: none;
+}
+
+.header #ajax-top-cart .subtotal {
+    margin: 0;
+    text-align: right;
+    padding: 2px 10px;
+}
+
+.header #ajax-top-cart li {
+    width: 100%;
+    display: block;
+    float: none;
+    overflow: hidden;
+    background: none;
+    padding: 0;
+    border-bottom: 1px solid #fbebd9;
+}
+
+.header #ajax-top-cart li .product-image {
+    display: block;
+    width: 70px;
+    float: left;
+    margin: 9px;
+    border:1px solid #a9a9a9
+}
+
+.header #ajax-top-cart li .product-details {
+    width: 200px;
+    float: right;
+    padding: 10px 10px 10px 0;
+    text-align: left;
+}
+
+.header #ajax-top-cart li .product-details .product-name {
+    margin-bottom: 5px;
+}
+
+.header #ajax-top-cart li .product-details .buttons {
+    font-size: 9px;
+}
+
+.header #ajax-top-cart li .product-details a {
+    color: #1e7ec8;
+}
+
+
+
+#ajax-loader-image {
+	position: absolute;
+	left: 50%;
+	margin-left: -88px;
+	top: 50%;
+	margin-top: -88px;
+	padding: 50px;
+	z-index: 9999;
+    background-color: #000;
+    filter:alpha(opacity=80);
+    -moz-opacity:0.8;
+    -khtml-opacity: 0.8;
+    border-radius: 20px;
+}
+
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    filter:alpha(opacity=50);
+    -moz-opacity:0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+    z-index: 10000;
+}
+
+.header #ajax-top-cart .actions {overflow: hidden; padding: 5px 10px;}
+
+.header #ajax-top-cart .actions .primary {float: left;}
+.header #ajax-top-cart .actions .secondary {float: right;}
+
+.header #ajax-top-cart .actions .button {
+    display: block;
+    height: 19px;
+    border: 1px solid #de5400;
+    background: #f18200;
+    padding: 0 8px;
+    font: bold 12px/19px Arial, Helvetica, sans-serif;
+    text-align: center;
+    white-space: nowrap;
+    color: #fff;
+}
+
+.touch #ajax-top-cart {display: none !important;}
+
+@media screen and (max-width: 1000px){
+	#ajax-top-cart:before {right: 10px;}
+}
+@media screen and (max-width: 767px){
+	#ajax-top-cart {display: none !important;}
+}

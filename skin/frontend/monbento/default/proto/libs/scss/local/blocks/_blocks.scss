@@ -1,0 +1,94 @@
+// ========================================= //
+// blocks
+// ========================================= //
+
+.c-content__aside {
+    padding-left: 3.75vw;
+    padding-right: 3.75vw;
+
+    @include bp-lt($small) {
+        padding-left: rem(40);
+        padding-right: rem(40);
+    }
+
+    .c-separator {
+        position: relative;
+        left: rem(-30);
+        font-size: rem(70);
+        line-height: rem(20);
+
+        @include bp-lt($medium) {
+            left: rem(-20);
+            font-size: rem(50);
+            line-height: rem(15);
+        }
+
+        @include bp-lt($small) {
+            left: rem(-10);
+        }
+    }
+}
+
+.c-breadcrumb + .c-title__page {
+    padding-top: 0;
+}
+
+.c-form__login {
+    padding-left: rem(70);
+    padding-right: rem(70);
+
+    @include bp-lt($desktop) {
+        padding-left: rem(40);
+        padding-right: rem(40);
+    }
+
+    @include bp-lt($mobileL) {
+        padding-left: rem(14);
+        padding-right: rem(14);
+    }
+
+    .c-checkbox--inline {
+        margin-bottom: rem(14);
+    }
+
+    $border : solid rem(1) $grey--light--06;
+    &.has-seperator {
+        position: relative;
+        border-right: $border;
+
+        @include bp-lt($tablet) {
+            padding-bottom: rem(35);
+            border-right: none;
+            border-bottom: $border;
+        }
+
+        .c-separator {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) translatex(50%);
+            width: rem(41);
+            height: rem(41);
+            padding-top: rem(8);
+            background: $grey--light--06;
+            border-radius: 50%;
+            text-align: center;
+            font-family: $sofiaPro;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $white;
+
+            @include bp-lt($tablet) {
+                right: initial;
+                left: 50%;
+                top: 100%;
+                transform: translateY(-50%) translatex(-50%);
+            }
+        }
+    }
+
+    [class*='c-button'][class*='--facebook'] {
+        width: 100%;
+        max-width: 100%;
+    }
+}

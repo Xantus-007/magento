@@ -1,0 +1,21 @@
+<?php
+$storeCode = Mage::app()->getStore()->getCode();
+?><div class="block block-banner">
+    <div class="block-content">
+        <div class="block-title">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('spedizione') ?>">Di consegna: 4/7 giorni</a></span></strong>
+        </div>
+        <p class="shipping en"><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('spedizione') ?>"><strong>Italia: </strong>9.05 €.<br />Spedizione gratuita oltre 110 €.<br />
+                <strong>Altre destinazioni: </strong><span>Clicca qui</span></a></p>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('spedizione') ?>"><img src="<?php echo $this->getSkinUrl('images/media/shipping/shipping_' . $storeCode . '.png') ?>" alt="" width="205" /></a>
+    </div>
+    <div class="block-content">
+        <div class="block-title paiement">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('pagamento-sicuro') ?>">Pagamento sicuro</a></span></strong>
+        </div>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('pagamento-sicuro') ?>"><img src="<?php echo $this->getSkinUrl('images/media/paiement/paiement_' . $storeCode . '.png') ?>" alt="Pagamento sicuro" width="205" /></a>
+    </div>
+    <div class="block-content block-gift">
+        <img src="<?php echo $this->getSkinUrl('images/media/it/gift.png') ?>" alt="" width="210" height="113" />
+    </div>
+</div>

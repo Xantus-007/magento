@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info>
+    <product>Multi-Location Inventory</product>
+    <product_id>100</product_id>
+    <category>Aitoc</category>
+    <package>Aitoc_Aitquantitymanager</package>
+    <version>2.1.9</version>
+    <platform>community</platform>
+    <license>EBR5kWF9n2SX6a9ZiEug4hNJ2bkUly0f6aLFfKrYjH</license>
+    <copyright>Copyright (c) 2013 AITOC, Inc. (http://www.aitoc.com)</copyright>
+</info>
+<!--
+/**
+ * Multi-Location Inventory
+ *
+ * @category:    Aitoc
+ * @package:     Aitoc_Aitquantitymanager
+ * @version      2.1.9
+ * @license:     EBR5kWF9n2SX6a9ZiEug4hNJ2bkUly0f6aLFfKrYjH
+ * @copyright:   Copyright (c) 2013 AITOC, Inc. (http://www.aitoc.com)
+ */
+-->

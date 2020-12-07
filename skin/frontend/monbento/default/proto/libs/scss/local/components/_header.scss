@@ -1,0 +1,33 @@
+// ========================================= //
+// header
+// ========================================= //
+
+.o-header {
+    position: relative;
+    z-index: 350;
+
+    .sticky-wrapper {
+        height: rem(140) !important;
+
+        @include bp-lt($medium) {
+            height: rem(84) !important;
+        }
+
+        @include bp-lt($tabletS) {
+            height: $o-header--subNav--height !important;
+        }
+    }
+}
+
+.checkout-cart-index,
+.has-menu__collapse {
+    .o-header {
+        .sticky-wrapper {
+            height: rem(84) !important;
+
+            @include bp-lt($tabletS) {
+                height: $o-header--subNav--height !important;
+            }
+        }
+    }
+}

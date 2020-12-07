@@ -1,0 +1,52 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : add to cart'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    h1.c-title--page: .row: .columns Ajouter au panier
+
+    section.o-section
+        .row
+            .columns.text-center
+                a.c-button--mainBranding--arrowRightToRight.dev-openComparator(href="#c-magnificpopup__addtobasket"): .o-table: .o-table__cell--valignMiddle Ajouter au panier
+
+                #c-magnificpopup__addtobasket.c-mfp__addtobasket.zoom-anim-dialog.mfp-hide
+                    .row
+                        .columns.medium-5.c-mfp__thumb.text-center
+                            // format 320x320px
+                            img(src="#{imgDir}c-img__product--320-320__bento.jpg", alt="")
+                        .columns.medium-7.c-mfp__content
+                            .c-mfp--addbasket__content
+                                .c-title: +lipsum(2, 'words')
+                                .c-decli
+                                    strong Couleur :
+                                    +lipsum(1, 'words')
+                                .c-decli
+                                    strong Capacité :
+                                    +lipsum(1, 'words')
+                                .c-decli
+                                    strong État :
+                                    +lipsum(1, 'words')
+                                .c-info Ce produit à bien été ajouté à votre panier
+
+                    .c-mfp__footer
+                        .row.collapse
+                            .columns.medium-6: a.c-button--white--arrowRightToRight--noRadius.js-closeMfp(href=""): .o-table: .o-table__cell--valignMiddle Poursuivre mes achats
+                            .columns.medium-6: input.c-button--mainBranding--arrowRightToRight--noRadius(type='submit', value="Accèder au panier")
+
+append scripts
+    script.
+        (function($){
+            $(document).ready(function(){
+                $('.dev-openComparator').magnificPopup({
+                    type: 'inline',
+                    preloader: false
+                });
+            });
+        }(jQuery));

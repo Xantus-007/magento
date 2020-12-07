@@ -1,0 +1,433 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <share_default>
+        <reference name="root">
+            <action method="setTemplate"><template>page/2columns-left.phtml</template></action>
+            <action method="setBodyClass"><className>club</className></action>
+
+            <remove name="catalog.topnav" />
+            <remove name="left.permanent.callout" />
+            <remove name="breadcrumbs" />
+        </reference>
+
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+            
+            <action method="addJs"><script>uniform/jquery.uniform.js</script></action>
+            
+            <action method="addItem"><type>skin_js</type><name>js/club/utils/klass.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/club.class.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/subscribe.class.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/like.class.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/fb.class.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/timer.class.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/class/map.class.js</name></action>
+            
+
+            <action method="addItem"><type>skin_js</type><name>js/club/like.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/list.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/form.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/club/subscribe.js</name></action>
+            
+            <action method="setCompliance"><compliance>9</compliance></action>
+        </reference>
+
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+        
+        <reference name="content">
+            <block type="core/template" name="dbm_share.js_data" template="dbm/share/js.phtml" />
+        </reference>
+    </share_default>
+    
+    <!-- Profile pages -->
+    <dbm_share_public_index_default>
+        <reference name="header">
+            <block type="dbm_customer/profile_header" name="dbm_customer.profileHeader" template="dbm/customer/profile/header.phtml" />
+        </reference>
+    </dbm_share_public_index_default>
+
+    <!-- Club home -->
+    <dbm_share_public_index_index>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.list" type="dbm_share/list_latest" template="dbm/share/list.phtml">
+                <action method="setIsMixed"><is_mixed>1</is_mixed></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_index>
+
+    <!-- pepites -->
+    <dbm_share_public_index_pepites>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block type="auguria_sponsorship/customer_account_pointsDetail" name="accumulated_customer_pointsdetail" template="auguria/sponsorship/customer/account/accumulatedpointsdetail.phtml">
+                <action method="setIsMixed"><is_mixed>1</is_mixed></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_pepites>
+
+
+    <dbm_share_public_index_pepites_override>
+        <reference name="head">
+            <action method="addJs">
+                <link>auguria/sponsorship/table_orderer.js</link>
+            </action>
+        </reference>
+        
+        <remove name="customer_account_navigation" />
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+    </dbm_share_public_index_pepites_override>
+
+    <!-- List of following-->
+    <dbm_share_public_index_subscriptions>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+
+        <reference name="content">
+            <block name="dbm_customer.search_toolbar" type="dbm_customer/subscriptions_toolbar" template="dbm/customer/subscriptions/toolbar.phtml">
+                <block name="dbm_fb.friend_search" type="core/template" template="dbm/fb/friend/search.phtml" />
+            </block>
+            <block name="dbm_customer.list" type="dbm_customer/subscriptions_list" template="dbm/customer/subscriptions/list.phtml">
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_subscriptions>
+
+    <!-- List of followers -->
+    <dbm_share_public_index_subscribers>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+
+        <reference name="content">
+            <block name="dbm_customer.search_toolbar" type="dbm_customer/subscriptions_toolbar" template="dbm/customer/subscriptions/toolbar.phtml" />
+            <block name="dbm_customer.list" type="dbm_customer/subscribers_list" template="dbm/customer/subscriptions/list.phtml">
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_subscribers>
+
+    <!-- List of FB friends-->
+    <dbm_share_public_fb_friends>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+
+        <reference name="content">
+            <block name="dbm_fb.friends_list" type="dbm_fb/subscriptions_list" template="dbm/customer/subscriptions/list.phtml">
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_fb_friends>
+
+    <!-- List of liked elements -->
+    <dbm_share_public_index_liked>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+
+        <reference name="content">
+            <block name="dbm_customer.list" type="dbm_share/list_liked" template="dbm/share/list.phtml">
+                <action method="setIsMixed"><is_mixed>1</is_mixed></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_liked>
+
+    <!-- List of my photos -->
+    <dbm_share_public_index_photos>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.map" type="dbm_share/element_map" template="dbm/common/map.phtml">
+                <action method="setAjaxUrl"><url>club/map/search_my_elements/type/photo</url></action>
+            </block>
+            <block name="dbm_share.list" type="dbm_share/list_myelements" template="dbm/share/list.phtml">
+                <action method="setElementType"><type>photo</type></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_photos>
+
+    <!-- List of my recipes -->
+    <dbm_share_public_index_recipes>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.list" type="dbm_share/list_myelements" template="dbm/share/list.phtml">
+                <action method="setElementType"><type>receipe</type></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_recipes>
+
+    <!-- Detail page -->
+    <dbm_share_public_index_detail>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+    </dbm_share_public_index_detail>
+
+    <!-- Detail page receipe -->
+    <dbm_share_detail_receipe>
+        <remove name="dbm_customer.profileHeader" />
+        <remove name="dbm_share.menu_main" />
+        
+        <reference name="left">
+            <block name="dbm_share.menu_elements" type="dbm_share/menu_elements" template="dbm/share/menu/main.phtml">
+                <action method="setElementType"><type>receipe</type></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.detail_receipe" type="dbm_share/detail_receipe" template="dbm/share/detail/receipe.phtml" />
+            <block name="dbm_share.comments" type="dbm_share/comments" template="dbm/share/comments.phtml" />
+        </reference>
+    </dbm_share_detail_receipe>
+
+    <!-- Detail page photo -->
+    <dbm_share_detail_photo>
+        <remove name="dbm_customer.profileHeader" />
+        <remove name="dbm_share.menu_main" />
+        
+        <reference name="left">
+            <block name="dbm_share.menu_elements" type="dbm_share/menu_elements" template="dbm/share/menu/main.phtml">
+                <action method="setElementType"><type>photo</type></action>
+            </block>
+        </reference>
+        
+        <reference name="content">
+            <block name="dbm_share.form_photo" type="core/template" template="dbm/share/form/element.phtml">
+                <action method="setButtonLabel"><label>Add a photo</label></action>
+                <action method="setElementType"><type>photo</type></action>
+            </block>
+            <block name="dbm_share.detail_photo" type="dbm_share/detail_photo" template="dbm/share/detail/photo.phtml" />
+            <block name="dbm_share.comments" type="dbm_share/comments" template="dbm/share/comments.phtml" />
+        </reference>
+    </dbm_share_detail_photo>
+    
+    <!-- PHOTOS -->
+    <!-- Photo list -->
+    <dbm_share_public_photos_index>
+        <reference name="left">
+            <block name="dbm_share.menu_elements" type="dbm_share/menu_elements" template="dbm/share/menu/main.phtml">
+                <action method="setElementType"><type>photo</type></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.form_photo" type="core/template" template="dbm/share/form/element.phtml">
+                <action method="setButtonLabel"><label>Add a photo</label></action>
+                <action method="setElementType"><type>photo</type></action>
+            </block>
+            <block name="dbm_share.best_element" type="dbm_share/list_header_best" template="dbm/share/detail/photo.phtml">
+                <action method="setElementType"><type>photo</type></action>
+                <action method="setDisplayBest"><display>1</display></action>
+            </block>
+            <block name="dbm_share.list" type="dbm_share/list_popular" template="dbm/share/list.phtml">
+                <action method="setElementType"><type>photo</type></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_photos_index>
+
+    <!-- Receipe list -->
+    <dbm_share_public_recipes_index>
+        <reference name="left">
+            <block name="dbm_share.menu_elements" type="dbm_share/menu_elements" template="dbm/share/menu/main.phtml">
+                <action method="setElementType"><type>receipe</type></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.form_receipe" type="core/template" template="dbm/share/form/element.phtml">
+                <action method="setButtonLabel"><label>Add a recipe</label></action>
+                <action method="setElementType"><type>receipe</type></action>
+            </block>
+            <block name="dbm_share.best_element" type="dbm_share/list_header_best" template="dbm/share/detail/receipe.phtml">
+                <action method="setElementType"><type>receipe</type></action>
+                <action method="setDisplayBest"><display>1</display></action>
+            </block>
+            <block name="dbm_share.searchForm" type="core/template" template="dbm/common/filter-search.phtml" />
+            <block name="dbm_share.list" type="dbm_share/list_popular" template="dbm/share/list.phtml">
+                <action method="setElementType"><type>receipe</type></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_recipes_index>
+
+    <!-- Other profile home -->    
+    <dbm_share_public_index_profile>
+        <reference name="left">
+            <block name="dbm_share.menu_main" type="dbm_share/menu_main" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.subscribe_button" type="dbm_share/form_subscribe" template="dbm/share/form/subscribe.phtml" />
+            <block name="dbm_share.list" type="dbm_share/list_profile" template="dbm/share/list.phtml">
+                <action method="setIsMixed"><is_mixed>1</is_mixed></action>
+                <block name="dbm_share.list_toolbar" type="dbm_share/list_toolbar" template="dbm/common/toolbar.phtml" />
+            </block>
+        </reference>
+    </dbm_share_public_index_profile>
+    
+    <dbm_share_public_index_map_photo>
+        <reference name="left">
+            <block name="dbm_share.menu_elements" type="dbm_share/menu_elements" template="dbm/share/menu/main.phtml">
+                <action method="setElementType"><type>photo</type></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block name="dbm_share.map" type="dbm_share/element_map" template="dbm/common/map.phtml">
+                <action method="setAjaxUrl"><url>club/map/search_element/type/photo</url></action>
+            </block>
+        </reference>
+    </dbm_share_public_index_map_photo>
+
+    <!-- News -->
+    <dbm_share_public_news_default>
+        <reference name="left">
+            <block name="dbm_share.menu_news" type="dbm_share/menu_news" template="dbm/share/menu/main.phtml" />
+        </reference>
+        <reference name="content">
+            <block type="blog/blog" name="blog" template="aw_blog/blog.phtml"/>
+        </reference>
+
+    </dbm_share_public_news_default>
+
+    <dbm_share_public_videos_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block name="dbm_share.page" template="dbm/common/page.phtml" type="dbm_share/page_block">
+                <action method="setPageId"><page_id>97</page_id></action>
+            </block>
+        </reference>
+    </dbm_share_public_videos_index>
+    <blog_post_view>
+        <remove name="right.blog.menu" />
+        <remove name="breadcrumbs" />
+        
+        <reference name="root">
+            <action method="addBodyClass"><className>club</className></action>
+            <action method="addBodyClass"><className>club-blog</className></action>
+        </reference>
+        
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/blog.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+        
+        <reference name="right">
+            <block name="dbm_share.menu_news" type="dbm_share/menu_news" template="dbm/share/menu/main.phtml" />
+        </reference>
+    </blog_post_view>
+    <blog_index_index>
+        <remove name="right.blog.menu" />
+        <remove name="breadcrumbs" />
+        
+        <reference name="root">
+            <action method="addBodyClass"><className>club</className></action>
+            <action method="addBodyClass"><className>club-blog</className></action>
+        </reference>
+        
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/blog.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+        
+        <reference name="right">
+            <block name="dbm_share.menu_news" type="dbm_share/menu_news" template="dbm/share/menu/main.phtml" />
+        </reference>
+    </blog_index_index>
+    
+    <blog_cat_view>
+        <remove name="right.blog.menu" />
+        <remove name="breadcrumbs" />
+        
+        <reference name="root">
+            <action method="addBodyClass"><className>club</className></action>
+            <action method="addBodyClass"><className>club-blog</className></action>
+        </reference>
+        
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/blog.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+        
+        <reference name="right">
+            <block name="dbm_share.menu_news" type="dbm_share/menu_news" template="dbm/share/menu/main.phtml" />
+        </reference>
+    </blog_cat_view>
+</layout>

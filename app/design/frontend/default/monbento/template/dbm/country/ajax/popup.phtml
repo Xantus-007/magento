@@ -1,0 +1,150 @@
+<div class="dbm_country_switcher overlay"></div>
+<div class="dbm_country_switcher popup" style="<?php if($this->getPopupBackground() != false): ?>background-image: url(<?php echo $this->getPopupBackground(); ?>);<?php endif;?>">
+    <div class="close">
+        <a href="javascript:void(0);"><?php echo $this->__('Close');?>X</a>
+    </div>
+    <div class="country form-item">
+        <span><?php echo $this->__('Delivery country'); ?></span>
+        <select id="dbm_country_switch_country" class="noUniform">
+            <?php foreach ($this->getAvailableCountries() as $key => $value): ?>
+                <option value="<?php echo $value['value']; ?>"><?php echo $value['label']; ?></option>
+            <?php endforeach;?>
+        </select>
+    </div>
+    <div class="language form-item">
+        <span><?php echo $this->__('Language'); ?></span>
+        <select id="dbm_country_switch_language" class="noUniform">
+            <option value="null">-- <?php echo $this->__('Select a language');?> --</option>
+        </select>
+    </div>
+    <div class="submit">
+        <a href="javascript:void(0)" class="notavailable"><?php echo $this->__('Country not found');?> ?</a>
+        <a href="javascript:void(0);" class="button language-switcher">OK</a>
+    </div>
+    <div class="notice">
+        <p><?php echo $this->__('Thank you note that your shopping cart will be emptied when you change country, and you will have to restart'); ?></p>
+    </div>
+    <div class="notavailable--content">
+        <?php echo $this->getNotFoundPopup();?>
+        <div class="footer">
+            <a href="javascript:void(0);" class="back"><?php echo $this->__('Back'); ?></a>
+            <a href="javascript:void(0);" class="quit"><?php echo $this->__('Visite website'); ?></a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+var countryConfig = JSON.parse('<?php echo $this->getCountryConfigJson(); ?>');
+var langUrls = {};
+var itemByList = 25;
+(function($){
+    var $selects = $('.dbm_country_switcher.popup .form-item select');
+    
+    $(document).ready(function(){
+        $selects.easyDropDown({
+            cutOff: itemByList
+        });
+    });
+    
+    $('.dbm_country_switcher.popup .country.form-item .dropdown.open div').live('mousemove', function(e){
+        var $this = $(this);
+        var $ul = $this.find('ul');
+        var pos = e.pageY - $this.offset().top-20;
+        var canvas = parseNumber($this.css('height'));
+        var height = $ul.get(0).scrollHeight - canvas + 40;
+        
+        var newScroll = (pos * height) / canvas;
+        
+        $ul.css('top', -newScroll);
+    });
+    
+    $('.dbm_country_switcher.popup .country.form-item .dropdown div li').live('click',function(){
+        var _select = $('#dbm_country_switch_country');
+        var _li = $(this)[0]; 
+        _select.find('option').each(function(){            
+            if($(this)[0].innerHTML == _li.innerHTML){
+                $(this).attr('selected', 'selected');
+            }
+        });
+        _select.change();
+    });
+    
+    $('#dbm_country_switch_country').change(function(){
+        var $this = $(this);
+        var val = $this.val();
+        
+        if(countryConfig[val])
+        {
+            var config = countryConfig[val];
+            
+            $('#dbm_country_switch_language .ajax-options').each(function(){
+                $(this).remove();
+            });
+            
+            var _baseSelect = '<select id="dbm_country_switch_language"><option value="null">-- <?php echo $this->__('Select a language');?> --</option></select>';
+            $('.dbm_country_switcher.popup .language.form-item .dropdown').remove();
+            $('.dbm_country_switcher.popup .language.form-item').append(_baseSelect);
+
+            var i = 0;
+            $.each(config.languages, function(key, langConfig){
+                var selected = '';
+
+                if(i == 0)
+                {
+                    selected = 'selected="selected"';
+                }
+
+                var html = '<option class="ajax-options" '+selected+' value="' + langConfig.url + '">' + langConfig.language + '</option>';
+                $('#dbm_country_switch_language').append(html);
+                i++;
+            });
+            var $selects = $('.dbm_country_switcher.popup .language.form-item select');
+            $selects.easyDropDown({
+                cutOff: itemByList
+            });
+        }
+    });   
+    
+    $('.dbm_country_switcher.popup .submit .notavailable').live('click', function(){
+        $('.dbm_country_switcher.popup .notavailable--content').slideDown('slow', function() {
+            
+        });
+    });
+    
+    $('.dbm_country_switcher.popup .footer .back').live('click', function(){
+        $('.dbm_country_switcher.popup .notavailable--content').slideUp('slow', function() {
+            
+        });
+    });
+    $('.dbm_country_switcher.popup .footer .quit').live('click', function(){
+        $('.dbm_country_switcher.popup .close a').click();
+        $('.dbm_country_switcher_topbar .close a').click();
+    });
+    
+    $('.dbm_country_switcher.popup .language-switcher').live('click', function(){
+        var val = $('#dbm_country_switch_language').val();
+        
+        if(val != 'null' ){
+            document.location.href = val
+        }
+        return false;
+    });
+    
+    $('.dbm_country_switcher.popup .close a').live('click', function(){
+        $('.dbm_country_switcher.overlay').fadeOut('fast', function(){
+            //$('.dbm_country_switcher.overlay').remove();
+        });
+        $('.dbm_country_switcher.popup').fadeOut('fast', function(){
+            //$('.dbm_country_switcher.popup').remove();
+        });
+    });
+    
+    function setCookie(name, value, period)
+    {
+        var periodDate = new Date();
+        periodDate.setDate(periodDate.getDate() + period);
+        
+        var value=escape(value) + ((periodDate==null) ? "" : "; expires="+periodDate.toUTCString());
+        document.cookie=name + "=" + value;
+    }
+})(jQuery)
+</script>

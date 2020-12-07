@@ -1,0 +1,300 @@
+.c-press__year {
+    font-family: $sofiaPro;
+    font-size: rem(24);
+    color: $grey--03;
+    position: relative;
+    margin-top: rem(10);
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+    }
+
+    @include bp-lt($xmedium) {
+        margin-top: rem(-30);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(12);
+    }
+
+    &:before {
+        content: '';
+        display: block;
+        width: rem(170);
+        height: rem(1);
+        background: $grey--light--01;
+        position: absolute;
+        top: rem(-10);
+        left: rem(-125);
+
+        @include bp-lt($medium) {
+            width: rem(110);
+            left: rem(-70);
+        }
+
+        @include bp-lt($xmedium) {
+            display: none;
+        }
+    }
+}
+
+.c-press__source {
+    font-family: $sofiaPro;
+    font-size: rem(24);
+    line-height: rem(28);
+    color: $subBranding;
+    font-weight: 700;
+    margin-bottom: rem(20);
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+        line-height: rem(24);
+        margin-bottom: rem(10);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(16);
+        line-height: rem(20);
+    }
+}
+
+.c-press__title {
+    font-family: $arbutus;
+    font-size: rem(24);
+    line-height: rem(28);
+    color: $mainBranding;
+    transition: $ease;
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+        line-height: rem(24);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(18);
+    }
+
+    &:before {
+        content: '«';
+        margin-right: rem(10);
+    }
+
+    &:after {
+        content: '»';
+        margin-left: rem(10);
+    }
+
+    &:hover, &:focus {
+        color: $mainBranding--active;
+    }
+}
+
+.c-press__content {
+    position: relative;
+    padding-top: rem(50);
+
+    @include bp-lt($medium) {
+        padding-top: rem(30);
+    }
+
+    @include bp-lt($xmedium) {
+        padding-top: 0;
+    }
+}
+
+.c-press__image {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    max-width: 100%;
+
+    @include bp-lt($medium) {
+        left: rem(-250);
+        max-width: rem(250);
+    }
+
+    @include bp-lt($xmedium) {
+        position: static;
+        margin: 0 auto;
+        max-width: rem(150);
+    }
+}
+
+.c-press__item {
+    @include bp-lt($medium) {
+        margin-bottom: rem(30);
+    }
+
+    @include bp-lt($xmedium) {
+        text-align: center;
+    }
+
+    &:nth-child(2n + 1) {
+        text-align: right;
+
+        @include bp-lt($xmedium) {
+            text-align: center;
+        }
+
+        .c-press__year {
+            &:before {
+                left: auto;
+                right: rem(-125);
+
+                @include bp-lt($medium) {
+                    right: rem(-70);
+                }
+            }
+        }
+
+        .c-press__image {
+            left: auto;
+            right: -100%;
+
+            @include bp-lt($medium) {
+                right: rem(-250);
+            }
+        }
+    }
+
+    &.is-video {
+        .c-press__image {
+            top: rem(-70);
+
+            @include bp-lt($medium) {
+                top: rem(-50);
+            }
+        }
+
+        .c-press__year {
+            @include bp-lt($xmedium) {
+                margin-top: rem(10);
+            }
+        }
+    }
+
+    .column {
+        @include bp-lt($xmedium) {
+            float: none;
+            display: block;
+            width: 100%;
+            left: 0;
+            right: 0;
+        }
+    }
+}
+
+.c-press__table {
+    margin-top: rem(150);
+    text-align: center;
+
+    @include bp-lt($desktop) {
+        margin-top: rem(100);
+    }
+
+    @include bp-lt($medium) {
+        margin-top: rem(80);
+    }
+
+    @include bp-lt($xmedium) {
+        margin-top: rem(0);
+    }
+
+    .c-title {
+        font-family: $sofiaPro;
+        font-size: rem(24);
+        color: $subBranding;
+        font-weight: 700;
+        margin-bottom: rem(55);
+
+        @include bp-lt($xmedium) {
+            margin-bottom: rem(30);
+        }
+
+        @include bp-lt($mobileL) {
+            font-size: rem(18);
+        }
+    }
+}
+
+.c-press__tableColumn {
+    &:first-child {
+        .c-press__table--head, .c-press__table--list {
+            border-left: none;
+        }
+    }
+
+    @include bp-lt($xmedium) {
+        width: 50%;
+    }
+
+    &:nth-child(1), &:nth-child(2) {
+        .c-press__table--list {
+            @include bp-lt($xmedium) {
+                border-bottom: rem(2) solid $grey--01;
+            }
+        }
+    }
+
+    &:nth-child(3) {
+        .c-press__table--head, .c-press__table--list {
+            @include bp-lt($xmedium) {
+                border-left: none;
+            }
+        }
+    }
+}
+
+.c-press__table--head {
+    border-bottom: rem(2) solid $grey--01;
+    border-left: rem(2) solid $grey--01;
+    text-transform: uppercase;
+    font-family: $sofiaProCond;
+    font-size: rem(14);
+    color: $grey--03;
+    font-weight: 700;
+    letter-spacing: rem(2);
+    height: rem(55);
+
+    @include bp-lt($small) {
+        height: rem(30);
+    }
+}
+
+.c-press__table--list {
+    margin: 0;
+    list-style: none;
+    border-left: rem(2) solid $grey--01;
+    padding: rem(35) rem(55) 0;
+    font-family: $sofiaPro;
+    font-weight: 300;
+    font-size: rem(20);
+
+    @include bp-lt($desktop) {
+        padding-left: rem(20);
+        padding-right: rem(20);
+        font-size: rem(18);
+    }
+
+    @include bp-lt($medium) {
+        font-size: rem(16);
+        padding: rem(20) rem(10) 0;
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(14);
+    }
+
+    li {
+        margin-bottom: rem(20);
+        color: $subBranding;
+
+        @include bp-lt($medium) {
+            margin-bottom: rem(15);
+        }
+
+        @include bp-lt($small) {
+            margin-bottom: rem(10);
+        }
+    }
+}

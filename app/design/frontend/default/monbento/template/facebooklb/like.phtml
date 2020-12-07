@@ -1,0 +1,46 @@
+<?php
+
+$locale = Mage::helper('dbm_country')->getBrowserLocale();
+
+?><?php if (Mage::getStoreConfig('facebooklb/general/enabled')) : ?>
+    <?php if (!Mage::getStoreConfig('facebooklb/opengraph/enabled_op')) :
+    $facebookUrl = 'https://www.facebook.com/plugins/like.php?' .
+        'api_key = ' . Mage::getStoreConfig('facebooklb/general/appkey') .
+        '&amp;href=' .  $this->helper('core/url')->getCurrentUrl() .
+        '&amp;layout=' . Mage::getStoreConfig('facebooklb/general/layout') .
+        '&amp;node_type=link&amp;sdk=joey' .
+        '&amp;show_faces=' . Mage::getStoreConfig('facebooklb/general/showfaces') .
+        '&amp;action=' . Mage::getStoreConfig('facebooklb/general/verb') .
+        '&amp;font=' . Mage::getStoreConfig('facebooklb/general/font') .
+        '&amp;colorscheme=' . Mage::getStoreConfig('facebooklb/general/color') . '" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; margin:10px 0; width:' . Mage::getStoreConfig('facebooklb/general/width') . 'px; height:' . Mage::getStoreConfig('facebooklb/general/height') . 'px">'
+        ;
+    ?>
+
+    <iframe src="<?php echo $facebookUrl; ?>" </iframe>
+
+    <?php else: ?>
+
+	<div id="fb-wrap">
+    <div id="fb-root"></div>
+    <script type="text/javascript">
+    window.fbAsyncInit = function() {
+        FB.init({
+          appId  : <?php echo Mage::getStoreConfig('facebooklb/general/appid'); ?>,
+          status : true,
+          cookie : true,
+          xfbml  : true
+        });
+    };
+
+    (function() {
+        var e = document.createElement('script');
+        e.src = document.location.protocol + '//connect.facebook.net/<?php echo $locale; ?>/all.js';
+        e.async = true;
+        document.getElementById('fb-root').appendChild(e);
+    }());
+    </script>
+    <div><fb:like expr:href=' <?php echo Mage::helper('core/url')->getCurrentUrl(); ?> '/></div>
+	</div>
+    <?php endif; ?>
+
+<?php endif; ?>

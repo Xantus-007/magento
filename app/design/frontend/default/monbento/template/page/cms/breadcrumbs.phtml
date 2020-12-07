@@ -1,0 +1,13 @@
+<?php
+$breadcrumbs = $this->getBreadcrumbs();
+?>
+<ul>
+<?php foreach($breadcrumbs as $item): ?>
+    <?php if(!empty($item['url'])): ?>
+    <li><a href="<?php echo $item['url'] ?>"><?php echo $item['label'] ?></a> <span>/ </span></li>
+    <?php else: ?>
+    <li><strong><?php echo $item['label'] ?></strong></li>
+    <?php endif; ?>
+    
+<?php endforeach; ?>
+</ul>

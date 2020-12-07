@@ -1,0 +1,24 @@
+<?php $new_products = $this->getNewProducts(); ?>
+<?php if (count($new_products)) : ?>
+<div class="block featured">
+  <div class="block-title new">
+    <h3><?php echo $this->__('New') ?></h3>
+  </div>
+  <div class="block-content">
+    <?php $_collectionSize = count($new_products) ?>
+    <?php $i=0; foreach ($new_products as $_res): ?>
+    <?php $_product = Mage::getModel('catalog/product')->load($_res->getId()); ?>
+    <?php if($_product->getStatus()==1) :?>
+    <?php if ($i>0): continue; endif; ?>
+    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="product-image">
+        <img class="hide-for-medium-down" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(145); ?>" width="145" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+        <img class="show-for-medium-down" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400); ?>" width="400" alt="<?php echo $this->htmlEscape($_product->getName()) ?>" />
+    </a> 
+    <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>)"><?php echo $this->htmlEscape($_product->getName()) ?></a> <?php echo $this->getPriceHtml($_product, true) ?> <a href="<?php echo $_product->getProductUrl() ?>" class="more" rel="nofollow"><?php echo $this->__('Learn more') ?></a>
+    <?php if($_product->isSaleable()): ?>
+    <a href="<?php echo $this->getAddToCartUrl($_product) ?>" class="btn-cart"><?php echo $this->__('Add') ?></a>
+    <?php endif; ?>
+    <?php $i++; endif; endforeach ?>
+  </div>
+</div>
+<?php endif; ?>

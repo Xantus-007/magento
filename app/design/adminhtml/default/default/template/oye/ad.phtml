@@ -1,0 +1,14 @@
+<script type="text/javascript">
+
+    var content = '<div style="float: left;color: #666;">Check out Magento as a Service platform <a href="http://quickmage.com" target="_blank" class="ad-link">QuickMage</a></div>' +
+        '<div style="float: right;color: #666;">Developed by <span style="color: red; font-weight: bold;">oye</span> <span style="color: #000;font-weight: bold">network</span></div>' +
+        '<div style="clear: both"></div>';
+    document.observe("dom:loaded", function () {
+
+        var row = $('row_oyecheckout_settings_ad');
+        row.descendants().each(function (el) {
+            el.remove();
+        });
+        $('config_edit_form').insert({bottom: content});
+    });
+</script>

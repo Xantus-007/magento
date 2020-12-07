@@ -1,0 +1,12 @@
+{
+    "name": "dbm/wp-plugins.instagram-feed",
+    "description": "Plugin instagram from smashballoon",
+    "type": "wordpress-plugin",
+    "version": "3.0.5",
+    "authors": [
+        {
+            "name": "SmashBalloon",
+            "email": "contact@smashballoon.com"
+        }
+    ]
+}

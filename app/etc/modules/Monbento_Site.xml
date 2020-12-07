@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Site>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Spletnisistemi_Checkoutnewsletter />
+                <Wizkunde_ConfigurableBundle />                
+                <Atwix_Ipstoreswitcher />
+            </depends>
+        </Monbento_Site>
+    </modules>
+</config>

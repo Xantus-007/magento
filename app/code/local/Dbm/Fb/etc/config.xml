@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Fb>
+            <version>0.0.1</version>
+        </Dbm_Fb>
+    </modules>
+    <global>
+        <blocks>
+            <dbm_fb>
+                <class>Dbm_Fb_Block</class>
+            </dbm_fb>
+        </blocks>
+        <models>
+            <dbm_fb>
+                <class>Dbm_Fb_Model</class>
+            </dbm_fb>
+        </models>
+        <helpers>
+            <dbm_fb>
+                <class>Dbm_Fb_Helper</class>
+            </dbm_fb>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <dbm_fb>
+                <use>standard</use>
+                <args>
+                    <module>Dbm_Fb</module>
+                    <frontName>dbm-fb</frontName>
+                </args>
+            </dbm_fb>
+        </routers>
+    </frontend>
+</config>

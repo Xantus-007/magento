@@ -1,0 +1,70 @@
+//- layout
+extends _components-layout--b2b
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Espace Pro'
+    - var pageClass = 'c-b2b'
+    - var pageColor = '#82b9bf'
+
+append body    
+    
+    .c-b2b__breadcrumb
+        .row
+            .column
+                - var labels = ['Espace pro', 'Nous contacter']
+                +c-breadcrumb(labels)  
+            
+    .o-section--bkgGrey--noPaddingBottom.c-b2b__forms
+        .row
+            .column
+                h1.c-title--group
+                    .c-main Bonjour
+                    .c-baseline Que peut-on faire pour vous ?
+                    
+        .row
+            .column.medium-10.medium-centered
+                .c-form__wrapper
+                    .c-form__holder                        
+                        .c-form__noMargin
+                            .row.collapse
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Nom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Prénom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Adresse email #[em *]
+                                        .c-input__text
+                                            input(type="email")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Téléphone #[em *]
+                                        .c-input__text
+                                            input(type="tel")
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label.required Message #[em *]
+                                        .c-input__text
+                                            textarea(placeholder="...")
+                                            
+                            .c-label__info #[span.c-required *] Champs obligatoires
+                            
+                            .text-center
+                                input.c-button--b2b--arrowRightToRight(type="submit" value="Valider")
+                                
+                address
+                    span monbento                    
+                    | 10 rue Jacques Mailhot
+                    br
+                    | 63100 Clermont-Ferrand
+                    br
+                    | France
+                    
+                                            

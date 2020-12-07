@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<layout version="1.0.8">
+    <facebookproductstab_index_index>
+	<label>Facebook poroducts tab</label>
+	<reference name="head">
+	    <action method="setTitle"><title>Facebook products tab</title></action>
+	</reference>
+	<reference name="root">
+	    <action method="setTemplate"><template>facebookproductstab/empty_facebookproductstab.phtml</template></action>
+	</reference>
+	<reference name="content">
+	    <block type="facebookproductstab/view" name="facebookproductstab" template="facebookproductstab/facebookproductstab.phtml">
+		<block type="facebookproductstab/list" name="facebookproductstab_products" template="facebookproductstab/facebookproductstab_products.phtml" />
+	    </block>
+	</reference>
+    </facebookproductstab_index_index>
+</layout>

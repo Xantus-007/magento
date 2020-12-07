@@ -1,0 +1,84 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+/**
+ * Product view template
+ *
+ * @see Mage_Catalog_Block_Product_View
+ * @see Mage_Review_Block_Product_View
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+
+<div class="c-personnalize">
+    <div class="c-personnalize__content">
+        <div class="c-personnalize__heading<?php if($_product->getMadeInFrance()) echo ' is-mif' ?>">
+            <div class="c-personnalize__title"><?php echo $_product->getName(); ?></div>
+            <!-- <div class="c-personnalize__price"><?php echo Mage::helper('core')->currency($_product->getFinalPrice(), true, false) ?></div> -->
+            <div class="c-personnalize__price"></div>
+        </div>
+        <div class="c-personnalize__product is-loading">
+            <div class="sk-folding-cube">
+                <div class="sk-cube1 sk-cube"></div>
+                <div class="sk-cube2 sk-cube"></div>
+                <div class="sk-cube4 sk-cube"></div>
+                <div class="sk-cube3 sk-cube"></div>
+            </div>
+            
+            <?php echo $this->getChildHtml('media') ?>
+        </div>
+        <div class="c-personnalize__actions">
+            <?php echo $this->getChildHtml('bundle.controls'); ?>
+        </div>
+    </div>
+    <div class="c-personnalize__controler">
+        <?php echo $this->getChildHtml('product.configurables') ?>
+
+        <div class="c-personnalize__controler__action">
+            <div class="c-step--01">
+                <a href="<?php echo Mage::getModel('catalog/category')->load(70)->getUrl() ?>" class="c-button--noRadius--white">
+                    <div class="o-table"><div class="o-table__cell--valignMiddle">
+                        <span class="c-fonticon__icon--arrowToRight"></span> <?php echo $this->__('Cancel') ?>
+                    </div></div>
+                </a>
+                <a href="" class="c-button--noRadius--mainBranding js-personnalize__submit">
+                    <div class="o-table"><div class="o-table__cell--valignMiddle">
+                        <?php echo $this->__('J\'ai terminé') ?><span class="c-fonticon__icon--success"></span>
+                    </div></div>
+                </a>
+            </div>
+
+            <div class="c-step--02 is-hidden">
+                <a href="#" class="c-button--noRadius--grey js-personnalize__cancel">
+                    <div class="o-table"><div class="o-table__cell--valignMiddle">
+                        <span class="c-fonticon__icon--arrowToRight"></span>
+                    </div></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

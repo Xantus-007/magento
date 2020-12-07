@@ -1,0 +1,118 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+if (Mage::app()->getStore()->getCode() == "fr") include('redir.php');
+/**
+ * Template for Mage_Page_Block_Html
+ */
+?>
+<?php
+$isMobile = Mage::getModel('dbm_customer/session')->getIsMobile();
+$page = Mage::getModel('cms/page')->load('monbento-recrute', 'identifier');
+$currentpage = Mage::getBlockSingleton('cms/page')->getPage();
+if ($page) {
+		$currentparentId = $currentpage->getParent();
+		$pageId = $page->getId();
+		$parentId = $page->getParent();
+		$db = Mage::getSingleton('core/resource')->getConnection('core_read');
+
+		$res = $db->fetchAll("SELECT identifier, libelle, page_id FROM cms_page WHERE parent = ".$parentId." AND is_active = 1 ORDER BY position, page_id");
+		$hasParent = true;
+
+		if (!empty($res)) {
+				$menu = '<ul>';
+				foreach($res as $v) {
+						$class = '';
+						if ($v['page_id'] == $pageId) {
+								$class = ' class="active"';
+						}
+						$menu .= '<li'.$class.'><a href="'.$this->getUrl($v['identifier']).'">'.htmlentities($v['libelle'], ENT_NOQUOTES, 'UTF-8').'</a></li>';
+				}
+				$menu .= '</ul>';
+		}
+		$breadcrumbs 	 = array();
+		$breadcrumbs[] = '<li><strong>'.($currentpage->getLibelle() ? $currentpage->getLibelle() : ($currentpage->getContentHeading() ? $currentpage->getContentHeading() : $currentpage->getTitle())).'</strong></li>';
+		while($hasParent) {
+			$res = $db->fetchAll("SELECT page_id,title,identifier,content_heading,libelle,parent FROM cms_page WHERE page_id = ".$currentparentId);
+			$res = $res[0];
+			if (!empty($res['identifier'])) {
+				$breadcrumbs[] = '<li><a href="'.Mage::getBaseUrl('web').$res['identifier'].'">'.($res['libelle'] ? $res['libelle'] : ($res['content_heading'] ? $res['content_heading'] : $res['title'])).'</a> <span>/ </span></li>';
+			}
+			$currentparentId = $res['parent'];
+			$hasParent = $res['parent']!=$res['page_id']?true:false;
+			$currentpage = Mage::getModel('cms/page')->load($res['identifier'], 'identifier');
+			$parentId = $res['parent'];
+
+
+		}
+		$breadcrumbs[] 	 = '<li><a href="'.Mage::getBaseUrl('web').'">'.$this->__('Home').'</a> <span>/ </span></li>';
+		$breadcrumbs = array_reverse($breadcrumbs);
+		$breadcrumbs   = '<ul>'.implode('', $breadcrumbs).'</ul>';
+}
+?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $this->getLang() ?>" lang="<?php echo $this->getLang() ?>">
+<head>
+<?php echo $this->getChildHtml('head') ?>
+</head>
+<body class="<?php echo $this->getBodyClass() ? $this->getBodyClass().' contenu '.$this->getLang() : 'contenu '.$this->getLang() ?>">
+<div id="general-wrapper" data-xthreshold="250">
+<?php echo $this->getChildHtml('after_body_start') ?>
+<div class="wrapper">
+<?php if(!($isMobile === true)): ?>
+    <button type="button" id="collapse-menu"><span></span></button>
+<?php endif; ?>
+    <?php echo $this->getChildHtml('global_notices') ?>
+    <div class="page">
+        <?php echo $this->getChildHtml('homeHeader') ?>
+        <?php echo $this->getChildHtml('homeHBar'); ?>
+        <div class="main-container">
+            <div class="main">
+                <div class="row with-left-sidebar col2-left-layout">
+                    <div class="col-main">
+                                    <div id="breadcrumbs" class="breadcrumbs">
+                                                            <?php echo $breadcrumbs; ?>
+                                            </div>
+                                            <?php echo Mage::app()->getLayout()->getMessagesBlock()->setMessages(Mage::getSingleton('customer/session')->getMessages(true))->getGroupedHtml(); ?>
+                        <?php echo $this->getChildHtml('global_messages'); ?>
+                        <?php echo $this->getChildHtml('content'); ?>
+                        <div class="link-home"><a href="<?php echo $this->getUrl(''); ?>"><?php echo $this->__("retour à l'accueil"); ?></a></div>
+                    </div>
+                    <div class="col-left sidebar">
+                                                                    <?php echo $menu; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <?php echo $this->getChildHtml('footer'); ?>
+        <?php echo $this->getChildHtml('before_body_end'); ?>
+    </div>
+</div>
+<?php echo $this->getAbsoluteFooter() ?>
+</div>
+</body>
+</html>

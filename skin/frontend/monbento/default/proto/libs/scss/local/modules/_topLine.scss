@@ -1,0 +1,167 @@
+// ========================================= //
+// topLine
+// ========================================= //
+
+.c-stickyNav {
+    width: 100%;
+
+    &.has-subMenuOpen {
+        margin-bottom: $o-header--subNav--height;
+    }
+
+    &.has-languageSwitcherOpen {
+        margin-top: rem(55);
+        .c-topline {
+        }
+    }
+
+    &.stuck {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: $zindex--fixed;
+    }
+
+    &.is-small {
+        &.has-subMenuOpen {
+            margin-bottom: $o-header--subNav--height--small;
+        }
+
+        .c-topline {
+            height: $o-header--height--small;
+        }
+
+        .c-logo {
+            height: $o-header--height--small;
+        }
+
+        .c-logo__monbento--svg {
+            padding-top: rem(8);
+            padding-bottom: rem(8);
+        }
+
+        .o-nav {
+            .c-nav__level0 {
+                & > li,
+                & > li > a {
+                    height: $o-header--height--small;
+                }
+            }
+
+            .c-nav__level1 {
+                top: $o-header--height--small;
+                height: $o-header--subNav--height--small;
+
+                & > li > a {
+                    height: $o-header--subNav--height--small;
+                }
+            }
+        }
+
+        .c-options {
+            width: rem(224);
+
+            @include bp-lt($medium) {
+                width: rem(280);
+            }
+
+            @include bp-lt($mobileS) {
+                width: rem(250);
+            }
+
+            .c-language__toggle,
+            .c-search__toggle,
+            .c-account,
+            .c-cart,
+            .c-nav__icon {
+                width: $o-header--height--small;
+                height: $o-header--height--small;
+
+                @include bp-lt($mobileS) {
+                    width: rem(50);
+                }
+            }
+
+            .c-cart {
+                &.has-product:before {
+                    top: rem(10);
+                    right: rem(10);
+
+                    @include bp-lt($mobileS) {
+                        top: rem(15);
+                    }
+                }
+            }
+
+            .c-nav__icon {
+                i {
+                    top: rem(27);
+                    left: rem(12);
+
+                    &, &:before, &:after {
+                        @include bp-lt($mobileS) {
+                            width: rem(25);
+                        }
+                    }
+                }
+            }
+        }
+
+        .c-search {
+            .c-search__input {
+                width: calc(100% - #{56*2}px);
+                height: $o-header--height--small;
+            }
+
+            .c-search__submit,
+            .c-close {
+                width: $o-header--height--small;
+                height: $o-header--height--small;
+            }
+        }
+    }
+
+    &.is-hide {
+        transform: translateY(-200%);
+    }
+}
+
+.c-topline {
+    position: relative;
+    height: $o-header--height;
+    background: $white;
+    transition: $ease;
+    @include clearfix();
+
+    @include bp-lt($medium) {
+        border-bottom: rem(1) solid rgba($subBranding, .1);
+    }
+
+    @include bp-lt($tabletS) {
+        height: $o-header--subNav--height;
+    }
+
+    &:after {
+        content: '';
+        position: absolute;
+        bottom: rem(-5);
+        left: 0;
+        width: 100%;
+        height: rem(5);
+        background: $mainBranding;
+    }
+
+    .c-logo {
+        @include bp-lt($tabletS) {
+            height: $o-header--height--small;
+        }
+    }
+
+    .c-logo__monbento--svg {
+        @include bp-lt($tabletS) {
+            margin-top: rem(5);
+            padding-bottom: rem(5);
+        }
+    }
+}

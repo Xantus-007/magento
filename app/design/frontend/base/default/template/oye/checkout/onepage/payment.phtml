@@ -1,0 +1,65 @@
+<script type="text/javascript">
+//<![CDATA[
+    var quoteBaseGrandTotal = <?php echo (float)$this->getQuoteBaseGrandTotal(); ?>;
+    var checkQuoteBaseGrandTotal = quoteBaseGrandTotal;
+    var payment = new Payment('checkout-payment-method-wrap', '<?php echo $this->getUrl('checkout/onepage/savePayment') ?>');
+    checkout.setPayment(payment);
+    var lastPrice;
+//]]>
+</script>
+<div id="checkout-payment-method-wrap">
+    <h3><?php echo $this->__('Please choose Payment method') ?></h3>
+    <?php echo $this->getChildHtml('methods') ?>
+</div>
+<div class="tool-tip" id="payment-tool-tip" style="display:none;">
+    <div class="btn-close"><a href="#" id="payment-tool-tip-close" title="<?php echo $this->__('Close') ?>"><?php echo $this->__('Close') ?></a></div>
+    <div class="tool-tip-content"><img src="<?php echo $this->getSkinUrl('images/cvv.gif') ?>" alt="<?php echo $this->__('Card Verification Number Visual Reference') ?>" title="<?php echo $this->__('Card Verification Number Visual Reference') ?>" /></div>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    function toggleToolTip(event){
+        if($('payment-tool-tip')){
+            $('payment-tool-tip').setStyle({
+                top: (Event.pointerY(event)-560)+'px'//,
+                //left: (Event.pointerX(event)+100)+'px'
+            })
+            $('payment-tool-tip').toggle();
+        }
+        Event.stop(event);
+    }
+    if($('payment-tool-tip-close')){
+        Event.observe($('payment-tool-tip-close'), 'click', toggleToolTip);
+    }
+//]]>
+</script>
+<script type="text/javascript">
+//<![CDATA[
+    if(checkout.hasPayment()){
+        checkout.getPayment().currentMethod = "<?php echo $this->getChild('methods')->getSelectedMethodCode() ?>";
+        $$('#checkout-payment-method-wrap dt input').each(function(element){
+            $(element).observe('click', function(e) {
+
+               var element = e.element();
+               var name = 'payment_form_' + element.getValue();
+               checkout.getPayment().currentMethod = element.getValue();
+               /* Hide all other forms */
+
+               $$('.payment-form').each(function(element){
+                   $(element).hide();
+               });
+               $(name).up('dd.payment-form').show();
+               if($(element).checked) {
+                   checkout.saveMethod('payment');
+                   checkout.getPayment().switchMethod(element.getValue());
+                   var form = $(name);
+                   var container = $('container_payment_method_' + element.getValue());
+                   if(element !== null && container !== null)    {
+                       container.show();
+                       $(name).up('.payment-form').show();
+                   }
+               }
+           });
+        });
+    }
+//]]>
+</script>

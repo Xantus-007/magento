@@ -1,0 +1,32 @@
+<?php
+
+$locale = Mage::helper('dbm_country')->getBrowserLocale();
+$trans = Mage::helper('dbm_share');
+
+?><div id="hbar">
+		<div id="hbar-ts" class="bloc">
+				<?php echo $this->getChildHtml('topSearch'); ?>
+		</div>
+		<div id="hbar-st" class="bloc">
+				<?php echo $this->getChildHtml('partage'); ?>
+		</div>
+		<div id="hbar-fb" class="bloc" data--test="<?php echo Mage::app()->getStore()->getCode();?>">
+				<?php $fbUrl = Mage::app()->getStore()->getCode() == 'hk_en' ? 'https://www.facebook.com/monbento.asia' : 'https://www.facebook.com/monbento';?>
+
+				<a href="<?php echo $fbUrl;?>" target="_blank"><span><strong>Facebook</strong><br /><?php echo $trans->__('Rejoignez-nous'); ?></span></a>
+				<div id="fb-wrap">
+						<div id="fb-root"></div>
+						<script>(function(d, s, id) {
+  							var js, fjs = d.getElementsByTagName(s)[0];
+  							if (d.getElementById(id)) {return;}
+		  					js = d.createElement(s); js.id = id;
+  							js.src = "//connect.facebook.net/<?php echo $locale ?>/all.js#xfbml=1";
+  							fjs.parentNode.insertBefore(js, fjs);
+								}(document, 'script', 'facebook-jssdk'));
+						</script>
+						<div class="fb-like-box" data-href="<?php echo $fbUrl;?>" data-width="300" data-show-faces="false" data-stream="false" data-header="false"></div>
+				</div>
+		</div>
+
+</div>
+<div class="clear"></div>

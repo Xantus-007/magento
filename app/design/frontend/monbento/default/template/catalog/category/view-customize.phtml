@@ -1,0 +1,82 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+$_helper = $this->helper('catalog/output');
+$_category = $this->getCurrentCategory();
+?>
+
+<?php if(!Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+    <?php echo $this->getChildHtml('breadcrumbs') ?>
+    <div class="c-title--page o-bkg--white">
+        <div class="row">
+            <div class="column">
+                <h1><?php echo $_category->getName() ?></h1>
+            </div>
+        </div>
+    </div>
+    <div class="c-page__custom">
+        <div class="c-page__custom__slider">
+            <div class="c-page__custom__slider__hover">
+                <div class="c-title"><?php echo $_category->getBaseline() ?></div>
+                <div class="c-basline"><?php echo $_category->getDescription() ?></div>
+                <a href=".c-grid" class="c-button--transparentWhite--arrowRightToRight js-scrollTo"><?php echo $this->__('Commencer') ?></a>
+            </div>
+            <?php echo $this->getChildHtml('promotions_slider') ?>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="c-timeline--horizontal">
+                <?php for($i=1;$i<5;$i++): ?>
+                <div class="c-timeline__item"><span><?php echo Mage::getStoreConfig('monbento_customize/general/title_step_'.$i) ?></span></div>
+                <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('products.list') ?>
+<?php if(!Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+    <div class="c-section--launcher">
+        <div class="row">
+            <div class="columns medium-6 small-12">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/customize/' . Mage::getStoreConfig('monbento_customize/general/mise_en_avant'), 676, 490, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)) ?>" />
+            </div>
+            <div class="columns medium-6 small-12">
+                <a href="<?php echo Mage::getStoreConfig('monbento_customize/general/favori_week_link') ?>">
+                    <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/customize/' . Mage::getStoreConfig('monbento_customize/general/favori_week'), 676, 490, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)) ?>" />
+                </a>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>

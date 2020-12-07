@@ -1,0 +1,228 @@
+// ========================================= //
+// blocks.nav
+// ========================================= //
+
+.c-account {
+    .c-nav__link {
+        display: block;
+        text-align: center;
+        margin-bottom: rem(25);
+
+        ul {
+            list-style: none;
+            margin: 0;
+
+            li {
+                display: inline-block;
+
+                @include bp-lt($small) {
+                    display: block;
+                }
+
+                &:after {
+                    content: '|';
+                    color: rgba($white, .3);
+                    font-size: rem(13);
+                    margin-left: rem(10);
+                    margin-right: rem(10);
+
+                    @include bp-lt($small) {
+                        display: none;
+                    }
+                }
+
+                &:last-of-type:after { display: none; }
+
+                &.current {
+                    a {
+                        color: $mainBranding;
+                    }
+                }
+            }
+
+            a {
+                font-size: rem(14);
+                color: $subBranding;
+                font-family: $fontBody;
+
+                @include bp-lt($medium) {
+                    font-size: rem(12);
+                }
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    $height--button--large: rem(141);
+    .c-nav__button {
+        display: block;
+        margin-bottom: rem(40);
+        max-width: rem(1412);
+        width: 100%;
+        padding-left: rem(14);
+        padding-right: rem(14);
+        margin-left: auto;
+        margin-right: auto;
+
+        ul {
+            list-style: none;
+            margin-left: rem(-7);
+            margin-right: rem(-7);
+            @include clearfix();
+
+            li {
+                display: block;
+                width: 25%;
+                height: $height--button--large;
+                padding-left: rem(7);
+                padding-right: rem(7);
+                float: left;
+
+                @include bp-lt($small) {
+                    height: rem(40);
+                }
+
+                a, strong {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    height: $height--button--large;
+                    padding-top: rem(90);
+                    padding-left: rem(20);
+                    padding-right: rem(20);
+                    color: $subBranding;
+                    text-align: center;
+                    font-size: rem(12);
+                    font-weight: 400;
+                    font-family: $fontBody;
+                    text-transform: uppercase;
+                    letter-spacing: rem(1);
+
+                    &:before {
+                        content: '';
+                        display: block;
+                        position: absolute;
+                        bottom: rem(-15);
+                        left: 50%;
+                        transform: translateX(-50%);
+                        display: block;
+                        border-top: solid rem(15) $mainBranding;
+                        border-left: solid rem(15) transparent;
+                        border-right: solid rem(15) transparent;
+                        opacity: 0;
+                        transition: $ease;
+                    }
+
+                    @include bp-lt($medium) {
+                        font-size: rem(11);
+                        padding-top: rem(80);
+                    }
+
+                    @include bp-lt($small) {
+                        padding: 0;
+                        text-indent: rem(-9999);
+                        height: rem(40);
+                    }
+
+                    &:after {
+                        @include bp-lt($small) {
+                            text-indent: 0;
+                            font-size: rem(30);
+                            width: auto;
+                            height: auto;
+                            padding: 0;
+                            top: 0;
+                        }
+                    }
+                }
+
+                a {
+                    background: $white;
+                    transition: $ease;
+
+                    &:hover {
+                        background: $mainBranding;
+                        color: $white;
+
+                        &:after {
+                            color: $white;
+                        }
+                    }
+                }
+
+                &.current a {
+                    background: $mainBranding;
+                    color: $white;
+
+                    &:before {
+                        opacity: 1;
+                    }
+
+                    &:after {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+[class*='c-nav__item'] {
+    a:after,
+    strong:after {
+        font-size: rem(40);
+        color: $mainBranding;
+        position: absolute;
+        width: rem(70);
+        height: rem(70);
+        top: rem(25);
+        right: 0; left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: $zindex--hover;
+        font-family: $iconFont;
+        text-align: center;
+        padding-left: rem(10);
+        padding-right: rem(10);
+        transition: $ease;
+    }
+
+    &[class*='dashboard'] {
+        a:after,
+        strong:after {
+            content: "\EA01"
+        }
+    }
+
+    &[class*='history'] {
+        a:after,
+        strong:after {
+            content: "\EA02"
+        }
+    }
+
+    &[class*='book'] {
+        a:after,
+        strong:after {
+            content: "\EA03"
+        }
+    }
+
+    &[class*='edit'] {
+        a:after,
+        strong:after {
+            content: "\EA04";
+        }
+    }
+
+    &[class*='wishlist'] {
+        a:after,
+        strong:after {
+            content: "\EA05"
+        }
+    }
+
+}

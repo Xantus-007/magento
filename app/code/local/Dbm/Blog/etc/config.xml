@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Blog>
+            <version>0.0.1</version>
+        </Dbm_Blog>
+    </modules>
+    <global>
+        <helpers>
+            <dbm_blog>
+                <class>Dbm_Blog_Helper</class>
+            </dbm_blog>
+        </helpers>
+        <models>
+            <dbm_blog>
+                <class>Dbm_Blog_Model</class>
+            </dbm_blog>
+        </models>
+        <blocks>
+            <blog>
+                <rewrite>
+                    <blog>Dbm_Blog_Block_Blog</blog>
+                    <manage_blog_edit_form>Dbm_Blog_Block_Manage_Blog_Edit_Form</manage_blog_edit_form>
+                    <manage_blog_edit_tab_form>Dbm_Blog_Block_Manage_Blog_Edit_Tab_Form</manage_blog_edit_tab_form>
+                </rewrite>
+            </blog>
+        </blocks>
+    </global>
+    <admin>
+        <routers>
+            <blog_admin>
+                <args>
+                    <modules>
+                        <dbm_blog before="AW_Blog">Dbm_Blog</dbm_blog>
+                    </modules>
+                </args>
+            </blog_admin>
+        </routers>
+    </admin>
+</config>

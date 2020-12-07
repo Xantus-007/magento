@@ -1,0 +1,57 @@
+section.c-product__header
+    - var labels = ['Home', 'Shop', 'Lunchbox', 'MBOriginal Bleu Ciel/Blanc']
+    +c-breadcrumb(labels)
+
+    .row.collapse.c-row--main
+        .columns.medium-10.medium-centered
+            .c-slider--product: .js-gallery: .js-bxslider
+                - for (var i=0; i<4; i++)
+                    .c-slider__item
+                        a(href="#{imgDir}c-img__product--532x532.png", title="image gallery #{i + 1}")
+                            // format image 532x532px
+                            img(src="#{imgDir}c-img__product--532x532.png", alt="")
+
+            include _productAction
+
+    .row.collapse: .columns
+        .c-product__controls
+            .c-gallery__nav.js-bxslider__controler
+                //- .js-slick
+                - for (var i=0; i<4; i++)
+                    a.c-item(href="", data-slide-index="#{i}"): .o-table: .o-table__cell--valignMiddle: img(src="#{imgDir}c-img__product--98x98.png", alt="")
+
+
+            case pageType
+                when 'default'
+                    .c-color__switcher__toggle.js-product__select--handler: .o-table: .o-table__cell--valignMiddle
+                        .c-render
+                            // change color here
+                            .c-top(style="background-color: #{pageColor};")
+                            // change color here
+                            .c-bottom(style="background-color: #ffffff;")
+
+                        .c-title Changer de couleur
+
+                when 'decli'
+                    .c-color__switcher__toggle: .o-table: .o-table__cell--valignMiddle
+                        select
+                            - var colors = ['Changer de couleur', 'Bleu ciel', 'Fushia', 'Gris', 'Noir', 'Vert']
+                            each color in colors
+                                option #{color}
+
+                when 'packs'
+                    //- nothing
+
+            .c-share__inline: .o-table: .o-table__cell--valignMiddle
+                .c-title Faire découvrir à vos amis sur...
+                .c-social__list
+                    - var socials = ['facebook', 'twitter', 'pinterest']
+                    each label, index in socials
+                        a.c-social__item(href=""): i(class='c-fonticon__icon--#{label}')
+
+    case pageType
+        when 'default'
+            include _productSelect
+
+        when 'packs'
+            //- nothing

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dbm_map>
+            <label>Configuration de la géolocalisation</label>
+            <sort_order>9999</sort_order>
+        </dbm_map>
+    </tabs>
+    <sections>
+        <dbm_map translate="label" module="dbm_map">
+            <label>Gestion de la géolocalisation</label>
+            <tab>dbm_map</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <dbm_map_api>
+                    <label>Gestion des APIS</label>
+                    <sort_order>9999</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <dbm_map_api_google>
+                            <label>Clé d'api google</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </dbm_map_api_google>
+                    </fields>
+                </dbm_map_api>
+            </groups>
+        </dbm_map>
+    </sections>
+</config>

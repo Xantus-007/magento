@@ -1,0 +1,9 @@
+<?php
+$page = $this->getPageContent();
+$helper = Mage::helper('cms');
+$processor = $helper->getPageTemplateProcessor();
+?>
+<div class="clubPage">
+    <h2><?php echo $page->getTitle() ?></h2>
+    <?php echo $processor->filter($page->getContent()); ?>
+</div>

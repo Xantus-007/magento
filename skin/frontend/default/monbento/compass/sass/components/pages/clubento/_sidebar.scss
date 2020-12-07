@@ -1,0 +1,125 @@
+body.club {
+    .clubSidebar {
+        li {
+            @include bp-gt($mb-xmedium) {
+                position: relative;
+            }
+
+            img {
+                max-width: 20px;
+                max-height: 20px;
+
+                @include bp-gt($mb-xmedium) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;                
+                }
+
+                @include bp-lt ($mb-xmedium) {
+                    vertical-align: middle;
+                }
+            }
+
+            &.selected {
+                img {
+                    @include bp-gt($mb-xmedium) {
+                        left: 23px;
+                        top: 7px;
+                    }
+                }
+            }
+        }   
+    }
+}
+
+.club {
+    .row.col2-right-layout .sidebar,
+    .row.col2-left-layout .sidebar {
+        width: 201px;
+
+        @include bp-lt($mb-medium) {
+            width: 25%;
+        }
+        @include bp-lt($mb-xmedium) {
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            display: inline-block;
+            float: none;
+
+            width: 100%;
+        }
+    }
+    .sidebar {
+        @include bp-gt($mb-xmedium) {
+            .mobile-only {
+                display: none;
+            }
+        }
+        @include bp-lt($mb-xmedium) {
+            #clubMenuMain {
+                position: relative;
+                z-index: 9;
+                width: 60%;
+                margin: auto;
+                padding: 0;
+
+                text-align: center;
+                &:before {
+                    font-weight: bold;
+                    line-height: 38px;
+
+                    position: absolute;
+                    top: 21px;
+                    left: 1px;
+
+                    display: block;
+
+                    width: 100%;
+                    height: 38px;
+
+                    content: 'Menu Clubento';
+                    cursor: pointer;
+
+                    background-color: white;
+                }
+                &:after {
+                    background: url('../../images/svg/logo-clubento.svg') no-repeat;
+                    width: 30px;
+                    height: 30px;
+                    content: '';
+                    position: absolute;
+                    left: 5px;
+                    top: 25px;
+                    display: block;
+                }
+                &.open ul {
+                    overflow-y: scroll;
+
+                    max-height: 250px;
+                    padding-top: 38px;
+                }
+                ul {
+                    display: inline-block;
+                    overflow: hidden;
+
+                    width: 100%;
+                    max-height: 38px;
+                    margin: 20px auto;
+
+                    transition: max-height .3s ease-in-out;
+
+                    border: solid 1px #d8d5d5;
+                    background-color: white;
+                }
+                li {
+                    padding: 0;
+                }
+                .nav-sidebar {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

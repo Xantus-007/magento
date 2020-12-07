@@ -1,0 +1,741 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <!-- Defaults -->
+        <reference name="root">
+            <remove name="global_messages" />
+            <remove name="left.newsletter"/>
+            <remove name="post.list.left" />
+            <remove name="left.permanent.callout" />
+            <remove name="tags_popular" />
+
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+
+            <block type="page/html_head" name="jsfooter" as="jsfooter" template="page/html/jsfooter.phtml">
+                <!-- Add vendor dependencies -->
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.noconflictMode.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.bxslider.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/slick.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.waypoints.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/sticky.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.magnific-popup.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/imagesloaded.pkgd.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/matchMedia.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/matchMedia.addListener.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/enquire.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/lodash.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.mobile-events.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.circle-progress.min.js</name></action>
+
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/modernizr.touchevents.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/foundation.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/youtube-api.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/foundation.alert.js</name></action>
+
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.itemEqualizer.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.offCanvas.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.scrollTo.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.goToTop.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.tabs.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.youtube.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.gallery.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.storeLocation.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.carouselHome.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.form-validator.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.app.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.nav.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.header.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.cartQuantity.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.cartQuantityPageProduct.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.productSelect.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.form.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.languageSwitcher.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.gridProduct.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.filterProduct.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.giftCard.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.personnalize.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.about.js</name></action>
+
+                <action method="addItem"><type>skin_js</type><name>js/jquery.dbm.addToCart.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/libs/jquery.fitvids.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/libs/jquery.owl-carousel.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/club/script-club.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/easydropdown/jquery.easydropdown.min.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/contact.js</name></action>
+                <action method="addItem"><type>skin_js</type><name>js/monbento/newsletter.js</name></action>
+                <block type="core/text" name="addthis">
+                    <action method="setText"><text><![CDATA[<script src="//s7.addthis.com/js/300/addthis_widget.js" async></script>]]></text></action>
+                </block>
+                <block type="core/text" name="recapctha">
+                    <action method="setText"><text><![CDATA[<script src="//www.google.com/recaptcha/api.js" async></script>]]></text></action>
+                </block>
+            </block>
+
+            <block type="core/template" name="notice" as="notice" template="page/html/notice.phtml">
+                <block type="core/messages" name="monbento_messages" as="monbento_messages"/>
+            </block>
+
+            <block type="core/template" name="footer" as="footer" template="page/html/footer.phtml" />
+        </reference>
+
+        <!-- Head -->
+        <reference name="head">
+            <action method="removeItem"><type>skin_css</type><name>css/styles.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/styles-ie.css</name></action>
+            <action method="removeItem"><type>skin_css</type><name>css/print.css</name></action>
+
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/normalize.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/foundation.css</name><params/></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/fonticon.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/fonticonCarac.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/slick.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/vendor/magnific-popup.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/styles-old.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>js/easydropdown/themes/easydropdown.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>proto/app/assets/styles/local/styles.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/magento_core_override.css</name></action>
+            <action method="addItem"><type>skin_css</type><name>css/old-styles/css/styles.css</name></action>
+
+            <block type="core/text" name="external_css">
+                <action method="addText"><text><![CDATA[<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700,700italic">]]></text></action>
+                <action method="addText"><text><![CDATA[<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Arbutus+Slab">]]></text></action>
+            </block>
+        </reference>
+
+        <reference name="after_body_start">
+            <block name="dbm_gtm_init" type="dbm_tagmanager/tag" template="dbm/tagmanager/tag_init.phtml" />
+            <block name="dbm_gtm" type="dbm_tagmanager/tag" template="dbm/tagmanager/tag.phtml" />
+            <block type="dbm_tagmanager/tag_customer" name="dbm_gtm.customer" template="dbm/tagmanager/data.phtml" />
+            <block type="dbm_tagmanager/tag_newsletter" name="dbm_gtm.newsletter" template="dbm/tagmanager/data.phtml" />
+            <block type="core/template" name="google_analytics_client" template="googleanalytics/ga-client.phtml" />
+        </reference>
+
+        <reference name="header">
+            <block type="core/text_list" name="topMenu" translate="label">
+                <block type="page/html_topmenu" name="catalog.topnav" template="page/html/menu-top.phtml">
+                    <block type="page/html_topmenu_renderer" name="catalog.topnav.renderer" template="page/html/menu/renderer.phtml"/>
+                </block>
+            </block>
+            <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-"></block>
+            <block type="core/template" name="top.search" as="topSearch" template="catalogsearch/form.mini.phtml"/>
+        </reference>
+
+        <reference name="footer">
+            <block type="newsletter/subscribe" name="footer.newsletter" as="footer_newsletter" template="newsletter/subscribe.phtml"/>
+            <block type="cms/block" name="footer.infos" as="footer_infos">
+                <action method="setBlockId"><block_id>footer_infos</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.1" as="footer_links_1">
+                <action method="setBlockId"><block_id>footer_links_1</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.2" as="footer_links_2">
+                <action method="setBlockId"><block_id>footer_links_2</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.3" as="footer_links_3">
+                <action method="setBlockId"><block_id>footer_links_3</block_id></action>
+            </block>
+            <block type="cms/block" name="footer.links.4" as="footer_links_4">
+                <action method="setBlockId"><block_id>footer_links_4</block_id></action>
+            </block>
+            </reference>
+    </default>
+
+    <!-- Home page -->
+    <cms_index_index translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.socialFeeds.js</name></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="dbm_tagmanager/tag_sliders" name="dbm_gtm.sliders" before="dbm_gtm" />
+        </reference>
+        <reference name="content">
+            <remove name="cms.wrapper" />
+            <action method="unsetChild"><name>page_content_wrapper</name></action>
+
+            <remove name="instagram" />
+            <block type="monbento_site/slides" name="promotions_slider" template="page/html/blocs/sliders.phtml" />
+            <block type="monbento_site/launcher" name="home_launcher" template="page/html/blocs/launcher.phtml">
+                <action method="setData"><name>type</name><value>home</value></action>
+            </block>
+            <block type="monbento_site/home_products" name="home_preferes" template="page/html/home/list.phtml" />
+            <block type="monbento_site/home_testimonials" name="home_testimonials" template="page/html/blocs/testimonials.phtml" />
+            <block type="monbento_site/home_recettesactus" name="home_recettesactus" template="page/html/home/recettesactus.phtml" />
+            <!--<block type="socialfeeds/items" name="home_instagram" template="socialfeeds/instagram/items.phtml">
+                <action method="setData"><name>offset</name><value>0</value></action>
+                <action method="setData"><name>limit</name><value>9</value></action>
+                <action method="setData"><name>size</name><value>medium</value></action>
+            </block>-->
+        </reference>
+    </cms_index_index>
+
+    <!-- Category -->
+    <catalog_category_default translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><name>css/catalin_seo/style.css</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/catalin_seo/native.history.js</name></action>
+            <action method="addItem"><type>skin_js</type><name helper="catalin_seo/getSkinJsUrl"/></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="dbm_tagmanager/tag_sliders" name="dbm_gtm.sliders" before="dbm_gtm" />
+            <block type="dbm_tagmanager/tag_productlist" name="dbm_gtm.products" before="dbm_gtm" />
+        </reference>
+        <reference name="category.products">
+            <block type="monbento_site/slides" name="promotions_slider" template="page/html/blocs/sliders.phtml" />
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="core/template" name="shop_reassurance" template="page/html/blocs/reassurance.phtml" />
+        </reference>
+        <reference name="breadcrumbs">
+            <block type="catalog/layer_view" name="catalog.leftnav" template="catalog/layer/view.phtml">
+                <action method="unsetChild"><child>category_filter</child></action>
+            </block>
+        </reference>
+        <reference name="product_list">
+            <action method="setColumnCount"><value>4</value></action>
+            <action method="setDefaultDirection"><dir>asc</dir></action>
+        </reference>
+    </catalog_category_default>
+
+    <!-- Search -->
+    <catalogsearch_result_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="search_result_list">
+            <action method="setTemplate"><template>catalog/product/list.phtml</template></action>
+            <action method="setData"><name>pagination</name><value>1</value></action>
+        </reference>
+        <reference name="product_list_toolbar">
+            <action method="addPagerLimit"><mode>grid</mode><limit>11</limit></action>
+            <action method="addPagerLimit"><mode>list</mode><limit>11</limit></action>
+        </reference>
+        <reference name="product_list_toolbar_pager">
+            <action method="setDefaultListPerPage"><limit>11</limit></action>
+            <action method="setDefaultGridPerPage"><limit>11</limit></action>
+        </reference>
+    </catalogsearch_result_index>
+
+    <!-- Product -->
+    <catalog_product_view translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="dbm_tagmanager/tag_product" name="dbm_gtm.product" before="dbm_gtm" />
+        </reference>
+        <reference name="product.info">
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="catalog/product_view" name="product.sticky_addtocart" template="catalog/product/view/sticky_addtocart.phtml" />
+            <block type="cms/block" name="product.info.ship" as="product_ship_infos">
+                <action method="setBlockId"><block_id>product_ship_infos</block_id></action>
+            </block>
+            <block type="catalog/product_view_media" name="product.info.media.controls" as="media_controls" template="catalog/product/view/media.phtml">
+                <action method="setData"><name>control</name><value>1</value></action>
+            </block>
+            <block type="monbento_site/catalog_product_view_similar" name="products.similar" template="catalog/product/list/similar.phtml" />
+            <block type="catalog/product_view" name="product.common_fiche" template="catalog/product/view/common_type_fiche.phtml">
+                <block type="monbento_site/catalog_product_view_reassurance" name="products.reassurance" template="catalog/product/view/reassurance.phtml" />
+                <block type="catalog/product_view_media" name="product.info.media.description" as="media_description" template="catalog/product/view/media_description.phtml" />
+                <block type="monbento_site/catalog_product_view_adopter" name="products.adopter" template="catalog/product/view/adopter.phtml" />
+                <block type="catalog/product_list_related" name="catalog.related" template="catalog/product/list.phtml">
+                    <action method="setData"><name>enclose_html</name><value>1</value></action>
+                </block>
+            </block>
+        </reference>
+    </catalog_product_view>
+
+    <!-- Product Gift card -->
+    <PRODUCT_TYPE_ugiftcert>
+        <reference name="product.info">
+            <action method="setTemplate"><template>catalog/product/view-giftcard.phtml</template></action>
+        </reference>
+    </PRODUCT_TYPE_ugiftcert>
+
+    <!-- Product Bundle/Personnalisation -->
+    <PRODUCT_TYPE_bundle>
+        <reference name="head">
+            <action method="removeItem"><type>skin_js</type><name>js/bundle.js</name><params/></action>
+            <action method="removeItem"><type>skin_js</type><name>js/configurable_bundle.js</name><params/></action>
+        </reference>
+        <reference name="product.info">
+            <action method="setTemplate"><template>catalog/product/view-bundle.phtml</template></action>
+            <block type="monbento_site/customize_info" name="customize.info" template="catalog/product/view/customize/info.phtml"/>
+        </reference>
+        <reference name="product.info.container2">
+            <action method="unsetChild"><name>product.info.options.wrapper.bottom</name></action>
+        </reference>
+    </PRODUCT_TYPE_bundle>
+
+    <!-- Product Configurable -->
+    <PRODUCT_TYPE_configurable>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.configurable.js</name></action>
+        </reference>
+        <reference name="product.info.container2">
+            <action method="unsetChild"><name>product.info.options.wrapper.bottom</name></action>
+        </reference>
+    </PRODUCT_TYPE_configurable>
+
+    <!-- Category Customization -->
+    <CATEGORY_70>
+        <reference name="breadcrumbs">
+            <action method="unsetChild"><child>catalog.leftnav</child></action>
+        </reference>
+        <reference name="category.products">
+            <action method="setTemplate"><template>catalog/category/view-customize.phtml</template></action>
+            <block type="monbento_site/customize_products" name="products.list" template="catalog/category/list-customize.phtml"/>
+        </reference>
+        <reference name="promotions_slider">
+            <action method="setTemplate"><template>page/html/blocs/sliders-customize.phtml</template></action>
+        </reference>
+    </CATEGORY_70>
+
+    <!-- Customization Page -->
+    <monbento_index_customize translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+            <action method="unsetChild"><name>header</name></action>
+            <action method="unsetChild"><name>footer</name></action>
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/custom/jquery.dbm.custom.app.js</name></action>
+        </reference>
+        <reference name="content">
+            <block type="catalog/product_view" name="product.info" template="catalog/product/view-customize.phtml">
+                <block type="catalog/product_view_media" name="product.info.media" as="media" template="catalog/product/view/customize/media.phtml">
+                    <block type="core/text_list" name="product.info.media.after" as="after" />
+                </block>
+                <block type="core/template" name="bundle.controls" template="catalog/product/view/customize/controls.phtml">
+                    <block type="core/template" name="partage" as="partage" template="page/template/partage.phtml" />
+                </block>
+                <block type="monbento_site/customize_configurables" name="product.configurables" template="catalog/product/view/customize/configurables.phtml"/>
+            </block>
+        </reference>
+    </monbento_index_customize>
+
+    <!-- CMS Page -->
+    <cms_page translate="label">
+        <reference name="root">
+            <block type="v2/menu" template="page/cms/menu.phtml"  name="cms_menu" />
+        </reference>
+        <reference name="content">
+            <block type="dbm_tagmanager/tag_contact" name="dbm_gtm.contact" template="dbm/tagmanager/data.phtml" />
+            <action method="unsetChild"><name>page_content_heading</name></action>
+            <remove name="cms.wrapper" />
+            <block type="core/template" name="page_content_wrapper" template="cms/content.phtml">
+                <block type="cms/page" name="cms_page" />
+            </block>
+        </reference>
+    </cms_page>
+
+    <!-- Page shop -->
+    <shop translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/shop-content.phtml</template></action>
+            <block type="monbento_site/launcher" name="shop_launcher" template="page/html/blocs/launcher.phtml">
+                <action method="setData"><name>type</name><value>shop</value></action>
+            </block>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/shop_categories" name="shop_categories" template="page/html/shop/categories.phtml">
+                <block type="catalog/product_list" name="shop_categories.items" template="catalog/product/list.phtml"/>
+            </block>
+            <block type="core/template" name="shop_reassurance" template="page/html/blocs/reassurance.phtml" />
+        </reference>
+    </shop>
+
+    <!-- Page à propos -->
+    <a-propos translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/a-propos-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/home_testimonials" name="a-propos_testimonials" template="page/html/blocs/testimonials.phtml" />
+            <block type="monbento_site/presse" name="about_presse" template="page/html/blocs/presse.phtml" />
+        </reference>
+    </a-propos>
+
+    <!-- Page l'équipe -->
+    <equipe translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/equipe-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/offres" name="equipe_offres" template="page/html/equipe/offres.phtml" />
+            <block type="monbento_site/ambassadeurs" name="ambassadeurs" template="page/html/equipe/ambassadeurs.phtml" />
+        </reference>
+    </equipe>
+
+    <!-- Page le saviez-vous ? -->
+    <le-saviez-vous translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.waypoints.inview.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.progress.js</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/saviez-vous-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+        </reference>
+    </le-saviez-vous>
+
+    <!-- Page Made In France -->
+    <made-in-france translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/made-in-france-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/mif" name="listing_mif" template="catalog/product/list.phtml"></block>
+        </reference>
+    </made-in-france>
+
+    <!-- Page FAQ -->
+    <faq translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/vendor/jquery.dbm.anchor.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.accordion.js</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/faq-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/faq" name="faq" template="page/html/faq/content.phtml" />
+        </reference>
+    </faq>
+
+    <!-- Page listing des offres -->
+    <listing-recrutement translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/recrutement-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="monbento_site/offres" name="listing_offres" template="page/html/recrutement/offres.phtml" />
+        </reference>
+    </listing-recrutement>
+
+    <!-- Page recrutement -->
+    <recrutement translate="label">
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><script>js/uploadify/jquery.uploadify.min.js</script></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="setTemplate"><template>page/html/offre-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+        </reference>
+    </recrutement>
+    
+    <!-- Page Peugeot -->
+    <peugeot translate="label">
+        <reference name="root">
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="page_content_wrapper">
+            <action method="unsetChild"><name>cms_page</name></action>
+            <action method="setTemplate"><template>page/html/peugeot-content.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+        </reference>
+    </peugeot>
+
+    <!-- Customer Account Login -->
+    <customer_account_login>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="facebookfree/active" name="belvg.facebookfree.block">
+                <action method="setTemplate" ifconfig="facebookfree/settings/enabled" ifvalue="1">
+                    <template>facebookfree/block.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="customer_form_login">
+            <action method="setTemplate"><template>facebookfree/login.phtml</template></action>
+        </reference>
+    </customer_account_login>
+
+    <!-- Customer Account Logout -->
+    <customer_account_logoutsuccess>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+    </customer_account_logoutsuccess>
+
+    <!-- Customer Forgot password -->
+    <customer_account_forgotpassword>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+    </customer_account_forgotpassword>
+
+    <!-- Customer Account Create -->
+    <customer_account_create>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/validator.js</name></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="facebookfree/active" name="belvg.facebookfree.block">
+                <action method="setTemplate" ifconfig="facebookfree/settings/enabled" ifvalue="1">
+                    <template>facebookfree/block.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </customer_account_create>
+
+    <!-- Customer Account -->
+    <customer_account>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+            <action method="setPageTitle" translate="value"><value>My Account</value></action>
+            <remove name="notice" />
+
+            <reference name="head">
+                <action method="removeItem"><type>skin_css</type><name>css/dbm_Magento_Utils/app/assets/styles/vendor/fonticon.css</name></action>
+                <action method="removeItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/vendor/imagesloaded.pkgd.min.js</name><params/></action>
+                <action method="removeItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/vendor/jquery.dbm.itemEqualizer.js</name><params/></action>
+                <action method="removeItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/local/jquery.dbm.app.js</name><params/></action>
+
+                <action method="addItem"><type>skin_css</type><name>css/dbm_Magento_Utils/app/assets/styles/local/styles.css</name><params/></action>
+                <action method="addItem"><type>skin_css</type><name>css/dbm_Magento_Utils/app/assets/styles/vendor/fonticon--account.css</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>js/validator.js</name></action>
+            </reference>
+
+            <reference name="jsfooter">
+                <action method="addItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/local/jquery.dbm.app.js</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>js/account.js</name><params/></action>
+            </reference>
+
+            <block type="core/text_list" name="menu_account" as="menu_account" translate="label">
+                <label>Menu Account</label>
+
+                <block type="customer/account_navigation" name="customer_account_navigation_link" before="-" template="customer/account/navigation-dbm.phtml">
+                    <action method="setTitle" translate="value"><value>My Account</value></action>
+                    <action method="setClassName"><value>c-nav__link</value></action>
+                    <action method="addLink" translate="label" module="customer"><name>logout</name><path>customer/account/logout</path><label>Log Out</label></action>
+                </block>
+                <block type="customer/account_navigation" name="customer_account_navigation_button" template="customer/account/navigation-dbm.phtml">
+                    <action method="setClassName"><value>c-nav__button</value></action>
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label><class>c-nav__item--dashboard</class></action>
+                    <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label><class>c-nav__item--edit</class></action>
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label><class>c-nav__item--book</class></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label><class>c-nav__item--history</class></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account>
+
+    <!-- Customer Account index -->
+    <customer_account_index>
+        <reference name="customer_account_dashboard">
+            <block type="ugiftcert/balance" name="card_balance" as="info2" template="unirgy/giftcert/balance-dashboard.phtml"/>
+	</reference>
+    </customer_account_index>
+
+    <!-- Customer balance page -->
+    <ugiftcert_customer_balance>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+    </ugiftcert_customer_balance>
+
+    <!-- Cart page -->
+    <checkout_cart_index>
+        <reference name="root">
+            <remove name="notice" />
+            <action method="unsetChild"><name>breadcrumbs</name></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><name>proto/app/assets/scripts/local/jquery.dbm.cartMessage.js</name></action>
+        </reference>
+        <reference name="breadcrumbs">
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>Home</crumbName>
+                <crumbInfo><label>Home</label><title>Home</title><link>/home</link></crumbInfo>
+            </action>
+            <action method="addCrumb" translate="crumbInfo.label crumbInfo.title">
+                <crumbName>Shopping Cart</crumbName>
+                <crumbInfo><label>Shopping Cart</label><title>Shopping Cart</title></crumbInfo>
+            </action>
+        </reference>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>bundle</type><block>bundle/checkout_cart_item_renderer</block><template>checkout/cart/item/bundle.phtml</template></action>
+            <action method="insert"><child>breadcrumbs</child></action>
+            <block type="core/template" name="notice_cart" template="page/html/notice.phtml">
+                <block type="core/messages" name="monbento_messages" as="monbento_messages"/>
+            </block>
+            <block type="dbm_tagmanager/tag_checkout" name="dbm_gtm.cart" />
+            <block type="cms/block" name="product.info.ship" as="product_ship_infos">
+                <action method="setBlockId"><block_id>product_ship_infos</block_id></action>
+            </block>
+            <block type="monbento_site/launcher" name="cart_launcher" template="page/html/cart/launcher.phtml">
+                <action method="setData"><name>type</name><value>cart</value></action>
+            </block>
+            <block type="core/template" name="shop_reassurance" template="page/html/blocs/reassurance.phtml" />
+        </reference>
+    </checkout_cart_index>
+
+    <!-- Checkout page -->
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="removeItem"><type>js</type><name>jquery/jquery.tools.min.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/socolissimo.js</name></action>
+            <!--<action method="removeItem"><type>skin_js</type><name>js/gls</name></action>-->
+            <action method="removeItem"><type>skin_js</type><name>js/dpdfrance/dpdfrpredict.js</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/dpdfrance/dpdfrrelais.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/validator.js</name></action>
+            <action method="unsetChild"><name>map.js</name></action>
+        </reference>
+        <reference name="before_body_end">
+            <remove name="socolissimo_additional" />
+            <remove name="gls_additional" />
+        </reference>
+        <reference name="jsfooter">
+            <block type="core/text" name="googlemaps">
+                <action method="setText"><text><![CDATA[<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAVkXDrDSYmp6GSSihfmJgaNKrpGpix1zE"></script>]]></text></action>
+            </block>
+            <action method="addItem"><type>skin_js</type><script>js/libs/jquery.tools.min.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/socolissimo.js</script></action>
+            <!--<action method="addItem"><type>skin_js</type><script>js/gls</script></action>-->
+            <action method="addItem"><type>skin_js</type><script>js/dpdfrance/dpdfrpredict.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/dpdfrance/dpdfrrelais.js</script></action>
+            <block type="core/template" name="socolissimo_additional_monbento" after="-" template="socolissimo/additional.phtml" />
+            <!--<block type="core/template" name="gls_additional_monbento" after="-" template="gls/additional.phtml" />-->
+        </reference>
+    </checkout_onepage_index>
+
+    <oyecheckout_horizontal>
+        <reference name="custom.checkout.onepage">
+            <block type="core/template" name="shop_reassurance" template="page/html/blocs/reassurance.phtml" />
+        </reference>
+    </oyecheckout_horizontal>
+
+    <checkout_onepage_review_horizontal>
+        <reference name="root">
+            <remove name="checkout.progress" />
+        </reference>
+    </checkout_onepage_review_horizontal>
+
+    <paypal_express_review translate="label">
+        <reference name="paypal.express.review">
+            <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="dpdfrrelais/checkout/onepage/shipping_method/available.phtml"/>
+            <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
+            <block type="checkout/cart_totals" name="paypal.express.review.details.totals" as="totals" template="checkout/onepage/review/totals.phtml"/>
+            <block type="core/template" name="shop_reassurance" template="page/html/blocs/reassurance.phtml" />
+        </reference>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/socolissimo.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/socolissimo-override.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/dpdfrance/dpdfrpredict.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/dpdfrance/dpdfrrelais.css</stylesheet></action>
+            <action method="addItem"><type>skin_js</type><name>js/validator.js</name></action>
+            <action method="unsetChild"><name>map.js</name></action>
+        </reference>
+        <reference name="jsfooter">
+            <block type="core/text" name="googlemaps">
+                <action method="setText"><text><![CDATA[<script type="text/javascript" src="https://maps.google.com/maps/api/js?key=AIzaSyAVkXDrDSYmp6GSSihfmJgaNKrpGpix1zE"></script>]]></text></action>
+            </block>
+            <action method="addItem"><type>skin_js</type><script>js/libs/jquery.tools.min.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/socolissimo.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/dpdfrance/dpdfrpredict.js</script></action>
+            <action method="addItem"><type>skin_js</type><script>js/dpdfrance/dpdfrrelais.js</script></action>
+            <block type="core/template" name="socolissimo_additional_monbento" after="-" template="socolissimo/additional.phtml" />
+        </reference>
+    </paypal_express_review>
+
+    <checkout_onepage_success translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="after_body_start">
+            <block type="dbm_tagmanager/tag_checkoutsuccess" name="dbm_gtm.purchase" before="dbm_gtm" />
+        </reference>
+    </checkout_onepage_success>
+
+    <checkout_onepage_failure translate="label">
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+    </checkout_onepage_failure>
+
+    <!-- Contact form -->
+    <contacts_index_index translate="label">
+        <label>Contact Us Form</label>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+            <action method="setHeaderTitle" translate="title" module="contacts"><title>Contact Us</title></action>
+        </reference>
+        <reference name="contactForm">
+            <action method="setData"><name>type</name><value>page</value></action>
+        </reference>
+    </contacts_index_index>
+
+    <!-- Custom tracker -->
+    <dbm_customer_register_tracker>
+        <reference name="head">
+            <block type="core/template" name="dbm_customer_register.tracker" template="dbm/customer/register/tracker.phtml" />
+        </reference>
+    </dbm_customer_register_tracker>
+
+    <ustorelocator_location_map>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+
+        <reference name="content">
+            <block type="core/template" template="unirgy/storelocator/map.phtml" name="ustorelocator.map" />
+        </reference>
+
+        <reference name="jsfooter">
+            <block type="core/text" name="googlemaps">
+                <action method="setText"><text><![CDATA[<script type="text/javascript" src="https://maps.google.com/maps/api/js?sensor=false&libraries=places&key=AIzaSyAVkXDrDSYmp6GSSihfmJgaNKrpGpix1zE&v=3"></script>]]></text></action>
+            </block>
+            <action method="addItem"><type>skin_js</type><name>storelocator/js/handlebars.min-v4.0.11.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>storelocator/js/markerclusterer.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>storelocator/js/markerwithlabel.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>storelocator/js/jquery.storelocator.js</name></action>
+            <block type="core/template" name="init_storelocator" template="unirgy/storelocator/storelocator_init_map.phtml" />
+        </reference>
+    </ustorelocator_location_map>
+
+    <contacts_contacts_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+        </reference>
+        <reference name="jsfooter">
+            <action method="addItem"><type>skin_js</type><script>js/uniform/jquery.uniform.js</script></action>
+        </reference>
+    </contacts_contacts_index>
+
+</layout>

@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <veinteractiveall translate="label">
+            <label>Ve Interactive</label>
+            <sort_order>1000000</sort_order> 
+        </veinteractiveall>
+    </tabs>
+    <sections>        
+        <veinteractive>
+            <label>VeChat</label>
+            <tab>veinteractiveall</tab>
+            <frontend_type>text</frontend_type>
+            <sort_order>100</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <tags translate="label">
+                    <label>Scripts</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>2</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <scripttag translate="label">
+                            <label>Tag script</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </scripttag>
+                        <pixeltag translate="label">
+                            <label>Tag pixel</label>
+                            <frontend_type>textarea</frontend_type>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </pixeltag>
+                    </fields>
+                </tags>
+            </groups>
+        </veinteractive>
+    </sections>
+</config>

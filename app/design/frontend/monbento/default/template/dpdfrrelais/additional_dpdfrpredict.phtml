@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright (c) 2014 GLS
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * It is available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    DBM
+ * @package     DBM
+ * @copyright   Copyright (c) 2014 GLS
+ * @author 	    DBM
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+?>
+<div id="dpdfrpredict" class="c-mfp__addtobasket zoom-anim-dialog text-center mfp-hide">
+    <div class="predict_header">
+        <label class="predict_label_header"><?php echo Mage::helper('dpdfrpredict')->__('Your Predict delivery by DPD') ?></label><br>
+    </div>
+    <div class="predict_search">
+        <div class="predict_logo">
+            <label class="predict_label_logo"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'dpdfrance/front/predict/dpd_predict_logo.png' ?>" alt=""/>
+        </div>
+        <div class="copy">
+            <p><h2><?php echo Mage::helper('dpdfrpredict')->__('Predict offers you the following benefits') ?></h2></p>
+            <ul>
+                <li><b><?php echo Mage::helper('dpdfrpredict')->__('A parcel delivery in a 3-hour time window (choice is made by SMS or through our website)') ?></b></li>
+                <li><b><?php echo Mage::helper('dpdfrpredict')->__('A complete and detailed tracking of your delivery') ?></b></li>
+                <li><b><?php echo Mage::helper('dpdfrpredict')->__('In case of absence, you can schedule a new delivery when and where you it suits you best') ?></b></li>
+            </ul>
+            <p><h2><?php echo Mage::helper('dpdfrpredict')->__('How does it work?') ?></h2></p>
+            <ul>
+                <li><?php echo Mage::helper('dpdfrpredict')->__('Once your order is ready for shipment, you will receive an SMS proposing various days and time windows for your delivery.') ?></li>
+                <li><?php echo Mage::helper('dpdfrpredict')->__('You choose the moment which suits you best for the delivery by replying to the SMS (no extra cost) or through our website') ?> <a href="https://www.dpd.fr/destinataires">dpd.fr</a></li>
+                <li><?php echo Mage::helper('dpdfrpredict')->__('On the day of delivery, a text message will remind you the selected time window.') ?></li>
+            </ul>
+        </div>
+        <br/>
+        <div id="div_dpdfrance_dpd_logo"></div>
+    </div>
+    <div id="dpdfrance_predict_error" class="warnmsg" style="display:none;">
+        <?php echo Mage::helper('dpdfrpredict')->__('It seems that the GSM number you provided is incorrect. Please provide a french GSM number, starting with 06 or 07, on 10 consecutive digits.') ?>
+    </div>
+    <div id="div_dpdfrance_predict_gsm">
+        <?php echo Mage::helper('dpdfrpredict')->__('To get all the advantages of DPD\'s Predict service, please provide a french mobile phone number here ') ?>
+        <input id="gsm_dest" name="gsm_dest" type="text" class="predict-input-text" value="<?php echo $this->htmlEscape($this->getQuote()->getBillingAddress()->getTelephone()) ?>"/>
+    </div>
+</div>

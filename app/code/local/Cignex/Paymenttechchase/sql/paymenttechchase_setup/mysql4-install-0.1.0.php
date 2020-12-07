@@ -1,0 +1,44 @@
+<?php
+/**
+ * Magento Commnity Edition
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Magento Community Edition License
+ * that is bundled with this package in the file LICENSE_EE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://www.magentocommerce.com/license/community-edition
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Cignex
+ * @package     Cignex_Paymenttechchase
+ * @copyright   Copyright (c) 2009 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license     http://www.magentocommerce.com/license/community-edition
+ */
+
+$installer = $this;
+
+$installer->startSetup();
+
+$installer->run("
+
+-- DROP TABLE IF EXISTS {$this->getTable('chase_profile')};
+CREATE TABLE IF NOT EXISTS chase_profile (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) unsigned NOT NULL,
+  `profilename` varchar(255) NOT NULL,
+  `ref_number` varchar(50) NOT NULL,
+   PRIMARY KEY (`id`),
+   UNIQUE KEY `profilename` (`profilename`)) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1  ;
+    ");
+
+
+$installer->endSetup(); 

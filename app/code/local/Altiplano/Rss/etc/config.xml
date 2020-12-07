@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config>
+	<global>
+		<blocks>
+			<altiplano_rss>
+				<class>Altiplano_Rss_Block</class>
+			</altiplano_rss>
+		</blocks>
+	</global>
+</config>

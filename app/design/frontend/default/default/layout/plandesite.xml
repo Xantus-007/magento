@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+	<plandesite_index_index>
+		<reference name="content">
+			<block type="core/template" name="wrapper" as="wrapper" template="page/html/wrapper.phtml">
+				<action method="setId"><id>plandesite</id></action>
+				<block type="page/template_container" name="plandesite.container" template="page/template/container.phtml">
+					<block type="core/template" name="plandesite.collection" template="plandesite/collection.phtml" />
+					<block type="plandesite/apropos" name="plandesite.apropos" template="plandesite/apropos.phtml" />
+					<block type="plandesite/catalog" name="plandesite.catalog" template="plandesite/catalog.phtml" />
+					<block type="plandesite/blog" name="plandesite.blog" template="plandesite/blog.phtml" />
+					<block type="core/template" name="plandesite.espacepro" template="plandesite/espacepro.phtml" />
+					<block type="plandesite/cms" name="plandesite.cms" template="plandesite/cms.phtml" />
+				</block>
+			</block>
+		</reference>
+	</plandesite_index_index>
+
+</layout>

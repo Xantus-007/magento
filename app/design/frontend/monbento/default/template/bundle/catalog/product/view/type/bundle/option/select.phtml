@@ -1,0 +1,73 @@
+<?php $_option = $this->getOption() ?>
+<?php $_selections = $_option->getSelections() ?>
+<?php //$_showSingle = (count($_selections) == 1 && $_option->getRequired()) ?>
+<?php $_showSingle = false ?>
+<?php $optionTitle = explode('-',$_option->getTitle()) ?>
+<?php $_product = $this->getProduct(); ?>
+<?php $_productID = $_product->getId(); ?>
+
+<div id="options-<?php echo $optionTitle[0] ?>" class="option-wrapper">
+    <?php /*
+    OLD TITLE
+    <dt><span class="qty-holder">
+        </span>
+        <label<?php if ($_option->getRequired()) echo ' class="required"' ?>><?php echo $this->htmlEscape( $optionTitle[1]) ?></label>
+    </dt>
+    */ ?>
+    <?php if ($_default = $_option->getDefaultSelection()): ?>
+        <?php $_defaultQty = $_default->getSelectionQty()*1 ?>
+        <?php $_canChangeQty = $_default->getSelectionCanChangeQty() ?>
+    <?php else: ?>
+        <?php if (!$_showSingle): ?>
+            <?php $_defaultQty = '0' ?>
+            <?php $_canChangeQty = false ?>
+        <?php else: ?>
+            <?php $_defaultQty = $_selections[0]->getSelectionQty()*1 ?>
+            <?php $_canChangeQty = $_selections[0]->getSelectionCanChangeQty() ?>
+        <?php endif; ?>
+    <?php endif; ?>
+    <input id="bundle-option-<?php echo $_option->getId() ?>-qty-input" class="input-text qty<?php echo $_canChangeQty?'':' qty-disabled' ?>" type="hidden" name="bundle_option_qty[<?php echo $_option->getId() ?>]" value="<?php echo $_defaultQty ?>" />
+    
+    <img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/monbento_personnalize_'.$_productID.'/c-img__step--'.$optionTitle[0].'.png') ?>" alt="">
+
+    <div class="c-colorSelector__item c-options-<?php echo $optionTitle[0] ?>">
+        <?php if ($_showSingle): ?>
+            <?php echo $this->getSelectionTitlePrice($_selections[0]) ?>
+            <input type="hidden" name="bundle_option[<?php echo $_option->getId() ?>]" value="<?php echo $_selections[0]->getSelectionId() ?>" />
+        <?php else:?>
+        <?php $_defaultselection = false;
+    			 $isSelected = false; ?>
+            <?php foreach($_selections as $_selection): ?>
+            <?php if($_selection->isSaleable()) : ?>
+                 <?php  		 
+    			 $_imageType = $this->getCustomImageType($optionTitle[0]);
+    			 $_attributes = $_selection->getAttributes();
+    			 if ($_GET['bundle-option-'.$_option->getId()]==$_selection->getSelectionId() || (!isset($_GET['bundle-option-'.$_option->getId()]) && $_selection->getIsDefault())) {
+    			 $isSelected = true;
+    			 $_defaultselection=$_selection->getIsDefault()?$_selection->getSelectionId():$_GET['bundle-option-'.$_option->getId()];
+    			 } else {
+    			 $isSelected = false;
+    			 }
+    			 if ($_attributes['image_bundle_motif']->getFrontend()->getValue($_selection) && $_attributes['image_bundle_motif']->getFrontend()->getValue($_selection)!='no_selection') {
+    			     $_background = $this->helper('catalog/image')->init($_selection, 'image_bundle_motif')->resize(35);
+    				 $_background = 'url('.$_background.')';
+    				 $_hover = false;
+    			 } else {
+    				 $_background = '#'.$_attributes['color_hexa']->getFrontend()->getValue($_selection);
+    				 $_hover = false;
+    			 }
+    			 if ($_attributes[$_imageType]->getFrontend()->getValue($_selection) && $_attributes[$_imageType]->getFrontend()->getValue($_selection)!='no_selection') {
+    			   $_customImage = true;
+    			 } else {
+    			   $_customImage = false;
+    			}
+                 ?>
+                <span class="bundle-color<?php echo $isSelected?' active':''; ?>" id="option_<?php echo $_selection->getSelectionId();?>-<?php echo $optionTitle[0] ?>-<?php echo $_selection->getEntityId() ?>" rel="<?php echo $_selection->getSelectionId();?>,<?php echo $optionTitle[0] ?>,<?php echo $_selection->getEntityId() ?>"><?php echo $_hover?'<span class="hover" style="background:url('.$this->helper('catalog/image')->init($_selection, 'image_bundle_motif')->resize(212,106).')"></span>':''; ?><span<?php echo ($_background!='#Non'&&$_background!='#No')?' style="background:'.$_background.'"':'';?><?php echo $_customImage?' rel="'.$this->helper('catalog/image')->init($_selection, $_imageType)->resize(532).'"':''; ?>></span></span>
+        	<?php endif; ?>
+            <?php endforeach;?>
+            <input type="hidden" onchange="bundle.changeSelection(this)" id="bundle-option-<?php echo $_option->getId() ?>" name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> change-container-classname"<?php echo $_defaultselection?' value="'.$_defaultselection.'"':'';?> />
+            
+        <?php endif; ?>
+    </div>
+</div>
+

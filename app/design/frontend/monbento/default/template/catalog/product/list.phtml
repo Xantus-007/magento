@@ -1,0 +1,169 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$_columnCount = $this->getColumnCount();
+$_productCount = $_productCollection->count();
+$_isCatListing = (!Mage::registry('current_product') && $_category = Mage::registry('current_category')) ? true : false;
+$_isCatalogSearch = (Mage::app()->getFrontController()->getRequest()->getModuleName() == 'catalogsearch') ? true : false;
+$_iteratorBlocPromo = ($_isCatListing) ? -1 : 0;
+$_blocStep = 6;
+$_blocIndex = 0;
+if($_isCatListing || $_isCatalogSearch) $blocsPromos = $this->getBlocPromoForListing();
+?>
+<?php if (!$_productCollection->count() && !$this->getSectionName()): ?>
+    <p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+    <?php if (!$this->getIsHomePage() && !$this->getSectionName()) echo $this->getChildHtml('product_list_toolbar_tri') ?>
+    <?php if($this->getEncloseHtml()): ?>
+    <div class="c-grid__product">
+        <?php echo $this->getLayout()->createBlock('dbm_tagmanager/tag_productlist', 'dbm_gtm.related_products', array('products' => $_productCollection, 'block_name' => $this->__('Vous faire encore plus plaisir')))->toHtml(); ?>
+        <div class="row collapse">
+    <?php elseif(Mage::app()->getFrontController()->getRequest()->getOriginalPathInfo() != '/shop/'): ?>
+    <div class="c-grid__product">
+    <?php endif; ?>
+        <?php if($_isCatListing): ?>
+            <div id="ajax-errors" style="display: none;">
+                <ul class="messages">
+                    <li class="error-msg">
+                        <ul>
+                            <li><span><?php echo $this->__('An error occurred, please try again later.'); ?></span></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="columns small-6 medium-4 large-3">
+                <div class="js-itemEqualizer--holder c-item__content--intro--mainBranding">
+                    <h1 class="c-title"><?php echo $_helper->categoryAttribute($_category, $_category->getName(), 'name') ?></h1>
+                    <div class="c-separator"></div>
+                    <div class="c-content">
+                        <?php $descriptionCat = $_helper->categoryAttribute($_category, $_category->getDescription(), 'description'); ?>
+                        <?php echo $descriptionCat;/*$this->helper('dbm_utils/string')->summarizeWord($descriptionCat, 230);*/ ?>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php $_collectionSize = $_productCollection->count() ?>
+        <?php $i = 0;
+        foreach ($_productCollection as $_product): ?>
+            <?php $stockItem = Mage::getModel('cataloginventory/stock_item')->loadByProduct($_product); ?>
+            <?php $realSaleableProduct = ($_product->getIsSalable() && ($_product->getTypeId() != Mage_Catalog_Model_Product_Type::TYPE_SIMPLE || !$stockItem->getManageStock() || $stockItem->getQty() > 0)); ?>
+            <?php $dataGTM = Mage::helper('dbm_tagmanager')->getProductClickData($_product, $i); ?>
+            <div class="columns small-6 medium-4 large-3<?php if($i == $_productCount - 1) echo ' end'; ?>">
+                <div class="<?php if ($_product->getData('made_in_france') == '1'): ?>is-mif <?php endif ?>c-item__product js-itemEqualizer--holder<?php if(!$realSaleableProduct) echo ' is-outOfStock' ?>">
+                    <?php $visuelPromo = $this->helper('monbento_site')->getProductVisuelPromo($_product); ?>
+                    <?php if(!empty($visuelPromo) && ($realSaleableProduct || ($_product->getTypeId() != Mage_Catalog_Model_Product_Type::TYPE_SIMPLE && $_product->getTypeId() != Mage_Catalog_Model_Product_Type::TYPE_BUNDLE))): ?>
+                    <div class="c-label--<?php echo $visuelPromo; ?>">
+                        <div class="c-content"><?php echo strtolower($_product->getResource()->getAttribute('visuel_promotionnel')->setStoreId(Mage::app()->getStore()->getId())->getSource()->getOptionText($_product->getData('visuel_promotionnel'))); ?></div>
+                        <?php if($mention = $_product->getMentionPromotionnelle()): ?><div class="c-amout">- <?php echo $mention; ?> %</div><?php endif; ?>
+                    </div>
+                    <?php elseif(!$realSaleableProduct): ?>
+                    <div class="c-label--outOfStock">
+                        <div class="c-content"><?php echo $this->__('rupt. de stock') ?></div>
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="c-thumb">
+                        <a href="<?php echo $_product->getProductUrl(); ?>" data-gtm='<?php echo $dataGTM ?>'><img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/catalog/product' . $_product->getSmallImage(), 220, 220); //$this->helper('catalog/image')->init($_product, 'small_image')->resize(220, 220); ?>" alt="<?php echo Mage::helper('dbm_seo')->getAltProductImage($_product) ?>" width="240" height="294" /></a>
+                    </div>
+                    <?php if ($_product->getData('made_in_france') == '1'): ?><div class="c-flag--mif"></div><?php endif ?>
+                    <div class="js-itemEqualizer">
+                        <?php if($_isCatListing): ?><h2><?php endif; ?>
+                        <a href="<?php echo $_product->getProductUrl(); ?>" class="c-title" data-gtm='<?php echo $dataGTM ?>'><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></a>
+                        <?php if($_isCatListing): ?></h2><?php endif; ?>
+                        <div class="c-baseline"><?php echo $_helper->productAttribute($_product, $_product->getBaseline(), 'baseline'); ?></div>
+                    </div>
+                    <?php echo $this->getPriceHtml($_product, true) ?>
+                    <a href="<?php echo (!$_product->hasOptions() && $realSaleableProduct && $_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE) ? '#c-magnificpopup__addtobasket' : $_product->getProductUrl(); ?>" class="c-button--transparentNoHover--arrowRightToRight<?php if(!$_product->hasOptions() && $_product->getIsSalable() && $_product->getTypeId() == Mage_Catalog_Model_Product_Type::TYPE_SIMPLE): ?> js-openmfp" data-cart-url="<?php echo $this->helper('catalog/product_compare')->getAddToCartUrl($_product) ?>" data-gtm='<?php echo $this->helper('dbm_tagmanager')->getAddToCartClickData($_product); ?>'<?php else: ?>"  data-gtm='<?php echo $dataGTM ?>'<?php endif; ?>>
+                        <div class="o-table">
+                            <div class="o-table__cell--valignMiddle"><?php echo $this->__('Ajouter au panier'); ?></div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <?php if(($_isCatListing || $_isCatalogSearch) && $i == $_iteratorBlocPromo + $_blocStep && isset($blocsPromos[$_blocIndex]) && (!$_isCatalogSearch || $i != 11)): ?>
+                <div class="columns small-6 medium-4 large-3">
+                    <div class="js-itemEqualizer--holder text-center">
+                        <a href="<?php echo $blocsPromos[$_blocIndex]->getHref(); ?>">
+                            <?php if(Mage::helper('mobiledetect')->isMobile() && $blocsPromos[$_blocIndex]->getImageMobile()): ?>
+                            <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $blocsPromos[$_blocIndex]->getImageMobile(), 300, 600, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="<?php echo ($blocsPromos[$_blocIndex]->getImageAlt()) ? $blocsPromos[$_blocIndex]->getImageAlt() : 'Monbento : ' . $blocsPromos[$_blocIndex]->getPostTitle(); ?>">
+                            <?php else: ?>
+                            <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $blocsPromos[$_blocIndex]->getImage(), 349, 480, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="<?php echo ($blocsPromos[$_blocIndex]->getImageAlt()) ? $blocsPromos[$_blocIndex]->getImageAlt() : 'Monbento : ' . $blocsPromos[$_blocIndex]->getPostTitle(); ?>">
+                            <?php endif; ?>
+                        </a>
+                    </div>
+                </div>
+                <?php $_blocStep = ($_blocStep == 6) ? 4 : 6; ?>
+                <?php $i++; $_blocIndex++; $_productCount++; ?>
+                <?php $_iteratorBlocPromo = $i; ?>
+            <?php endif; ?>
+            <?php $i++; ?>
+        <?php endforeach ?>
+    <?php if($this->getEncloseHtml()): ?>
+        </div>
+    </div>
+    <?php elseif(Mage::app()->getFrontController()->getRequest()->getOriginalPathInfo() != '/shop/'): ?>
+    </div>
+    <?php endif; ?>
+    <?php if($this->getPagination()): ?>
+        <?php echo $this->getChildHtml('product_list_toolbar') ?>
+    <?php endif; ?>
+<?php endif; ?>
+<?php
+// Provides a block where additional page components may be attached, primarily good for in-page JavaScript
+if ($this->getChild('after')) {
+    $_afterChildren = $this->getChild('after')->getSortedChildren();
+    foreach ($_afterChildren as $_afterChildName) {
+        $_afterChild = $this->getChild('after')->getChild($_afterChildName);
+        //set product collection on after blocks
+        $_afterChild->setProductCollection($_productCollection);
+        echo $_afterChild->toHtml();
+    }
+}
+?>
+
+<?php if($_isCatListing): ?>
+<script type="text/javascript">
+    //<![CDATA[
+    <?php if ($this->helper('catalin_seo')->isAjaxEnabled()): ?>
+    CatalinSeoHandler.isAjaxEnabled = true;
+    CatalinSeoHandler.urlSuffix = <?php echo json_encode(Mage::helper('catalin_seo')->appendSuffix('', Mage::getStoreConfig('catalog/seo/category_url_suffix'))); ?>;
+    CatalinSeoHandler.routingSuffix = <?php echo json_encode(Mage::helper('catalin_seo')->getRoutingSuffix()) ?>;
+    <?php endif; ?>
+    CatalinSeoHandler.bindListeners();
+    //]]>
+</script>
+<?php endif; ?>

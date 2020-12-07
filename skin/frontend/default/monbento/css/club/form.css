@@ -1,0 +1,271 @@
+.clubElementFormButton {
+    float:right;
+    margin-top:30px;
+}
+
+.clubElementForm {
+    display:none;
+    margin:30px 30px;
+    border-bottom:1px solid #EEE;
+}
+
+.clubElementForm dl {
+    padding-left:30px;
+}
+
+.clubElementForm dt,
+.clubElementForm dt *{
+    vertical-align: middle;
+}
+
+
+.clubElementForm dt * {
+    display:inline-block;
+}
+
+.clubElementForm ul {
+    width:100%;
+}
+
+.clubElementForm li {
+    margin: 20px 0;
+    /*border-left: 1px solid #EEEEEE;*/
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+    min-width: 250px;
+}
+
+.clubElementForm li.vert > * {
+    /*display:table-row;*/
+    clear: both;
+    width: 100% !important;
+}
+
+.clubElementForm li.last {
+    display:block;
+}
+
+.clubElementForm label {
+    padding-right:20px;
+}
+/*
+.clubElementForm .submit {
+    background: #8B176A;
+    border-color: #8B176A;
+    color: #FFF;
+}
+*/
+/* Form subscribe */
+.clubElementFormSubscribe {
+    margin-top:20px;
+    margin-left:40px;
+    border-bottom:1px solid #EEE;
+    padding-bottom:20px;
+}
+
+.clubElementFormSubscribe .clubElementFormButton {
+    vertical-align: middle;
+    float:none;
+    padding-left:20px;
+}
+
+.clubElementFormSubscribe .miniProfile .nickname {
+    width:auto;
+}
+
+.clubElementFormSubscribe .miniProfile .nickname a {
+    font-size:1.5em;
+    line-height:45px;
+}
+
+.clubElementFormSubscribe .subscribe {
+    vertical-align:middle;
+    padding-left:20px;
+}
+
+/* Map search */
+.clubSearch {
+    margin:20px;
+    display:block;
+}
+
+.clubSearch .clubInput {
+    padding:10px;
+    width:400px;
+    font-family: quicksand;
+    font-size:1.4em;
+    background-color:#FFF;
+    
+    border: 1px solid;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    
+    border:1px solid #D9D9D9;
+}
+
+.clubSearch .clubInput.customerSearch {
+    background: url('../../images/club/form/search-customer.png') no-repeat 10px center #FFF;
+    padding-left:50px;
+}
+
+.clubSearch .clubInput.receipeSearch {
+    background: url('../../images/club/form/search-receipe.png') no-repeat 20px center #FFF;
+    padding-left:50px;
+    width:255px;
+    text-align: left;
+}
+
+.clubSearch .clubSearchSubmit {
+    background: url('../../images/club/form/search.png') no-repeat center center transparent;
+    padding:10px;
+    color: transparent;
+    cursor: pointer;
+    font-weight: bold;
+    
+    padding-bottom: 2px;
+    /*width: 75px;*/
+    border:none;
+}
+
+/* Facebook */
+.fbSearchButton button{
+    padding:15px 15px 15px 50px;
+    white-space: nowrap;
+    color:#FFF;
+    font-size:1.2em;
+    font-family: vag;
+    background:url('../../images/club/form/facebook-white.png') no-repeat 20px center #3C5A98;
+    cursor:pointer;
+    
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+
+    border:none;
+}
+
+/* Club search toolbar */
+.clubCustomerToolbar {
+    display:table;
+    padding-left:15px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background: #F7F7F7;
+    width:780px;
+}
+
+.clubCustomerToolbar > div,
+.clubCustomerToolbar > form{
+    display: table-cell;
+    padding:10px 10px 10px 0px;
+}
+
+.clubCustomerToolbar .clubInput {
+    width:360px;
+}
+
+
+/* Filter search */
+.clubFilterSearch {
+    background:#F7F7F7;
+    border-top:1px solid #E0E0E0;
+    padding:10px 0;
+}
+
+.clubFilterSearch .clubSearch {
+    margin: 0 10px;
+}
+
+.clubFilterSearch ul {
+    border-radius: 40px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border:1px solid #E5E5E5;
+    display:table;
+    background:#F9F9F9;
+}
+
+.clubFilterSearch form > div{
+    display:table-cell;
+    padding:10px;
+    vertical-align: middle;
+}
+
+.clubFilterSearch li {
+    display:table-cell;
+    border-right:1px solid #C3C3C1;
+    border-left:1px solid #FFF;
+    font-size:1.2em;
+    padding:10px 30px 10px 15px;
+    text-align:left;
+    cursor: pointer;
+}
+
+.clubFilterSearch .last {
+    border-right:none;
+}
+
+.clubFilterSearch .first {
+    border-left:none;
+}
+
+.clubFilterSearch .on {
+    background:url('../../images/club/form/light-on.png') 35px center no-repeat;
+}
+
+.clubFilterSearch .off {
+    background:url('../../images/club/form/light-off.png') 35px center no-repeat transparent;
+    color:#C2C2C2;
+}
+
+.clubFilterSearch .off a {
+    color:#C2C2C2;
+}
+
+div.uploader {
+    width:230px;
+}
+
+div.uploader span.action {
+    padding:0 5px;
+    width:112px;
+}
+
+.iconButton {
+    padding-left:70px;
+}
+
+.button_receipe {
+    background:url('../../images/club/form/button-receipe.png') center left transparent!important;
+}
+
+.button_photo {
+    background:url('../../images/club/form/button-photo.png') center left transparent!important;
+}
+
+.translate_item{
+    padding: 15px 0;
+}
+
+.translate_item h2{
+    background-color: #F3F3F3;
+    padding: 20px;
+}
+
+#postElementForm label span{
+    padding-left: 5px;
+    color: #751259;
+}
+
+#postElementForm .translate_item span.remove{
+    background:url('../../images/club/element/button-delete.png') center left transparent!important;
+    height: 38px;
+    width: 38px;
+    float: right;
+    display: block;
+    cursor: pointer;
+    margin-top: -50px;
+    margin-right: 15px;
+}

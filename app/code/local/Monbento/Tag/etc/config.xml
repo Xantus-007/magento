@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Tag>
+            <version>0.1.0</version>
+        </Monbento_Tag>
+    </modules>
+    <global>
+        <blocks>
+		  <tag>
+                <rewrite>
+					<popular>Monbento_Tag_Block_Popular</popular>			
+                </rewrite>
+		  </tag>
+        </blocks>
+    </global>
+</config>

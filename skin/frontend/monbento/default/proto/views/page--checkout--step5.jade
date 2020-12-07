@@ -1,0 +1,53 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page checkout step 5'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    .c-checkout__content.c-review
+        .row
+            .columns.large-8.small-10.small-centered
+                .c-table__shoppingCart
+                    table.cart-table
+                        thead
+                            tr
+                                th(colspan='2') Nom du produit
+                                th.medium-hide.text-center Prix unitaire
+                                th.text-center Quantité
+                                th.text-center Sous total
+                        tbody
+                            - for ( var i=0 ; i<3 ; i++ )
+                                +table-row__review()
+
+
+                .row
+                    .columns.medium-6
+                        a.c-linkCst--arrowLeft--subBranding(href="") Modifier le panier
+
+                    .columns.medium-6
+                        .c-price__shoppingCart: .c-price__shoppingCart--inner
+                            .c-item
+                                span.c-label Sous Total HT
+                                span.c-price 105,00€
+                            .c-item
+                                span.c-label TVA
+                                span.c-price 21,00€
+
+                            .c-separator
+
+                            .c-item__total
+                                span.c-label Total TTC
+                                span.c-price 126,00€
+
+                            .c-cgv
+                                .c-checkbox
+                                    input(type="checkbox", id="checkbox__001")
+                                    label(for="checkbox__001") J’ai lu et accepté #[a(href='') les conditions générales de vente]
+
+                            a.c-button--mainBranding--arrowRightToRight: .o-table: .o-table__cell--valignMiddle Passer la commander
+

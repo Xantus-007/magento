@@ -1,0 +1,87 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php $_product = $this->getProduct(); ?>
+<section class="c-sticky__product">
+    <div class="c-product__view">
+        <div class="c-thumb<?php if($_product->getModulePersonnalisation() == 1) echo ' perso' ?>">
+            <?php if($_product->getModulePersonnalisation() == 1): ?>
+                <img src="<?php echo ($this->helper('monbento_bundle')->getCustomImageFromUrl(90)) ? $this->helper('monbento_bundle')->getCustomImageFromUrl(90) : $this->helper('catalog/image')->init($_product, 'image', $_product->getImage()); ?>" alt="" />
+            <?php else: ?>
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle"><img src="<?php echo $this->helper('catalog/image')->init($_product, 'image', $_product->getImage()) ?>" alt="" /></div>
+                </div>
+            <?php endif; ?>
+        </div>
+        <div class="c-content">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <div class="c-title"><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name'); ?></div>
+                    <div class="c-baseline"><?php echo $_helper->productAttribute($_product, $_product->getBaseline(), 'baseline'); ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php if ($_product->isSaleable()):?>
+    <a class="c-button--mainBranding--arrowRightToRight js-openmfp">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle"><?php echo $this->__('Ajouter au panier'); ?></div>
+        </div>
+    </a>
+    <div class="c-priceBox__sticky">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle">
+                <?php if($_product->getModulePersonnalisation() == 1): ?>
+                    <?php $blockInfo = $this->getLayout()->createBlock('monbento_site/customize_info'); ?>
+                    <?php $bundlePrice = $blockInfo->getBundlePrice() ?>
+                    <?php foreach($blockInfo->getOptionsPrice() as $optionId => $option): ?>
+                        <?php if($option['priceOption'] != 0) $bundlePrice += $option['priceOption'] ?>
+                    <?php endforeach; ?>
+                    <div class="c-priceBox">
+                        <div class="c-price">
+                            <span class="price"><?php echo Mage::helper('core')->currency($bundlePrice, true, false); ?></span>
+                        </div>
+                    </div>
+                <?php else: ?>
+                    <?php echo $this->getPriceHtml($_product); ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <form data-dbm-form-watch=".js-quantity" class="c-quantity js-quantity__sticky js-form__quantity js-form__watchQuantity">
+        <div class="c-input__button js-quantity__decrease">
+            <button><span>-</span></button>
+        </div>
+        <div class="c-input__text">
+            <input type="text" value="1" readonly>
+        </div>
+        <div class="c-input__button js-quantity__increase">
+            <button><span>+</span></button>
+        </div>
+    </form>
+    <?php endif; ?>
+</section>

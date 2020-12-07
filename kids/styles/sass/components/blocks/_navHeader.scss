@@ -1,0 +1,63 @@
+// ========================================= //
+// Nav header
+// ========================================= //
+
+nav.nav_header_homepage {
+    .container {
+        background: url(../images/logo_monbento.png) no-repeat 50% 50% white;
+        min-height: 75px;
+
+        @include bp-lt($medium){
+            background-position: 50% 20px;
+            padding-top: 50px;
+        }
+    }
+
+    .goto_monbento, .language {
+        font-size: 18px;
+    }
+
+    .goto_monbento {
+        a {
+            display: inline-block;
+            margin-top: 26px;
+            position: relative;
+
+            &:after {
+                content: "";
+                position: absolute;
+                display: block;
+                right: -45px;
+                top: -6px;
+                width: 36px;
+                height: 36px;
+                border: 1px solid $lightgrey_std;
+                @include border-radius(50%);
+                background: url(../images/bkg_arrow_right.png) no-repeat 50% 50% transparent;
+            }
+        }
+    }
+
+    .language {
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            margin-left: 10px;
+            width: 34px;
+            height: 34px;
+            line-height: 30px;
+            text-align: center;
+            border: 1px solid $grey_language;
+            background: transparent;
+            color: $grey_language;
+            @include border-radius(50%);
+            @include transition(background .2s ease);
+
+            &:hover, &.current {
+                background: $grey_language;
+                color: white;
+                @include transition(background .2s ease);
+            }
+        }
+    }
+}

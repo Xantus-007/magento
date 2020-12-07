@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config>
+                <translate>
+                    <modules>
+                        <Monbento_Affiliation>
+                            <files>
+                                <default>Monbento_Affiliation.csv</default>
+                            </files>
+                        </Monbento_Affiliation>
+                    </modules>
+                </translate>
+                <acl>
+                    <resources>
+                        <admin>
+                            <children>
+                                <system>
+                                    <children>
+                                        <config>
+                                            <children>
+                                                <affiliation translate="title" module="affiliation">
+                                                    <title>Affiliation Section</title>
+                                                </affiliation>
+                                            </children>
+                                        </config>
+                                    </children>
+                                </system>
+                            </children>
+                        </admin>
+                </resources>
+                </acl>
+</config>

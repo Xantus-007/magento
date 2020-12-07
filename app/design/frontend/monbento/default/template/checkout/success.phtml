@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+$store = Mage::app()->getStore();
+$storeCode = $store->getCode();
+
+$orderId = $this->getOrderId();
+$order = Mage::getModel('sales/order')->load($this->getOrderId(), 'increment_id');
+
+$quoteId = $order->getQuoteId();
+$quote = Mage::getModel('sales/quote')->load($quoteId);
+$method = $quote->getCheckoutMethod(true);
+?>
+<?php if($method == 'register') echo $this->getLayout()->createBlock('dbm_tagmanager/tag_customer', 'dbm_gtm.checkout_customer', array('create_customer' => true))->toHtml(); ?>
+<h1 class="c-title--page">
+    <div class="row">
+        <div class="columns"><?php echo $this->__('Your order has been received') ?></div>
+    </div>
+</h1>
+<div class="c-checkout__content">
+    <div class="row">
+        <div class="columns large-8 medium-10 medium-centered">
+            <h2 class="sub-title"><?php echo $this->__('Thank you for your purchase!') ?></h2>
+
+            <?php if ($this->getOrderId()):?>
+            <?php if ($this->getCanViewOrder()) :?>
+                <p><?php echo $this->__('Your order # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getViewOrderUrl()), $this->escapeHtml($this->getOrderId()))) ?></p>
+            <?php  else :?>
+                <p><?php echo $this->__('Your order # is: %s.', $this->escapeHtml($this->getOrderId())) ?></p>
+            <?php endif;?>
+                <p><?php echo $this->__('You will receive an order confirmation email with details of your order and a link to track its progress.') ?></p>
+            <?php if ($this->getCanViewOrder() && $this->getCanPrintOrder()) :?>
+                <p>
+                    <?php echo $this->__('Cliquez <a href="%s" onclick="this.target=\'_blank\'">ici pour imprimer</a> une copie de votre confirmation de commande.', $this->getPrintUrl()) ?>
+                    <?php echo $this->getChildHtml() ?>
+                </p>
+            <?php endif;?>
+            <?php endif;?>
+
+            <?php if ($this->getAgreementRefId()): ?>
+                <p><?php echo $this->__('Your billing agreement # is: %s.', sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getAgreementUrl()), $this->escapeHtml($this->getAgreementRefId())))?></p>
+            <?php endif;?>
+
+            <?php if ($profiles = $this->getRecurringProfiles()):?>
+            <p><?php echo $this->__('Your recurring payment profiles:'); ?></p>
+            <ul class="disc">
+            <?php foreach($profiles as $profile):?>
+            <?php $profileIdHtml = ($this->getCanViewProfiles() ? sprintf('<a href="%s">%s</a>', $this->escapeHtml($this->getProfileUrl($profile)), $this->escapeHtml($this->getObjectData($profile, 'reference_id'))) : $this->escapeHtml($this->getObjectData($profile, 'reference_id')));?>
+                <li><?php echo $this->__('Payment profile # %s: "%s".', $profileIdHtml, $this->escapeHtml($this->getObjectData($profile, 'schedule_description')))?></li>
+            <?php endforeach;?>
+            </ul>
+            <?php endif;?>
+
+            <div class="buttons-set">
+                <button type="button" class="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" onclick="window.location='<?php echo $this->getUrl() ?>'"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php switch($storeCode) {
+    case 'fr':
+    case 'us_fr':
+        $conversionId = '1047531513';
+        $conversionLabel = 'xPlRCI3ykQIQ-Z_A8wM';
+        break;
+    case 'it':
+        $conversionId = '993218149';
+        $conversionLabel = 'VC6RCLOGpgUQ5ZzN2QM';
+        break;
+    case 'es':
+    case 'us_es':
+        $conversionId = '993218629';
+        $conversionLabel = 'NQdmCPvBlgUQxaDN2QM';
+        break;
+    case 'de':
+        $conversionId = '1005029542';
+        $conversionLabel = 'krwDCKKzjAQQppGe3wM';
+        break;
+    case 'en':
+    case 'hk_en':
+    case 'uk_en':
+    case 'us_en':
+        $conversionId = '1047531513';
+        $conversionLabel = 'xPlRCI3ykQIQ-Z_A8wM';
+        break;
+} ?>
+
+<?php $currentCurrency = Mage::app()->getStore()->getCurrentCurrencyCode(); ?>
+
+<?php 
+    if(!Mage::helper('dbm_country')->isStoreHK()) {
+?>
+    <div style="display:inline;">
+        <?php echo Mage::getStoreConfig('veinteractive/tags/pixeltag'); ?>
+        <?php if($order->getId()): ?>
+            <a href="#veinteractive" style="display:none" id="OrderNumber"><?php echo $order->getId(); ?></a>
+        <?php endif; ?>
+    </div>
+<?php
+    } 
+?>

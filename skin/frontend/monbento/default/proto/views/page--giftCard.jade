@@ -1,0 +1,109 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page carte cadeau'
+    - var pageClass = ''
+    - var pageColor = '#f65e7a'
+    - var pageType = ''
+
+append body
+    section.c-product__header
+        - var labels = ['Home', 'Shop', 'Cartes & Packs Cadeaux', 'Cartes Cadeaux']
+        +c-breadcrumb(labels)
+
+        .c-product__giftCard
+            .row.collapse
+                .columns.medium-2.large-4
+                    .c-giftCard__preview.js-itemEqualizer
+
+                .columns.medium-10.large-8
+                    .c-product__action.js-itemEqualizer
+                        .c-title #[strong Cartes Cadeaux de 20 € à 160 €]
+                        .c-baseline Offrez, l’esprit Serein
+
+                        form(action=""): .row
+                            .columns.medium-6.c-form__col
+                                .form-list
+                                    .fields
+                                        .field
+                                            label.required #[em *] De la part de
+                                            .input-box: input(type="text")
+
+                                        .field
+                                            label.required #[em *] Adress e-mail
+                                            .input-box: input(type="text", value="lorem@ipsum.com")
+
+                                .form-list
+                                    .c-title__fieldset Sélectionnez un montant
+                                    .fields
+                                        .field
+                                            label.required #[em *] Montant
+                                            .input-box: select
+                                                - for (var i=0; i<10; i++)
+                                                    option option #{i}
+
+                                .form-list
+                                    .c-title__fieldset Sélectionner un visuel
+                                    .fields
+                                        .c-radio__giftCard
+                                            - var giftCard = ['c-bkg__giftCard--default.png', 'c-bkg__giftCard--default.png', 'c-bkg__giftCard--default.png', 'c-bkg__giftCard--04.png', 'c-bkg__giftCard--05.png']
+                                            - for (var i=0; i<5; i++)
+                                                .c-item
+                                                    input(type="radio", id="radio__01#{i+1}", name="radioGroup_000", data-img-src="#{imgDir}#{giftCard[i]}")
+                                                    label(for="radio__01#{i+1}")
+                                                        // format image 68x43px
+                                                        img(src="#{imgDir}c-img__giftCard--0#{i+1}.jpg", alt="")
+
+                                .form-list
+                                    .fields
+                                        .field
+                                            input(type="radio", id="radio__001", name="radioGroup_001")
+                                            label(for="radio__001") Envoyer la carte cadeau par e-mail
+
+                                        .field
+                                            input(type="radio", id="radio__002", name="radioGroup_001")
+                                            label(for="radio__002") Envoyer la carte cadeau par courrier
+
+                            .columns.medium-6.c-form__col
+                                .form-list
+                                    .fields
+                                        .field
+                                            input(type="checkbox", id="checkbox__001")
+                                            label(for="checkbox__001") Envoyer directement la carte cadeau à son destinataire
+
+                                .form-list
+                                    .fields
+                                        .field
+                                            label.required #[em *] Pour
+                                            .input-box: input(type="text")
+
+                                        .field
+                                            label.required #[em *] Adresse postale
+                                            .input-box
+                                                textarea 12 rue Georges Clemenceau &#10;Immeuble 3 Appartement 112 &#10;63000 Clermont-Ferrand
+
+                                .form-list
+                                    .fields
+                                        .field
+                                            label.required Message
+                                            .input-box
+                                                textarea
+
+                            .columns
+                                .c-footer
+                                    a.c-button--mainBranding--arrowRightToRight Ajouter au panier
+
+                                    .c-info
+                                        | Livraison éstimée :#[br]Jeudi prochain (France Metrop.)
+                                        .c-info__tooltip.js-tooltip
+                                            i.c-fonticon__icon--questionMark
+                                                .c-tooltip: .o-table: .o-table__cell--valignMiddle
+                                                    strong Les commandes passées avant#[br]12h00 sont expédiées le jour même
+                                                    | (sauf week-ends et jours fériés),#[br]celles passées après 12h00, le lendemain
+
+
+    include blocks/_reassurance
+    include blocks/_productDescFull
+    include blocks/_businessCase

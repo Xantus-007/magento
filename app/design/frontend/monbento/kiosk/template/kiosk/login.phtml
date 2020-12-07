@@ -1,0 +1,42 @@
+<section class="o-section--bkgGrey--noPaddingTop">
+    <div class="c-title--page">
+        <div class="row">
+            <div class="columns"><?php echo $this->__('Accès magasin') ?></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns medium-10 large-8 small-centered">
+            <div class="c-container__white--login">
+                <form action="<?php echo Mage::getUrl($this->helper('monbento_kiosk')->getKioskLoginPostRoute()); ?>" method="post" id="login-magasin-form">
+                    <?php echo $this->getBlockHtml('formkey'); ?>
+                    <div class="row collapse">
+                        <div class="columns">
+                            <div class="js-itemEqualizer c-form__login">
+                                <div class="c-form__noMargin">
+                                    <div class="c-input__holder js-label__animate">
+                                        <label for="user" class="required"><em>*</em> <?php echo $this->__('User') ?></label>
+                                        <div class="c-input__text">
+                                            <input type="text" name="login[username]" value="<?php echo $this->htmlEscape($this->getUsername()) ?>" id="user" class="input-text required-entry" title="<?php echo $this->__('Email Address') ?>" />
+                                        </div>
+                                    </div>
+                                    <div class="c-input__holder js-label__animate">
+                                        <label for="pass" class="required"><em>*</em> <?php echo $this->__('Password') ?></label>
+                                        <div class="c-input__text">
+                                            <input type="password" name="login[password]" class="input-text required-entry validate-password" id="pass" title="<?php echo $this->__('Password') ?>" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <input type="submit" value="<?php echo $this->__('Login') ?>" class="c-button--mainBranding--arrowRightToRight" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //<![CDATA[
+        var dataForm = new VarienForm('login-magasin-form', true);
+        //]]>
+    </script>
+</section>

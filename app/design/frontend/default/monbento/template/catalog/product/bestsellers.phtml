@@ -1,0 +1,32 @@
+<?php if($this->getProductsCount() > 0): ?>
+<div class="block bestsellers">
+	<div class="block-title">
+    <h3><?php echo $this->__('Top 5 products') ?> :</h3>
+  </div>
+<?php $_collectionSize = $this->getProductsCount() ?>
+  <div class="block-content">
+  	<table>
+    <?php $first = true; ?>
+    <?php foreach ($this->getProductCollection() as $key => $_product): ?>
+    <?php if ($first): ?>
+    		<tr>
+    <?php $first = false; ?>
+    <?php else : ?>
+    		<tr class="line">
+    <?php endif; ?>
+        <td class="product-image">
+          <a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>">
+            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(50, 50); ?>" width="50" height="50" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+          </a>
+        </td>
+        <td class="product-link">
+        	<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>">
+        		<?php echo $this->htmlEscape($_product->getName()) ?>
+        	</a>
+        </td>
+      </tr>
+    <?php endforeach ?>
+    </table>
+	</div>
+</div>
+<?php endif; ?>

@@ -1,0 +1,41 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Personnalisation'
+    - var pageClass = 'catalog-product-view'
+    - var pageColor = '#8cdcf3'
+    - var pageType = 'default'
+
+append body
+    section.c-product__header
+        - var labels = ['Home', 'Shop', 'Personnalisation']
+        +c-breadcrumb(labels)
+
+        .row.collapse.c-row--main
+            .columns: .c-row__personnalize
+                .c-controls.js-itemEqualizer
+                    .c-item: a(href="", title="Recommencer"): i.c-fonticon__icon--rubber
+                    .c-item: a(href="", title="Lancer un modèle aléatoire"): i.c-fonticon__icon--shuffle
+                    .c-item: a(href="", title="Télécharger"): i.c-fonticon__icon--downloadPicture
+                    .c-item: a(href="", title="Partager"): i.c-fonticon__icon--export
+
+                .c-render.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle
+                    img(src="#{imgDir}c-img__product--532x532.png", alt="")
+
+                .c-slider--personnalize: .o-table: .o-table__cell--valignMiddle: .js-slider
+                    - var items = ['1', '5', '10', '6', '13', '11', '12']
+                    each item in items
+                        .c-item: img(src="#{imgDir}monbento_personnalize/c-img__step--#{item}.png", alt="")
+
+                include blocks/_productAction
+
+                .c-colorSelector
+                    .c-colorSelector__item
+                        - var colors = ['#ED8332', '#6D4F41', '#DCBB14', '#BB0D11', '#D46AA4', '#951C7E', '#156291', '#5C991C', '#38A6B6', '#8F867C', '#ffffff', '#2A2A28']
+                        each color, index in colors
+                            span.bundle-color(class= index == 0 ? 'active' : '')
+                                span(style="background-color: #{color};")
+
+    include blocks/_reassurance

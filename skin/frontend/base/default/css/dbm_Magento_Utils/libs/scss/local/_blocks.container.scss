@@ -1,0 +1,55 @@
+// ========================================= //
+// blocks.container
+// ========================================= //
+
+.c-body__account {
+    background-position: 0 rem(-250);
+}
+
+.o-layout__account {
+    .c-account {
+        background: transparent;
+        padding: 0;
+        border: none;
+
+        @include bp-lt($desktop) {
+            width: 100% !important;
+            float: none !important;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+        font-family: $fontBody;
+        color: $white;
+    }
+
+    table, .box, .c-box, .fieldset, form {
+        * {
+            color: $mainFont;
+        }
+    }
+
+    .data-table {
+        tfoot {
+            td {
+                &, strong, span { color: $white; }
+            }
+        } 
+    }    
+
+    .back-link a {
+        font-family: $fontBody;
+        font-size: rem(12) !important;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    } 
+}
+
+.col-1.addresses-primary .box-content {
+    border-right: $border--grey--light;
+}
+
+.addresses-primary {
+    border-top: $border--grey--light;
+}

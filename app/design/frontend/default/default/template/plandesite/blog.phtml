@@ -1,0 +1,8 @@
+<?php /* Monbento_Plandesite_Block_Catalog */ ?>
+<?php $_posts = $this->getCollection(); ?>
+<h2>Blog</h2>
+<ul id="plan-blog">
+<?php foreach ($_posts as $_post) : ?>
+	<li><a href="/blog/<?php echo $_post->getIdentifier(); ?>"><?php echo $_post->getTitle(); ?></a></li>
+<?php endforeach; ?>
+</ul>

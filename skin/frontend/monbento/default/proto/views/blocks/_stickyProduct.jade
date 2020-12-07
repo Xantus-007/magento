@@ -1,0 +1,17 @@
+section.c-sticky__product
+    .c-product__view
+        .c-thumb: .o-table: .o-table__cell--valignMiddle: img(src="#{imgDir}c-img__product--98x98.png", alt="")
+        .c-content: .o-table: .o-table__cell--valignMiddle
+            .c-title MBOriginal Bleu Ciel/Blanc
+            .c-baseline La boite bento
+
+    a.c-button--mainBranding--arrowRightToRight(href=""): .o-table: .o-table__cell--valignMiddle Ajouter au panier
+
+    .c-priceBox__sticky: .o-table: .o-table__cell--valignMiddle
+        .c-priceBox
+            .c-price 35,00€
+
+    form.c-quantity.js-quantity__sticky.js-form__quantity.js-form__watchQuantity(action="", data-dbm-form-watch=".js-quantity")
+        .c-input__button.js-quantity__decrease: button: span -
+        .c-input__text: input(type="text", value="1", disabled)
+        .c-input__button.js-quantity__increase: button: span +

@@ -1,0 +1,221 @@
+// ========================================= //
+// buttons
+// ========================================= //
+
+button[class*='c-button'] {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+[class*='c-button'] {
+    display: inline-block;
+    width: auto;
+    height: rem(57);
+    padding: rem(14) rem(60) rem(10) rem(30);
+    font-family: $sofiaPro;
+    font-size: rem(16);
+    border-radius: rem(20);
+    transition: $ease;
+    border: solid rem(2);
+
+    &[type="submit"] {
+        border-radius: rem(20);
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &[class*='--noRadius'] {
+        border-radius: 0;
+    }
+
+    &.c-minWidth {
+        min-width: rem(235);
+
+        @include bp-lt($mobileL) {
+            min-width: 100%;
+        }
+    }
+
+    &[class*='--mainBranding'] {
+        color: $white;
+        background-color: $mainBranding !important;
+        box-shadow: rem(1) 0 rem(5) rgba($mainBranding, .6);
+        border-color: $mainBranding;
+
+        &:hover {
+            background-color: $mainBranding !important;
+        }
+
+        &:active, &:focus {
+            background-color: $mainBranding--active !important;
+            border-color: $mainBranding--active;
+            box-shadow: 0 0 rem(3) rgba($mainBranding--active, .6);
+        }
+
+        &[class*='--arrowRightToRight'] {
+            background-image: url(#{$img}c-icon_arrowRight--white.svg);
+            text-decoration: none;
+        }
+    }
+
+    &[class*='--white'] {
+        color: $grey--regular--02;
+        background-color: $white;
+        border-color: $grey--light--08;
+
+        &:active {
+            background-color: $grey--light--03;
+        }
+
+        &[class*='--arrowRightToRight'] {
+            background-image: url(#{$img}c-icon_arrowRight--grey.svg);
+        }
+    }
+
+    &[class*='--grey'] {
+        color: $grey--regular--02;
+        background-color: $grey--00;
+        border-color: $grey--00;
+
+        &:hover {
+            background-color: darken($grey--00, 5%);
+        }
+    }
+
+    &[class*='--transparentWhite'] {
+        color: $white;
+        background-color: transparent;
+        border-color: $white;
+
+        &[class*='--arrowRightToRight'] {
+            background-image: url(#{$img}c-icon_arrowRight--white.svg);
+        }
+    }
+
+    &[class*='--transparentNoHover'] {
+        color: $grey--regular--02;
+        background-color: transparent;
+        border-color: $grey--light--08;
+
+        &[class*='--arrowRightToRight'] {
+            background-image: url(#{$img}c-icon_arrowRight--grey.svg);
+        }
+    }
+
+
+    &[class*='--arrowRightToRight'] {
+        background-repeat: no-repeat;
+        background-position: top 50% right rem(25);
+
+        &:hover, &:focus, &.is-active {
+            background-position: top 50% right rem(15);
+        }
+    }
+
+    &[class*='--arrowLeftToLeft'] {
+        background-repeat: no-repeat;
+        background-position: top 50% left rem(25);
+        background-image: url(#{$img}c-icon_arrowLeft--grey.svg);
+        padding: rem(14) rem(30) rem(10) rem(60);
+
+        &:hover, &:focus, &.is-active {
+            background-position: top 50% left rem(15);
+        }
+    }
+
+    &[class*='--iconPen'] {
+        background-repeat: no-repeat;
+        background-position: top 50% right rem(25);
+        background-image: url(#{$img}c-icon_pen.svg);
+
+        &:hover, &:focus, &.is-active {
+            background-position: top 50% right rem(15);
+        }
+    }
+
+    &[class*='--facebook'] {
+        position: relative;
+        padding: 0 rem(14) 0 rem(55);
+
+        &:before {
+            content: '\EA09';
+            position: absolute;
+            left: rem(15);
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: $iconFont;
+            color: $facebook;
+            font-size: rem(30);
+            line-height: rem(30);
+            transition: $ease;
+            display: block;
+        }
+
+        &:hover {
+            background: $subBranding;
+            border-color: $subBranding;
+            color: $white;
+
+            &:before {
+                color: $white;
+            }
+        }
+    }
+
+    &[class*='--noPdgTopBtm'] {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    &:focus {
+        outline: 0;
+    }
+}
+
+.c-action__gototop {
+    $side : rem(66);
+    $side--medium : rem(50);
+    $side--small : rem(40);
+
+    position: fixed;
+    z-index: 200;
+    width: $side;
+    height: $side;
+    bottom: rem(14);
+    right: rem(14);
+    background: $subBranding;
+    border-radius: 50%;
+    margin: 0;
+    opacity: 0;
+    transform: translateY(100%);
+    pointer-events: none;
+    padding: 0;
+    z-index: $zindex--fixed - 1;
+
+    @include bp-lt($medium) {
+        width: $side--medium;
+        height: $side--medium;
+    }
+
+    @include bp-lt($small) {
+        width: $side--small;
+        height: $side--small;
+    }
+
+    @extend %links--hover--active;
+
+    &.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+}
+
+.js-openmfp {
+    pointer-events: auto !important;
+}
+
+.club .page input:not(.not-herit-v1) {
+    color: $white !important;
+    border-radius: rem(5);
+}

@@ -1,0 +1,171 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<div class="cart">
+    <div class="page-title title-buttons">
+        <h1><?php echo $this->__('Shopping Cart') ?></h1>
+    </div>
+    <?php echo $this->getMessagesBlock()->getGroupedHtml() ?>
+    <?php echo $this->getChildHtml('form_before') ?>
+	<?php if($this->getContinueShoppingUrl()): ?>
+        <button type="button" title="<?php echo $this->__('Continue Shopping') ?>" class="button btn-continue" onclick="setLocation('<?php echo $this->getContinueShoppingUrl() ?>')"><span><span><em>&lt;</em> <?php echo $this->__('Continue Shopping') ?></span></span></button>
+    <?php endif; ?>
+    <form action="<?php echo $this->getUrl('checkout/cart/updatePost') ?>" method="post" id="shopping-cart-form">
+        <fieldset>
+            <div id="mobile-cart-table-head" class="show-for-small-down"><?php echo $this->__('Cart content'); ?></div>
+            <table id="shopping-cart-table" class="data-table cart-table">
+                <col width="1" />
+                <col width="1" />
+                <col />
+            <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                <col width="1" />
+            <?php endif ?>
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+                <col width="1" />
+            <?php if ($this->helper('tax')->displayCartPriceExclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+            <?php if ($this->helper('tax')->displayCartPriceInclTax() || $this->helper('tax')->displayCartBothPrices()): ?>
+                <col width="1" />
+            <?php endif; ?>
+
+            <?php $mergedCells = ($this->helper('tax')->displayCartBothPrices() ? 2 : 1); ?>
+                <thead>
+                    <tr class="cart-table-head">
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Remove') ?></th>
+                        <th rowspan="<?php echo $mergedCells; ?>">&nbsp;</th>
+                        <th rowspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Product Name') ?></span></th>
+                        <?php if ($this->helper('wishlist')->isAllowInCart()) : ?>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><span class="nobr"><?php echo $this->__('Move to Wishlist') ?></span></th>
+                        <?php endif ?>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><span class="nobr"><?php echo $this->__('Unit Price') ?></span></th>
+                        <th rowspan="<?php echo $mergedCells; ?>" class="a-center"><?php echo $this->__('Qty') ?></th>
+                        <th class="a-center" colspan="<?php echo $mergedCells; ?>"><?php echo $this->__('Subtotal') ?></th>
+                    </tr>
+                    <?php if ($this->helper('tax')->displayCartBothPrices()): ?>
+                    <tr>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                        <th class="a-right"><?php echo $this->helper('tax')->getIncExcTaxLabel(false) ?></th>
+                        <th><?php echo $this->helper('tax')->getIncExcTaxLabel(true) ?></th>
+                    </tr>
+                    <?php endif; ?>
+                </thead>
+                <tbody>
+                <?php foreach($this->getItems() as $_item): ?>
+                    <?php echo $this->getItemHtml($_item) ?>
+                <?php endforeach ?>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    <div class="cart-collaterals">
+        <div class="col2-set">
+            <div class="col-1">
+                <?php echo $this->getChildHtml('crosssell') ?>
+            </div>
+            <div class="col-2">
+                <?php echo $this->getChildHtml('coupon') ?>
+                <div class="totals">
+                    <?php echo $this->getChildHtml('totals'); ?>
+				    <?php $totals = Mage::helper('checkout/cart')->getCart()->getQuote()->getTotals(); ?>
+                    <?php if(!isset($totals['shipping']['value'])) : ?><p id="before-shipping"><?php echo $this->__('Before calculating shipping cost') ?></p><?php endif; ?>
+                </div>
+                    <?php if(!$this->hasError()): ?>
+                    <ul class="checkout-types es">
+                    <?php foreach ($this->getMethods('methods') as $method): ?>
+                        <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                        <li><?php echo $methodHtml; ?></li>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                    </ul>
+                    <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <div class="block-cms"><?php echo $this->getChildHtml('cms_checkout') ?></div>
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function ($) {
+        $('.submit.minus, .submit.plus').bind('click', function (e) {
+            e.preventDefault();
+            var val_max = parseInt($(this).parent().children("[name=max]").val());
+            var val_maxsales = parseInt($(this).parent().children("[name=maxsales]").val());
+            var val_act = parseInt($(this).parent().children(":text").val());
+            var qtyInputName = $(this).parent().find('input[type=text]').attr('name');
+            var itemId = /\[(\d*)\]/g.exec(qtyInputName)[1];
+            var $qtyInput = $('input[name="cart['+itemId+'][qty]"]');
+            var val_new = val_act;
+
+            if ($(this).val() == '+') {
+                if (val_act < val_max) {
+                    val_new = val_act+1;
+                    $(this).parent().children(":text").val(val_act + 1);
+                    var change = true;
+                }
+
+                if (val_act == val_max) {
+                    if (val_act == val_maxsales) {
+                        alert('Vous ne pouvez pas commander plus de ' + val_maxsales + ' produit(s)');
+                    }
+                    else {
+                        alert('La quantité demandée n\'est pas disponible');
+                    }
+                }
+            }
+            else if ($(this).val() == '-') {
+                if (val_act > 0) {
+                    val_new = val_act-1;
+                    $(this).parent().children(":text").val(val_act - 1);
+                    var change = true;
+                }
+            }
+
+            if (change == true) {
+                $qtyInput.val(val_new);
+
+                $('.submit.minus, .submit.plus').unbind('click');
+                $('.btn-proceed-checkout').hide();
+                $('#shopping-cart-form').submit();
+            }
+        });
+    });
+//]]>
+</script>

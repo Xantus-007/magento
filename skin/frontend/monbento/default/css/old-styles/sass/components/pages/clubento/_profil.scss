@@ -1,0 +1,208 @@
+.clubElementFormSubscribe {
+    @include bp-lt($mb-small) {
+        margin: 0 !important;
+    }
+
+    .miniProfile {
+        @include bp-lt($mb-small) {
+            margin-right: 0;
+        }
+
+        .nickname {
+            @include bp-lt($mb-small) {
+                border: none;
+                padding: 0;
+                min-width: 0;
+                width: 90px !important;
+                display: block;                
+                margin: 0 auto 25px auto;
+                text-align: center;
+            }
+
+            a {
+                span {
+                    @include bp-lt($mb-small) {
+                        margin-left: 10px;
+                    }
+                }
+            }
+
+            > span {
+                @include bp-lt($mb-small) {
+                    display: inline-block;
+                    *display: inline;
+                    *zoom: 1;
+                    margin: 0;
+                    width: 100%;
+                }
+            }
+        }
+
+        .submit {
+            @include bp-lt($mb-small) {
+                display: block;
+                margin-top: 10px;
+                padding: 0;
+            }
+
+            button {
+                @include bp-lt($mb-small) {
+                    padding: 0;
+                    width: 100%;
+                    height: 30px;
+                }
+            }
+        }
+    }
+}
+
+.customer-account-login {
+    .col-main {
+        padding-right: .9375rem;
+        padding-left: .9375rem;
+    }
+    .account-login {
+        @include bp-lt($mb-small) {
+            .new-users,
+            .registered-users {
+                float: none;
+
+                width: 100%;
+            }
+            .form-list input.input-text {
+                width: 100%;
+            }
+            .registered-users {
+                margin-top: 50px;
+            }
+            form .col2-set:nth-child(2) .registered-users {
+                margin-top: 0;
+            }
+            .new-users button {
+                margin-top: -200px;
+            }
+        }
+    }
+}
+@include bp-gt($mb-medium) {
+    .counters {
+        display: inline-block;
+    }
+}
+@include bp-lt($mb-medium) {
+    #clubProfileHeader .clubWrapped {
+        text-align: center;
+    }
+    .clubSearch {
+        margin: 0 !important;
+    }
+    .clubCustomerToolbar {
+        display: block !important;
+        width: 100% !important;
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+        padding-left: 0 !important;
+    }
+    .clubCustomerToolbar > div,
+    .clubCustomerToolbar > form {
+        display: block !important;
+        margin: 0;
+        padding: 10px 0 10px 0 !important;
+    }
+    .fbSearchButton {
+        text-align: center;
+        button {
+            display: inline-block;
+        }
+    }
+    .clubCustomerToolbar .clubInput,
+    .clubSearch .clubInput {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 75% !important;
+    }
+    .clubSearch .clubSearchSubmit {
+        display: inline-block;
+        width: 23% !important;
+    }
+}
+@include bp-lt($mb-xmedium) {
+    #clubProfileHeader .image {
+        float: left;
+        width: 30%;
+        margin-right: 0 !important;
+        padding-bottom: 0 !important;
+        border-right: 1px solid #d8d5d5;
+    }
+    #clubProfileHeader .infos {
+        width: auto !important;
+        margin-top: 0 !important;
+        padding-left: 10px !important;
+    }
+    #clubProfileHeader .nickname {
+        font-size: 2em !important;
+    }
+    #clubProfileHeader .vip {
+        font-size: 1em !important;
+    }
+    #clubProfileHeader .url {
+        display: none;
+    }
+    #clubProfileHeader .counter {
+        font-size: .65em !important;
+        width: 40px !important;
+        margin-top: 10px !important;
+        padding-right: 5px !important;
+        padding-left: 5px !important;
+    }
+    #clubProfileHeader .counter div {
+        width: 40px !important;
+        height: auto !important;
+    }
+    #clubProfileHeader .counter.first {
+        margin-left: 0 !important;
+        border-left: none !important;
+    }
+    #mapContainer {
+        width: 100% !important;
+        margin-left: 0 !important;
+    }
+}
+#data-grid-sponsor-change-table-pager {
+    margin-top: 20px;
+}
+table.prototools-table {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+table.prototools-table th {
+    font-weight: bold;
+    padding: 5px;
+    white-space: nowrap;
+    color: #ffffff;
+    border: 1px solid #afafaf;
+    background: #841669;
+}
+table.prototools-table td {
+    padding: 5px;
+    border: 1px solid #afafaf;
+}
+
+
+.clubSearch {
+    .clubInput {
+        &, &.receipeSearch, &.customerSearch {
+            margin-bottom: 0;
+            display: inline-block;
+        }        
+    }
+
+    .clubSearchSubmit {
+        display: inline-block;
+    }
+}
+
+.fbSearchButton button {
+    margin-bottom: 0;
+}

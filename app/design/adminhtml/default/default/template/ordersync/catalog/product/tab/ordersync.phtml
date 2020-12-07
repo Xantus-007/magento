@@ -1,0 +1,38 @@
+<?php
+    $inventorySettings = $this->getInventorySettings();
+?>
+
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend">Order Sync Inventory Settings</h4>
+    </div>
+    <fieldset>
+        <legend>Order Sync Inventory Settings</legend>
+        <table cellspacing="0" class="form-list" id="table_ordersyncinventory">
+            <tr>
+                <?php $_disabled = ($inventorySettings->getAllowExportDefault()) ? 'disabled="disabled"' : '' ?>
+                <td class="label"><label for="ordersync_inventory_allow_export">Send SKU to Warehouse</label></td>
+                <td class="value"><select id="ordersync_inventory_allow_export_sel" name="ordersync_inventory_allow_export" class="select" <?php echo $_disabled ?>>
+                    <option value="1"><?php echo Mage::helper('core')->__('Yes') ?></option>
+                    <option value="0"<?php if (!$inventorySettings->getAllowExport()): ?> selected="selected"<?php endif; ?>><?php echo Mage::helper('core')->__('No') ?></option>
+                </select>
+                <?php $_checked = ($inventorySettings->getAllowExportDefault()) ? 'checked="checked"' : '' ?>
+                <input type="checkbox" id="ordersync_inventory_allow_export_default_cb" name="ordersync_inventory_allow_export_default" value="1" <?php echo $_checked ?> onclick="toggleValueElements(this, this.parentNode);" class="checkbox" />
+                <label for="ordersync_inventory_allow_export_default" class="normal"><?php echo Mage::helper('core')->__('Use Config Settings') ?></label>
+                <td class="value scope-label"><?php echo Mage::helper('core')->__('[GLOBAL]') ?></td>
+            </tr>
+            <tr>
+                <?php $_disabled = ($inventorySettings->getAllowStockUpdateDefault()) ? 'disabled="disabled"' : '' ?>
+                <td class="label"><label for="ordersync_inventory_allow_stock_update">Get Qty from Warehouse</label></td>
+                <td class="value"><select id="ordersync_inventory_allow_stock_update_sel" name="ordersync_inventory_allow_stock_update" class="select" <?php echo $_disabled ?>>
+                    <option value="1"><?php echo Mage::helper('core')->__('Yes') ?></option>
+                    <option value="0"<?php if (!$inventorySettings->getAllowStockUpdate()): ?> selected="selected"<?php endif; ?>><?php echo Mage::helper('core')->__('No') ?></option>
+                </select>
+                <?php $_checked = ($inventorySettings->getAllowStockUpdateDefault()) ? 'checked="checked"' : '' ?>
+                <input type="checkbox" id="ordersync_inventory_allow_stock_update_cb" name="ordersync_inventory_allow_stock_update_default" value="1" <?php echo $_checked ?> onclick="toggleValueElements(this, this.parentNode);" class="checkbox" />
+                <label for="ordersync_inventory_allow_stock_update_default" class="normal"><?php echo Mage::helper('core')->__('Use Config Settings') ?></label>
+                <td class="value scope-label"><?php echo Mage::helper('core')->__('[GLOBAL]') ?></td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

@@ -1,0 +1,120 @@
+# Translation of Plugins - Honeypot for Contact Form 7 - Development (trunk) in English (UK)
+# This file is distributed under the same license as the Plugins - Honeypot for Contact Form 7 - Development (trunk) package.
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2020-04-12 15:47:17+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: GlotPress/2.4.0-alpha\n"
+"Language: en_GB\n"
+"Project-Id-Version: Plugins - Honeypot for Contact Form 7 - Development (trunk)\n"
+
+#. Plugin Name of the plugin
+msgid "Honeypot for Contact Form 7"
+msgstr "Honeypot for Contact Form 7"
+
+#: honeypot.php:279
+msgid "If checked, the accessibility label will not be generated. This is not recommended, but may improve spam blocking. If you're unsure, leave this unchecked."
+msgstr "If checked, the accessibility label will not be generated. This is not recommended, but may improve spam blocking. If you're unsure, leave this unchecked."
+
+#: honeypot.php:245
+msgid "Wrapper ID (optional)"
+msgstr "Wrapper ID (optional)"
+
+#: honeypot.php:249
+msgid "By default the markup that wraps this form item has a random ID. You can customize it here. If you're unsure, leave blank."
+msgstr "By default, the markup that wraps this form item has a random ID. You can customise it here. If you're unsure, leave blank."
+
+#: honeypot.php:269
+msgid "Moves the CSS to hide the honeypot from the element to the footer of the page. May help confuse bots."
+msgstr "Moves the CSS to hide the honeypot from the element to the footer of the page. May help confuse bots."
+
+#: honeypot.php:265
+msgid "Move inline CSS (optional)"
+msgstr "Move inline CSS (optional)"
+
+#: honeypot.php:259
+msgid "See <a href=\"https://wordpress.org/support/topic/w3c-validation-in-1-11-explanation-and-work-arounds/\" target=\"_blank\" rel=\"noopener\">here</a> for more details. If you're unsure, leave this unchecked."
+msgstr "See <a href=\"https://wordpress.org/support/topic/w3c-validation-in-1-11-explanation-and-work-arounds/\" target=\"_blank\" rel=\"noopener\">here</a> for more details. If you're unsure, leave this unchecked."
+
+#: honeypot.php:255
+msgid "Use W3C Valid Autocomplete (optional)"
+msgstr "Use W3C Valid Autocomplete (optional)"
+
+#: honeypot.php:275
+msgid "Disable Accessibility Label (optional)"
+msgstr "Disable Accessibility Label (optional)"
+
+#: honeypot.php:221
+msgid "This can be anything, but should be changed from the default generated \"honeypot\". For better security, change \"honeypot\" to something more appealing to a bot, such as text including \"email\" or \"website\"."
+msgstr "This can be anything, but should be changed from the default generated \"honeypot\". For better security, change \"honeypot\" to something more appealing to a bot, such as text including \"email\" or \"website\"."
+
+#: honeypot.php:67
+msgid "%s must be installed and activated for the CF7 Honeypot plugin to work"
+msgstr "%s must be installed and activated for the CF7 Honeypot plugin to work"
+
+#: honeypot.php:126
+msgid "Please leave this field empty."
+msgstr "Please leave this field empty."
+
+#: honeypot.php:198 honeypot.php:200
+msgid "Honeypot"
+msgstr "Honeypot"
+
+#: honeypot.php:207
+msgid "Generate a form-tag for a spam-stopping honeypot field. For more details, see %s."
+msgstr "Generate a form-tag for a spam-stopping honeypot field. For more details, see %s."
+
+#: honeypot.php:208
+msgid "CF7 Honeypot"
+msgstr "CF7 Honeypot"
+
+#: honeypot.php:217 honeypot.php:302
+msgid "Name"
+msgstr "Name"
+
+#: honeypot.php:304
+msgid "For better security, change \"honeypot\" to something less bot-recognizable."
+msgstr "For better security, change \"honeypot\" to something less bot-recognisable."
+
+#: honeypot.php:227 honeypot.php:315
+msgid "ID (optional)"
+msgstr "ID (optional)"
+
+#: honeypot.php:236 honeypot.php:319
+msgid "Class (optional)"
+msgstr "Class (optional)"
+
+#: honeypot.php:325
+msgid "Don't Use Accessibility Message (optional)"
+msgstr "Don't Use Accessibility Message (optional)"
+
+#: honeypot.php:326
+msgid "If checked, the accessibility message will not be generated. <strong>This is not recommended</strong>. If you're unsure, leave this unchecked."
+msgstr "If checked, the accessibility message will not be generated. <strong>This is not recommended</strong>. If you're unsure, leave this unchecked."
+
+#: honeypot.php:291
+msgid "Insert Tag"
+msgstr "Insert Tag"
+
+#: honeypot.php:335
+msgid "Copy this code and paste it into the form left."
+msgstr "Copy this code and paste it into the form left."
+
+#. Plugin URI of the plugin
+msgid "http://www.nocean.ca/plugins/honeypot-module-for-contact-form-7-wordpress-plugin/"
+msgstr "http://www.nocean.ca/plugins/honeypot-module-for-contact-form-7-wordpress-plugin/"
+
+#. Description of the plugin
+msgid "Add honeypot anti-spam functionality to the popular Contact Form 7 plugin."
+msgstr "Add honeypot anti-spam functionality to the popular Contact Form 7 plugin."
+
+#. Author of the plugin
+msgid "Nocean"
+msgstr "Nocean"
+
+#. Author URI of the plugin
+msgid "http://www.nocean.ca"
+msgstr "http://www.nocean.ca"

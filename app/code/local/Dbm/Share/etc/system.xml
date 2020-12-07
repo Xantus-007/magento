@@ -1,0 +1,402 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dbm_share>
+            <label>Configuration du club</label>
+            <sort_order>9999</sort_order>
+        </dbm_share>
+    </tabs>
+    <sections>
+        <dbm_share_config translate="label" module="dbm_share">
+            <label>Configuration du club</label>
+            <tab>dbm_share</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <blog translate="label" module="dbm_share">
+                    <label>Blog</label>
+                    <sort_order>2</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <url>
+                            <label>Url de la page d'accueil des actus</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url>
+                    </fields>
+                </blog>
+                <video translate="label" module="dbm_share">
+                    <label>Videos</label>
+                    <sort_order>1</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <page_id>
+                            <label>Id de la page video</label>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </page_id>
+                    </fields>
+                </video>
+                <email translate="label" module="dbm_share">
+                    <label>Email anniversaire</label>
+                    <sort_order>3</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <birthday_template>
+                            <label>Gabarit du mail anniversaire</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </birthday_template>
+                    </fields>
+                </email>
+            </groups>
+        </dbm_share_config>
+        <dbm_share translate="label" module="dbm_share">
+            <label>Gestion des applications mobiles</label>
+            <tab>dbm_share</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <dbm_share_splash translate="label" module="dbm_share">
+                    <label>Gestion des splashs</label>
+                    <sort_order>10</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_share_splash_fr_fr>
+                            <label>Splash FR</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/splash/fr_fr</upload_dir>
+                            <base_url type="media">applications/splash/fr_fr</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_splash_fr_fr>
+                        <dbm_share_splash_en_gb>
+                            <label>Splash EN</label>
+                            <comment>Extensions autorisées : jpg, png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/splash/en_gb</upload_dir>
+                            <base_url type="media">applications/splash/en_gb</base_url>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_splash_en_gb>
+                        <dbm_share_splash_es_es>
+                            <label>Splash ES</label>
+                            <comment>Extensions autorisées : jpg, png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/splash/es_es</upload_dir>
+                            <base_url type="media">applications/splash/es_es</base_url>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_splash_es_es>
+                        <dbm_share_splash_pt_pt>
+                            <label>Splash PT</label>
+                            <comment>Extensions autorisées : jpg, png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/splash/pt_pt</upload_dir>
+                            <base_url type="media">applications/splash/pt_pt</base_url>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_splash_pt_pt>
+                        <dbm_share_splash_ja_jp>
+                            <label>Splash JP</label>
+                            <comment>Extensions autorisées : jpg, png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/splash/ja_jp</upload_dir>
+                            <base_url type="media">applications/splash/ja_jp</base_url>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_splash_ja_jp>
+                    </fields>
+                </dbm_share_splash>
+                <dbm_share_homescreen>
+                    <label>Gestion des home screens</label>
+                    <sort_orde>20</sort_orde>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_share_homescreen_fr_fr>
+                            <label>Homescreen FR</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homescreen/fr_fr</upload_dir>
+                            <base_url type="media">applications/homescreen/fr_fr</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homescreen_fr_fr>
+                        <dbm_share_homescreen_en_gb>
+                            <label>Homescreen EN</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homescreen/en_gb</upload_dir>
+                            <base_url type="media">applications/homescreen/en_gb</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homescreen_en_gb>
+                        <dbm_share_homescreen_es_es>
+                            <label>Homescreen ES</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homescreen/es_es</upload_dir>
+                            <base_url type="media">applications/homescreen/es_es</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homescreen_es_es>
+                        <dbm_share_homescreen_pt_pt>
+                            <label>Homescreen PT</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homescreen/pt_pt</upload_dir>
+                            <base_url type="media">applications/homescreen/pt_pt</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homescreen_pt_pt>
+                        <dbm_share_homescreen_ja_jp>
+                            <label>Homescreen JP</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homescreen/ja_jp</upload_dir>
+                            <base_url type="media">applications/homescreen/ja_jp</base_url>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homescreen_ja_jp>
+                    </fields>
+                </dbm_share_homescreen>
+                <dbm_share_homebuttons>
+                    <label>Gestion des boutons </label>
+                    <sort_orde>30</sort_orde>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_share_homebuttons01_fr_fr>
+                            <label>Bouton gauche  FR</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/fr_fr/left</upload_dir>
+                            <base_url type="media">applications/homebuttons/fr_fr/left</base_url>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons01_fr_fr>
+                        <dbm_share_homebuttons02_fr_fr>
+                            <label>Bouton droit  FR</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/fr_fr/right</upload_dir>
+                            <base_url type="media">applications/homebuttons/fr_fr/right</base_url>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons02_fr_fr>
+                        <separator01>
+                            <frontend_type>note</frontend_type>
+                            <label>--------------------------------------</label>
+                            <sort_order>21</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator01>
+                        
+                        <dbm_share_homebuttons01_en_gb>
+                            <label>Bouton gauche  EN</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/en_gb/left</upload_dir>
+                            <base_url type="media">applications/homebuttons/en_gb/left</base_url>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons01_en_gb>
+                        <dbm_share_homebuttons02_en_gb>
+                            <label>Bouton droit  EN</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/en_gb/right</upload_dir>
+                            <base_url type="media">applications/homebuttons/en_gb/right</base_url>
+                            <sort_order>40</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons02_en_gb>
+                        <separator02>
+                            <frontend_type>note</frontend_type>
+                            <label>--------------------------------------</label>
+                            <sort_order>41</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator02>
+                        
+                        <dbm_share_homebuttons01_es_es>
+                            <label>Bouton gauche  ES</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/es_es/left</upload_dir>
+                            <base_url type="media">applications/homebuttons/es_es/left</base_url>
+                            <sort_order>50</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons01_es_es>
+                        <dbm_share_homebuttons02_es_es>
+                            <label>Bouton droit  ES</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/es_es/right</upload_dir>
+                            <base_url type="media">applications/homebuttons/es_es/right</base_url>
+                            <sort_order>60</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons02_es_es>
+                        <separator03>
+                            <frontend_type>note</frontend_type>
+                            <label>--------------------------------------</label>
+                            <sort_order>61</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator03>
+                        
+                        <dbm_share_homebuttons01_pt_pt>
+                            <label>Bouton gauche  PT</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/pt_pt/left</upload_dir>
+                            <base_url type="media">applications/homebuttons/pt_pt/left</base_url>
+                            <sort_order>70</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons01_pt_pt>
+                        <dbm_share_homebuttons02_pt_pt>
+                            <label>Bouton droit  PT</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/pt_pt/right</upload_dir>
+                            <base_url type="media">applications/homebuttons/pt_pt/right</base_url>
+                            <sort_order>80</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons02_pt_pt>
+                        <separator04>
+                            <frontend_type>note</frontend_type>
+                            <label>--------------------------------------</label>
+                            <sort_order>81</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator04>
+                        
+                        
+                        <dbm_share_homebuttons01_ja_jp>
+                            <label>Bouton gauche  JP</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/ja_jp/left</upload_dir>
+                            <base_url type="media">applications/homebuttons/ja_jp/left</base_url>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons01_ja_jp>
+                        <dbm_share_homebuttons02_ja_jp>
+                            <label>Bouton droit  JP</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/homebuttons/ja_jp/right</upload_dir>
+                            <base_url type="media">applications/homebuttons/ja_jp/right</base_url>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_share_homebuttons02_ja_jp>
+                        <separator05>
+                            <frontend_type>note</frontend_type>
+                            <label>--------------------------------------</label>
+                            <sort_order>101</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </separator05>
+                    </fields>
+                </dbm_share_homebuttons>
+            </groups>
+        </dbm_share>
+    </sections>
+</config>   

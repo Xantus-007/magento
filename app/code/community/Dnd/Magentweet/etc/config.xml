@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Dnd
+ *
+ * 
+ */
+-->
+<config>
+    <modules>
+        <Dnd_Magentweet>
+            <version>0.0.1</version>
+        </Dnd_Magentweet>
+    </modules>
+    <global>
+        <helpers>
+            <magentweet>
+                <class>Dnd_Magentweet_Helper</class>
+            </magentweet>
+        </helpers>
+        <blocks>
+             <magentweet>
+                <class>Dnd_Magentweet_Block</class>
+             </magentweet>
+        </blocks>
+        <models>
+            <magentweet>
+                <class>Dnd_Magentweet_Model</class>
+            </magentweet>
+        </models>
+    </global>
+    <frontend>
+     	<layout>
+            <updates>
+                <magentweet>
+                    <file>magentweet.xml</file>
+                </magentweet>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Dnd_Magentweet>
+                    <files>
+                        <default>Dnd_Magentweet.csv</default>
+                    </files>
+                </Dnd_Magentweet>
+            </modules>
+        </translate>
+    </adminhtml>
+</config> 

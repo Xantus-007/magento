@@ -1,0 +1,57 @@
+<?php
+    $configValue = (int) Mage::getStoreConfig('newsletter/registrationincentive/incentive_message_page');
+?>
+<div style="display: none" id="mbt-newsletter" class="popupNewsletter popup">
+    <div class="c-formNewsletter">
+        <div class="c-headNewsletter">
+            <div class="c-headNewsletter-top">
+                <span class="title"><?php echo $this->__('Subscribe to the Newsletter and receive a FREE ebook of recipes') ?></span>
+                <div class="head-img">
+                    <img src="<?php echo $this->getSkinUrl('images/tablet.png') ?>" alt="<?php echo $this->__('Subscribe to the Newsletter and receive a FREE ebook of recipes') ?>">
+                </div>
+            </div>
+        </div>
+        <form action="<?php echo $this->getFormActionUrl() ?>" method="post" id="newsletter-validate-detail-popup" class="newsletter-validate-detail-popup">
+            <div class="c-input__holder">
+                <div class="c-input__text">
+                    <input type="email" name="email" id="newsletter" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Sign up for our newsletter')) ?>" class="input-text required-entry validate-email" placeholder="<?php echo $this->helper('checkout')->__('Email Address'); ?>">
+                </div>
+                <div class="c-input__submit">
+                    <button type="submit">
+                        <?php echo $this->__('je m\'abonne') ?>
+                    </button>
+                </div>
+            </div>
+            <?php
+                $currentStoreId = Mage::app()->getStore()->getCode();
+                $helper = Mage::helper('monbento_site/data');
+                $us = "";
+                if ($currentStoreId === "us_en") {
+                    $us = "/en";
+                }
+                $urlKey = $us . $helper->getKeyUrlPageCms($currentStoreId);
+            ?>
+            <div class="politic">
+                <div class="c-checkbox--inline">
+                    <div class="c-checkbox">
+                        <input type="checkbox" name="rgpdformnewsletter" value="1" id="checkbox_newsletter" class="checkbox required-entry">
+                        <label for="checkbox_newsletter">
+                            <?php echo $this->__("I agree to receive newsletters from monbento and that my data is processed in accordance with <a href='%s' target='_blank'>policy of management of the personal data</a>. I can unsubscribe at any time.", $urlKey) ?>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <script type="text/javascript">
+        //<![CDATA[
+            var newsletterSubscriberFormDetailPopup = new VarienForm('newsletter-validate-detail-popup');
+        //]]>
+        </script>
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+        var incentiveMessagePage = <?= $configValue ?>;
+    //]]>
+</script>

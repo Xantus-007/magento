@@ -1,0 +1,1 @@
+<?php/** * The Magento Developer * http://themagentodeveloper.com * * @category   Sellry * @package    Sellry_OrderSync * @version    0.1.1 */ $installer = $this;$installer->startSetup();$installer->endSetup();

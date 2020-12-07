@@ -1,0 +1,58 @@
+<div class="dbm_country_switcher base noUniform">
+    <a href="javascript:void(0);"><?php echo $this->__('Delivery country and language'); ?></a>
+</div>
+
+<script type="text/javascript">
+var topBarOpenedClass = 'opened';
+var topBarClosedClass = 'closed';
+(function($){
+    $('.dbm_country_switcher_topbar .close a').live('click', function(){
+        $('.dbm_country_switcher_topbar').slideUp({
+            duration:'500',
+            complete:function(){
+                $('.dbm_country_switcher_topbar').removeClass(topBarOpenedClass).addClass(topBarClosedClass)
+            }
+        })
+    });
+    
+    $('.dbm_country_switcher.base a').live('click', function(){
+        var $link = $(this);
+        var disabledClassName = 'disabled';
+        
+        var $topBar = $('.dbm_country_switcher_topbar');
+        
+        if($topBar.hasClass(topBarOpenedClass) && $('.dbm_country_switcher_topbar .switch_link').size())
+        {
+            $('.dbm_country_switcher_topbar .switch_link').click()
+        }
+        else
+        {
+            $('.dbm_country_switcher_topbar').slideDown({
+                duration : '500',
+                complete: function(){
+                    $('.dbm_country_switcher_topbar').addClass(topBarOpenedClass).removeClass(topBarClosedClass)
+                }
+            });
+        }
+    });
+})(jQuery)
+</script>
+<?php if($this->isAutoPopupAllowed()): ?>
+<script type="text/javascript">
+    (function($){
+        $(document).ready(function(){
+            
+            if($('.dbm_country_switcher_topbar .switch_link').size())
+            {
+                $('.dbm_country_switcher_topbar .switch_link').click();
+            }
+            
+            var $link = $('.dbm_country_switcher.popup .notavailable');
+            if($link.size())
+            {
+                $link.click();
+            }
+        })
+    })(jQuery)
+</script>
+<?php endif; ?>

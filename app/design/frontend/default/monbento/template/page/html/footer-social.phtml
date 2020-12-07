@@ -1,0 +1,49 @@
+<?php if($_SERVER['REQUEST_URI'] == '/shop/' && Mage::app()->getStore()->getCode() == "fr") : ?>
+<div id="new-footer">
+	<div class="cont">
+		<div id="aidez-nous"><a href="/ameliorer-mon-bento/"><img src="<?php echo $this->getSkinUrl('images/footer-new-aidez.png'); ?>" alt="Aidez-nous" /></a></div>
+		<div id="logo"><img src="<?php echo $this->getSkinUrl('images/footer-new-logo.png'); ?>" alt="Monbento" /></div>
+	</div>
+	<div id="avis-rss" class="bloc ">
+		<div class="title">
+			<div class="img"></div>
+			<h4>Avis produits récents</h4>
+		</div>
+		<div class="content">
+		<?php echo $this->getLayout()->createBlock('amreview/sidebar')->setTemplate('amreview/sidebar.phtml')->toHtml(); ?>
+		</div>
+	</div>
+<?php  /*echo Mage::app()
+->getLayout()
+->createBlock('altiplano_rss/block')
+->setFeedUrl('https://fr-fr.facebook.com/feeds/page.php?id=188804934499072&format=rss20')
+->setNb(4)
+->setTitle('En ce moment sur la fanpage')
+->setTitleLength(26)
+->setShowDesc(false)
+->setBlockId('facebook-rss')
+->toHtml(); */
+?>
+<?php echo Mage::app()
+->getLayout()
+->createBlock('altiplano_rss/block')
+->setFeedUrl('https://www.monbento.com/blog/cat/actu-mon-bento/rss')
+->setNb(2)
+->setTitle("Le blog monbento")
+->setTitleLength(26)
+->setBlockId('actu-rss')
+->toHtml();
+?>
+<?php /* echo Mage::app()
+->getLayout()
+->createBlock('altiplano_rss/block')
+->setFeedUrl('https://twitter.com/statuses/user_timeline/193595615.rss')
+->setNb(2)
+->setTitle("Bentweets")
+->setTitleLength(84)
+->setShowDesc(false)
+->setBlockId('twitter-rss')
+->toHtml();
+*/ ?>
+</div>
+<?php endif; ?>

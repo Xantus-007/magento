@@ -1,0 +1,1 @@
+©‘:^<?php exit; ?>a:1:{s:7:"content";s:295:"a:4:{s:23:"wp-cerber/wp-cerber.php";s:13:"cerber_finito";s:37:"protect-wp-admin/protect-wp-admin.php";s:26:"init_uninstall_pwa_plugins";s:44:"wp-plugins.instagram-feed/instagram-feed.php";s:26:"sb_instagram_uninstall_pro";s:27:"autoptimize/autoptimize.php";s:29:"autoptimizeMain::on_uninstall";}";}

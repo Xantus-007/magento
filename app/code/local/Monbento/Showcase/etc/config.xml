@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Monbento_Showcase>
+      <version>0.1.0</version>
+    </Monbento_Showcase>
+  </modules>
+  <frontend>
+    <translate>
+      <modules>
+        <Monbento_Showcase>
+          <files>
+            <default>Monbento_Showcase.csv</default>
+          </files>
+        </Monbento_Showcase>
+      </modules>
+    </translate>
+  </frontend>
+  <global>
+    <blocks>
+      <showcase>
+        <class>Monbento_Showcase_Block</class>
+      </showcase>
+    </blocks>
+    <helpers>
+      <showcase>
+        <class>Monbento_Showcase_Helper</class>
+      </showcase>
+    </helpers>
+  </global>
+  <admin>
+    <routers>
+      <showcase>
+        <use>admin</use>
+        <args>
+          <module>Monbento_Showcase</module>
+          <frontName>showcase</frontName>
+        </args>
+      </showcase>
+    </routers>
+  </admin>
+  <adminhtml>
+    <translate>
+      <modules>
+        <Monbento_Showcase>
+          <files>
+            <default>Monbento_Showcase.csv</default>
+          </files>
+        </Monbento_Showcase>
+      </modules>
+    </translate>
+    <menu>
+      <banner translate="title" module="showcase">
+        <title>Showcase</title>
+        <sort_order>60</sort_order>
+        <children>
+          <carousel_accueil module="showcase">
+            <title>Carrousel Accueil</title>
+            <action>adminhtml/system_config/edit/section/showcase_accueil</action>
+            <sort_order>10</sort_order>
+          </carousel_accueil>
+          <carousel_shop module="showcase">
+            <title>Carrousel Shop</title>
+            <action>adminhtml/system_config/edit/section/showcase_shop</action>
+            <sort_order>20</sort_order>
+          </carousel_shop>
+        </children>
+      </banner>
+    </menu>
+  </adminhtml>
+</config>

@@ -1,0 +1,67 @@
+// ========================================= //
+// container
+// ========================================= //
+
+[class*='c-container__white'] {
+    background: $white;
+    padding-top: rem(28);
+    padding-bottom: rem(28);
+
+    .c-heading {
+        text-align: center;
+        font-family: $sofiaPro;
+        font-weight: 300;
+        margin-bottom: rem(38);
+        padding-left: rem(28);
+        padding-right: rem(28);
+
+        .c-title {
+            font-size: rem(30);
+            color: $mainBranding;
+            margin-bottom: rem(7);
+
+            @include bp-lt($tablet) {
+                font-size: rem(24);
+            }
+
+            @include bp-lt($small) {
+                font-size: rem(18);
+            }
+        }
+
+        .c-baseline {
+            font-size: rem(20);
+            color: $grey--regular--02;
+
+            @include bp-lt($tablet) {
+                font-size: rem(18);
+            }
+
+            @include bp-lt($small) {
+                font-size: rem(16);
+            }
+        }
+    }
+
+    &[class*="--login"] {
+        .row.collapse {
+            .columns.medium-6 {
+                @include bp-lt($tablet) {
+                    width: 100%;
+                }
+
+                &:first-of-type {
+                    @include bp-lt($tablet) {
+                        margin-bottom: rem(35);
+                    }
+                }
+
+                .js-itemEqualizer {
+                    @include bp-lt($tablet) {
+                        height: auto !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,47 @@
+// ========================================= //
+// Starter
+// ========================================= //
+
+// Compass
+@import "compass";
+
+// Susy
+@import "susy";
+
+// Starter
+@import "components/settings";
+
+//Base
+//@import "components/base/";
+@import "components/base/breakpoints";
+@import "components/base/fontStyle";
+
+// Plugins
+@import "components/plugins/normalize";
+@import "components/plugins/img_comp_slider";
+@import "components/plugins/reveal";
+
+//Modules
+//@import "components/modules/";
+@import "components/modules/mixin";
+@import "components/modules/susyGrid";
+@import "components/modules/textAlign";
+@import "components/modules/button";
+@import "components/modules/fontStyle";
+
+//Blocks
+//@import "components/blocks/";
+@import "components/blocks/header";
+@import "components/blocks/footer";
+@import "components/blocks/navHeader";
+@import "components/blocks/ctaBuy";
+@import "components/blocks/boostedAfternoon";
+@import "components/blocks/rainbowSlide";
+@import "components/blocks/customBox";
+@import "components/blocks/yourGames";
+@import "components/blocks/simpleThings";
+@import "components/blocks/gift";
+@import "components/blocks/animalsTabs";
+
+//Pages
+//@import "components/pages/";

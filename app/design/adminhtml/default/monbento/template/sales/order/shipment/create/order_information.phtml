@@ -1,0 +1,19 @@
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4><?php echo Mage::helper('core')->__('Informations de commande') ?></h4>
+    </div>
+    <fieldset>
+        <div id="<?php echo $this->getHtmlId() ?>" class="order-information-whole-order-container">
+            <table class="form-list">
+                <tr>
+                    <td class="label">
+                        <label for="frais_livraison_reel" class="normal"><?php echo Mage::helper('core')->__('Frais de livraison réels') ?></label>
+                    </td>
+                    <td class="value">
+                        <input type="text" id="frais_livraison_reels" name="order[frais_livraison_reel]" value=""/>
+                    </td>             
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</div>

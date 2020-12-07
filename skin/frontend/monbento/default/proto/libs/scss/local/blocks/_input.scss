@@ -1,0 +1,451 @@
+// ========================================= //
+// input
+// ========================================= //
+.c-input__holder {
+    position: relative;
+    height: rem(58);
+    margin-bottom: rem(14);
+    border: solid rem(2) $grey--light--04;
+    overflow: hidden;
+    label {
+        pointer-events: none;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        height: rem(58); // max-width: calc(100% - 60px);
+        width: 100%;
+        padding-left: rem(14);
+        padding-top: rem(17); // overflow-y: hidden;
+        z-index: $zindex--hover;
+        font-family: $sofiaProCond;
+        font-weight: 700;
+        font-size: rem(14);
+        color: $grey--regular--02;
+        text-transform: uppercase;
+        letter-spacing: rem(2);
+        text-align: left;
+        cursor: text;
+        transition: $ease; // white-space: nowrap;
+        @include clearfix;
+        em {
+            color: $mainBranding;
+            margin-left: rem(3);
+        }
+    }
+    input,
+    select,
+    textarea {
+        position: relative;
+        height: rem(52);
+        width: 100%;
+        padding-left: rem(12);
+        padding-top: rem(24);
+        z-index: $zindex--content;
+        margin: 0;
+        font-family: $sofiaPro;
+        font-weight: 300;
+        font-size: rem(18);
+        color: $subBranding;
+        box-shadow: none;
+        border: none;
+        &,
+        &:focus {
+            background: $white;
+        }
+    }
+    select {
+        height: rem(53);
+        font-size: rem(16);
+
+        &,
+        &:focus {
+            padding-right: rem(65);
+            background: $white url(#{$img}c-bkg__select.svg) no-repeat 100% 50%;
+            padding-bottom: 0;
+        }
+    }
+    &.is-focus {
+        label {
+            font-size: rem(12);
+            color: $grey--light--01;
+            height: rem(16);
+            padding-top: rem(0);
+            transform: translateY(-24px);
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+    }
+    &.is-textarea {
+        height: rem(120);
+        textarea {
+            height: rem(122);
+            resize: none;
+            @include bp-lt($tablet) {
+                font-size: rem(14);
+            }
+        }
+        label {
+            top: rem(29);
+        }
+        &.is-tall {
+            height: rem(210);
+            textarea {
+                height: rem(206);
+            }
+        }
+    }
+    &.is-file {
+        background: $white url(#{$img}c-bkg__input--file.svg) no-repeat top 50% right rem(20);
+
+        input {
+            background-color: transparent;
+
+            &.validation-failed + .validation-advice:last-child {
+                height: rem(51);
+                top: 0;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+                border: 1px dashed #f00 !important;
+                background: #faebe7 url(#{$img}c-bkg__input--file.svg) no-repeat top 50% right rem(20) !important;
+                font-size: 0;
+                line-height: normal;
+            }
+        }
+        .input-box {
+            height: rem(52);
+        }
+        .validation-failed+.validation-advice+span.filename {
+            border: 1px dashed #f00 !important;
+            background: #faebe7 url(#{$img}c-bkg__input--file.svg) no-repeat top 50% right rem(20) !important;
+        }
+        div.uploader {
+            width: 100%;
+            height: 100%;
+            background: none;
+            overflow: visible;
+            input {
+                // opacity: 1;
+                // position: static;
+            }
+            span.filename {
+                width: 100%;
+                height: 100%;
+                padding: 0;
+                margin: 0;
+                border: none;
+                padding-top: rem(24);
+                padding-left: rem(15);
+                font-family: $sofiaPro;
+                font-weight: 300;
+                font-size: rem(18);
+                color: $subBranding;
+            }
+            span.action {
+                user-select: none;
+                position: absolute;
+                right: 0;
+                height: 100%;
+                background: none;
+                font-size: 0;
+                text-shadow: none;
+            }
+        }
+    }
+    input[type="file"] {
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &.has-error {
+        &:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: $zindex--hover;
+            display: block;
+            width: rem(8);
+            height: 100%;
+            background: $formError;
+        }
+        label {
+            color: $formError;
+        }
+    }
+    .c-input__text.c-radio_register {
+        //padding-top: rem(55);
+        padding-left: rem(12);
+        >div {
+            display: inline-block;
+            padding-top: rem(20);
+            label {
+                transform: translateY(0);
+                pointer-events: all;
+                cursor: pointer;
+
+            }
+        }
+    }
+}
+
+.c-form__noMargin {
+    .c-input__holder {
+        margin-bottom: 0;
+        border-bottom: 0;
+        &:last-of-type {
+            margin-bottom: rem(14);
+            border: solid rem(2) $grey--light--04;
+        }
+    }
+}
+
+.c-checkbox--inline {
+    @include clearfix;
+    .c-checkbox {
+        float: left;
+    }
+}
+
+.c-submit__square,
+.c-submit__delete {
+    input,
+    button {
+        display: block;
+        width: rem(58);
+        height: rem(58);
+        border: solid rem(2) $grey--light--04;
+        border-left: none;
+        background-color: $white;
+        background-image: url(#{$img}c-icon__submit.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+        transition: $ease;
+        &:hover,
+        &:focus {
+            background-color: $grey--light--02;
+        }
+        &.delete-coupon {
+            background-image: url(#{$img}c-icon__delete.svg);
+        }
+    }
+}
+
+.c-submit__delete {
+    input,
+    button {
+        background-image: url(#{$img}c-icon__delete.svg);
+    }
+}
+
+.c-inputSubmit__inline {
+    @include clearfix;
+    .c-input__holder {
+        float: left;
+        width: calc(100% - 58px);
+    }
+    .c-submit__square,
+    .c-submit__delete {
+        float: right;
+        width: rem(58);
+    }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    &:checked,
+    &:not(:checked) {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+        pointer-events: none;
+        &+label {
+            width: 100%;
+            margin-left: 0;
+            margin-right: 0;
+            position: relative;
+            padding-left: rem(30);
+            font-weight: 400;
+            font-family: $merriWeather;
+            font-size: rem(14);
+            font-weight: 300;
+            color: $grey--regular--02;
+            &:before {
+                content: '';
+                position: absolute;
+                display: block;
+                top: 0;
+                left: 0;
+                width: rem(23);
+                height: rem(23);
+                background: $white;
+                border: solid rem(2) $grey--light--04;
+                transition: $ease;
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                display: block;
+                transition: $ease;
+            }
+            br {
+                display: none;
+            }
+            a {
+                color: $mainBranding;
+            }
+        }
+        &:not(:checked)+label:after {
+            opacity: 0;
+            transform: scale(0);
+            transition: $ease;
+        }
+        &:checked+label:after {
+            opacity: 1;
+            transform: scale(1);
+        }
+        &:hover {
+            &+label {
+                &:before {
+                    transition: $ease;
+                }
+            }
+        }
+    }
+}
+
+input[type="checkbox"] {
+    &:checked+label:after,
+    &:not(:checked)+label:after {
+        width: rem(14);
+        height: rem(16);
+        top: rem(3);
+        left: rem(5);
+        background: transparent url(#{$img}c-icon__check.svg) no-repeat 50% 50%;
+        background-size: contain;
+    }
+}
+
+input[type="radio"] {
+    display: inline-block;
+    &:checked,
+    &:not(:checked) {
+        &+label {
+            margin-bottom: rem(14);
+            top: rem(4);
+            position: relative;
+        }
+        &+label:before {
+            top: rem(-2);
+        }
+        &+label:before,
+        &+label:after {
+            border-radius: 50%;
+        }
+        &+label:after {
+            width: rem(9);
+            height: rem(9);
+            top: rem(5);
+            left: rem(7);
+            background: $subBranding;
+            background-size: contain;
+        }
+    }
+}
+
+.c-checkbox--tall input[type="checkbox"] {
+    &+label {
+        font-size: rem(20);
+        @include bp-lt($medium) {
+            font-size: rem(16);
+        }
+        &:before {
+            top: rem(3);
+            @include bp-lt($medium) {
+                top: 0;
+            }
+        }
+        &:after {
+            top: rem(6);
+            @include bp-lt($medium) {
+                top: rem(3);
+            }
+        }
+    }
+}
+
+.wide {
+    .c-input__holder label {
+        padding-right: rem(80);
+    }
+}
+
+.uploadify {
+    margin-bottom: 0;
+    height: rem(58);
+    background-color: $white;
+    background-image: url(#{$img}c-bkg__upload.svg);
+    background-repeat: no-repeat;
+    background-position: top 50% right rem(14);
+    object,
+    .uploadify-button {
+        width: 100% !important;
+        height: 100% !important;
+        background: none;
+        border: none;
+        box-shadow: none;
+    }
+    .uploadify-button-text {
+        &.has-file {
+            padding-top: rem(18);
+            text-indent: 0;
+            padding-left: rem(12);
+        }
+    }
+}
+
+.uploadify-queue+.c-input--wrapper {
+    display: none;
+}
+
+.c-input__groupItem {
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: rem(20);
+    @include bp-lt($small) {
+        display: block;
+        margin-bottom: 0;
+    }
+    &:first-child {
+        width: calc(100% - 169px);
+        @include bp-lt($small) {
+            width: 100%;
+        }
+    }
+    &:last-child {
+        padding-left: rem(15);
+        margin-left: rem(4);
+        @include bp-lt($small) {
+            padding-left: 0;
+            margin-left: 0;
+            margin-bottom: rem(20);
+        }
+    }
+    [class*="c-button--b2b"] {
+        position: static !important;
+        @include bp-lt($small) {
+            width: 100%;
+        }
+    }
+}
+
+optgroup {
+    text-transform: uppercase;
+    option {
+        text-transform: none;
+    }
+}

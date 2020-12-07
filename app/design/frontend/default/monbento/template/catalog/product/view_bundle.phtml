@@ -1,0 +1,194 @@
+<?php
+$_helper = $this->helper('catalog/output');
+$_product = $this->getProduct();
+?>
+<?php if (Mage::registry('current_category')) : ?>
+    <p class="category"><?php echo $this->__('Back to the range') ?> <a href="<?php echo Mage::registry('current_category')->getUrl(); ?>"><?php echo Mage::registry('current_category')->getName(); ?></a></p>
+<?php endif; ?>
+<script type="text/javascript">
+    var optionsPrice = new Product.OptionsPrice(<?php echo $this->getJsonConfig() ?>);
+</script>
+
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<div class="product-view product-bundle">
+    <div class="product-essential">
+        <form action="<?php echo $this->getAddToCartUrl($_product) ?>" method="post" id="product_addtocart_form"<?php if ($_product->getOptions()): ?> enctype="multipart/form-data"<?php endif; ?>>
+            <div class="product-img-box"> <?php echo $this->getChildHtml('media') ?> 
+                <?php if ($_product->getModulePersonnalisation() == 1): ?><div class="share"><div id="share-container"><p><strong><?php echo $this->__('Share my creation') ?> :</strong></p><?php echo $this->getChildHtml('partage'); ?> <div class="fb-like" data-href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" data-send="false" data-layout="button_count" data-width="420" data-show-faces="false" data-font="tahoma"></div></div> <a id="downloadlink" href="<?php echo Mage::getModel('bundle/product_type')->getCustomImageFromUrl(200); ?>"><?php echo $this->__('Download the image of my creation') ?></a></div><?php endif; ?>
+
+                <?php for ($i = 1; $i < 12; $i++) : ?>
+                    <?php if ($_product->getAttributeText('qualite_fonctionnelle_' . $i) == 'Oui' || $_product->getAttributeText('qualite_fonctionnelle_5') != '') : ?>
+                        <?php $hasfonctions = true; ?>
+                        <?php continue; ?>
+                    <?php endif; ?>
+                <?php endfor; ?>
+
+                <?php if ($hasfonctions) : ?>
+                    <ul id="qualities">
+                        <?php for ($i = 1; $i < 12; $i++) : ?>
+                            <?php $alt = $_product->getResource()->getAttribute('qualite_fonctionnelle_' . $i)->getStoreLabel(); ?>
+                            <?php if ($_product->getAttributeText('qualite_fonctionnelle_' . $i) == 'Oui' || $_product->getAttributeText('qualite_fonctionnelle_' . $i) == 'Yes' || $_product->getAttributeText('qualite_fonctionnelle_' . $i) == 'Ja' || $_product->getAttributeText('qualite_fonctionnelle_' . $i) == 'Sí') : ?>
+                                <?php $j++; ?>
+                                <li class="item<?php echo $j; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'pictos/qualite_fonctionnelle_' . $i . '.png'; ?>" title="<?php echo $alt; ?>" /></li>
+                            <?php endif; ?>
+                        <?php endfor; ?>
+                        <?php $alt = str_replace(array('qualite_fonctionnelle_', 'png'), '', $_product->getAttributeText('qualite_fonctionnelle_5')); ?>
+                        <?php
+                        switch ($alt)
+                        {
+                            case '2l' : $alt = '2 liters';
+                                break;
+                            case '1.5l' : $alt = '1,5 liters';
+                                break;
+                            case '1l' : $alt = '1 liter';
+                                break;
+                            case '0.5l' : $alt = '0,5 liter';
+                                break;
+                            case '20ml' : $alt = '20 ml';
+                                break;
+                            default : $nePasAfficher = true;
+                                break;
+                        }
+                        $alt = 'Capacity ' . $alt;
+                        ?>
+                        <?php if (!$nePasAfficher) : ?>
+                            <li class="last"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . 'pictos/qualite_fonctionnelle_' . $_product->getAttributeText('qualite_fonctionnelle_5') . '.png'; ?>" title="<?php echo $alt; ?>" title="<?php echo $alt; ?>" /></li>
+                        <?php endif; ?>
+                    </ul>
+                <?php endif; ?>
+            </div>
+
+            <div class="product-shop">
+                <div class="no-display">
+                    <input type="hidden" name="product" value="<?php echo $_product->getId() ?>" />
+                    <input type="hidden" name="related_product" id="related-products-field" value="" />
+                </div>
+                <div class="product-name">
+                    <h1><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></h1>
+                </div>
+                <?php if ($_product->getShortDescription()): ?>
+                    <div class="short-description"><?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?></div>
+                <?php endif; ?>
+                <div class="col"> <?php echo $this->getChildHtml('product_type_data') ?> 
+                    <div class="add-to-box">
+                        <?php if ($_product->isSaleable()): ?>
+                            <?php echo $this->getChildHtml('addtocart') ?>
+                        <?php endif; ?>
+                    </div>
+                    <p class="availability" id="availability_product"><?php echo $this->__('Availability') ?> :
+                        <?php if ($_product->isSaleable()): ?>
+                            <span class="in-stock"><?php echo $this->__('In stock') ?></span></p>
+                    <?php else: ?>
+                        <span class="out-of-stock"><?php echo $this->__('Out of stock') ?></span></p>
+                    <?php endif; ?>
+                </div>
+                <div class="col last">
+                    <?php if ($_product->isSaleable()): ?>
+                        <button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="productAddToCartForm.submit()"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+                        <?php
+                        if (Mage::app()->getStore()->getCode() == "fr") :
+                            $date = new Zend_Date(
+                                    /* array(
+                                      'year' => 2011,
+                                      'month' => 8,
+                                      'day' => 8,
+                                      'hour' => 12,
+                                      'minute' => 35,
+                                      'second' => 0
+                                      ) */
+                                    );
+                            $date->setTimezone('Europe/Paris');
+
+                            if ($date->isLater('16:30', Zend_Date::TIME_SHORT))
+                            {
+                                $date->addDay(1); // L'envoi partira demain
+                            }
+
+                            if ((int) $date->get(Zend_Date::WEEKDAY_8601) <= 3)
+                            { // du lundi au mercredi
+                                $date->addDay(2);
+                            } elseif ((int) $date->get(Zend_Date::WEEKDAY_8601) == 7)
+                            {
+                                $date->addDay(3);
+                            } else
+                            {
+                                $date->addDay(4);
+                            }
+
+                            $jour = $date->toString(Zend_Date::WEEKDAY, 'fr_FR');
+                            ?>
+                            <span class="livraison">Livraison estimée : <?php echo ucwords($jour) ?> prochain (F.Métropolitaine)</span>
+                        <?php endif; ?>
+                    <?php else : ?>
+                        <?php echo $this->getChildHtml('alert_urls'); ?>
+                    <?php endif; ?>
+                </div>
+                <div class="clearer"></div>
+                <?php if ($_product->isSaleable() && $this->hasOptions()): ?>
+                    <div id="bundleoptions-wrapper">
+                        <div id="bundleoptions"<?php if ($_product->getModulePersonnalisation() != 1) echo ' class="packs"'; ?>><?php echo $this->getChildChildHtml('container2', '', true, true) ?><div class="clearer"></div></div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($_product->getModulePersonnalisation() != 1): ?>
+                    <div class="share"> <?php echo $this->getChildHtml('partage'); ?> <div class="fb-like" data-href="<?php echo Mage::helper('core/url')->getCurrentUrl(); ?>" data-send="false" data-layout="button_count" data-width="420" data-show-faces="false" data-font="tahoma"></div></div>
+                <?php endif; ?>
+            </div>      
+            <div class="clearer"></div>
+            <?php if ($modulePerso == 1): ?>
+                <div id="custom-best">
+                    <p><?php echo $this->__('Best Selling') ?></p>
+                    <div class="customCarousel">
+                        <div class="wrappercc">
+                            <?php echo $this->getChildHtml('cms_custom_best') ?> 
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <script type="text/javascript">
+                //<![CDATA[
+                jQuery(document).ready(function () {
+                    jQuery('.customCarousel').infiniteCarousel();
+                });
+                //]]>
+            </script>
+        </form>
+        <div class="product-collateral">
+            <?php foreach ($this->getChildGroup('detailed_info', 'getChildHtml') as $alias => $html): ?>
+                <div class="box-collateral <?php echo "box-{$alias}" ?>">
+                    <?php if ($title = $this->getChildData($alias, 'title')): ?>
+                        <h2><?php echo $this->escapeHtml($title); ?></h2>
+                    <?php endif; ?>
+                    <?php echo $html; ?> </div>
+            <?php endforeach; ?>
+            <?php echo $this->getReviewsSummaryHtml($_product, false, true) ?>
+            <?php echo $this->getChildHtml('product_additional_data') ?>
+        </div>
+        <div class="block-cms">
+            <div class="left"><?php echo $this->getChildHtml('cms_product_left') ?></div>
+            <div class="right"><?php echo $this->getChildHtml('cms_product_right') ?></div>
+        </div>
+        <?php echo $this->getChildHtml('related_products') ?>
+        <?php echo $this->getChildHtml('upsell_products') ?>
+        <script type="text/javascript">
+            //<![CDATA[
+            var productAddToCartForm = new VarienForm('product_addtocart_form');
+            productAddToCartForm.submit = function () {
+                if (this.validator.validate()) {
+                    this.form.submit();
+                }
+            }.bind(productAddToCartForm);
+<?php if ($_product->getModulePersonnalisation() == 1): ?>
+                jQuery(function ($) {
+                    $('.product-img-box .product-image').empty();
+                    $('.product-img-box .product-image').append('<div id="custombento"></div');
+                    for (i = 1; i < 13; i++)
+                    {
+                        $('#custombento').append('<div class="element" id="element' + i + '"></div>');
+                    }
+                    preloadCustomImages();
+                });
+<?php endif; ?>
+            //]]>
+        </script>
+    </div>
+</div>

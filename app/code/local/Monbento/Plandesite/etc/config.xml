@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Monbento_Plandesite>
+			<version>0.1.0</version>
+		</Monbento_Plandesite>
+	</modules>
+	<global>
+		<helpers>
+			<module>Monbento_Plandesite</module>
+		</helpers>
+		<blocks>
+			<plandesite><class>Monbento_Plandesite_Block</class></plandesite>
+		</blocks>
+	</global>
+	<frontend>
+		<secure_url>
+			<plandesite>/plandesite</plandesite>
+		</secure_url>
+		<routers>
+			<plandesite>
+				<use>standard</use>
+				<args>
+					<module>Monbento_Plandesite</module>
+					<frontName>plandesite</frontName>
+				</args>
+			</plandesite>
+		</routers>
+		<layout>
+			<updates>
+				<plandesite>
+					<file>plandesite.xml</file>
+				</plandesite>
+			</updates>
+		</layout>
+	</frontend>
+</config>

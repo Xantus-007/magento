@@ -1,0 +1,174 @@
+// ========================================= //
+// section
+// ========================================= //
+
+[class*='o-section'] {
+    padding-top: rem(70);
+    padding-bottom: rem(70);
+
+    @include bp-lt($large) {
+        padding-left: rem(30);
+        padding-right: rem(30);
+    }
+
+    @include bp-lt($medium) {
+        padding-top: rem(45);
+        padding-bottom: rem(45);
+    }
+
+    @include bp-lt($small) {
+        padding-top: rem(25);
+        padding-bottom: rem(25);
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+
+    &[class*="--mediumPadding"] {
+        padding-top: rem(50);
+        padding-bottom: rem(50);
+
+        @include bp-lt($large) {
+            padding-left: rem(30);
+            padding-right: rem(30);
+        }
+
+        @include bp-lt($medium) {
+            padding-top: rem(45);
+            padding-bottom: rem(45);
+        }
+
+        @include bp-lt($small) {
+            padding-top: rem(25);
+            padding-bottom: rem(25);
+            padding-left: $gutter;
+            padding-right: $gutter;
+        }
+
+    }
+
+    &[class*='--bkgGrey'] {
+        background: $grey--light--00;
+
+        &[class*="--dark"] {
+            background: $grey--08;
+        }
+    }
+
+    &[class*='--bkgMainBranding'] {
+        background: $mainBranding;
+    }
+
+    &[class*='--gridProduct'] {
+        padding-top: rem(28);
+        padding-bottom: rem(28);
+    }
+
+    &[class*='--noPaddingTop'] {
+        padding-top: 0;
+    }
+
+    &[class*="--noPaddingBottom"] {
+        padding-bottom: 0;
+    }
+
+    &[class*="--noPaddingLeft"] {
+        padding-left: 0;
+    }
+
+    &[class*="--noPaddingRight"] {
+        padding-right: 0;
+    }
+
+    &[class*="--gradient"] {
+        background: linear-gradient(-45deg, $white 0%, $grey--light--11 100%);
+    }
+}
+
+[class*="c-section"] {
+    &[class*="__about"] {
+        background-size: contain;
+    }
+
+    &[class*="--quality"] {
+        background: url(#{$img}c-bkg__about--quality.jpg) no-repeat right bottom;
+    }
+
+    &[class*="--customisation"] {
+        background: url(#{$img}c-bkg__about--customisation.jpg) no-repeat right center;
+
+        [class*="c-item__content"] {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    }
+
+    &[class*="__timeline"] {
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        &[class*="--difference"] {
+            background-image: url(#{$img}c-bkg__timeline--difference.jpg);
+            background-position: 50% bottom;
+
+            @include bp-lt($desktopXxL) {
+                background-size: contain;
+            }
+
+            .c-baseline {
+                color: $white;
+            }
+        }
+
+        &[class*="--daily"] {
+            background-image: url(#{$img}c-bkg__timeline--daily.jpg);
+            background-position: right bottom;
+            background-size: auto;
+        }
+
+        &[class*="--environment"] {
+            background-image:
+                url(#{$img}c-bkg__timeline--environment.png),
+                url(#{$img}c-bkg__timeline--bottles.png)
+            ;
+
+            background-position:
+                50% top,
+                50% bottom
+            ;
+
+            background-size: auto, auto;
+
+            .c-timeline__marker--top {
+                margin-top: 0;
+
+                &:before {
+                    height: rem(35);
+                    top: rem(-105);
+
+                    @include bp-lt($medium) {
+                        height: rem(25);
+                        top: rem(-70);
+                    }
+                }
+
+                &:after {
+                    top: rem(-120);
+
+                    @include bp-lt($medium) {
+                        top: rem(-85);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c-page__didYouKnow {
+    .c-section--first {
+        padding-top: rem(65);
+
+        @include bp-lt($small) {
+            padding-top: 0;
+        }
+    }
+}

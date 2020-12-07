@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            
+            <!-- Blog categories -->
+            <complexType name="dbmBlogCategoryEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmBlogCategoryEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmBlogCategoryEntity">
+                <all>
+                    <element name="id" type="xsd:int" />
+                    <element name="title" type="xsd:string" />
+                    <element name="description" type="xsd:string" />
+                    <element name="posts" type="typens:dbmBlogPostEntityArray" minOccurs="0" />
+                </all>
+            </complexType>
+            
+            <!-- Blog posts -->
+            <complexType name="dbmBlogPostListEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmBlogPostListEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmBlogPostListEntity">
+                <all>
+                    <element name="id" type="xsd:int" />
+                    <element name="title" type="xsd:string" />
+                </all>
+            </complexType>
+            
+            <!-- Blog post -->
+            <complexType name="dbmBlogPostEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmBlogPostEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmBlogPostEntity">
+                <all>
+                    <element name="id" type="xsd:int" />
+                    <element name="title" type="xsd:string" />
+                    <element name="content" type="xsd:string" />
+                    <element name="author" type="xsd:string" />
+                    <element name="date" type="xsd:string" />
+                    <element name="link" type="xsd:string" />
+                    <element name="thumb" type="xsd:string" minOccurs="0" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+    
+    <!-- Get full tree -->
+    <message name="dbmBlogGetTreeRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+    </message>
+    <message name="dbmBlogGetTreeResponse">
+        <part name="result" type="typens:dbmBlogCategoryEntityArray" />
+    </message>
+    
+    <!-- Get categories request -->
+    <message name="dbmBlogGetCategoriesRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+    </message>
+    <message name="dbmBlogGetCategoriesResponse">
+        <part name="result" type="typens:dbmBlogCategoryEntityArray" />
+    </message>
+    
+    <!-- Get category posts -->
+    <message name="dbmBlogGetPostsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="category_id" type="xsd:int" />
+    </message>
+    <message name="dbmBlogGetPostsResponse">
+        <part name="result" type="typens:dbmBlogPostListEntityArray" />
+    </message>
+    
+    <!-- Get post -->
+    <message name="dbmBlogGetPostRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="post_id" type="xsd:int" />
+    </message>
+    <message name="dbmBlogGetPostResponse">
+        <part name="result" type="typens:dbmBlogPostEntity" />
+    </message>
+    <!-- Get flat blog posts list -->
+    <message name="dbmBlogGetFlatPostsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="page" type="xsd:int" />
+    </message>
+    <message name="dbmBlogGetFlatPostsResponse">
+        <part name="result" type="typens:dbmBlogPostEntityArray" />
+    </message>
+    
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmBlogGetTree">
+            <documentation>Customer Login</documentation>
+            <input message="typens:dbmBlogGetTreeRequest" />
+            <output message="typens:dbmBlogGetTreeResponse" />
+        </operation>
+        <operation name="dbmBlogGetCategories">
+            <documentation>Customer Login</documentation>
+            <input message="typens:dbmBlogGetCategoriesRequest" />
+            <output message="typens:dbmBlogGetCategoriesResponse" />
+        </operation>
+        <operation name="dbmBlogGetPosts">
+            <documentation>Get category posts</documentation>
+            <input message="typens:dbmBlogGetPostsRequest" />
+            <output message="typens:dbmBlogGetPostsResponse" />
+        </operation>
+        <operation name="dbmBlogGetPost">
+            <documentation>Get category posts</documentation>
+            <input message="typens:dbmBlogGetPostRequest" />
+            <output message="typens:dbmBlogGetPostResponse" />
+        </operation>
+        <operation name="dbmBlogGetFlatPosts">
+            <documentation>Get category posts</documentation>
+            <input message="typens:dbmBlogGetFlatPostsRequest" />
+            <output message="typens:dbmBlogGetFlatPostsResponse" />
+        </operation>
+    </portType>
+    
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmBlogGetTree">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmBlogGetCategories">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmBlogGetPosts">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmBlogGetPost">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmBlogGetFlatPosts">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

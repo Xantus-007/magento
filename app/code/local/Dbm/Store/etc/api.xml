@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_store>
+                <title>DBM - Store api</title>
+                <model>dbm_store/api</model>
+                <acl>dbm_store</acl>
+                <methods>
+                    <getStores>
+                        <title>Get stores list</title>
+                        <method>getStores</method>
+                        <acl>dbm_store/all</acl>
+                    </getStores>
+                    <getSpots>
+                        <title>Get spots list</title>
+                        <method>getSpots</method>
+                        <acl>dbm_store/all</acl>
+                    </getSpots>
+                </methods>
+            </dbm_store>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_store>dbmStore</dbm_store>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_store translate="title" module="dbm_store">
+                    <title>DBM - Store</title>
+                    <all translate="title" module="dbm_store">
+                        <title>DBM - Store : All</title>
+                    </all>
+                </dbm_store>
+            </resources>
+        </acl>
+    </api>
+</config>

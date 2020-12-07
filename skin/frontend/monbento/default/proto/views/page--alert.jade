@@ -1,0 +1,21 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page alert'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    h1.c-title--page: .row: .columns Alert
+
+    .row: .columns
+        - var alert_class = ['success', 'alert', 'secondary']
+        each _class in alert_class
+            .alert-box(data-alert, class='#{_class}')
+                .c-wysiwyg
+                    ul
+                        - for(var i= 0; i< 3; i++)
+                            li: +lipsum(1, 'sentences')

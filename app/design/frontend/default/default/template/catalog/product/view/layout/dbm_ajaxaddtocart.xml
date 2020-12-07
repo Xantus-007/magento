@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <reference name="root">
+            <block type="page/html_head" name="jsfooter" as="jsfooter" template="page/html/jsfooter.phtml">
+                <action method="addItem">
+                    <type>skin_js</type>
+                    <name>js/jquery.dbm.addToCart.js</name>
+                </action>
+            </block>
+
+            <reference name="head">
+                <action method="addItem"><type>skin_css</type><name>css/dbm_Magento_addToCart/app/assets/styles/local/styles.css</name><params/></action>
+            </reference>
+        </reference>
+    </default>
+</layout>

@@ -1,0 +1,321 @@
+#php_flag display_errors on
+
+#RewriteCond %{REQUEST_URI} !/maintenance.html$
+#RewriteCond %{REMOTE_ADDR} !^109.210.110.49
+#RewriteCond %{REMOTE_ADDR} !^78.245.52.96
+#RewriteRule $ /maintenance.html [R=302,L]
+
+
+php_value session.use_only_cookies 1
+php_value session.use_trans_sid 0 
+php_value upload_max_filesize 10M
+
+############################################
+## uncomment these lines for CGI mode
+## make sure to specify the correct cgi php binary file name
+## it might be /cgi-bin/php-cgi
+
+#    Action php5-cgi /cgi-bin/php5-cgi
+#    AddHandler php5-cgi .php
+
+############################################
+## GoDaddy specific options
+
+#   Options -MultiViews
+
+## you might also need to add this line to php.ini
+##     cgi.fix_pathinfo = 1
+## if it still doesn't work, rename php.ini to php5.ini
+
+############################################
+## this line is specific for 1and1 hosting
+
+    #AddType x-mapp-php5 .php
+    #AddHandler x-mapp-php5 .php
+
+############################################
+## default index file
+
+    DirectoryIndex index.php
+
+<IfModule mod_php5.c>
+
+############################################
+## adjust memory limit
+
+#    php_value memory_limit 64M
+    php_value memory_limit 128M
+    php_value max_execution_time 18000
+
+############################################
+## disable magic quotes for php request vars
+
+    php_flag magic_quotes_gpc off
+
+############################################
+## disable automatic session start
+## before autoload was initialized
+
+    php_flag session.auto_start off
+
+############################################
+## enable resulting html compression
+
+    #php_flag zlib.output_compression on
+
+###########################################
+# disable user agent verification to not break multiple image upload
+
+    php_flag suhosin.session.cryptua off
+
+###########################################
+# turn off compatibility with PHP4 when dealing with objects
+
+    php_flag zend.ze1_compatibility_mode Off
+
+</IfModule>
+
+<IfModule mod_security.c>
+###########################################
+# disable POST processing to not break multiple image upload
+
+    SecFilterEngine Off
+    SecFilterScanPOST Off
+</IfModule>
+
+<IfModule mod_deflate.c>
+
+############################################
+## enable apache served files compression
+## http://developer.yahoo.com/performance/rules.html#gzip
+
+    # Insert filter on all content
+    ###SetOutputFilter DEFLATE
+    # Insert filter on selected content types only
+    #AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript
+
+    # Netscape 4.x has some problems...
+    #BrowserMatch ^Mozilla/4 gzip-only-text/html
+
+    # Netscape 4.06-4.08 have some more problems
+    #BrowserMatch ^Mozilla/4\.0[678] no-gzip
+
+    # MSIE masquerades as Netscape, but it is fine
+    #BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+
+    # Don't compress images
+    #SetEnvIfNoCase Request_URI \.(?:gif|jpe?g|png)$ no-gzip dont-vary
+
+    # Make sure proxies don't deliver the wrong content
+    #Header append Vary User-Agent env=!dont-vary
+
+</IfModule>
+
+<IfModule mod_ssl.c>
+
+############################################
+## make HTTPS env vars available for CGI mode
+
+    SSLOptions StdEnvVars
+
+</IfModule>
+
+<IfModule mod_rewrite.c>
+
+############################################
+## enable rewrites
+
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    RewriteBase /fr
+
+    RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^esprit-bento(.*)$ /what-is-a-bento/ [L,QSA,R=301]
+
+    #    RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    #    RewriteRule ^blog(.*)$ / [L,QSA,R=301]
+
+    RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^mon-bento-qui-sommes-nous(.*)$ /who-is-mon-bento/ [L,QSA,R=301]
+
+    RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^espace-pro-mon-bento(.*)$ / [L,QSA,R=301]
+
+    RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^mentions-legales-mon-bento.html(.*)$ /legals-mon-bento.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^securite-mon-bento.html(.*)$ /mon-bento-security.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+	RewriteRule ^cgv-mon-bento.html(.*)$ /mon-bento-terms-and-conditions.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^tarifs-livraison-mon-bento.html(.*)$ /mon-bento-shipping-rates.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^politique-retours-mon-bento(.*)$ /mon-bento-return-policy.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^partenaires-mon-bento.html(.*)$ / [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^contact-presse-mon-bento.html(.*)$ / [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC]
+    RewriteRule ^faq-mon-bento(.*)$ / [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^en\.monbento\.com [NC,OR]		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.de [NC,OR]		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.es [NC,OR]		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.it [NC]
+    RewriteRule ^appli(.*)$ http://www.monbento.com/appli/index.en.php [L,QSA,R=301]
+
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^what-is-a-bento(.*)$ /esprit-bento/ [L,QSA,R=301]
+
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+	RewriteRule ^who-is-mon-bento(.*)$ /mon-bento-qui-sommes-nous/ [L,QSA,R=301]
+
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^legals-mon-bento.html(.*)$ /mentions-legales-mon-bento.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^mon-bento-security.html(.*)$ /securite-mon-bento.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^mon-bento-terms-and-conditions.html(.*)$ /cgv-mon-bento.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^mon-bento-shipping-rates.html(.*)$ /tarifs-livraison-mon-bento.html [L,QSA,R=301]
+		
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.com [NC]
+    RewriteRule ^mon-bento-return-policy.html(.*)$ /politique-retours-mon-bento [L,QSA,R=301]
+
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.fr [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.fr [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.mon-bento\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^mon-bento\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.mon-bento\.fr [NC,OR]
+	RewriteCond %{HTTP_HOST} ^mon-bento\.fr [NC]
+	RewriteRule ^(.*)$ http://www.monbento.com/$1 [QSA,R=301]
+	
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.at [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.qc\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.no\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.nl [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.us [NC,OR]
+	RewriteCond %{HTTP_HOST} ^www\.monbento\.se [NC,OR]
+    RewriteCond %{HTTP_HOST} ^www\.monbento\.co\.uk [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.at [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.qc\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.no\.com [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.nl [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.us [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.co\.uk [NC,OR]
+	RewriteCond %{HTTP_HOST} ^monbento\.se [NC,OR]
+    RewriteCond %{HTTP_HOST} ^monbento\.co\.uk [NC]
+	RewriteRule ^(.*)$ http://en.monbento.com/$1 [QSA,R=301]
+	
+	RedirectPermanent 	/home	/
+
+############################################
+## you can put here your magento root folder
+## path relative to web root
+
+    #RewriteBase /magento/
+
+############################################
+## workaround for HTTP authorization
+## in CGI environment
+
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+############################################
+## always send 404 on missing files in these folders
+
+    RewriteCond %{REQUEST_URI} !^/(media|skin|js)/
+
+############################################
+## never rewrite for existing files, directories and links
+
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-l
+
+############################################
+## rewrite everything else to index.php
+
+    RewriteRule .* index.php [L]
+
+</IfModule>
+
+
+############################################
+## Prevent character encoding issues from server overrides
+## If you still have problems, use the second line instead
+
+    AddDefaultCharset Off
+    #AddDefaultCharset UTF-8
+
+<IfModule mod_expires.c>
+
+############################################
+## Add default Expires header
+## http://developer.yahoo.com/performance/rules.html#expires
+
+    ExpiresDefault "access plus 1 year"
+
+</IfModule>
+
+############################################
+## By default allow all access
+
+    Order deny,allow
+    Allow from all
+
+############################################
+## If running in cluster environment, uncomment this
+## http://developer.yahoo.com/performance/rules.html#etags
+
+    #FileETag none
+
+
+<Ifmodule mod_headers.c>
+Header unset Pragma
+FileETag None
+Header unset ETag
+
+# 1 YEAR
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|swf|mp3|mp4)$">
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+Header unset Last-Modified
+</FilesMatch>
+ 
+# 2 HOURS
+<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>
+ 
+# CACHED FOREVER
+# MOD_REWRITE TO RENAME EVERY CHANGE
+<FilesMatch "\.(js)$">
+Header set Cache-Control "public"
+Header set Expires "Thu, 15 Apr 2010 20:00:00 GMT"
+Header unset Last-Modified
+</FilesMatch>
+</Ifmodule> 
+
+<FilesMatch "\.(ttf|ttc|otf|eot|woff)$">
+    <IfModule mod_headers.c>
+        Header set Access-Control-Allow-Origin "*"
+    </IfModule>
+</FilesMatch>
+
+<IfModule mod_deflate.c>
+<FilesMatch "\.(js|css)$">
+SetOutputFilter DEFLATE
+</FilesMatch>
+</IfModule>

@@ -1,0 +1,40 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page shop'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    include blocks/_launcher--three
+
+    - var labels = ['Home', 'Shop']
+    +c-breadcrumb(labels)
+
+    section.o-section--bkgGrey--gridProduct.c-grid
+        .js-grid__product: .c-grid__product
+            - var cats = ['LunchBox', 'Bouteilles', 'Couverts nomades', 'Sacs', 'Récipient à sauce & moules', 'Pièces détachées', 'Cartes & Packs cadeaux']
+            - var limits = [7, 3, 3, 7, 3, 3, 3]
+
+            each title, index in cats
+                - if(index%2==0)
+                    .c-row__product.is-odd(class='has-#{limits[index]}Items'): .row.collapse
+                        +itemContent('Right', title, 'mainBranding')
+                        - for (var i=0; i<limits[index]; i++)
+                            include blocks/_productItem
+
+                - else if(index%2!=0)
+                    .c-row__product.is-even(class='has-#{limits[index]}Items'): .row.collapse
+                        +itemContent('Left', title, 'mainBranding')
+                        - for (var i=0; i<limits[index]; i++)
+                            include blocks/_productItem
+
+            .c-row__product.is-even.has-3Items: .row.collapse
+                    +itemContent('Left', 'Outlet', 'alt')
+                    - for (var i=0; i<3; i++)
+                        include blocks/_productItem
+
+    include blocks/_reassuranceShop

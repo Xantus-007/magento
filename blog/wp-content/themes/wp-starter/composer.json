@@ -1,0 +1,54 @@
+{
+    "name": "dbm/wp-starter",
+    "description": "Composer driver wordpress starter",
+    "type": "wordpress-theme",
+    "repositories":[
+        { "type": "composer", "url": "https://packagist.dbm-agence.com/" },
+        { "type": "composer", "url": "https://wpackagist.org" },
+        { "type": "composer", "url": "https://packagist.org" }
+    ],
+    "authors": [
+        {
+       	    "name": "Vincent Meron",
+            "email": "v.meron@debussac.net"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "version": "5.3.2.1",
+    "require": {
+        "dbm/wp-core": "^5.3.2",
+        "composer/installers": "~1.0",
+        "symfony/yaml": "2.6.13",
+        "wpackagist-plugin/contact-form-7": "^5.0",
+        "wpackagist-plugin/contact-form-7-honeypot": "^1.13",
+        "wpackagist-plugin/cookie-notice": "^1.2",
+        "wpackagist-plugin/google-analytics-for-wordpress": "^7.3",
+        "wpackagist-plugin/regenerate-thumbnails": "^3.0",
+        "wpackagist-plugin/wordpress-seo": "^12.0",
+        "wpackagist-plugin/fakerpress": "^0.5",
+        "wpackagist-plugin/taxonomy-images": "^1.0",
+        "wpackagist-plugin/user-roles-and-capabilities": "^1.2",
+        "wpackagist-plugin/adminimize": "^1.11",
+        "wpackagist-plugin/protect-wp-admin": "^3",
+        "wpackagist-plugin/clean-image-filenames": "^1.2",
+        "dbm/wp-plugins.mailjet": "^1.0",
+        "dbm/wp-plugins.contact-form-7-mfp-response": "^1.2",
+        "dbm/wp-plugins.acf": "^1.0",
+        "dbm/wp-plugins.rgpd": "^1.0",
+        "dbm/wp-plugins.instagram-feed": "^3.0",
+        "dbm/wp-plugins.simple-fields": "^1.4",
+        "wpackagist-plugin/autoptimize": "^2.4",
+        "wpackagist-plugin/polylang": "^2.5",
+        "wpackagist-plugin/elementor": "^2.1",
+        "wpackagist-plugin/post-types-order": "^1.9",
+        "wpackagist-plugin/invisible-recaptcha": "^1.2",
+        "wpackagist-plugin/w3-total-cache": "^0.12",
+        "wpackagist-plugin/classic-editor": "^1.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dbm\\Wordpress\\Starter\\": "class"
+        }
+    }
+}

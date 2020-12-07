@@ -1,0 +1,78 @@
+<?php
+/* @var Cartsguru_CartRecovery_Helper_Data $_helper */
+$_helper = $this->helper('cartsguru_cartrecovery');
+
+$_siteId = $_helper->getSiteId();
+$_fbm = $_helper->getFbm();
+$_fbAds = $_helper->getFacebook();
+$_ci = $_helper->getCi();
+$_appId = $_helper->getAppId();
+$_pageId = $_helper->getPageId();
+$_trackerUrl = $_helper->getTrackerUrl();
+$_widgets = $_helper->getWidgets() ? : '[]';
+$_currentCart = $_helper->getCurrentCartData();
+?>
+
+<?php if ($_fbm || $_ci || $_fbAds): ?>
+    <!-- Carts.Guru Tracker -->
+    <script>
+        var trkParams = window.trkParams || {
+            siteId: '<?php echo $_siteId ?>',
+            features: {
+                ci: !!'<?php echo $_ci ?>',
+                fbm: !!'<?php echo $_fbm ?>',
+                fbAds: !!'<?php echo $_fbAds ?>',
+                scoring: false,
+                widgets: JSON.parse('<?php echo $_widgets ?>')
+
+            },
+            fbSettings: {
+                app_id: '<?php echo $_appId ?>',
+                page_id: '<?php echo $_pageId ?>' // ID of the page connected to FBM Application
+            },
+            data: {
+                cart: JSON.parse('<?php echo $_currentCart ?>')
+            }
+        };
+
+        cgtrkStart = function () {
+            CgTracker('init', trkParams);
+
+            CgTracker('track', {
+                what: 'event',
+                ofType: 'visit'
+            });
+
+            // Track quit event
+            window.onbeforeunload = function noop() {
+                setTimeout(function () {
+                    CgTracker('track', {
+                        what: 'event',
+                        ofType: 'quit'
+                    });
+                }, 0);
+            };
+        };
+
+        (function (d, s, id) {
+            var cgs, cgt = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            cgs = d.createElement(s);
+            cgs.id = id;
+            cgs.src = '<?php echo $_trackerUrl ?>/dist/tracker.build.min.js';
+            cgt.parentNode.insertBefore(cgs, cgt);
+            cgs.onload = cgtrkStart;
+        }(document, 'script', 'cg-trk'));
+
+        (function (d, s, id) {
+            var cgs, cgt = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            cgs = d.createElement(s);
+            cgs.id = id;
+            cgs.src = '<?php echo $_trackerUrl ?>/dist/platform/magento.min.js';
+            cgt.parentNode.insertBefore(cgs, cgt);
+        }(document, 'script', 'cg-evt'));
+
+    </script>
+    <!-- END: Carts.Guru Tracker -->
+<?php endif; ?>

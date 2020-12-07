@@ -1,0 +1,31 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page checkout step 5'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    section.o-section
+        .row
+            .columns.medium-6
+                .c-input__holder.js-label__animate
+                    label Lorem ipsumt
+                    .c-input__text: input(type="text")
+
+                .c-input__holder.js-label__animate
+                    label Lorem ipsum
+                    .c-input__text: input(type="text", value="Lorem ipsum")
+
+                .c-input__holder.js-label__animate.has-error
+                    label Lorem ipsum
+                    .c-input__text: input(type="text", value="Lorem ipsum")
+
+                .c-input__holder.js-label__animate.is-focus
+                    label Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum Lorem ipsum
+                    select
+                        option 1
+                        option 2

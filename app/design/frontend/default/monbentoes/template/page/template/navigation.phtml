@@ -1,0 +1,88 @@
+<?php
+/**
+ * @see Mage_Page_Block_Template_Navigation
+ */
+$cartHelper = Mage::helper('checkout/cart');
+$cart = $cartHelper->getCart();
+ ?>
+<?php
+$_links = $this->getLinks();
+if(count($_links)>0) {
+    $currentUri = $this->getRequest()->getRequestUri();
+    $currentUrl = Mage::getBaseUrl('web').ltrim($currentUri, '/');
+    $page = Mage::getBlockSingleton('cms/page')->getPage();
+    if ($page) {
+        $pageId = $page->getId();
+        $parentId = $page->getParent();
+        if (!is_null($parentId)) {
+                        $db = Mage::getSingleton('core/resource')->getConnection('core_read');
+                        $res = $db->fetchAll("SELECT identifier FROM cms_page WHERE page_id = ".$parentId." AND is_active = 1");
+                        $cmsUrl = Mage::getBaseUrl('web').$res[0]['identifier'];
+        }
+    }
+?>
+<div id="navigation">
+    <div id="inner-navigation">
+        <ul id="account-nav" class="show-for-small-only">
+            <?php if($this->helper('customer')->isLoggedIn()) :  ?>
+                <li><a href="<?php echo $this->getUrl('customer/account/'); ?>"><?php echo $this->__('My Account'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('customer/account/logout/'); ?>"><?php echo $this->__('Log Out'); ?></a></li>
+                <li><a href="<?php echo $this->getUrl('sales/order/history/'); ?>"><?php echo $this->__('Order tracking'); ?></a></li>
+            <?php else : ?>
+                <li><a href="<?php echo $this->getUrl('customer/account/login'); ?>"><?php echo $this->__('Login'); ?></a></li>            
+            <?php endif; ?>
+
+            <?php
+                $_cartQty = ($cart->getSummaryQty() == NULL) ? 0 : $cart->getSummaryQty();
+            ?>
+            <li>
+                <a href="<?php echo $this->getUrl('checkout/cart'); ?>" class="top-link-cart"><?php echo $this->__('My Cart <strong>(%s)</strong>', $_cartQty); ?></a>
+            </li>        
+        </ul>
+		<ul>
+<?php
+		foreach($_links as $_link) {
+        $class = ($currentUrl==$_link->getUrl()) ? 'active ':'';
+        $class .= $_link->getIsLast()?'last ':'';
+        $class .= (strpos($currentUri, '/catalog/') === 0 && strtolower($_link->getLabel()) === 'shop') ? 'active ':'';
+        $class .= ($cmsUrl==rtrim($_link->getUrl(), '/')) ? 'active ':'';
+
+        if (strtolower($_link->getLabel()) === 'shop') {
+?>              <li <?php echo !empty($class)?'class="'.rtrim($class).'"':''?>>
+                    <a href="<?php echo $_link->getUrl() ?>" title="<?php echo $_link->getTitle() ?>"<?php echo strtolower($_link->getLabel()) == 'jeu appli' || strtolower($_link->getLabel()) == 'game app'?' target="_blank"':''; ?> <?php echo $_link->getAParams() ?>>
+                        <?php echo $_link->getLabel(); ?>
+                    </a>
+                    <?php echo $this->getChildHtml('newMenuResponsive');  ?>
+                </li>                   
+<?php
+            } else {
+?>
+                <li <?php echo !empty($class)?'class="'.rtrim($class).'"':''?>>
+                    <a href="<?php echo $_link->getUrl() ?>" <?php if (strtolower($_link->getLabel()) === 'sobre nosotros') { echo "class='about-link'"; } ?> title="<?php echo $_link->getTitle() ?>"<?php echo strtolower($_link->getLabel()) == 'jeu appli' || strtolower($_link->getLabel()) == 'game app'?' target="_blank"':''; ?> <?php echo $_link->getAParams() ?>>
+                        <?php echo $_link->getLabel() ?>
+                    </a>
+                    
+                    <?php
+                        if (strtolower($_link->getLabel()) === 'sobre nosotros') { 
+                            echo '<div class="nav-container-newMenu"><div id="about-submenu">' .  $this->getChildHtml('cms_menu2') . '</div></div>';                            
+                        }
+                    ?>
+                </li>
+<?php
+            }
+        }
+?>
+		</ul>
+        <ul id="coordinates-nav" class="show-for-small-only">
+            <li>            
+                <strong><?php echo $this->__("04 73 23 72 72"); ?></strong><br />
+                <?php echo $this->__("Lundi &gt; Vendredi - 9h&gt;12h / 14h&gt;17h"); ?><br/>
+                <?php echo $this->__("(prix d'un appel local)"); ?><br/>
+                contact@monbento.com
+            </li>
+        </ul>
+    </div>
+</div>
+<?php
+}
+?>        

@@ -1,0 +1,30 @@
+<?php if(Mage::getStoreConfig('oyecheckout/settings/checkout_coupon')):?>
+<?php $getCouponCode = Mage::getSingleton('checkout/cart')->getQuote()->getCouponCode(); ?>
+
+    <div class="coupon-box">
+
+        <div class="coupon-box-title">
+            
+            <h3><?php echo $this->__('Coupon code') ?></h3>
+
+        </div>
+
+        <div class="coupon-box-content">
+
+            <label for="coupon_code"><?php echo $this->__('Enter your coupon code if you have one.') ?></label>
+            
+            <input id="coupon_code" name="coupon_code" class="input-text" value="<?php echo $getCouponCode; ?>"/>
+
+            <button type="button" class="button" onclick="checkout.updateCoupon(1);" value="<?php echo $this->__('Apply Coupon')?>"><span><?php echo $this->__('Apply Coupon') ?></span></button>
+
+            <?php  if(strlen($getCouponCode)) { ?>
+
+                <button type="button" class="button" onclick="checkout.updateCoupon(2);" value="<?php echo $this->__('Remove Coupon')?>"><span><?php echo $this->__('Remove Coupon') ?></span></button>
+
+            <?php } ?>
+
+        </div>
+
+    </div>
+
+<?php endif; ?>

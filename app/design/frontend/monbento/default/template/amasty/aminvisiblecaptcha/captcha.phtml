@@ -1,0 +1,129 @@
+<?php
+/**
+ * @author Amasty Team
+ * @copyright Copyright (c) 2018 Amasty (https://www.amasty.com)
+ * @package Amasty_InvisibleCaptcha
+ */
+?>
+<?php
+/** @var Amasty_InvisibleCaptcha_Block_Captcha $this */
+?>
+<?php if (Mage::getStoreConfig('aminvisiblecaptcha/general/enabled')): ?>
+    <script type="text/javascript">
+        var formsToProtectOnPage = [];
+        var currentForm;
+        var currentValidationForm;
+        var checkedForms = [];
+        var hasFormsChanged = false;
+
+        var onSubmit = function (token) {
+            if (currentValidationForm && currentValidationForm.validator
+                && currentValidationForm.validator.validate()
+            ) {
+                currentForm.querySelector('[name="amasty_invisible_token"]').setAttribute('value', token);
+                if (typeof(recaptchaObject) !== 'undefined'
+                    && 'post' !== currentForm.method
+                ) {
+                    recaptchaObject.submit();
+                } else {
+                    currentForm.submit();
+                }
+            } else {
+                grecaptcha.reset();
+            }
+        };
+
+        function checkForms() {
+            formsToProtect = <?php echo json_encode(Mage::getModel('aminvisiblecaptcha/captcha')->getSelectors()) ?>;
+            formsToProtect.forEach(function (item) {
+                var continueWorking = true;
+                formsSearchedBySelector = $$(item);
+                checkedForms.forEach(function(element) {
+                    if (element[0] == formsSearchedBySelector[0]) {
+                        continueWorking = false;
+                        return;
+                    }
+                })
+                if (formsSearchedBySelector.length != 0 && continueWorking) {
+                    checkedForms.push(formsSearchedBySelector);
+                    formsSearchedBySelector.forEach(function (formToProtect) {
+                        formsToProtectOnPage.push(formToProtect);
+                        hasFormsChanged = true;
+                    });
+                }
+            });
+            if (hasFormsChanged) {
+                hasFormsChanged = false;
+                for (var index in formsToProtectOnPage) {
+                    if (formsToProtectOnPage.hasOwnProperty(index)) {
+                        var formToProtectOnPage = formsToProtectOnPage[index];
+                        if ('form' !== formToProtectOnPage.tagName.toLowerCase()) {
+                            formToProtectOnPage = formToProtectOnPage.getElementsByTagName('form');
+                            if (0 < formToProtectOnPage.length) {
+                                formToProtectOnPage = formToProtectOnPage[0];
+                            } else {
+                                continue;
+                            }
+                        }
+
+                        if (1 > formToProtectOnPage.getElementsByClassName('amasty_recaptcha').length) {
+                            var recaptchaBlock = document.createElement('div');
+                            recaptchaBlock.className = 'amasty_recaptcha';
+                            formToProtectOnPage.appendChild(recaptchaBlock);
+                        }
+
+                        if (1 > formToProtectOnPage.getInputs(formToProtectOnPage, 'hidden', 'amasty_invisible_token').length) {
+                            var tokenInput = document.createElement('input');
+                            tokenInput.type = 'hidden';
+                            tokenInput.name = 'amasty_invisible_token';
+                            tokenInput.value = '';
+                            formToProtectOnPage.appendChild(tokenInput);
+                        }
+
+                        formToProtectOnPage.onsubmit = function submitProtectedForm(event) {
+                            currentForm = event.target;
+                            currentValidationForm = new VarienForm(currentForm.id, false);
+                            recaptchaBlock = currentForm.querySelector(".amasty_recaptcha");
+                            if ('' == recaptchaBlock.innerHTML) {
+                                recaptcha = grecaptcha.render(recaptchaBlock, {
+                                    'sitekey': '<?php echo Mage::getStoreConfig('aminvisiblecaptcha/general/captcha_key'); ?>',
+                                    'callback': onSubmit,
+                                    'size': 'invisible',
+                                    'theme': '<?php echo Mage::getStoreConfig('aminvisiblecaptcha/general/badge_theme'); ?>',
+                                    'badge': '<?php echo Mage::getStoreConfig('aminvisiblecaptcha/general/badge_position'); ?>'
+                                });
+                            }
+                            grecaptcha.reset(recaptcha);
+                            grecaptcha.execute(recaptcha);
+                            return false;
+                        }
+                    }
+                }
+            }
+        }
+
+        document.observe("dom:loaded", function() {
+            var formsCount = 0;
+            setInterval(function () {
+                var formLength = $$('form').length;
+                if (formsCount != formLength) {
+                    formsCount = formLength;
+                    checkForms();
+                }
+            }, 500);
+        });
+    </script>
+    <?php
+        if ('inline' == Mage::getStoreConfig('aminvisiblecaptcha/general/badge_position')
+            && Mage::getStoreConfig('aminvisiblecaptcha/general/badge_styles')
+        ):
+    ?>
+        <style>
+            .grecaptcha-badge {
+                <?php echo Mage::getStoreConfig('aminvisiblecaptcha/general/badge_styles') ?>
+            }
+        </style>
+    <?php endif; ?>
+    <?php $language = Mage::getStoreConfig('aminvisiblecaptcha/general/language'); ?>
+    <script src="https://www.google.com/recaptcha/api.js<?php if ($language) echo '?hl=' . $language; ?>" async defer></script>
+<?php endif; ?>

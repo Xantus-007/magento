@@ -1,0 +1,24 @@
+<?php
+
+$links = $this->getLinks();
+
+?>
+<div id="clubMenuMain" class="clubSidebar" >
+    <ul>
+        <?php foreach($links as $url => $data): ?>
+            <?php $isCurrent = $this->isCurrentUrl($url); ?>
+            <li class="<?php echo $isCurrent ? 'selected' : '';  ?>">
+                <?php if(strlen($data['image']) && !$isCurrent): ?><img src="<?php echo $data['image'] ?>" />
+                <?php elseif(strlen($data['image_selected'])): ?><img src="<?php echo $data['image_selected'] ?>" />
+                <?php endif; ?>
+                <?php if(!$isCurrent): ?>
+                    <a href="<?php echo $url; ?>">
+                    <?php endif; ?>
+                    <?php echo $data['label'] ?>
+                    <?php if(!$isCurrent): ?>
+                    </a>
+                <?php endif;?>
+            </li>
+        <?php endforeach; ?>
+    </ul>
+</div>

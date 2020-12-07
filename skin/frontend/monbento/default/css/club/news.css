@@ -1,0 +1,21 @@
+.club .page .postWrapper {
+    margin-left: 30px;
+    margin-top: 20px;
+}
+
+.club .page .postWrapper h2,
+.club .page .postWrapper h2 a {
+    font-family: vag;
+    font-weight: normal;
+    color:#8A1669;
+    font-size:2em;
+}
+
+.club .page .postWrapper h2 a {
+    font-size:1.1em;
+}
+
+.blog-post-view.club .col-main {
+    float:right;
+    width:544px;
+}

@@ -1,0 +1,110 @@
+// ========================================= //
+// components.grid
+// ========================================= //
+
+.c-account, .c-wishlist {
+    .col2-set {
+        @include clearfix();
+        margin-left: rem(-10);
+        margin-right: rem(-10);
+
+        .col-1,
+        .col-2 {
+            float: left;
+            width: 50%;
+            padding-left: rem(10);
+            padding-right: rem(10);
+
+            @include bp-lt($medium) {
+                width: 50% !important;
+            }
+
+            @include bp-lt($small) {
+                width: 100% !important;
+            }
+
+            &.addresses-additional {
+                @include clearfix();
+
+                @include bp-lt($medium) {
+                    width: 100% !important;
+                }
+
+                &.col-1 {
+                    float: none;
+                    width: 100%;
+
+                    .item {
+                        width: 50%;
+                        float: left;
+                        margin-bottom: rem(20);
+
+                        @include bp-lt($small) {
+                            width: 100%;
+                        }
+
+                        &:last-child {
+                            margin-bottom: 0;
+                        }
+                    }
+
+                    p {
+                        display: inline;
+                    }
+                }
+            }
+        }
+
+        &.collapse {
+            .col-1,
+            .col-2 {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+
+    form {
+        display: block;
+        margin-left: rem(-10);
+        margin-right: rem(-10);
+        @include clearfix();
+
+        .fieldset {
+            width: 50%;
+            margin: 0;
+            padding: 0 rem(10);
+            float: left;
+        }
+
+        .buttons-set {
+            padding-left: rem(10);
+            padding-right: rem(10);
+        }
+
+        &.c-sponsorship {
+            .buttons-set {
+
+                &#add_recipient_button {
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.c-sponsorship {
+    #sender_options, .message_options {
+        .right, .left {
+            width: 100% !important;
+        }
+    }
+}
+
+.c-wishlist {
+    .col2-set {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}

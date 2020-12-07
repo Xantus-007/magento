@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="left">
+            <block type="ngroups/ngroups" name="ngroups" template="ngroups/ngroups.phtml" />
+        </reference>
+    </default>
+    <ngroups_index_index>
+        <reference name="content">
+            <block type="ngroups/ngroups" name="ngroups" template="ngroups/ngroups.phtml" />
+        </reference>
+    </ngroups_index_index>
+</layout> 

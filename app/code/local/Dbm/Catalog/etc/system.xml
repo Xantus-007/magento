@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <dbm_catalog_popup translate="label" module="dbm_catalog">
+            <label>Configuration Popup offres privilèges</label>
+            <tab>dbm_country_popup</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <dbm_catalog_popup_bg>
+                    <label>Images de fond</label>
+                    <sort_order>1</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_catalog_popup_fr_background>
+                            <label>Français</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_fr_background>
+                        <dbm_catalog_popup_en_background>
+                            <label>Anglais</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_en_background>
+                        <dbm_catalog_popup_de_background>
+                            <label>Allemand</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_de_background>
+                        <dbm_catalog_popup_es_background>
+                            <label>Espagnol</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_es_background>
+                        <dbm_catalog_popup_it_background>
+                            <label>Italien</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_it_background>
+                        <!-- Stock US -->
+                        <dbm_catalog_popup_us_en_background>
+                            <label>EN (Stock US)</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_us_en_background>
+                        <dbm_catalog_popup_us_fr_background>
+                            <label>FR (Stock US)</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_us_fr_background>
+                        <dbm_catalog_popup_us_es_background>
+                            <label>ES (Stock US)</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_us_es_background>
+                        <!-- Stock HK -->
+                        <dbm_catalog_popup_hk_en_background>
+                            <label>EN (Stock HK)</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_catalog/popup</upload_dir>
+                            <base_url type="media">dbm_catalog/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_catalog_popup_hk_en_background>
+                    </fields>
+                </dbm_catalog_popup_bg>
+            </groups>
+        </dbm_catalog_popup>
+    </sections>
+</config>   

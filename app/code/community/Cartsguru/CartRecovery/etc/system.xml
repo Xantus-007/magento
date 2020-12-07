@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <tabs>
+        <cartsguru translate="label" module="cartsguru_cartrecovery">
+            <label>Cartsguru</label>
+            <sort_order>100</sort_order>
+        </cartsguru>
+    </tabs>
+    <sections>
+        <cartsguru translate="label" module="cartsguru_cartrecovery">
+            <label>Cartsguru Options</label>
+            <tab>cartsguru</tab>
+            <sort_order>1000</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+
+            <groups>
+                <queue translate="label" module="cartsguru_cartrecovery">
+                    <label>Queue Options</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1000</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+
+                    <fields>
+                        <batch_size_limit translate="label">
+                            <label>Request batch limit :</label>
+                            <comment>Max number of request per sending session</comment>
+                            <frontend_type>text</frontend_type>
+                            <validate>validate-number</validate>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </batch_size_limit>
+                        <log translate="label">
+                            <label>Enable Log :</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>90</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                        </log>
+                    </fields>
+                </queue>
+            </groups>
+        </cartsguru>
+    </sections>
+</config>

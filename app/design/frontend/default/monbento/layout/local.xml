@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <kontakt_index_index>
+        <update handle="contacts_index_index" />
+    </kontakt_index_index>
+    
+    <contattaci_index_index>
+        <update handle="contacts_index_index" />
+    </contattaci_index_index>
+    
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/libs/matchMedia.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/libs/matchMedia.addListener.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/libs/enquire.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/libs/jquery.dbm.equalizer.js</name></action>
+        </reference>
+    </default>
+    
+    <cms_index_index>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/libs/jquery.bxslider.js</name></action>
+        </reference>
+    </cms_index_index>
+    
+    <cms_page_view>
+        
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>js/libs/jquery.bxslider.js</name></action>
+        </reference>
+    </cms_page_view>
+    
+    <cms_page>
+        <reference name="root">
+            <block type="v2/menu" template="page/cms/menu.phtml"  name="cms_menu" />
+            <block type="v2/breadcrumbs" template="page/cms/breadcrumbs.phtml"  name="cms_breadcrumbs" />
+        </reference>
+        
+        <reference name="top.navigation">
+            <block type="v2/menu" template="page/cms/menu.phtml" name="cms_menu2" />
+        </reference>
+    </cms_page>
+    
+    <dbm_customer_register_tracker>
+        <reference name="head">
+            <block type="core/template" name="dbm_customer_register.tracker" template="dbm/customer/register/tracker.phtml" />
+        </reference>
+    </dbm_customer_register_tracker>
+</layout>

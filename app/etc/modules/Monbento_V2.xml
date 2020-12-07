@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_V2>
+          	<active>true</active>
+          	<codePool>local</codePool>
+          	<depends>
+            		<Mage_Page />
+            		<Mage_Contacts />
+          	</depends>
+        </Monbento_V2>
+    </modules>
+</config>

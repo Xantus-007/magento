@@ -1,0 +1,49 @@
+<?php
+$customer = $this->getCustomer();
+$cHelper = Mage::helper('dbm_customer');
+$cSizes = Mage::helper('dbm_customer/image')->getSizes();
+$cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+$photoCount = $customer->getElementCount(Dbm_Share_Model_Element::TYPE_PHOTO);
+$receipeCount = $customer->getElementCount(Dbm_Share_Model_Element::TYPE_RECEIPE);
+$followersCount = $customer->getFollowersCount();
+$likeCount = $customer->getTotalLikes();
+
+$plurals = array();
+if($photoCount > 1 || $photoCount == 0)
+{
+    $plurals['photo'] = 's';
+}
+
+if($receipeCount > 1 || $receipeCount == 0)
+{
+    $plurals['receipe'] = 's';
+}
+
+if($followersCount > 1 || $followersCount == 0)
+{
+    $plurals['follower'] = 's';
+}
+
+if($likeCount > 1 || $likeCount == 0)
+{
+    $plurals['like'] = 's';
+}
+
+?><div id="clubProfileHeader">
+<div class="clubWrapped">
+    <div class="part image icon"><a href="#"><img src="<?php echo $cHelper->getCustomerImageUrl($customer, $cSizes['profile_header'], $cOptions); ?>" /><img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-header.png') ?>" /><?php if($customer->getProfileStatus() == 3): ?><img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp.png'); ?>" /><?php endif; ?></a></div>
+    <div class="part infos">
+        <span class="nickname"><?php echo $this->escapeHtml($customer->getProfileNickname()) ?> <a href="<?php echo $this->getUrl('club-customer/account/edit') ?>"><img src="<?php echo $this->getSkinUrl('images/svg/clubento/profile-edit.svg') ?>" width="35" /></a></span>
+        <span class="vip"><?php if($customer->getProfileStatus() == 3): ?><img src="<?php echo $this->getSkinUrl('images/club/profile/vip.png'); ?>" /><?php endif; ?><?php echo $cHelper->getPrettyStatus($customer) . ' ' . $this->__('Gourmet'); ?></span>
+        <?php if(strlen($customer->getProfileUrl())): ?><span class="url"><a target="_blank" href="<?php echo $this->escapeHtml($cHelper->fixProfileUrl($customer->getProfileUrl())) ?>"><img src="<?php echo $this->getSkinUrl('images/club/profile/planet.png'); ?>" /><?php echo $this->escapeHtml($customer->getProfileUrl()); ?></a></span><?php endif; ?>
+    </div>
+    <div class="counters">
+        <div class="part separated counter first"><div><span><?php echo $photoCount ?></span><?php echo $this->__('photo'.$plurals['photo']); ?></div></div>
+        <div class="part separated counter"><div><span><?php echo $receipeCount ?></span><?php echo $this->__('receipe'.$plurals['receipe']); ?></div></div>
+        <div class="part separated counter"><div><span><?php echo $followersCount ?></span><?php echo $this->__('follower'.$plurals['follower']); ?></div></div>
+        <div class="part separated counter last"><div><span><?php echo intval($likeCount) ?></span><?php echo $this->__('like'.$plurals['like']); ?></div></div>
+    </div>
+    <hr />
+</div>
+</div>

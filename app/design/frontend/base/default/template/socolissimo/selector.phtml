@@ -1,0 +1,117 @@
+<?php
+?>
+<?php $type = $this->getRequest()->getParam("type"); ?>
+<?php if ($type!='domicile' && $type!='rdv' ) : /* on n'affiche pas la carte pour les livraison à domicile est sur rdv */ ?>
+<div id="socolissimo-map" >
+	<div>
+		<h3>Choisissez Votre lieu de livraison</h3>
+		<div class="contenu">
+			<div class="ligne1">
+				<div class="titres">
+					<div class="titre titre1">A proximité de quelle adresse
+						souhaitez-vous être livré ?</div>
+					<div class="titre2">
+						<span class="obli">*</span> Champs obligatoires
+					</div>
+				</div>
+				<div class="col adresse">
+					<label>Adresse</label> <input id="socolissimo_street" name="street"
+						type="text" value="<?php echo $this->getShippingStreet() ?>"
+						class="adresse" />
+				</div>
+				<div class="col cp">
+					<label>Code postal<span class="obli">*</span>
+					</label> <input id="socolissimo_postcode" name="postcode"
+						type="text" value="<?php echo $this->getShippingPostcode() ?>"
+						class="cp" />
+				</div>
+				<div class="col commune">
+					<label>Commune</label>
+					<div class="select">
+						<span id="socolissimo_city"><?php echo $this->getShippingCity() ?>
+						</span> <select id="socolissimo_city_select" name="Commune">
+							<!-- liste chargée en javascript -->
+						</select>
+					</div>
+				</div>
+				<input id="socolissimo_country" name="country" type="hidden" value="<?php echo $this->getShippingCountry() ?>" />
+				<button type="button" id="btn_modifierAdresse"
+					onclick="geocodeAdresse()" class="button">
+                                        <span><span>Modifier votre adresse</span></span>
+				</button>
+			</div>
+			<div class="ligne2">
+          		<div class="titre">Affinez votre recherche par type de point de retrait</div>
+          		<div class="choix choix1" id="filtre_cityssimo">
+                	<input id="check_cityssimo" name="check_cityssimo" type="checkbox" value="cityssimo" onchange="changeMap()" <?php if ($type=='cityssimo' ) : ?>checked="checked"<?php endif; ?> />
+                	<div class="txt2">
+                    <b>ma consigne cityssimo</b><br />
+                    Espace Colis disponibles 7j/7 - 24h/24
+                    </div>
+                </div>
+                <div class="choix choix2" id="filtre_poste">
+                	<input id="check_poste" name="check_poste" type="checkbox" value="poste" onchange="changeMap()" <?php if ($type=='poste' ) : ?>checked="checked"<?php endif; ?>/>
+                	<div class="txt2">
+                    <b>mon bureau de poste</b><br />
+                    Horaires d’ouverture des bureaux de poste
+                    </div>
+                </div>
+                <div class="choix choix3"  id="filtre_commercant">
+                	<input id="check_commercant" name="check_commercant" type="checkbox" value="commercant" onchange="changeMap()" <?php if ($type=='commercant' ) : ?>checked="checked"<?php endif; ?>/>
+                	<div class="txt2">
+                    <b>mon commerçant</b><br />
+                    Commerces de proximité aux horaires étendus
+                    </div>
+                </div>
+            </div>
+		</div>
+		<div class="adresses">
+			<div class="loader-wrapper" style="display: none;">
+				<div class="loader"></div>
+				<div class="loader-wheel">
+					<img
+						src="<?php echo $this->getSkinUrl('images/socolissimo/loader.gif') ?>" />
+					chargement...
+				</div>
+			</div>
+			<div class="colgauche">
+				<div class="liste" id="adresses_socolissimo">
+					<?php echo $this->getChildHtml('listrelais') ?>
+				</div>
+			</div>
+			<div class="coldroite" id="map_canvas"></div>
+		</div>
+	</div>
+</div>
+<?php endif; ?>
+<div id="socolissimo-telephone" <?php if ($type!='domicile' && $type!='rdv' ) : ?>style="display:none;"<?php endif;?> >
+	<div>
+		<h3>Informations complémentaires</h3>
+		<div class="contenu">
+			<div class="ligne1">
+				<label class="portable" >
+					<form id="socolissimo-telephone-form" >
+					<?php if ($type=='poste' || $type=='cityssimo' || $type=='commercant') : ?>
+						<span class="poste" <?php if ($type!='poste') : ?>style="display: none;"<?php endif;?> >Pour la livraison en bureau de poste, nous avons obligatoirement besoin d'un numéro de téléphone mobile pour vous informer de la disponibilité de votre colis. Merci de vérifier le numéro saisi ici :</span>
+						<span class="cityssimo" <?php if ($type!='cityssimo') : ?>style="display: none;"<?php endif;?> >Pour la livraison en consigne Cityssimo, nous avons obligatoirement besoin d'un numéro de téléphone mobile pour vous envoyer vos codes permettant le retrait de vos colis. Merci de vérifier le numéro saisi ici :</span>
+						<span class="commercant" <?php if ($type!='commercant') : ?>style="display: none;"<?php endif;?> >Pour la livraison chez un commerçant, nous avons obligatoirement besoin d'un numéro de téléphone mobile pour vous informer de la disponibilité de votre colis. Merci de vérifier le numéro saisi ici :</span>
+					<?php endif;?>
+					<?php if ($type=='rdv' ) : ?>
+						<span class="rdv" >Pour la livraison sur rendez-vous, nous avons besoin d'un numéro de téléphone mobile pour vous contacter et définir le créneau de livraison souhaité. Merci de vérifier le numéro saisi ici :</span>
+					<?php endif;?>
+					<?php if ($type=='domicile' ) : ?>
+						<span class="domicile" >Pour la livraison à domicile, nous avons besoin d'un numéro de téléphone mobile pour vous contacter. Merci de vérifier le numéro saisi ici :</span>
+					<?php endif;?>
+					<input type="text" name="tel_socolissimo" class="required-entry length_12 valid-telephone-portable<?php if ($this->getShippingCountry()=='BE') :?>-belgique<?php endif;?>" maxlength="12" value="<?php echo $this->getTelephone(); ?>" />
+                                        <button type="button" class="btn_socolissimoChoisir button" onclick="validerTelephone()"  ><span><span>OK</span></span></button> 	
+					</form>
+					 <script type="text/javascript">
+					    //<![CDATA[
+					        var socolissimoTelephoneForm = new VarienForm('socolissimo-telephone-form');
+					    //]]>
+					</script>
+				</label>
+			</div>
+		</div>
+	</div>		
+</div>

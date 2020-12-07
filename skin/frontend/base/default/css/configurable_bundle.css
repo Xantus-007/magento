@@ -1,0 +1,202 @@
+.bundle-info {
+    clear: both;
+    display: block;
+}
+
+.bundle-option-title {
+    float: left;
+    clear: left;
+    text-transform: none !important;
+    font-size: 18px !important;
+    font-weight: bold !important;
+}
+
+.bundle-title {
+    clear: both;
+    line-height: 20px;
+    padding: 10px 0 10px 0;
+}
+
+.bundle-description div:nth-child(2) {
+    min-height: 80px;
+}
+
+.bundle-title, .bundle-description {
+    width: 100%;
+}
+
+.bundle-description {
+    min-height: 114px;
+    clear: both;
+    max-width: 600px;
+}
+
+.bundle-option-image {
+    float: left;
+    max-width: 100px;
+    margin-right: 15px;
+}
+
+.bundle-option-nochoice {
+    display: none;
+}
+
+.product-options {
+    width: auto !important;
+    overflow: auto;
+    padding: 0 !important;
+    margin: 0 0 20px 0 !important;
+    border: 1px solid #ededed !important;
+}
+
+.bundle-option {
+    width: 100%;
+    overflow: auto;
+    padding: 20px 20px 0 20px;
+    border-bottom: 1px solid #ededed;
+}
+
+.product-options section.bundle-option:last-of-type {
+    border-bottom: none;
+}
+
+.bundle-option-qty {
+    width: 40px !important;
+}
+
+.bundle-options, .bundle-option-qty {
+    float: right;
+    clear: right;
+    width: 100%;
+    margin: 0 !important;
+}
+
+.bundle-custom-options {
+    clear: both;
+}
+
+.bundle-options {
+    min-height: 80px;
+}
+
+.bundle-options .h3 {
+    padding-top: 2px;
+}
+
+.bundle-options label {
+    margin-top: 10px;
+    width: 80px;
+    display: block;
+}
+
+.bundle-options select {
+    width: 100%;
+    padding: 2px 3px !important;
+}
+
+.product-options {
+    clear: none !important;
+}
+
+.option-required {
+    float: left;
+    clear: right;
+    color: #FF0000;
+}
+
+.selection-name {
+    padding: 10px 0;
+}
+
+.loading {
+    opacity: 0.5;
+}
+
+.out-of-stock-warning {
+    margin: 5px 0;
+    background-image: none !important;
+    padding: 8px 8px 2px 8px !important;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.clearfix {
+    clear: both;
+}
+
+.main-image {
+    margin-bottom: 15px;
+}
+
+.option-box {
+    padding: 0 !important;
+    overflow: hidden;
+}
+
+div.paginator div {
+    text-align: right;
+    float: left;
+}
+
+.pink-heading {
+    color: #fd638f;
+    size: 14px;
+    font-weight: bold;
+    min-height: 80px;
+}
+
+form.product-bundle .single-product {
+    display: none;
+}
+
+.navigation-links {
+    min-height: 42px;
+}
+
+.product-option-data {
+    display: none;
+}
+
+.configurablebundle-selection-header {
+    margin-bottom: 0px !important;
+    font-size: 18px !important;
+}
+
+.bundle-option .option-label {
+    clear: left;
+    float: left;
+    width: 35%;
+}
+
+.bundle-option .option-select {
+    float: right;
+    clear: right;
+    margin: 5px 0;
+    width: 60%;
+}
+
+.bundle-option .option-select select {
+    padding: 2px 3px !important;
+}
+
+.bundle-downloadable {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.simple-options {
+    display: none;
+}
+
+.selection-change {
+    float: left;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    margin: 0 10px 10px 0;
+}
+
+.bundle-selections a.selected {
+    border: 1px solid #3399cc;
+}

@@ -1,0 +1,143 @@
+<?php
+/**
+ * Product:     Advanced Permissions
+ * Package:     Aitoc_Aitpermissions_2.6.2_2.0.3_635589
+ * Purchase ID: kvKHKGrR2nArLn9zDhP1NEqsGPa1BPw4KDqhieWQEX
+ * Generated:   2013-07-16 07:25:55
+ * File path:   app/design/adminhtml/default/default/template/aitpermissions/catalog_category_tree.phtml
+ * Copyright:   (c) 2013 AITOC, Inc.
+ */
+?>
+<script type="text/javascript">
+
+categoryMoveUrl        = '<?php echo $this->getMoveUrl() ?>';
+categoryMoveUrlPattern = '<?php echo $this->getMoveUrlPattern() ?>';
+
+categoryMove = function(obj)
+{
+    var data = {id: obj.dropNode.id, form_key: FORM_KEY};
+
+    data.point = obj.point;
+    switch (obj.point) {
+        case 'above' :
+            data.pid = obj.target.parentNode.id;
+            data.paid = obj.dropNode.parentNode.id;
+            if (obj.target.previousSibling) {
+                data.aid = obj.target.previousSibling.id;
+            } else {
+                data.aid = 0;
+            }
+            break;
+        case 'below' :
+            data.pid = obj.target.parentNode.id;
+            data.aid = obj.target.id;
+        break;
+        case 'append' :
+            data.pid = obj.target.id;
+            data.paid = obj.dropNode.parentNode.id;
+            if (obj.target.lastChild) {
+                data.aid = obj.target.lastChild.id;
+            } else {
+                data.aid = 0;
+            }
+        break;
+        default :
+            obj.cancel = true;
+            return obj;
+    }
+
+    var success = function(o) {
+        try {
+            if(o.responseText){
+                if(o.responseText==='SUCCESS'){
+                    categoryForm.refreshPath();
+                } else {
+                    alert(o.responseText);
+                    location.reload();
+                }
+            }
+        }
+        catch(e) {
+        }
+    };
+
+    var failure = function(o) {
+        try {
+            console.log(o.statusText);
+        } catch (e2) {
+            alert(o.statusText);
+        }
+        location.reload();
+    };
+
+    var pd = [];
+    for(var key in data) {
+        pd.push(encodeURIComponent(key), "=", encodeURIComponent(data[key]), "&");
+    }
+    pd.splice(pd.length-1,1);
+    /**
+     * START AITOC CHANGES COMPARING TO ORIGINAL VERSION
+     */
+    new Ajax.Request(categoryMoveUrl,
+    /**
+     * FINISH AITOC CHANGES COMPARING TO ORIGINAL VERSION
+     */
+        {
+            method:     'POST',
+            parameters: pd.join(""),
+            onSuccess : success,
+            onFailure : failure
+        }
+    );
+}
+
+Event.observe(document, 'dom:loaded', function()
+{
+    $('store_switcher').observe('change', function(event)
+    {
+        categoryMoveUrl = categoryMoveUrlPattern.replace(':store', this.value);
+    });
+});
+
+
+function _renderNewTree(config, storeParam)
+{
+    if (!config) {
+        var config = defaultLoadTreeParams;
+    }
+    if (tree) {
+        tree.purgeListeners();
+        tree.el.dom.innerHTML = '';
+    }
+    tree = new Ext.tree.TreePanel.Enhanced('tree-div', newTreeParams);
+    tree.loadTree(config, true);
+
+    // try to select current category
+    var selectedNode = tree.getNodeById(config.parameters.category_id);
+    if (selectedNode) {
+        tree.currentNodeId = config.parameters.category_id;
+    }
+    tree.selectCurrentNode();
+
+    // update content area
+    var url = tree.editUrl;
+    if (storeParam) {
+        url = url + storeParam;
+    }
+    else
+    {
+        if(config.parameters.store_id > 0 )
+        {
+
+            url = url + 'store/'+config.parameters.store_id+'/';
+        }
+
+    }
+<?php if ($this->isClearEdit()):?>
+    if (selectedNode) {
+        url = url + 'id/' + config.parameters.category_id;
+    }
+    <?php endif;?>
+    updateContent(url);
+}
+</script>

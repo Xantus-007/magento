@@ -1,0 +1,138 @@
+<_>
+   <form_key>r6htRgaAPvWZj6CX</form_key>
+   <name>Cartsguru_CartRecovery</name>
+   <channel>community</channel>
+   <version_ids>
+      <version_ids>2</version_ids>
+   </version_ids>
+   <summary>The first targeted and automated follow-up solution for abandoned carts through phone and text message !</summary>
+   <description>There is a way to transform those abandoned shopping carts into sales !
+        Carts Guru enable you to establish automatic contact with your prospective customers who did not finalize their purchase.
+        Targets your abandoned shopping carts, define your rules and run actions automatically thought phone and SMS
+
+        - Automatic call
+        Effortlessly reduce the number of abandoned shopping carts by automating telephone contact between your salespeople and the customers who have just left your site
+
+        - SMS Callback &amp;amp; Push SMS
+        Send to your prospective customers having abandoned a cart, an SMS suggesting a free call back from your customer relations service, a straightforward SMS reminder or an SMS offering a personalized discount</description>
+   <license>GPL</license>
+   <license_uri>http://opensource.org/licenses/gpl-license.php</license_uri>
+   <version>1.4.0</version>
+   <stability>stable</stability>
+   <notes>Refactoring to magento standards</notes>
+   <authors>
+      <name>
+         <name>Maxime Pruvost</name>
+      </name>
+      <user>
+         <user>cgmaximepruvost</user>
+      </user>
+      <email>
+         <email>maxime@carts.guru</email>
+      </email>
+   </authors>
+   <depends_php_min>5.3.0</depends_php_min>
+   <depends_php_max>7.2.13</depends_php_max>
+   <depends>
+      <package>
+         <name>
+            <name/>
+         </name>
+         <channel>
+            <channel/>
+         </channel>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+         <files>
+            <files>         </files>
+         </files>
+      </package>
+      <extension>
+         <name>
+            <name>Core</name>
+         </name>
+         <min>
+            <min/>
+         </min>
+         <max>
+            <max/>
+         </max>
+      </extension>
+   </depends>
+   <contents>
+      <target>
+         <target>magelocal</target>
+         <target>magecommunity</target>
+         <target>magelocale</target>
+         <target>magelocale</target>
+         <target>mageetc</target>
+         <target>mageweb</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>magedesign</target>
+         <target>mageskin</target>
+         <target>mageskin</target>
+      </target>
+      <path>
+         <path/>
+         <path>Cartsguru/CartRecovery</path>
+         <path>fr_FR/Cartsguru_CartRecovery.csv</path>
+         <path>en_US/Cartsguru_CartRecovery.csv</path>
+         <path>modules/Cartsguru_CartRecovery.xml</path>
+         <path>js/cartsguru/cartrecovery</path>
+         <path>frontend/base/default/layout/cartsguru.xml</path>
+         <path>frontend/base/default/template/cartsguru/cartrecovery</path>
+         <path>adminhtml/default/default/layout/cartsguru.xml</path>
+         <path>adminhtml/default/default/template/cartsguru/cartrecovery</path>
+         <path>adminhtml/default/default/cartsguru/cartrecovery</path>
+         <path>adminhtml/default/default/images/cartsguru</path>
+      </path>
+      <type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>file</type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>dir</type>
+         <type>file</type>
+         <type>dir</type>
+         <type>dir</type>
+         <type>dir</type>
+      </type>
+      <include>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+         <include/>
+      </include>
+      <ignore>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+         <ignore/>
+      </ignore>
+   </contents>
+</_>

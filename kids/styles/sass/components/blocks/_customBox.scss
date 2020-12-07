@@ -1,0 +1,130 @@
+// ========================================= //
+// Custom box
+// ========================================= //
+
+.custom_box {
+    background: url(../images/bkg_custom_box.png) no-repeat 50% 240px $grey_bkgsection;
+    padding-top: 60px;
+    padding-bottom: 40px;
+
+    .cd-image-label {
+        font-family: $dirty_headline;
+        font-size: 30px;
+        color: $grey_strg;
+        background: white;
+        padding: 5px 15px;
+        height: 40px;
+        display: block;
+        position: absolute;
+        top: 40px;
+
+        @include bp-lt($medium){
+            bottom: 0;
+            top: inherit;
+        }
+
+        @include bp-lt($small){
+            display: none;
+        }
+    }
+
+    .cd-handle {
+        background: url("../images/cd-arrows-grey.svg") no-repeat 50% 50% white ;
+    }
+
+    .cd-handle.draggable {
+        background: url("../images/cd-arrows.svg") no-repeat 50% 50% $purple_boostedafternoon;
+    }
+
+    .cd-resize-img {
+        @include box-shadow(rgba($orange_boxshadow, 90%) 5px 0 20px 5px);
+    }
+
+    .cd-image-container {
+        overflow: hidden;
+    }
+
+    img {
+        max-width: 100%;
+    }
+
+    .cd-resize-img img {
+        max-width: inherit;
+    }
+}
+
+.btn_download_buy {
+    @include clearfix-micro;
+    max-width: 900px;
+    margin: 33px auto 0;
+    text-align: center;
+    position: relative;
+    
+    .btn_download, .btn_buy {
+        position: relative;
+        z-index: 100;
+
+        @include bp-lt($medium){
+            margin-bottom: 20px;
+        }
+    }
+
+    .btn {
+        padding: 18px 7px;
+        width: 100%;
+
+        @include bp-lt($medium){
+            width: 80%;
+        }
+    }
+
+    .btn_separator {
+        font-family: $dirty_headline;
+        font-size: 30px;
+        color: $grey_strg;
+    }
+
+    p {
+        color: $grey_strg;
+        font-size: 18px;
+        margin: 10px 0 0;
+    }
+
+    .item_bon_point, .item_mot_doux {
+        position: absolute;
+        width: 200px;
+        height: 180px;
+        z-index: 90;
+        top: -165px;
+
+        @include bp-lt($medium){
+            display: none;
+        }
+    }
+
+    .item_bon_point {
+        background: url(../images/bkg_bon_point.png) no-repeat;
+        left: -50px;
+
+        @include bp-lt($bp_largeSlide){
+            left: 0;
+        }
+    }
+
+    .item_mot_doux {
+        background: url(../images/bkg_mot_doux.png) no-repeat;
+        right: -50px;
+
+        @include bp-lt($bp_largeSlide){
+            right: 0;
+        }
+    }
+}
+
+.monbentoKids_home_en .item_bon_point {
+    background: url(../images/bkg_bon_point_en.png) no-repeat;
+}
+
+.monbentoKids_home_en .item_mot_doux {
+    background: url(../images/bkg_mot_doux_en.png) no-repeat;
+}

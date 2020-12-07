@@ -1,0 +1,49 @@
+#layer_socolissimo {
+    top: 150px;
+    left: calc(calc(100% - 950px) / 2);
+    width: 891px;
+}
+
+#btn_modifierAdresse { padding: 10px;}
+#socolissimo-map .btn_socolissimoChoisir { padding: 5px; }
+#socolissimo-map input { position: relative; left: 0; opacity: 1; pointer-events: auto; }
+
+.s_method_socolissimo label {
+    color: #841669
+}
+
+.s_method_socolissimo .socolissimo_pictos {
+    width:35px;
+    margin:10px;
+}
+
+.s_method_socolissimo .socolissimo_pictos.encart {
+    top: 58px;
+}
+
+.s_method_socolissimo li:first-child .socolissimo_pictos.encart {
+    top: 40px;
+}
+
+.s_method_socolissimo div {
+margin: -5px 0 0 53px;
+}
+
+.s_method_socolissimo .radio, 
+.onestepcheckout-index-index .s_method_socolissimo input {
+    margin-right:70px;
+    margin-top:14px;
+}
+
+.s_method_socolissimo li > div {
+    margin-left: 85px;
+    margin-right: 55px;
+}
+
+.opc .s_method_socolissimo li h3 {
+    font-weight: bold;
+    margin: 5px 0 8px;
+    padding-bottom: 10px;
+    vertical-align: top;
+    color:#841667;
+}

@@ -1,0 +1,112 @@
+.club .page .postWrapper{padding-bottom:25px;clear:both;border-top:4px solid #EEE;}
+.club .page .postTitle{border-bottom-width:1px;border-bottom-style:solid;border-bottom-color:#DDDDDD;margin-bottom:15px}
+.club .page .postTitle h3{font-size:10px;margin:0px;padding-top:2px;padding-right:0px;padding-bottom:2px;padding-left:0px}
+.club .page .postContent{padding-bottom:10px}
+.club .page .postBookmarks{padding-bottom:10px}
+.club .page .postBookmarks h4{font-size:12px;font-weight:bold}
+.club .page .commentWrapper{padding-bottom:15px}
+.club .page .commentContent{padding-bottom:0px}
+.club .page .commentDetails {margin-bottom:5px;padding:0px}
+.club .page .commentDetails h4.username{display:inline}
+.club .page .postError{font-size:16px}
+.club .page .tags{font-weight:bold;padding-bottom:10px}
+.club .page .tags UL{display:inline}
+.club .page .tags UL LI{font-weight:normal;display:inline;padding-right:6px}
+.club .page .tags h4{font-size:12px;font-weight:bold}
+.club .page .menu-tags, .menu-categories, .menu-recent{margin:5px 9px}
+.club .page .menu-tags h5, .menu-categories h5, .menu-recent h5{font-size:11px}
+.club .page .block-blog .menu-tags UL LI{display:inline;padding:0;margin-left:10px}
+.club .page .block-blog .menu-recent UL LI a,.block-blog .menu-categories UL LI a,.block-blog .menu-tags UL LI a{font-size:11px}
+.club .page .tagcloud{}
+.club .page .tag-count-1{font-size:1em}
+.club .page .tag-count-2{font-size:1.2em}
+.club .page .tag-count-3{font-size:1.4em}
+.club .page .tag-count-4{font-size:1.6em}
+.club .page .tag-count-5{font-size:1.8em}
+.club .page .tag-count-6{font-size:2em}
+.club .page .tag-count-7{font-size:2em}
+.club .page .tag-count-8{font-size:2em}
+.club .page .tag-count-9{font-size:2em}
+.club .page .tag-count-10{font-size:2em}
+.club .page .block-blog .head h4{padding-left:20px}
+.club .page .block-blog .block-title strong{background-image:url("../images/icon_blog.png");background-repeat:no-repeat;padding-left:21px;text-align:left}
+.club .page .postWrapper .poster{display:inline}
+.club .page .input-box.aw-blog-comment-area{width:100%}
+.club .page .widget-latest li{font-size:12px;padding:5px 10px}
+.club .page .block-blog .menu-categories{margin:0;padding:5px 9px}
+
+/*** Modifs ***/
+.club .page .blog .page{margin:0 auto}
+.club .page .blog .header #header-contact{display:none}
+.club .page .blog .header .toplinks{display:none}
+.club .page .blog #hbar{padding:12px 0 11px;margin-bottom:0}
+.club .page .blog #hbar-ts{width:248px}
+.club .page .blog #hbar-st{width:256px}
+.club .page .blog.fr .main{background:url("../images/le-blog.png") no-repeat 248px 10px;padding-top:86px}
+.club .page .blog.en .main{background:url("../images/le-blog-en.png") no-repeat 248px 10px;padding-top:86px}
+.club .page .blog .col-main{overflow:hidden}
+.club .page .blog .breadcrumbs{border-top:4px solid #eee;margin:0;padding:13px 0;width:100%}
+.club .page .blog .breadcrumbs li.home{display:none}
+.club .page .blog .breadcrumbs li.blog_page span{display:none}
+.club .page .blog .breadcrumbs li span{text-indent:-100px}
+.club .page .blog .col-right{float:left;padding:0;margin:0;width:201px}
+
+.club .page .blog h1{clear:both;float:left;margin-bottom:20px;width:100%}
+
+.club .page #blog-header{height:105px}
+.club .page #blog-header #monbento-com{padding:40px 0 40px 5px;float:left}
+.club .page #blog-header #le-blog{margin:20px 0 0 75px;float:left}
+.club .page #blog-header #back{display:block;font-size:14px;float:left;margin:63px 0 0 43px}
+.club .page #blog-header .form-language{background:none}
+
+.club .page .blog-social-links{float:left;padding:20px 0;width:100%}
+.club .page .blog-social-links li{float:left;height:28px}
+.club .page .blog-social-links li.share-this{padding-top:5px}
+
+.club .page .postTitle{border:none;color:#777;float:left;margin:10px 0 15px;width:100%}
+.club .page .postTitle h2{font-size:16px;font-weight:bold;margin:0px;padding:0px}
+.club .page .postTitle h2 a{text-decoration:none}
+.club .page .postTitle h3{font-size:12px;font-weight:normal}
+
+.club .page .postContent{float:left;width:100%}
+.club .page .postContent .read-more{background:url("../images/puce-lire-plus.png") no-repeat;display:block;margin-top:15px;padding-left:22px;font-size:11px;text-decoration:none}
+
+.club .page .postDetails{color:#cc3399;float:left;margin:15px 0 40px;width:100%}
+.club .page .postDetails .tags{float:left;font-size:13px;line-height:16px}
+.club .page .postDetails .tags h4{float:left;font-size:13px;font-weight:normal;padding-right:3px}
+.club .page .postDetails .tags ul{padding:0}
+.club .page .postDetails .tags ul li{padding-right:3px}
+.club .page .postDetails .comments{float:right}
+.club .page .postDetails .social-links{float:left;margin-left:-3px;margin-top:5px;padding:0;width:100%}
+.club .page .postDetails .social-links li{float:left;height:28px}
+.club .page .postDetails .social-links li.share-this{padding-top:5px}
+
+.club .page .block-blog .block-title,
+.club .page .block-blog .block-content h5{color:#919191;font-family:"Arial Black", Impact, sans-serif;font-size:30px;font-weight:normal}
+.club .page .block-blog .block-title{margin:15px 0 -5px -2px}
+.club .page .block-blog .block-title span{color:#a41b7d}
+.club .page .block-blog .block-content h5{font-size:12px;margin-bottom:5px;text-transform:uppercase}
+.club .page .block-blog .block-content div{clear:both;float:left;margin:0 0 18px 0;width:100%}
+.club .page .block-blog .block-content.bis div{padding:0;margin:32px 0 0}
+.club .page .block-blog .block-content ul li a{text-decoration:none}
+
+.club .page .blog ul.social-buttons{margin-top:12px}
+.club .page .blog .block{margin:0}
+
+.club .page .block-blog .block-content span{color:#919191;display:block;font-size:12px;font-family:"Arial Black", Impact, sans-serif}
+.club .page .block-blog .block-content div ul li{color:#CC3399}
+.club .page .block-blog .block-content div.menu-tags ul li{margin:0}
+.club .page .block-blog .block-content div ul li a{font-size:12px}
+.club .page .block-blog .block-content .st_sharethis{margin:0}
+.club .page .block-blog .block-content .st_sharethis .stButton{margin:0}
+.club .page .block-blog .block-content .st_sharethis span span.chicklets{color:#777;font-size:14px}
+.club .page .block-blog .block-content div .blog-facebook{background:url("../../images/facebook.png") no-repeat 0 3px;color:#777;display:block;font-size:14px;height:35px;padding-left:40px;text-decoration:none}
+
+.club .page .block-blog .block-content #blog-search .text{border:1px solid #CECECE;border-right:none;float:left;height:15px;padding:0 2px;width:173px}
+.club .page .block-blog .block-content #blog-search .submit{background:url("../../images/search-submit.png") no-repeat;border:none;float:left;height:17px;overflow:hidden;text-indent:-100px;width:23px}
+
+.club .page #blog-footer{background:url(../images/footer-blog.png) no-repeat;height:315px;padding:35px 0 0 230px}
+.club .page #blog-footer ul{float:left;width:199px}
+.club .page #blog-footer ul a{color:#777}
+
+.club .page #postComment{float:left}

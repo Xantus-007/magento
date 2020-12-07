@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getChildHtml('breadcrumbs') ?>
+<div class="c-title--page o-bkg--white">
+    <div class="row">
+        <div class="columns">
+            <h1><?php echo $this->__('Aide en ligne') ?></h1>
+        </div>
+    </div>
+</div>
+<?php echo $this->getChildHtml('faq') ?>
+<section class="o-section--bkgGrey c-faq__contact">
+    <div class="row">
+        <div class="column small-12">
+            <h2 class="c-faq__contact__title"><?php echo $this->__('Vous n\'avez pas trouvé de réponse à votre question ?') ?></h2>
+            <div class="row c-faq__contact__blocks">
+                <!-- Item equalizer-->
+                <div class="column small-12 medium-4">
+                    <div class="c-faq__contact__block js-itemEqualizer">
+                        <div class="c-faq__contact__subtitle"><?php echo $this->__('Un conseiller peut vous répondre <strong>par téléphone</strong>') ?></div>
+                        <div class="c-faq__contact__phone"><?php echo $this->__('04 73 23 72 72') ?></div><span><?php echo $this->__('Lundi &gt; Vendredi / 9H&gt;12H / 14H&gt;17H <br> Heures locales') ?></span>
+                    </div>
+                </div>
+                <?php if(Mage::app()->getStore()->getCode() == 'fr' && !in_array('monbento_index_customize', Mage::app()->getLayout()->getUpdate()->getHandles()) && !Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+                    <div class="column small-12 medium-4">
+                        <div class="c-faq__contact__block js-itemEqualizer">
+                            <div class="c-faq__contact__subtitle"><?php echo $this->__('Discutez avec un conseiller <strong>en direct</strong>') ?></div>
+                            <a class="c-linkCst--arrow" onclick="javascript: $zopim.livechat.window.show();"><?php echo $this->__('Discuter en ligne') ?></a>
+                            <span><?php echo $this->__('Lundi &gt; Vendredi / 9H&gt;12H / 14H&gt;17H <br> Heures locales') ?></span>
+                        </div>
+                    </div>
+                <?php endif ?>
+                <div class="column small-12 medium-4">
+                    <div class="c-faq__contact__block js-itemEqualizer">
+                        <div class="c-faq__contact__subtitle"><?php echo $this->__('Envoyez-nous votre question <strong>par e-mail</strong>') ?></div>
+                        <a href="<?php echo $this->getUrl('contacts') ?>" class="c-linkCst--arrow"><?php echo $this->__('Contact us') ?></a>
+                        <span><?php echo $this->__('une réponse vous sera communiquée <br>sous 24H (jours ouvrés)') ?></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

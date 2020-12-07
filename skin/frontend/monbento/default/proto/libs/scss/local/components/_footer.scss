@@ -1,0 +1,263 @@
+// ========================================= //
+// footer
+// ========================================= //
+
+.c-footer--main {
+    background: $subBranding;
+    padding-top: rem(40);
+    padding-bottom: rem(40);
+
+    @include bp-lt($small) {
+        padding-top: rem(20);
+        padding-bottom: rem(20);
+    }
+
+    .c-footer__item {
+        max-width: rem(425);
+        width: 100%;
+        padding-left: rem(10);
+        padding-right: rem(10);
+        text-align: center;
+
+        @include bp-lt($small) {
+            margin-top: rem(20);
+            clear: both;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: rem(20);
+            border-bottom: dotted rem(2) $subBranding--alt;
+        }
+
+        &.c-footer__item--lastChild {
+            @include bp-lt($medium) {
+                margin-top: rem(20);
+                clear: both;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            @include bp-lt($small) {
+                border-bottom: none;
+            }
+        }
+    }
+
+    .c-title--columns {
+        color: $grey--regular--03;
+    }
+
+    [class*='c-linkCst'] {
+        margin-bottom: rem(20);
+    }
+
+    p {
+        margin-bottom: rem(5);
+        font-family: $merriWeather;
+        font-size: rem(14);
+        color: $white;
+        opacity: .5;
+    }
+
+    .c-linkPhone {
+        font-size: rem(22);
+        font-family: $sofiaPro;
+        color: $white;
+        opacity: .7;
+        font-weight: 200;
+    }
+
+    .c-formNewsletter {
+        margin-top: rem(15);
+        .politic {
+            .c-checkbox--inline {
+                input[type=checkbox] {
+                    +label {
+                        font-size: .6875rem;
+                        text-align: justify;
+                        a {
+                            font-size: inherit;
+                            color: $white;
+                            opacity: .6;
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .c-linkHashtag {
+        display: inline-block;
+        color: $mainBranding;
+        font-size: rem(22);
+        font-family: $sofiaPro;
+        font-weight: 200;
+        margin-top: rem(-10);
+        margin-bottom: rem(31);
+
+        &:hover, &:focus, &.is-active {
+            color: $mainBranding--active;
+        }
+    }
+
+    .c-list__social {
+        margin: 0;
+        list-style-type: none;
+
+        li {
+            $iconWidth: rem(56);
+            $iconWidth--small: rem(40);
+
+            display: inline-block;
+            margin-left: rem(10);
+            margin-right: rem(10);
+
+            @include bp-lt($desktop) {
+                margin-left: rem(7);
+                margin-right: rem(7);
+            }
+
+            a {
+                display: block;
+                width: $iconWidth;
+                height: $iconWidth;
+                background: $subBranding--lighten;
+                border-radius: 50%;
+                transition: $ease;
+
+                @include bp-lt($mobileL) {
+                    width: $iconWidth--small;
+                    height: $iconWidth--small;
+                }
+
+                &:hover {
+                    background: $mainBranding--active;
+                }
+
+                [class*='c-fonticon__icon'] {
+                    display: block;
+                    width: 100%;
+                    height: 100%;
+                    padding-top: rem(5);
+                    color: $white;
+                    font-size: rem(34);
+
+                    @include bp-lt($mobileL) {
+                        font-size: rem(24);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c-footer--sub {
+    padding-top: rem(30);
+    background: $subBranding--01;
+
+    @include bp-lt($small) { padding-bottom: rem(45); }
+
+    & > .row:first-of-type > .columns {
+        border-right: rem(2) solid $subBranding--alt;
+        margin-bottom: rem(30);
+
+        &:last-of-type {
+            border-right: none;
+        }
+    }
+
+    .c-baseline {
+        padding-bottom: rem(15);
+    }
+}
+
+.c-footer--sub__item {
+    max-width: rem(240);
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: rem(20);
+
+    @include bp-lt($mobileL) {
+        padding: rem(10);
+    }
+
+    .c-title {
+        margin-bottom: rem(15);
+        font-family: $sofiaPro;
+        font-weight: 900;
+        font-size: rem(14);
+        text-transform: uppercase;
+        opacity: .6;
+        color: $white;
+        letter-spacing: rem(1);
+
+        @include bp-lt($medium) {
+            margin-bottom: rem(10);
+            font-size: rem(12);
+        }
+
+        @include bp-lt($mobileL) {
+            margin-bottom: rem(7);
+            font-size: rem(10);
+        }
+    }
+
+    .c-list__subFooter {
+        margin: 0;
+        list-style-type: none;
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            position: relative;
+            padding-left: rem(10);
+
+            &:before {
+                content: '•';
+                position: absolute;
+                top: rem(3);
+                left: 0;
+                font-size: rem(14);
+                font-family: $merriWeather;
+                font-weight: 300;
+                color: $grey--regular--03;
+                opacity: .6;
+
+                @include bp-lt($mobileL) {
+                    top: rem(7);
+                    font-size: rem(10);
+                }
+            }
+        }
+
+        a {
+            color: $grey--regular--03;
+            opacity: .6;
+            font-size: rem(14);
+            font-family: $merriWeather;
+            font-weight: 300;
+            margin-bottom: rem(5);
+            transition: $ease;
+
+            @include bp-lt($medium) {
+                font-size: rem(12);
+                margin-bottom: 0;
+            }
+
+            @include bp-lt($mobileL) {
+                font-size: rem(10);
+            }
+
+            @include bp-lt($mobileS) {
+                font-size: rem(9);
+            }
+
+            &:hover, &:focus, &.is-active {
+                color: $mainBranding;
+            }
+        }
+    }
+}

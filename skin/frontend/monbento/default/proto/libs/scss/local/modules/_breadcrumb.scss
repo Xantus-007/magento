@@ -1,0 +1,86 @@
+// ========================================= //
+// breadcrumb
+// ========================================= //
+
+.c-breadcrumb {
+    padding-top: rem(14);
+    padding-bottom: rem(14);
+
+    @include bp-lt($large) {
+        padding-left: rem(14);
+        padding-right: rem(14);
+    }
+
+    &.has-filter > .row:first-of-type {
+        .columns:first-of-type { @include bp-lt($mobileL) { display: none; } }
+        .columns:last-of-type { @include bp-lt($mobileL) { width: 100%; } }
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+
+        li {
+            display: inline-block;
+
+            @include bp-lt($tabletS) {
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                max-width: rem(280);
+            }
+
+            @include bp-lt($mobileL) {
+                max-width: rem(250);
+            }
+
+            @include bp-lt($mobileM) {
+                max-width: rem(170);
+            }
+
+            @include bp-lt($small) {
+                display: none;
+
+                &:first-of-type { display: inline-block; }
+                &:last-of-type { display: inline-block; }
+            }
+
+            &, a {
+                font-size: rem(12);
+                font-family: $sofiaPro;
+                text-transform: uppercase;
+                letter-spacing: rem(1);
+                color: $grey--regular--04;
+                transition: $ease;
+            }
+
+            & {
+                color: $grey--regular--03;
+            }
+
+            a:hover {
+                color: $mainBranding;
+            }
+
+            &:after {
+                content: '/';
+                display: inline-block;
+                margin-left: rem(2);
+                margin-right: rem(2);
+                color: $grey--regular--04;
+            }
+
+            &:last-of-type:after { display: none; }
+        }
+    }
+
+    [class*='c-linkCst'] {
+        position: absolute;
+        right: 0;
+        top: 0;
+
+        @include bp-lt($mobileL) {
+            display: none;
+        }
+    }
+}

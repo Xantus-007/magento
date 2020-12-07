@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <dbm_customer_is_mobile>
+        <remove name="breadcrumbs" />
+        <remove name="left" />
+        <remove name="footer" />
+        
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform._base.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/vendor/uniform/uniform.default.min.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/mobile-checkout.css</stylesheet></action>
+            <!--<action method="addJs"><script>jQuery/jquery-1.8.1.min.js</script></action>-->
+            <action method="addJs"><script>uniform/jquery.uniform.js</script></action>
+            <action method="addItem"><type>skin_js</type><name>js/dbm/forms.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>js/jquery.maxlength.js</name></action>
+            
+            <block name="globals.js" type="core/template" template="dbm/globals.js.phtml" />
+        </reference>
+    </dbm_customer_is_mobile>
+    <customer_account>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/customer/edit.css</stylesheet></action>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="addLink"><name>customer-profile</name><path>club-customer/account/edit</path><label>Mon profil</label></action>
+        </reference>
+    </customer_account>
+
+    <dbm_customer_public_account_edit>
+        <reference name="root">
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+        </reference>
+        <reference name="content">
+            <block type="dbm_customer/profile_edit" name="dbm_customer.profile_edit" template="dbm/customer/profile/edit.phtml" />
+        </reference>
+    </dbm_customer_public_account_edit>
+</layout>

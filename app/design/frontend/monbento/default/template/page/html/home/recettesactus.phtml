@@ -1,0 +1,76 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $recette = $this->getBlocRecette(); ?>
+<?php $actu = $this->getBlocActu(); ?>
+<section class="o-section--bkgGrey--dark">
+    <div class="c-title--section">
+        <div class="row">
+            <div class="columns"><?php echo Mage::getStoreConfig('monbento_admin_wysiwyg/monbento_config_string/bloc_home_recettes'); ?></div>
+        </div>
+    </div>
+    <div class="row c-news__list">
+        <?php if($recette): ?>
+        <div class="columns medium-6">
+            <div class="c-news__item js-itemEqualizer">
+                <div class="c-thumb">
+                    <?php foreach($recette->getPhotos() as $photo): ?>
+                        <img class="c-news__tabletImg" src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/share/element/' . $this->helper('dbm_share')->getPhotoDir($photo->getFilename(), false) . '/' . $photo->getFilename(), 615, 200, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="Monbento : <?php echo $recette->getTitle(); ?>" />
+                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/share/element/' . $this->helper('dbm_share')->getPhotoDir($photo->getFilename(), false) . '/' . $photo->getFilename(), 335, 335, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="Monbento : <?php echo $recette->getTitle(); ?>" />
+                    <?php endforeach; ?>
+                </div>
+                <div class="c-content">
+                    <div class="c-header">
+                        <div class="c-category"><?php echo $this->helper('dbm_share')->__('Recipes'); ?></div>
+                        <div class="c-date"><?php echo Mage::helper('core')->formatDate($recette->getCreatedAt(), 'medium', false); ?></div>
+                    </div>
+                    <a href="<?php echo $this->getUrl('club/index/detail/id/'.$recette->getId().'/'); ?>" class="c-title"><?php echo $recette->getTitle(); ?></a>
+                    <div class="c-instruction"><i class="c-fonticon__icon--clock"></i><span><?php echo $recette->getDuration(); ?><?php echo $this->__('min'); ?></span><i class="c-fonticon__icon--microwave"></i><span><?php echo $recette->getCookingDuration(); ?><?php echo $this->__('min'); ?></span></div>
+                    <div class="c-footer"><a href="<?php echo $this->getUrl('club/index/detail/id/'.$recette->getId().'/'); ?>" class="c-linkCst--arrow--subBranding"><?php echo $this->__('Lire la suite'); ?></a></div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <?php if($actu): ?>
+        <div class="columns medium-6">
+            <div class="c-news__item js-itemEqualizer">
+                <div class="c-thumb">
+                    <img class="c-news__tabletImg" src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/blog/' . $actu->getPostImage(), 615, 200, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="Monbento : <?php echo $recette->getTitle(); ?>" />                    
+                    <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/blog/' . $actu->getPostImage(), 335, 335, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="Monbento news : <?php echo $actu->getTitle(); ?>" />
+                </div>
+                <div class="c-content">
+                    <div class="c-header">
+                        <div class="c-category"><?php echo $this->helper('dbm_share')->__('News'); ?></div>
+                        <div class="c-date"><?php echo Mage::helper('core')->formatDate($actu->getCreatedTime(), 'medium', false); ?></div>
+                    </div>
+                    <a href="<?php echo $this->getUrl('blog/'.$actu->getIdentifier()); ?>" class="c-title"><?php echo $this->helper('dbm_utils/string')->summarizeWord($actu->getTitle(), 90); ?></a>
+                    <div class="c-footer"><a href="<?php echo $this->getUrl('blog/'.$actu->getIdentifier()); ?>" class="c-linkCst--arrow--subBranding"><?php echo $this->__('Lire la suite'); ?></a></div>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+</section>

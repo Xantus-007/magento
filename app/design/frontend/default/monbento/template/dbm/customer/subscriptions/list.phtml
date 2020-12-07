@@ -1,0 +1,39 @@
+<?php
+$collection = $this->getLoadedCollection();
+$helper = Mage::helper('dbm_customer');
+$sizes = Mage::helper('dbm_customer/image')->getSizes();
+$options = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+$trans = Mage::helper('dbm_share');
+?>
+<?php if(!is_null($collection) && $collection->getSize()): ?>
+<div class="clubSubscriptions">
+    <?php foreach($collection as $customer): ?>
+    <?php $evenOdd =  $i%2 == 0 ? 'even' : 'odd' ?>
+    <?php $isFollowing = false;//$this->isFollowing($customer); ?>
+    <?php $class = $isFollowing ? 'subscribed' : 'subscribe'; ?>
+    <?php $label =  $isFollowing ? $trans->__('Subscribed ') : $trans->__('Unsubscribed '); ?>
+    <?php $customerUrl =  $helper->getCustomerImageUrl($customer, $sizes['subscriber_list_odd'], $options); ?>
+    <?php $customerUrl = $customerUrl ? $customerUrl : $this->getSkinUrl('images/club/profile/placeholder-list.png'); ?>
+    <div class="subscription <?php echo $evenOdd ?>">
+        <div class="icon">
+            <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><img src="<?php echo $customerUrl ?>" /><img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-subscribers-'.$evenOdd.'.png'); ?>" /><?php if($customer->getProfileStatus() == 3): ?><img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini.png'); ?>" /><?php endif; ?></a>
+        </div>
+        <div class="infos">
+            <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>" class="nickname"><?php echo $this->htmlEscape($customer->getProfileNickname()) ?></a><br />
+            <a href="#" class="vip"><?php echo $helper->getPrettyStatus($customer); ?></a>
+        </div>
+        <div class="actions">
+            <button class="<?php echo $class ?> roundedButton customer_<?php echo $customer->getId() ?>"><?php echo $label ?></button>
+        </div>
+    </div>
+        <?php $i++; ?>                                                                                               
+    <?php endforeach; ?>
+</div>
+<?php else: ?>
+        <div class="center noresult"><?php echo $trans->__('No elements found') ?></div>
+<?php endif; ?>
+<script type="text/javascript">
+(function($){
+    
+})(jQuery);
+</script>

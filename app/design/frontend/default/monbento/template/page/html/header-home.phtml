@@ -1,0 +1,29 @@
+<?php 
+
+$storeCode = Mage::app()->getStore()->getCode();
+
+?>
+<div id="header-container" class="row small-collapse">    
+    <?php if ($this->getIsHomePage()):?>
+    <div class="columns large-2 medium-centered large-uncentered">
+        <h1 class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo">
+            <img src="<?php echo $this->getSkinUrl('images/svg/logo.svg') ?>" alt="<?php echo $this->getLogoAlt() ?>" />
+        </a></h1>
+    </div>
+    <?php else:?>
+    <div class="columns large-2 medium-centered large-uncentered">
+        <a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><strong><?php echo $this->getLogoAlt() ?></strong><img src="<?php echo $this->getSkinUrl('images/svg/logo.svg') ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+    </div>
+    <?php endif?>
+    <div class="columns large-10">
+        <div class="quick-access">
+            <?php echo $this->getChildHtml('store_language') ?>
+            <?php echo $this->getChildHtml('dbm_country_switcher', false) ?>
+        </div>
+    </div>
+    <?php echo $this->getChildHtml('topNavigation'); ?>
+    
+    <div id="header-link-home" class="show-for-large-up"><a href="<?php echo $this->getUrl(''); ?>"><?php echo $this->__('Home'); ?></a></div>
+    <?php if($this->getIsHomePage()) echo $this->getChildHtml('newMenu'); ?>
+</div>
+<?php echo $this->getChildHtml('facilelogin') ?>

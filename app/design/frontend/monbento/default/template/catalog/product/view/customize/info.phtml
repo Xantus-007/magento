@@ -1,0 +1,25 @@
+<?php $options = $this->getOptionsPrice() ?>
+<?php $bundlePrice = $this->getBundlePrice() ?>
+<!--<ul class="c-perso__bundle__option">-->
+	<?php foreach ($options as $optionId => $option): ?>
+		<!--<li>
+			<span class="c-price"><?php echo ($option['priceOption'] != 0) ? '+ '.Mage::helper('core')->currency($option['priceOption']) : ''; ?></span>
+            <span class="c-label"><?php echo $option['name'] ?></span>-->
+			
+            <input type="hidden" class="input-text qty qty-disabled" name="bundle_option_qty[<?php echo $optionId ?>]" value="1">
+			<input type="hidden" name="bundle_option[<?php echo $optionId ?>]" value="<?php echo $option['selection_id'] ?>">
+			<?php foreach($option['superAttributes'] as $attributeId => $attributeValue): ?>
+			<input type="hidden" name="super_attribute[<?php echo $optionId ?>][<?php echo $attributeId ?>]" value="<?php echo $attributeValue ?>">
+			<?php endforeach; ?>
+		<!--</li>-->
+		<?php if($option['priceOption'] != 0) $bundlePrice += $option['priceOption'] ?>
+	<?php endforeach; ?>
+<!--</ul>-->
+<div class="c-product__priceBox" itemprop="offers" itemscope="" itemtype="https://schema.org/Offer">
+    <div class="c-priceBox">
+    	<div class="c-price">
+            <span class="price"><?php echo Mage::helper('core')->currency($bundlePrice) ?></span>
+        </div>
+    </div>
+    <span itemprop="priceCurrency" content="EUR"></span>
+</div>

@@ -1,0 +1,6 @@
+.xmedium-12 {
+    @include bp-lt($xmedium) {
+        width: 100%;
+        float: none;
+    }
+}

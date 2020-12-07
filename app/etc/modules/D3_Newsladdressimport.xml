@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <D3_Newsladdressimport>
+            <active>true</active>
+            <codePool>local</codePool>
+        </D3_Newsladdressimport>
+    </modules>
+</config> 

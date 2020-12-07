@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<install><product id="65" key="Aitoc_Aitpermissions" version="2.6.2" license_id="17084" link_id="635589"><![CDATA[Advanced Permissions]]></product><serial>kvKHKGrR2nArLn9zDhP1NEqsGPa1BPw4KDqhieWQEX</serial><checkid>b3c6f0ef907e47f40786076a8adeb9b0</checkid><store_url><![CDATA[http://www.aitoc.com/en/]]></store_url><service><![CDATA[https://www.aitoc.com/api/xmlrpc/]]></service><constraint><admin label="Number of users within one Magento Installation:">1</admin></constraint></install>

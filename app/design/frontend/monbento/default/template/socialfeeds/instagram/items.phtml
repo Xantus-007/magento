@@ -1,0 +1,87 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+$offset = $this->getOffset();
+$limit = $this->getLimit();
+$size = Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_'.$this->getSize().'_size');
+
+$instagramPosts = $this->getInstagramItemsFeed($offset, $limit);
+?>
+<?php if(count($instagramPosts) > 0 && Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_enable')): ?>
+<!-- Instagram -->
+<section class="c-socialWall o-section">
+    <div class="row">
+        <div class="columns medium-3">
+            <div class="c-sociallWall__block tablet-6">
+                <img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__title--socialWall.svg'); ?>" alt="">
+            </div>
+            <a href="<?php echo $instagramPosts[4]->link ?>" class="c-sociallWall__item tablet-6" target="_blank">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[4]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[4]->caption->text ?>">
+            </a>
+        </div>
+        <div class="columns medium-4 tablet-8">
+            <div class="row">
+                <div class="columns">
+                    <a href="<?php echo $instagramPosts[0]->link ?>" class="c-sociallWall__item" target="_blank">
+                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[0]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[0]->caption->text ?>">
+                    </a>
+                </div>
+                <div class="columns small-6">
+                    <a href="<?php echo $instagramPosts[5]->link ?>" class="c-sociallWall__item" target="_blank">
+                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[5]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[5]->caption->text ?>">
+                    </a>
+                </div>
+                <div class="columns small-6">
+                    <a href="<?php echo $instagramPosts[6]->link ?>" class="c-sociallWall__item" target="_blank">
+                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[6]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[6]->caption->text ?>">
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="columns medium-2 tablet-4">
+            <a href="<?php echo $instagramPosts[1]->link ?>" class="c-sociallWall__item" target="_blank">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[1]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[1]->caption->text ?>">
+            </a>
+            <div class="c-sociallWall__block">
+                <div class="c-sociallWall__block__fixed--content"><?php echo Mage::getStoreConfig('monbento_admin_wysiwyg/monbento_config_string/bloc_insta'); ?></div>
+                <div class="c-sociallWall__block__fixed--bkg"></div>
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[3]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[3]->caption->text ?>">
+            </div>
+            <a href="<?php echo $instagramPosts[7]->link ?>" class="c-sociallWall__item" target="_blank">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[7]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[7]->caption->text ?>">
+            </a>
+        </div>
+        <div class="columns medium-3">
+            <a href="<?php echo $instagramPosts[2]->link ?>" class="c-sociallWall__item tablet-6" target="_blank">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[2]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[2]->caption->text ?>">
+            </a>
+            <a href="<?php echo $instagramPosts[8]->link ?>" class="c-sociallWall__item tablet-6" target="_blank">
+                <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/'.$this->getInstagramImgFolder().DS.$size.DS.$instagramPosts[8]->created_time.'.jpg', $size, $size, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'quality' => 80, 'useAdaptive' => true)) ?>" alt="<?php echo $instagramPosts[8]->caption->text ?>">
+            </a>
+        </div>
+    </div>
+</div>
+<?php endif; ?>

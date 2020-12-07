@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">    
+    <dbm_customer_register_tracker>
+        <reference name="root">
+            <block type="core/template" name="dbm_customer_register.tracker" template="dbm/customer/register/tracker.phtml" />
+        </reference>
+    </dbm_customer_register_tracker>
+</layout>

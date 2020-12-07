@@ -1,0 +1,25 @@
+<?php if ($image = Mage::helper('dbm_cartpromo')->getPopupBackground()): ?>
+<div id="cart-popup" class="white-popup mfp-hide a-center">
+    <div class="mfp-close"></div>
+    <?php if($link = Mage::getStoreConfig('dbm_cart_popup/general/link')): ?>
+        <a href="<?php echo $link; ?>">
+    <?php endif; ?>
+    <img src="<?php echo $image; ?>" />
+    <?php if($link): ?>
+        <a href="<?php echo $link; ?>">
+    <?php endif; ?>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    jQuery(function ($) {
+        $.magnificPopup.open({
+            items: {
+              src: '#cart-popup'
+            },
+            type: 'inline',
+            closeBtnInside: false
+        }, 0);
+    });
+//]]>
+</script>
+<?php endif; ?>

@@ -1,0 +1,22 @@
+section.o-section.c-businessCase
+    .c-title--group
+        .c-main L’adopter c’est...
+
+    .row
+        - var titles = ['faire des économies', 'Mieux manger', 'protéger l’environnement']
+        - var contents = ['En apportant chaque jour son déjeuner', 'En maîtrisant le contenu de son repas', 'Evitez le packaging jetable et le gaspillage alimentaire']
+        - var icons = ['c-icon__economie.svg', 'c-icon__mieuxmanger.svg', 'c-icon__environement.svg']
+
+        each label, index in titles
+            .columns.medium-4
+                .c-businessCase__item
+                    .c-icon
+                        .c-picture
+                            // format image 32x45px
+                            img(src="#{imgDir}c-icon__economie.svg", alt="")
+                        .c-background: include _icon__marker--svg
+
+                    .c-container
+                        .c-title.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle #{label}
+                        .c-separator(style='background: #{pageColor};')
+                        .c-content #{contents[index]}

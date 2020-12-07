@@ -1,0 +1,39 @@
+// ========================================= //
+// Susy grid
+// ========================================= //
+
+
+// Define GridWidth
+.container { @include container($gridWidth); }
+
+// Define GridOptions
+@for $i from 1 through $gridColumns {
+    .grid-#{$i} { @include span($i of $gridColumns); }
+
+    .grid-l-#{$i} { 
+        @include bp-lt($xmedium) {
+            @include span($i of $gridColumns);
+        }
+    }
+
+    .grid-m-#{$i} { 
+        @include bp-lt($smedium) {
+            @include span($i of $gridColumns);
+        }
+    }
+
+    .grid-s-#{$i} { 
+        @include bp-lt($small) {
+            @include span($i of $gridColumns);
+        }
+    }
+}
+
+.left { float: left; }
+.right{ float: right; }
+.row { @include clearfix-micro; }
+.hide-s {
+    @include bp-lt($smedium) {
+        display: none;
+    }
+}

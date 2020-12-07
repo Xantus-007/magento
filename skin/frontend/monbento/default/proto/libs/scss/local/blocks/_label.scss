@@ -1,0 +1,111 @@
+// ========================================= //
+// label
+// ========================================= //
+
+[class*='c-label'] {
+    .c-content {
+        position: relative;
+        display: inline-block;
+        height: rem(25);
+        line-height: rem(25);
+        padding-left: rem(5);
+        padding-right: rem(10);
+        color: $white;
+        font-size: rem(16);
+        font-family: $sofiaProCond;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: rem(2);
+        text-align: center;
+
+        &:before {
+            $side: 18;
+
+            font-family: $iconFont;
+            position: absolute;
+            top: 0;
+            left: rem(-1*$side);
+            display: block;
+            width: rem($side);
+            height: rem(25);
+            font-size: rem(27);
+            overflow: hidden;
+        }
+    }
+
+    &[class*='--main'] {
+        .c-content { background: $label__product; }
+        .c-content:before {
+            content: '\EA10';
+            color: $label__product;
+        }
+    }
+
+    &[class*='--outOfStock'] {
+        z-index: 10;
+
+        .c-content {
+            background: $orange;
+
+            @include bp-lt($small) { font-size: rem(12); }
+            @include bp-lt($mobileM) { font-size: rem(10); }
+        }
+
+        .c-content:before {
+            content: '\EA10';
+            color: $orange;
+        }
+    }
+
+    &[class*='--preorder'] {
+        .c-content { background: $dark; }
+        .c-content:before {
+            content: '\EA10';
+            color: $dark;
+        }
+    }
+
+    &[class*='--alt'] {
+        .c-content { background: $label__product--alt; }
+
+        &[class*='--discount'] {
+            .c-content:before {
+                content: '\EA10';
+                color: $label__product--alt;
+            }
+        }
+
+        &[class*='--preorder'] {
+            .c-content { background: $dark; }
+            .c-content:before {
+                content: '\EA10';
+                color: $dark;
+            }
+        }
+
+        &[class*='--sales'] {
+            .c-content:before {
+                content: '\EA11';
+                color: $label__product--alt;
+            }
+        }
+
+        .c-amout {
+            font-size: rem(30);
+            font-family: $sofiaPro;
+            font-weight: 700;
+            color: $label__product--alt;
+            line-height: rem(35);
+            text-align: right;
+
+            @include bp-lt($medium) {
+                font-size: rem(18);
+                line-height: rem(25);
+            }
+        }
+    }
+}
+
+label {
+    em { font-style: normal; }
+}

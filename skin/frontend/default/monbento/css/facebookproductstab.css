@@ -1,0 +1,19 @@
+body {color:#777;font:12px/1.5 Arial,Helvetica,sans-serif;margin:0}
+a {color:#777;font-size:12px}
+.fb-list .category-products .products-list{margin:0;padding:0;}
+.fb-list .category-products .products-list .item {display:block;float:left;height:300px;margin:0 12px 0 0;width:154px}
+.fb-list .category-products .products-list .item .product-image img{border:none;}
+.fb-list .category-products .products-list .item .product-name {height:32px;margin:10px 0 0 0}
+.fb-list .category-products .products-list .item .product-name a {color:#777;font-weight:normal;text-decoration:none;}
+.fb-list .category-products .products-list .item .price-box{background:url("../images/price-box.png") repeat-x;height:31px;margin-top:8px;}
+.fb-list .category-products .products-list .item .price-box p {margin:0;}
+.fb-list .category-products .products-list .item .price-box p.old-price {float:right}
+.fb-list .category-products .products-list .item .price-box p.old-price .price {color:#ADADAD;font-size:1.1em !important;font-weight:normal;text-decoration:line-through;}
+.fb-list .category-products .products-list .item .price-box .price-label{display:none}
+.fb-list .category-products .products-list .item .price-box .price {color:#cc3399;font-size:18px;font-weight:bold;line-height:32px;}
+.fb-list .category-products .products-list .item .product-shop {margin-top:8px;}
+.fb-list .category-products .products-list .item .product-shop a.more {background:url("../images/more.png") no-repeat 100% 50% #ADADAD;color:#FFF;float:left;
+font-weight:bold;line-height:18px;padding:0 9px;text-decoration:none;}
+.fb-list .category-products .products-list .item .product-shop a.more:hover {background:url("../images/more-hover.png") no-repeat 100% 50% #CC3399;}
+.fb-list .category-products .products-list .item .product-shop a.btn-cart {background:url("../images/cart.png") no-repeat 100% 50%;color:#5A5A5A;float:right;line-height: 18px;padding-right:25px;text-align:right;text-decoration:none;}
+.fb-list .category-products .products-list .item .product-shop a.btn-cart:hover {background:url("../images/cart-hover.png") no-repeat 100% 50%;color:#CC3399;}

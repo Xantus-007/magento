@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Ecsso_FacileLogin
+ * @author      Ecsso Team <team@ecommercesoftwaresolutionsonline.com>
+ * @copyright   Copyright (c) 2010 - eCommerce Software Solutions Online Pty. Ltd. (http://www.ecommercesoftwaresolutionsonline.com) 
+ */
+-->
+<layout version="0.1.0">
+    <default>
+		<reference name="head">
+			  <action method="addJs"><script>facilelogin.js</script></action>			
+			
+			 <action method="addCss"><name>css/facilelogin.css</name></action>				
+		</reference>
+				
+			<reference name="header">
+				<block type="core/template" name="facilelogin" template="facilelogin/facilelogin.phtml"/>
+			</reference>	
+		
+    </default> 
+</layout> 

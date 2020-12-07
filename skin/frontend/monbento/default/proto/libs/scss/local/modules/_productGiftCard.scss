@@ -1,0 +1,100 @@
+// ========================================= //
+// productGiftCard
+// ========================================= //
+
+.c-product__giftCard {
+    .c-giftCard__preview {
+        background-repeat: no-repeat;
+        background-image: url(#{$img}c-bkg__giftCard--default.png);
+
+        @include bp-lt($medium) {
+            background-position: 30% 0;
+        }
+
+        @include bp-lt($small) {
+            height: rem(200) !important;
+            background-size: cover;
+            background-position: 50% 0;
+        }
+    }
+
+    .c-product__action {
+        max-width: 100%;
+        width: 100%;
+        padding-top: rem(70);
+        text-align: left;
+
+        @include bp-lt($medium) {
+            padding-top: rem(50);
+        }
+
+        @include bp-lt($small) {
+            padding-top: rem(30);
+            height: auto !important;
+        }
+
+        .c-title {
+            text-align: center;
+        }
+
+        .c-baseline {
+            text-align: center;
+            margin-bottom: rem(42);
+        }
+
+        .c-form__col {
+            padding-left: rem(16);
+            padding-right: rem(16);
+        }
+    }
+
+    .c-radio__giftCard {
+        @include clearfix;
+
+        .c-item {
+            position: relative;
+            display: block;
+            width: rem(68);
+            height: rem(43);
+            margin-right: rem(16);
+            float: left;
+            margin-bottom: rem(7);
+
+            &:last-of-type {
+                margin-left: 0;
+            }
+
+            label {
+                padding-left: 0;
+
+                &:before {
+                    display: none;
+                }
+
+                &:after {
+                    z-index: $zindex--hover;
+                    top: 0;
+                    left: 0;
+                    width: rem(68);
+                    height: rem(43);
+                    border-radius: 0;
+                    transform: scale(1) !important;
+                    background: url(#{$img}c-icon__radioActive.svg) no-repeat 50% 50% rgba($white, .5);
+                }
+
+                img {
+                    position: relative;
+                    z-index: $zindex--content;
+                }
+            }
+        }
+    }
+
+    .c-footer {
+        text-align: center;
+        max-width: rem(280);
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

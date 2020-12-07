@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default translate="label" module="page">
+        <reference name="root">
+            <action method="addBodyClass"><classname>is-kiosk</classname></action>
+            <remove name="header" />
+            <remove name="footer" />
+            <remove name="breadcrumbs" />
+
+            <block type="page/html_header" name="header-kiosk" as="header-kiosk">
+                <block type="checkout/cart_minicart" name="minicart_head" template="checkout/cart/minicart.phtml" before="-"></block>
+            </block>
+            <block type="page/html_footer" name="footer-kiosk" as="footer-kiosk" template="page/html/footer.phtml">
+                <action method="setCacheLifetime"><lifetime>null</lifetime></action>
+            </block>
+        </reference>
+
+        <reference name="header">
+            <remove name="topMenu" />
+            <remove name="topSearch" />
+        </reference>
+    </default>
+
+    <monbento_kiosk_index_index>
+        <reference name="content">
+            <action method="unsetChild"><name>kiosk-content</name></action>
+            <block type="core/template" name="kiosk-content" as="kiosk-content" template="page/html/kiosk-content.phtml" />
+        </reference>
+    </monbento_kiosk_index_index>
+
+    <monbento_kiosk_index_login>
+        <reference name="head">
+            <action method="setTitle"><title>Monbento - Accès magasin</title></action>
+        </reference>
+
+        <reference name="content">
+            <action method="unsetChild"><name>magasin_login</name></action>
+            <block type="core/template" name="magasin_login" template="kiosk/login.phtml" />
+        </reference>
+    </monbento_kiosk_index_login>
+</layout>

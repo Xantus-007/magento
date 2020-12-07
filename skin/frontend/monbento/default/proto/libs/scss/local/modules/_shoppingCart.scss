@@ -1,0 +1,226 @@
+// ========================================= //
+// shoppingCard
+// ========================================= //
+
+.c-price__shoppingCart {
+    position: relative;
+    padding-top: rem(13);
+    padding-bottom: rem(13);
+    margin-bottom: rem(28);
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        left: 0;
+        display: block;
+        width: 100%;
+        height: rem(13);
+    }
+
+    &:before {
+        top: 0;
+        background: url(#{$img}c-bkg__edgeToTop.svg) repeat-x;
+    }
+
+    &:after {
+        bottom: 0;
+        background: url(#{$img}c-bkg__edgeToBottom.svg) repeat-x;
+    }
+
+    .c-price__shoppingCart--inner {
+        padding: rem(42) rem(31);
+        background: $white;
+
+        @include bp-lt($mobileL) {
+            padding: rem(30) rem(20);
+        }
+    }
+
+    .c-item {
+        margin-bottom: rem(28);
+        font-family: $sofiaPro;
+        font-weight: 300;
+        font-size: rem(20);
+        @include clearfix;
+
+        @include bp-lt($mobileL) {
+            font-size: rem(16);
+            margin-bottom: rem(14);
+        }
+
+        .c-label {
+            float: left;
+            width: calc(100% - 100px);
+            padding-right: rem(10);
+            color: $grey--regular--05;
+        }
+
+        .c-price {
+            float: right;
+            width: rem(100);
+            text-align: right;
+            color: $subBranding;
+        }
+    }
+
+    .c-item__total {
+        margin-bottom: rem(42);
+        font-family: $sofiaPro;
+        color: $subBranding;
+        @include clearfix;
+
+        .c-label {
+            float: left;
+            font-size: rem(30);
+            line-height: rem(22);
+
+            @include bp-lt($desktop) {
+                font-size: rem(26);
+            }
+
+            @include bp-lt($mobileL) {
+                font-size: rem(18);
+            }
+        }
+
+        .c-price {
+            position: relative;
+            top: rem(-10);
+            float: right;
+            font-size: rem(36);
+            line-height: rem(34);
+
+            @include bp-lt($desktop) {
+                top: rem(-6);
+                font-size: rem(30);
+            }
+
+            @include bp-lt($mobileL) {
+                font-size: rem(20);
+            }
+        }
+
+        .c-screed {
+            clear: both;
+            font-size: rem(14);
+        }
+    }
+
+    .c-separator {
+        width: 100%;
+        height: rem(2);
+        margin-bottom: rem(28);
+        background: url(#{$img}c-bkg__separator--stroke.svg) repeat-x 0 50%;
+    }
+
+    .c-info {
+        max-width: rem(290);
+        width: 100%;
+        margin-bottom: rem(42);
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+}
+
+.c-form__giftCard {
+    .c-checkbox--tall {
+        margin-top: rem(14);
+        margin-bottom: rem(28);
+    }
+
+    .c-input__holder:not(.is-textarea) {
+        margin-bottom: 0;
+        border-bottom: 0;
+    }
+
+    .columns.medium-6:nth-child(even) .c-input__holder:not(.is-textarea) {
+        border-left: none;
+
+        @include bp-lt($small) {
+            border-left: solid rem(2) $grey--light--04;
+        }
+    }
+}
+
+.c-promo__shoppingCart {
+    @include bp-lt($small) {
+        text-align: center;
+    }
+
+    .c-title {
+        margin-bottom: rem(20);
+        font-family: $sofiaProCond;
+        font-size: rem(18);
+        color: $subBranding;
+        text-transform: uppercase;
+    }
+}
+
+.c-checkout__content {
+    @include bp-lt($medium) {
+        padding-left: rem(25);
+        padding-right: rem(25);
+    }
+
+    @include bp-lt($small) {
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+
+    &.c-review {
+        padding-bottom: 0;
+        background: url(#{$img}c-bkg__checkoutReview.jpg) no-repeat 50% 100% $checkoutBkg;
+        background-size: cover;
+
+        @include bp-lt($medium) {
+            background-size: contain;
+        }
+
+        @include bp-lt($small) {
+            padding-bottom: rem(140);
+        }
+
+        .c-price__shoppingCart {
+            margin-bottom: 0;
+            padding-bottom: 0;
+
+            &:after {
+                display: none;
+            }
+
+            [class*='c-button'] {
+                padding-top: 0;
+                padding-bottom: 0;
+            }
+        }
+
+        .c-cgv {
+            .c-checkbox {
+                margin-bottom: rem(28);
+
+                a {
+                    color: $mainBranding;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    .please-wait {
+        clear: both;
+        font-family: $sofiaPro;
+        vertical-align: middle;
+
+        @include bp-lt($medium) {
+            position: static;
+            transform: none;
+        }
+
+        img {
+            position: relative;
+            top: rem(-1);
+        }
+    }
+}

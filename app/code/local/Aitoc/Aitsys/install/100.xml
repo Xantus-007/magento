@@ -1,0 +1,2 @@
+<?xml version="1.0"?>
+<install><product id="100" key="Aitoc_Aitquantitymanager" version="2.1.9" license_id="17005" link_id="654910"><![CDATA[Multi-Location Inventory]]></product><serial>EBR5kWF9n2SX6a9ZiEug4hNJ2bkUly0f6aLFfKrYjH</serial><checkid>4e733975a71f6a8ceed2f463d005e566</checkid><store_url><![CDATA[http://www.aitoc.com/en/]]></store_url><service><![CDATA[https://www.aitoc.com/api/xmlrpc/]]></service><constraint><product label="">1000</product></constraint></install>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Altiplano_Rss>
+			<codePool>local</codePool>
+			<active>true</active>
+		</Altiplano_Rss>
+	</modules>
+</config>

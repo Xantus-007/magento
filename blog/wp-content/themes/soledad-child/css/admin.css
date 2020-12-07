@@ -1,0 +1,16 @@
+.post-type-post .editor-post-featured-image:after, .post-type-post .vp-pfui-gallery-picker:after {
+    content: "728 x 921";
+    font-size: 13px;
+    font-style: italic;
+    margin: 2px 0 5px;
+    color: #666;
+    display: block;
+}
+.post-type-portfolio #postimagediv .inside:after {
+    content: "1170 x 780";
+    font-size: 13px;
+    font-style: italic;
+    margin: 2px 0 5px;
+    color: #666;
+    display: block;
+}

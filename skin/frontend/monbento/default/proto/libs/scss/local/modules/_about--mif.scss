@@ -1,0 +1,97 @@
+.cms-made-in-france {
+    .o-section--mif {
+        position: relative;
+        background-image: url(#{$img}c-bkg__aboutMif.jpg);
+        background-size: cover;
+        background-position: top center;
+        &:before {
+            content: '';
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            top: rem(-60);
+            width: 270px;
+            height: 180px;
+            background-image: url(#{$img}c-logo__mif--full.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .c-title--group .c-main {
+        margin-top: rem(70);
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        @include bp-lt($medium) {
+            margin-top: rem(90);
+
+        }
+        @include bp-lt($small) {
+            margin-top: rem(140);
+            max-width: 100%;
+        }
+    }
+    .c-member__name {
+        & + .c-separator {
+            display: block;
+            width: rem(25);
+            height: rem(4);
+            background: $mainBranding;
+            position: relative;
+            left: rem(-17);
+            margin: rem(35) 0;
+
+            @include bp-lt($medium) {
+                margin: rem(25) 0;
+            }
+        }
+    }
+    .c-product__cover {
+        position: relative;
+        margin-top: rem(300);
+        img {
+            display: block;
+            position: relative;
+        }
+        @include bp-lt($small) {
+            margin-top: rem(60);
+        }
+        &:before {
+            content: '';
+            position: absolute;
+            left: rem(-90);
+            top: rem(-200);
+            width: 270px;
+            height: 270px;
+            background-image: url(#{$img}c-icon__france.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+            @include bp-lt($medium) {
+                top: rem(-170);
+            }
+            @include bp-lt($tablet) {
+                transform: translateX(-50%);
+                left: 50%;
+                top: rem(-230);
+            }
+            @include bp-lt($small) {
+                display: none;
+            }
+        }
+    }
+    .c-member__cover {
+        background-position: center;
+        @include bp-lt($small) {
+            height: rem(700);
+        }
+        @include bp-lt($mobileXl) {
+            height: rem(450);
+        }
+    }
+    .c-crossSelling {
+        .c-title--group .c-main {
+            margin-top: 0;
+        }
+    }
+}

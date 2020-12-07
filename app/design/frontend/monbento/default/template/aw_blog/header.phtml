@@ -1,0 +1,12 @@
+<div id="blog-header" class="header">
+	<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>"><img id="monbento-com" src="<?php echo $this->getSkinUrl('/aw_blog/images/monbento-com.png'); ?>" alt="MonBento.com" /></a>
+	<a href="<?php echo $this->getUrl('') ?>blog">
+	<?php if (Mage::app()->getStore()->getCode() == 'fr') : ?>
+		<img id="le-blog" src="<?php echo $this->getSkinUrl('aw_blog/images/le-blog.png'); ?>" alt="Le Blog">
+	<?php else : ?>
+		<img id="le-blog" src="<?php echo $this->getSkinUrl('aw_blog/images/le-blog-en.png'); ?>" alt="Le Blog">
+	<?php endif; ?>
+	</a>
+	<span id="back"><a href="<?php echo Mage::getBaseUrl('web'); ?>"><?php echo $this->__('&lt; Back to the website')?></a></span>
+	<?php echo $this->getChildHtml('store_language') ?>
+</div>

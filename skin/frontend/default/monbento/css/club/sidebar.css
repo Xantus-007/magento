@@ -1,0 +1,36 @@
+.clubSidebar {
+    font-family: arial;
+    font-size:1em;
+    padding-left:20px;
+    padding-top:10px;
+    font-size:1.2em;
+}
+
+.clubSidebar a {
+    color:#5F5852;
+}
+
+.clubSidebar li img {
+    display:inline;
+    vertical-align: -5px;
+    padding-right:5px;
+    margin-left:-10px;
+}
+
+.clubSidebar li {
+    color:#5F5852;
+    margin:10px 0;
+    vertical-align: middle;
+    padding-left:20px;
+}
+
+.clubSidebar li.selected {
+    color:#FFF;
+    line-height:30px;
+    padding-left:40px;
+}
+
+.clubSidebar li.selected {
+    background:url('../../images/club/menu/misc/line-left.png') left center no-repeat #8A1669;
+}
+

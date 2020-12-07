@@ -1,0 +1,54 @@
+<form id="ordersync-form">
+    <div class='form-list' style='float: left; margin-right: 45px;'>
+        <input type="text" name="cal_date" id="cal_date" style="width: 110px !important;" value="" />
+        <img style='margin-right: 15px; cursor: pointer;' title="Select date" id="cal_date_trig" src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_SKIN) . 'adminhtml/default/default/images/grid-cal.gif'; ?>"  class="v-middle"/>
+        <input type="button" name="force-sync" value="Force Sync" onClick="confirmSetLocation('Are you sure?', '<?php echo $this->getUrl('*/*/forcesync/', array('_current'=>true)) ?>?fd=' + $('cal_date').value); return false;" />
+        <p class="note"><span>(specify date to sync orders from)</span></p>
+    </div>
+    <div style='float: left;'>
+        <input type="button" name="force-stock" value="Force Stock Update" onClick="confirmSetLocation('Are you sure?', '<?php echo $this->getUrl('*/*/forcestock/', array('_current'=>true)) ?>'); return false;" />
+        <input type='button' name="clear-log" value="Clear Log" onClick="confirmSetLocation('Are you sure?', '<?php echo $this->getUrl('*/*/clear/', array('_current'=>true)) ?>'); return false;" />
+    </div>
+</form>
+<br />
+<br />
+<div style='clear: both; margin: 25px 0 0;'></div>
+<div class="log-file">
+<?php             
+$helper = Mage::helper('ordersync');
+$LogName = $helper->getLogFilename();
+?>
+<?php if(file_exists($_SERVER['DOCUMENT_ROOT'].'/var/log/orderSync.log')){ ?><a target="_blank" href="<?php echo $this->getUrl('*/*/download/', array('_current'=>true)) ?>?file=<?php echo $LogName ?>">Download log file</a><?php } ?>
+<p><br />
+<strong>Log History</strong> <a style="color:red" onclick="return confirm('Are you sure?')" href="<?php echo $this->getUrl('*/*/clearhistory/', array('_current'=>true)) ?>?file=all">Clear all</a><br /><br />
+<?php
+if ($handle = opendir($_SERVER['DOCUMENT_ROOT'].'/var/log/')) { 
+
+$files = array();
+   /* This is the correct way to loop over the directory. */ 
+   while (false !== ($file = readdir($handle))) { 
+       if(preg_match('/ordersync_/u',$file)) $files[] = $file; 
+   } 
+natsort($files);   
+   
+foreach($files as $file)echo "<a target='_blank' href='".$this->getUrl('*/*/download/', array('_current'=>true))."?file=$file'>$file</a> <a href=\"".$this->getUrl('*/*/clearhistory/', array('_current'=>true))."?file=$file\" style=\"color:red\" onclick=\"return confirm('Are you sure?')\">Delete</a> <br />";   
+
+   closedir($handle);
+
+}
+
+?>
+
+</p>
+    <?php //echo nl2br($this->getLogInfo()); ?>
+</div>
+
+<script type="text/javascript">
+    Calendar.setup({
+        inputField : 'cal_date',
+        ifFormat : '%m/%e/%y',
+        button : 'cal_date_trig',
+        align : 'Bl',
+        singleClick : true
+    });
+</script>

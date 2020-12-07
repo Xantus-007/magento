@@ -1,0 +1,159 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ET Web Solutions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_Reviewnotify
+ * @copyright  Copyright (c) 2011 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */ 
+ -->
+
+<config>
+	<modules>
+		<ET_Reviewnotify>
+			<version>0.2.4</version>
+			<descr>
+				<ru_RU><![CDATA[При поступлении нового отзыва на товар отсылается сообщение владельцу магазина на емайл. Если есть необработанные отзывы - показывается напоминание в стандартном тулбаре оповещений в панели администрирования. Настройки модуля в секции Каталог - Отзывы о товаре.]]>
+				</ru_RU>
+				<en_US><![CDATA[Store owner will recieve notification after recieving new product review. If there is pending reviews - standart notification toolbar is shown in admin. Settings in section Catalog - Product Reviews.]]>
+				</en_US>
+			</descr>
+		</ET_Reviewnotify>
+	</modules>
+	<global>
+		<rewrite>
+			<review>
+				<from><![CDATA[#^/review/product/#]]></from>
+				<to>/etreviewnotify/product/</to>
+			</review>
+		</rewrite>
+
+		<models>
+			<reviewnotify>
+				<class>ET_Reviewnotify_Model</class>
+			</reviewnotify>
+			<review>
+				<rewrite>
+					<review>ET_Reviewnotify_Model_Review</review>
+				</rewrite>
+			</review>
+		</models>
+
+		<helpers>
+			<reviewnotify>
+				<class>ET_Reviewnotify_Helper</class>
+			</reviewnotify>
+		</helpers>
+
+		<blocks>
+			<reviewnotify>
+				<class>ET_Reviewnotify_Block</class>
+			</reviewnotify>
+		</blocks>
+
+		<template>
+			<email>
+				<catalog_review_email_template translate="label" module="reviewnotify">
+					<label>Review notify email</label>
+					<file>et_reviewnotify.html</file>
+					<type>text</type>
+				</catalog_review_email_template>
+			</email>
+		</template>
+	</global>
+
+	<default>
+		<catalog>
+			<review>
+				<need_send>0</need_send>
+				<need_notify>1</need_notify>
+				<antispam>0</antispam>
+			</review>
+		</catalog>
+	</default>
+
+
+	<frontend>
+		<events>
+			<review_review_save_after>
+				<observers>
+					<et_reviewnotify_observer>
+						<type>singleton</type>
+						<class>reviewnotify/observer</class>
+						<method>send_nofificatin_mail</method>
+					</et_reviewnotify_observer>
+				</observers>
+			</review_review_save_after>
+		</events>
+
+		<routers>
+			<reviewnotify>
+				<use>standard</use>
+				<args>
+					<module>ET_Reviewnotify</module>
+					<frontName>etreviewnotify</frontName>
+				</args>
+			</reviewnotify>
+		</routers>
+
+		<layout>
+			<updates>
+				<reviewnotify>
+					<file>et_reviewnotify.xml</file>
+				</reviewnotify>
+			</updates>
+		</layout>
+	</frontend>
+
+	<adminhtml>
+		<layout>
+			<updates>
+				<reviewnotify>
+					<file>et_reviewnotify.xml</file>
+				</reviewnotify>
+			</updates>
+		</layout>
+		<translate>
+			<modules>
+				<ET_Reviewnotify>
+					<files>
+						<default>ET_Reviewnotify.csv</default>
+					</files>
+				</ET_Reviewnotify>
+			</modules>
+		</translate>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+							<children>
+								<config>
+									<children>
+										<reviewnotify translate="title" module="reviewnotify">
+											<title>ET Review Notify</title>
+											<sort_order>400</sort_order>
+										</reviewnotify>
+									</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+
+</config>

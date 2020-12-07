@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * ET Web Solutions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_Reviewnotify
+ * @copyright  Copyright (c) 2011 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */ 
+ -->
+
+<layout>
+
+	<default>
+		<!-- 1.4.x code DELETED
+		<reference name="notifications">
+			<block type="reviewnotify/toolbar" name="reviewnotify_toolbar" as="reviewnotify_toolbar" acl="catalog/reviews_ratings/reviews/pending" template="reviewnotify/toolbar.phtml" />
+		</reference>
+		1.4.x code end -->
+
+		<!-- 1.3.x code -->
+		<reference name="root">
+			<block type="core/text_list" name="notification_toolbar" as="notification_toolbar">
+				<block type="adminhtml/notification_toolbar" name="notification_toolbarmain" as="notification_toolbarmain" acl="system/adminnotification/show_toolbar" template="notification/toolbar.phtml"></block>
+				<block type="reviewnotify/toolbar" name="reviewnotify_toolbar" as="reviewnotify_toolbar" acl="catalog/reviews_ratings/reviews/pending" template="reviewnotify/toolbar.phtml"></block>
+			</block>
+		</reference>
+		<!-- 1.3.x code end-->
+	</default>
+
+	<adminhtml_catalog_product_review_pending>
+		<!-- 1.4.x code DELETED
+		<reference name="notifications">
+			<remove name="reviewnotify_toolbarz"/>
+		</reference>
+		1.4.x code end -->
+		
+		<!-- 1.3.x code -->
+		<reference name="notification_toolbar">
+			<remove name="reviewnotify_toolbar"/>
+		</reference>
+		<!-- 1.3.x code end-->
+	</adminhtml_catalog_product_review_pending>
+
+</layout>
+

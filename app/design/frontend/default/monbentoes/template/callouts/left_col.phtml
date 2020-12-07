@@ -1,0 +1,31 @@
+<?php
+$store = Mage::app()->getStore();
+$storeCode = $store->getCode();
+?><div class="block block-banner">
+    <div class="block-content">
+        <div class="block-title">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('envios') ?>">Entrega: 4/7 días laborables</a></span></strong>
+        </div>
+        <p class="shipping en">
+            <?php if ($storeCode == 'es'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('envios') ?>"><strong>España: </strong> 8.90 €.<br />Gastos de porte ofrecidos a partir de 110 € de compra.<br />
+                    <strong>Otros destinos: </strong><span>Haz clic aquí</span></a>
+            <?php elseif ($storeCode == 'us_es'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('envios') ?>">$22 <b>Estados Unidos</b><br />Gastos de porte afrecido a partir de $90 de compra<br />
+                    Otros destinos? <span>Haz clic aquí</span></a>        
+            <?php endif; ?>
+        </p>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('envios') ?>"><img src="<?php echo $this->getSkinUrl('images/media/shipping/shipping_' . $storeCode . '.png') ?>" alt="" width="205" height="177" /></a>
+    </div>
+    <div class="block-content">
+        <div class="block-title paiement">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>">Pago seguro</a></span></strong>
+        </div>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/paiement/paiement_' . $storeCode . '.png') ?>" alt="Sichere Zahlung" width="205" /></a>
+    </div>
+    <?php if ($storeCode == 'es'): ?>
+        <div class="block-content block-gift">
+            <img src="<?php echo $this->getSkinUrl('images/media/es/gift.png') ?>" alt="" width="210" height="113" />
+        </div>
+    <?php endif; ?>
+</div>

@@ -1,0 +1,358 @@
+// ========================================= //
+// blocks.title
+// ========================================= //
+
+%box-head {
+    height: rem(60);
+}
+
+%box-link {
+    margin: 0;
+    padding: rem(10) 0 0 0 !important;
+    text-align: left;
+    font-size: rem(24);
+    font-style: initial;
+    font-family: $fontBody;
+    color: $subBranding;
+    letter-spacing: initial !important;
+    font-weight: 400;
+
+    @include bp-lt($medium) {
+        font-size: rem(14);
+    }
+}
+
+%box-white {
+    background: $white;
+    padding: rem(20);
+    border-radius: 0 0 rem(3) rem(3);
+}
+
+%link-before {
+    position: absolute;
+    top: rem(1);
+    bottom: 0;
+    right: rem(10);
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+    width: rem(30);
+    height: rem(30);
+    font-size: 0;
+
+    &:before {
+        position: absolute;
+        display: block;
+        width: rem(30);
+        height: rem(30);
+        line-height: rem(30);
+        font-family: $iconFont;
+        font-size: rem(25);
+        color: $white;
+        text-align: center;
+    }
+}
+
+.c-title__account,
+.page-title {
+    h1, .h1 {
+        position: relative;
+        padding-top: rem(30);
+        padding-bottom: rem(55);
+        text-align: center;
+        font-size: rem(36);
+        color: $subBranding;
+        font-family: $fontBody;
+        font-weight: 700;
+
+        @include bp-lt($medium) {
+            font-size: rem(28);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(20);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            bottom: rem(38);
+            transform: translateX(-50%);
+            left: 50%;
+            display: inline-block;
+            width: rem(26);
+            height: rem(4);
+            background: $mainBranding;
+        }
+    }
+}
+
+.c-title__account {
+    h1, .h1 {
+        padding-bottom: rem(30);
+
+        &:after {
+            bottom: rem(13);
+        }
+    }
+}
+
+.c-account {
+    .page-title {
+        border: none;
+
+        h1, .h1 {
+            @include bp-lt($small) {
+                background: $black;
+            }
+        }
+    }
+
+    .box-account,
+    .order-info-box,
+    .addresses-list {
+        &.box-recent {
+            .box-head {
+                position: relative;
+
+                a:nth-of-type(2) {
+                    position: absolute;
+                    top: rem(1);
+                    bottom: 0;
+                    right: rem(10);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    display: block;
+                    width: rem(30);
+                    height: rem(30);
+                    font-size: 0;
+
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        width: rem(30);
+                        height: rem(30);
+                        line-height: rem(30);
+                        font-family: $iconFont;
+                        content: "\EA06";
+                        font-size: rem(25);
+                        color: $white;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .box-title {
+            &.contact-info-box,
+            &.newsletter-box,
+            &.address-book {
+                position: relative;
+
+                a:nth-of-type(2) {
+                    position: absolute;
+                    top: rem(1);
+                    bottom: 0;
+                    right: rem(10);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    display: block;
+                    width: rem(30);
+                    height: rem(30);
+                    font-size: 0;
+
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        width: rem(30);
+                        height: rem(30);
+                        line-height: rem(30);
+                        font-family: $iconFont;
+                        font-size: rem(25);
+                        color: $white;
+                        text-align: center;
+                    }
+                }
+            }
+
+            &.contact-info-box,
+            &.newsletter-box,
+            &.address-book {
+                a:nth-of-type(2):before {
+                    content: "\EA08";
+                }
+            }
+
+            &.newsletter-box + .box-content {
+                > div p {
+                    text-align: center;
+                    width: 100%;
+                    display: block;
+                }
+
+                #form-validate #subscription + label{
+                    display: inline;
+
+                    + p {
+                        margin-top: 24px;
+                        display: block;
+                        padding: 0 20px;
+                    }
+                }
+            }
+        }
+
+        .box-head,
+        .box-title,
+        .box-subtitle {
+            @extend %box-head;
+
+            h2,
+            h3,
+            a>h2,
+            a>h3 {
+                @extend %box-link;
+            }
+        }
+
+        .box-head {
+            text-align: center;
+        }
+
+        .box-title {
+            text-align: left;
+        }
+    }
+
+    .box-title,
+    .box-subtitle {
+        position: relative;
+
+        h3 + a {
+            position: absolute;
+            top: rem(3);
+            right: 0;
+            display: block;
+            width: rem(45);
+            height: rem(45);
+            font-size: 0;
+            border: solid rem(1) $grey--05;
+            border-radius: 50%;
+            transition: $ease;
+
+            &:after {
+                content: '\EA08';
+                display: block;
+                width: rem(45);
+                height: rem(45);
+                padding-top: rem(9);
+                font-size: rem(18);
+                color: $grey--04;
+                text-align: center;
+                font-family: $iconFont;
+                transition: $ease;
+            }
+
+            &.c-bkg__arrow:after {
+                content: '\EA06';
+            }
+
+            &:hover {
+                background: $mainBranding;
+                &:after { color: $white; }
+            }
+        }
+    }
+
+    form {
+        .fieldset {
+            padding: 0;
+
+            // .legend {
+            //     @extend %box-head;
+            //     margin: 0 !important;
+            //     padding-top: rem(15) !important;
+            //     color: $white !important;
+            //     text-transform: uppercase;
+            //     font-style: initial;
+            //     font-family: $fontBody;
+            //     letter-spacing: initial !important;
+
+            //     &.title {
+            //         left: 0 !important;
+            //     }
+            // }
+
+            .form-list {
+                @extend %box-white;
+            }
+        }
+    }
+
+    .addresses-list {
+        margin-bottom: rem(20);
+        padding-left: rem(10);
+        padding-right: rem(10);
+
+        .box-title {
+            @extend %box-head;
+
+            h2 {
+                @extend %box-link;
+            }
+        }
+
+        .c-box {
+            @extend %box-white;
+        }
+
+        .c-box--noPadding {
+            @include clearfix();
+            padding: 0;
+            margin-left: rem(-14);
+            margin-right: rem(-14);
+            background: $white;
+            border-radius: 0 0 rem(3) rem(3);
+        }
+    }
+
+    // .box-subtitle {
+    //     position: relative;
+    //     background: $grey--table--thead;
+    //     height: rem(50);
+
+    //     h3 {
+    //         display: block;
+    //         border: none;
+    //         margin: 0;
+    //         font-size: rem(12);
+    //         color: $mainFont;
+    //         text-align: center;
+    //         font-style: initial;
+    //         text-transform: uppercase;
+    //         font-weight: 700;
+    //         padding-top: rem(17);
+    //     }
+
+    //     a.link-edit {
+    //         @extend %link-before;
+
+    //         &:before {
+    //             content: "\EA08";
+    //             color: $mainFont;
+    //         }
+    //     }
+    // }
+}
+
+.c-account form .fieldset .legend {
+    @extend %box-link;
+}
+
+.o-layout__account {
+    .c-bkg__white {
+        .page-title {
+            display: none;
+        }
+    }
+}

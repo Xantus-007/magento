@@ -1,0 +1,54 @@
+<div class="block block-blog">
+  <div class="block-content">
+		<div class="first">
+			<span>Recherchez une actu</span>
+			<form id="blog-search" action="/blog/search/" method="post">
+				<input class="text" type="text" value="" name="cherche" />
+				<input class="submit" type="submit" value="Rechercher" />
+			</form>
+		</div>
+		<div>
+			<span>Suivez-nous aussi ici</span>
+			<ul class="social-buttons fr">
+				<li><a class="twitter" href="https://twitter.com/#!/monbento_fr" target="_blank"></a></li>
+				<li><a class="vimeo" href="https://vimeo.com/user8577348" target="_blank"></a></li>
+				<li><a class="tumblr" href="https://monbento-france.tumblr.com/" target="_blank"></a></li>
+				<li><a class="flickr" href="https://www.flickr.com/photos/monbento" target="_blank"></a></li>
+				<li><a class="rss" href="/rss-mon-bento" target="_blank"></a></li>
+			</ul>
+		</div>
+  </div>
+  <div class="block-title">Lire <span>+</span></div>
+	<div class="block-content bis">
+		<?php if($this->getCategories()->count() && Mage::getStoreConfig('blog/menu/category')): ?>
+		<div class="menu-categories">
+    	<h5>Catégories</h5>
+    	<ul>
+				<?php $cats = $this->getCategories(); ?>
+				<?php $nb = $this->getCategories()->count(); ?>
+				<?php $i = 0; ?>
+				<?php foreach ($cats as $cat): ?>
+				<?php $i++; ?>
+				<li>
+					<a href="<?php echo $cat->getAddress(); ?>" ><?php echo $cat->getTitle();?></a>
+				</li>
+				<?php endforeach; ?>
+    	</ul>
+		</div>
+		<?php endif;?>
+
+		<?php if ($posts = $this->getRecent()): ?>
+		<div class="menu-recent">
+			<h5>Récemment</h5>
+			<ul>
+			<?php foreach ($posts as $post): ?>
+				<li><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle();?></a></li>
+			<?php endforeach; ?>
+      </ul>
+		</div>
+		<?php endif; ?>
+
+		<?php echo $this->getChildHtml('blog_tags');?>
+	</div>
+</div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blog_sidebar')->toHtml() ?>

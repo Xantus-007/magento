@@ -1,0 +1,87 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$printBackButton = ($this->helper('monbento_site')->isCartPage()) ? true : false;
+$hasFilter = ($this->getChild("catalog.leftnav")) ? true : false;
+?>
+<?php if(!$this->getHidden()): ?>
+<?php if($crumbs && is_array($crumbs)): ?>
+<section class="c-breadcrumb<?php if($hasFilter) echo ' has-filter'; ?>">
+    <div class="row">
+        <div class="columns<?php if($hasFilter) echo ' medium-8 small-6'; ?> <?php if($this->helper('monbento_site')->isInRecrutement()) echo 'large-offset-2 medium-offset-1 large-8 medium-10'; ?>">
+            <ul class="c-breadcrumb__list" vocab="https://schema.org/" typeof="BreadcrumbList">
+            <?php $i = 1; foreach ($crumbs as $_crumbName => $_crumbInfo): ?>
+                <li class="c-breadcrumb__item <?php echo $_crumbName ?>" property="itemListElement" typeof="ListItem">
+                    <?php if ($_crumbInfo['link']): ?>
+                        <a href="<?php echo $_crumbInfo['link'] ?>" title="<?php echo $this->escapeHtml($_crumbInfo['title']) ?>" property="item" typeof="WebPage">
+                            <span property="name"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
+                            <meta property="position" content="<?php echo $i; ?>">
+                        </a>
+                    <?php elseif ($_crumbInfo['last']): ?>
+                        <strong property="name"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></strong>
+                        <meta property="position" content="<?php echo $i; ?>">
+                    <?php else: ?>
+                        <span property="name"><?php echo $this->escapeHtml($_crumbInfo['label']) ?></span>
+                        <meta property="position" content="<?php echo $i; ?>">
+                    <?php endif; ?>
+                </li>
+                <?php if($i == 1 && $this->helper('monbento_site')->isInCms() && $page = $this->helper('monbento_site')->getAproposPage()): ?>
+                <li class="c-breadcrumb__item" property="itemListElement" typeof="ListItem">
+                    <a href="<?php echo Mage::getUrl($page->getIdentifier()); ?>" title="<?php echo $this->__('About Us') ?>" property="item" typeof="WebPage">
+                        <span property="name"><?php echo $this->__('About Us') ?></span>
+                        <meta property="position" content="<?php echo $i++; ?>">
+                    </a>
+                </li>
+                    <?php if($pageEquipe = $this->helper('monbento_site')->getEquipePage()): ?>
+                        <?php if($this->helper('monbento_site')->isInRecrutement()): ?>
+                        <li class="c-breadcrumb__item" property="itemListElement" typeof="ListItem">
+                            <a href="<?php echo Mage::getUrl($pageEquipe->getIdentifier()); ?>" title="<?php echo $pageEquipe->getTitle() ?>" property="item" typeof="WebPage">
+                                <span property="name"><?php echo $pageEquipe->getTitle() ?></span>
+                                <meta property="position" content="<?php echo $i++; ?>">
+                            </a>
+                        </li>
+                        <?php endif; ?>
+                    <?php endif; ?>
+                <?php endif; ?>
+            <?php $i++; endforeach; ?>
+            </ul>
+            <?php if($printBackButton): ?>
+            <a href="<?php echo $this->getUrl('shop'); ?>" class="c-linkCst--arrowLeft--subBranding"><?php echo $this->__('Poursuivre mes achats'); ?></a>
+            <?php endif ?>
+        </div>
+        <?php if($hasFilter): ?>
+            <div class="columns medium-4 small-6"><a class="c-filter__toogle"><span class="state--open"><?php echo $this->__('Close'); ?></span><span class="state--close"><?php echo $this->__('Filtrer par couleur'); ?></span></a></div>
+        <?php endif; ?>
+    </div>
+    <?php if($hasFilter): ?>
+    <div class="c-filter<?php if(Mage::registry('layer_params')) echo ' is-open'; ?>">
+        <div id="layered-navigation">
+            <?php echo $this->getChildHtml('catalog.leftnav') ?>
+        </div>
+    </div>
+    <?php endif; ?>
+</section>
+<?php endif; ?>
+<?php endif; ?>

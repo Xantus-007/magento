@@ -1,0 +1,603 @@
+/* reset.css */
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, code, del, dfn, em, img, q, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, dialog, figure, footer, header, hgroup, nav, section {margin:0;padding:0;border:0;font-weight:inherit;font-style:inherit;font-size:100%;font-family:inherit;vertical-align:baseline;}
+article, aside, dialog, figure, footer, header, hgroup, nav, section {display:block;}
+body {line-height:1.5;}
+table {border-collapse:separate;border-spacing:0;}
+caption, th, td {text-align:left;font-weight:normal;}
+table, td, th {vertical-align:top;}
+blockquote:before, blockquote:after, q:before, q:after {content:"";}
+blockquote, q {quotes:"" "";}
+a img {border:none;}
+
+body
+{
+	color:#010101;
+	direction:ltr;
+	text-align:left;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-style: normal;
+	background:#fff;
+}
+
+a
+{
+	color:#010101;
+	text-decoration:none;
+	outline:none;
+}
+
+/*@font-face
+{
+    font-family: 'alternategotno2dregular';
+    src: url('alternategotno2d-webfont.eot');
+    src: url('alternategotno2d-webfont.eot?#iefix') format('embedded-opentype'),
+         url('alternategotno2d-webfont.woff') format('woff'),
+         url('alternategotno2d-webfont.ttf') format('truetype'),
+         url('alternategotno2d-webfont.svg#alternategotno2dregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}*/
+
+@font-face
+{
+    font-family: 'bebasregular';
+    src: url('BEBAS___-webfont.eot');
+    src: url('BEBAS___-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BEBAS___-webfont.woff') format('woff'),
+         url('BEBAS___-webfont.ttf') format('truetype'),
+         url('BEBAS___-webfont.svg#bebasregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face
+{
+    font-family: 'HelveticaNeue';
+    src: url('HelveticaNeue.eot');
+    src: url('HelveticaNeue.eot?#iefix') format('embedded-opentype'),
+         url('HelveticaNeue.woff') format('woff'),
+         url('HelveticaNeue.ttf') format('truetype'),
+         url('HelveticaNeue.svg#HelveticaNeue') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h2
+{
+	font-size:20pt;
+	line-height:20pt;
+	font-family:"Arial";
+}
+
+#content
+{
+	width:810px;
+	position:relative;
+	overflow:hidden;
+	border-bottom: 20px solid #000;
+}
+
+.tab
+{
+	height:870px;
+	float:left;
+	width:810px;
+	clear:both;
+}
+
+.nofan
+{
+	height:650px;
+}
+
+.header
+{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+}
+
+.image_nonfan
+{
+	position:absolute;
+	top:170px;
+	left:30px;
+	width:450px;
+	text-align:center ;
+}
+
+.image_fan
+{
+	position:absolute;
+	top:200px;
+	left:30px;
+	width:245px;
+	text-align:center ;
+}
+
+.nofan_like
+{
+	position:absolute;
+	top:170px;
+	right:25px;
+	width:290px;
+	padding:30px 0 0;
+	height:310px;
+	text-align:center ;
+}
+
+.nofan h2
+{
+	font-size:20px;
+}
+
+.nofan .button
+{
+	width:120px;
+	margin:10px 75px 0;	
+}
+
+.fan_game
+{
+	position:absolute;
+	top:200px;
+	right:25px;
+	width:475px;
+	height:auto;
+	font-family:"Arial";
+	font-size:13pt;
+	line-height:15pt;
+	text-align:center ;
+}
+
+.fan_game h2
+{
+	font-family:'bebasregular';
+	font-size:25pt;
+	line-height:100%;
+	color:#a4167f;
+	text-transform:uppercase;
+	margin:0 0 15px;
+}
+
+.fan_bloc
+{
+	float:left;
+	/*background:url(../gfx/border.png) no-repeat scroll 0 0 transparent;*/
+	clear:both;
+	width:425px;
+	padding:30px 25px;
+	font-size:10pt;
+	line-height:14pt;
+	text-align:left;
+	border-top:3px dotted #000;
+}
+
+.fan_bloc b
+{
+	font-family: 'bebasregular';
+	float:left;
+	font-weight:bold;
+	font-size:30pt;
+	line-height:100%;
+	color:#a4167f;
+	margin:0 10px 0 0;
+}
+
+.fan_bloc a
+{
+	float:left;
+}
+
+.fan_bloc1 .button
+{
+	margin-right:10px;
+	font-size:11pt;
+}
+
+.fan_bloc .link
+{
+	font-size:10pt;
+	padding:12px 0 0;
+}
+
+.fan_bloc .text
+{
+	font-size:10pt;
+	width:100%;
+}
+
+.fan_bloc .text_yes, .fan_bloc .text_no
+{
+	display:none;
+	padding:20px 0;
+}
+
+.game_lost .fan_game, .game_win .fan_game
+{
+	font-size:14pt;
+}
+
+.game_lost input[type=text], .fan_game input[type=text]
+{
+	padding:5px;
+    width:300px;
+    margin:5px 0 0;
+}
+
+.game_win .fan_game table
+{
+	clear:both;
+	font-size:11pt;
+	margin:10px 50px 0;
+}
+
+.fan_game .lite
+{
+	font-size:11pt;
+	line-height:15pt;
+}
+
+.end_game
+{
+	position:absolute;
+	top:200px;
+	width:100%;
+	text-align:center;
+}
+
+.end h2.big
+{
+	font-size:30pt;
+    line-height:35pt;
+}
+
+.end
+{
+	height:500px;
+}
+
+.end .button_big
+{
+	margin:40px 220px 0;
+}
+
+.winners
+{
+	float:left;
+	width:750px;
+	clear:both;
+	padding:0 30px;
+}
+
+.winners h2
+{
+	float:left;
+	width:100%;
+	clear:both;
+	font-family: 'bebasregular';
+	font-size:20pt;
+	text-transform: uppercase;
+	margin:0 0 10px;
+}
+
+.winners table
+{
+	float:left;
+	clear:both;
+}
+
+#footer
+{
+	float:left;
+	color:#636363;
+	width:750px;
+	padding:15px 30px 0;
+	margin:20px 0 5px;
+	clear:both;
+	font-family: "lucida grande",tahoma,verdana,arial,sans-serif;
+	font-size: 11px;
+}
+
+#footer a
+{
+	float:left;
+	margin-right:5px;
+	text-decoration:underline;
+	font-size:12px;
+}
+
+.button, .button_big
+{
+	float:left;
+	background:#96bf31;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -khtml-border-radius: 5px;
+    border-radius: 5px;
+    margin:0;
+    text-decoration:none;
+    cursor:pointer;
+    outline:none;
+    position: relative;
+    top:0;
+    padding:10px 15px ;
+    overflow:hidden;
+    font-size:10pt;
+    line-height:20pt;
+    text-align:center;
+    color:#fff;
+	/*background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#dfdfdf));
+	background: -moz-linear-gradient(top, #ffffff, #dfdfdf);
+	background-image: -o-linear-gradient(rgb(255,255,255),rgb(223,223,223));
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#dfdfdf');*/
+	font-family:"Arial";
+	font-size:13pt;
+}
+
+.button_big
+{
+	width:340px;
+}
+
+.button_invite, .button_win
+{
+	margin:0 0 0 160px;
+}
+
+.button_win
+{
+	font-size: 11pt;
+}
+
+.button_share
+{
+	padding:5px 10px;
+	margin:5px 0 0 10px;
+}
+
+.button_send
+{
+	margin:20px 0 0 0px;
+}
+
+.button_invite2
+{
+	margin:0 0 0 20px;
+}
+
+.loader
+{
+	position:absolute;
+	top:45%;
+	left:45%;
+	width:32px;
+	height:32px;
+	background:url("../gfx/spinner.gif") no-repeat;
+}
+
+.like
+{
+    height:20px;
+    padding:0;
+    position:absolute;
+    left:117px;
+    top:160px;
+    overflow:hidden;
+}
+
+.like .fb-like
+{
+	overflow: hidden;
+}
+
+.facepile_title
+{
+	position:absolute;
+    right:150px;
+    top:680px;
+    width:300px;
+    font-size:11pt;
+    text-align:center;
+}
+
+.facepile
+{
+	height:55px;
+    padding:0;
+    position:absolute;
+    left:40px;
+    top:230px;
+    width:210px;
+    overflow:hidden;
+}
+
+.facepile .fb-facepile
+{
+	margin:-25px 0 0;
+}
+
+#smoke
+{
+	background: #000;
+	position: absolute;
+	width:810px;
+	height:860px;
+	opacity:.65;
+	filter:alpha(opacity=65);
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=65)"; /*--Transparence sous IE 8--*/
+	left: 0;
+	top: 0;
+	z-index:20;
+	display: none;
+}
+
+#popup
+{
+	position:absolute;
+	background:#fff;
+	height:520px;
+	width:610px;
+	padding:30px 10px;
+	top:150px;
+	left:90px;
+	text-align:left;
+	display: none;
+	z-index:30;
+}
+
+#close
+{
+    background: url("../gfx/closebox.png") no-repeat scroll 0 0 transparent;
+    border:medium none;
+    height:26px;
+    position:absolute;
+    right:4px;
+    top:4px;
+    width:25px;
+}
+
+.popup_content
+{
+	width:100%;
+	height:100%;
+	overflow:auto;
+}
+
+.popup_content h2
+{
+	width:100%;
+	text-align:center;
+}
+
+.popup_content th
+{
+	padding:15px 0 0;
+}
+
+.popup_content td
+{
+	padding:0 0 0;
+}
+
+.popup_content h3
+{
+	font-weight:bold;
+	margin:10px 0 5px;
+}
+
+.popup_content th h3
+{
+	margin:0;
+}
+
+#optin11, #optin21
+{
+	clear:both;
+}
+
+.fan_bloc1 .label_no
+{
+	width:150px;
+	margin:0;
+}
+
+#link
+{
+	float:left;
+	height: 23px;
+	margin:5px 0 0 50px;
+}
+
+.fan_game sup
+{
+	font-size:11px;
+}
+
+.option_kids
+{
+	float:left;
+	width:100%;
+	padding: 40px 0 0;
+	margin: 20px 0 0;
+}
+
+.option_kids_discover
+{
+	background:url(../gfx/background_kids.jpg) no-repeat scroll center 0 transparent;
+}
+
+.option_kids_exit
+{
+	background:url(../gfx/background_kids2.jpg) no-repeat scroll center 0 transparent;
+}
+
+.option_kids .button
+{
+	margin-left:33px;
+	width:380px;
+}
+
+.kids
+{
+	height:1100px;
+}
+
+.kids h2
+{
+	font-size:16pt;
+	line-height:16pt;
+}
+
+.kids h2.big
+{
+	font-size: 20pt;
+	line-height:25pt;
+}
+
+.kids .button
+{
+	width:480px;
+	margin-left:150px;
+	margin-bottom:20px;
+}
+
+.kids_list
+{
+	float:left;
+	width:600px;
+	margin:0px 105px 0; 
+}
+
+.kids_list > a 
+{
+	float:left;
+	width:150px;
+	margin:25px;
+	font-weight:bold;
+	font-size:16px;
+	text-align:center;
+}
+
+.kids_list > a  > img
+{
+	width:100%;
+	margin:0 0 10px;
+}
+
+.kids_list > a .over, .kids_list > a:hover  .normal, .kids_list > a.selected  .normal
+{
+	display:none;
+}
+
+.kids_list > a:hover .over, .kids_list > a.selected .over, .kids_list > a .normal
+{
+	display:block;
+}
+
+.kids_list .avis4, .kids_list .avis7
+{
+	clear:both;
+}

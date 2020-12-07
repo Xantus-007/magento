@@ -1,0 +1,239 @@
+// ========================================= //
+// blocks.form
+// ========================================= //
+
+.o-layout__account select option {
+    color: $black;
+}
+
+.o-layout__account {
+    .field.no-display {
+        display: none !important;
+    }
+
+    .form-list label em {
+        float: right !important;
+        font-style: normal !important;
+        color: $mainBranding !important;
+        position: absolute !important;
+        top: 0 !important;
+        right: -8px !important;
+    }
+}
+
+.c-account, .c-sponsorship {
+    .fieldset {
+        margin-bottom: rem(20) !important;
+
+        .form-list {
+            li.fields, & > li {
+                display: block;
+                max-width: rem(350);
+                width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+
+                .field {
+                    display: block;
+                    width: 100%;
+                    float: none;
+                }
+
+                .input-box {
+                    margin-bottom: rem(8);
+                    width: 100% !important;
+                    @include clearfix();
+
+                    label {
+                        font-size: rem(13);
+                    }
+
+                    .input-text {
+                        width: 100% !important;
+                        background: $white;
+                    }
+
+                    .selector {
+                        padding-left: 0;
+
+                        &, &#uniform-prefix {
+                            width: 100% !important;
+
+                            span { width: 100% !important; }
+                        }
+
+                    }
+                }
+
+                .name-prefix {
+                    select {
+                        font-size: rem(13);
+                        padding: 4px 2px;
+                        height: rem(30);
+                    }
+                }
+            }
+
+            .customer-dob {
+                .dob-day,
+                .dob-month {
+                    width: 25%;
+                    max-width: rem(60);
+                    padding-right: rem(10);
+                }
+
+                .dob-year {
+                    width: 50%;
+                    max-width: rem(80);
+                }
+            }
+        }
+
+        .control {
+            strong { display: block; }
+
+            label {
+                padding-left: 0;
+
+                strong {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+#form-validate {
+    #uniform-prefix {
+        width: 100% !important;
+
+        span { width: 100% !important; }
+    }
+
+    .form-list {
+        .input-box {
+            @include bp-lt($xmedium) {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+#firstname, #company, #lastname, #street_1, #street_2 {
+    @include bp-lt($xmedium) {
+        width: 100% !important;
+    }
+}
+
+.c-wishlist {
+    textarea {
+        height: rem(75);
+        width: 100%;
+        margin-top: rem(20);
+        resize: none;
+        padding: rem(8) rem(10);
+        border-radius: rem(2);
+        @include placeholder-color($mainFont);
+    }
+}
+
+.c-sponsorship {
+    .form-list {
+        input.input-text, textarea {
+            @include bp-lt($small) {
+                width: 100% !important;
+            }
+        }
+
+        .input-box {
+            @include bp-lt($small) {
+                width: 100% !important;
+            }
+        }
+    }
+}
+
+html .auguria-sponsorship-index-index #sponsorship textarea {
+    @include bp-lt($small) {
+        width: 100% !important;
+    }
+}
+
+.auguria-sponsorship-index-index {
+    #sponsorship {
+        textarea {
+            width: 100% !important;
+        }
+    }
+}
+
+.my-account {
+    #form-validate {
+        .fieldset {
+            min-height: rem(556);
+
+            @include bp-lt($small) {
+                min-height: 0;
+                height: auto !important;
+            }
+
+            .form-list {
+                width: 100% !important;
+                height: calc(100% - 50px);
+
+                @include bp-lt($small) {
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.newsletter-manage-index {
+    .my-account #form-validate .fieldset {
+        min-height: 0;
+    }
+}
+
+.customer-account-pages {
+    .my-account {
+        #form-validate {
+            .fieldset {
+                @include bp-lt($medium) {
+                    width: 50% !important;
+                    padding: rem(10);
+                }
+
+                @include bp-lt($small) {
+                    width: 100% !important;
+                }
+            }
+        }
+    }
+}
+
+.form-list {
+    .customer-name-prefix {
+        .name-firstname,
+        .name-lastname {
+            width: 100% !important;
+        }
+    }
+
+    li.wide {
+        textarea {
+            width: 100% !important;
+        }
+    }
+}
+
+.field {
+    &.name-lastname, &.name-firstname {
+        .input-box {
+            input#lastname,
+            input#firstname {
+                width: 100% !important;
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+<?php
+/* @var Cartsguru_CartRecovery_Helper_Data $_helper */
+$_helper = $this->helper('cartsguru_cartrecovery');
+$_facebookEnabled = $_helper->getFacebook();
+$_pixel = $_helper->getPixel();
+$_catalogId = $_helper->getCatalogId();
+
+if ($_facebookEnabled && $_pixel && $_catalogId && Mage::registry('product')):
+    $_product = Mage::registry('product');
+    $_price = $_product->getData('price');
+    if (!$_price) {
+        $_price = $_product->getData('special_price');
+    }
+    $_price = number_format((double)$_price, 2, '.', '');
+    ?>
+    <script type="text/javascript">
+        fbq('track', 'ViewContent', {
+            content_type: 'product',
+            content_ids: ['<?php echo $_product->getId(); ?>'],
+            value: <?php echo $_price; ?>,
+            currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+            product_catalog_id: '<?php echo $_catalogId; ?>'
+        });
+    </script>
+<?php endif; ?>

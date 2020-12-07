@@ -1,0 +1,33 @@
+<div class="page-title">
+  <h1>Aidez-nous à améliorer monbento.com</h1>
+</div>
+<p>Produits non trouvés ? Difficultés rencontrées lors de la commande ? Merci de nous faire profiter de votre expérience pour nous aider à améliorer monbento.com !</p>
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->getGroupedHtml() ?></div>
+<form action="<?php echo $this->getFormAction(); ?>" id="improveForm" method="post">
+  <div class="fieldset">
+    <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+    <ul class="form-list">
+      <li class="fields">
+        <div class="field">
+          <label for="email"><?php echo $this->__('Contact email') ?> </label>
+          <div class="input-box">
+            <input name="email" id="email" value="" class="validate-email input-text" type="text" />
+          </div>
+        </div>
+      </li>
+      <li class="wide">
+        <label for="message"><?php echo $this->__('Message') ?> <span class="required">*</span></label>
+        <div class="input-box">
+          <textarea name="message" id="message" class="required-entry input-text"></textarea>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="buttons-set">
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="submit" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+  </div>
+</form>
+<script type="text/javascript">
+   var magazineForm = new VarienForm('improveForm', true);
+</script>

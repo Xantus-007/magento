@@ -1,0 +1,8 @@
+<?php if($this->getLayerDataJs()): ?>
+<script type="text/javascript">
+    var dataPush = <?php echo $this->getLayerDataJs(); ?>;
+    <?php if($this->getNotPush() !== true): ?>
+    dataLayer.push(dataPush);
+    <?php endif; ?>
+</script>
+<?php endif; ?>

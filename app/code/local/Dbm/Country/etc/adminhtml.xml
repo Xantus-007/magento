@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Configuration des Locales</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dbm_country_regions translate="title">
+                                        <title>Configuration des regions</title>
+                                        <sort_order>100</sort_order>
+                                    </dbm_country_regions>
+                                    <dbm_country translate="title">
+                                        <title>Configuration des Locales</title>
+                                        <sort_order>100</sort_order>
+                                    </dbm_country>
+                                    <dbm_country_popup translate="title">
+                                        <title>Configuration de la popup</title>
+                                        <sort_order>100</sort_order>
+                                    </dbm_country_popup>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

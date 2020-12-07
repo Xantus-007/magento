@@ -1,0 +1,17 @@
+<?php /* Monbento_Plandesite_Block_Catalog */ ?>
+<?php $_cats = $this->getCollection(); ?>
+<h2>Shop</h2>
+<ul id="plan-catalog">
+	<?php foreach ($_cats as $_cat) : ?>
+	<li><h3><a href="<?php echo $_cat->getUrl(); ?>"><?php echo $_cat->getName(); ?></a></h3>
+		<?php $_prods = $this->getProductsCollection($_cat->getId()); ?>
+		<?php if ($_prods->count()) : ?>
+			<ul>
+			<?php foreach ($_prods as $_prod) : ?>
+				<li><a href="<?php echo $_prod->getUrlPath(); ?>"><?php echo $_prod->getName(); ?></a></li>
+			<?php endforeach; ?>
+			</ul>
+		<?php endif; ?>
+	</li>
+	<?php endforeach; ?>
+</ul>

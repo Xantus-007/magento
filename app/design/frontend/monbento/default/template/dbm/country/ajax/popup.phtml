@@ -1,0 +1,34 @@
+<div class="dbm_country_switcher overlay"></div>
+<div class="dbm_country_switcher popup" style="<?php if($this->getPopupBackground() != false): ?>background-image: url(<?php echo $this->getPopupBackground(); ?>);<?php endif;?>">
+    <div class="close">
+        <a href="javascript:void(0);"><?php echo $this->__('Close');?>X</a>
+    </div>
+    <div class="country form-item">
+        <span><?php echo $this->__('Delivery country'); ?></span>
+        <select id="dbm_country_switch_country" class="noUniform">
+            <?php foreach ($this->getAvailableCountries() as $key => $value): ?>
+                <option value="<?php echo $value['value']; ?>"><?php echo $value['label']; ?></option>
+            <?php endforeach;?>
+        </select>
+    </div>
+    <div class="language form-item">
+        <span><?php echo $this->__('Language'); ?></span>
+        <select id="dbm_country_switch_language" class="noUniform">
+            <option value="null">-- <?php echo $this->__('Select a language');?> --</option>
+        </select>
+    </div>
+    <div class="submit">
+        <a href="javascript:void(0)" class="notavailable"><?php echo $this->__('Country not found');?> ?</a>
+        <a href="javascript:void(0);" class="language-switcher">OK</a>
+    </div>
+    <div class="notice">
+        <p><?php echo $this->__('Thank you note that your shopping cart will be emptied when you change country, and you will have to restart'); ?></p>
+    </div>
+    <div class="notavailable--content">
+        <?php echo $this->getNotFoundPopup();?>
+        <div class="footer">
+            <a href="javascript:void(0);" class="back"><?php echo $this->__('Back'); ?></a>
+            <a href="javascript:void(0);" class="quit"><?php echo $this->__('Visite website'); ?></a>
+        </div>
+    </div>
+</div>

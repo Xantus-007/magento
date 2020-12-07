@@ -1,0 +1,19 @@
+- var color1 = 'f65e7a'
+- var color2 = 'ffcc33'
+
+//- Generate image from placehold.it
+mixin placeholder__placeHoldit(width, height, label)
+    - label = label || width +'x'+ height
+    img(src="https://placehold.it/#{width}x#{height}/#{color1}/#{color2}?text=#{label}", alt="")
+
+//- Generate c-breadcrumb
+mixin c-breadcrumb(labels)
+    section.c-breadcrumb
+        .row: .columns
+            ul.c-breadcrumb__list
+                each label, index in labels
+                    li.c-breadcrumb__item
+                        if index + 1 !== labels.length
+                            a(href="") #{label}
+                        else
+                            | #{label}

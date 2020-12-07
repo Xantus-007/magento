@@ -1,0 +1,66 @@
+<?php
+    $_productCollection=$this->getLoadedProductCollection();
+    $_helper = $this->helper('catalog/output');
+?>
+<?php if(!$_productCollection->count()): ?>
+
+<p class="note-msg"><?php echo $this->__('There are no products matching the selection.') ?></p>
+<?php else: ?>
+<div class="category-products">
+  <?php $_collectionSize = $_productCollection->count() ?>
+  <?php $_columnCount = 4; ?>
+  <?php $i=0; foreach ($_productCollection as $_product): ?>
+  <?php
+        $acces_gourmet = false;
+        if(!Mage::helper('dbm_customer')->isCategoryAllowedForCurrentCustomer($_product->getCategory())):
+            $acces_gourmet = true;
+        endif;
+  ?>
+  <?php if($_product->getStatus()==1) :?>
+  <?php if ($i++%$_columnCount==0): ?>
+  <ul class="products-grid">
+    <?php endif ?>
+    <li class="item<?php if(($i-1)%$_columnCount==0): ?> first<?php elseif($i%$_columnCount==0): ?> last<?php endif; ?><?php if($_product->getTypeID()=="ugiftcert") echo ' giftcard'; ?>">
+        <a href="<?php if($acces_gourmet){echo 'javascript:void(0);';}else{echo $_product->getProductUrl();} ?>" title="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" class="product-image<?php if($acces_gourmet) echo ' product-gourmet'; ?>">
+            <img class="hide-for-medium-down" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(175); ?>" width="175" height="175" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+            <img class="show-for-medium-down" src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(400); ?>" width="400" alt="<?php echo $this->stripTags($this->getImageLabel($_product, 'small_image'), null, true) ?>" />
+            <?php if($acces_gourmet) echo '<img src="'.$this->getSkinUrl('images/badge-gourmets.png').'" class="badge-gourmet" />'; ?>
+        </a>
+      <h2 class="product-name"><a href="<?php if($acces_gourmet){echo 'javascript:void(0);';}else{echo $_product->getProductUrl();} ?>" title="<?php echo $this->stripTags($_product->getName(), null, true) ?>"<?php if($acces_gourmet) echo ' class="product-gourmet"'; ?>><?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?></a></h2>
+      <?php echo $this->getPriceHtml($_product, true) ?>
+      <?php if(!$acces_gourmet): ?>
+      <div class="actions"><a href="<?php echo $_product->getProductUrl() ?>" class="more" rel="nofollow"><?php echo $this->__('Learn more') ?></a>
+        <?php if($_product->isSaleable()): ?>
+          <?php
+            $productAddUrl = $this->helper('checkout/cart')->getAddUrl($_product);
+            if ($_product->getTypeId() == 'bundle' && $_product->getModulePersonnalisation() == 0):
+              $bundleOptions = '?';
+              $selectionCollection = $_product->getTypeInstance(true)->getSelectionsCollection($_product->getTypeInstance(true)->getOptionsIds($_product), $_product);
+              
+              foreach($selectionCollection as $option):
+                $bundleOptions .= '&bundle_option[' . $option->option_id . ']=' . $option->selection_id;
+                $bundleOptions .= '&bundle_option_qty[' . $option->option_id . ']=1';
+              endforeach;
+              
+              $productAddUrl .= $bundleOptions;
+            endif;
+          ?>
+        <a href="<?php echo $productAddUrl;//echo $this->getAddToCartUrl($_product) ?>" class="btn-cart"><?php echo $this->__('Add') ?></a>
+		<?php else: ?>
+        <a href="<?php echo $_product->getProductUrl() ?>" class="out-of-stock"><?php echo $this->__('Out of stock') ?></a>
+        <?php endif ?>
+      </div>
+      <?php endif; ?>
+			<?php if ($_product->getAttributeText('pictosolde')): ?>
+             <div class="pictosolde<?php echo $_product->getAttributeText('pictosolde') ?>"><?php echo $_product->getAttributeText('pictosolde'); ?></div>
+            <?php endif;?>
+            
+            
+    </li>
+    <?php if ($i%$_columnCount==0 || $i==$_collectionSize): ?>
+  </ul>
+  <?php endif ?>
+  <?php endif ?>
+  <?php endforeach ?>
+</div>
+<?php endif; ?>

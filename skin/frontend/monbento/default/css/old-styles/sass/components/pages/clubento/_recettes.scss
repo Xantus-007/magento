@@ -1,0 +1,403 @@
+.club {
+    .page {
+        .elementLine {
+            .attributes {
+                .line {
+                    &:first-child {
+                        img {
+                            width: 45px;
+                        }
+                    }
+
+                    img {
+                        width: 65px;
+                    }
+
+                    &.miniLike {
+                        img {
+                            width: 20px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .elementLine.type_receipe .image img {
+            @include bp-gt(640px) {
+                max-height: 185px;
+                width: auto;
+                max-width: none;
+                height: 100%;
+            }
+        }
+
+        .profil-details {
+            position: absolute;
+            top: 0px;
+            left: 60px;
+            width: 110px;
+
+            span {
+                float: none;
+                display: block;
+            }
+        }
+
+        .description {
+            .nickname {            
+                @include bp-lt ($mb-small) {
+                    position: relative;
+                }  
+            }
+
+            .profil-details {
+                top: -5px;            
+            }
+        }
+
+        .informations {
+            .nickname {            
+                @include bp-lt ($mb-small) {
+                    position: relative;
+                }            
+
+                span > img {
+                    @include bp-lt ($mb-small) {
+                        width: 50%;
+                    }
+                }
+
+                .stamp {
+                    @include bp-lt ($mb-small) {
+                        left: 35px;
+                        width: 12%;
+                    }
+                }
+            }
+
+            .attribute {
+                &:first-child {
+                    img {
+                        width: 20px;
+                    }
+                }
+
+                img {
+                    width: 45px;
+                }
+
+                &:last-child {
+                    img {
+                        width: 35px;
+                    }
+                }
+            }
+        }
+
+        .miniLike {
+            img {
+                width: 20px;
+                vertical-align: middle;
+            }
+        }
+
+        .button_receipe {
+            background: url('../images/club/form/button-icon.png') center left transparent!important;
+            position: relative;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 4px;
+                left: 6px;
+                display: block;
+                width: 40px;
+                height: 31px;
+                background: url('../images/svg/clubento/add-recipe.svg') no-repeat;
+            }
+        }
+
+        .clubReceipe {
+            .informations {
+                width: 100%;
+            
+            }
+
+            .image {
+                .title {
+                    @include bp-lt($mb-small) {
+                        position: static;
+                        padding-bottom: 0;
+                        padding-left: 0;
+                        padding-right: 0;
+                    }
+
+                    .miniLike {
+                        @include bp-lt($mb-small) {
+                            width: 70px;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+
+            .attribute {
+                p {
+                    img {
+                        width: 20px;
+                    }
+                }
+            }
+        }
+        
+        @include bp-lt($mb-medium) {
+            .shareElementList {
+                margin-left: 0;
+            }
+            .clubReceipe {
+                padding-left: 0;
+            }
+            .clubElementForm {
+                margin: 0;
+            }
+            .clubReceipe .receipeContents {
+                width: 100% !important;
+            }
+            .clubReceipe .ingredients {
+                width: 100% !important;
+                margin-bottom: 30px;
+            }
+            .clubReceipe .receipeContents > * {
+                display: block !important;
+            }
+            .clubReceipe .contents {
+                padding-left: 0;
+            }
+        }
+        /* https://placehold.it/770x514 */
+        @include bp-lt($mb-small) {               
+            .elementLine .description .general h2 {
+                font-size: 1.5em;
+            }
+            .miniProfile a {
+                font-size: 1em;
+                line-height: 1em;
+            }
+            .miniProfile span {
+                font-size: .9em;
+                line-height: 1em;
+            }
+            .elementLine .attributes .line img {
+                height: 12px;
+                &:nth-child(2) {
+                    height: 15px;
+                }
+            }
+            .elementLine .attributes .line:nth-child(2) img {
+                height: 15px;
+            }
+            .elementLine .attributes .line span {
+                font-size: .9em;
+            }
+        }
+        .clubFilterSearch form > div {
+            display: none;
+            + div {
+                display: block;
+            }
+        }
+        .clubReceipe .image {
+            max-width: 770px;
+        }
+        .clubReceipe .image .title {
+            box-sizing: border-box;
+            width: 100%;
+        }
+        .elementLine {
+            display: table;
+
+            width: 100%;
+        }
+        .clubListToolbar {
+            box-sizing: border-box;
+            margin-left: 0;
+            padding-left: 40px;
+        }
+        
+        .informations {
+            @include bp-lt($mb-medium) {
+                @include grid-row(nest);
+            }
+            .miniProfile {
+                @include bp-lt($mb-small) {
+                    margin-bottom: 10px;
+                }
+            }
+            .miniProfile,
+            .attributes {
+                @include bp-lt($mb-medium) {
+                    @include grid-column(6);
+                    @include box-sizing(border-box);
+                }
+                
+                @include bp-lt($mb-small) {
+                    @include grid-column(12);
+                }
+            }
+            
+            .miniProfile {
+                .nickname {
+                    @include bp-lt($mb-medium) {                    
+                        width: 100%;
+                        min-width: 0;
+                        height: 55px;
+                    }                        
+                    
+                    @include bp-lt($mb-small) {
+                        padding-right: 10px;
+                        width: 70%;
+                    }
+                }
+                
+                .nickname,
+                .date {
+                    @include bp-lt ($mb-small) {
+                        display: block;                    
+                        float: left;                    
+                        @include box-sizing(border-box);
+                    }
+                }
+
+                .date {
+                    @include bp-lt ($mb-small) {
+                        text-align: right;
+                        width: 30px;
+                    }
+                }
+            }
+            
+            .attributes {
+                > div {
+                    @include bp-lt($mb-medium) {
+                        @include grid-row(nest);
+                        display: block;                    
+                    }
+                    
+                    .attribute {
+                        @include bp-lt($mb-medium) {
+                            @include grid-column(4);
+                            @include box-sizing(border-box);
+                            min-height: 45px;
+                            line-height: 45px;
+                        }
+                        
+                        @include bp-lt($mb-small) {
+                            text-align: center;
+                        }
+                    }
+                }
+            }                
+        }
+        
+        .elementLine {
+            @include bp-lt($mb-small) {
+                position: relative;
+                box-sizing: border-box;
+                @include border-radius(10px);
+                margin: 10px 0;
+            }
+
+            .image {
+                @include bp-lt($mb-medium) {
+                    position: relative;
+                    overflow: hidden;
+                    @include border-radius(10px 0 0 10px);             
+                }
+                
+                @include bp-lt($mb-small) {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    display: block;
+                    width: 100%;
+                    z-index: 0;
+                    @include border-radius(0);
+                }
+                
+                img {
+                    @include bp-lt ($mb-medium) {
+                        width: 200%;
+                        position: absolute;                
+                    }
+                    
+                    @include bp-lt ($mb-xmedium) {
+                        max-width: none;
+                    }
+
+                    @include bp-lt($mb-small) {
+                        width: 100%;
+                        @include border-radius(10px 10px 0 0);
+                        position: static;
+                    }
+                }
+            }
+
+            .description {
+                @include bp-lt($mb-small) {
+                    position: relative;
+                    z-index: 1;
+                    width: 100%;
+                    background-color: rgba(255,255,255,0.9);
+                    box-sizing: border-box;
+                    display: block;
+                    min-height: 0;
+                    padding-bottom: 10px;
+                    height: auto;
+                    @include border-radius(10px 10px 0 0);
+                }
+                
+                .general {
+                    @include bp-lt($mb-small) {
+                        height: auto;
+                        min-height: 0;
+                        margin-bottom: 15px;
+                    }
+                }
+            }       
+
+            .attributes {
+                @include bp-lt($mb-small) {
+                    display: block;
+                    width: 100%;
+                    position: relative;
+                    z-index: 1;
+                    background-color: rgba(255,255,255,0.9);
+                    margin-top: 100px;
+                    border: none;
+                }
+
+                > div {
+                    @include bp-lt($mb-small) {
+                        height: auto;
+                    }
+                }
+
+                .line {
+                    @include bp-lt($mb-small) {
+                        display: table-cell;
+                        border: none; 
+                    }
+                    
+                    span {
+                        @include bp-lt($mb-small) {
+                            display: block;
+                            text-align: center;
+                            border: none;  
+                            padding: 5px 0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

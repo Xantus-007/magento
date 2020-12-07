@@ -1,0 +1,252 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <!-- Bundle options array definition -->
+            <complexType name="dbmCatalogBundledOptionArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCatalogBundleOption[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCatalogBundleOption">
+                <all>
+                    <element name="option_id" type="xsd:int" />
+                    <element name="parent_id" type="xsd:int" />
+                    <element name="required" type="xsd:boolean" />
+                    <element name="position" type="xsd:int" />
+                    <element name="type" type="xsd:string" />
+                    <element name="default_title" type="xsd:string" />
+                    <element name="selection" type="typens:dbmCatalogProductEntityArray" />
+                    <element name="has_zoom" type="xsd:boolean" />
+                </all>
+            </complexType>
+            
+            <complexType name="dbmCatalogBundledProductEntity">
+                <all>
+                    <element name="product_id" type="xsd:int" />
+                    <element name="min_price" type="xsd:string" />
+                    <element name="parent_entity" type="typens:dbmCatalogProductEntity" />
+                    <element name="children" type="typens:dbmCatalogBundledOptionArray" />
+                </all>
+            </complexType>
+            
+            <!-- Product entity -->
+            <complexType name="dbmCatalogProductEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCatalogProductEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCatalogProductEntity">
+                <all>
+                    <element name="product_id" type="xsd:string" />
+                    <element name="sku" type="xsd:string" />
+                    <element name="name" type="xsd:string" />
+                    <element name="price" type="xsd:string" />
+                    <element name="special_price" type="xsd:string" />
+                    <element name="description" type="xsd:string" />
+                    <element name="set" type="xsd:string" />
+                    <element name="type" type="xsd:string" />
+                    <element name="category_ids" type="typens:ArrayOfString" />
+                    <element name="website_ids" type="typens:ArrayOfString" />
+                    <element name="image" type="xsd:string" />
+                    <element name="small_image" type="xsd:string" />
+                    <element name="thumbnail" type="xsd:string" />
+                    <element name="image_bundle_1" type="xsd:string" />
+                    <element name="image_bundle_2" type="xsd:string" />
+                    <element name="image_bundle_3" type="xsd:string" />
+                    <element name="bundle_button" type="xsd:string" />
+                    <element name="inventory" type="typens:catalogInventoryStockItemUpdateEntity" />
+                    <element name="additional_attributes" type="typens:associativeArray" minOccurs="0" />
+                    <element name="children" type="typens:dbmCatalogProductEntityArray" minOccurs="0" />
+                    <element name="is_default" type="xsd:boolean" />
+                    <element name="color_hexa" type="xsd:string" />
+                    <element name="is_bundle_option" type="xsd:boolean" />
+                    <element name="gallery" type="typens:ArrayOfString" minOccurs="0" />
+                    <element name="bundle_thumb" type="xsd:string" minOccurs="0" />
+                    <element name="selection_id" type="xsd:int" minOccurs="0" />
+                    <element name="option_id" type="xsd:int" minOccurs="0" />
+                    <element name="shipping_estimate" type="xsd:string" minOccurs="0" />
+                    <element name="configurable_data" type="typens:dbmCatalogConfigurableDataArray" minOccurs="0" />
+                    <element name="upsell_products" type="typens:dbmCatalogProductEntityArray" minOccurs="0"/>
+                    <element name="link" type="xsd:string" />
+                </all>
+            </complexType>
+            
+            <complexType name="dbmCatalogConfigurableDataArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCatalogConfigurableData[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCatalogConfigurableData">
+                <all>
+                    <element name="configurable_attribute_label" type="xsd:string" />
+                    <element name="configurable_attribute_code" type="xsd:string" />
+                    <element name="configurable_attribute_id" type="xsd:int" />
+                    <element name="configurable_attribute_value_id" type="xsd:int" />
+                    <element name="configurable_attribute_value_label" type="xsd:string" />
+                </all>
+            </complexType>
+            
+            <!-- Category override -->
+            <complexType name="dbmCatalogCategoryTreeEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCatalogCategoryTreeEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCatalogCategoryTreeEntity">
+                <all>
+                    <element name="category_id" type="xsd:int" />
+                    <element name="is_active" type="xsd:int" />
+                    <element name="parent_id" type="xsd:int" />
+                    <element name="name" type="xsd:string" />
+                    <element name="position" type="xsd:int" />
+                    <element name="level" type="xsd:int" />
+                    <element name="include_in_menu" type="xsd:int" />
+                    <element name="legend" type="xsd:string" />
+                    <element name="mobile_image" type="xsd:string" minOccurs="0" />
+                    <element name="children" type="typens:dbmCatalogCategoryTreeEntityArray" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+
+    <!-- Bundled products -->
+    <message name="dbmCatalogGetBundledProductsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="productId" type="xsd:int" />
+    </message>
+    <message name="dbmCatalogGetBundledProductsResponse">
+        <part name="result" type="typens:dbmCatalogBundledProductEntity" />
+    </message>
+    
+    <!-- Make bundle image -->
+    <message name="dbmCatalogMakeBundleImageRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="productId" type="xsd:int" />
+        <part name="optionsIds" type="typens:associativeArray" />
+    </message>
+    <message name="dbmCatalogMakeBundleImageResponse">
+        <part name="result" type="xsd:string" />
+    </message>
+    
+    <!-- Product info -->
+    <message name="dbmCatalogOverrideGetProductInfoRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="product" type="xsd:string" />
+        <part name="storeView" type="xsd:string" />
+        <part name="attributes" type="typens:catalogProductRequestAttributes" />
+        <part name="productIdentifierType" type="xsd:string" />
+    </message>
+    <message name="dbmCatalogOverrideGetProductInfoResponse">
+        <part name="result" type="typens:dbmCatalogProductEntity" />
+    </message>
+
+   <!-- Category tree -->
+    <message name="dbmCategoryOverrideTreeRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="parentId" type="xsd:string" />
+        <part name="storeView" type="xsd:string" />
+    </message>
+    <message name="dbmCategoryOverrideTreeResponse">
+        <part name="tree" type="typens:dbmCatalogCategoryTreeEntity" />
+    </message>
+    
+    <!-- Product list -->
+    <message name="dbmCategoryOverrideGetAssignedProductsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="categoryId" type="xsd:int" />
+        <part name="storeView" type="xsd:int" />
+    </message>
+    <message name="dbmCategoryOverrideGetAssignedProductsResponse">
+        <part name="result" type="typens:dbmCatalogProductEntityArray" />
+    </message>
+
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmCatalogGetBundledProducts">
+            <documentation>Get Bundled Products elements</documentation>
+            <input message="typens:dbmCatalogGetBundledProductsRequest" />
+            <output message="typens:dbmCatalogGetBundledProductsResponse" />
+        </operation>
+        <operation name="dbmCatalogMakeBundleImage">
+            <documentation>Make bundle image</documentation>
+            <input message="typens:dbmCatalogMakeBundleImageRequest" />
+            <output message="typens:dbmCatalogMakeBundleImageResponse" />
+        </operation>
+        <operation name="dbmCatalogOverrideGetProductInfo">
+            <documentation>Get Bundled Products elements</documentation>
+            <input message="typens:dbmCatalogOverrideGetProductInfoRequest" />
+            <output message="typens:dbmCatalogOverrideGetProductInfoResponse" />
+        </operation>
+        <operation name="dbmCategoryOverrideTree">
+            <documentation>Get Bundled Products elements</documentation>
+            <input message="typens:dbmCategoryOverrideTreeRequest" />
+            <output message="typens:dbmCategoryOverrideTreeResponse" />
+        </operation>
+        <operation name="dbmCategoryOverrideGetAssignedProducts">
+            <documentation>Get product list with additional data</documentation>
+            <input message="typens:dbmCategoryOverrideGetAssignedProductsRequest" />
+            <output message="typens:dbmCategoryOverrideGetAssignedProductsResponse" />
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmCatalogGetBundledProducts">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCatalogMakeBundleImage">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCatalogOverrideGetProductInfo">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCategoryOverrideTree">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCategoryOverrideGetAssignedProducts">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

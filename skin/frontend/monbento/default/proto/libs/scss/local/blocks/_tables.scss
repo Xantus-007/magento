@@ -1,0 +1,208 @@
+// ========================================= //
+// tables
+// ========================================= //
+
+.c-table__shoppingCart {}
+
+$border: solid rem(2) $grey--light--06;
+.cart-table {
+    width: 100%;
+    border-bottom: solid rem(6) $grey--light--04;
+    margin-bottom: rem(38);
+
+    thead {
+        background: $grey--light--04;
+
+        @include bp-lt($small) {
+            display: none;
+        }
+
+        tr th {
+            height: rem(70);
+            font-family: $sofiaPro;
+            font-size: rem(16);
+            font-weight: 300;
+            color: $grey--regular--02;
+        }
+    }
+
+    tbody {
+        tr {
+            &:nth-child(even) {
+                background: $grey--light--00;
+                .product-cart-remove { @include bp-lt($tabletS) { background: $grey--light--00; } }
+            }
+
+            &:nth-child(odd) {
+                background: $white;
+                .product-cart-remove { @include bp-lt($tabletS) { background: $white; } }
+            }
+
+            @include bp-lt($tablet) {
+                border-bottom: $border;
+
+                &:last-of-type {
+                    border-bottom: none;
+                }
+            }
+        }
+    }
+
+    thead,
+    tbody {
+        tr th,
+        tr td {
+            border-right: $border;
+
+            &:last-of-type {
+                border-right: none;
+            }
+        }
+
+        tr td:first-of-type {
+            border-right: none;
+        }
+    }
+
+    tr {
+        @include bp-lt($tabletS) {
+            position: relative;
+            display: block;
+            @include clearfix();
+        }
+    }
+
+    .medium-hide {
+        @include bp-lt($medium) {
+            display: none;
+        }
+    }
+
+    .c-quantity {
+        margin: 0 auto;
+    }
+
+    .product-cart-image {
+        width: rem(100);
+        height: rem(100);
+        padding: 0;
+
+        @include bp-lt($tablet) {
+            width: rem(80);
+        }
+
+        @include bp-lt($tabletS) {
+            float: left;
+            display: block;
+            border: none;
+            height: rem(80);
+        }
+
+        @include bp-lt($mobileM) {
+            //display: none;
+        }
+
+        img {
+            width: 100%;
+        }
+    }
+
+    .product-cart-info {
+        @include bp-lt($tabletS) {
+            float: left;
+            width: calc(100% - 80px);
+            display: block;
+            border: none;
+            min-height: rem(80);
+            padding-right: rem(63);
+            padding-left: rem(10);
+            padding-top: rem(20);
+            vertical-align: middle;
+
+            @include bp-lt($mobileM) {                
+                padding-right: rem(50);
+            }
+        }
+
+        .c-title {
+            font-family: $sofiaPro;
+            font-size: rem(18);
+            font-weight: 700;
+            color: $subBranding;
+
+            @include bp-lt($tablet) { font-size: rem(16); }
+        }
+
+        .c-baseline {
+            font-family: $sofiaPro;
+            font-size: rem(18);
+            font-weight: 300;
+            color: $subBranding;
+
+            @include bp-lt($tablet) { font-size: rem(16); }
+        }
+    }
+
+    .product-cart-price,
+    .product-cart-total {
+        text-align: center;
+        padding-left: rem(5);
+        padding-right: rem(5);
+
+        .c-priceBox .c-price,
+        .c-priceBox .c-price--alt {
+            white-space: nowrap;
+
+            @include bp-lt($tablet) {
+                font-size: rem(14);
+            }
+        }
+    }
+
+    .product-cart-total {
+        @include bp-lt($tabletS) {
+            float: left;
+            width: 50%;
+            display: block;
+            height: rem(60);
+            padding-right: rem(43);
+            border-left: none;
+            border-right: none;
+            border-top: $border;
+        }
+    }
+
+    .product-cart-actions {
+        font-family: $sofiaPro;
+        font-size: rem(24);
+        font-weight:  300;
+        color: $grey--regular--02;
+        text-align: center;
+
+        @include bp-lt($tabletS) {
+            float: left;
+            width: 50%;
+            display: block;
+            height: rem(60);
+            border-left: none;
+            border-top: $border;
+        }
+    }
+
+    .product-cart-remove {
+        text-align: center;
+
+        @include bp-lt($tabletS) {
+            width: rem(43);
+            height: 100%;
+            position: absolute;
+            right: 0;
+            border-left: $border;
+        }
+
+        [class*='c-fonticon__icon'] {
+            font-size: rem(20);
+            color: $grey--regular--02;
+        }
+    }
+}

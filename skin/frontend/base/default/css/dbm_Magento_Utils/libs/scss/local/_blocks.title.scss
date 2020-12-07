@@ -1,0 +1,278 @@
+// ========================================= //
+// blocks.title
+// ========================================= //
+
+%box-head {
+    height: rem(50);
+    background: $mainBranding;
+    padding-left: rem(20) !important;
+    padding-right: rem(20) !important;
+    border-radius: rem(3) rem(3) 0 0;
+}
+
+%box-link {
+    margin: 0;
+    padding: rem(15) 0 0 0 !important;
+    color: $white !important;
+    font-size: rem(18);
+    text-transform: uppercase;
+    font-style: initial;
+    font-family: $fontBody;
+    letter-spacing: initial !important;
+
+    @include bp-lt($medium) {
+        font-size: rem(14);
+    }
+}
+
+%box-white {
+    background: $white;
+    padding: rem(20);
+    border-radius: 0 0 rem(3) rem(3);
+}
+
+%link-before {
+    position: absolute;
+    top: rem(1);
+    bottom: 0;
+    right: rem(10);
+    margin-top: auto;
+    margin-bottom: auto;
+    display: block;
+    width: rem(30);
+    height: rem(30);
+    font-size: 0;
+
+    &:before {
+        position: absolute;
+        display: block;
+        width: rem(30);
+        height: rem(30);
+        line-height: rem(30);
+        font-family: "iconfont";
+        font-size: rem(25);
+        color: $white;
+        text-align: center;
+    }
+}
+
+.c-account {
+    .c-title__account,
+    .page-title {
+        position: relative;
+        text-align: center;
+        margin-bottom: rem(20);
+
+        &:before {
+            position: absolute;
+            top: 0;
+            bottom: rem(2);
+            margin-top: auto;
+            margin-bottom: auto;
+            z-index: $zindex--background;
+            display: block;
+            width: 100%;
+            height: rem(1);
+            background: $mainBranding;
+            content: '';
+        }
+
+        h1, .h1 {
+            float: none;
+            position: relative;
+            z-index: $zindex--content;
+            display: inline-block;
+            padding-left: rem(15);
+            padding-right: rem(15);
+            font-size: rem(30);
+            color: $mainBranding !important;
+            text-transform: uppercase;
+            background: $grey--dark;            
+        }
+    }
+
+    .page-title {
+        border: none;
+
+        h1, .h1 {
+            background: $grey--light;
+
+            @include bp-lt($small) {
+                background: $black;
+            }
+        }
+    }
+
+    .box-account, .order-info-box {
+        &.box-recent {
+            .box-head {
+                position: relative;
+
+                a:nth-of-type(2) {
+                    position: absolute;
+                    top: rem(1);
+                    bottom: 0;
+                    right: rem(10);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    display: block;
+                    width: rem(30);
+                    height: rem(30);
+                    font-size: 0;
+
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        width: rem(30);
+                        height: rem(30);
+                        line-height: rem(30);
+                        font-family: "iconfont";
+                        content: "\EA06";
+                        font-size: rem(25);
+                        color: $white;
+                        text-align: center;
+                    }
+                }
+            }
+        }
+
+        .box-title {
+            &.contact-info-box,
+            &.newsletter-box,
+            &.address-book {
+                position: relative;
+
+                a:nth-of-type(2) {
+                    position: absolute;
+                    top: rem(1);
+                    bottom: 0;
+                    right: rem(10);
+                    margin-top: auto;
+                    margin-bottom: auto;
+                    display: block;
+                    width: rem(30);
+                    height: rem(30);
+                    font-size: 0;
+
+                    &:before {
+                        position: absolute;
+                        display: block;
+                        width: rem(30);
+                        height: rem(30);
+                        line-height: rem(30);
+                        font-family: "iconfont";
+                        font-size: rem(25);
+                        color: $white;
+                        text-align: center;
+                    }
+                }
+            }
+
+            &.contact-info-box,
+            &.newsletter-box,
+            &.address-book {
+                a:nth-of-type(2):before {
+                    content: "\EA08";
+                }
+            }
+        }
+
+        .box-head,
+        .box-title {
+            @extend %box-head;
+            
+            h2,
+            a>h2,
+            a>h3 {
+                @extend %box-link;
+            }
+        }
+
+        .box-head {
+            text-align: center;
+        }
+
+        .box-title {
+            text-align: left;
+        }
+    }
+
+    form {
+        .fieldset {
+            padding: 0;
+
+            .legend {
+                @extend %box-head;
+                margin: 0 !important;
+                padding-top: rem(15) !important;
+                color: $white !important;
+                text-transform: uppercase;
+                font-style: initial;
+                font-family: $fontBody;
+                letter-spacing: initial !important;
+
+                &.title {
+                    left: 0 !important;
+                }
+            }
+
+            .form-list {
+                @extend %box-white;
+            }
+        }
+    }
+
+    .addresses-list {
+        margin-bottom: rem(20);
+        padding-left: rem(10);
+        padding-right: rem(10);
+
+        .box-title {
+            @extend %box-head;
+
+            h2 {
+                @extend %box-link;
+                text-align: center;
+            }
+        }
+
+        .c-box {
+            @extend %box-white;
+        }
+
+        .c-box--noPadding {
+            @include clearfix();
+            padding: 0;
+            background: $white;
+            border-radius: 0 0 rem(3) rem(3);
+        }
+    }
+
+    .box-subtitle {
+        position: relative;
+        background: $grey--table--thead;
+        height: rem(50);
+
+        h3 {
+            display: block;
+            border: none;
+            margin: 0;
+            font-size: rem(12);
+            color: $mainFont;
+            text-align: center;
+            font-style: initial;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding-top: rem(17);
+        }
+
+        a.link-edit {
+            @extend %link-before;
+
+            &:before {
+                content: "\EA08";
+                color: $mainFont;
+            }
+        }
+    }
+}

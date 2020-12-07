@@ -1,0 +1,183 @@
+/* Profile */
+#clubProfileHeader {
+    text-align: left;
+    color:#5F5852;
+    vertical-align: top;
+    margin-top:30px;
+}
+
+#clubProfileHeader a {
+    color:#5F5852;
+}
+
+#clubProfileHeader span {
+    display: block;
+}
+
+#clubProfileHeader .part {
+    display:inline-block;
+    vertical-align: top;
+}
+
+#clubProfileHeader .counter {
+    padding-left:10px;
+    padding-right: 10px;
+    margin-top:10px;
+    font-size: 1em;
+    width: 92px;
+    font-family: vag;
+    text-align: center;
+}
+
+#clubProfileHeader .counter.first {
+    margin-left: 20px;
+    border-left: 1px solid #D8D5D5;
+}
+
+#clubProfileHeader .counter {
+    /*border-left:1px solid #D8D5D5;*/
+    border-right:1px solid #D8D5D5;
+}
+
+#clubProfileHeader .counter div {
+    font-size:1.4em;
+    vertical-align: middle;
+    height:100px;
+    text-align: center;
+    display:table-cell;
+    width:92px;
+    padding:0;
+}
+
+#clubProfileHeader .counter span {
+    font-size:2em;
+    color:#8A1669;
+}
+
+#clubProfileHeader .image {
+    margin-right:20px;
+    position:relative;
+    padding-bottom:20px;
+}
+
+#clubProfileHeader .image a {
+    display:block;
+    height:146px;
+}
+
+#clubProfileHeader .image .stamp,
+.subscription .stamp,
+.miniProfile .icon .stamp{
+    position:absolute;
+    bottom:0px;
+    right:0;
+}
+
+#clubProfileHeader .infos {
+    margin-top:20px;
+    width:340px;
+}
+
+#clubProfileHeader .nickname {
+    font-family: quicksand;
+    font-size:3em;
+}
+
+#clubProfileHeader .nickname img {
+    vertical-align:-5px;
+}
+
+#clubProfileHeader .vip {
+    color:#8A1669;
+    font-size:2em;
+    vertical-align: middle;
+}
+
+#clubProfileHeader .vip img {
+    display:inline;
+    vertical-align: baseline;
+    padding:0 5px;
+}
+
+#clubProfileHeader .url img {
+    vertical-align: middle;
+    padding: 0 5px;
+}
+
+#clubProfileHeader .url {
+    font-size:2em;
+    vertical-align: middle;
+    font-size:1.1em;
+}
+
+#clubProfileHeaderSeparatedCounter {
+
+}
+
+#clubProfileHeaderSeparatedCounter span {
+    color:#8A1669;
+}
+
+/*
+ * Subscriber list
+ */
+.clubSubscriptions .subscription {
+    display: table;
+    width: 100%;
+    padding:15px 0;
+    margin:0;
+}
+
+.clubSubscriptions .subscription.even {
+    background-color:#FFF;
+}
+
+.clubSubscriptions .subscription.odd {
+    background:#f6f6f6
+}
+
+.clubSubscriptions  .subscription > * {
+    display: table-cell;
+}
+
+.clubSubscriptions .icon {
+    text-align:center;
+    position:relative;
+}
+
+.clubSubscriptions .icon a {
+    display:inline-block;
+}
+
+.clubSubscriptions .infos {
+    width:70%;
+    vertical-align: middle;
+}
+
+.clubSubscriptions .nickname {
+    font-size:1.9em;
+    font-family: quicksand;
+    color:#5F5853
+}
+
+.clubSubscriptions .vip {
+    font-size:1.5em;
+}
+
+.clubSubscriptions .actions,
+.clubSubscriptions .actions button {
+    vertical-align:middle;
+    font-family: opensans;
+    text-align: center;
+}
+
+.clubSubscriptions .actions {
+    margin-left:20px;
+    width:20%;
+}
+
+.clubSubscriptions .actions button:hover {
+    border-color:#4F4F59;
+    background:#4F4F59;
+    color: #fff;
+}

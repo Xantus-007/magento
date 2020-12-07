@@ -1,0 +1,47 @@
+<div class="content-header">
+    <table cellspacing="0" class="grid-header">
+        <tr>
+            <td><h3><?php echo $this->__('Cartes cadeaux commandées')?></h3></td>
+            <td class="a-right">
+                <button onclick="editForm.submit()" class="scalable save" type="button"><span>Télécharger le fichier</span></button>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="entry-edit">
+    <form id="edit_form" name="edit_form" method="post" action="<?php echo $this->getUrl('*/*/postGiftcert')?>">
+        <input name="form_key" type="hidden" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Options pour filtrer les cartes cadeaux')?></h4>
+        <fieldset id="my-fieldset">
+            <table cellspacing="0" class="form-list">
+                <tr>
+                    <td class="label"><?php echo $this->__('Cartes cadeaux créées à partir du')?> <span class="required">*</span></td>
+                    <td class="input-ele"><input type="text" class="input-date required-entryi" name="extract[datefrom]" id="date_from" value=""></td>
+                </tr>
+                <tr>
+                    <td class="label"><?php echo $this->__('Cartes cadeaux créées jusqu\'au')?> <span class="required">*</span></td>
+                    <td class="input-ele"><input type="text" class="input-date required-entry" name="extract[dateto]" id="date_to" value=""></td>
+                </tr>
+            </table>
+        </fieldset>
+    </form>
+</div>
+<script type="text/javascript">
+    var editForm = new varienForm('edit_form');
+    
+    Calendar.setup({
+        inputField : 'date_from',
+        ifFormat : '%Y-%m-%d',
+        button : 'date_from_trig',
+        align : 'Bl',
+        singleClick : true
+    });
+
+    Calendar.setup({
+        inputField : 'date_to',
+        ifFormat : '%Y-%m-%d',
+        button : 'date_to_trig',
+        align : 'Bl',
+        singleClick : true
+    });
+</script>

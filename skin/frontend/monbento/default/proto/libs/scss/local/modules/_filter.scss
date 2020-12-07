@@ -1,0 +1,71 @@
+// ========================================= //
+// filter
+// ========================================= //
+
+.c-filter {
+    padding-top: rem(28);
+    padding-bottom: rem(6);
+    display: none;
+
+    &.is-open {
+        display: block;
+    }
+}
+
+$side : rem(35);
+.c-filter__item {
+    position: relative;
+    display: inline-block;
+    width: $side;
+    height: $side;
+    margin-left: rem(18);
+    margin-right: rem(18);
+    margin-bottom: rem(14);
+
+    input[type="checkbox"] {
+        position: absolute;
+        left: -9999px;
+        opacity: 0;
+
+        & + label {
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: $zindex--content;
+            display: block;
+            width: $side;
+            height: $side;
+            border-radius: 50%;
+            border: rem(2) solid $grey--regular--03;
+            transition: $ease;
+            margin: 0;
+
+            &:before {
+                display: none;
+            }
+
+            &:after {
+                content: '';
+                position: absolute;
+                top: rem(-2);
+                right: rem(-2);
+                left: rem(-1);
+                z-index: $zindex--background;
+                display: block;
+                width: $side;
+                height: $side;
+                background: rgba($white, .2) url(#{$img}c-icon__check.svg) no-repeat 50% 50%;
+                border-radius: 50%;
+                border: rem(3) solid $subBranding;
+                opacity: 0;
+                transition: $ease;
+            }
+        }
+
+        &:checked + label {
+            &:after {
+                opacity: 1;
+            }
+        }
+    }
+}

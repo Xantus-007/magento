@@ -1,0 +1,69 @@
+<?php
+
+$trans = Mage::helper('dbm_share');
+
+$isMobile = Mage::getModel('dbm_customer/session')->getIsMobile();
+
+?>
+<?php if(!($isMobile === true)): ?>
+<div id="footer-container">
+    <div id="footer" class="row small-collapse">
+        <div id="footer-links" class="columns large-9">
+            <div class="row large-collapse">
+            <div class="bloc even columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_1')->toHtml(); ?></div>
+            <div class="bloc odd columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_2')->toHtml(); ?></div>
+            <div class="bloc even columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_3')->toHtml(); ?></div>
+            <div class="bloc odd columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_4')->toHtml(); ?></div>
+            <div class="bloc even columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_5')->toHtml(); ?></div>
+            <div class="bloc odd columns small-6 medium-2"><?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('footer_links_6')->toHtml(); ?></div>
+            </div>
+        </div>
+        <div id="footer-last-column" class="columns large-3">
+            <div class="row large-collapse">
+                <div class="columns small-12">
+                    <div id="hbar-nl" class="bloc last">
+                        <?php echo $this->getChildHtml('newsletterForm'); ?>
+                        <p>&nbsp;</p>
+                    </div>
+                    <div id="footer-social">
+                        <strong><?php echo $trans->__("Suivez-nous"); ?></strong>
+                        <p><?php echo $trans->__("Restez informé des actualités monbento"); ?></p>
+                        <?php
+                        $allowedStores = array('fr', 'hk_en', 'us_en');
+
+                        if(in_array(Mage::app()->getStore()->getCode(), $allowedStores)) { ?>
+                        <ul class="social-buttons fr">
+                                <li><a class="facebook" href="https://www.facebook.com/monbento" target="_blank"></a></li>
+                                <li><a class="twitter" href="https://twitter.com/monbento" target="_blank"></a></li>
+                                <li><a class="youtube" href="https://www.youtube.com/channel/UC7ynQeClKiNOq1DYC3iDOyQ/feed?activity_view=3" target="_blank"></a></li>
+                                <li><a class="googleplus" href="https://plus.google.com/u/0/b/108337491770415819747/+monbento/posts" target="_blank"></a></li>
+                                <li><a class="pinterest" href="https://www.pinterest.com/monbento" target="_blank"></a></li>
+                                <li><a class="instagram" href="https://instagram.com/monbento" target="_blank"></a></li>
+                                <li><a class="vimeo" href="https://vimeo.com/user8577348" target="_blank"></a></li>
+                                <li><a class="rss" href="/rss-mon-bento" target="_blank"></a></li>
+                        </ul>
+                        <?php } else { ?>
+                        <ul class="social-buttons en">
+                                <?php if(Mage::app()->getStore()->getCode() == 'hk_en'): ?><li><a class="facebook" href="https://www.facebook.com/monbento.asia" target="_blank"></a></li><?php endif; ?>
+                                <li><a class="twitter" href="https://twitter.com/monbento" target="_blank"></a></li>
+                                <li><a class="vimeo" href="https://vimeo.com/user8577348" target="_blank"></a></li>
+                                <li><a class="flickr" href="https://www.flickr.com/photos/monbento" target="_blank"></a></li>
+                                <li><a class="rss" href="https://en.monbento.com/blog/cat/actu-mon-bento/rss" target="_blank"></a></li>
+                        </ul>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Go to www.addthis.com/dashboard to customize your tools -->
+<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js" async="async"></script>
+<?php endif; ?>
+
+<?php
+    if(!Mage::helper('dbm_country')->isStoreHK()) {
+        echo Mage::getStoreConfig('veinteractive/tags/scripttag');
+    }
+?>

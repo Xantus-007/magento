@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <all>
+                <title>Configuration des applications mobiles</title>
+            </all>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <dbm_share translate="title">
+                                        <title>Configuration des applications mobiles</title>
+                                        <sort_order>100</sort_order>
+                                    </dbm_share>
+                                    <dbm_share_config translate="title">
+                                        <title>Configuration du club</title>
+                                        <sort_order>100</sort_order>
+                                    </dbm_share_config>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

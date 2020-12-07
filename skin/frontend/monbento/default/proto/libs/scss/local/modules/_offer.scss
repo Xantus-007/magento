@@ -1,0 +1,121 @@
+.c-offer {
+    padding-top: rem(30);
+    padding-bottom: rem(50);
+
+    @include bp-lt($small) {
+        padding-top: 0;
+        padding-left: rem(20) !important;
+        padding-right: rem(20) !important;
+        padding-bottom: rem(20);    
+    }
+
+    h2 {
+        @include bp-lt($small) {
+            font-size: rem(20);
+        }
+    }
+
+    h3 {
+        @include bp-lt($small) {
+            font-size: rem(18);
+        }
+    }
+
+    p {
+        font-size: rem(20);
+        line-height: rem(28);
+        color: $subBranding;
+        font-family: $sofiaPro;
+        font-weight: rem(300);
+
+        @include bp-lt($small) {
+            font-size: rem(14);
+            line-height: rem(20);
+        }
+    }
+
+    li {
+        color: $grey--03;
+    }
+
+    ul {
+        ul {
+            li {
+                font-size: rem(12);
+                font-style: italic;
+
+                &:before {
+                    font-style: normal;
+                    color: $subBranding;
+                }
+            }
+        }
+    }
+}
+
+#actions-buttons {
+    @include clearfix;
+
+    @include bp-lt($small) {
+        padding-left: rem(15);
+        padding-right: rem(15);
+    }
+
+    a {
+        font-style: normal;
+
+        @include bp-lt($small) {
+            padding: rem(14) rem(10);
+            background-image: none;
+            width: calc(50% - 10px);
+            text-align: center;
+        }
+
+        &:first-child {
+            margin-right: rem(30);
+
+            @include bp-lt($small) {
+                margin-right: 0;
+                float: left;
+            }
+        }
+
+        &:last-child {
+            @include bp-lt($small) {
+                float: right;
+            }
+
+            @include bp-lt($mobileS) {
+                float: right;
+                padding-top: rem(8);
+                line-height: rem(18);
+            }
+        }
+    }
+}
+
+#form_wrapper {
+    margin-top: 0;
+
+    @include bp-lt($small) {
+        padding-left: rem(15);
+        padding-right: rem(15);
+    }
+}
+
+#recrutement_form {
+    p {
+        font-size: rem(12);
+        font-style: italic;
+        margin-bottom: rem(5);
+        color: $subBranding;
+
+        &:nth-last-child(2) {
+            margin-bottom: rem(30);
+        }
+
+        .required {
+            color: $mainBranding !important;
+        }
+    }
+}

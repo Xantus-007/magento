@@ -1,0 +1,115 @@
+// ========================================= //
+// components.button
+// ========================================= //
+
+%button {
+    position: relative;
+    display: inline-block;
+    height: rem(57);
+    padding: rem(15) 0 rem(10);
+    font-family: $fontBody;
+    font-size: rem(16);
+    color: $subBranding;
+    margin-left: rem(15);
+    margin-right: rem(15);
+
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        bottom: rem(11);
+        width: 100%;
+        height: rem(2);
+        background: $grey--07;
+    }
+}
+
+.c-account {
+    .box-account.box-fidelity-sponsorship {
+        .col1-set {
+            text-align: center;
+
+            p {
+                display: block;
+                margin-bottom: rem(20);
+                color: $mainFont !important;
+                font-size: rem(15);
+                font-style: initial;
+
+                span {
+                    color: $black;
+                    margin-left: rem(5);
+                }
+            }
+
+            a {
+                @extend %button;
+            }
+        }
+    }
+
+    .buttons-set {
+        padding: 0;
+        margin-bottom: rem(20);
+        @include clearfix;
+
+        .required {
+            padding-bottom: rem(14);
+            margin-bottom: rem(24);
+            border-bottom: solid rem(1) $grey--02;
+        }
+
+        .back-link {
+            width: calc(100% - 230px);
+            float: left;
+            text-align: right;
+
+            a {
+                @extend %button;
+            }
+        }
+    }
+
+    .c-inputSubmit__inline {
+        margin-top: rem(20);
+
+        input {
+            width: 100% !important;
+        }
+    }
+
+    .button-center {
+        text-align: center;
+        margin-top: rem(20);
+
+        .button {
+            display: inline-block;
+            float: none;
+        }
+    }
+}
+
+.c-sponsorship {
+    .buttons-set {
+        .button {
+            margin-right: 0 !important;
+
+            span { background: none; }
+        }
+    }
+}
+
+.c-btn__more {
+    display: block !important;
+    box-shadow: none !important;
+    float: none !important;
+    background: url(#{$img}c-icon__more.jpg) no-repeat 50% 50% $white !important;
+    font-size: 0 !important;
+    border-radius: 50% !important;
+    width: rem(44) !important;
+    height: rem(44) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 !important;
+    margin-top: rem(20) !important;
+}

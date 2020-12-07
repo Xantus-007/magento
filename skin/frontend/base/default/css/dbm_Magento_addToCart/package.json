@@ -1,0 +1,45 @@
+{
+  "name": "The_Undefined_One",
+  "description": "DBM front-end boilerplate.",
+  "version": "2.1.0",
+  "license": "MIT",
+  "author" : {
+    "name": "Axel Viger",
+    "email": "a.viger@debussac.net"
+  },
+  "contributors": [
+    {
+      "name": "Michaël Espeche",
+      "email": "m.espeche@debussac.net"
+    }
+  ],
+  "repository": {
+    "type": "svn",
+    "url": "https://svn.dbm-agence.com/startr-gulp"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.9.11",
+    "chalk": "^1.1.1",
+    "del": "^2.0.2",
+    "es6-promise": "^3.1.2",
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.1.0",
+    "gulp-bower": "0.0.10",
+    "gulp-consolidate": "^0.1.2",
+    "gulp-copy": "0.0.2",
+    "gulp-iconfont": "^5.0.1",
+    "gulp-jade": "^1.1.0",
+    "gulp-jshint": "^1.12.0",
+    "gulp-plumber": "^1.0.1",
+    "gulp-real-favicon": "^0.2.1",
+    "gulp-sass": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.5",
+    "html2jade": "^0.8.4",
+    "jshint-stylish": "^2.0.1",
+    "lodash": "^4.6.1",
+    "require-dir": "^0.3.0",
+    "run-sequence": "^1.1.4"
+  }
+}

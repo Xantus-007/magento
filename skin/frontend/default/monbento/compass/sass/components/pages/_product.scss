@@ -1,0 +1,264 @@
+.product-view {
+    .product-essential {
+        @include bp-lt ($mb-medium) {
+            @include grid-row(nest);                                                                  
+        }
+    }
+    
+    .product-shop {
+        @include bp-lt ($mb-medium) {
+            @include grid-column(
+                6
+            );                               
+        }
+        
+        @include bp-lt ($mb-small) {
+            @include grid-column(
+                12
+            );                               
+        }
+
+        .col {
+             @include bp-lt ($mb-small) {
+                width: 100%;
+                text-align: center;                               
+            }
+        }
+        
+        .col.last {
+            @include bp-lt ($mb-medium) {
+                float: left;
+                width: 100%;
+            }
+            
+            .button {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                }
+                
+                span {
+                    span {
+                        @include bp-lt ($mb-medium) {
+                            width: 100%;
+                            padding: 0;
+                            @include box-sizing(border-box);
+                        }
+                    }
+                }
+            }
+        }
+        
+        .share {
+            @include share();
+        }
+    }
+
+    .product-img-box {
+        @include bp-lt ($mb-medium) {
+            @include grid-column(
+                6
+            );
+        }
+        
+        @include bp-lt ($mb-small) {
+            @include grid-column(
+                12
+            );
+        }
+        
+        .product-image,
+        .more-views {
+            img {
+                @include bp-lt ($mb-medium) {
+                    @include img-responsive();
+                    @include box-sizing(border-box);
+                }
+            }
+        }
+        
+        .more-views {
+            @include bp-lt ($mb-medium) {
+                width: 100%;
+            }
+            
+            ul {
+                @include bp-lt ($mb-medium) {
+                    @include grid-row(nest);
+                    margin: 5px (-(rem-calc(5)/2)) 0;
+                }
+                
+                li {
+                    @include bp-lt ($mb-medium) {
+                        @include box-sizing(border-box);
+                        @include grid-column(4);
+                        
+                        padding-left: (rem-calc(5) / 2);
+                        padding-right: (rem-calc(5) / 2);        
+                        margin: 0 0 5px 0;
+                        border: none;                       
+                    }
+                    
+                    a {
+                        @include bp-lt ($mb-medium) {
+                            display: block;
+                            border: 1px solid #EAEAEA;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .product-name,
+    .short-description {
+        @include bp-lt ($mb-small) {
+            text-align: center;
+        }
+    }
+
+    .product-shop,
+    .product-img-box {
+
+        @include bp-lt ($mb-medium) {
+            @include box-sizing(border-box);                                
+            margin: 0;
+        }
+    }   
+    
+    .add-to-cart {
+        @include bp-lt ($mb-small) {
+            margin-top: 15px;
+        }
+
+        label,
+        .qty {
+            @include bp-lt ($mb-small) {
+                float: none;
+                display: inline-block;
+                *display: inline;
+                *zoom: 1;
+            }
+        }
+
+        .qty {
+            @include bp-lt ($mb-small) {
+                width: 100%;
+                height: 30px;
+            }
+        }
+    }
+
+    .product-collateral {
+        @include bp-lt ($mb-medium) {
+            @include box-sizing(border-box);
+            @include grid-column(12);
+        }
+        
+        .no-rating,
+        .ratings,
+        .box-tags {
+            @include bp-lt ($mb-medium) {
+                @include box-sizing(border-box);                
+            }
+        }
+        
+        .box-tags {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(
+                        6,
+                        false,
+                        false,
+                        false,
+                        false,
+                        6
+                    );
+                    
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        
+        .no-rating,
+        .ratings {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(
+                        6,
+                        false,
+                        false,
+                        false,
+                        6                        
+                    );
+                    
+                padding-left: 0;
+                padding-right: 0;
+                text-align: right;
+            }
+        }
+    }
+    
+    .block-cms {
+        @include bp-lt ($mb-medium) {
+            @include box-sizing(border-box);
+            @include grid-column(12);
+            padding-left: 0;
+            padding-right: 0;
+            padding-bottom: 25px;
+        }
+        
+        @include bp-lt ($mb-small) {
+            display: none;
+        }
+        
+        .left,
+        .right {
+            @include bp-lt ($mb-medium) {
+                @include box-sizing(border-box);
+                @include grid-column(6);
+            }
+        }        
+    }       
+    
+    .block-related,
+    .box-up-sell {
+        @include bp-lt ($mb-medium) {
+            @include grid-row(nest);
+            margin-top: 25px;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .title {
+            @include bp-lt ($mb-medium) {
+                @include box-sizing(border-box);
+                @include grid-column(12);
+            }
+        }
+        
+        .products-grid {
+            @include bp-lt ($mb-medium) {
+                margin: 0;
+            }
+        }
+    }
+    
+    .block-related {
+        @include bp-lt ($mb-small) {
+            display: none;
+        }
+    }
+}
+
+#outerImageContainer {
+    &,
+    img {
+        @include bp-lt ($mb-small) {
+            max-width: 100%;
+        }
+    }
+}
+
+#imageDataContainer {
+    @include bp-lt ($mb-small) {
+        max-width: 100%;
+    }
+}

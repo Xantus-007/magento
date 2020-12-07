@@ -1,0 +1,119 @@
+// ========================================= //
+// Button
+// ========================================= //
+
+.btn {
+    text-transform: uppercase;
+    text-align: center;
+    color: white;
+    font-size: 15px;
+    line-height: 16px;
+    padding: 18px 27px;
+    background: $purple_linkhover;
+    border: solid 1px $purple_linkhover;
+    @include border-radius(8px);
+    display: inline-block;
+    @include transition(background .2s ease, color .2s ease);
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    &.disabled {
+        cursor: inherit;
+        @include opacity(0.7);
+
+        &:hover {
+            color: white;
+            background: $purple_linkhover;
+        }
+    }
+
+    &:hover {
+        background: white;
+        color: $purple_linkhover;
+        @include transition(background .2s ease, color .2s ease);
+    }
+}
+
+i.icon-arrow-right {
+    content: "";
+    position: relative;
+    display: inline-block;
+    right: -10px;
+    top: 10px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid $lightgrey_std;
+    @include border-radius(50%);
+    background: url(../images/bkg_arrow_right.png) no-repeat 50% 50% transparent;
+}
+
+.input-text {
+    font-size: 15px;
+    line-height: 16px;
+    padding: 18px 27px;
+    @include border-radius(8px);
+    display: inline-block;
+    border: none;
+    outline: none;
+    @include transition(box-shadow .2s ease);
+    @include box-shadow(transparent 0 0 10px 0);
+
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+    &:focus {
+        @include box-shadow($purple_linkhover 0 0 10px 0);
+        @include transition(box-shadow .2s ease);
+    }
+}
+
+.merge_input {
+    @include clearfix-micro;
+
+    .btn {
+        @include border-radius(0 8px 8px 0);
+    }
+
+    .input-text {
+        @include border-radius(8px 0 0 8px);
+    }
+
+    @include bp-lt($smedium) {
+        .btn.grid-m-12 {
+            @include border-radius(8px);
+        }
+
+        .input-text.grid-m-12 {
+            @include border-radius(8px);
+            margin-bottom: 20px;
+        }
+    }
+}
+
+.alert-box {
+    font-size: 15px;
+    line-height: 16px;
+    padding: 18px 27px;
+    @include border-radius(8px);
+    display: inline-block;
+    color: white;
+    margin-bottom: 20px;
+
+    &.succes {
+        background: $succes;
+        border: solid 1px darken($succes, 5%);
+    }
+
+    &.error {
+        background: $error;
+        border: solid 1px darken($error, 5%);
+    }
+
+    &.loading {
+        background: url(../images/loading.gif) no-repeat 50% 50% white;
+        height: 70px;
+    }
+}

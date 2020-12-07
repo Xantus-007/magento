@@ -1,0 +1,12 @@
+.c-footer--sub
+    .row
+        - for (var i=0; i<4; i++)
+            .columns.medium-3.small-6.js-itemEqualizer: .c-footer--sub__item
+                .c-title Lorem ipsum
+                .c-list__subFooter
+                    - for (var j=0; j<4; j++)
+                        li: a(href=""): +lipsum(3, 'words')
+
+    .row
+        .columns.text-center
+            .c-baseline: img(src="#{imgDir}c-icon__cards.svg", alt="")

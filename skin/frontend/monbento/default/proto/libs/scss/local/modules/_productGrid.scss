@@ -1,0 +1,65 @@
+// ========================================= //
+// productGrid
+// ========================================= //
+
+.c-crossSelling {
+    @include bp-lt($small) {
+        padding-left: rem(14) !important;
+        padding-right: rem(14) !important;
+    }
+
+    .c-grid__product {
+        .row .columns {
+            &:nth-child(3) {
+                @include bp-lt($medium) { display: none; }
+                @include bp-lt($small) { display: block; }
+            }
+        }
+    }
+}
+
+.c-grid {
+    .c-grid__product {
+        .c-row__product.has-7Items {
+            @include bp-lt($medium) {
+                .columns:nth-child(7),
+                .columns:nth-child(8) { display: none; }
+            }
+
+            @include bp-lt($small) {
+                .columns:nth-child(7),
+                .columns:nth-child(8) { display: block; }
+            }
+        }
+
+        .c-row__product.has-3Items {
+            @include bp-lt($medium) {
+                .columns:nth-child(3) { display: none; }
+            }
+
+            @include bp-lt($small) {
+                .columns:nth-child(3) { display: block; }
+            }
+        }
+    }
+}
+
+.c-grid__product {
+
+    .row {
+        &.collapse {
+            .columns {
+                @include bp-lt($medium) {
+                    padding-left: $gutter;
+                    padding-right: $gutter;
+                }
+            }
+        }
+    }
+
+    .js-itemEqualizer--holder {
+        @include bp-lt($medium) {
+            margin-bottom: rem(15);
+        }
+    }
+}

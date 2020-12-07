@@ -1,0 +1,120 @@
+<?php $helper = Mage::helper('dbm_country'); ?>
+<section class="o-section--bkgGrey--noPaddingTop">
+    <div class="c-title--page">
+        <div class="row">
+            <div class="columns"><?php echo $this->__('My Account') ?></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns medium-10 large-8 small-centered">
+            <div class="c-alert--info">
+                <div class="c-label--center">
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle"><span><?php echo $this->__('J\'ai déjà un compte'); ?></span><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="c-linkCst--arrow--white"><?php echo $this->__('Login') ?></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="c-container__white--login">
+                <div class="c-heading">
+                    <div class="c-title"><?php echo $this->__('Create an Account') ?></div>
+                    <div class="c-baseline"><?php echo $this->__('Pas encore de compte ? C\'est l\'affaire d\'une minute ...') ?></div>
+                </div>
+                <div class="row collapse">
+                    <?php echo $this->getChildHtml('form_fields_before') ?>
+                    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="form-validate">
+                        <input type="hidden" name="success_url" value="<?php echo $this->getSuccessUrl() ?>" />
+                        <input type="hidden" name="error_url" value="<?php echo $this->getErrorUrl() ?>" />
+                        <input type="hidden" name="form_key" value="<?php echo Mage::getSingleton('core/session')->getFormKey() ?>" />
+                        <div class="columns medium-6">
+                            <div class="js-itemEqualizer c-form__login has-seperator">
+                                <div class="c-separator">ou</div>
+                                <a href="#" onclick="javascript: fblogin();" class="c-button--white--facebook--hoverSubBranding">
+                                    <div class="o-table">
+                                        <div class="o-table__cell--valignMiddle"><?php echo $this->__('Connect with Facebook') ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="columns medium-6">
+                            <div class="js-itemEqualizer c-form__login">
+                                <div class="c-input__holder js-label__animate">
+                                    <label for="email_address" class="required"><em>*</em><?php echo $this->__('Email Address') ?></label>
+                                    <div class="input-box">
+                                        <input type="text" name="email" id="email_address" value="<?php echo $this->htmlEscape($this->getFormData()->getEmail()) ?>" title="<?php echo $this->__('Email Address') ?>" class="input-text validate-email required-entry" />
+                                    </div>
+                                </div>
+                                <?php echo $this->getLayout()->createBlock('customer/widget_name')->setObject($this->getFormData())->toHtml() ?>
+                                <?php /*if($helper->showFiscalId()): ?>
+                                <div class="c-input__holder js-label__animate">
+                                    <label for="fiscal_id" class="required"><em>*</em><?php echo $this->__('Codice Fiscale') ?></label>
+                                    <div class="input-box">
+                                        <input type="text" name="fiscal_id" id="fiscal_id" value="<?php echo $this->htmlEscape($this->getFormData()->getFiscalId()) ?>" title="<?php echo $this->__('Codice Fiscale') ?>" class="input-text required-entry validate-fiscalid" />
+                                    </div>
+                                </div>
+                                <?php endif;*/ ?>
+                                <?php $_dob = $this->getLayout()->createBlock('customer/widget_dob') ?>
+                                <?php if ($_dob->isEnabled()): ?>
+                                    <div class="c-form__noMargin"><?php echo $_dob->setDate($this->getFormData()->getDob())->toHtml() ?></div>
+                                <?php endif ?>
+                                <div class="c-form__noMargin">
+                                    <div class="c-input__holder js-label__animate">
+                                        <label for="password" class="required"><em>*</em><?php echo $this->__('Password') ?></label>
+                                        <div class="c-input__text">
+                                            <input type="password" name="password" id="password" title="<?php echo $this->__('Password') ?>" class="input-text required-entry validate-password" />
+                                        </div>
+                                    </div>
+                                    <div class="c-input__holder js-label__animate">
+                                        <label for="confirmation" class="required"><em>*</em><?php echo $this->__('Confirm Password') ?></label>
+                                        <div class="c-input__text">
+                                            <input type="password" name="confirmation" title="<?php echo $this->__('Confirm Password') ?>" id="confirmation" class="input-text required-entry validate-cpassword" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-label__info"><span class="c-required">*</span><?php echo $this->__('Required Fields') ?></div>
+                                <?php if ($this->isNewsletterEnabled()): ?>
+                                    <div class="c-checkbox--inline">
+                                        <div class="c-checkbox">
+                                            <input type="checkbox" name="is_subscribed" title="<?php echo $this->__('Sign Up for Newsletter') ?>" value="1" id="is_subscribed"<?php if ($this->getFormData()->getIsSubscribed()): ?> checked="checked"<?php endif; ?> class="checkbox" />
+                                            <label for="is_subscribed"><?php //echo $this->__('Sign Up for Newsletter') ?><?php echo Mage::helper('dbm_rgpd')->getMessage('register_newsletter') ?></label>
+                                        </div>
+                                    </div>
+                                <?php endif ?>
+                                <?php if (Mage::getStoreConfig("fontis_recaptcha/recaptcha/customer")): ?>
+                                    <?php echo $this->getChildHtml('recaptcha_box') ?>
+                                <?php endif; ?>
+
+                    <?php 
+			$currentStoreId = Mage::app()->getStore()->getCode();
+			$helper = Mage::helper('monbento_site/data');
+			$us = "";
+			if($currentStoreId ==="us_en") { $us = "/en"; }
+			$urlKey = $us.$helper->getKeyUrlPageCms($currentStoreId);
+		?>
+        <div class="politic">
+            <div class="c-checkbox--inline">
+                <div class="c-checkbox">
+                    <input type="checkbox" name="rgpdformnewsletter" value="1" id="checkbox_newsletter" class="checkbox required-entry">
+                    <label for="checkbox_newsletter">
+                                     <?php echo $this->__("I agree that my data is processed in accordance with <a href='%s' target='_blank'>policy of management of the personal data</a>.", $urlKey) ?>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+                                <input type="submit" value="<?php echo $this->__('Valider'); ?>" class="c-button--mainBranding--arrowRightToRight">
+                            </div>
+                        </div>
+                    </form>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        var dataForm = new VarienForm('form-validate', true);
+                        <?php if ($this->getShowAddressFields()): ?>
+                            new RegionUpdater('country', 'region', 'region_id', <?php echo $this->helper('directory')->getRegionJson() ?>, undefined, 'zip');
+                        <?php endif; ?>
+                        //]]>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,204 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>oye/jquery.js</script></action>
+        </reference>
+    </default>
+    <oyecheckout_onepage_index translate="label">
+        <remove name="checkout.onepage"/>
+        <remove name="left"/>
+        <remove name="right"/>
+        <reference name="head">
+            <block name="oye_ajaxcart_js" type="core/template">
+                <action method="setTemplate" ifconfig="oyecheckout/settings/checkout_coupon">
+                    <template>oye/checkout/head.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><file>css/oyecheckout/one-style.css</file></action>
+            <action ifconfig="oyecheckout/settings/responsive" method="addItem"><type>skin_css</type><file>css/oyecheckout/one-style-responsive.css</file></action>
+        </reference>
+        <reference name="root">
+            <action method="setTemplate"><template>page/1column.phtml</template></action>
+        </reference>
+        <reference name="content">
+            <block type="oyecheckout/onepage" name="custom.checkout.onepage" template="oye/checkout/onepage.phtml">
+                <block type="oyecheckout/onepage_billing" name="checkout.onepage.billing" as="billing" template="oye/checkout/onepage/billing.phtml"/>
+                <block type="oyecheckout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="oye/checkout/onepage/shipping.phtml"/>
+                <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="oye/checkout/onepage/shipping_method.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="oye/checkout/onepage/shipping_method/available.phtml"/>
+                    <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
+                </block>
+                <block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="oye/checkout/onepage/payment.phtml">
+                    <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="oye/checkout/onepage/payment/methods.phtml">
+                        <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_review" name="checkout.onepage.review" as="review" template="oye/checkout/onepage/review.phtml">
+                    <block type="checkout/onepage_review_info" name="info" as="info" template="oye/checkout/onepage/review/info.phtml">
+                        <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>oye/checkout/onepage/review/item.phtml</template></action>
+                        <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>oye/checkout/onepage/review/item.phtml</template></action>
+                        <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>oye/checkout/onepage/review/item.phtml</template></action>
+                        <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="oye/checkout/onepage/review/totals.phtml"/>
+<!--                        <block type="oyecheckout/text_list" name="checkout.onepage.review.info.items.before" as="items_before" translate="label">
+                            <label>Items Before</label>
+                        </block>-->
+                        <block type="core/text_list" name="checkout.onepage.review.info.items.after" as="items_after" translate="label">
+                            <label>Items After</label>
+                        </block>
+                        <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="oye/checkout/onepage/agreements.phtml"/>
+                        <block type="core/template" name="checkout.onepage.review.button" as="button" template="oye/checkout/onepage/review/button.phtml"/>
+                    </block>
+                </block>
+            </block>
+        </reference>
+        <reference name="before_body_end">
+            <block type="oyecheckout/login" name="checkout.login.popup" as="checkout.login.popup" template="oye/checkout/onepage/login.phtml">
+				<block type="oye_socialauth/checkout" name="oye_socialauth_checkout" template="oye/socialauth/checkout.phtml">
+					<block type="oye_socialauth/google_button" name="oye_socialauth_checkout_google_button" />
+					<block type="oye_socialauth/facebook_button" name="oye_socialauth_checkout_facebook_button" />
+					<block type="oye_socialauth/twitter_button" name="oye_socialauth_checkout_twitter_button" />
+				</block>
+			</block>
+        </reference>
+    </oyecheckout_onepage_index>
+
+    <oyecheckout_horizontal translate="label">
+        <label>One Page Checkout</label>
+        <!-- Mage_Checkout -->
+        <remove name="checkout.onepage"/>
+        <remove name="left"/>
+        <remove name="right"/>
+
+        <reference name="head">
+            <block name="oye_checkout_coupon_js" type="core/template">
+                <action method="setTemplate" ifconfig="oyecheckout/settings/checkout_coupon">
+                    <template>oye/checkout/head.phtml</template>
+                </action>
+            </block>
+        </reference>
+
+        <reference name="content">
+            <block type="checkout/onepage" name="custom.checkout.onepage" template="oye/checkout/horizontal/onepage.phtml">
+                <block type="checkout/onepage_login" name="checkout.onepage.login" as="login" template="oye/checkout/horizontal/onepage/login.phtml">
+                    <block type="page/html_wrapper" name="checkout.onepage.login.before" as="login_before" translate="label">
+                        <label>Login/Registration Before</label>
+                        <action method="setMayBeInvisible"><value>1</value></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_billing" name="checkout.onepage.billing" as="billing" template="checkout/onepage/billing.phtml"/>
+                <block type="checkout/onepage_shipping" name="checkout.onepage.shipping" as="shipping" template="oye/checkout/horizontal/onepage/shipping.phtml"/>
+                <block type="checkout/onepage_shipping_method" name="checkout.onepage.shipping_method" as="shipping_method" template="checkout/onepage/shipping_method.phtml">
+                    <block type="checkout/onepage_shipping_method_available" name="checkout.onepage.shipping_method.available" as="available" template="checkout/onepage/shipping_method/available.phtml"/>
+                    <block type="checkout/onepage_shipping_method_additional" name="checkout.onepage.shipping_method.additional" as="additional" template="checkout/onepage/shipping_method/additional.phtml"/>
+                </block>
+                <block type="checkout/onepage_payment" name="checkout.onepage.payment" as="payment" template="oye/checkout/horizontal/onepage/payment.phtml">
+                    <block type="checkout/onepage_payment_methods" name="checkout.payment.methods" as="methods" template="oye/checkout/horizontal/onepage/payment/info.phtml">
+                        <action method="setMethodFormTemplate"><method>purchaseorder</method><template>payment/form/purchaseorder.phtml</template></action>
+                    </block>
+                </block>
+                <block type="checkout/onepage_review" name="checkout.onepage.review.custom" as="review" template="oye/checkout/horizontal/onepage/review.phtml">
+
+
+                </block>
+            </block>
+        </reference>
+    </oyecheckout_horizontal>
+<!-- AjaxCart -->
+    <default>
+        <reference name="head">
+            <action method="addItem" ifconfig="oye_ajaxcart/general/enabled">
+                <type>skin_css</type>
+                <name>css/oye/ajaxcart.css</name>
+                <params/>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem" ifconfig="oye_ajaxcart/general/enabled">
+                <type>skin_js</type>
+                <name>js/oye/ajaxcart.js</name>
+                <params/>
+            </action>
+            <block name="oye_ajaxcart_js" type="core/template">
+                <action method="setTemplate" ifconfig="oye_ajaxcart/general/enabled">
+                    <template>oye/ajaxcart/js.phtml</template>
+                </action>
+            </block>
+        </reference>
+    </default>
+    <checkout_onepage_index>
+        <reference name="head">
+            <action method="removeItem"><type>skin_css</type><name>css/oye/ajaxcart.css</name></action>
+            <action method="removeItem"><type>skin_js</type><name>js/oye/ajaxcart.js</name></action>
+            <remove name="oye_ajaxcart_js"></remove>
+            <block name="oye_checkout_coupon_js" type="core/template">
+                <action method="setTemplate" ifconfig="oyecheckout/settings/checkout_coupon">
+                    <template>oye/checkout/head.phtml</template>
+                </action>
+            </block>
+        </reference>
+        <reference name="login">
+            <action method="setTemplate"><template>oye/checkout/standard/login.phtml</template></action>
+        </reference>
+        <reference name="checkout.onepage">
+            <action method="setTemplate"><template>oye/checkout/standard/onepage.phtml</template></action>
+        </reference>
+    </checkout_onepage_index>
+
+    <checkout_onepage_review_horizontal translate="label">
+        <label>One Page Checkout Overview</label>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="checkout/onepage_review_info" name="root" output="toHtml" template="oye/checkout/horizontal/onepage/review/info.phtml">
+            <block type="page/html_wrapper" name="checkout.progress.wrapper" translate="label">
+                <label>Checkout Progress Wrapper</label>
+                <action method="setElementId"><value>checkout-progress-wrapper</value></action>
+                <block type="checkout/onepage_progress" name="checkout.progress" before="-" template="oye/checkout/horizontal/onepage/progress.phtml">
+                    <block type="checkout/onepage_payment_info" name="payment_info">
+                        <action method="setInfoTemplate"><method></method><template></template></action>
+                    </block>
+                </block>
+            </block>
+            <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>oye/checkout/horizontal/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>oye/checkout/horizontal/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>oye/checkout/horizontal/onepage/review/item.phtml</template></action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="oye/checkout/horizontal/onepage/review/totals.phtml"/>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.before" as="items_before" translate="label">
+                <label>Items Before</label>
+            </block>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.after" as="items_after" translate="label">
+                <label>Items After</label>
+                <block type="core/template" name="checkout.onepage.coupon" as="coupon" template="oye/checkout/onepage/review/coupon.phtml"/>
+            </block>
+            <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
+            <block type="core/template" name="checkout.onepage.review.button" as="button" template="checkout/onepage/review/button.phtml"/>
+        </block>
+    </checkout_onepage_review_horizontal>
+
+    <checkout_onepage_review translate="label">
+        <label>One Page Checkout Overview</label>
+        <!-- Mage_Checkout -->
+        <remove name="right"/>
+        <remove name="left"/>
+
+        <block type="checkout/onepage_review_info" name="root" output="toHtml" template="oye/checkout/standard/onepage/review/info.phtml">
+            <action method="addItemRender"><type>default</type><block>checkout/cart_item_renderer</block><template>oye/checkout/standard/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>checkout/cart_item_renderer_grouped</block><template>oye/checkout/standard/onepage/review/item.phtml</template></action>
+            <action method="addItemRender"><type>configurable</type><block>checkout/cart_item_renderer_configurable</block><template>oye/checkout/standard/onepage/review/item.phtml</template></action>
+            <block type="checkout/cart_totals" name="checkout.onepage.review.info.totals" as="totals" template="oye/checkout/standard/onepage/review/totals.phtml"/>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.before" as="items_before" translate="label">
+                <label>Items Before</label>
+            </block>
+            <block type="core/text_list" name="checkout.onepage.review.info.items.after" as="items_after" translate="label">
+                <label>Items After</label>
+                <block type="core/template" name="checkout.onepage.coupon" as="coupon" template="oye/checkout/onepage/review/coupon.phtml"/>
+            </block>
+            <block type="checkout/agreements" name="checkout.onepage.agreements" as="agreements" template="checkout/onepage/agreements.phtml"/>
+            <block type="core/template" name="checkout.onepage.review.button" as="button" template="checkout/onepage/review/button.phtml"/>
+        </block>
+    </checkout_onepage_review>
+</layout>

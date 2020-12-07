@@ -1,0 +1,113 @@
+// ========================================= //
+// businessCase
+// ========================================= //
+
+.c-businessCase {
+    .c-title--group {
+        margin-bottom: rem(70);
+
+        @include bp-lt($medium) { margin-bottom: rem(50); }
+        @include bp-lt($small) { margin-bottom: rem(30); }
+        @include bp-lt($mobileL) { margin-bottom: rem(20); }
+    }
+}
+
+.c-businessCase__item {
+    @include clearfix;
+
+    @include bp-lt($medium) {
+        padding-left: rem(14);
+        padding-right: rem(14);
+    }
+
+    @include bp-lt($small) {
+        margin-bottom: rem(42);
+    }
+
+    .c-icon {
+        position: relative;
+        width: rem(84);
+        height: rem(99);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: rem(20);
+
+        @include bp-bt($mobileL, $small) {
+            float: left;
+        }
+
+        .c-picture {
+            position: absolute;
+            z-index: $zindex--content;
+            top: 45%;
+            left: 50%;
+            transform: translateY(-50%) translateX(-50%);
+            display: block;
+            width: rem(55);
+            height: rem(70);
+            text-align: center;
+
+            @include bp-bt($mobileL, $small) {
+                transform: translateY(-50%);
+                left: 5%;
+                top: 50%;
+            }
+        }
+
+        .c-background {
+            @include bp-bt($mobileL, $small) {
+                position: relative;
+                z-index: $zindex--background;
+                transform: rotate(-90deg);
+            }
+        }
+    }
+
+    .c-container {
+        @include bp-bt($mobileL, $small) {
+            width: calc(100% - 84px);
+            float: right;
+        }
+    }
+
+    .c-title {
+        text-align: center;
+        font-family: $sofiaPro;
+        font-size: rem(24);
+        margin-bottom: rem(20);
+        text-transform: uppercase;
+        font-weight: 300;
+
+        @include bp-lt($medium) {
+            font-size: rem(18);
+            margin-bottom: rem(16);
+        }
+    }
+
+    .c-separator {
+        width: rem(26);
+        height: rem(4);
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: rem(20);
+
+        @include bp-lt($medium) {
+            margin-bottom: rem(16);
+        }
+    }
+
+    .c-content {
+        max-width: rem(300);
+        margin-left: auto;
+        margin-right: auto;
+        font-family: $sofiaPro;
+        font-size: rem(20);
+        color: $grey--regular--05;
+        text-align: center;
+        font-weight: 300;
+
+        @include bp-lt($medium) {
+            font-size: rem(16);
+        }
+    }
+}

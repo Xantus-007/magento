@@ -1,0 +1,7 @@
+<?php $iteratorItemFilter = 0; ?>
+<?php foreach ($this->getItems() as $_item): ?>
+    <div class="c-filter__item">
+        <input type="checkbox"<?php if ($_item->isSelected()): ?> checked="checked" <?php endif; ?> id="checkbox__color--<?php echo str_pad($iteratorItemFilter, 2, 0, STR_PAD_LEFT); ?>" value="<?php echo $_item->getValue() ?>" data-url="<?php echo ($_item->isSelected()) ? $_item->getRemoveUrl() : $_item->getUrl() ?>">
+        <label style="background-color: #<?php echo Mage::helper('monbento_site')->getFilterColorByAttributeOption($_item->getLabel()); ?>;" for="checkbox__color--<?php echo str_pad($iteratorItemFilter, 2, 0, STR_PAD_LEFT); ?>" data-url="<?php echo ($_item->isSelected()) ? $_item->getRemoveUrl() : $_item->getUrl() ?>"></label>        
+    </div>
+<?php $iteratorItemFilter++; endforeach; ?>

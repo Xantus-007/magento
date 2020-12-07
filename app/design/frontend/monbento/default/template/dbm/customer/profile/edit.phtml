@@ -1,0 +1,64 @@
+<?php
+$t = Mage::helper('dbm_share');
+
+$customer = $this->getCustomer();
+$helper = Mage::helper('dbm_customer');
+$sizes = Mage::helper('dbm_customer/image')->getSizes();
+$options = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+?>
+<?php echo $this->getMessagesBlock()->getGroupedHtmlMonbento() ?>
+<div class="title">
+    <h2><?php echo $this->__('Edit my profile') ?></h2>
+</div>
+<form action="<?php echo $this->getUrl('club-customer/account/save') ?>" method="post" enctype="multipart/form-data" id="form-validate" class="customerProfileEdit">
+    <input type="hidden" name="goto-club" value="<?php echo intval(Mage::app()->getRequest()->getParam('goto-club', null)); ?>">
+    <div class="fieldset">
+        <ul class="form-list">
+            <li>
+                <div class="fields">
+                    <label for="profile_nickname" class="not-herit-v1"><?php echo $t->__('Club nickname') ?> <em>*</em></label>
+                    <div class="input-box">
+                        <input type="text" id="profile_nickname" name="profile_nickname" class="not-herit-v1" value="<?php echo $this->escapeHtml($customer->getProfileNickname()) ?>" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="fields">
+                    <label for="profile_url" class="not-herit-v1"><?php echo $t->__('Website URL') ?></label>
+                    <div class="input-box">
+                        <input type="text" id="profile_url" name="profile_url" class="not-herit-v1" value="<?php echo $this->escapeHtml($customer->getProfileUrl()) ?>" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="fields">
+                    <label for="profile_image" class="not-herit-v1"><?php echo $t->__('Club image') ?></label>
+                    <div class="input-box">
+                        <input type="file" id="profile_image" name="profile_image" class="not-herit-v1" />
+                    </div>
+                </div>
+            </li>
+<?php if($customer->getProfileImage()): ?>
+            <li>
+                <div class="fields">
+                    <img class="left" src="<?php echo $helper->getCustomerImageUrl($customer, $sizes['profile_edit'], $options); ?>" />
+                    <div class="left">
+                        <input type="checkbox" id="profile_image_delete" value="1" name="profile_image_delete" class="not-herit-v1" />
+                        <label for="profile_image_delete" class="required not-herit-v1"><?php echo $this->__('Delete image') ?></label>
+                    </div>
+                </div>
+            </li>
+<?php endif; ?>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+        <button type="submit" title="<?php echo $t->__('Enregistrer') ?>" class="button"><span><span><?php echo $t->__('Save profile') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('form-validate', true);
+//]]>
+</script>

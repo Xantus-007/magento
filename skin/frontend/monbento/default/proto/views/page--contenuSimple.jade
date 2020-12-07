@@ -1,0 +1,22 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page contenu simple'
+    - var pageClass = ''
+
+append body
+    +c-title--page('Lorem ipsum page contenu simple')
+
+    - var labels = ['Home', 'Lorem', 'Contenu Simple']
+    +c-breadcrumb(labels)
+
+    section.o-section
+        .row
+            .columns.medium-10.large-8.medium-centered
+                .c-wysiwyg
+                    .c-intro__page--title Bienvenue sur le site de monbento®
+                    .c-text__sofiaPro--light--20 Les présentes conditions générales de vente en ligne sont conclues d'une part par la société monbento® SA au capital de 70 990 euros dont le siège social est sis Z.I. Les Gravanches, 10, rue Jacques Mailhot, 63000 Clermont Ferrand, immatriculée au registre du commerce et des sociétés de Clermont Ferrand sous le numéro 511 239 444  (ci-après dénommée monbento®) et d'autre part, par toute personne physique ou morale souhaitant procéder à un achat via le site Internet de monbento® (ci-après dénommé "l'Acheteur").
+
+                include blocks/_wysiwyg

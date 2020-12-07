@@ -1,0 +1,64 @@
+// ========================================= //
+// Header
+// ========================================= //
+
+.monbentoKids_home header {
+    height: 580px;
+    background: url(../images/bkg_header_homepage.jpg) no-repeat 50% 0 $grey_bkgsection;
+
+    @include bp-lt($xlarge){
+        height: 380px;
+    }
+
+    @include bp-lt($large){
+        min-height: 200px;
+        height: auto;
+    }
+
+    @include bp-lt($medium){
+        background: $purple_boostedafternoon;
+    }
+}
+
+header {
+    .punchline, .punchline_sub {
+        color: white;
+        @include text-shadow(1px 1px 1px $grey_strg);
+
+        @include bp-lt($xlarge){
+            padding: 0 20px;
+        }
+
+        @include bp-lt($medium){
+            text-align: center;
+        }
+    }
+
+    .punchline {
+        font-size: 30px;
+        margin-top: 370px;
+
+        @include bp-lt($xlarge){
+            margin-top: 170px;
+        }
+
+        @include bp-lt($large){
+            margin-top: 50px;
+        }
+
+        @include bp-lt($medium){
+            margin-top: 15px;
+            font-size: 20px;
+        }
+    }
+
+    .punchline_sub {
+        font-size: 52px;
+        font-family: $dirty_headline;
+
+        @include bp-lt($medium){
+            font-size: 30px;
+            padding-bottom: 15px;
+        }
+    }
+}   

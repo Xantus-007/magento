@@ -1,0 +1,71 @@
+<?php
+/**
+ * Unicode Systems
+ * @category   Uni
+ * @package    Uni_Banner
+ * @copyright  Copyright (c) 2010-2011 Unicode Systems. (http://www.unicodesystems.in)
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<!--<link rel="stylesheet" type="text/css" media="all" href="<?php echo $this->getSkinUrl('unibanner/css/custom.css') ?>" />
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('unibanner/js/ajaxtabs.js') ?>"></script>-->
+<?php
+$bannerGroupCode = $this->getBannerGroupCode();
+$data = $this->getDataByGroupCode($bannerGroupCode);
+$bannerGroupData = $data['group_data'];
+//$mediaDir = Mage::getBaseDir('media');
+$mediaDir = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA).'catalog/product/placeholder';
+
+$input = Mage::getStoreConfig($bannerGroupCode);
+foreach($input as $k => $v) {
+    if (isset($v['image']) && !empty($v['image'])) $bannerData[] = $v;
+}
+
+//$bannerData = $data['banner_data'];
+$bannerdest = (($bannerGroupData->getLinkTarget() == 0) ? '_blank' : '_self');
+$bannerType = $bannerGroupData->getAnimationType();
+$bannerWidth = $bannerGroupData->getBannerWidth();
+$bannerHeight = $bannerGroupData->getBannerHeight();
+$duration = Mage::getStoreConfig('banner/banner/banner_time_delay');
+$autoplay = Mage::getStoreConfig('banner/banner/banner_autoplay');
+$imageWidth = ((int) $bannerWidth);
+$imageHeight = ((int) $bannerHeight);
+$styleNWH = 'width: ' . ((int) $bannerWidth + 5) . 'px; height: ' . ((int) $bannerHeight + 5) . 'px;';
+$styleWH = 'width: ' . $imageWidth . 'px; height: ' . $imageHeight . 'px;';
+?>
+
+<ul class="bxslider">
+    <?php
+        $i = 0;
+        foreach ($bannerData as $banner):
+            $i++;
+            $disp = (($i == 1) ? 'inline' : 'none');
+            $v = "imgnumber" . $i;
+            $bannerPath = $banner["image"];
+            $bannerTitle = $banner['title'];
+            $bannerLink = $banner["url"];
+            $bannerImage = '';
+            
+            if ($bannerPath != '') :
+                $bannerImage = $mediaDir . DS . $bannerPath;
+            endif;
+            if ($bannerImage != '') : ?>
+                    <li>
+                        <a href="<?php echo (($bannerLink) ? $bannerLink : 'javascript:'); ?>" title="<?php echo $bannerTitle; ?>" <?php echo (($bannerLink) ? 'target="' . $bannerdest . '"' : ''); ?>><img src="<?php echo $bannerImage; ?>" alt="<?php echo $bannerTitle; ?>"/></a>
+                    </li>
+            <?php endif;
+        endforeach;
+    ?>    
+</ul>
+<script>
+    jQuery(function($){
+        if ($('.bxslider').length > 0) {
+            $('.bxslider').bxSlider({
+                mode: 'fade',
+                pause: <?php echo $duration; ?>,
+                auto: <?php echo $autoplay; ?>,
+                controls: false
+            });
+        }   
+    });
+</script>

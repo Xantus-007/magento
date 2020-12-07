@@ -1,0 +1,25 @@
+<div id="<?php echo $this->getBlockId(); ?>" class="bloc <?php echo $this->getBlockClass(); ?>">
+	<div class="title">
+		<div class="img"></div>
+		<h4><?php echo $this->getTitle(); ?></h4>
+	</div>
+	<div class="content">
+		<ul>
+			<?php $_items = $this->getItemsCollection(); ?>
+			<?php $_count = $this->getItemsCollection()->count(); ?>
+			<?php $i = 1; ?>
+			<?php foreach ($_items as $item) : ?>
+			<?php $class = 'item-'.$i; ?>
+				<li class="<?php echo $class; ?>">
+                    <a href="<?php echo $item->getLink(); ?>">
+                        <?php echo substr($item->getTitle(), 0 , $this->getTitleLength()) . ((strlen($item->getTitle()) > $this->getTitleLength()) ? "&hellip;" : ""); ?>
+                    </a>
+					<?php if ($this->getShowDesc() !== false) : ?>
+					<span><?php echo substr(strip_tags($item->getDescription()), 0, 58) . "&hellip;"; ?></span>
+					<?php endif; ?>
+				</li>
+			<?php $i++; ?>
+			<?php endforeach; ?>
+		</ul>
+	</div>
+</div>

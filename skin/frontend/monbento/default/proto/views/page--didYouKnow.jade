@@ -1,0 +1,215 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : À propos - Le saviez-vous ?'
+    - var pageClass = ''
+    - var menu      = false
+    - var aboutMenu = true
+
+append body
+
+    - var labels = ['Home', 'À propos', 'Le saviez-vous ?']
+    +c-breadcrumb(labels)
+    
+    .c-page__didYouKnow
+        .c-landscape--didYouKnow
+            .o-table
+                .o-table__cell--valignMiddle
+                    h1 Le saviez-vous ?
+
+        
+        section.o-section--noPaddingTop--noPaddingBottom.c-section--first
+            .c-timeline__marker--top
+                .row            
+                    .column.medium-6.medium-text-right
+                        .c-timeline__block
+                            .c-timeline__title Le Bento #[br]une solution #[br]simple #[br]pour
+                            img(src="#{imgDir}c-img__product--aboutTimeline.jpg" alt="Le Bento")
+                    .column.medium-6
+                        .c-timeline__block
+                            - list = ['Mieux manger', 'Faire des économies', 'Lutter contre le gaspillage alimentaire', 'Protéger l\'environnement']
+                            ul.c-timeline__list
+                                each item in list
+                                    li #{item}
+
+        section.o-section--bkgMainBranding.c-section__timeline--difference
+            .c-timeline__marker--bottom
+                .row
+                    .column
+                        .c-title--group
+                            h2.c-main Cultiver sa différence
+                            .c-baseline Pourquoi 1/3 des français apportent leur déjeuner au bureau&nbsp;?
+                            
+                .row
+                    .column.large-8.medium-10.large-offset-2.medium-offset-1
+                        
+                        - progress = ['Pour le goût des aliments', 'Pour la praticité', 'Pour les économies réalisées']
+                        - percentage = [93, 90, 72]
+                        .row
+                            .js-progress__list
+                                each item, index in progress
+                                    .column.medium-4
+                                        - var percent = percentage[index]/100
+                                        .c-progress
+                                            .c-progress__label.js-progress__equalizer #{item}
+                                            .c-progress__circle
+                                                .c-progress__percentage
+                                                    .o-table: .o-table__cell--valignMiddle #{percentage[index]}%
+                                                .js-progress(data-value="#{percent}", data-fill='{"color": "#fff"}')   
+                            
+                .row
+                    .column: p.c-text--small--white.text-center (Santé : Près d’un tiers des français apportent leur déjeuner au bureau)
+                    
+                .row
+                    .column.large-8.medium-10.large-offset-2.medium-offset-1
+                        .row
+                            - stat00 = ['50', '50']
+                            - sup00 = ['', '']
+                            - description00 = ['considèrent l\'alimentation comme un plaisir et cuisinent tous les jours.', 'des français apprécient de manger du fait-maison.']
+                            - small00 = ['(Consommation alimentaire : Les 5 nouvelles tendances - Les Echos – 24 Février 2016)', '(Vivre mieux : La lunchbox a du succès en France -  France 3 Pays De La Loire – 17 mars 2016)']
+                            - preNumber00 = ['Plus de', '']
+                            
+                            .js-stat__block--holder
+                                .js-stat__number--holder
+                                    .js-stat__description--holder
+                                        .js-stat__smallText--holder
+                                            each stat, index in stat00  
+                                                .column.medium-6
+                                                    +stat-block('white', stat, description00[index], small00[index], preNumber00[index], sup00[index])                    
+                                                        
+        section.o-section.c-section__timeline--daily                
+            .row
+                .column
+                    .c-title--group
+                        h2.c-main Simplifier son quotidien
+                        .c-baseline Le bento, non seulement pratique, mais économique
+                        
+            .row
+                .column.large-9.medium-centered.medium-10
+                    .row
+                        - stat01 = ['25', '1749', '3000']
+                        - sup01 = ['min.', '€/an', '€/an']
+                        - description01 = ['C’est le temps  consacré à la pause déjeuner, par les Français.', 'Dépense moyenne des Français en restauration hors-domicile.', 'C’est l’économie réalisée en déjeunant chaque jour sur son lieu de travail, avec son bento.']
+                        - small01 = ['(Le retour de la gamelle au travail - L\'indépendant.- 28 février 2016)', '(Etude menée par le cabinet Gira Conseil en – 2014)', '(étude menée en France par monbento)']
+                        - preNumber01 = ['', '', '']
+                        
+                        .js-stat__block--holder
+                            .js-stat__number--holder
+                                .js-stat__description--holder
+                                    .js-stat__smallText--holder
+                                        each stat, index in stat01  
+                                            .column.medium-4                       
+                                                +stat-block('transparent', stat, description01[index], small01[index], preNumber01[index], sup01[index])
+            
+            .row
+                .column.large-8.medium-10.large-offset-2.medium-offset-1
+                    .row                                        
+                        .js-stat__block--holder
+                            .js-stat__number--holder
+                                .js-stat__description--holder
+                                    .js-stat__smallText--holder                                                                        
+                                        .column.medium-6
+                                            .js-stat__block.c-stat__block--grey
+                                                .js-stat__number
+                                                    .o-table
+                                                        .o-table__cell--valignBottom                                                                                                        
+                                                            .c-stat__number 48%                                                            
+                                                .c-stat__description.js-stat__description des adultes français font un goûter entre 16h et 17h et #[span 34% ont un petit creux en milieu de matinée.]
+                                                .c-text--small.js-stat__smallText (Morgan L. (7 juin 2012). Pas de pénurie pour le goûter ! LSA)
+                                                
+                                        .column.medium-6
+                                            +stat-block('grey', 36, 'des enfants souhaiteraient avoir une boîte à goûter si on leur proposait.', '(Etude réalisée par l’IFOP pour l’ADEME en avril 2013 sur la Sensibilité des français de moins de 15 ans à la prévention des déchets.)', '', '')
+                                            
+        section.o-section--bkgGrey.c-section__timeline--environment
+            .c-timeline__marker--top
+                .row
+                    .column
+                        .c-title--group
+                            .c-main Prendre soin de soi et de son environnement
+                
+                .row.js-environment
+                    .column.large-8.medium-10.large-offset-2.medium-offset-1
+                        .c-progress.js-environment__equalizer  
+                            .o-table
+                                .o-table__cell--valignMiddle                      
+                                    .c-progress__circle
+                                        .c-progress__percentage
+                                            .o-table: .o-table__cell--valignMiddle 86%
+                                        .js-progress--alone(data-value="0.86", data-fill='{"color": "#f65e7a"}')
+                                        
+                        .c-stat__block.js-environment__equalizer
+                            .o-table
+                                .o-table__cell--valignMiddle
+                                    .c-stat__description des salariés se préoccupent quotidiennement d’avoir une alimentation équilibrée, et  #[span 81% font attention à leur alimentation pour des raisons de santé.]
+                                    .c-text--small (Étude menée par Harris Interactive pour Malakoff Mederic – 2012)
+                                    
+                .row
+                    .column.large-8.medium-10.large-offset-2.medium-offset-1
+                        .row
+                            - stat02 = ['230']
+                            - sup02 = ['gr.']
+                            - description02 = ['des restes de nourriture gaspillés au restaurant par personne.']
+                            - small02 = ['(Ministère de l\'agriculture, de l\'agroalimentaire et des forêts)']
+                            - preNumber02 = ['']
+                            
+                            .js-stat__block--holder
+                                .js-stat__number--holder
+                                    .js-stat__description--holder
+                                        .js-stat__smallText--holder
+                                            .column.medium-6
+                                                .c-stat__block--white
+                                                    .js-stat__number
+                                                        .o-table
+                                                            .o-table__cell--valignBottom                                                                                                        
+                                                                .c-stat__number 1/3                                                            
+                                                    .c-stat__description.js-stat__description de la production alimentaire est gaspillée dans le monde chaque année.
+                                                    .c-text--small.js-stat__smallText (Etude réalisée par Toulouse métropole en partenariat avec le laboratoire de psychologie sociale de l'Université d'Aix-Marseille en 2015)
+                                            
+                                            each stat, index in stat02  
+                                                .column.medium-6                      
+                                                    +stat-block('white', stat, description02[index], small02[index], preNumber02[index], sup02[index])                                                            
+                                                    
+                .row
+                    .column.large-9.medium-centered.medium-10
+                        .row
+                            - stat03 = ['85', '32']
+                            - sup03 = ['', '']
+                            - description03 = ['des établissements de restauration n\'utilisant pas le doggy bag ont l\'intention de le mettre en place.', 'de nourriture gaspillée en moins par les personnes qui utlisent un contenant (type bento) pour porter leur repas.']
+                            - small03 = ['(Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)', 'En comparaison à ceux qui utilisent des plateaux  (type cafétérias), (Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)']
+                            - preNumber03 = ['', '', '']
+                            
+                            .js-stat__block--holder
+                                .js-stat__number--holder
+                                    .js-stat__description--holder
+                                        .js-stat__smallText--holder
+                                            each stat, index in stat03  
+                                                .column.medium-4                       
+                                                    +stat-block('transparent--smallMargin', stat, description03[index], small03[index], preNumber03[index], sup03[index])
+
+                                            .column.medium-4
+                                                .c-stat__block--transparent--smallMargin
+                                                    .js-stat__number
+                                                        .o-table
+                                                            .o-table__cell--valignBottom                                                                                                        
+                                                                .c-stat__number 200 #[sub millions]
+                                                    .c-stat__description.js-stat__description C’est l’économie réalisée en déjeunant chaque jour sur son lieu de travail, avec son bento.
+                                                    .c-text--small.js-stat__smallText (Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)
+                                                    
+                .row
+                    .column.large-8.medium-10.large-offset-2.medium-offset-1
+                        .row
+                            .column
+                                .c-stat__block--white.text-center
+                                    .js-stat__number
+                                        .o-table
+                                            .o-table__cell--valignBottom                                                                                                        
+                                                .c-stat__number Entre 3 et 7 litres d'eau
+                                    .c-stat__description.js-stat__description Quantité moyenne d'eau nécessaire, pour fabriquer une bouteille en plastique jetable, d'un litre.
+                                    .c-text--small.js-stat__smallText (Arte, émission du 23 janvier 2016. Six usages insolites des bouteilles en plastique)
+
+append scripts
+    script(src="#{jsDirVendor}jquery.circle-progress.min.js")
+    script(src="#{jsDirVendor}jquery.waypoints.inview.js")
+    script(src="#{jsDirLocal}jquery.dbm.progress.js")

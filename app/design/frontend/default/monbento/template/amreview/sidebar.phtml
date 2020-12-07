@@ -1,0 +1,14 @@
+<?php
+$reviews = $this->getReviews();
+if ($reviews && $reviews->count() > 0) {
+$i = 0;
+?>
+<ul>
+  <?php foreach ($reviews as $review): ?>
+  <li class="item-<?php echo $i+1; ?>"><a href="<?php echo $review->getUrl()?>"><?php echo substr($this->htmlEscape($review->getName()), 0, 30); ?></a>
+  <span><?php echo substr($this->htmlEscape($review->getNickname() . ' : ' . $review->getDetail()), 0, 55); ?> ...</span>
+  <?php $i++; ?>
+  <?php endforeach ?>
+</ul>
+<?php
+}

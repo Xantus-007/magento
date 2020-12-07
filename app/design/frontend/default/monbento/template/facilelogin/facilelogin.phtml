@@ -1,0 +1,36 @@
+<?php
+/**
+ * @package     Ecsso_EasyLogin
+ * @author      Ecsso Team <team@ecommercesoftwaresolutionsonline.com>
+ * @copyright   Copyright (c) 2010 - eCommerce Software Solutions Online Pty. Ltd. (http://www.ecommercesoftwaresolutionsonline.com) 
+ */
+
+?>
+
+<div id="popup_login" class="popup">
+  <div class="easylogin" >
+    <form id="mini_login_form" action="<?php echo Mage::helper('customer')->getLoginPostUrl() ?>" method="post">
+      <ul>
+        <li>
+          <label for="login-email"><?php echo $this->__('Email') ?>: </label>
+          <input id="login-email" type="text" class="input-text required-entry" name="login[username]" value="<?php echo Mage::helper('catalogSearch')->getEscapedQueryText() ?>" title="<?php echo $this->__('Email Address') ?>" />
+        </li>
+        <li>
+          <label for="login-pass"><?php echo $this->__('Password') ?>: </label>
+          <input id="login-pass" type="password" class="input-text required-entry validate-password" name="login[password]" value="<?php echo Mage::helper('catalogSearch')->getEscapedQueryText() ?>" />
+        </li>
+        <li>
+          <button class="button" type="submit"><span><span><?php echo $this->__('Login'); ?></span></span></button>
+          <a href="#" onclick="return fblogin();" class="fb_button_ps"><img src="<?php echo $this->helper('facebookfree/active')->getLoginImg()?>" alt="<?php echo $this->__('Connect with Facebook')?>" /></a>			
+        </li>
+      </ul>
+      <p><a href="<?php echo $this->getUrl('customer/account/forgotpassword/') ?>" title="Logout"><?php echo $this->__('Forgot Password') ?></a> </p>
+      <p> <a href="<?php echo $this->getUrl('customer/account/create/') ?>" title="Logout"><?php echo $this->__('Register') ?></a><span class="popup_closebox right"><?php echo $this->__('Close'); ?></span> </p>
+    </form>
+  </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    new Popup('popup_login','popup_link_login',{modal:true,position:'41%,25%'})
+    //]]>	
+  </script>

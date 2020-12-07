@@ -1,0 +1,427 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php echo $this->getChildHtml('breadcrumbs') ?>
+<div class="c-page__didYouKnow">
+    <div class="c-landscape--didYouKnow">
+        <div class="o-table">
+            <div class="o-table__cell--valignMiddle">
+                <h1><?php echo $this->__('Le saviez-vous ?'); ?></h1>
+            </div>
+        </div>
+    </div>
+    <section class="o-section--noPaddingTop--noPaddingBottom c-section--first">
+        <div class="c-timeline__marker--top">
+            <div class="row">           
+                <div class="column medium-6 medium-text-right">
+                    <div class="c-timeline__block">
+                        <div class="c-timeline__title"><?php echo $this->__('Le Bento<br>une solution<br>simple<br>pour'); ?></div><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-img__product--aboutTimeline.jpg'); ?>" alt="Le Bento">
+                    </div>
+                </div>
+                <div class="column medium-6">
+                    <div class="c-timeline__block">
+                        <ul class="c-timeline__list">
+                            <li><?php echo $this->__('Mieux manger'); ?></li>
+                            <li><?php echo $this->__('Faire des économies'); ?></li>
+                            <li><?php echo $this->__('Lutter contre le gaspillage alimentaire'); ?></li>
+                            <li><?php echo $this->__('Protéger l\'environnement'); ?></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-section--bkgMainBranding c-section__timeline--difference">
+        <div class="c-timeline__marker--bottom">
+            <div class="row">
+                <div class="column">
+                    <div class="c-title--group">
+                        <h2 class="c-main"><?php echo $this->__('Cultiver sa différence'); ?></h2>
+                        <div class="c-baseline"><?php echo $this->__('Pourquoi 1/3 des français apportent leur déjeuner au bureau ?'); ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                    <div class="row">
+                        <div class="js-progress__list">
+                            <div class="column medium-4">
+                                <div class="c-progress">
+                                    <div class="c-progress__label js-progress__equalizer"><?php echo $this->__('Pour le goût des aliments'); ?></div>
+                                    <div class="c-progress__circle">
+                                        <div class="c-progress__percentage">
+                                            <div class="o-table">
+                                                <div class="o-table__cell--valignMiddle">93%</div>
+                                            </div>
+                                        </div>
+                                        <div data-value="0.93" data-fill="{&quot;color&quot;: &quot;#fff&quot;}" class="js-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column medium-4">
+                                <div class="c-progress">
+                                    <div class="c-progress__label js-progress__equalizer"><?php echo $this->__('Pour la praticité'); ?></div>
+                                    <div class="c-progress__circle">
+                                        <div class="c-progress__percentage">
+                                            <div class="o-table">
+                                                <div class="o-table__cell--valignMiddle">90%</div>
+                                            </div>
+                                        </div>
+                                        <div data-value="0.9" data-fill="{&quot;color&quot;: &quot;#fff&quot;}" class="js-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="column medium-4">
+                                <div class="c-progress">
+                                    <div class="c-progress__label js-progress__equalizer"><?php echo $this->__('Pour les économies réalisées'); ?></div>
+                                    <div class="c-progress__circle">
+                                        <div class="c-progress__percentage">
+                                            <div class="o-table">
+                                                <div class="o-table__cell--valignMiddle">72%</div>
+                                            </div>
+                                        </div>
+                                        <div data-value="0.72" data-fill="{&quot;color&quot;: &quot;#fff&quot;}" class="js-progress"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column">
+                    <p class="c-text--small--white text-center"><?php echo $this->__('(Santé : Près d’un tiers des français apportent leur déjeuner au bureau)'); ?></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                    <div class="row">
+                        <div class="js-stat__block--holder">
+                            <div class="js-stat__number--holder">
+                                <div class="js-stat__description--holder">
+                                    <div class="js-stat__smallText--holder">
+                                        <div class="column medium-6">
+                                            <div class="js-stat__block c-stat__block--white">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">
+                                                            <div class="c-stat__preNumber"><?php echo $this->__('Plus de'); ?></div>
+                                                            <div class="c-stat__number">50%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('considèrent l\'alimentation comme un plaisir et cuisinent tous les jours.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Consommation alimentaire : Les 5 nouvelles tendances - Les Echos – 24 Février 2016)'); ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="column medium-6">
+                                            <div class="js-stat__block c-stat__block--white">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">
+                                                            <?php if(Mage::app()->getStore()->getCode() == 'it'): ?><div class="c-stat__preNumber"><?php echo $this->__('Il'); ?></div><?php endif; ?>
+                                                            <div class="c-stat__number">50%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('des français apprécient de manger du fait-maison.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Vivre mieux : La lunchbox a du succès en France -  France 3 Pays De La Loire – 17 mars 2016)'); ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-section c-section__timeline--daily">               
+        <div class="row">
+            <div class="column">
+                <div class="c-title--group">
+                    <h2 class="c-main"><?php echo $this->__('Simplifier son quotidien'); ?></h2>
+                    <div class="c-baseline"><?php echo $this->__('Le bento, non seulement pratique, mais économique'); ?></div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column large-9 medium-centered medium-10">
+                <div class="row">
+                    <div class="js-stat__block--holder">
+                        <div class="js-stat__number--holder">
+                            <div class="js-stat__description--holder">
+                                <div class="js-stat__smallText--holder">
+                                    <div class="column medium-4">                      
+                                        <div class="js-stat__block c-stat__block--transparent">
+                                            <div class="js-stat__number">
+                                                <div class="o-table">
+                                                    <div class="o-table__cell--valignBottom">
+                                                        <div class="c-stat__number">
+                                                            <?php echo $this->__('25<sup>min.</sup>'); ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-stat__description js-stat__description"><?php echo $this->__('C’est le temps  consacré à la pause déjeuner, par les Français.'); ?></div>
+                                            <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Le retour de la gamelle au travail - L\'indépendant.- 28 février 2016)'); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="column medium-4">                      
+                                        <div class="js-stat__block c-stat__block--transparent">
+                                            <div class="js-stat__number">
+                                                <div class="o-table">
+                                                    <div class="o-table__cell--valignBottom">
+                                                        <div class="c-stat__number">
+                                                            <?php echo $this->__('1749<sup>€/an</sup>'); ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-stat__description js-stat__description"><?php echo $this->__('Dépense moyenne des Français en restauration hors-domicile.'); ?></div>
+                                            <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Etude menée par le cabinet Gira Conseil en – 2014)'); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="column medium-4">                      
+                                        <div class="js-stat__block c-stat__block--transparent">
+                                            <div class="js-stat__number">
+                                                <div class="o-table">
+                                                    <div class="o-table__cell--valignBottom">
+                                                        <div class="c-stat__number">
+                                                            <?php echo $this->__('3000<sup>€/an</sup>'); ?>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-stat__description js-stat__description"><?php echo $this->__('C’est l’économie réalisée en déjeunant chaque jour sur son lieu de travail, avec son bento.'); ?></div>
+                                            <div class="c-text--small js-stat__smallText"><?php echo $this->__('(étude menée en France par monbento)'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                <div class="row">                                       
+                    <div class="js-stat__block--holder">
+                        <div class="js-stat__number--holder">
+                            <div class="js-stat__description--holder">
+                                <div class="js-stat__smallText--holder">                                                                       
+                                    <div class="column medium-6">
+                                        <div class="js-stat__block c-stat__block--grey">
+                                            <div class="js-stat__number">
+                                                <div class="o-table">
+                                                    <div class="o-table__cell--valignBottom">
+                                                        <?php if(Mage::app()->getStore()->getCode() == 'it'): ?><div class="c-stat__preNumber"><?php echo $this->__('Il'); ?></div><?php endif; ?>
+                                                        <div class="c-stat__number">48%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-stat__description js-stat__description"><?php echo $this->__('des adultes français font un goûter entre 16h et 17h et <span>34% ont un petit creux en milieu de matinée.</span>'); ?></div>
+                                            <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Morgan L. (7 juin 2012). Pas de pénurie pour le goûter ! LSA)'); ?></div>
+                                        </div>
+                                    </div>
+                                    <div class="column medium-6">
+                                        <div class="js-stat__block c-stat__block--grey">
+                                            <div class="js-stat__number">
+                                                <div class="o-table">
+                                                    <div class="o-table__cell--valignBottom">
+                                                        <?php if(Mage::app()->getStore()->getCode() == 'it'): ?><div class="c-stat__preNumber"><?php echo $this->__('Il'); ?></div><?php endif; ?>
+                                                        <div class="c-stat__number">36%</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="c-stat__description js-stat__description"><?php echo $this->__('des enfants souhaiteraient avoir une boîte à goûter si on leur proposait.'); ?></div>
+                                            <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Etude réalisée par l’IFOP pour l’ADEME en avril 2013 sur la Sensibilité des français de moins de 15 ans à la prévention des déchets.)'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="o-section--bkgGrey c-section__timeline--environment">
+        <div class="c-timeline__marker--top">
+            <div class="row">
+                <div class="column">
+                    <div class="c-title--group">
+                        <div class="c-main"><?php echo $this->__('Prendre soin de soi et de son environnement'); ?></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row js-environment">
+                <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                    <div class="c-progress js-environment__equalizer"> 
+                        <div class="o-table">
+                            <div class="o-table__cell--valignMiddle">
+                                <?php if(Mage::app()->getStore()->getCode() == 'it'): ?><div class="c-progress__label js-progress__equalizer" style="height: 18px;"><?php echo $this->__('l\''); ?></div><?php endif; ?>
+                                <div class="c-progress__circle">
+                                    <div class="c-progress__percentage">
+                                        <div class="o-table">
+                                            <div class="o-table__cell--valignMiddle">86%</div>
+                                        </div>
+                                    </div>
+                                    <div data-value="0.86" data-fill="{&quot;color&quot;: &quot;#f65e7a&quot;}" class="js-progress--alone"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="c-stat__block js-environment__equalizer">
+                        <div class="o-table">
+                            <div class="o-table__cell--valignMiddle">
+                                <div class="c-stat__description"><?php echo $this->__('des salariés se préoccupent quotidiennement d’avoir une alimentation équilibrée, et  <span>81% font attention à leur alimentation pour des raisons de santé.</span>'); ?></div>
+                                <div class="c-text--small"><?php echo $this->__('(Étude menée par Harris Interactive pour Malakoff Mederic – 2012)'); ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                    <div class="row">
+                        <div class="js-stat__block--holder">
+                            <div class="js-stat__number--holder">
+                                <div class="js-stat__description--holder">
+                                    <div class="js-stat__smallText--holder">
+                                        <div class="column medium-6">
+                                            <div class="c-stat__block--white">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">                                                                                                       
+                                                            <div class="c-stat__number">1/3</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('de la production alimentaire est gaspillée dans le monde chaque année.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Etude réalisée par Toulouse métropole en partenariat avec le laboratoire de psychologie sociale de l\'Université d\'Aix-Marseille en 2015)'); ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="column medium-6">                     
+                                            <div class="js-stat__block c-stat__block--white">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">
+                                                            <div class="c-stat__number">
+                                                                <?php echo $this->__('230<sup>gr.</sup>'); ?>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('des restes de nourriture gaspillés au restaurant par personne.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Ministère de l\'agriculture, de l\'agroalimentaire et des forêts)'); ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-9 medium-centered medium-10">
+                    <div class="row">
+                        <div class="js-stat__block--holder">
+                            <div class="js-stat__number--holder">
+                                <div class="js-stat__description--holder">
+                                    <div class="js-stat__smallText--holder">
+                                        <div class="column medium-4">                      
+                                            <div class="js-stat__block c-stat__block--transparent--smallMargin">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">
+                                                            <?php if(Mage::app()->getStore()->getCode() == 'it'): ?><div class="c-stat__preNumber"><?php echo $this->__('l\''); ?></div><?php endif; ?>
+                                                            <div class="c-stat__number">85%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('des établissements de restauration n\'utilisant pas le doggy bag ont l\'intention de le mettre en place.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)'); ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="column medium-4">                      
+                                            <div class="js-stat__block c-stat__block--transparent--smallMargin">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">
+                                                            <div class="c-stat__number">32%</div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('de nourriture gaspillée en moins par les personnes qui utlisent un contenant (type bento) pour porter leur repas.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('En comparaison à ceux qui utilisent des plateaux  (type cafétérias), (Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)'); ?></div>
+                                            </div>
+                                        </div>
+                                        <div class="column medium-4">
+                                            <div class="c-stat__block--transparent--smallMargin">
+                                                <div class="js-stat__number">
+                                                    <div class="o-table">
+                                                        <div class="o-table__cell--valignBottom">                                                                                                       
+                                                            <div class="c-stat__number"><?php echo $this->__('200 <sub>millions</sub>'); ?></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="c-stat__description js-stat__description"><?php echo $this->__('C\'est le nombre de bouteilles plastiques jetées chaque jour.'); ?></div>
+                                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Elizabeth, R.  (Mars 2016) Waste not, Want not. National Geographic.)'); ?></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="column large-8 medium-10 large-offset-2 medium-offset-1">
+                    <div class="row">
+                        <div class="column">
+                            <div class="c-stat__block--white text-center">
+                                <div class="js-stat__number">
+                                    <div class="o-table">
+                                        <div class="o-table__cell--valignBottom">                                                                                                       
+                                            <div class="c-stat__number"><?php echo $this->__('Entre 3 et 7 litres d\'eau'); ?></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="c-stat__description js-stat__description"><?php echo $this->__('Quantité moyenne d\'eau nécessaire, pour fabriquer une bouteille en plastique jetable, d\'un litre.'); ?></div>
+                                <div class="c-text--small js-stat__smallText"><?php echo $this->__('(Arte, émission du 23 janvier 2016. Six usages insolites des bouteilles en plastique)'); ?></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

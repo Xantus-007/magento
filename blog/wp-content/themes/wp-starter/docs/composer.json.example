@@ -1,0 +1,14 @@
+{
+   "name": "dbm-wp/myproject",
+   "minimum-stability": "stable",
+   "require": {
+       "dbm/wp-starter": "@dev"
+   },
+   "repositories": [
+       { "type": "composer", "url": "https://packagist.dbm-agence.com/" }
+   ],
+   "extra": {
+       "webroot-dir": "wp",
+       "webroot-package": "dbm/wp-core"
+   }
+}

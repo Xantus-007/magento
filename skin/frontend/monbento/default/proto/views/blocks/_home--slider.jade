@@ -1,0 +1,146 @@
+//- section.c-slider--pageHeader
+//-     .row.collapse: .columns: .js-bxslider
+//-         //- for (var i=0; i<4; i++)
+//-         .c-slider--home__item
+//-             .c-thumb
+//-                 case i
+//-                     when 1
+//-                         img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+//-                     default
+//-                         img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+//-
+//-             .c-content: .o-table: .o-table__cell--valignMiddle
+//-                 .c-txt--00 Nouveau
+//-                 .c-txt--01 MBOriginal
+//-                 .c-txt--02 édition limitée
+//-                 div
+//-                     span.c-txt--03 FLORAL
+//-                     span.c-txt--04 35,00€
+//-                 a.c-button--mainBranding--arrowRightToRight(href="") Ajouter au panier
+//-
+//-         .c-slider--home__item
+//-             .c-thumb
+//-                 case i
+//-                     when 1
+//-                         img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+//-                     default
+//-                         img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+//-
+//-             .c-content: .o-table: .o-table__cell--valignMiddle
+//-                 .c-txt--00 Nouveau
+//-                 .c-txt--01 MBOriginal
+//-                 .c-txt--02 édition limitée
+//-                 div
+//-                     span.c-txt--03 NOUVELLE ambassadeur
+//-
+//-         .c-slider--home__item
+//-             .c-thumb
+//-                 case i
+//-                     when 1
+//-                         img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+//-                     default
+//-                         img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+//-
+//-             .c-content: .o-table: .o-table__cell--valignMiddle
+//-                 .c-txt--00 Nouveau
+//-                 .c-txt--01 MBOriginal
+//-                 .c-txt--02 édition limitée
+//-                 div
+//-                     span.c-txt--03 FLORAL
+//-                     span.c-txt--04 35,00€
+//-                 a.c-button--mainBranding--arrowRightToRight(href="") Ajouter au panier
+//-
+//-     include _slider__pager
+section.c-slider--pageHeader
+    .row.collapse: .columns
+        .js-slider--home(autoplay-speed="3000")
+            //- .c-slider--home__item(data-video="6zXDo4dL7SU")
+            .c-slider--home__item(data-video="9ZfN87gSjvI", data-width="1440", data-height="809")
+                .c-thumb
+                    img(src="#{imgDir}c-img__sliderHome--video.jpg", alt="")
+
+                    //- picture
+                        //- source(media="min-device-pixel-ratio:1.5" srcset="#{imgDir}c-img__sliderHome--mobile-150dpi.jpg")
+                    img.c-slider__picture--mobile(src="#{imgDir}c-img__sliderHome--mobile.jpg", alt="", srcset="#{imgDir}c-img__sliderHome--mobile.jpg 1x, #{imgDir}c-img__sliderHome--mobile-150dpi.jpg 2x")
+
+                .c-content: .o-table: .o-table__cell--valignMiddle
+                    .c-txt--00 Nouveau
+                    .c-txt--01 Vidéo MBOriginal
+                    .c-txt--02 édition limitée
+                    a.c-button--mainBranding--arrowRightToRight(href="") Lire la vidéo
+
+            .c-slider--home__item
+                .c-thumb
+                    case i
+                        when 1
+                            img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+                        default
+                            img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+
+                    //- picture
+                        //- source(media="min-device-pixel-ratio:1.5" srcset="#{imgDir}c-img__sliderHome--mobile-150dpi.jpg")
+                    img.c-slider__picture--mobile(src="#{imgDir}c-img__sliderHome--mobile.jpg", alt="", srcset="#{imgDir}c-img__sliderHome--mobile.jpg 1x, #{imgDir}c-img__sliderHome--mobile-150dpi.jpg 2x")
+
+                .c-content: .o-table: .o-table__cell--valignMiddle
+                    .c-txt--00 Nouveau
+                    .c-txt--01 MBOriginal
+                    .c-txt--02 édition limitée
+                    div
+                        span.c-txt--03 FLORAL
+                        span.c-txt--04 35,00€
+                    a.c-button--mainBranding--arrowRightToRight(href="") Ajouter au panier
+
+            .c-slider--home__item
+                .c-thumb
+                    case i
+                        when 1
+                            img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+                        default
+                            img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+
+                    //- picture
+                        //- source(media="min-device-pixel-ratio:1.5" srcset="#{imgDir}c-img__sliderHome--mobile-150dpi.jpg")
+                    img.c-slider__picture--mobile(src="#{imgDir}c-img__sliderHome--mobile.jpg", alt="", srcset="#{imgDir}c-img__sliderHome--mobile.jpg 1x, #{imgDir}c-img__sliderHome--mobile-150dpi.jpg 2x")
+
+                .c-content: .o-table: .o-table__cell--valignMiddle
+                    .c-txt--00 Nouveau
+                    .c-txt--01 MBOriginal
+                    .c-txt--02 édition limitée
+                    div
+                        span.c-txt--03 NOUVELLE ambassadeur
+
+            .c-slider--home__item
+                .c-thumb
+                    case i
+                        when 1
+                            img(src="#{imgDir}c-img__sliderHome--alt.jpg", alt="")
+                        default
+                            img(src="#{imgDir}c-img__sliderHome.jpg", alt="")
+
+                    //- picture
+                        //- source(media="min-device-pixel-ratio:1.5" srcset="#{imgDir}c-img__sliderHome--mobile-150dpi.jpg")
+                    img.c-slider__picture--mobile(src="#{imgDir}c-img__sliderHome--mobile.jpg", alt="", srcset="#{imgDir}c-img__sliderHome--mobile.jpg 1x, #{imgDir}c-img__sliderHome--mobile-150dpi.jpg 2x")
+
+                .c-content: .o-table: .o-table__cell--valignMiddle
+                    .c-txt--00 Nouveau
+                    .c-txt--01 MBOriginal
+                    .c-txt--02 édition limitée
+                    div
+                        span.c-txt--03 NOUVELLE ambassadeur
+
+            .c-slider--home__item(data-video="6zXDo4dL7SU", data-width="1440", data-height="500")
+                .c-thumb
+                    img(src="#{imgDir}c-img__sliderHome--video.jpg", alt="")
+
+                    //- picture
+                        //- source(media="min-device-pixel-ratio:1.5" srcset="#{imgDir}c-img__sliderHome--mobile-150dpi.jpg")
+                    img.c-slider__picture--mobile(src="#{imgDir}c-img__sliderHome--mobile.jpg", alt="", srcset="#{imgDir}c-img__sliderHome--mobile.jpg 1x, #{imgDir}c-img__sliderHome--mobile-150dpi.jpg 2x")
+
+                .c-content: .o-table: .o-table__cell--valignMiddle
+                    .c-txt--00 Nouveau
+                    .c-txt--01 Vidéo MBOriginal
+                    .c-txt--02 édition limitée
+                    a.c-button--mainBranding--arrowRightToRight(href="") Lire la vidéo
+        .js-fitvids--yt
+            button.js-video__close.c-fonticon__icon--cross(type="button")
+            #js-video--yt__video

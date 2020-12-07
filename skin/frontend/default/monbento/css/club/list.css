@@ -1,0 +1,174 @@
+.shareElementList {
+    margin-left: 20px;
+}
+
+.shareElementList.type_photo {
+    margin-left:30px;
+}
+
+/* No result */
+.noresult {
+    text-align: center;
+    font-family: quicksand;
+    font-size:2em;
+    margin-top:30px;
+}
+
+/* Lines */
+.elementLine {
+    vertical-align: top;
+    border:1px solid #D7D4D4;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 50px 0px;
+    background:url('../../images/club/element/list-background.jpg');
+}
+
+.elementLine > div {
+    display: table-cell;
+    vertical-align: top;
+}
+
+.elementLine .description {
+    width:430px;
+    height: 175px;
+}
+
+.elementLine .description .general {
+    display:block;
+    height:105px;
+    padding-top: 10px;
+    padding-left:20px;
+}
+
+.elementLine .description .general h2 {
+    font-size:2em;
+}
+
+.elementLine .description .general h2 a {
+    color:inherit;
+}
+
+.elementLine .description > div
+{
+    display: inline-block;
+}
+
+.elementLine .miniProfile {
+    margin-left:10px;
+}
+
+.elementLine .attributes {
+    border-left: 1px solid #D7D4D4;
+    text-align: center;
+    width:110px;
+}
+
+.elementLine .attributes > div {
+    display:table;
+    height:175px;
+    width:100%;
+}
+
+.elementLine .attributes .line {
+    display:table-row;
+    vertical-align: middle;
+    border:1px solid #F00;
+    text-align: center;
+}
+
+.elementLine .attributes .line span {
+    display:table-cell;
+    vertical-align: middle;
+    border-bottom:1px solid #D7D4D4;
+}
+
+.elementLine .attributes .line.last span {
+    border:none;
+}
+
+.elementLine .attributes .line img {
+    display:inline;
+}
+
+
+/**
+ * Element cell
+ */
+
+.shareElementList.type_photo {
+    display:table;
+    /*width:800px;*/
+    /*width:100%;*/
+    /*margin-left:0;*/
+}
+
+.shareElementList .elementRow {
+    display:table-row;
+    height:280px;
+}
+
+.elementCell {
+    display:table-cell;
+    display:relative;
+}
+
+.elementCell.type_photo {
+    /*width: 400px;*/
+    padding-right:20px;
+}
+
+.elementCell .image {
+    position:relative;
+    text-align:left;
+    overflow:hidden;
+}
+
+.elementCell .description {
+    position:absolute;
+    bottom:0;
+    width:310px;
+    height:55px;
+    padding:10px 30px;
+    background:#FFF;
+    opacity:0.8;
+    font-size:1.7em;
+    text-align: left;
+    color: #262625;
+    position:absolute;
+    bottom:-75px;
+}
+
+.elementCell .attributes {
+    font-size:1.4em;
+    font-family: vag;
+    text-align:right;
+    padding:5px;
+    /*font-weight:bold;*/
+}
+
+.club #footer-container {
+    width:100%; 
+    display:inline-block;
+}
+
+.club .elementCell.type_photo .attributes > div {
+    display: table-cell;
+    padding-right:10px;
+    min-width:60px;
+    vertical-align: middle;
+}
+
+.club .elementCell.type_photo .miniProfile {
+    width: 100%;
+    padding:0;
+}
+
+.club .elementCell.type_photo .miniProfile .nickname {
+    overflow: hidden;
+    border: none;
+    text-align: left;
+    font-size:0.7em;
+    line-height:18px;
+    
+}

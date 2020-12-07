@@ -1,0 +1,129 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_share>
+                <title>DBM - Sharing API methods</title>
+                <model>dbm_share/api</model>
+                <acl>dbm_share</acl>
+                <methods>
+                    <getConfig>
+                        <title>Get the global WS config</title>
+                        <method>getConfig</method>
+                        <acl>dbm_share/all</acl>
+                    </getConfig>
+                    <postPhoto>
+                        <title>Post an element</title>
+                        <method>postPhoto</method>
+                        <acl>dbm_share/all</acl>
+                    </postPhoto>
+                    <postReceipe>
+                        <title>Post an element</title>
+                        <method>postReceipe</method>
+                        <acl>dbm_share/all</acl>
+                    </postReceipe>
+                    <elementDelete>
+                        <title>Element delete</title>
+                        <method>elementDelete</method>
+                        <acl>dbm_share/all</acl>
+                    </elementDelete>
+                    <getElementById>
+                        <title>Get One element By ID</title>
+                        <method>getElementById</method>
+                        <acl>dbm_share/all</acl>
+                    </getElementById>
+                    <getPopularElements translate="title" module="dbm_share">
+                        <title>Get latest popular elements list</title>
+                        <method>getPopularElements</method>
+                        <acl>dbm_share/all</acl>
+                    </getPopularElements>
+                    <getLatestElements translate="title" module="dbm_share">
+                        <title>Get latest elements list</title>
+                        <method>getLatestElements</method>
+                        <acl>dbm_share/all</acl>
+                    </getLatestElements>
+                    <getFollowedElements translate="title" module="dbm_share">
+                        <title>Get followed elements</title>
+                        <method>getFollowedElements</method>
+                        <acl>dbm_share/all</acl>
+                    </getFollowedElements>
+                    <getElementsForCustomer translate="title" module="dbm_share">
+                        <title>Get latest elements for given customer</title>
+                        <method>getElementsForCustomer</method>
+                        <acl>dbm_share/all</acl>
+                    </getElementsForCustomer>
+                    <getLikedElements translate="title" module="dbm_share">
+                        <title>Get elements liked by current customer</title>
+                        <method>getLikedElements</method>
+                        <acl>dbm_share/all</acl>
+                    </getLikedElements>
+                    <getElementsForCategory translate="title" module="dbm_share">
+                        <title>Get latest elements for given category</title>
+                        <method>getElementsForCategory</method>
+                        <acl>dbm_share/all</acl>
+                    </getElementsForCategory>
+                    <like translate="title" module="dbm_share">
+                        <title>Like an element</title>
+                        <method>like</method>
+                        <acl>dbm_share/all</acl>
+                    </like>
+                    <unlike translate="title" module="dbm_share">
+                        <title>Unlike an element</title>
+                        <method>unlike</method>
+                        <acl>dbm_share/all</acl>
+                    </unlike>
+                    <getCategoryList translate="title" module="dbm_share">
+                        <title>Get category list by type</title>
+                        <method>getCategoryList</method>
+                        <acl>dbm_share/all</acl>
+                    </getCategoryList>
+                    <comment>
+                        <title>Comment on an element</title>
+                        <method>comment</method>
+                        <acl>dbm_share/all</acl>
+                    </comment>
+                    <getComments>
+                        <title>Comment list for an element</title>
+                        <method>getComments</method>
+                        <acl>dbm_share/all</acl>
+                    </getComments>
+                    <abuseElement>
+                        <title>Send abuse to an element</title>
+                        <method>abuseElement</method>
+                        <acl>dbm_share/all</acl>
+                    </abuseElement>
+                    <abuseComment>
+                        <title>Send abuse to a comment</title>
+                        <method>abuseComment</method>
+                        <acl>dbm_share/all</acl>
+                    </abuseComment>
+                    <search>
+                        <title>Search elements</title>
+                        <method>search</method>
+                        <acl>dbm_share/all</acl>
+                    </search>
+                    <searchFromBounds>
+                        <title>Search from bounds</title>
+                        <method>searchFromBounds</method>
+                        <acl>dbm_share/all</acl>
+                    </searchFromBounds>
+                </methods>
+            </dbm_share>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_share>dbmShare</dbm_share>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_share translate="title" module="dbm_share">
+                    <title>DBM - Share</title>
+                    <all translate="title" module="dbm_share">
+                        <title>DBM - Share : All</title>
+                    </all>
+                </dbm_share>
+            </resources>
+        </acl>
+    </api>
+</config>

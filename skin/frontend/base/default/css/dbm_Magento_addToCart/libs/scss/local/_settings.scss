@@ -1,0 +1,93 @@
+// ========================================= //
+// Settings
+// ========================================= //
+
+// *Import Font
+
+// *Define Font
+$merriWeather   : "Merriweather Sans", sans-serif;
+$sofiaPro       : "sofia-pro", sans-serif;
+$sofiaProCond   : "sofia-pro-condensed", sans-serif;
+$arbutus        : "Arbutus Slab", serif;
+$iconFont       : "iconfont";
+
+// *Define Color
+$white                  : #ffffff !default;
+$black                  : #000000 !default;
+$error                  : #da4f4f !default;
+$grey                   : #9d9da6 !default;
+$red                    : #ba2327 !default;
+$orange                 : #ffa279 !default;
+
+$mainBranding           : #f65e7a !default;
+$mainBranding--active   : darken($mainBranding, 7%) !default;
+
+$subBranding            : #273745 !default;
+$subBranding--alt       : #354450 !default;
+$subBranding--lighten   : #4a5662 !default;
+$subBranding--01        : #3d4b58 !default;
+
+$altBranding            : #83de9a !default;
+
+$mainFont               : $subBranding !default;
+
+$grey--light--00        : #f7f9fb !default;
+$grey--light--01        : #bec8ce !default;
+$grey--light--02        : #f3f4f6 !default;
+$grey--light--03        : #ebecee !default;
+$grey--light--04        : #eceff2 !default;
+$grey--light--05        : #f2f4f6 !default;
+$grey--light--06        : #e1e3e5 !default;
+$grey--light--07        : #f1f0f0 !default;
+$grey--light--08        : #dbd8d9 !default;
+$grey--light--09        : #fafbfc !default;
+$grey--light--10        : #e5e3e3 !default;
+
+$grey--regular--00      : #8f98a0 !default;
+$grey--regular--01      : #a8a8a8 !default;
+$grey--regular--02      : #6f777e !default;
+$grey--regular--03      : #d7d4d4 !default;
+$grey--regular--04      : #525f6a !default;
+$grey--regular--05      : #6f777e !default;
+$grey--regular--06      : #c1c5c9 !default;
+
+$label__product         : $mainBranding !default;
+$label__product--alt    : $altBranding !default;
+$label__warning         : $orange !default;
+
+
+// *Define Breakpoints
+$xsmall                 : 26.25em !default;     //420px
+$small                  : 40em !default;        //640px
+$xmedium                : 52.5em !default;      //840px
+$medium                 : 64em !default;        //1024px
+$large                  : 90em !default;        //1440px
+
+$mobileS                : 20em !default;        //320px
+$mobileM                : 23.4375em !default;   //375px
+$mobileL                : 26.5625em !default;   //425px
+$mobileXl               : 31.25em !default;     //500px
+$tabletS                : 36.25em !default;     //580px
+$tablet                 : 48em !default;        //768px
+$desktop                : 75em !default         //1200px
+$desktopL               : 81.25em !default      //1300px
+$desktopXL              : 100em !default        //1600px
+$desktopXxL             : 125em !default        //2000px
+
+$tooltip--xlarge       : 93.75em !default      //1500px
+
+// *Define Var
+$img                    : '../../media/images/' !default;
+$bezierValue            : cubic-bezier(.7, 0, .175, 1);
+$bezier                 : all .4s $bezierValue;
+$ease                   : all .4s ease;
+$ease--long             : all .6s ease;
+$layoutWidth            : 90em !default;       //1440px
+$gutter                 : rem(7);
+
+// *Define z-index
+$zindex--background     : 40;
+$zindex--content        : 50;
+$zindex--hover          : 60;
+$zindex--fixed          : 70;
+$zindex--offcanvas      : 80;

@@ -1,0 +1,113 @@
+case pageType
+    when 'default'
+    when 'decli'
+        .c-product__action
+            h1.c-title
+                strong MBOriginal Bleu Ciel/Blanc
+                | La boite bento
+
+            h2.c-baseline 2 étages de plaisir,#[br]pour un déjeuner équilibré
+
+            .c-priceBox
+                .c-price 35,00€
+
+            form.c-quantity.js-quantity.js-form__quantity.js-form__watchQuantity(action="", data-dbm-form-watch=".js-quantity__sticky")
+                .c-input__button.js-quantity__decrease: button: span -
+                .c-input__text: input(type="text", value="1", disabled)
+                .c-input__button.js-quantity__increase: button: span +
+
+            a.c-button--mainBranding--arrowRightToRight Ajouter au panier
+
+            .c-info
+                | Livraison éstimée :#[br]Jeudi prochain (France Metrop.)
+                .c-info__tooltip.js-tooltip
+                    i.c-fonticon__icon--questionMark
+                        .c-tooltip: .o-table: .o-table__cell--valignMiddle
+                            strong Les commandes passées avant#[br]12h00 sont expédiées le jour même
+                            | (sauf week-ends et jours fériés),#[br]celles passées après 12h00, le lendemain
+
+    when 'packs'
+        .c-product__action
+            h1.c-title
+                strong MBOriginal Bleu Ciel/Blanc
+                | La boite bento
+
+            h2.c-baseline
+                | #[strong Boîte bento,]#[br]1 x MB Original Vanilla#[br]
+                | #[strong Sac,]#[br]1 x MB Pochette Color - Banana#[br]
+                | #[strong Couverts,]#[br]1 x MB Pocket Color Jaune
+
+            .c-priceBox
+                .c-price 35,00€
+
+            form.c-quantity.js-quantity.js-form__quantity.js-form__watchQuantity(action="", data-dbm-form-watch=".js-quantity__sticky")
+                .c-input__button.js-quantity__decrease: button: span -
+                .c-input__text: input(type="text", value="1", disabled)
+                .c-input__button.js-quantity__increase: button: span +
+
+            a.c-button--mainBranding--arrowRightToRight Ajouter au panier
+
+            .c-info
+                | Livraison éstimée :#[br]Jeudi prochain (France Metrop.)
+                .c-info__tooltip.js-tooltip
+                    i.c-fonticon__icon--questionMark
+                        .c-tooltip: .o-table: .o-table__cell--valignMiddle
+                            strong Les commandes passées avant#[br]12h00 sont expédiées le jour même
+                            | (sauf week-ends et jours fériés),#[br]celles passées après 12h00, le lendemain
+
+    when 'discount'
+    when 'sales'
+        .c-product__action.is-alt
+            case pageType
+                when 'discount'
+                    .c-label--alt--discount
+                        .c-amout - XX %
+                        .c-content remise
+                when 'sales'
+                    .c-label--alt--sales
+                        .c-amout - XX %
+                        .c-content soldes
+            h1.c-title
+                strong MBOriginal Bleu Ciel/Blanc
+                | La boite bento
+
+            h2.c-baseline 2 étages de plaisir,#[br]pour un déjeuner équilibré
+
+            .c-priceBox
+                .c-price--alt 50,00€
+                .c-price.is-alt 35,00€
+
+            form.c-quantity.js-form__quantity.js-form__watchQuantity(action="")
+                .c-input__button.js-quantity__decrease: button: span -
+                .c-input__text: input(type="text", value="1", disabled)
+                .c-input__button.js-quantity__increase: button: span +
+
+            a.c-button--mainBranding--arrowRightToRight Ajouter au panier
+
+            .c-info
+                | Livraison éstimée :#[br]Jeudi prochain (France Metrop.)
+                .c-info__tooltip.js-tooltip
+                    i.c-fonticon__icon--questionMark
+                        .c-tooltip: .o-table: .o-table__cell--valignMiddle
+                            strong Les commandes passées avant#[br]12h00 sont expédiées le jour même
+                            | (sauf week-ends et jours fériés),#[br]celles passées après 12h00, le lendemain
+
+    when 'outOfStock'
+        .c-product__action
+            .c-warning rupture de stock
+            h1.c-title
+                strong MBOriginal Bleu Ciel/Blanc
+                | La boite bento
+
+            h2.c-baseline 2 étages de plaisir,#[br]pour un déjeuner équilibré
+
+            .c-info--tall
+                | Recevoir un email #[br]dès que ce produit est disponible
+
+            form.c-email(action="")
+                .c-inputSubmit__inline
+                    .c-input__holder.js-label__animate
+                        label Adresse email
+                        .c-input__text: input(type="text")
+                    .c-submit__square
+                        input(type="submit", value="")

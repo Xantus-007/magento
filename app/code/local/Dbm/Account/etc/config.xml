@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Account>
+            <version>0.0.1</version>
+        </Dbm_Account>
+    </modules>
+    <global>
+        <blocks>
+            <customer>
+                <rewrite>
+                    <account_navigation>Dbm_Account_Block_Rewrite_Customer_Account_Navigation</account_navigation>
+                </rewrite>
+            </customer>
+            <sales>
+                <rewrite>
+                    <order_history>Dbm_Account_Block_Rewrite_Sales_Order_History</order_history>
+                </rewrite>
+            </sales>
+        </blocks>
+        <helpers>
+            <dbm_account>
+                <class>Dbm_Account_Helper</class>
+            </dbm_account>
+        </helpers>
+    </global>
+    <frontend>
+        <layout>
+            <updates>
+                <dbm_account>
+                    <file>dbm_account.xml</file>
+                </dbm_account>
+            </updates>
+        </layout>
+    </frontend>
+</config>

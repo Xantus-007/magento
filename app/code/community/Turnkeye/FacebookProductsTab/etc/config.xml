@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Turnkeye_FacebookProductsTab>
+            <version>0.1.0</version>
+        </Turnkeye_FacebookProductsTab>
+    </modules>
+    <frontend>
+        <routers>
+            <facebookproductstab>
+                <use>standard</use>
+                <args>
+                    <module>Turnkeye_FacebookProductsTab</module>
+                    <frontName>facebook-catalog</frontName>
+                </args>
+            </facebookproductstab>
+        </routers>
+        <layout>
+            <updates>
+                <facebookproductstab>
+                    <file>turnkeye_facebookproductstab.xml</file>
+                </facebookproductstab>
+            </updates>
+        </layout>
+    </frontend>
+
+    <global>
+        <resources>
+            <facebookproductstab_setup>
+                <setup>
+                    <module>Turnkeye_FacebookProductsTab</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </facebookproductstab_setup>
+        </resources>
+        <blocks>
+            <facebookproductstab>
+                <class>Turnkeye_FacebookProductsTab_Block</class>
+            </facebookproductstab>
+        </blocks>
+    </global>
+</config>

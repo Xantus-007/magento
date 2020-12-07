@@ -1,0 +1,78 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Création de compte'
+    - var pageClass = 'has-menu__collapse'
+    - var pageColor = ''
+    - var pageType = ''
+    - var menu = false
+
+append body
+    section.o-section--bkgGrey--noPaddingTop
+
+        +c-title--page('Mon compte')
+
+        .row
+            .columns.medium-10.large-8.small-centered
+                .c-alert--info
+                    .c-label--center: .o-table: .o-table__cell--valignMiddle
+                        span Vous découvrez monbento ?
+                        a.c-linkCst--arrow--white(href="") Créer mon compte
+
+                .c-container__white--login
+                    .c-heading
+                        .c-title Connexion
+                        .c-baseline Vous avez déjà un compte, faites comme chez vous
+
+                    .row.collapse
+                        .columns.medium-6
+                            .js-itemEqualizer.c-form__login.has-seperator
+                                .c-separator ou
+                                a.c-button--white--facebook--hoverSubBranding(href=""): .o-table: .o-table__cell--valignMiddle Connectez-vous avec facebook
+                        .columns.medium-6
+                            .js-itemEqualizer.c-form__login
+                                .c-input__holder.js-label__animate
+                                    label.required #[em *] Adresse e-mail
+                                    .c-input__text: input(type="text")
+
+                                .c-form__noMargin
+                                    .c-input__holder.js-label__animate.is-focus
+                                        label.required #[em *] Civilité
+                                        .c-input__text
+                                            select
+                                                option Mr
+                                                option Mme
+
+                                    .c-input__holder.js-label__animate
+                                        label.required #[em *] Prénom
+                                        .c-input__text: input(type="text", value="Lorem")
+
+                                    .c-input__holder.js-label__animate
+                                        label.required #[em *] Nom
+                                        .c-input__text: input(type="text", value="Lorem")
+
+                                .c-input__holder.js-label__animate
+                                    label.required #[em *] Date de naissance (jj/mm/aaaa)
+                                    .c-input__text: input(type="text", value="XX/XX/XXXX")
+
+                                .c-form__noMargin
+                                    .c-input__holder.js-label__animate
+                                        label.required #[em *] Mot de passe
+                                        .c-input__text: input(type="text", value="XX/XX/XXXX")
+
+                                    .c-input__holder.js-label__animate
+                                        label.required #[em *] Confirmer le mot de passe
+                                        .c-input__text: input(type="text", value="XX/XX/XXXX")
+
+                                .c-label__info
+                                    span.c-required *
+                                    | Champs obligatoire
+
+                                .c-checkbox--inline
+                                    .c-checkbox
+                                        input(type="checkbox", id="checkbox__001")
+                                        label(for="checkbox__001") Recevoir la newsletter Monbento
+
+                                input.c-button--mainBranding--arrowRightToRight(type="submit", value="Valider")

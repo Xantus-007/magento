@@ -1,0 +1,14 @@
+<?php if(count($this->getStores())>1): ?>
+<ul class="form-language<?php echo $this->getCurrentStoreId()==2?' en':''?>">
+    <?php foreach ($this->getStores() as $_lang): ?>
+    <?php	
+		if ($this->getCurrentStoreId()==$_lang->getId()) {
+			?><li class="<?php echo $_lang->getCode() ?>"><?php echo $this->htmlEscape($_lang->getName()) ?></li><?php
+		} else{
+			?><li class="<?php echo $_lang->getCode() ?>"><a href="<?php echo $_lang->getBaseUrl() ?>"><?php echo $this->htmlEscape($_lang->getName()) ?></a></li>
+<?php
+		}  ?>
+    
+    <?php endforeach; ?>
+</ul>
+<?php endif; ?>

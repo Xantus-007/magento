@@ -1,0 +1,242 @@
+//- layout
+extends _components-layout--b2b
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Espace Pro'
+    - var pageClass = 'c-b2b'
+    - var pageColor = '#82b9bf'
+
+append body    
+    
+    .c-b2b__breadcrumb
+        .row
+            .column
+                - var labels = ['Espace pro', 'Créer un compte']
+                +c-breadcrumb(labels)  
+            
+    .o-section--bkgGrey--noPaddingBottom.c-b2b__forms
+        .row
+            .column
+                h1.c-title--group
+                    .c-main Créer un compte                    
+                    
+        .row
+            .column.large-10.large-centered
+                .c-form__wrapper.c-b2b__register
+                    .c-form__holder                                                
+                        h2.c-text__sofiaPro--light--20 Informations professionnelles
+                        .c-form__noMargin
+                            .row.collapse                            
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Société #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-file.js-label__animate.is-focus
+                                        label.required Kbis (.png, .jpg, .pdf) #[em *]
+                                        .c-input__text
+                                            input(type="text" placeholder="Ajouter un fichier" readonly)
+                                            input(type="file")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Siret #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Numéro de TVA #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                        
+                        .c-form__noMargin
+                            .row.collapse                            
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Nom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Prénom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Adresse email #[em *]
+                                        .c-input__text
+                                            input(type="email")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Téléphone #[em *]
+                                        .c-input__text
+                                            input(type="tel")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label Fax
+                                        .c-input__text
+                                            input(type="tel")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label Adresse Skype
+                                        .c-input__text
+                                            input(type="text")
+                        
+                        h2.c-text__sofiaPro--light--20 Informations complémentaires
+                        .c-form__noMargin
+                            .row
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label.required Présentation de votre société #[em *]
+                                        textarea(placeholder="100 caractères minimum")
+                                        
+                        .c-form__noMargin
+                            .row
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label.required.hide-for-medium-down Emploi envisagé des produits monbento (vente, cadeaux, restauration) #[em *]
+                                        label.required.show-for-medium-down.hide-for-small-down Emploi envisagé des produits monbento #[em *]
+                                        label.required.show-for-small-down Emploi envisagé des produits #[em *]
+                                        textarea(placeholder="50 caractères minimum")
+                                        
+                        h2.c-text__sofiaPro--light--20 Adresse de facturation
+                        .c-form__noMargin
+                            .row.collapse
+                                .column
+                                    .c-input__holder.js-label__animate
+                                        label.required Société #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label.required Adresse postale #[em *]
+                                        textarea
+                                            | 12 rue Georges Clémenceau
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Ville #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Code postal #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Région #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Pays #[em *]
+                                        .c-input__text                                            
+                                            select
+                                                - for (var i = 0; i < 4; i++)
+                                                    option(value="") Pays #{i}
+                                                    
+                        h2.c-text__sofiaPro--light--20 Adresse de livraison
+                        .c-form__noMargin
+                            .row.collapse
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Nom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Prénom #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label.required Adresse postale #[em *]
+                                        textarea
+                                            | 12 rue Georges Clémenceau
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Ville #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label.required Code postal #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Région #[em *]
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Pays #[em *]
+                                        .c-input__text                                            
+                                            select
+                                                - for (var i = 0; i < 4; i++)
+                                                    option(value="") Pays #{i}
+                                                    
+                        h2.c-text__sofiaPro--light--20 RIB pour le paiement LCR
+                        .c-form__noMargin
+                            .row.collapse
+                                .column
+                                    .c-input__holder.js-label__animate
+                                        label Titulaire du compte
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label Numéro de compte
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label Clé de RIB
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label Code guichet
+                                        .c-input__text
+                                            input(type="text")                                
+                                .column.medium-6
+                                    .c-input__holder.js-label__animate
+                                        label Code banque
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label IBAN
+                                        .c-input__text
+                                            input(type="text")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label BIC
+                                        .c-input__text
+                                            input(type="text")
+                                            
+                                .column
+                                    .c-input__holder.js-label__animate.is-textarea.is-focus
+                                        label Remarques ?
+                                        textarea(placeholder="...")
+                                        
+                        h2.c-text__sofiaPro--light--20 Information de connexion
+                        .c-form__noMargin
+                            .row.collapse
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Mot de passe #[em *]
+                                        .c-input__text
+                                            input(type="password")
+                                .column.medium-6
+                                    .c-input__holder.is-end.js-label__animate
+                                        label.required Confirmer le mot de passe #[em *]
+                                        .c-input__text
+                                            input(type="password")
+                            
+                                            
+                        .c-label__info #[span.c-required *] Champs obligatoires
+                        
+                        .text-center
+                            input.c-button--b2b--arrowRightToRight(type="submit" value="Valider")                                

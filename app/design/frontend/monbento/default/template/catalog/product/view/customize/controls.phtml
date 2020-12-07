@@ -1,0 +1,6 @@
+<div class="c-item"><a href="" class="js-controlsPersonnalize__reset" title="<?php echo $this->__('Recommencer') ?>"><i class="c-fonticon__icon--rubber"></i></a></div>
+<div class="c-item"><a href="" class="js-controlsPersonnalize__shuffle" title="<?php echo $this->__('Lancer un modèle aléatoire') ?>"><i class="c-fonticon__icon--shuffle"></i></a></div>
+<?php if(!Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+<div class="c-item"><a href="" class="js-controlsPersonnalize__download" title="<?php echo $this->__('Télécharger') ?>"><i class="c-fonticon__icon--downloadPicture"></i></a></div>
+<div class="c-item"><a class="js-controlsPersonnalize__share addthis_button_more at300b" title="<?php echo $this->__('Partager') ?>"><i class="c-fonticon__icon--export"></i></a></div>
+<?php endif; ?>

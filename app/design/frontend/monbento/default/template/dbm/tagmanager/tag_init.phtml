@@ -1,0 +1,31 @@
+<?php if($this->getTagId()): ?>
+<script type="text/javascript">
+jQuery(function($){
+    $('[data-gtm]').click(function() {
+        if($(this).attr('data-gtm') !== 'null')
+        {
+            var dataPushClick = jQuery.parseJSON($(this).attr('data-gtm'));
+            
+            if($(this).closest('.c-product__action').find('input[name="qty"]').size() > 0)
+            {
+                dataPushClick.ecommerce.add.products[0].quantity = parseInt($('.c-product__action input[name="qty"]').val());
+            }
+            
+            if($(this).closest('.c-product__action').find('.super-attribute-select').size() == 1)
+            {
+                dataPushClick.ecommerce.add.products[0].variant = $('.c-product__action .super-attribute-select').find('option:selected').innerHTML;
+            }
+            
+            dataLayer.push(dataPushClick);
+            <?php if($this->isDebug()): ?>console.log(dataPushClick);<?php endif; ?>
+        }
+    });
+});
+    
+dataLayer = [{
+    <?php if($this->hasCustomerId()): ?>"customer": "<?php echo $this->getCustomerId(); ?>",<?php endif; ?>
+    <?php if($this->hasCountryName()): ?>"country": "<?php echo $this->getCountryName(); ?>",<?php endif; ?>
+    <?php if($this->hasLanguage()): ?>"lang": "<?php echo $this->getLanguage(); ?>"<?php endif; ?>
+}];
+</script>
+<?php endif; ?>

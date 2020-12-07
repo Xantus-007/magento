@@ -1,0 +1,8 @@
+#smartbanner {
+    top: -100px !important;
+    position: fixed !important;
+    
+    &.shown {
+        top: 0 !important;
+    }
+}

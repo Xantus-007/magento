@@ -1,0 +1,55 @@
+// ========================================= //
+// Settings
+// ========================================= //
+
+// *Import Font
+
+// *Define Font
+$fontBody               : 'Lato';
+
+// *Define Color
+$white                  : #ffffff !default;
+$black                  : #000000 !default;
+$error                  : #da4f4f !default;
+$success                : #5dad5d !default;
+$grey                   : #333333 !default;
+$red                    : #ba2327 !default;
+
+$mainBranding           : #e3bf73 !default;
+$mainFont               : #383d42 !default;
+
+$grey--dark             : #121212 !default;
+$grey--light            : #333333 !default;
+$grey--table--thead     : #e5e4e4 !default;
+
+// *Define Breakpoints
+$xsmall                 : 26.25em !default;     //420px
+$small                  : 40em !default;        //640px
+$xmedium                : 52.5em !default;      //840px
+$medium                 : 64em !default;        //1024px
+$large                  : 90em !default;        //1440px
+
+$mobileS                : 20em !default;        //320px
+$mobileM                : 23.4375em !default;   //375px
+$mobileL                : 26.5625em !default;   //425px
+$mobileXl               : 31.25em !default;     //500px
+$tabletS                : 36.25em !default;     //580px
+$tablet                 : 48em !default;        //768px
+$desktop                : 75em !default         //1200px
+$desktopL               : 81.25em !default      //1300px
+$desktopXL              : 100em !default        //1600px
+$desktopXxL             : 125em !default        //2000px
+
+// *Define Var
+$gutter                 : 0.625rem !default;    //10px
+$bezierValue            : cubic-bezier(.7, 0, .175, 1);
+$bezier                 : all .4s $bezierValue;
+$ease                   : all .4s ease;
+$img                    : '../../media/images/' !default;
+$border--grey--light    : solid 1px darken($grey--table--thead, 10%);
+
+// *Define z-index
+$zindex--background     : 40;
+$zindex--content        : 50;
+$zindex--hover          : 60;
+$zindex--fixed          : 70;

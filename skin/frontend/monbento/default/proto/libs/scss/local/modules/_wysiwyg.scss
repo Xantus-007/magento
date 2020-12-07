@@ -1,0 +1,89 @@
+// ========================================= //
+// wysiwyg
+// ========================================= //
+
+$marginBottom : rem(30);
+
+@mixin marginBottom() {
+    margin-bottom: rem(28);
+
+    @include bp-lt($tablet) {
+        margin-bottom: rem(14);
+    }
+}
+
+h2, .h2 {
+    position: relative;
+    font-size: rem(30);
+    color: $mainFont;
+    font-family: $sofiaPro;
+    font-weight: 300;
+
+    @include marginBottom;
+}
+
+h3, .h3 {
+    font-size: rem(24);
+    color: $mainFont;
+    font-family: $sofiaPro;
+    font-weight: 700;
+
+    @include marginBottom;
+}
+
+h4, .h4 {
+    font-size: rem(18);
+    color: $mainFont;
+    text-transform: uppercase;
+    font-family: $sofiaProCond;
+
+    @include marginBottom;
+}
+
+.c-text__sofiaPro--light--20 {
+    font-family: $sofiaPro;
+    font-weight: 300;
+    font-size: rem(20);
+    color: $mainFont;
+
+    @include bp-lt($small) {
+        font-size: rem(16);
+    }
+}
+
+.c-wysiwyg {
+    @import 'wysiwygContent';
+}
+
+.c-table__wrapper {
+    width: 100%;
+    overflow-y: auto;
+    _overflow: auto;
+    margin: 0 0 $gutter;
+
+    &::-webkit-scrollbar
+    {
+        -webkit-appearance: none;
+        width: rem(14);
+        height: rem(14);
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+        border-radius: rem(8);
+        border: rem(3) solid $white;
+        background-color: rgba(0, 0, 0, .3);
+    }
+
+    table {
+        margin-bottom: 0;
+    }
+}
+
+.c-intro__page--title {
+    margin-bottom: $marginBottom;
+    font-family: $sofiaPro;
+    color: $mainBranding;
+    font-size: rem(30);
+    font-weight: 300;
+}

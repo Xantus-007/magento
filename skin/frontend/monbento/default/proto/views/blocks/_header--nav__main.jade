@@ -1,0 +1,52 @@
+.c-stickyNav.has-languageSwitcherOpen(class= menu == true ? 'has-subMenuOpen' : '', class= aboutMenu == true ? 'has-subMenuOpen' : ''): .c-topline
+    include _search
+    include _languageSwitcher
+    include _logo
+
+    .c-options
+        a.c-language__toggle.js-open__languageSwitcher.is-active(href=""): .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--flag
+        a.c-search__toggle(href=""): .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--zoom
+        a.c-account(href=""): .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--account
+        a.c-cart.has-product(href="", class= menu == false ? 'is-active' : ''): .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--cart
+        a.c-nav__icon(href=""): i
+
+    .o-nav
+        - var navLevel0 = ['À propos', 'ESPACE PRO', 'recettes & news', 'SHOP']
+        - var navLevel1 = [['Monbento', 'Équipe & partenaires', 'Le saviez-vous ?'], [], [], ['Personnalisation', 'Lunchbox', 'Bouteilles', 'Couverts Nomades', 'Sacs', 'Récipents à sauces et moules', 'pièces détachées', 'cartes & packs cadeaux', 'outlet']]
+        ul.c-nav__level0
+            each label0, indexI in navLevel0
+                li
+                    a(href="", class= indexI == label0.length - 1 ? "has-subMenu" : "", class= indexI == 0 ? "has-subMenu" : "", class= indexI == label0.length - 1 && menu == true ? "is-active" : "", class= indexI == 0 && aboutMenu == true ? "is-active" : "")
+                        span: .o-table: .o-table__cell--valignMiddle #{label0}
+                    if navLevel1[indexI].length
+                        .c-nav__show: .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--arrowToRight
+
+                    if navLevel1[indexI].length
+                        ul.c-nav__level1(class= menu == true && indexI != 0 ? 'is-visible' : '', class= aboutMenu == true && indexI == 0 ? 'is-visible' : '')
+                            .c-nav__hide: .o-table: .o-table__cell--valignMiddle
+                                i.c-fonticon__icon--arrowToLeft
+                                span Précédent
+                            each label1, indexY in navLevel1[indexI]
+                                li
+                                    a(href=""): .o-table: .o-table__cell--valignMiddle: span #{label1}
+
+                                    - if(indexY > 0 && indexI != 0)
+                                        .c-nav__show: .o-table: .o-table__cell--valignMiddle: i.c-fonticon__icon--arrowToRight
+
+                                        .c-nav__level2--holder
+                                            .c-nav__hide: .o-table: .o-table__cell--valignMiddle
+                                                i.c-fonticon__icon--arrowToLeft
+                                                span Précédent
+                                            .c-nav__level2--holder--left: .c-nav__level2--holder--inner
+                                                .c-title La collection #{indexY}
+
+                                                ul.c-nav__level2
+                                                    - var navLevel2Baseline = ['MB Original', 'MB Square', 'MB Lib', 'MB Tresor', 'MB Gram', 'MB Element']
+                                                    - var navLevel2Label = ['La Boîte Bento', 'La Boîte Bento carrée', 'Le Bol double paroi', 'Le Bento des Enfants', 'La Boîte à Goûter', 'Le Bento isotherme']
+                                                    each label3, indexZ in navLevel2Label
+                                                        li: a(href="")
+                                                            span.c-type #{navLevel2Baseline[indexZ]}
+                                                            span.c-label #{label3}
+
+                                            .c-nav__level2--holder--right: .c-nav__level2--holder--inner
+                                                .c-thumb: img(src="#{imgDir}c-img__product--300-300__bowl.jpg", alt="")

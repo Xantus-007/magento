@@ -1,0 +1,48 @@
+// ========================================= //
+// Boosted afternoon
+// ========================================= //
+
+.boosted_afternoon {
+    background: url(../images/bkg_boosted_afternoon.png) no-repeat 50% 0 $purple_boostedafternoon;
+    padding-top: 200px;
+    position: relative;
+
+    &:after {
+        position: absolute;
+        content: "";
+        width: 100%;
+        height: 160px;
+        bottom: 0px;
+        background: white;
+        z-index: 100;
+    }
+}
+
+.monbentoKids_home_en .boosted_afternoon {
+    background: url(../images/bkg_boosted_afternoon_en.png) no-repeat 50% 0 $purple_boostedafternoon;
+}
+
+.embed_video {
+    max-width: 890px;
+    width: 90%;
+    padding: 10px;
+    background: white;
+    margin: 0 auto;
+    @include border-radius(10px);
+    @include box-shadow(rgba($grey_strg, 60%) 0 0 5px 0);
+    position: relative;
+    z-index: 110;
+
+    &:after {
+        content: "";
+        position: absolute;
+        bottom: -35px;
+        width: 890px;
+        height: 35px;
+        background: url(../images/bkg_after_embed_video.png) no-repeat 50% 0 transparent;
+
+        @include bp-lt($large){
+            display: none;
+        }
+    }
+}

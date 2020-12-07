@@ -1,0 +1,53 @@
+<?php
+/* @var Cartsguru_CartRecovery_Helper_Data $_helper */
+$_helper = $this->helper('cartsguru_cartrecovery');
+$_facebookEnabled = $_helper->getFacebook();
+$_pixel = $_helper->getPixel();
+$_catalogId = $_helper->getCatalogId();
+
+$_cartProduct = $this->getAddToCartProduct();
+?>
+<?php if ($_facebookEnabled && $_pixel && $_catalogId): ?>
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window,
+            document, 'script', '//connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '<?php echo $_pixel; ?>');
+        fbq('track', "PageView");
+
+        <?php if ($_cartProduct): ?>
+        fbq('track', 'AddToCart', {
+            content_type: 'product',
+            content_ids: ['<?php echo $_cartProduct->id; ?>'],
+            value: <?php echo $_cartProduct->price; ?>,
+            currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+            product_catalog_id: '<?php echo $_catalogId; ?>'
+        });
+        <?php endif; ?>
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none"
+             src="//www.facebook.com/tr?id=<?php echo $_pixel; ?>&ev=PageView&noscript=1"/>
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+<?php endif; ?>
+
+<script>
+    var cartsguru_tracking_url = '<?php echo $this->getTrackingURL(); ?>';
+</script>

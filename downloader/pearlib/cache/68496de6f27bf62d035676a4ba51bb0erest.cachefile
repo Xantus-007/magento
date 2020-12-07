@@ -1,0 +1,81 @@
+a:9:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.package";s:18:"xsi:schemaLocation";s:80:"http://pear.php.net/dtd/rest.package    http://pear.php.net/dtd/rest.package.xsd";}s:1:"n";s:15:"ET_Reviewnotify";s:1:"c";s:37:"connect.magentocommerce.com/community";s:2:"ca";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:34:"/Chiara_PEAR_Server_REST/c/Default";}s:8:"_content";s:7:"Default";}s:1:"l";s:27:"Academic Free License (AFL)";s:2:"lu";s:47:"http://www.opensource.org/licenses/academic.php";s:1:"s";s:57:"This module notify store owner about new product reviews.";s:1:"d";s:3079:"<div>
+<div>
+<div>
+<p><span><span style="color: #ff6600;">EN</span>:</span></p>
+<ol>
+<li>Store owner will receive notification email after receiving new product review.&nbsp;</li>
+<li>If there are pending reviews - standart notification toolbar is shown in admin.&nbsp;</li>
+<li>There is a function, that makes it difficult for auto bots/spammers to submit reviews.</li>
+</ol>
+<p>Thanks for idea with toolbar to module&nbsp;&nbsp; http://www.magentocommerce.com/magento-connect/clockworkgeek/extension/3853/clockworkgeek_reviewsnotification</p>
+<p>&nbsp;</p>
+<p><strong>Installation</strong>:</p>
+<ul>
+<li>* Disable Compiler, if it is enabled (System -&gt; Tools -&gt; Compilation)</li>
+<li>* Disable cache, if it is enabled (System -&gt; Cache Management)</li>
+<li>* Install the extension</li>
+<li>* Log off admin panel (Log Out)</li>
+<li>* Log into admin panel (enter your login and password)</li>
+<li>* Set Advanced Compare parameters (System -&gt; Configuration -&gt; Catalog -&gt; Product Reviews)</li>
+<li>* Run compilation process and enable cache if needed</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Features</strong>:</p>
+<ul>
+<li>* Open source code (no encryption and obfuscation)</li>
+<li>* Code follows Magento development standards</li>
+<li>* Extension is available on 2 languages (ru_RU, en_US) and you can easy add your own</li>
+<li>* All extension settings are available on admin panel</li>
+<li>** Enable/Disable email notification</li>
+<li>** Enable/Disable toolbar notification&nbsp;</li>
+<li>** Notification email template can be changed</li>
+<li>** Email notification to multiple recipients</li>
+<li>** Enable/Disable Anti spam function</li>
+<li>* Theme modification is not required if you have original element names on your review form.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>Changelog</strong>:</p>
+<p>&nbsp;</p>
+<p>ver. 0.2.4</p>
+<ul>
+<li>+ Added anti spam protection for review form on frontend (relevant when review writing for guests is allowed)</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.2.3</p>
+<ul>
+<li>* Fixed broken Pending Reviews RSS link when Add Store Code to Urls is set to Yes.</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.2.2</p>
+<ul>
+<li>* cleaned layout code, to avoid toolbar dublication in ver. &gt; 1.4</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.2.1</p>
+<ul>
+<li>* changed developer name in the package</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.2.0</p>
+<ul>
+<li>+ added notification in admin standart notification toolbar* send separate mails for each notification recipient</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.1.1</p>
+<ul>
+<li>* added Helper (not worked - Transactional mails - add new template) - actual for Magento ver. 1.4.х</li>
+</ul>
+<p>&nbsp;</p>
+<p>ver. 0.1.0</p>
+<ul>
+<li>+ stable release</li>
+</ul>
+<p><br /><br /></p>
+<p>Please, do not use forum for bug report. I can't answer there. Send pm if you want answer :)</p>
+<p>&nbsp;</p>
+<p><span><span style="color: #ff6600;">RU</span>:</span></p>
+<p>Описание модуля на русском языке в комплекте модуля.</p>
+</div>
+</div>
+<p><span style="color: #ff6600;"><br /></span></p>
+</div>";s:1:"r";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:42:"/Chiara_PEAR_Server_REST/r/ET_Reviewnotify";}}}

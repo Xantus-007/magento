@@ -1,0 +1,122 @@
+#footer-container {
+    padding: 15px 0;
+}
+
+#footer-links {
+    .bloc {
+        @include bp-lt($mb-small) {
+            margin-bottom: 15px;
+        }
+        
+        ul {
+            @include bp-lt($mb-small) {
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+#footer-last-column {
+    @include bp-lt($mb-medium) {
+        margin-top: 20px;
+    }
+    
+    @include bp-gt($mb-medium) {
+        float: right;
+    }
+    
+    #hbar-nl,
+    #footer-social {
+        @include bp-gt($mb-medium) {
+            margin-left: 9px;
+        }
+
+        @include bp-lt($mb-small) {
+            text-align: center;
+        }
+    }
+
+    #hbar-nl {
+        @include bp-lt($mb-small) {
+            background: none;
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        label {
+            @include bp-lt($mb-small) {
+                margin-bottom: 5px;
+                display: block;
+            }
+        }
+
+        input {
+            @include bp-lt($mb-small) {
+                height: 30px;
+                font-size: 12px;
+                width: 150px;
+                @include border-radius(0);
+            }
+        }
+
+        button {
+            @include bp-lt($mb-small) {
+                height: 32px;
+                font-size: 12px;
+                width: 36px;
+            }
+        }
+    }
+}
+
+ul {
+    &.social-buttons {
+        a {
+            @include bp-lt($mb-small) {
+                background: none;
+                background-size: contain !important; 
+            }
+
+            &.facebook {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/facebook.svg') no-repeat;
+                }
+            }
+            &.twitter {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/twitter.svg') no-repeat;
+                }
+            }
+            &.youtube {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/youtube.svg') no-repeat;
+                }
+            }
+            &.googleplus {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/google-plus.svg') no-repeat;
+                }
+            }
+            &.pinterest {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/pinterest.svg') no-repeat;
+                }
+            }
+            &.instagram {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/instagram.svg') no-repeat;
+                }
+            }
+            &.vimeo {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/vimeo.svg') no-repeat;
+                }
+            }
+            &.rss {
+                @include bp-lt($mb-small) {
+                    background: url('../../images/svg/social/feed.svg') no-repeat;
+                }
+            }
+        }
+    }
+}

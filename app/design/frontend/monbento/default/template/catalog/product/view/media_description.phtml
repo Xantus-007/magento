@@ -1,0 +1,67 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * Product media data template
+ *
+ * @see Mage_Catalog_Block_Product_View_Media
+ */
+/* @var $this Mage_Catalog_Block_Product_View_Media */
+?>
+<?php
+$_product = $this->getProduct();
+$_helper = $this->helper('catalog/output');
+$_gallery = $_product->getMediaGallery('images');
+$_galleryCount = 0;
+$_galleryDesc2 = array();
+foreach ($_gallery as $_image)
+{
+    if(($_image['gallery2'] == '1' || $_image['gallery2_default'] == '1') && $_image['label_default'] !== 'image_bundle')
+    {
+        if($_product->getModulePersonnalisation() == 0 || $_image['disabled_default'] == '0')
+        {
+            $_galleryDesc2[$_image['position']] = $_image;
+            $_galleryCount++;
+        }
+    }
+}
+ksort($_galleryDesc2);
+?>
+<div class="c-slider--productPresentation">
+    <div class="js-bxslider">
+        <?php foreach ($_galleryDesc2 as $_image): ?>
+        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/catalog/product' . $_image['file'], 960, 600); //$this->helper('catalog/image')->init($this->getProduct(), 'image', $_image['file'])->resize(960, 600) ?>" alt="<?php echo ($_image['label']) ? $this->escapeHtml($_image['label']) : Mage::helper('dbm_seo')->getAltProductImage($_product); ?>" />
+        <?php endforeach; ?>
+    </div>
+    <div class="c-bxslider--pager">
+        <?php $i = 0; foreach ($_galleryDesc2 as $_image): ?>
+        <a data-slide-index="<?php echo $i; ?>" class="c-pager__item">
+            <div class="c-pager__item--half"></div>
+            <div class="c-pager__item--half"></div>
+            <div class="c-pager__link"></div>
+        </a>
+        <?php $i++; endforeach; ?>
+    </div>
+</div>

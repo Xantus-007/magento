@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Bestsellers>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Monbento_Bestsellers>
+    </modules>
+</config>

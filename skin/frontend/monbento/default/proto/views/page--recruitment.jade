@@ -1,0 +1,45 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Recrutement'
+    - var pageClass = ''
+    - var menu      = false
+    - var aboutMenu = true
+
+append body
+    h1.c-title--page: .row: .columns Recrutement
+
+    - var labels = ['Home', 'Équipe & Partenaires', 'Recrutement', 'Annonce']
+    +c-breadcrumb(labels)
+    
+    section.o-section--bkgMainBranding--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight
+        .row.js-recruitment.c-recruitment                                
+            .column.medium-6.medium-push-6.js-recruitment__equalizer
+                .o-table
+                    .o-table__cell--valignMiddle
+                        .c-list__jobs
+                            p Rejoignez-nous !
+                            .c-recruitement__description
+                                +lipsum(1, 'paragraphs')
+                            
+            .column.medium-6.medium-pull-6.js-recruitment__equalizer
+                .c-team__wanted
+                    .o-table
+                        .o-table__cell--valignMiddle
+                            p De nouveaux talents à embarquer dans notre aventure.
+                            a.c-button--transparentNoHover--arrowRightToRight Candidature libre
+    
+    section.o-section--mediumPadding
+        .row
+            .column.medium-10.large-8.medium-centered
+                h2.c-recruitement__title Nous recherchons...
+                
+                - for (var i = 0; i < 3; i++)
+                    .c-job
+                        .c-job__title(href=""): +lipsum(5, 'words')
+                        .c-job__mission Mission :
+                        .c-job__excerpt
+                            +lipsum(1, 'paragraphs')
+                        a.c-linkCst--arrow--subBranding(href="") En savoir plus

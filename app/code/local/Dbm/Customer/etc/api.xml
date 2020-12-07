@@ -1,0 +1,120 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_customer>
+                <title>DBM - Customer API methods</title>
+                <model>dbm_customer/api</model>
+                <acl>dbm_customer</acl>
+                <methods>
+                    <login translate="title" module="dbm_customer">
+                        <title>Login as frontend customer with API</title>
+                        <method>login</method>
+                        <acl>dbm_customer/login</acl>
+                    </login>
+                    <facebookLogin translate="title" module="dbm_customer">
+                        <title>Login as frontend customer with FB</title>
+                        <method>facebookLogin</method>
+                        <acl>dbm_customer/login</acl>
+                    </facebookLogin>
+                    <logout translate="title" module="dbm_customer">
+                        <title>Logout customer</title>
+                        <method>logout</method>
+                        <acl>dbm_customer/login</acl>
+                    </logout>
+                    <test translate="title" module="dbm_customer">
+                        <title>Test customer login API</title>
+                        <method>test</method>
+                        <acl>dbm_customer/login</acl>
+                    </test>
+                    <follow>
+                        <title>Follow customer</title>
+                        <method>follow</method>
+                        <acl>dbm_customer/login</acl>
+                    </follow>
+                    <unfollow>
+                        <title>Unfollow customer</title>
+                        <method>unfollow</method>
+                        <acl>dbm_customer/login</acl>
+                    </unfollow>
+                    <getFollowers>
+                        <title>Get current customer followers</title>
+                        <method>getFollowers</method>
+                        <acl>dbm_customer/login</acl>
+                    </getFollowers>
+                    <getFollowing>
+                        <title>Get customers followed by customer</title>
+                        <method>getFollowing</method>
+                        <acl>dbm_customer/login</acl>
+                    </getFollowing>
+                    <addToCart>
+                        <title>Add product to cart</title>
+                        <method>addToCart</method>
+                        <acl>dbm_customer/login</acl>
+                    </addToCart>
+                    <removeFromCart>
+                        <title>Remove product from cart</title>
+                        <method>removeFromCart</method>
+                        <acl>dbm_customer/login</acl>
+                    </removeFromCart>
+                    <getCartItems>
+                        <title>Get cart items</title>
+                        <method>getCartItems</method>
+                        <acl>dbm_customer/login</acl>
+                    </getCartItems>
+                    <emptyCart>
+                        <title>Empty cart items</title>
+                        <method>emptyCart</method>
+                        <acl>dbm_customer/login</acl>
+                    </emptyCart>
+                    <search>
+                        <title>Search customer by nickname</title>
+                        <method>search</method>
+                        <acl>dbm_customer/login</acl>
+                    </search>
+                    <applyCoupon>
+                        <title>Apply coupon to current cart</title>
+                        <method>applyCoupon</method>
+                        <acl>dbm_customer/login</acl>
+                    </applyCoupon>
+                    <getSocialFriends>
+                        <title>Get social friends</title>
+                        <method>getSocialFriends</method>
+                        <acl>dbm_customer/login</acl>
+                    </getSocialFriends>
+                    <getSponsorPoints>
+                        <title>Get sponsor points</title>
+                        <method>getSponsorPoints</method>
+                        <acl>dbm_customer/login</acl>
+                    </getSponsorPoints>
+                    <setItemQty>
+                        <title>Set Qty in cart</title>
+                        <method>setItemQty</method>
+                        <acl>dbm_customer/login</acl>
+                    </setItemQty>
+                </methods>
+                <faults module="dbm_customer">
+                    <login_invalid>
+                        <code>100</code>
+                        <message>Wrong login or password</message>
+                    </login_invalid>
+                </faults>
+            </dbm_customer>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_customer>dbmCustomer</dbm_customer>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_customer translate="title" module="dbm_customer">
+                    <title>DBM - Customers</title>
+                    <login translate="title" module="dbm_customer">
+                        <title>DBM - Customer Login</title>
+                    </login>
+                </dbm_customer>
+            </resources>
+        </acl>
+    </api>
+</config>

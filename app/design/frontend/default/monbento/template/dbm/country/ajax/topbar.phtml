@@ -1,0 +1,25 @@
+<div class="dbm_country_switcher_topbar <?php echo $this->getTopbarClass(); ?>">
+    <div class="main-container large-collapse">
+        <div class="content columns medium-10">
+            <?php echo $this->getTopBarTextContent();?>
+            | <a href="javascript:void(0);" class="switch_link"><?php echo $this->__('Edit');?></a>
+        </div>
+        <div class="close columns medium-2">
+            <a href="javascript:void(0);"><?php echo $this->__('Close'); ?> X</a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+(function($){
+    $('.dbm_country_switcher_topbar a.switch_link').click(function(){
+        var disabledClassName = 'disabled';
+        var $link = $(this);
+        
+        if(!$link.hasClass(disabledClassName))
+        {
+            $('.dbm_country_switcher.overlay').fadeIn();
+            $('.dbm_country_switcher.popup').fadeIn();
+        }
+    });
+})(jQuery)
+</script>

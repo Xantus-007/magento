@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+            <action method="setPageTitle" translate="value"><value>My Account</value></action>
+
+            <reference name="head">
+                <action method="addItem"><type>skin_css</type><name>css/dbm_Magento_Utils/app/assets/styles/local/styles.css</name><params/></action>
+                <action method="addItem"><type>skin_css</type><name>css/dbm_Magento_Utils/app/assets/styles/vendor/fonticon.css</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/vendor/imagesloaded.pkgd.min.js</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/vendor/jquery.dbm.itemEqualizer.js</name><params/></action>
+                <action method="addItem"><type>skin_js</type><name>css/dbm_Magento_Utils/app/assets/scripts/local/jquery.dbm.app.js</name><params/></action>
+            </reference>
+
+            <block type="core/text_list" name="menu_account" as="menu_account" translate="label">
+                <label>Menu Account</label>
+
+                <block type="customer/account_navigation" name="customer_account_navigation_link" before="-" template="customer/account/navigation-dbm.phtml">
+                    <action method="setTitle" translate="value"><value>My Account</value></action>
+                    <action method="setClassName"><value>c-nav__link</value></action>
+                    <action method="addLink" translate="label" module="newsletter"><name>newsletter</name><path>newsletter/manage/</path><label>Newsletter Subscriptions</label></action>
+                    <action method="addLink" translate="label" module="wishlist" ifconfig="wishlist/general/active"><name>wishlist</name><path>wishlist/</path><label>My Wishlist</label></action>
+                </block>
+                <block type="customer/account_navigation" name="customer_account_navigation_button" template="customer/account/navigation-dbm.phtml">
+                    <action method="setClassName"><value>c-nav__button</value></action>
+                    <action method="addLink" translate="label" module="customer"><name>account</name><path>customer/account/</path><label>Account Dashboard</label><class>c-nav__item--dashboard</class></action>
+                    <action method="addLink" translate="label" module="sales"><name>orders</name><path>sales/order/history/</path><label>My Orders</label><class>c-nav__item--history</class></action>
+                    <action method="addLink" translate="label" module="customer"><name>account_edit</name><path>customer/account/edit/</path><label>Account Information</label><class>c-nav__item--edit</class></action>
+                    <action method="addLink" translate="label" module="customer"><name>address_book</name><path>customer/address/</path><label>Address Book</label><class>c-nav__item--book</class></action>
+                    <action method="addLink" translate="label" module="customer"><name>logout</name><path>customer/account/logout</path><label>Log Out</label></action>
+                </block>
+            </block>
+        </reference>
+    </customer_account>
+
+    <customer_account_index>
+        <reference name="root">
+            <action method="setTemplate"><template>page/account.phtml</template></action>
+        </reference>
+        <reference name="customer_account_dashboard">
+            <action method="setTemplate"><template>customer/account/dashboard-dbm.phtml</template></action>
+        </reference>
+        <reference name="customer_account_dashboard_top">
+            <action method="setTemplate"><template>sales/order/recent-dbm.phtml</template></action>
+        </reference>
+        <reference name="customer_account_dashboard_info">
+            <block type="customer/newsletter" name="customer_account_subscribe" template="customer/form/newsletter-dbm.phtml"/>
+        </reference>
+
+        <remove name="customer_account_dashboard_address"/>
+    </customer_account_index>
+
+    <customer_account_edit>
+        <reference name="customer_edit">
+            <action method="setTemplate"><template>customer/form/edit-dbm.phtml</template></action>
+        </reference>
+    </customer_account_edit>
+
+    <customer_address_index>
+        <reference name="address_book">
+            <action method="setTemplate"><template>customer/address/book-dbm.phtml</template></action>
+        </reference>
+    </customer_address_index>
+
+    <wishlist_index_index>
+        <reference name="customer.wishlist">
+            <action method="setTemplate"><template>wishlist/wishlist-view-dbm.phtml</template></action>
+        </reference>
+    </wishlist_index_index>
+
+    <auguria_sponsorship_index_index>
+        <reference name="sponsorship">
+            <action method="setTemplate"><template>auguria/sponsorship/sponsorship-dbm.phtml</template></action>
+        </reference>
+    </auguria_sponsorship_index_index>
+
+    <sales_order_view>
+        <reference name="sales.order.info">
+            <action method="setTemplate"><template>sales/order/info-dbm.phtml</template></action>
+        </reference>
+
+        <reference name="order_items">
+            <action method="addItemRender"><type>default</type><block>sales/order_item_renderer_default</block><template>sales/order/items/renderer/item-default-dbm.phtml</template></action>
+            <action method="addItemRender"><type>grouped</type><block>sales/order_item_renderer_grouped</block><template>sales/order/items/renderer/item-default-dbm.phtml</template></action>            
+        </reference>
+
+    </sales_order_view>
+</layout>

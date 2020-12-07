@@ -1,0 +1,24 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page produit'
+    - var pageClass = 'catalog-product-view is-mif'
+    - var pageColor = '#8cdcf3'
+    - var pageType = 'default'    
+
+append body
+    include blocks/_stickyProduct
+    include blocks/_productLanding
+    include blocks/_reassuranceMif
+    include blocks/_productDescFull
+    include blocks/_productDescIcon
+    include blocks/_productPersonalize
+    include blocks/_productCarac
+
+    section
+        .row.row--full: .columns.text-center: img(src="#{imgDir}c-img__ambiance.jpg", alt="")
+
+    include blocks/_businessCase
+    include blocks/_crossSelling

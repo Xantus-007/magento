@@ -1,0 +1,7 @@
+ /* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+
+    .coupon-box-content input,
+    .coupon-box-content button {display: block; margin-bottom: 10px;}
+
+}

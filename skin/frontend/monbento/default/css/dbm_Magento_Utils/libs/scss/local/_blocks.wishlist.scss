@@ -1,0 +1,121 @@
+.c-wishlist__box {
+    background: $white;
+    border-radius: rem(3);    
+    @include clearfix();
+    margin-bottom: rem(20);
+
+    .buttons-set {
+        text-align: center;
+        
+        div.button {
+            margin: 2px 5px;
+            float: none;
+        }
+    }
+}
+
+.c-wishlist__thumb, .c-wishlist__content {
+    float: left;
+
+    @include bp-lt($xsmall) {
+        float: none;
+        height: auto !important;
+    }
+}
+
+.c-wishlist__thumb {
+    width: rem(150);
+    text-align: center;
+    padding-top: rem(20);
+    padding-bottom: rem(20);
+    padding-left: rem(20);
+
+    @include bp-lt($medium) {
+        width: rem(80);
+    }
+
+    @include bp-lt($xsmall) {
+        width: 100%;
+        padding: rem(20) 0 0 0;
+    }
+
+    .o-table {
+        table-layout: fixed;
+    }
+
+    img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+.c-wishlist__content {
+    position: relative;
+    width: calc(100% - 150px);
+    padding: rem(20);
+
+    @include bp-lt($medium) {
+        width: calc(100% - 80px);
+    }
+
+    @include bp-lt($xsmall) {
+        width: 100%;
+    }
+
+    table {        
+
+        td {
+            vertical-align: middle;
+
+            @include bp-lt($desktop) {
+                vertical-align: bottom;
+            }
+
+            &:first-child {
+                width: rem(245);
+                text-align: left !important;
+            }
+
+            &:last-child {
+                text-align: right;
+            }
+        }
+    }
+
+    .product-brand {
+        font-size: rem(18);
+        font-weight: 700;
+        color: $mainFont;      
+        text-transform: uppercase;  
+        margin-bottom: rem(10);        
+    }
+
+    .product-name {        
+        font-size: rem(15);
+        color: $mainFont;
+    }
+
+    .btn-remove {
+        position: absolute;
+        top: rem(35);
+        right: rem(20);
+        background: none;
+        color: $mainBranding;
+        font-size: rem(15);
+        text-indent: 0;
+        width: auto;
+        height: auto;
+        line-height: 1; 
+
+        @include bp-lt($desktop) {
+            top: rem(10);
+        }       
+
+        &:after {
+            font-family: 'iconfont';
+            content: "\EA09";            
+        }
+    }
+}

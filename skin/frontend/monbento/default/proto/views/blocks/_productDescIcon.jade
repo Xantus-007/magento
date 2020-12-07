@@ -1,0 +1,17 @@
+section.o-section.c-product__presentationIcon
+    .row
+        - var titles = ['Durable', 'hermétique', 'sûre']
+        - var icons = ['c-img__icon--durable', 'c-img__icon--hermetique', 'c-img__icon--sure']
+        - var content = ['Ce texte a pour avantage d\'utiliser des mots de longueur variable, essayant de simuler une occupation normale.', 'Expert en utilisabilité des sites web et des logiciels, Jakob Nielsen souligne que l\'une des limites de l\'utilisation du faux-texte est que ce texte n\'est jamais vraiment lu', 'Ce texte a pour avantage d\'utiliser des mots de longueur variable, essayant de simuler une occupation normale.']
+
+        each label, index in titles
+            .columns.medium-4
+                .c-content
+                    .c-picture
+                        // format image 350x240px
+                        img(src="#{imgDir}#{icons[index]}.png", alt="")
+                    .c-title #{label}
+                    // change color here
+                    .c-separator(style="background-color: #{pageColor};")
+                    .c-desc #{content[index]}
+

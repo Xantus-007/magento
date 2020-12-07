@@ -1,0 +1,337 @@
+// ========================================= //
+// links
+// ========================================= //
+
+%links--hover--active {
+    transition: $ease;
+
+    &:hover, &:focus, &.is-active {
+        background: $mainBranding;
+        color: $white;
+    }
+
+    &:active {
+        background: $mainBranding--active;
+        color: $white;
+    }
+}
+
+.c-options {
+    $button--width--value: 89;
+    $button--width: rem($button--width--value);
+    display: flex;
+    background: $subBranding;
+
+    transition: $ease;
+    width: rem($button--width--value*4);
+    float: right;
+    @include clearfix();
+
+    @include bp-lt($medium) {
+        width: rem(445);
+    }
+
+    @include bp-lt($tabletS) {
+        width: rem(280);
+    }
+
+    @include bp-lt($mobileS) {
+        width: rem(250);
+    }
+
+    .c-language__toggle,
+    .c-search__toggle,
+    .c-account,
+    .c-cart,
+    .c-nav__icon {
+        display: block;
+        width: $button--width;
+        height: $o-header--height;
+        float: left;
+        font-size: $icon--size;
+        text-align: center;
+
+        [class*='c-fonticon__icon'] {
+            position: relative;
+            top: rem(5);
+        }
+
+        @extend %links--hover--active;
+
+        @include bp-lt($tabletS) {
+            width: $o-header--height--small;
+            height: $o-header--height--small;
+        }
+
+        @include bp-lt($mobileS) {
+            font-size: rem(20);
+            width: rem(50);
+        }
+    }
+
+    .c-nav__icon {
+        display: none;
+
+        @include bp-lt($medium) {
+            display: block;
+        }
+
+        i {
+            @include bp-lt($tabletS) {
+                top: rem(27);
+                left: rem(12);
+            }
+
+            &, &:before, &:after {
+                @include bp-lt($mobileS) {
+                    width: rem(25);
+                }
+            }
+        }
+    }
+
+    .c-language__toggle {
+        border-right: solid rem(1) $grey--light--04;
+
+        &.is-active {
+            background: $grey--light--04;
+
+            i {
+                color: $mainBranding;
+            }
+        }
+    }
+
+    .c-language__toggle,
+    .c-search__toggle {
+        background: $grey--light--00;
+        color: $grey--regular--00;
+    }
+
+    .c-account {
+        background: $grey--light--01;
+        color: $white;
+    }
+
+    .c-cart {
+        position: relative;
+        background: $subBranding;
+        color: $white;
+
+        &:before {
+            $iconWidth: rem(7);
+
+            content: '';
+            position: absolute;
+            top: rem(25);
+            right: rem(25);
+            display: none;
+            width: $iconWidth;
+            height: $iconWidth;
+            background: $mainBranding;
+            border-radius: 50%;
+            transition: $ease;
+
+            @include bp-lt($tabletS) {
+                top: rem(10);
+                right: rem(10);
+            }
+
+            @include bp-lt($mobileS) {
+                top: rem(15);
+            }
+        }
+
+        &:hover, &:focus, &.is-active {
+            &:before {
+                background: $subBranding;
+            }
+        }
+
+        &.has-product {
+            &:before {
+                display: block;
+            }
+        }
+    }
+}
+
+[class*='c-linkCst'] {
+    position: relative;
+    display: inline-block;
+    margin-bottom: rem(15);
+    padding-bottom: rem(5);
+    font-size: rem(14);
+    font-family: $sofiaPro;
+    color: $mainBranding;
+    transition: $ease;
+
+    &:before {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: rem(1);
+        background: $mainBranding;
+        transition: $ease;
+    }
+
+    &:hover {
+        color: $mainBranding--active;
+        &:before { background: $mainBranding--active; }
+    }
+
+    &[class*='--arrow'] {
+        &:after {
+            position: relative;
+            top: rem(5);
+            margin-left: rem(10);
+            content: "\EA07";
+            font-family: "iconfont";
+            color: $mainBranding;
+            font-size: rem(20);
+            transition: $ease;
+        }
+
+        &:hover:after {
+            margin-left: rem(20);
+            color: $mainBranding--active;
+        }
+
+        &[class*='Left'] {
+            padding-left: rem(30);
+
+            &:after {
+                position: absolute;
+                left: 0;
+                top: rem(-3);
+                margin-left: 0;
+                transform: rotate(180deg);
+            }
+
+            &:hover {
+                padding-left: rem(40);
+            }
+
+            &:before {
+                left: 0;
+            }
+        }
+    }
+
+    &[class*='--subBranding'] {
+        color: $subBranding;
+
+        &:before {
+            background: $subBranding;
+        }
+
+        &[class*='--arrow'] {
+            &:after {
+                color: $subBranding;
+            }
+        }
+    }
+
+    &[class*='--white'] {
+        color: $white;
+
+        &:before {
+            background: $white;
+        }
+
+        &[class*='--arrow'] {
+            &:after {
+                color: $white;
+            }
+        }
+    }
+}
+
+.c-close--text {
+    color: $grey--regular--02;
+    font-family: $sofiaPro;
+    font-weight: 700;
+    background: transparent;
+    transition: $ease;
+
+    [class*='c-fonticon'] {
+        position: relative;
+        top: rem(4);
+        font-size: rem(20);
+        margin-left: rem(14);
+
+        @include bp-lt($medium) {
+            margin-left: 0;
+        }
+    }
+
+    &:hover {
+        background: $mainBranding;
+        color: $white;
+    }
+
+    span {
+        @include bp-lt($medium) {
+            display: none;
+        }
+    }
+}
+
+.c-filter__toogle {
+    position: relative;
+    top: rem(-4);
+    display: inline-block;
+    float: right;
+    font-size: rem(16);
+    font-family: $sofiaPro;
+    color: $grey--regular--02;
+    height: rem(24);
+    overflow-y: hidden;
+
+    span {
+        position: relative;
+        display: block;
+        height: rem(24);
+        padding-right: rem(40);
+        text-align: right;
+        transform: translateY(-100%);
+        transition: $ease;
+
+        &:after {
+            position: absolute;
+            right: 0;
+            font-family: 'iconfont';
+        }
+
+        &.state--close {
+            &:after {
+                content: '\EA0F';
+                top: rem(-3);
+                transform: rotate(180deg);
+                font-size: rem(20);
+            }
+        }
+
+        &.state--open {
+            &:after {
+                content: '\EA0D';
+                font-size: rem(18);
+            }
+        }
+    }
+
+    &.is-open {
+        span {
+            &.state--close,
+            &.state--open {
+                transform: translateY(0);
+            }
+        }
+    }
+
+    &:hover, &:focus, &.is-active {
+        color: $grey--regular--02;
+    }
+}

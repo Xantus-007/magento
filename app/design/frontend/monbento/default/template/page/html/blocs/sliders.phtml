@@ -1,0 +1,106 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $slides = $this->getSlides(); ?>
+<?php if(count($slides) > 0): ?>
+<section class="c-slider--pageHeader">
+    <div class="row collapse">
+        <div class="columns">
+            <div class="js-slider--home" autoplay-speed="3000">
+                <?php $i=0;foreach($slides as $slide): ?>
+                    <?php $dataGTM = Mage::helper('dbm_tagmanager')->getSlideClickData($slide, $i); ?>
+                    <?php
+                    $dataYtVideo = '';
+                    $ytIdentifier = $slide->getData('yt_video_id');
+                    if ($ytIdentifier) {
+                        $dataYtVideo = 'data-video="' . $ytIdentifier . '" data-width="1440" data-height="809"';
+                    }
+                    ?>
+                    <div class="c-slider--home__item" <?php echo $dataYtVideo; ?>>
+                        <div class="c-thumb">
+                            <?php if(Mage::helper('mobiledetect')->isMobile() && !Mage::helper('mobiledetect')->isTablet() && $slide->getImageMobile() && $slide->getImageMobileRetina()): ?>
+                            <img class="c-slider__picture--mobile" src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $slide->getImageMobile(), 640, 640, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" srcset="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $slide->getImageMobile(), 640, 640, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?> 1x, <?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $slide->getImageMobileRetina(), 640, 640, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?> 2x" alt="<?php echo ($slide->getImageAlt()) ? $slide->getImageAlt() : 'Monbento : ' . $slide->getPostTitle(); ?>"/>
+                            <?php else: ?>
+                            <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $slide->getImage(), 1440, 586, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="<?php echo ($slide->getImageAlt()) ? $slide->getImageAlt() : 'Monbento : ' . $slide->getPostTitle(); ?>" />
+                            <?php endif; ?>
+                        </div>
+                        <div class="c-content">
+                            <div class="o-table">
+                                <div class="o-table__cell--valignMiddle">
+                                    <?php if($texte2 = $slide->getData('texte_2')): ?>
+                                        <?php
+                                        $typoClass = $this->getTypoClassCSS($slide, 'texte_2_typo');
+                                        $sizeClass = $this->getSizeClassCSS($slide, 'texte_2_size');
+                                        $colorStyle = $this->getColorStyleCSS($slide, 'texte_2_color');
+                                        ?>
+                                        <div class="c-txt--00 <?php echo $typoClass . ' ' . $sizeClass ?>" style="<?php echo $colorStyle ?>"><?php echo $texte2; ?></div>
+                                    <?php endif; ?>
+                                    <?php if($title = $slide->getPostTitle()): ?>
+                                        <?php
+                                        $typoClass = $this->getTypoClassCSS($slide, 'post_title_typo');
+                                        $sizeClass = $this->getSizeClassCSS($slide, 'post_title_size');
+                                        $colorStyle = $this->getColorStyleCSS($slide, 'post_title_color');
+                                        ?>
+                                        <div class="c-txt--01 <?php echo $typoClass . ' ' . $sizeClass ?>" style="<?php echo $colorStyle ?>"><?php echo $title; ?></div>
+                                    <?php endif; ?>
+                                    <?php if($texte3 = $slide->getData('texte_3')): ?>
+                                        <?php
+                                        $typoClass = $this->getTypoClassCSS($slide, 'texte_3_typo');
+                                        $sizeClass = $this->getSizeClassCSS($slide, 'texte_3_size');
+                                        $colorStyle = $this->getColorStyleCSS($slide, 'texte_3_color');
+                                        ?>
+                                        <div class="c-txt--02 <?php echo $typoClass . ' ' . $sizeClass ?>" style="<?php echo $colorStyle ?>"><?php echo $texte3; ?></div>
+                                    <?php endif; ?>
+                                    <?php $texte4 = $slide->getData('texte_4'); ?>
+                                    <?php $texte5 = $slide->getData('texte_5'); ?>
+                                    <?php if(!empty($texte4) || !empty($texte5)): ?>
+                                    <div>
+                                        <?php if(!empty($texte4)): ?>
+                                            <?php
+                                            $typoClass = $this->getTypoClassCSS($slide, 'texte_4_typo');
+                                            $sizeClass = $this->getSizeClassCSS($slide, 'texte_4_size');
+                                            $colorStyle = $this->getColorStyleCSS($slide, 'texte_4_color');
+                                            ?>
+                                            <span class="c-txt-- <?php echo $typoClass . ' ' . $sizeClass ?>" style="<?php echo $colorStyle ?>"><?php echo $texte4; ?></span>
+                                        <?php endif; ?>
+                                        <?php if(!empty($texte5)): ?><span class="c-txt--04"><?php echo $texte5; ?></span><?php endif; ?>
+                                    </div>
+                                    <?php endif; ?>
+                                    <?php if(($href = $slide->getData('href')) || $dataYtVideo): ?><a href="<?php echo $href; ?>" class="c-button--mainBranding--arrowRightToRight" <?php if(strpos($href, 'http://') !== false || strpos($href, 'https://') !== false): ?>target="_blank"<?php endif; ?> data-gtm='<?php echo $dataGTM ?>'><?php echo $slide->getData('texte_6'); ?></a><?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php $i++;endforeach; ?>
+            </div>
+            <div class="js-fitvids--yt">
+              <button type="button" class="js-video__close c-fonticon__icon--cross"></button>
+              <div id="js-video--yt__video"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>

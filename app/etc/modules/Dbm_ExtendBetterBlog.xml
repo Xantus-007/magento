@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_ExtendBetterBlog>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Mageplaza_BetterBlog />
+            </depends>
+        </Dbm_ExtendBetterBlog>
+    </modules>
+</config>

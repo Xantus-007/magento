@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+   <modules>
+      <Activo_Multistoreviewfix>
+         <version>0.1.0</version>
+      </Activo_Multistoreviewfix>
+   </modules>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Activo_Multistoreviewfix_Override before="Mage_Adminhtml">Activo_Multistoreviewfix_Override_Admin</Activo_Multistoreviewfix_Override>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

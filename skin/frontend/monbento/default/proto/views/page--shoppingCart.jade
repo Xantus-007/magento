@@ -1,0 +1,113 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page panier'
+    - var pageClass = 'checkout-cart-index'
+    - var pageColor = ''
+    - var pageType = ''
+    - var menu = false
+
+append body
+    section.o-section--bkgGrey--noPaddingTop
+        - var labels = ['Home', 'Shop', 'Mon panier']
+        +c-breadcrumb--backToShop(labels)
+
+        +c-title--page('Mon panier')
+
+        .row
+            .columns.large-8
+                .c-alert--success
+                    .c-label Il ne manque que 10€ à votre panier#[br]pour bénéficier des frais de port offerts (France métropolitaine)
+                    .c-action
+                        a.c-linkCst--arrowLeft--white(href="") Poursuivre mes achats
+
+                .c-table__shoppingCart
+                    table.cart-table
+                        thead
+                            tr
+                                th(colspan='2') Nom du produit
+                                th.medium-hide.text-center Prix unitaire
+                                th.text-center Quantité
+                                th.text-center Sous total
+                                th
+                        tbody
+                            - for ( var i=0 ; i<3 ; i++ )
+                                +table-row()
+
+            .columns.large-4
+                .c-price__shoppingCart: .c-price__shoppingCart--inner
+                    .c-item
+                        span.c-label Sous Total HT
+                        span.c-price 105,00€
+                    .c-item
+                        span.c-label TVA
+                        span.c-price 21,00€
+
+                    .c-separator
+
+                    .c-item__total
+                        span.c-label Total TTC
+                        span.c-price 126,00€
+                        .c-screed Avant calcul des frais de port
+
+                    .c-info
+                        | Livraison éstimée :#[br]Jeudi prochain (France Metrop.)
+                        .c-info__tooltip.js-tooltip
+                            i.c-fonticon__icon--questionMark
+                                .c-tooltip: .o-table: .o-table__cell--valignMiddle
+                                    strong Les commandes passées avant#[br]12h00 sont expédiées le jour même
+                                    | (sauf week-ends et jours fériés),#[br]celles passées après 12h00, le lendemain
+
+                    .text-center
+                        a.c-button--mainBranding--arrowRightToRight Commander
+
+        .row
+            .columns.large-8.medium-7
+                .row
+                    .columns.large-6
+                        .c-inputSubmit__inline
+                            .c-input__holder.js-label__animate
+                                label Code promo
+                                .c-input__text: input(type="text")
+                            //- .c-submit__square
+                            //-     input(type="submit", value="")
+                            .c-submit__delete
+                                input(type="submit", value="")
+
+                    .columns.large-6
+                        .c-inputSubmit__inline
+                            .c-input__holder.js-label__animate
+                                label Carte cadeau
+                                .c-input__text: input(type="text")
+                            .c-submit__square
+                                input(type="submit", value="")
+
+                .c-form__giftCard
+                    .row.collapse
+                        .columns
+                            .c-checkbox--tall
+                                input(type="checkbox", id="checkbox__001")
+                                label(for="checkbox__001") C’est pour offir, joindre un message au colis (gratuit) :
+
+                    .row.collapse.c-form__collapse
+                        .columns.medium-6
+                            .c-input__holder.js-label__animate
+                                label.required #[em *] De la part de
+                                .c-input__text: input(type="text")
+                        .columns.medium-6
+                            .c-input__holder.js-label__animate
+                                label.required #[em *] Pour
+                                .c-input__text: input(type="text")
+                        .columns
+                            .c-input__holder.is-textarea.is-tall.js-label__animate
+                                label.required #[em *] Message
+                                textarea
+
+            .columns.large-4.medium-5
+                .c-promo__shoppingCart
+                    .c-title En ce moment, ne manquez pas...
+                    .c-picture: a(href=""): img(src="#{imgDir}c-img__launcher--03.jpg", alt="")
+
+    include blocks/_reassuranceShop

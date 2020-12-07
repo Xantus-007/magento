@@ -1,0 +1,66 @@
+// ========================================= //
+// components.button
+// ========================================= //
+
+%button {
+    display: inline-block;
+    padding: rem(7) rem(10) rem(10) rem(10);
+    color: $white;
+    background: $mainBranding;
+    font-size: rem(13);
+    text-transform: uppercase;
+    text-decoration:none;
+    border-radius: rem(2);
+    height: rem(31);
+}
+
+.c-account {
+    .box-account.box-fidelity-sponsorship {
+        .col1-set {
+            text-align: center;
+
+            p {
+                display: block;
+                margin-bottom: rem(20);
+                color: $mainFont !important;
+                font-size: rem(15);
+                font-style: initial;
+
+                span {
+                    color: $black;
+                    margin-left: rem(5);
+                }
+            }
+
+            a {
+                @extend %button;
+            }
+        }
+    }
+
+    .buttons-set {
+        padding: 0;
+        margin-bottom: rem(20);
+
+        .back-link {
+            a {
+                @extend %button;
+
+                small {
+                    color: $white;
+                    margin-right: rem(5);
+                }
+            }
+        }
+    }
+}
+
+.c-sponsorship {
+    .buttons-set {
+        .button {
+            margin-right: 0 !important;
+
+            span { background: none; }
+        }
+    }
+}

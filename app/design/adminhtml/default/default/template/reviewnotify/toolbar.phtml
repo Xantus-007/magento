@@ -1,0 +1,60 @@
+<?php
+/**
+ * ET Web Solutions
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade to newer
+ * versions in the future.
+ *
+ * @category   ET
+ * @package    ET_Reviewnotify
+ * @copyright  Copyright (c) 2011 ET Web Solutions (http://etwebsolutions.com)
+ * @contacts   support@etwebsolutions.com
+ * @license    http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+$config = Mage::getStoreConfig('catalog/review');
+if ($config['need_notify'] == 1)
+{
+	$_pending = $this->getPending();
+	$_count = count($_pending);
+	if ($_count > 0)
+	{
+		$urlModel = Mage::getModel('core/url');
+		$storeid = Mage::app()->getDefaultStoreView();
+		$urlModel->setStore($storeid);
+		$RSSlink = $urlModel->getUrl('rss/catalog/review', array('_current'=>false));
+?>
+		<div class="notification-global">
+			<span class="f-right"><a class="link-feed" href="<?php echo $RSSlink ?>" style="background-position: 0 50%;"><?php echo $this->__('Pending Reviews RSS') ?></a></span>
+			<strong class="label"><?php echo $this->__('Pending Reviews') ?>:</strong>
+<?php
+		if (count($_pending) > 1)
+		{
+			echo $this->__(
+				'There are %d reviews waiting to be approved. Click here to see the %s.',
+				count($this->getPending()),
+				'<a href="'.$this->getUrl('adminhtml/catalog_product_review/pending').'">'.$this->__('Pending Reviews').'</a>'
+			);
+		} // end count > 1
+		elseif (count($_pending) == 1)
+		{
+			/* @var $_product Mage_Catalog_Model_Product */
+			$_product = $_pending->getFirstItem();
+			echo $this->__(
+				'There is a review of %s waiting to be approved. Click here to read %s.',
+				'<a href="'.$this->getEditUrl($_product).'">'.$_product->getName().'</a>',
+				'<a href="'.$this->getReviewUrl($_product).'">'.$_product->getTitle().'</a>'
+			);
+		}
+?>
+		</div>
+<?php
+	} // end count > 0
+} // end enabled to show notification
+?>

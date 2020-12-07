@@ -1,0 +1,74 @@
+.c-sponsorship {
+
+    .fieldset {
+        @include bp-lt($small) {
+            width: 100% !important;
+            height: auto !important;
+            float: none !important;
+        }
+    }
+    
+    ul#recipient_options {
+        width: 100% !important;
+    }
+
+    .sender_options, .message_options {
+        margin-bottom: rem(20);
+
+        .form-list {
+            height: calc(100% - 55px); // Header height + margin-bottom
+        }        
+    }
+
+    .recipient_options {
+        .legend + p {
+            background: $white;
+            padding: rem(10) rem(20);
+        }
+        
+        .left, .right {
+            &.input-box {
+                float: none !important;
+                width: 100% !important;  
+
+                .input-text {
+                    width: 100% !important;
+                }      
+            }
+        }
+    }
+
+    .title:not(.billing-title):not(.shipping-title) {
+        display: block !important;
+        width: 100%;
+    }    
+}
+
+.auguria-sponsorship-points-accumulated {
+    .box-account {
+        
+        .js-itemEqualizer {
+            @include bp-lt($small) {
+                height: auto !important;
+            }
+        }
+
+        .box {
+            height: 100%;
+
+            @include bp-lt($small) {
+                height: auto;
+            }
+
+            .box-content {
+                p {
+                    display: inline;
+
+                    .button {
+                        margin-top: rem(15);
+                    }
+                }
+            }
+        } 
+    }
+}

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Accountb2b>
+            <version>0.1.0</version>
+        </Monbento_Accountb2b>
+    </modules>
+    <global>
+        <events>
+            <controller_action_postdispatch>
+                <observers>
+                    <monbento_accountb2b_save>
+                        <type>singleton</type>
+                        <class>accountb2b/observer</class>
+                        <method>eventSave</method>
+                    </monbento_accountb2b_save>
+                </observers>
+            </controller_action_postdispatch>
+        </events>
+        <models>
+            <accountb2b>
+                <class>Monbento_Accountb2b_Model</class>
+            </accountb2b>
+        </models>
+		<resources>
+            <accountb2b_setup>
+                <setup>
+                    <module>Monbento_Accountb2b</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </accountb2b_setup>
+        </resources>
+    </global>
+</config>

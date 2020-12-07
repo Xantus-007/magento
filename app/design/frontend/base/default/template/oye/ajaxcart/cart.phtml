@@ -1,0 +1,38 @@
+<div class="block block-cart" id="ajax-top-cart" style="display: none;">
+	<?php $_cartQty = $this->getSummaryCount() ?>
+	<div class="block-content">
+		<?php $_items = $this->getRecentItems() ?>
+		<?php if (count($_items)): ?>
+			<ol class="top-cart-list">
+				<?php foreach ($_items as $_item): ?>
+					<?php echo $this->getItemHtml($_item) ?>
+				<?php endforeach; ?>
+			</ol>
+		<?php else: ?>
+			<p class="empty"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+		<?php endif ?>
+		
+		<?php if ($_cartQty > 0): ?>
+			<p class="subtotal">
+				<?php if ($this->canApplyMsrp()): ?>
+					<?php echo $this->__('ORDER TOTAL WILL BE DISPLAYED BEFORE YOU SUBMIT THE ORDER'); ?>
+				<?php else: ?>
+					<?php echo $this->__('Cart Subtotal:') ?>
+					<span><?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?></span>
+					<?php if ($_subtotalInclTax = $this->getSubtotalInclTax()): ?>
+						<br/>(<?php echo Mage::helper('checkout')->formatPrice($_subtotalInclTax) ?> <?php echo Mage::helper('tax')->getIncExcText(true) ?>)
+					<?php endif; ?>
+				<?php endif; ?>
+			</p>
+		<?php endif ?>
+		<div class="actions">
+			<button type="button" title="<?php echo $this->__('Basket') ?>" class="button secondary" onclick="setLocation('<?php echo $this->getUrl('checkout/cart')?>')"><?php echo $this->__('Basket') ?></button>
+			
+			<?php if ($_cartQty && $this->isPossibleOnepageCheckout()): ?>
+					<?php echo $this->getChildHtml('extra_actions') ?>
+					<button type="button" title="<?php echo $this->__('Checkout') ?>" class="button primary" onclick="setLocation('<?php echo $this->getCheckoutUrl() ?>')"><?php echo $this->__('Checkout') ?></button>
+		<?php endif ?>
+		</div>
+			
+	</div>
+</div>

@@ -1,0 +1,48 @@
+#popup_login {
+    width: 350px;
+    left: 0 !important;
+    right: 0 !important;
+    margin: 0 auto;
+    
+    @include bp-lt ($mb-xsmall) {
+        width: 90%;
+    }
+    
+    .easylogin {
+        @include bp-lt ($mb-medium) {
+            padding: 10px 20px;
+        }
+        
+        label {
+            @include bp-lt ($mb-medium) {
+                float: none;
+                margin-bottom: 5px;
+            }
+        }
+        
+        .button {
+            @include bp-lt ($mb-xmedium) {
+                width: 100%;
+                margin: 0;
+            }
+
+            span {
+                @include bp-lt ($mb-xmedium) {
+                    height: 30px;
+                    line-height: 30px;
+                    padding: 0;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+    .input-text {
+        @include bp-lt ($mb-medium) {
+            height: 30px;
+            line-height: 30px;
+            width: 100%;
+            @include box-sizing(border-box);
+        }
+    }
+}

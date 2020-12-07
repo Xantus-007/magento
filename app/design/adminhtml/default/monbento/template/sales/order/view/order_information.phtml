@@ -1,0 +1,34 @@
+<?php
+$savType = Mage::helper('monbento_site')->getSavType();
+$_order = $this->getOrder();
+if ($_order->getFraisLivraisonReel() || 
+    $_order->getTypeSav()) :
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4><?php echo Mage::helper('core')->__('Informations de commande') ?></h4>
+    </div>
+    <fieldset>
+        <div class="order-information-whole-order-container">
+            <table class="form-list">
+                <tr>
+                    <td class="label">
+                        <label><?php echo Mage::helper('core')->__('Frais de livraison réels') ?></label>
+                    </td>
+                    <td class="value">
+                        <strong><?php echo Mage::helper('core')->currency($_order->getFraisLivraisonReel(), true, false) ?></strong>
+                    </td>             
+                </tr>
+                <tr>
+                    <td class="label">
+                        <label><?php echo Mage::helper('sales')->__('Type de SAV') ?></label>
+                    </td>
+                    <td class="value">
+                        <strong><?php echo isset($savType[$_order->getTypeSav()]) ? $savType[$_order->getTypeSav()] : '' ?></strong>
+                    </td>             
+                </tr>
+            </table>
+        </div>
+    </fieldset>
+</div>
+<?php endif; ?>

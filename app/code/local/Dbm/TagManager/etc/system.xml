@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dbm>
+            <label>DBM - Modules</label>
+            <sort_order>100</sort_order>
+        </dbm>
+    </tabs>
+    <sections>
+        <dbm_tagmanager translate="label" module="dbm_share">
+            <label>GTM</label>
+            <tab>dbm</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <groups>
+                <config translate="label" module="dbm_share">
+                    <label>Configuration</label>
+                    <sort_order>100</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <id>
+                            <sort_order>10</sort_order>
+                            <label>Id du container</label>
+                            <frontend_type>Text</frontend_type>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </id>
+                    </fields>
+                </config>
+            </groups>
+        </dbm_tagmanager>
+    </sections>
+</config>
+

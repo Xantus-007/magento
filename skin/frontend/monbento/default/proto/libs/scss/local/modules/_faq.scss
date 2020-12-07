@@ -1,0 +1,532 @@
+// ========================================= //
+// faq page
+// ========================================= //
+
+.c-faq__nav {
+    ul {
+        padding: rem(15) 0;
+        margin: 0;
+        display: block;
+        text-align: center;
+        list-style-type: none;
+
+        li {
+            position: relative;
+            display: inline-block;
+
+            &:not(:last-of-type) {
+                &::before {
+                    width: rem(1);
+                    height: 100%;
+                    position: absolute;
+                    display: block;
+                    content: '';
+                    top: 0;
+                    right: 0;
+                    background: rgba($grey--03, .5);
+
+                    @include bp-lt($mobileL) {
+                        right: -2px;
+                    }
+                }
+            }
+
+            a {
+                display: block;
+                padding-left: rem(38);
+                padding-right: rem(38);
+                color: $mainFont;
+                font-family: $sofiaPro;
+                font-weight: 300;
+                font-size: rem(16);
+                text-transform: uppercase;
+                transition: $ease;
+
+                @include bp-lt($small) {
+                    padding-left: rem(15);
+                    padding-right: rem(15);
+                }
+                @include bp-lt($mobileL) {
+                    padding-left: rem(10);
+                    padding-right: rem(10);
+                    font-size: rem(14);
+                }
+
+                @include bp-lt($mobileM) {
+                    padding-left: rem(5);
+                    padding-right: rem(5);
+                }
+
+                &:hover, &:active {
+                    color: $mainBranding;
+                }
+            }
+        }
+    }
+}
+
+.c-faq__recurring {
+    padding: rem(75) $gutter;
+
+    .c-faq__recurring__title {
+        display: block;
+        color: $mainFont;
+        font-size: rem(24);
+        font-weight: 300;
+        font-family: $sofiaPro;
+        text-transform: uppercase;
+        text-align: center;
+        letter-spacing: rem(.5);
+
+        @include bp-lt($small) {
+            font-size: rem(20);
+        }
+    }
+
+    .c-faq__recurring__list {
+        display: block;
+        column-count: 2;
+        column-gap: rem(60);
+        margin: 0;
+        margin-top: rem(85);
+        padding: 0 $gutter;
+        list-style-type: none;
+
+        @include bp-lt($medium) {
+            column-gap: rem(20);
+            margin-top: rem(50);
+        }
+
+        @include bp-lt($small) {
+            column-gap: normal;
+            column-count: 1;
+            margin-top: rem(15);
+        }
+
+        li {
+            position: relative;
+            padding-left: rem(20);
+            margin-bottom: rem(35);
+
+            @include bp-lt($medium) {
+                margin-bottom: rem(15);
+            }
+
+            @include bp-lt($small) {
+                margin-bottom: rem(10);
+            }
+
+            &::before {
+                width: rem(7);
+                height: rem(7);
+                position: absolute;
+                display: block;
+                content: '';
+                top:rem(11);
+                left: 0;
+                border-radius: 50%;
+                background: $pink--02;
+            }
+
+            a {
+                color: $mainFont;
+                font-family: $sofiaPro;
+                font-size: rem(20);
+                font-weight: 300;
+                line-height: rem(28);
+                text-transform: none;
+                transition: $ease;
+
+                @include bp-lt($medium) {
+                    font-size: rem(18);
+                }
+
+                @include bp-lt($small) {
+                    font-size: rem(15);
+                }
+
+                &:hover, &:active {
+                    color: $mainBranding;
+                }
+            }
+        }
+
+    }
+}
+
+.c-faq__content {
+    @include bp-lt($small) {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.c-faq__item {
+    width: 100%;
+
+    .c-faq__item__header {
+        width: 100%;
+        border-top: rem(1) solid $grey--14;
+        border-bottom: rem(1) solid $grey--15;
+        background: $grey--00;
+    }
+
+    .c-faq__item__content {
+        width: 100%;
+
+    }
+
+    & + .c-faq__section__title {
+        border-top: rem(1) solid $grey--14;
+        margin-top: 0;
+        padding-top: rem(30);
+    }
+}
+
+.c-faq__subItem {
+    width: 100%;
+    position: relative;
+    padding-left: rem(45);
+    background: $white;
+    transition: $ease;
+
+    @include bp-lt($tablet) {
+        padding-left: $gutter;
+    }
+
+    &::before {
+        width: rem(7);
+        height: 100%;
+        position: absolute;
+        content: '';
+        display: block;
+        top: 0;
+        left: 0;
+        background: $mainBranding;
+        visibility: hidden;
+        opacity: 0;
+        transform: scale(1, 0) translateZ(0);
+        transform-origin: top;
+        transition: $ease;
+    }
+
+    &:not(:last-of-type) {
+        border-bottom: rem(1) solid $grey--14;
+    }
+
+    .c-faq__subItem__header {
+        width: 100%;
+        min-height: rem(72);
+        position: relative;
+        z-index: 2;
+        padding: rem(15) rem(95) rem(15) rem(20);
+        background: $white;
+        transition: $ease;
+        cursor: pointer;
+
+        @include bp-lt($tablet) {
+            padding-right: rem(50);
+        }
+
+        @include bp-lt($small) {
+            padding-right: rem(40);
+            padding-left: rem(10);
+        }
+
+        &::before,
+        &::after {
+            width: rem(29);
+            height: rem(29);
+            position: absolute;
+            display: block;
+            font-family: $iconFont;
+            top: 50%;
+            right: rem(33);
+            color: $grey--16;
+            background: $grey--01;
+            border-radius: 50%;
+            font-size: rem(12);
+            // line-height: rem(29);
+            padding: rem(5) 0;
+            text-align: center;
+            transition: $ease;
+            cursor: pointer;
+            transform-origin: center;
+
+            @include bp-lt($tablet) {
+                right: rem(15);
+            }
+
+            @include bp-lt($small) {
+                right: rem(5);
+            }
+        }
+
+        &::before {
+            content: '\EA0F';
+            transform: translateY(-50%) rotateZ(180deg) scale(1) translateZ(0);
+            visibility: visible;
+            opacity: 1;
+
+        }
+        &::after {
+            content: '\EA0D';
+            transform: translateY(-50%) rotateZ(180deg) scale(0) translateZ(0);
+            visibility: hidden;
+            opacity: 0;
+
+        }
+    }
+
+    .c-faq__subItem__content {
+        height: 0;
+        position: relative;
+        padding: 0 rem(95) 0 rem(20);
+        z-index: 1;
+        transform: translateY(-50%) scale(1, 0) translateZ(0);
+        backface-visibility: hidden;
+        transform-origin: top;
+        visibility: hidden;
+        opacity: 0;
+        overflow: hidden;
+        transition: $ease;
+
+        @include bp-lt($tablet) {
+            padding-right: rem(50);
+        }
+
+        p {
+            width: 100%;
+            display: block;
+            margin: 0;
+            color: $mainFont;
+            font-family: $merriWeather;
+            font-weight: 300;
+            font-size: rem(14);
+            line-height: rem(28);
+
+            @include bp-lt($small) {
+                font-size: rem(12);
+                line-height: 2;
+                text-align: justify;
+            }
+        }
+    }
+
+    &.is-open {
+        background: $grey--00;
+
+        &::before {
+            visibility: visible;
+            opacity: 1;
+            transform: scale(1, 1) translateZ(0);
+        }
+
+        .c-faq__subItem__header {
+            background: $grey--00;
+            cursor: default;
+
+            &::before {
+                transform: translateY(-50%) rotate(180deg) scale(0) translateZ(0);
+                visibility: hidden;
+                opacity: 0;
+            }
+            &::after {
+                transform: translateY(-50%) rotate(180deg) scale(1) translateZ(0);
+                visibility: visible;
+                opacity: 1;
+            }
+
+            .c-faq__item__subtitle {
+                color: $mainBranding;
+            }
+        }
+
+        .c-faq__subItem__content {
+            height: inherit;
+            padding: rem(50) rem(95) rem(65) rem(20);
+            transform: translateY(0%) scale(1, 1) translateZ(0);
+            visibility: visible;
+            opacity: 1;
+            overflow: visible;
+
+            @include bp-lt($tablet) {
+                padding-right: rem(50);
+            }
+
+            @include bp-lt($small) {
+                padding-right: rem(40);
+                padding-top: rem(15);
+                padding-bottom: rem(25);
+            }
+
+        }
+    }
+}
+.c-faq__section__title,
+.c-faq__item__title,
+.c-faq__item__subtitle {
+    display: block;
+    width: 100%;
+}
+
+.c-faq__section__title {
+    margin: rem(30) 0;
+
+    @include bp-lt($small) {
+        margin: rem(15) 0;
+    }
+}
+
+.c-faq__item__title {
+    height: rem(70);
+    margin: 0;
+    padding: 0 rem(30);
+    color: $mainFont;
+    font-family: $sofiaProCond;
+    font-size: rem(14);
+    font-weight: 700;
+    line-height: rem(70);
+    letter-spacing: rem(1);
+    text-transform: uppercase;
+
+    @include bp-lt($small) {
+        height: rem(50);
+        font-size: rem(12);
+        line-height: rem(50);
+    }
+}
+
+.c-faq__item__subtitle {
+    position: relative;
+    margin: 0;
+    padding-left: rem(20);
+    color: $grey--03;
+    font-family: $sofiaPro;
+    font-size: rem(20);
+    font-weight: 300;
+    line-height: rem(22);
+    text-transform: none;
+    transition: $ease;
+
+    @include bp-lt($medium) {
+        font-size: rem(18);
+    }
+
+    @include bp-lt($small) {
+        padding-left: rem(15);
+        font-size: rem(14);
+        line-height: 1.5;
+    }
+
+    &::before {
+        width: rem(7);
+        height: rem(7);
+        position: absolute;
+        display: block;
+        content: '';
+        top:rem(9);
+        left: 0;
+        border-radius: 50%;
+        background: $pink--02;
+
+        @include bp-lt($small) {
+            top: rem(8);
+        }
+    }
+}
+
+.c-faq__contact {
+    padding: rem(30) $gutter;
+
+    .c-faq__contact__blocks {
+        .column {
+        }
+    }
+
+    .c-faq__contact__block {
+        background: $white;
+        padding: rem(28) $gutter rem(45);
+        text-align: center;
+
+        @include bp-lt($medium) {
+            padding: rem(15) $gutter;
+            margin-bottom: rem(15);
+        }
+
+        span {
+            display: block;
+            color: $grey--03;
+            font-family: $merriWeather;
+            font-size: rem(14);
+            font-weight: 300;
+
+            @include bp-lt($medium) { font-size: rem(12); }
+        }
+
+        .c-faq__contact__phone,
+        .c-linkCst--arrow {
+            margin: rem(20) auto;
+
+            @include bp-lt($medium) { margin: rem(15) auto; }
+        }
+    }
+}
+
+.c-faq__contact__title {
+    display: block;
+    margin: 0 auto rem(45);
+    color: $grey--03;
+    font-size: rem(30);
+    font-weight: 300;
+    font-family: $sofiaPro;
+    text-align: center;
+
+    @include bp-lt($medium) {
+        font-size: rem(25);
+    }
+    @include bp-lt($tablet) {
+        font-size: rem(20);
+        margin: 0 auto rem(20);
+    }
+}
+
+.c-faq__contact__subtitle {
+    display: block;
+    font-size: rem(18);
+    font-weight: 300;
+    font-family: $sofiaPro;
+    line-height: rem(28);
+
+    @include bp-lt($medium) {
+        font-size: rem(14);
+        line-height: 1.5;
+    }
+
+
+    &, strong {
+        color: $mainFont;
+    }
+}
+
+.c-faq__contact__subtitle strong ,
+.c-faq__contact__phone {
+    display: block;
+    font-family: $sofiaPro;
+    font-size: rem(24);
+    font-weight: 100;
+    line-height: rem(28);
+
+    @include bp-lt($medium) {
+        font-size: rem(20);
+    }
+}
+
+.c-faq__contact__phone {
+    font-size: rem(22);
+    color: $mainBranding;
+
+    @include bp-lt($medium) {
+        font-size: rem(18);
+    }
+}

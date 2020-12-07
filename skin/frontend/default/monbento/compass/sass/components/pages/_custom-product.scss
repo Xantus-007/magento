@@ -1,0 +1,236 @@
+.product-bento-personnalise-2-etages,
+.product-bausteinsystem-individuellen-gestaltung-original,
+.categorypath-shop-personnalisation-1-html,
+.product-bento-personalisado-2-pisos,
+.product-customized-bento-box,
+.review-product-list {
+    #custombento {
+
+        @include bp-lt ($mb-medium) {
+            background-position: center center;
+        }
+
+        .element {
+            @include bp-lt ($mb-medium) {
+                background-position: center -3px;
+                background-repeat: no-repeat;
+                @include box-shadow(none);
+            }
+        }      
+        
+        &,
+        .element {
+            @include bp-lt ($mb-medium) {
+                width: 100%;                        
+                @include box-sizing(border-box);
+            }
+            
+            @include bp-lt ($mb-xsmall) {
+                border: none;
+                height: 215px;          
+                background-position: center center;
+                @include background-size(cover);
+                @include box-shadow(inset 0 0 0 3px #EAEAEA);
+            }
+        }    
+    }
+
+    .options-grouped,
+    .option-wrapper {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+            min-height: 0;
+            max-height: none;        
+        }
+
+        @include bp-lt ($mb-small) {
+            margin: 0;
+            padding: 0;
+            border: none;
+        }
+
+        dt {
+            @include bp-lt ($mb-small) {
+                text-align: center;
+                margin-bottom: 10px;
+            }
+        }        
+    }
+
+    .product-bundle {
+        .share {
+            @include share();
+
+            @include bp-lt ($mb-medium) {
+                margin-top: 15px;
+            }
+
+
+            #share-container {
+                @include bp-lt ($mb-medium) {
+                    @include clearfix();
+                }
+            }
+
+            #downloadlink {
+                @include bp-lt ($mb-medium) {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+
+    #bundleoptions {
+        @include bp-lt ($mb-small) {
+            border-top: 0;
+        }
+
+        .product-options {
+            dl {
+                .input-box {
+                    @include bp-lt ($mb-small) {
+                        padding: 0;
+                        @include grid-row(nest);
+                        margin: 0;
+                    }
+
+                    span.bundle-color {          
+                        @include bp-lt ($mb-small) {
+                            height: 40px;
+                            @include grid-column(4);
+                            @include box-sizing(border-box);
+                            padding-left: (rem-calc(10) / 2);
+                            padding-right: (rem-calc(10) / 2);
+                            margin-bottom: 10px;
+                        }
+                        
+                        @include bp-lt ($mb-xsmall) {
+                            height: 30px;
+                            @include grid-column(3);
+                            padding-left: (rem-calc(5) / 2);
+                            padding-right: (rem-calc(5) / 2);
+                        }
+
+                        span {
+                            @include bp-lt ($mb-small) {
+                                width: 100%;
+                                height: 100%;
+                                border: 1px solid #E0E0E0;                            
+                                position: static;
+                                background-repeat: no-repeat;
+                                background-position: center center;                            
+                            }
+                        }
+
+                        &.active {
+                            @include bp-lt ($mb-small) {                                
+                                background: none;
+                            }
+
+                            span {
+                                @include bp-lt ($mb-small) {                                
+                                    @include box-shadow(0 0 5px #969696);
+                                }
+                            }
+                        }
+
+                        .hover {
+                            @include bp-lt ($mb-small) {    
+                                display: block;
+                                @include background-size(contain !important);
+                                background-repeat: no-repeat !important;
+                                background-position: center center !important;
+                            }
+
+                            + span {
+                                @include bp-lt ($mb-small) {    
+                                    display: none;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .options-grouped {
+                    p.title {
+                        @include bp-lt ($mb-small) {
+                            display: none;
+                        }
+                    }
+
+                    dt {
+                        label {
+                            @include bp-lt ($mb-small) {
+                                display: inline;
+                            }
+                        }
+                    }
+
+                    .input-box {
+                        @include bp-lt ($mb-small) {
+                            background: none;
+                            margin: 0;
+                            padding: 0;
+                        }
+                    }
+
+                    #options-5,
+                    #options-6 {
+                        .input-box {
+                            @include bp-lt ($mb-small) {                           
+                                padding-left: 0;
+                            }
+                        }
+                    }
+
+                    #options-5 {
+                        dt {
+                            label {
+                                @include bp-lt ($mb-small) {
+                                    background-position: 0 -1197px;
+                                }
+                            }
+                        }
+                    }
+
+                    #options-6 {
+                        dt {
+                            label {
+                                @include bp-lt ($mb-small) {
+                                    background-position: 0 -1248px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            dd {
+                @include bp-lt ($mb-small) {
+                    padding: 0 50px;
+                }
+            }
+        }
+
+        .bx-wrapper {
+            .bx-next {
+                @include bp-lt ($mb-small) {
+                    right: -5px;
+                }
+            }
+            .bx-prev {
+                @include bp-lt ($mb-small) {
+                    left: -5px;
+                }
+            }
+
+            .bx-controls-direction {
+                a {
+                    @include bp-lt ($mb-small) {
+                        z-index: 9;
+                    }
+                }
+            }
+        }
+    }
+}

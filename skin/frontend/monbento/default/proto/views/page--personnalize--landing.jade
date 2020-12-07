@@ -1,0 +1,104 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Personnaliser'
+    - var pageClass = ''
+    - var pageType = 'default'
+
+append body
+    - var labels = ['Home', 'Shop', 'Personnalisation']
+    +c-breadcrumb(labels)
+
+    .c-title--page.o-bkg--white
+        .row
+            .column
+                h1 Personnalisation
+
+    .c-page__custom
+        .c-page__custom__slider
+            .c-page__custom__slider__hover
+                .c-title Fabriquez le bento#[br]de vos envies !
+                p.c-basline Choisissez la couleur de chaque élément de votre boite et faites de vos goûters et de vos repas des moments uniques !
+                a.c-button--transparentWhite--arrowRightToRight.js-scrollTo(href=".c-grid") Commencer
+            .js-bxslider
+                - for (var i=0; i<3; i++)
+                    .c-page__custom__slider__item
+                        .c-bkg--large(style="background-image: url(#{imgDir}c-img__slider--custom--01.jpg);")
+                        .c-bkg--small(style="background-image: url(#{imgDir}c-img__slider--custom--small--01.jpg);")
+                        .c-product
+                            img(src="#{imgDir}c-img__slider__custom__perso__bento--01.png", alt="")
+
+    .row
+        .column
+            .c-timeline--horizontal
+                - var timeLineTitles = ['Choisissez votre Bento!', 'Modifiez votre Bento !', 'Nous le fabriquons Conformément à vos envies', 'Recevez-le où vous souhaitez']
+
+                each title in timeLineTitles
+                    .c-timeline__item
+                        span= title
+
+    section.o-section--bkgGrey.c-grid.c-section__custom
+        .c-title--group
+            .c-baseline Choississez le modèle de vos rêves
+
+            .js-grid__product
+                .c-grid__product.c-grid__product--custom
+                    .c-grid__custom--col2
+                        .c-row__product
+                            .row.collapse
+                                .columns
+                                    .c-grid__product__subtitle
+                                        | MB Original
+                                        img(src="#{imgDir}c-logo__mif.svg", alt="")
+
+                                - for (var i=0; i<6; i++)
+                                    .columns.large-6.medium-4.small-6
+                                        a.c-item__product.js-itemEqualizer--holder(href="")
+                                            .c-thumb
+                                                // format image 220x220px
+                                                img(src="#{imgDir}c-img__product--220x220.png", alt="")
+                                            .js-itemEqualizer
+                                                .c-title MB Original Single
+                                                .c-baseline 500 ml
+
+                    .c-grid__custom--col1
+                        .c-row__product
+                            .row.collapse
+                                .columns
+                                    .c-grid__product__subtitle MB Square
+
+                                - for (var i=0; i<2; i++)
+                                    .columns.large-12.medium-4.small-6
+                                        a.c-item__product.js-itemEqualizer--holder(href="")
+                                            .c-thumb
+                                                // format image 220x220px
+                                                img(src="#{imgDir}c-img__product--220x220.png", alt="")
+                                            .js-itemEqualizer
+                                                .c-title MB Original Single
+                                                .c-baseline 500 ml
+
+                    .c-grid__custom--col1
+                        .c-row__product
+                            .row.collapse
+                                .columns
+                                    .c-grid__product__subtitle MB Tresor
+
+                                .columns.large-12.medium-4.small-6
+                                    a.c-item__product.js-itemEqualizer--holder(href="")
+                                        .c-thumb
+                                            // format image 220x220px
+                                            img(src="#{imgDir}c-img__product--220x220.png", alt="")
+                                        .js-itemEqualizer
+                                            .c-title MB Original Single
+                                            .c-baseline 500 ml
+
+    .c-section--launcher
+        .row
+            .columns.medium-6.small-12
+                a(href="")
+                    img(src="#{imgDir}c-img__perso--02.jpg", alt="")
+            .columns.medium-6.small-12
+                a(href="")
+                    img(src="#{imgDir}c-img__perso--02.jpg", alt="")

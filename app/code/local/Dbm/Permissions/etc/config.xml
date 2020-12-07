@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <dbm_permissions>
+            <version>0.0.1</version>
+        </dbm_permissions>
+    </modules>
+    <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <promo_quote_grid>Dbm_Permissions_Block_Adminhtml_Promo_Quote_Grid</promo_quote_grid>
+                    <promo_quote_edit_tab_main>Dbm_Permissions_Block_Adminhtml_Promo_Quote_Edit_Tab_Main</promo_quote_edit_tab_main>
+                </rewrite>
+            </adminhtml>
+        </blocks>
+        <helpers>
+            <dbm_permissions>
+                <class>Dbm_Permissions_Helper</class>
+            </dbm_permissions>
+        </helpers>
+    </global>
+</config>

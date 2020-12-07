@@ -1,0 +1,106 @@
+﻿<!--@subject {{var store.getFrontendName()}} : Nouvelle commande n°{{var order.increment_id}} @-->
+<!--@vars
+{"store url=\"\"":"Url de la boutique",
+"skin url=\"images/logo_email.gif\" _area='frontend'":"Logo de l'email",
+"htmlescape var=$order.getCustomerName()":"Nom du client",
+"var store.getFrontendName()":"Nom de la boutique",
+"store url=\"customer/account/\"":"Url du compte client",
+"var order.increment_id":"N° de commande",
+"var order.getCreatedAtFormated('long')":"Date et heure de cr&eacute;ation de la commande",
+"var order.getBillingAddress().format('html')":"Adresse de facturation",
+"var payment_html":"D&eacute;tails du paiement",
+"var order.getShippingAddress().format('html')":"Adresse de livraison",
+"var order.getShippingDescription()":"Description de la livraison",
+"layout handle=\"sales_email_order_items\" order=$order":"Grille des articles de la commande",
+"var order.getEmailCustomerNote()":"Commentaire de commande"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="margin-top:10px; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ header starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top"><a href="{{store url=""}}"><img src="{{skin url="images/logo_email.gif" _area='frontend'}}" alt="{{var store.getFrontendName()}}"  style="margin-bottom:10px;" border="0"/></a></td>
+            </tr>
+        </table>
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p>
+                        <strong>Bonjour {{htmlescape var=$order.getCustomerName()}}</strong>,</p>
+                        <p>Votre commande sur {{var store.getFrontendName()}} a bien &eacute;t&eacute; prise en compte. Vous recevrez un e-mail de suivi dès que votre commande sera pr&eacute;par&eacute;e.
+                  </p>
+                        </p>
+                        <p>Vous pouvez &eacute;galement suivre le statut de votre commande en <a href="{{store url="customer/account/"}}" style="color:#1E7EC8;">vous connectant &agrave; votre compte</a>.</p>
+                        <p>G&eacute;n&eacute;ralement, votre commande est pr&eacute;par&eacute;e le jour même ou le lendemain (sauf d&eacute;lais particuliers signal&eacute;s sur les produits), puis est d&eacute;pos&eacute;e &agrave; La poste dans les 24h (sauf dimanche et jours f&eacute;ri&eacute;s). 
+La Poste s'engage ensuite &agrave; vous livrer en 48h (en France m&eacute;tropolitaine).</p>
+                        <p>Pour toutes questions, n'h&eacute;sitez pas &agrave; nous contacter par e-mail sur <a href="mailto:{{config path='trans_email/ident_support/email'}}" style="color:#1E7EC8;">{{config path='trans_email/ident_support/email'}}</a> ou &agrave; nous appeler au <span class="nobr">{{config path='general/store_information/phone'}}</span><span class="nobr">(+33 963 239 512 depuis l'&eacute;tranger)</span> de 9h &agrave; 19h, du lundi au vendredi. </p>
+                  <p>Voici le r&eacute;capitulatif de votre commande :</p>
+
+                  <h3 style="border-bottom:2px solid #eee; font-size:1.05em; padding-bottom:1px; ">Votre commande n°{{var order.increment_id}} <small>(pass&eacute;e le {{var order.getCreatedAtFormated('long')}})</small></h3>
+              <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Informations de facturation :</th>
+                            <th width="3%"></th>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Mode de paiement :</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getBillingAddress().format('html')}}
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var payment_html}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    {{depend order.getIsNotVirtual()}}
+                    <table cellspacing="0" cellpadding="0" border="0" width="100%">
+                        <thead>
+                        <tr>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Informations de livraison :</th>
+                            <th width="3%"></th>
+                            <th align="left" width="48.5%" bgcolor="#d9e5ee" style="padding:5px 9px 6px 9px; border:1px solid #bebcb7; border-bottom:none; line-height:1em;">Mode de livraison :</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getShippingAddress().format('html')}}
+                                &nbsp;
+                            </td>
+                            <td>&nbsp;</td>
+                            <td valign="top" style="padding:7px 9px 9px 9px; border:1px solid #bebcb7; border-top:0; background:#f8f7f5;">
+                                {{var order.getShippingDescription()}}
+                                &nbsp;
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <br/>
+                    {{/depend}}
+                    {{layout handle="sales_email_order_items" order=$order}}
+                    <br/>
+                    {{var order.getEmailCustomerNote()}}
+                    <p>Nous vous remercions d'avoir choisi MonBento.com, et restons &agrave; votre disposition pour tous renseignements.</p>
+                    <p>Cordialement.</p>
+                    <p>L'&eacute;quipe MonBento</p>
+                    <p><a href="http://www.monbento.com" style="color: #1E7EC8;">www.monbento.com</a></p>
+                    <p>PS : Rejoignez le groupe Facebook &quot;MonBento, la bentomania&quot; ! <a href="http://www.facebook.com/monbento.france" style="color: #1E7EC8;">> cliquez ici</a></p></td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

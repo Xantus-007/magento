@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_catalog>
+                <title>DBM - Catalog edit</title>
+                <model>dbm_catalog/api</model>
+                <acl>dbm_catalog</acl>
+                <methods>
+                    <getBundledProducts>
+                        <title>Get Bundle associated products</title>
+                        <method>getBundledProducts</method>
+                        <acl>dbm_catalog/all</acl>
+                    </getBundledProducts>
+                    <makeBundleImage>
+                        <title>Make bundle image</title>
+                        <method>makeBundleImage</method>
+                        <acl>dbm_catalog/all</acl>
+                    </makeBundleImage>
+                </methods>
+            </dbm_catalog>
+            <dbm_catalog_override>
+                <title>DBM - Catalog : Override</title>
+                <model>dbm_catalog/catalog_product_api</model>
+                <acl>dbm_catalog</acl>
+                <methods>
+                    <getProductInfo>
+                        <title>Get product info</title>
+                        <method>getProductInfo</method>
+                        <acl>dbm_catalog/all</acl>
+                    </getProductInfo>
+                </methods>
+            </dbm_catalog_override>
+            <dbm_category_override>
+                <title>DBM - Category : Override</title>
+                <model>dbm_catalog/catalog_category_api</model>
+                <acl>dbm_catalog</acl>
+                <methods>
+                    <tree>
+                        <title>Return category tree</title>
+                        <method>tree</method>
+                        <acl>dbm_catalog/all</acl>
+                    </tree>
+                    <getAssignedProducts>
+                        <title>Get product list</title>
+                        <method>assignedProducts</method>
+                        <acl>dbm_catalog/all</acl>
+                    </getAssignedProducts>
+                </methods>
+            </dbm_category_override>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_catalog>dbmCatalog</dbm_catalog>
+                <dbm_catalog_override>dbmCatalogOverride</dbm_catalog_override>
+                <dbm_category_override>dbmCategoryOverride</dbm_category_override>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_catalog translate="title" module="dbm_catalog">
+                    <title>Dbm - Catalog : All</title>
+                    <all translate="title" module="dbm_catalog">
+                        <title>DBM - Catalog</title>
+                    </all>
+                </dbm_catalog>
+            </resources>
+        </acl>
+    </api>
+</config>

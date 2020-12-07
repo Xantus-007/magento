@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <dbm_cart_popup>
+            <label>Configuration Popup panier</label>
+            <sort_order>1</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>dbm_country_popup</tab>
+            <groups>
+                <general translate="label">
+                    <label>Général</label>
+                    <comment></comment>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <background>
+                            <label>Image</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_cart/popup</upload_dir>
+                            <base_url type="media">dbm_cart/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 700 x 500 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </background>
+                        <link translate="label comment">
+                            <label>Lien du visuel</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </link>
+                        <exclude_ids translate="label comment">
+                            <label>Ids des produits pour lesquels il ne faut pas afficher la popup</label>
+                            <comment>séparés par des ;</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>30</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </exclude_ids>
+                    </fields>
+                </general>
+            </groups>
+        </dbm_cart_popup>
+    </sections>
+</config>

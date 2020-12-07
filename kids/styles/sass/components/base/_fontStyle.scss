@@ -1,0 +1,22 @@
+// ========================================= //
+// Font style
+// ========================================= //
+
+body {
+    font-family: $lato;
+    color: $lightgrey_std;
+}
+
+strong { font-weight: 700; }
+
+a { 
+    color: $lightgrey_std;
+    text-decoration: none;
+    @include transition(color .2s ease);
+    cursor: pointer;
+
+    &:hover {
+        color: $purple_linkhover;
+        @include transition(color .2s ease);
+    }
+}

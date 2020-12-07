@@ -1,0 +1,57 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+
+$offset = $this->getOffset();
+$limit = $this->getLimit();
+$size = Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_'.$this->getSize().'_size');
+
+$instagramPosts = $this->getInstagramItemsFeed($offset, $limit);
+?>
+<?php if(count($instagramPosts) > 0 && Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_enable')): ?>
+<!-- Instagram -->
+<div class="c-section__instagram">
+    <?php if(Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_link_enable')): ?>
+    <a href="<?php echo Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_url') ?>" target="_blank">
+    <?php endif; ?>
+    <p class="titleactuhome">
+	<span><img src="<?php echo $this->getSkinUrl('images/c-icon__instagram.png') ?>"></span><br><br>
+	<span><?php echo $this->__('Instagram') ?></span>
+    </p>
+    <?php if(Mage::getStoreConfig('dbm_feeds_config/instagram_config_general/instagram_link_enable')): ?>
+    </a>
+    <?php endif; ?>
+    <div class="c-instagram clearfix">
+        <?php foreach($instagramPosts as $instagramPost): ?>
+	<div class="c-instagram__item">
+            <a href="<?php echo $instagramPost->link ?>" target="_blank">
+                <div class="c-instragram__hover"></div>
+                <img src="<?php echo $this->getImage($instagramPost->created_time, $this->getInstagramImgFolder(), $size) ?>" alt="<?php echo $instagramPost->caption->text ?>" />
+            </a>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+<?php endif; ?>

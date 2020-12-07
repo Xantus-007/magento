@@ -1,0 +1,148 @@
+body.club {
+    @include bp-lt($mb-small) {
+        .postWrapper {
+            margin-top: 0;
+        }
+        .postDetails {
+            margin-bottom: 0;
+        }
+        .postDetails .social-links li {
+            float: none;
+            height: auto;
+
+            &:last-child {
+                display: none;
+            }
+        }
+        .addthis_counter {
+            display: none !important;
+        }
+        .addthis_toolbox {
+            @include grid-row(nest);
+            margin-left: -5px;
+            margin-right: -5px;
+
+            > a {
+                @include grid-column(2);
+                padding-left: 5px;
+                padding-right: 5px;
+                @include box-sizing(border-box);
+            }
+        }
+        .addthis_button_facebook,
+        .addthis_button_twitter {
+            float: none;
+            display: block;
+        }
+
+        a.at300b .at4-icon, a.at300m .at4-icon {
+            display: block;
+            margin: 0 auto;
+            text-align: center;
+            float: none;
+        }
+
+        .clubPhoto > * {
+            margin: 20px 0 20px 0;
+
+            &.clubComments {
+                margin-bottom: 0;
+            }
+        }
+        .shareElementList {
+            display: block;
+            width: 100%;
+            margin: auto;
+        }
+        .commentAddButton a[href='#commentForm'] {
+            display: none;
+        }
+        .clubComments .line > * {
+            padding: 0;
+        }
+        .clubComments .commentAddButton a {
+            padding: 0;
+        }
+        .clubComments .commentCount {
+            border-right: none;
+        }
+    }
+    @include bp-lt($mb-medium) {
+        .clubElementForm {
+            label {
+                display: block;
+                margin-bottom: 5px;
+            }
+            input,
+            select {
+                line-height: 30px;
+                width: 100%;
+                height: 30px;
+            }
+            dl {
+                padding-left: 0;
+            }
+            select[multiple='multiple'] {
+                height: 60px;
+            }
+            .roundedButton {
+                padding: 0;
+            }
+        }
+        .commentShare {
+            display: none;
+        }
+    }
+    .page .main {
+        text-align: left;
+        @include bp-lt($mb-xmedium) {
+            overflow-x: hidden;
+        }
+    }
+    .clubWrapped {
+        width: auto;
+        max-width: 1000px;
+    }
+    .row.col2-right-layout,
+    .row.col2-left-layout {
+        @include bp-lt($mb-xmedium) {
+            position: relative;
+        }
+    }
+    .col-main {
+        float: right !important;
+        width: 795px !important;
+        @include bp-lt($mb-medium) {
+            width: 75% !important;
+            padding-right: .9375rem !important;
+            padding-left: 20px!important;
+        }
+        @include bp-lt($mb-xmedium) {
+            float: none !important;
+            box-sizing: border-box;
+            width: 100% !important;
+            padding-top: 84px;
+            padding-right: .9375rem !important;
+            padding-left: .9375rem !important;
+
+            @include clearfix-micro;
+        }
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    &.blog .contenu {
+        overflow: hidden;
+        margin-top: 4px;
+        border-left: 1px solid #d8d5d5;
+    }
+    .postWrapper {
+        @include box-sizing(border-box);  
+        margin-left: 0;
+        
+        @include bp-gt($mb-medium) {
+            padding-left: 30px;
+        }        
+    }
+}

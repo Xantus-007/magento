@@ -1,0 +1,42 @@
+// ========================================= //
+// buttons
+// ========================================= //
+[class*='c-button'] {
+
+    &[class*='--b2b'] {
+        color: $white;
+        background-color: $b2b--blue !important;
+        box-shadow: rem(1) 0 rem(5) rgba($b2b--blue, .6);
+        border-color: $b2b--blue;
+        padding-top: 0;
+        padding-bottom: 0;
+        line-height: rem(16);
+
+        &:hover {
+            color: $white;
+            background-color: $b2b--blue !important;
+        }
+
+        &:active, &:focus {
+            color: $white;
+            background-color: darken($b2b--blue, 20%) !important;
+            border-color: darken($b2b--blue, 20%);
+            box-shadow: 0 0 rem(3) rgba(darken($b2b--blue, 20%), .6);
+        }
+
+        &[class*='--arrowRightToRight'] {
+            background-image: url(#{$img}c-icon_arrowRight--white.svg);
+        }
+    }
+}
+
+.c-wrapper__button {
+    padding-top: rem(25);
+    padding-bottom: rem(25);
+}
+
+.c-action__gototop {
+    &:hover, &:focus {
+        background-color: $b2b--blue;
+    }
+}

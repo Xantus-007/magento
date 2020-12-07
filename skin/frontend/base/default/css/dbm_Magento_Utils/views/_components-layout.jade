@@ -1,0 +1,57 @@
+block vars
+    - var pageTitle     = 'Aperichic'
+    - var pageClass     = ''
+    - var cssDirLocal   = 'assets/styles/local/'
+    - var cssDirVendor  = 'assets/styles/vendor/'
+    - var imgDir        = 'assets/media/images/'
+    - var mediaDir      = 'assets/media/'
+    - var jsDirLocal    = 'assets/scripts/local/'
+    - var jsDirVendor   = 'assets/scripts/vendor/'
+    - var themeColor    = '#FFFFFF'
+
+doctype html
+html
+    head
+        //- Pace
+        //- script(src="#{jsDir}plugins/pace.min.js")
+        //- link(rel="stylesheet" href="#{cssDir}plugins/pace.css")
+
+        //- Title
+        title #{pageTitle}
+
+        //- Metas
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        meta(name="format-detection" content="telephone=no")
+
+        //- Fonts
+        link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Palanquin:400,300,500,700', rel='stylesheet', type='text/css')
+
+        //- Html5 Shiv
+        //[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
+
+        //- Styles
+        include _components-styles
+
+        //- Favicon
+        include _components-favicon
+
+        //- Mixins
+        include _mixins-placeholder
+        include _mixins-lipsum
+        include _mixins-picture
+
+    body(class="#{pageClass}")
+        include _blocks-header
+
+        block body
+
+        include _blocks-footer
+
+        //- Script
+        //-- vendor
+        include _components-scripts
+        //-- local
+        block scripts

@@ -1,0 +1,509 @@
+.checkout-onepage-index {
+    
+    .col2-set {
+        .col-2,
+        .col-1 {
+            @include bp-lt ($mb-xmedium) {
+                @include grid-column(6);
+                @include box-sizing(border-box);
+            }
+            
+            @include bp-lt ($mb-small) {
+                @include grid-column(12);
+                margin-bottom: 15px;
+            }
+        }
+    }
+    
+    #register-or-login {       
+        .col-2,
+        .col-1 {
+            @include bp-lt ($mb-xmedium) {
+                @include grid-column(6);
+                @include box-sizing(border-box);
+            }
+            
+            @include bp-lt ($mb-xsmall) {
+                @include grid-column(12);
+            }
+        }
+        
+        .col-1 {
+            .buttons-set {
+                .required {
+                    @include bp-lt ($mb-xmedium) {
+                        text-align: left;
+                    }
+                }
+                
+                button.button {
+                    @include bp-lt ($mb-xmedium) {
+                        float: none;
+                        @include box-sizing(border-box);
+                    }                                        
+                }
+            }
+        }                       
+    }      
+    
+    .whole-order {
+        @include bp-lt ($mb-medium) {
+            padding: 10px;
+        }
+    }        
+    
+    #exposeMask {
+        width: 100% !important;     
+    }
+
+    #layer_socolissimo,
+    #layer_gls {
+        left: 0 !important;
+        right: 0;
+        margin: 0 auto;
+            
+        @include bp-lt ($mb-medium) {
+            width: 90%;            
+        }
+        
+        h3 {           
+            @include bp-lt ($mb-xmedium) {                                                
+                font-size: 12px;
+            }
+
+            @include bp-lt ($mb-small) {
+                padding: 0 20px;
+            }
+        } 
+    }
+
+    #layer_socolissimo {
+        input[type="checkbox"],
+        input[type="radio"] {
+            @include bp-lt ($mb-small) {
+                margin-left: 10px;
+                margin-top: -20px;                
+            }
+        }
+    }
+
+    #socolissimo-map {
+        
+        .contenu {
+            @include bp-lt ($mb-medium) {                                    
+                @include grid-row(nest);
+                margin: 0;
+                padding: 0;
+                border-bottom: 15px solid #E9E9E9;
+            }
+        }
+        
+        .titre2 {
+            @include bp-lt ($mb-medium) {  
+                margin-right: 15px;
+            }
+        }
+        
+        .buttons-set {
+            @include bp-lt ($mb-xmedium) {
+                margin-bottom: 30px;
+            }
+
+            span {
+                @include bp-lt ($mb-xmedium) {
+                    height: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+        
+        .ligne1,
+        .ligne2 {
+            @include bp-lt ($mb-medium) {
+                @include grid-row(nest);
+                margin: 0;
+                background-position: -100px -100px;
+            }
+
+            .col,
+            .choix {
+                @include bp-lt ($mb-medium) {                
+                    @include grid-column(4);
+                    @include box-sizing(border-box);
+                    margin: 0 0 15px 0;
+                }    
+                
+                @include bp-lt ($mb-xmedium) {
+                    @include grid-column(12);
+                }
+            }
+            
+            .choix {
+                .txt2 {
+                    @include bp-lt ($mb-medium) {
+                        width: 150px;
+                    }
+                    
+                    @include bp-lt ($mb-xmedium) {
+                        margin-left: 10px;
+                        width: 65%;
+                    }                    
+                }
+            }
+            
+            .titre {
+                @include bp-lt ($mb-medium) {                
+                    @include grid-column(12);
+                    @include box-sizing(border-box);
+                }
+            }
+        }
+        
+        .select {
+            @include bp-lt ($mb-medium) {
+                width: 100%;
+                @include box-sizing(border-box);
+            }                        
+            
+            span {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                    background-position: top right;
+                    border: 1px solid #AE9FA4;
+                    background: none;
+                    position: relative;
+                    height: 20px;
+                    line-height: 20px;
+                    @include box-sizing(border-box);
+                }
+                
+                @include bp-lt ($mb-xmedium) {
+                    height: 30px;
+                    line-height: 30px;
+                }
+                
+                &:after {
+                    @include bp-lt ($mb-medium) {
+                        position: absolute;
+                        right: 5px;
+                        top: 8px;
+                        content: '';
+                        display: inline-block;
+                        width: 0;
+                        height: 0;
+                        border-top: 4px dashed;    
+                        border-right: 4px solid transparent;
+                        border-left: 4px solid transparent;
+                    }
+                    
+                    @include bp-lt ($mb-xmedium) {
+                        top: 12px;
+                        
+                    }
+                }
+            }
+        }
+        
+        input {
+            
+            label {
+                @include bp-lt ($mb-medium) {   
+                    display: block;
+                }
+            }
+            
+            &.adresse,
+            &.cp
+            {                           
+                @include bp-lt ($mb-xmedium) {
+                    height: 30px;
+                    line-height: 30px;
+                }   
+            
+                @include bp-lt ($mb-medium) {   
+                    width: 100%;
+                    @include box-sizing(border-box);
+                }
+            }
+        }
+        
+        select {
+            @include bp-lt ($mb-medium) {   
+                width: 100%;
+            }
+        }
+        
+        #btn_modifierAdresse {
+            @include bp-lt ($mb-medium) {
+                margin: 0;
+                @include grid-column(12);
+                @include box-sizing(border-box);                
+            }
+            
+            span {
+                @include bp-lt ($mb-medium) {
+                    height: 30px;
+                    line-height: 30px;
+                }
+            }
+        }
+        
+        .colgauche,
+        .coldroite {
+            @include bp-lt ($mb-medium) {               
+                @include grid-column(6);                
+                @include box-sizing(border-box);
+                padding: 0;
+            }            
+            
+            @include bp-lt ($mb-xmedium) {
+                @include grid-row(12);
+            }
+            
+            .point_retrait {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                    margin-left: 0;
+                    margin-right: 0;
+                    padding: 10px;
+                    @include box-sizing(border-box);        
+                }
+                
+                .distance {
+                    @include bp-lt ($mb-xmedium) {
+                        float: none;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+                
+        .point.poste,
+        .handicap,
+        .adresse_point,
+        .commercant,
+        .btn_socolissimoChoisir {
+            @include bp-lt ($mb-xmedium) {
+                float: none;
+                text-align: left;
+            }
+        }
+    }
+    
+    #layer_gls {
+        h3 {            
+            @include bp-lt ($mb-xmedium) {                
+                padding-left: 15px;                
+            }
+
+            @include bp-lt ($mb-small) {
+                padding: 10px 40px;
+                text-align: center;
+                line-height: 18px;
+            }
+            
+            &:before {
+                @include bp-lt ($mb-xmedium) {
+                    display: none;
+                }
+            }
+        }   
+        
+        #gls_headers {
+            @include bp-lt ($mb-medium) {
+                height: auto;
+                background-position: bottom center;
+                padding-bottom: 15px;
+                padding-left: 0;
+                padding-right: 0;
+                @include grid-row(nest);
+            }
+            
+            .left,
+            .right {
+                @include bp-lt ($mb-medium) {
+                    @include grid-column(6);
+                    @include box-sizing(border-box);
+                }
+                
+                @include bp-lt ($mb-small) {
+                    @include grid-column(12);
+                }
+                
+                > span,
+                > label {
+                    @include bp-lt ($mb-medium) {
+                        display: block;
+                        margin-bottom: 5px;
+                        margin-right: 0;
+                        white-space: nowrap;                        
+                    }
+                }
+            }
+            
+            .right {
+                #num_telephone {
+                    @include bp-lt ($mb-medium) {
+                        width: 100%;
+                        @include box-sizing(border-box);
+                    }
+                }
+            }
+        }                
+        
+        #col_gauche_gls {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(8);
+                padding-left: 0;
+                padding-right: 0;
+            }                        
+        }
+        
+        #col_droite_gls {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(4);
+                padding-left: 0;
+                padding-right: 0;
+            }
+            
+            .gls_point_relay {
+                .GLS_relay_horaires,
+                .choose-relay-point {
+                    @include bp-lt ($mb-medium) {
+                        float: none;
+                    }
+                }
+                
+                .GLS_relay_horaires {
+                    @include bp-lt ($mb-medium) {
+                        display: block;                        
+                    }
+                }
+                
+                .choose-relay-point {
+                    @include bp-lt ($mb-medium) {
+                        display: inline-block;
+                        margin-top: 10px;
+                    }
+                }
+            }            
+        }
+        
+        #col_gauche_gls,
+        #col_droite_gls {
+            @include bp-lt ($mb-medium) {
+                @include box-sizing(border-box);                
+            }
+            
+            @include bp-lt ($mb-xmedium) {
+                @include grid-column(12);
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+    }
+    
+    #checkoutSteps {
+        button.btn-checkout {
+            @include bp-lt ($mb-xmedium) {
+                padding: 0;
+                width: 100%;
+            }
+        }
+    }
+    
+    .checkout-agreements {
+        .agree {
+            @include bp-lt ($mb-xmedium) {
+                text-align: left;
+                padding-left: 0;
+            }
+        }
+    }
+
+    .s_method_socolissimo {
+        .socolissimo_pictos {
+            @include bp-lt ($mb-small) {
+                margin: 10px 0 0 20px;
+            }
+
+            &.encart {
+                @include bp-lt ($mb-small) {
+                    top: 72px;
+                }
+            }
+        }
+
+        .radio {
+            @include bp-lt ($mb-small) {
+                margin-top: 25px;
+            }
+        }
+
+        li {
+            &:first-child {
+                .socolissimo_pictos {
+                    &.encart {
+                        @include bp-lt ($mb-small) {
+                            left: 0;
+                            top: 50px;
+                        }
+                    }
+                }
+            }
+        }
+        img {
+            @include bp-lt ($mb-small) {
+                left: 0;
+                top: 20px;
+            }            
+        }
+
+        label {
+            @include bp-lt ($mb-small) {
+                display: block;
+                padding-left: 70px;
+                margin-bottom: 10px;
+                margin-top: -13px;
+            }
+        }
+    }
+
+    #layer_socolissimo {
+        #socolissimo-map {
+            .ligne2 {
+                input {
+                    @include bp-lt ($mb-small) {
+                        margin: 5px 0 0 0;
+                    }
+                }
+            }
+        }
+    }
+
+    #adresses_socolissimo {
+        @include bp-lt ($mb-small) {
+            margin-bottom: 10px;
+        }
+    }
+
+    #checkout-review-table {
+        th {
+            @include bp-lt($mb-small) {
+                white-space: normal;
+            }
+        }
+    }
+
+    label[for*="p_method_vads"]{
+        span {
+            background:url("../../images/svg/logo-cb.svg") no-repeat;
+            display: inline-block;
+            *display: inline;
+            *zoom: 1;
+            width: 45px;
+            height: 9px;
+            margin-right: 5px;
+        }
+    }
+}

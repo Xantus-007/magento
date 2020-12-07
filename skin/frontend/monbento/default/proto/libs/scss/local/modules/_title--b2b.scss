@@ -1,0 +1,21 @@
+.c-page__title {
+    text-align: center;
+
+    h1 {
+        color: $white;
+        font-family: $sofiaPro;
+        font-weight: 700;
+    }
+}
+
+.c-subTitle {
+    position: relative;
+    top: rem(-10);
+    font-size: rem(20);
+    color: $grey--03;
+    font-weight: 300;
+
+    @include bp-lt($xmedium) {
+        font-size: rem(17);
+    }
+}

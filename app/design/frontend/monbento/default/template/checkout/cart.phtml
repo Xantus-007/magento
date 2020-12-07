@@ -1,0 +1,126 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2016 X.commerce, Inc. and affiliates (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Shopping cart template
+ *
+ * @see Mage_Checkout_Block_Cart
+ */
+?>
+<section class="o-section--bkgGrey--noPaddingTop">
+    <?php echo $this->getChildHtml('breadcrumbs'); ?>
+    <?php echo $this->getChildHtml('notice_cart'); ?>
+    <div class="c-title--page">
+        <div class="row">
+            <div class="columns"><?php echo $this->__('Shopping Cart') ?></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="columns large-8">
+            <?php if($amountForFranco = $this->helper('monbento_site')->getFrancoMsgForMonbento()): ?>
+            <div class="c-alert--success">
+                <div class="c-label"><?php echo $this->__('Il ne manque que %s à votre panier<br>pour bénéficier des frais de port offerts (France métropolitaine)', $this->helper('checkout')->formatPrice($amountForFranco)); ?></div>
+                <?php if(!Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+                <div class="c-action"><a href="<?php echo $this->getUrl('shop'); ?>" class="c-linkCst--arrowLeft--white"><?php echo $this->__('Poursuivre mes achats'); ?></a></div>
+                <?php endif; ?>
+            </div>
+            <?php endif; ?>
+            <?php echo $this->getChildHtml('dbm_gtm.cart') ?>
+            <?php echo $this->getChildHtml('form_before') ?>
+            <form action="<?php echo $this->getFormActionUrl() ?>" method="post" class="shopping-cart-form">
+                <?php echo $this->getBlockHtml('formkey'); ?>
+                <div class="c-table__shoppingCart">
+                    <table class="cart-table">
+                        <thead>
+                            <tr>
+                                <th colspan="2"><?php echo $this->__('Products') ?></th>
+                                <th class="medium-hide text-center"><?php echo $this->__('Unit Price') ?></th>
+                                <th class="text-center"><?php echo $this->__('Quantity') ?></th>
+                                <th class="text-center"><?php echo $this->__('Subtotal') ?></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($this->getItems() as $_item): ?>
+                                <?php echo $this->getItemHtml($_item) ?>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="hide">
+                    <?php if ($this->getContinueShoppingUrl()): ?>
+                        <button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Continue Shopping')) ?>" class="button btn-continue" onclick="setLocation('<?php echo Mage::helper('core')->quoteEscape($this->getContinueShoppingUrl()) ?>')"><span><span><?php echo $this->__('Continue Shopping') ?></span></span></button>
+                    <?php endif; ?>
+                    <button type="submit" name="update_cart_action"  value="update_qty" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Update Shopping Cart')); ?>" class="button btn-update"><span><span><?php echo $this->__('Update Shopping Cart'); ?></span></span></button>
+                    <button type="submit" name="update_cart_action" value="empty_cart" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Clear Shopping Cart')); ?>" class="button btn-empty" id="empty_cart_button"><span><span><?php echo $this->__('Clear Shopping Cart'); ?></span></span></button>
+                </div>
+            </form>
+            <div class="row">
+                <?php echo $this->getChildHtml('coupon') ?>
+                <?php echo $this->getChildHtml('ugiftcert') ?>
+            </div>
+            <div class="c-form__giftCard">
+                <?php echo $this->helper('giftmessage/message')->getInline('onepage_checkout', $this->getQuote(), $this->getDontDisplayContainer()) ?>
+            </div>
+        </div>
+        <div class="columns large-4">
+            <div class="c-price__shoppingCart">
+                <div class="c-price__shoppingCart--inner">
+                    <?php echo $this->getChildHtml('totals'); ?>
+                    <?php if($dayOfArrival = $this->helper('monbento_site/product')->getProductEstimateArrivalDate()): ?>
+                        <div class="c-info">
+                            <?php echo $this->__('Livraison estimée :<br>%s prochain (France Metrop.)', $dayOfArrival); ?>
+                            <div class="c-info__tooltip js-tooltip">
+                                <i class="c-fonticon__icon--questionMark">
+                                    <div class="c-tooltip">
+                                        <div class="o-table">
+                                            <div class="o-table__cell--valignMiddle"><?php echo $this->getChildHtml('product_ship_infos'); ?></div>
+                                        </div>
+                                    </div>
+                                </i>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                    <div class="text-center">
+                        <?php foreach ($this->getMethods('methods') as $method): ?>
+                        <?php if ($methodHtml = $this->getMethodHtml($method)): ?>
+                            <?php echo $methodHtml; ?>
+                        <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+            </div>
+            <?php if(!Mage::getSingleton('monbento_kiosk/magasin')->isLogin()): ?>
+            <div class="c-promo__shoppingCart">
+                <div class="c-title"><?php echo $this->__('En ce moment, ne manquez pas...'); ?></div>
+                <?php echo $this->getChildHtml('cart_launcher'); ?>
+            </div>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+<?php echo $this->getChildHtml('shop_reassurance'); ?>

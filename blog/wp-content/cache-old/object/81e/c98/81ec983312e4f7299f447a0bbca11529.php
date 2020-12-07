@@ -1,0 +1,1 @@
+m‘:^<?php exit; ?>a:1:{s:7:"content";a:5:{s:23:"active_sitewide_plugins";b:1;s:23:"ic-woocommerce-settings";b:1;s:15:"acf_pro_license";b:1;s:21:"penci_soledad_options";b:1;s:26:"wis_plugin_migration_error";b:1;}}

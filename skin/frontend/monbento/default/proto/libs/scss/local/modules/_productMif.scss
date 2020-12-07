@@ -1,0 +1,38 @@
+// ========================================= //
+// product made in france
+// ========================================= //
+
+.is-mif {
+    .c-product__action {
+        position: relative;
+        @include bp-lt($small) {
+            position: initial;
+        }
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -80px;
+            width: 60px;
+            height: 65px;
+            background-image: url(#{$img}c-logo__mif.svg);
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+    }
+
+    .c-slider--product {
+        @include bp-lt($small) {
+            position: relative;
+            &:before {
+                content: '';
+                position: absolute;
+                width: 50px;
+                height: 55px;
+                background-image: url(#{$img}c-logo__mif.svg);
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+        }
+    }
+}

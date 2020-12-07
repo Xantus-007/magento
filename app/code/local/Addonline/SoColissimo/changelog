@@ -1,0 +1,38 @@
+[2.1.0 - 28 avril 2014]
+Version theme mobile
+
+[2.0.8 - 8 avril 2014]
+Correction erreur en mode compilation
+Suppression WS geaoname au profit d'un stockage des nom de ville en dbb locale
+Frais de port offert via une règle promo panier
+correction https
+correction compatibilité onestepcheckout
+
+[2.0.7 - 3 janiver 2014]
+Compatibilité magento 1.8
+Compatibilité autre module livraison addonline (GLS)
+URL webservice socolissimo en https
+
+[2.0.6 - 8 aout 2013]
+correction expeditions commandes passée avant migration module v2
+correction recherche villes avec accents
+bug relais colis fermés
+
+[2.0.5 - 26 juin 2013]
+bug reset à la fermeture du layer
+
+[2.0.4 - 20 juin 2013]
+Correction module SoColissimo pour https
+
+[2.0.3 - 25 mai 2013]
+Socolissimo : ajout bouton lancement batch import manuel
+compatibilité onestepcheckout
+correction message header already send socolissimo
+gérer le cas de la compilation
+compatibilite magento < 1.6
+
+[2.0.2 - 19 avril 2013]
+Version 2 du module SoColissimo : 
+fusion module Liberte et Flexibilité
+livraison en Belgique
+compatiblilité autres modules ( owebia, etc... )

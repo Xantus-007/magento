@@ -1,0 +1,172 @@
+[class*="c-stat__block"] {
+    height: 100%;
+    padding: rem(25) rem(30);
+    margin-top: rem(40);
+    margin-bottom: rem(40);
+
+    @include bp-lt($medium) {
+        margin-top: rem(30);
+        margin-bottom: rem(30);
+    }
+
+    @include bp-lt($xmedium) {
+        padding-left: rem(15);
+        padding-right: rem(15);
+        margin-top: rem(15);
+        margin-bottom: rem(15);
+    }
+
+    &[class*="--smallMargin"] {
+        margin-top: 0;
+        margin-bottom: 0;
+
+        @include bp-lt($medium) {
+            margin-top: rem(30);
+            margin-bottom: rem(30);
+        }
+
+        @include bp-lt($xmedium) {
+            padding-left: rem(15);
+            padding-right: rem(15);
+            margin-top: rem(15);
+            margin-bottom: rem(15);
+        }
+    }
+
+    &[class*="white"] {
+        background: $white;
+    }
+
+    &[class*="grey"] {
+        background: $grey--00;
+    }
+}
+
+.c-stat__preNumber {
+    font-family: $sofiaPro;
+    font-size: rem(18);
+    line-height: rem(28);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: $mainBranding;
+
+    @include bp-lt($small) {
+        font-size: rem(14);
+        line-height: rem(18);
+    }
+}
+
+.c-stat__number {
+    margin-bottom: rem(20);
+    font-size: rem(62);
+    line-height: rem(61);
+    white-space: nowrap;
+
+    @include bp-lt($desktopL) {
+        font-size: rem(50);
+        line-height: rem(50);
+    }
+
+
+    @include bp-lt($medium) {
+        font-size: rem(40);
+        line-height: rem(40);
+    }
+
+    @include bp-lt($small) {
+        white-space: normal;
+        font-size: rem(25);
+        line-height: rem(30);
+        margin-bottom: rem(5);
+    }
+
+    &, sup {
+        font-family: $sofiaPro;
+        font-weight: 700;
+        color: $mainBranding;
+    }
+
+    sup {
+        top: rem(-28) !important;
+        font-size: rem(30) !important;
+
+        @include bp-lt($medium) {
+            top: rem(-17) !important;
+            font-size: rem(20) !important;
+        }
+
+        @include bp-lt($small) {
+            top: rem(-10) !important;
+            font-size: rem(14) !important;
+        }
+    }
+
+    sub {
+        bottom: 0;
+        font-size: rem(36);
+        white-space: nowrap;
+
+        @include bp-lt($desktopL) {
+            font-size: rem(30);
+            line-height: rem(30);
+        }
+
+        @include bp-lt($medium) {
+            font-size: rem(20);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(14) !important;
+        }
+    }
+}
+
+.de {
+    .c-stat__block--white {
+        .c-stat__number {
+            white-space: normal;
+        }
+    }
+}
+
+.c-stat__description {
+    font-family: $sofiaPro;
+    font-size: rem(24);
+    line-height: rem(28);
+    color: $subBranding;
+    margin-bottom: rem(35);
+
+    @include bp-lt($desktopL) {
+        font-size: rem(20);
+        line-height: rem(24);
+    }
+
+    @include bp-lt($medium) {
+        font-size: rem(16);
+        line-height: rem(20);
+        margin-bottom: rem(20);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(14);
+        line-height: rem(16);
+        margin-bottom: rem(20);
+    }
+
+    a, span {
+        color: $mainBranding;
+        transition: $ease;
+    }
+
+    a {
+        &:hover, &:focus {
+            color: $mainBranding--active;
+        }
+    }
+}
+
+.js-stat__number, .js-stat__description, .js-stat__smallText, .js-stat__block {
+    @include bp-lt($small) {
+        height: auto !important;
+    }
+}

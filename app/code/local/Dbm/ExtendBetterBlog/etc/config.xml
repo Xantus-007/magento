@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+      	<Dbm_ExtendBetterBlog>
+            <version>0.1.0</version>
+        </Dbm_ExtendBetterBlog>
+    </modules>
+    <global>
+        <resources>
+            <dbm_extendbetterblog_setup>
+                <setup>
+                    <module>Dbm_ExtendBetterBlog</module>
+                </setup>
+            </dbm_extendbetterblog_setup>
+        </resources>
+        <blocks>
+            <dbm_extendbetterblog>
+                <class>Dbm_ExtendBetterBlog_Block</class>
+            </dbm_extendbetterblog>
+            <mageplaza_betterblog>
+                <rewrite>
+                    <adminhtml_post_grid>Dbm_ExtendBetterBlog_Block_Adminhtml_Post_Grid</adminhtml_post_grid>
+                    <adminhtml_post_edit_form>Dbm_ExtendBetterBlog_Block_Adminhtml_Post_Edit_Form</adminhtml_post_edit_form>
+                    <adminhtml_post_edit_tabs>Dbm_ExtendBetterBlog_Block_Adminhtml_Post_Edit_Tabs</adminhtml_post_edit_tabs>
+                    <adminhtml_post_edit_tab_attributes>Dbm_ExtendBetterBlog_Block_Adminhtml_Post_Edit_Tab_Attributes</adminhtml_post_edit_tab_attributes>
+                    <adminhtml_betterblog_helper_form_wysiwyg_content>Dbm_ExtendBetterBlog_Block_Adminhtml_BetterBlog_Helper_Form_Wysiwyg_Content</adminhtml_betterblog_helper_form_wysiwyg_content>
+                </rewrite>
+            </mageplaza_betterblog>
+        </blocks>
+        <helpers>
+            <dbm_extendbetterblog>
+                <class>Dbm_ExtendBetterBlog_Helper</class>
+            </dbm_extendbetterblog>
+        </helpers>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <Dbm_ExtendBetterBlog before="Mageplaza_BetterBlog">Dbm_ExtendBetterBlog_Adminhtml</Dbm_ExtendBetterBlog>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>

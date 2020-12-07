@@ -1,0 +1,284 @@
+// ========================================= //
+// blocks.content
+// ========================================= //
+
+.c-welcome__text {
+    padding-left: rem(75);
+    padding-right: rem(75);
+    margin-bottom: rem(40);
+    text-align: center;
+    background: $white;
+    border-radius: rem(3);
+    padding-top: rem(10);
+    padding-bottom: rem(10);
+
+    h2, p {
+        font-size: rem(15);
+        color: $mainFont;
+    }
+
+    h2 {
+        font-weight: 700 !important;
+        font-family: 'LatoBold';
+        text-transform: initial !important;
+    }
+
+    p {
+        margin-bottom: rem(10);
+    }
+}
+
+
+.c-account .data-table,
+.prototools-table {
+    font-size: rem(14);
+    font-family: $fontBody;
+    font-weight: 300;
+
+    &#my-orders-table,
+    &#my-reviews-table {
+        margin-bottom: rem(20);
+    }
+
+    .product-name {
+        padding-left: 0;
+    }
+
+    .product-image {
+        float: left;
+        margin-right: rem(10);
+        margin-bottom: rem(10);
+    }
+
+    thead tr th,
+    tbody tr td {
+        text-align: center;
+        vertical-align: middle;
+        padding: rem(10);
+    }
+
+    thead {
+        tr th {
+            height: rem(70);
+            color: $grey--03;
+        }
+    }
+
+    tbody {
+        tr td {
+            height: rem(70);
+            color: $subBranding;
+
+            .price {
+                width: 100%;
+                display: inline-block;
+            }
+
+            &.product-cart-info {
+                @include bp-lt($small) {
+                    height: auto;
+                }
+            }
+
+            &.last {
+                word-break: keep-all;
+                white-space: nowrap;
+
+                .separator { display: none; }
+
+                a.link-show,
+                a.link-reorder,
+                a.link-print {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: top;
+                    margin-left: rem(5);
+                    margin-right: rem(5);
+                    background: none;
+                    white-space: nowrap;
+
+                    &:after {
+                        width: auto;
+                        height: 100%;
+                        display: inline-block;
+                        line-height: rem(25);
+                        font-family: $iconFont;
+                        font-size: rem(25);
+                        vertical-align: middle;
+                    }
+                }
+
+                a.link-show {
+                    color: $subBranding;
+                    border-bottom: solid rem(1) $subBranding;
+                }
+
+                a.link-reorder {
+                    color: $mainBranding;
+                    font-weight: 700;
+                }
+
+                a.link-show:after {
+                    content: "\EA06";
+                    position: relative;
+                    font-size: rem(18);
+                    //top: rem(4);
+                    margin-left: rem(5);
+                }
+
+                a.link-reorder:after {
+                    content: "\EA07";
+                    position: relative;
+                    font-size: rem(21);
+                    //top: rem(5);
+                    margin-left: rem(7);
+                }
+
+                a.link-print:after { content: "\EA0A"; }
+            }
+
+            em {
+                white-space: nowrap;
+            }
+        }
+    }
+
+    tfoot {
+        tr {
+            td {
+                .price {
+                    color: $mainFont;
+                    font-weight: 700;
+                    font-size: rem(14);
+                }
+            }
+
+            &.subtotal, &.grand_total, &.grand_total_incl {
+                td, .price {
+                    font-weight: 700;
+                    font-size: rem(16);
+                }
+            }
+        }
+    }
+}
+
+.c-account {
+    .messages {
+        * {
+            color: $white;
+        }
+    }
+
+    .data-table__wishlist {
+        thead {
+            display: none;
+        }
+
+        tbody {
+            @include clearfix();
+
+            tr {
+                display: block;
+                width: 49%;
+                float: left;
+                margin-left: 0.5%;
+                margin-right: 0.5%;
+                margin-bottom: rem(20);
+            }
+
+            .product-thumb {}
+            .product-data {}
+            .product-desc {}
+            .product-del {}
+        }
+    }
+}
+
+.c-sale__buttons {
+    text-align: center;
+    margin-bottom: rem(30);
+
+    .link-print {
+        background: none;
+        padding-left: 0;
+    }
+}
+
+.form-account-edit {
+    .form-list {
+        height: rem(385);
+
+        @include bp-lt($small) {
+            height: auto;
+        }
+    }
+}
+
+.tracking-table-popup {
+    a:hover {
+        color: $mainBranding;
+    }
+
+    td {
+        vertical-align: middle;
+    }
+}
+
+.box-content {
+    position: relative;
+
+    .c-address__action {
+        position: absolute;
+        top: rem(14);
+        right: rem(14);
+        width: rem(110);
+        height: rem(45);
+        @include clearfix;
+
+        .c-edit,
+        .c-delete {
+            display: block;
+            width: rem(45);
+            height: rem(45);
+            font-size: 0;
+            border: solid rem(1) $grey--04;
+            border-radius: 50%;
+            transition: $ease;
+            float: left;
+            margin-left: rem(5);
+            margin-right: rem(5);
+            text-decoration: none !important;
+
+            &:after {
+                display: block;
+                width: rem(45);
+                height: rem(45);
+                padding-top: rem(9);
+                font-size: rem(18);
+                color: $grey--04;
+                text-align: center;
+                font-family: $iconFont;
+                transition: $ease;
+            }
+
+            &:hover {
+                background: $mainBranding;
+
+                &:after {
+                    color: $white;
+                }
+            }
+        }
+
+        .c-edit:after {
+            content: '\EA08';
+        }
+
+        .c-delete:after {
+            content: '\EA09';
+            font-size: rem(13);
+            padding-top: rem(12);
+        }
+    }
+}

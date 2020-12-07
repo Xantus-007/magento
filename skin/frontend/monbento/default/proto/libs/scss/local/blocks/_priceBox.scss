@@ -1,0 +1,120 @@
+// ========================================= //
+// priceBox
+// ========================================= //
+
+.c-priceBox {
+    max-width: rem(250);
+    margin-left: auto;
+    margin-right: auto;
+    font-family: $sofiaPro;
+    @include clearfix;
+
+    @include bp-lt($medium) {
+        padding-left: rem(14);
+        padding-right: rem(14);
+    }
+
+    .c-price,
+    .c-price--alt {
+        position: relative;
+        display: inline-block;
+        font-weight: 300;
+        font-size: rem(24);
+        color: $grey--regular--02;
+        letter-spacing: rem(1);
+
+        @include bp-lt($desktop) {
+            font-size: rem(18);
+        }
+
+        @include bp-lt($mobileL) {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+    }
+
+    .c-price {
+        &.is-alt {
+            float: right;
+
+            &:before {
+                content: '\EA12';
+                font-family: $iconFont;
+                font-size: rem(15);
+                color: $label__product--alt;
+            }
+        }
+    }
+
+    .c-price--alt {
+        float: left;
+
+        &:before {
+            position: absolute;
+            content: '\EA13';
+            display: block;
+            width: rem(90);
+            top: 0; left: 50%;
+            transform: translateX(-50%);
+            line-height: 36px;
+            height: 36px;
+            font-family: $iconFont;
+            color: $label__product--alt;
+            font-size: rem(90);
+            opacity: 0.8;
+
+            @include bp-lt($small) {
+                width: rem(70);
+                font-size: rem(70);
+            }
+        }
+    }
+}
+
+.product-cart-price {
+    width: rem(150);
+
+    .c-priceBox .c-price,
+    .c-priceBox  .c-price--alt {
+        float: none;
+        display: block;
+    }
+
+    .c-priceBox {
+        text-align: right;
+    }
+
+    .c-priceBox  .c-price--alt {
+        margin-bottom: rem(15);
+        color: $altBranding;
+        text-decoration: line-through;
+        font-size: rem(15);
+
+        &:before { display: none; }
+    }
+
+    [class*="c-label--alt"] {
+        @include clearfix;
+        margin-bottom: rem(10);
+
+        .c-content {
+            float: right;
+            font-size: rem(15);
+        }
+    }
+}
+
+.website-monbento-hk {
+    .c-priceBox .c-price,
+    .c-priceBox .c-price--alt {
+        font-size: rem(18);
+    }
+}
+
+.de .c-price__shoppingCart .c-item__total .c-label {
+    width: 60%;
+    line-height: rem(30);
+    position: relative;
+    top: rem(-5);
+}

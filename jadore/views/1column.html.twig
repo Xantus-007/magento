@@ -1,0 +1,184 @@
+{% extends "base.html.twig" %}
+{% block body %}
+<div class="header">
+	<div class="content">
+		<div class="linktomainsite">
+			<a href="https://www.monbento.com/" target="_blank">{%trans%}Aller sur <span>monbento.com</span>{%endtrans%} <img class="ico--arrow" src="{{app.request.basepath}}/public/img/arrow.png" alt="" /></a>
+		</div>
+		<div class="logo">
+			<a href=""><img src="{{app.request.baseurl}}/public/img/monbento.png" alt="" /></a>
+		</div>
+		<div class="language-switcher">
+			<ul class="inline-lists">
+				<li class="{%if app.lang == 'fr'%}is-active{%endif%} fr"><a href="{{app.request.baseUrl}}?lang=fr">fr</a></li>
+				<li class="{%if app.lang != 'fr'%}is-active{%endif%} en"><a href="{{app.request.baseUrl}}?lang=en">en</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% if messages|length > 0 %}
+<div class="flash-message success">
+{% for message in messages %}
+    <p>{{message|trans}}</p>
+    <script>
+        dataLayer.push({"event": "jadore"});
+    </script>
+{% endfor %}
+{%endif %}
+</div>
+<div class="header-bottom">
+	<div class="content">
+		<div class="logo-jadore">
+			<img src="{{app.request.baseurl}}/public/img/{%if app.lang == 'fr'%}fr{%else%}en{%endif%}/logo-jadore.png" alt="" />
+		</div>
+{% if app.lang == 'fr' %}
+		<div class="chaine">
+			<p>TV & PRESSE</p>
+			<img src="{{app.request.baseurl}}/public/img/chaine.png" alt="" />
+		</div>
+{% endif %}
+	</div>
+</div>
+<div class="header-form">
+	<div class="content">
+		<div class="header-form-inner">
+			<p class="text-top">{%trans%}DÉCOUVREZ BIENTÔT NOS ASTUCES POUR PROFITER DE VOTRE NOUVEAU COMPAGNON{%endtrans%}</p>
+			<p class="text-bottom">{%trans%}À <span>100%</span>{%endtrans%}</p>
+		</div>
+		<div class="form" data--ga="Top">
+			<div class="form-inner">
+				<p>{%trans%}Il ne vous reste plus qu'à indiquer :{%endtrans%}</p>
+				<form action="{{app.request.baseurl}}/" method="post">
+				{{ form_widget(form) }}
+                                <button class="btn-form" type="submit" name="submit" >{%trans%}RECEVOIR BIENTÔT LES 3 ASTUCES{%endtrans%}</button>
+                                </form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="content">
+		<div class="left-column">
+			<div class="inner-column">
+				<div class="puce"><span>1</span></div>
+				<div class="content-text">
+					<p class="title">
+					   {%trans%}ÉCONOMISEZ JUSQU'À 3 000€ EN UNE ANNÉE !{%endtrans%}
+					</p>
+					<p class="text">
+						{%trans%}Et au moins jusqu'à 500€ en appliquant une technique simple 1 fois par semaine seulement.{%endtrans%}
+					</p>
+				</div>
+			</div>
+			<div class="inner-column">
+				<div class="puce"><span>2</span></div>
+				<div class="content-text">
+					<p class="title">
+						{%trans%}DISPOSEZ DE 6H DE TEMPS LIBRE SUPPLÉMENTAIRE CHAQUE SEMAINE !{%endtrans%}
+					</p>
+					<p class="text">
+						{%trans%}Soit plus de temps pour votre famille, vos amis et surtout pour vous. Un secret qu'on vous enviera sans aucun doute !{%endtrans%}
+					</p>
+				</div>
+			</div>
+			<div class="inner-column">
+				<div class="puce"><span>3</span></div>
+				<div class="content-text">
+					<p class="title">
+						{%trans%}PROFITEZ DES BIENFAITS DU « MIEUX MANGER ».{%endtrans%}
+					</p>
+					<p class="text">
+						{%trans%}« Mangez où vous voulez » dixit le slogan monbento, mais aussi « mangez plus sainement » grâce à un volume adapté, et « plus sûr » en composant vous-même votre bento.{%endtrans%}
+					</p>
+				</div>
+			</div>
+		</div>
+                <div class="right-column"><div class="fb-like-box" data-href="https://www.facebook.com/monbento" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div></div>
+	</div>
+</div>
+
+<div class="container awards-section">
+	<div class="content">
+		<div class="awards-section-headings">
+			<p class="title-main">{%trans%}LA SOCIÉTÉ MONBENTO ET SES PRODUITS ONT ÉTÉ RÉCOMPENSÉS{%endtrans%}</p>
+			<p class="title-secondary">{%trans%}PAR 6 PRIX NATIONAUX ET INTERNATIONAUX{%endtrans%}</p>
+			<p class="baseline">{%trans%}Découvrez pourquoi monbento est si unique !{%endtrans%}</p>
+		</div>
+		<ul class="awards-grid clearfix">
+			<li class="awards-reddot">
+				<div>
+				<img src="{{app.request.basepath}}/public/img/awards-reddot.png" alt="Reddot design Awards Winner 2012">
+			</div>
+			</li>
+			<li class="awards-global-innovation">
+				<div>
+					<img src="{{app.request.basepath}}/public/img/awards-global-innovation.png" alt="GIA - Global Innovation awards">
+				<span class="awards-nbr">x<em>2</em></span>
+			</div>
+			</li>
+			<li class="awards-observeur-design">
+				<div>
+					<img src="{{app.request.basepath}}/public/img/awards-observeur-design.png" alt="Label Observeur designer">
+			</div>
+			</li>
+			<li class="awards-prix-entrepreneur">
+				<div>
+					<img src="{{app.request.basepath}}/public/img/awards-prix-entrepreneur.png" alt="Prix de l'Entrepreneur de l'Année">
+			</div>
+			</li>
+			<li class="awards-fce">
+				<div>
+					<img src="{{app.request.basepath}}/public/img/awards-fce.png" alt="FCE">
+			</div>
+			</li>
+			<li class="awards-chefentreprises">
+				<div>
+					<img src="{{app.request.basepath}}/public/img/awards-chefentreprises.png" alt="Trophées Chef d'entreprise">
+			</div>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="container emilie-section">
+	<div class="content">
+		<div class="form" data--ga="Bottom">
+			<div class="form-inner">
+                            <p>{%trans%}Emilie est curieuse, et vous ?{%endtrans%} <br />
+                                {%trans%}Il ne vous reste plus qu’à indiquer :{%endtrans%}</p>
+                                <form action="{{app.request.baseurl}}/" method="post">
+				{{ form_widget(form2) }}
+                                <button class="btn-form" type="submit" name="submit" >{%trans%}RECEVOIR BIENTÔT LES 3 ASTUCES{%endtrans%}</button>
+                                </form>
+                        </div>
+		</div>
+	</div>
+</div>
+
+<div class="footer">
+	<div class="content">
+		<div class="block block-social-network">
+			<p><a href="https://plus.google.com/u/0/+monbento/about">Google+</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://vimeo.com/user8577348">Vimeo</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.flickr.com/photos/monbento">Flickr</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="https://www.pinterest.com/monbento/">Pinterest</a></p>
+			<div class="icons">
+				<div class="icon-site"><a href="https://www.facebook.com/monbento"><img src="{{app.request.basepath}}/public/img/facebook.png"/></a></div>
+				<div class="icon-site"><a href="https://twitter.com/monbento"><img src="{{app.request.basepath}}/public/img/twitter.png"/></a></div>
+				<div class="icon-site"><a href="https://instagram.com/monbento"><img src="{{app.request.basepath}}/public/img/instagram.png"/></a></div>
+			</div>
+		</div>
+		<div class="block block-phone">
+			<p class="telephone"><img src="{{app.request.baseurl}}/public/img/telephone.png" alt="" />{%trans%}04 73 23 72 72{%endtrans%}</p>
+			<p class="ouverture">{%trans%}Du Lundi au Vendredi - 9h>12h/14h>17h (prix d'un appel local){%endtrans%}</p>
+                        <a target="blank" href="{{contactUrl}}" class="btn-contact">Contact</a>
+		</div>
+		<div class="block block-app">
+			<p>{%trans%}Téléchargez l'appli mobile gratuite{%endtrans%}</p>
+			<div class="icons">
+				<div class="icon-site"><a href="https://www.monbento.com/appli"><img src="{{app.request.basepath}}/public/img/applis.png"/></a></div>
+				<div class="icon-site"><a href="https://play.google.com/store/apps/details?id=com.monbento.app&hl={{app.lang}}"><img src="{{app.request.basepath}}/public/img/android.png"/></a></div>
+				<div class="icon-site"><a href="https://itunes.apple.com/{{app.lang}}/app/monbento/id683311456?mt=8"><img src="{{app.request.basepath}}/public/img/apple.png"/></a></div>
+			</div>
+		</div>
+
+	</div>
+</div>
+{%endblock%}

@@ -1,0 +1,23 @@
+<?php
+$request = Mage::app()->getFrontController()->getRequest();
+$filter = $this->escapeHtml($request->getParam('q', null));
+?><script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+<script src="<?php echo $this->getSkinUrl('js/club/lib/marker-clusterer.js'); ?>"></script>
+<script src="<?php echo $this->getSkinUrl('js/club/lib/richmarker.js'); ?>"></script>
+<script type="text/javascript">
+var mapManager;
+
+(function($){
+    $(document).ready(function(){
+        mapManager = new Club_Map($('#mapContainer'), '<?php echo $filter ?>', '<?php echo $this->getUrl($this->getAjaxUrl()) ?>');
+        mapManager.load();
+    });
+})(jQuery);
+</script>
+<div>
+    <form class="clubSearch" id="clubSearch" action="">
+        <input type="text" name="q" class="clubInput" value="<?php echo $filter; ?>" />
+        <input type="submit" name="mapSubmit" class="clubSearchSubmit" />
+    </form>
+</div>
+<div id="mapContainer"></div>

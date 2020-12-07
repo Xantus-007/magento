@@ -1,0 +1,29 @@
+<div class="c-footer__kiosk"></div>
+
+<div id="c-magnificpopup__addtobasket" class="c-mfp__addtobasket zoom-anim-dialog text-center mfp-hide">
+    <div class="row c-empty__modal"><div class="o-table"><div class="o-table__cell--valignMiddle"><span><img src="<?php echo $this->getSkinUrl('images/bx_loader.gif'); ?>" width="32" height="32" /> <?php echo $this->__('Ajout au panier en cours ...') ?></span></div></div></div>
+</div>
+
+<?php if(Mage::getSingleton('customer/session')->isLoggedIn()): ?>
+<script type="text/javascript">
+(function($) {
+    var timeToLogout = <?php echo ($this->getAction()->getFullActionName() == 'checkout_onepage_success') ? 1000 : 150000; ?>;
+    var activityTimeout = setTimeout(inActive, timeToLogout);
+
+    function resetActive(){
+        clearTimeout(activityTimeout);
+        activityTimeout = setTimeout(inActive, timeToLogout);
+    }
+
+    // No activity do something.
+    function inActive(){
+        $.ajax({url: "<?php echo Mage::getUrl('monbento-kiosk/index/customerlogout/'); ?>"}).done(function() {
+            window.location = "<?php echo $this->getUrl('monbento-kiosk', array('mag_code' => Mage::getSingleton('monbento_kiosk/magasin')->isLogin())) ?>";
+        });
+    }
+
+    // Check for mousemove, could add other events here such as checking for key presses ect.
+    $(document).bind('mousemove click', function(){resetActive()});
+})(jQuery);
+</script>
+<?php endif; ?>

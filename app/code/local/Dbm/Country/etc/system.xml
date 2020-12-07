@@ -1,0 +1,620 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dbm_country>
+            <label>Configuration des Locales et Devises</label>
+            <sort_order>9999</sort_order>
+        </dbm_country>
+        <dbm_country_popup>
+            <label>Configuration Popup</label>
+            <sort_order>9999</sort_order>
+        </dbm_country_popup>
+    </tabs>
+    <sections>
+        <dbm_country translate="label" module="dbm_country">
+            <label>Configuration des Locales et Devises</label>
+            <tab>dbm_country</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <dbm_country_countries translate="label" module="dbm_country">
+                    <label>Gestion des locales</label>
+                    <sort_order>1</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_fr>
+                            <label>Francais</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_fr>
+                        <dbm_country_en>
+                            <label>Anglais</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_en>
+                        <dbm_country_de>
+                            <label>Allemand</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_de>
+                        <dbm_country_it>
+                            <label>Italien</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>4</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_it>
+                        <dbm_country_es>
+                            <label>Espagnol</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>5</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_es>
+                    </fields>
+                </dbm_country_countries>
+                <dbm_country_devise>
+                    <label>Gestion des devises</label>
+                    <sort_order>10</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_devise_euro>
+                            <label>Euro (€)</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_devise_euro>
+                        <dbm_country_devise_livre>
+                            <label>Livre (£)</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_devise_livre>
+                        <dbm_country_devise_dollar>
+                            <label>Dollar Américain ($)</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_devise_dollar>
+			<dbm_country_devise_hkdollar>
+                            <label>Dollar Hong Kong (HK$)</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_devise_hkdollar>
+                    </fields>
+                </dbm_country_devise>
+                <dbm_country_inventory>
+                    <label>Gestion des stocks</label>
+                    <sort_order>10</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_inventory_stock_eu>
+                            <label>Stock EU</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_inventory_stock_eu>
+                        <dbm_country_inventory_stock_uk>
+                            <label>Stock UK</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_inventory_stock_uk>
+                        <dbm_country_inventory_stock_us>
+                            <label>Stock US</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_inventory_stock_us>
+			<dbm_country_inventory_stock_hk>
+                            <label>Stock HK</label>
+                            <frontend_type>Multiselect</frontend_type>
+                            <source_model>dbm_country/system_config_source_countryallowed</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_inventory_stock_hk>
+                    </fields>
+                </dbm_country_inventory>
+            </groups>
+        </dbm_country>
+        
+        <dbm_country_popup translate="label" module="dbm_country">
+            <label>Configuration Popup de choix de langue</label>
+            <tab>dbm_country_popup</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <dbm_country_popup_fr>
+                    <label>Francais</label>
+                    <sort_order>1</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_fr_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_fr_background>
+                        <dbm_country_popup_fr_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_fr_topbar>
+                        <dbm_country_popup_fr_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_fr_notavailable>
+                    </fields>
+                </dbm_country_popup_fr>
+                <dbm_country_popup_en>
+                    <label>Anglais</label>
+                    <sort_order>2</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_en_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_en_background>
+                        <dbm_country_popup_en_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_en_topbar>
+                        <dbm_country_popup_en_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_en_notavailable>
+                    </fields>
+                </dbm_country_popup_en>
+                <dbm_country_popup_de>
+                    <label>Allemand</label>
+                    <sort_order>3</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_de_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_de_background>
+                        <dbm_country_popup_de_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_de_topbar>
+                        <dbm_country_popup_de_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_de_notavailable>
+                    </fields>
+                </dbm_country_popup_de>
+                <dbm_country_popup_es>
+                    <label>Espagnol</label>
+                    <sort_order>4</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_es_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_es_background>
+                        <dbm_country_popup_es_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_es_topbar>
+                        <dbm_country_popup_es_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_es_notavailable>
+                    </fields>
+                </dbm_country_popup_es>
+                <dbm_country_popup_it>
+                    <label>Italien</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_it_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_it_background>
+                        <dbm_country_popup_it_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_it_topbar>
+                        <dbm_country_popup_it_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_it_notavailable>
+                    </fields>
+                </dbm_country_popup_it>
+                
+                
+                <!-- Stock US -->
+                <dbm_country_popup_us_en>
+                    <label>EN (Stock US)</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_us_en_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_en_background>
+                        <dbm_country_popup_us_en_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_en_topbar>
+                        <dbm_country_popup_us_en_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_en_notavailable>
+                    </fields>
+                </dbm_country_popup_us_en>
+                <dbm_country_popup_us_fr>
+                    <label>FR (Stock US)</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_us_fr_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_fr_background>
+                        <dbm_country_popup_us_fr_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_fr_topbar>
+                        <dbm_country_popup_us_fr_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_fr_notavailable>
+                    </fields>
+                </dbm_country_popup_us_fr>
+                <dbm_country_popup_us_es>
+                    <label>ES (Stock US)</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_us_es_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_es_background>
+                        <dbm_country_popup_us_es_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_es_topbar>
+                        <dbm_country_popup_us_es_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_us_es_notavailable>
+                    </fields>
+                </dbm_country_popup_us_es>
+                
+                <!-- Stock HK -->
+                <dbm_country_popup_hk_en>
+                    <label>EN (Stock HK)</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_hk_en_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_hk_en_background>
+                        <dbm_country_popup_hk_en_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_hk_en_topbar>
+                        <dbm_country_popup_hk_en_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_hk_en_notavailable>
+                    </fields>
+                </dbm_country_popup_hk_en>
+                
+                <!-- Stock UK -->
+                <dbm_country_popup_uk_en>
+                    <label>EN (Stock UK)</label>
+                    <sort_order>5</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_country_popup_uk_en_background>
+                            <label>Image de fond de la popup</label>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">dbm_country/popup</upload_dir>
+                            <base_url type="media">dbm_country/popup</base_url>
+                            <comment>
+                                <![CDATA[Format : 703 x 320 px]]>
+                            </comment>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_uk_en_background>
+                        <dbm_country_popup_uk_en_topbar>
+                            <label>Texte barre grise</label>
+                            <frontend_type>Text</frontend_type>
+                            <comment>
+                                <![CDATA[Utiliser les jetons %%country%% et %%language%% pour afficher les variables]]>
+                            </comment>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_uk_en_topbar>
+                        <dbm_country_popup_uk_en_notavailable>
+                            <label>Texte pays non disponnible</label>
+                            <frontend_type>Textarea</frontend_type>
+                            <sort_order>3</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_country_popup_uk_en_notavailable>
+                    </fields>
+                </dbm_country_popup_uk_en>
+            </groups>
+        </dbm_country_popup>
+    </sections>
+</config>   

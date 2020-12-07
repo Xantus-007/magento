@@ -1,0 +1,151 @@
+<?php
+/**
+ * Template for Mage_Adminhtml_Block_Widget_Grid
+ *
+ *  getId()
+ *  getCollection()
+ *  getColumns()
+ *  getPagerVisibility()
+ *  getVarNamePage()
+ */
+$numColumns = sizeof($this->getColumns());
+?>
+<h3>Product Tags</h3>
+
+<ul class="messages">
+    <li class="notice-msg">
+        <ul>
+            <li>
+            <?php echo Mage::helper('tagadmin')->__('Quickly add new tags to product.'); ?>
+            <br/>
+            <?php echo Mage::helper('tagadmin')->__('Type in a tag and click "Add"'); ?>
+            <br/>
+            <?php echo Mage::helper('tagadmin')->__('Add multiple tags at a time by separating tags with a "," or a "|".'); ?>
+            </li>
+        </ul>
+    </li>
+</ul>
+<div class="grid">
+<table cellspacing="0" class="data border" id="<?php echo $this->getHtmlId() ?>_grid">
+	<col />
+    <col />
+    <col width="200" />
+    <thead>
+        <tr class="headings">
+        	<th>&nbsp;</th>
+            <th><?php echo Mage::helper('tagadmin')->__('Tag Name') ?></th>
+            <th><?php echo Mage::helper('tagadmin')->__('Action') ?></th>
+        </tr>
+    </thead>
+    <tbody id="<?php echo $this->getHtmlId() ?>_list">
+    </tbody>
+    <tbody>
+    	<tr>
+    		<td><b>New&nbsp;Tag:</b></td>
+    		<td><form onsubmit="return tagRowControl.addItem()"><input type="text" size="70" id="tagAdminInput" /></form></td>
+    		<td><?php echo $this->getAddTagsButton(); ?></td>
+    	</tr>
+    </tbody>
+</table>
+<input type="hidden" value="" name="tagAdminSave" id="tagAdminSave" />
+</div>
+
+<br />
+
+<h3>Existing Tags</h3>
+
+	<div id="product_info_tabs_tags_content">
+<?php echo $this->getTagGridBlock(); ?>
+	</div>
+	
+<script>
+//<![CDATA[
+
+if (!String.prototype.trim) 
+{
+	String.prototype.trim = function() { return this.replace(/^\s+|\s+$/, ''); };
+}
+
+var tagRowTemplate = '<tr>'
+    + '<td></td>'
+    + '<td class="newTags">{{tagname}}</td>'
+    + '<td class="last">'
+    + '<button title="Delete Tier" type="button" class="scalable delete icon-btn delete-product-option" onclick="return tagRowControl.deleteItem(event);">'
+    + '<span>Delete</span></button></td>'
+    + '</tr>';
+
+var tagRowControl = {
+    template: new Template(tagRowTemplate, new RegExp('(^|.|\\r|\\n)({{\\s*(\\w+)\\s*}})', "")),
+    itemsCount: 0,
+    addItem : function () {
+        tag = $('tagAdminInput').value;
+
+		if( tag.indexOf(',' ) != -1 )
+			tagsArray = tag.split( ',' );
+		else if( tag.indexOf('|' ) != -1 )
+			tagsArray = tag.split( '|' );
+		else
+			tagsArray = new Array( tag );
+
+		for( i = 0 ; i < tagsArray.length ; i++ )
+			this.addTag( tagsArray[ i ] );
+
+		$('tagAdminInput').value = '';
+
+        updateNewTags();
+
+        return false;
+
+	},
+
+	addTag : function( tag ) {
+		
+		var data = {
+              tagname: ''
+        };
+        
+        if(tag == 'undefined' || tag == '' || tag.trim() == '') {
+            return;
+        }
+
+        data.tagname = tag.trim();
+
+        Element.insert($('<?php echo $this->getHtmlId() ?>_list'), {
+            bottom : this.template.evaluate(data)
+        });
+
+    },
+    
+    disableElement: function(el) {
+        el.disabled = true;
+        el.addClassName('disabled');
+    },
+    deleteItem: function(event) {
+        var tr = Event.findElement(event, 'tr');
+        if (tr) {
+            Element.select(tr, '.newTags').each(function(elem){elem.innerHTML=''});
+            //Element.select(tr, ['input', 'select']).each(function(elem){elem.hide()});
+            Element.hide(tr);
+            Element.addClassName(tr, 'no-display template');
+
+            updateNewTags();
+        }
+        return false;
+    }
+};
+
+
+function updateNewTags()
+{
+	str = '';
+	Element.select($('<?php echo $this->getHtmlId() ?>_list') , '.newTags' ).each( function(elem){ if( elem.innerHTML ) str+="'"+elem.innerHTML+"' "; } );
+
+	$('tagAdminSave').value = str;
+}
+
+
+
+tag_gridJsObject.doFilter()
+
+//]]>
+</script>

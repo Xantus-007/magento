@@ -1,0 +1,109 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Mage
+ * @package     Errors
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="header">
+    <div class="content">
+        <div class="language-switcher">
+            <ul class="inline-lists">
+                <li><a href="<?php echo $this->getBaseUrl() ?>?lang=fr">fr</a></li>
+                <li class="is-active"><a>en</a></li>
+            </ul>
+        </div>
+        <div class="logo">
+            <a href="<?php echo $this->getBaseUrl() ?>"><img src="images/monbento.png" alt="" /></a>
+        </div>
+        <h1>Site under maintenance</h1>
+    </div>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="content-message">
+            <p>We'll be back soon !<br>
+                In the meantime, don’t hesitate to do like we do and eat wherever you want !<br>
+                Please come back again and share your experiences on the Clubento or via our social media sites !<br>
+                Thank you for your patience …
+            </p>
+        </div>
+        <div class="content-form">
+            <?php if ($this->showSentMsg): ?>
+                <ul class="messages">
+                    <li class="success-msg">
+                        Your message was submitted and will be responded as soon as possible.
+                    </li>
+                </ul>
+            <?php endif; ?>
+            <form action="<?php echo "{$this->getBaseUrl(true)}errors/report.php?id={$this->reportId}&lang=en" ?>" method="post" id="form-validate">
+                <h2>Need to contact us?</h2>
+                <div class="row">
+                    <div class="field">
+                        <label for="firstname" class="required">First Name<em></em></label>
+                        <input type="text" name="firstname" id="firstname" value="<?php echo $this->postData['firstName'] ?>" title="First Name" class="required-entry input-text" required/>
+                    </div>
+                    <div class="field">
+                        <label for="lastname" class="required">Last Name<em></em></label>
+                        <input type="text" name="lastname" id="lastname" value="<?php echo $this->postData['lastName'] ?>" title="Last Name" class="required-entry input-text" required/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="field">
+                        <label for="email" class="required">Email Address<em></em></label>
+                        <input type="text" name="email" id="email" value="<?php echo $this->postData['email'] ?>" title="Email Address" class="validate-email required-entry input-text" required/>
+                    </div>
+                    <div class="field">
+                        <label for="telephone">Telephone</label>
+                        <input type="text" name="telephone" id="telephone" value="<?php echo $this->postData['telephone'] ?>" title="Telephone" class="input-text" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-box">
+                        <label for="comment">Message</label>
+                        <textarea name="comment" cols="5" rows="3" id="comment"><?php echo $this->postData['comment'] ?></textarea>
+                    </div>
+                </div>
+                <div class="content-btn">
+                    <button name="submit" type="submit" class="btn">Send</button>
+                </div>
+                <div class="content-txt"><p class="required">* required fields</p></div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="content">
+        <div class="block block-social-network">
+            <p><a href="http://vimeo.com/user8577348">vimeo</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.flickr.com/photos/monbento">flickr</a></p>
+            <div class="icons">
+                <div class="icon-site"><a href="http://www.facebook.com/monbento"><img src="images/facebook.png"/></a></div>
+                <div class="icon-site"><a href="https://twitter.com/monbento"><img src="images/twitter.png"/></a></div>
+                <div class="icon-site"><a href="http://instagram.com/monbento"><img src="images/instagram.png"/></a></div>
+            </div>
+        </div>
+        <div class="block block-phone">
+            <p class="telephone"><img src="images/telephone.png" alt="" />+33 4 73 23 72 72</p>
+            <p class="ouverture">Monday to Friday - 9>12 a.m./2>5 p.m.</p>
+        </div>
+    </div>
+</div>

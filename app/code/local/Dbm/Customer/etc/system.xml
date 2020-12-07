@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <dbm_customer>
+            <label>Configuration des profils</label>
+            <sort_order>9999</sort_order>
+        </dbm_customer>
+    </tabs>
+    <sections>
+        <dbm_customer translate="label" module="dbm_share">
+            <label>Gestion des profils</label>
+            <tab>dbm_customer</tab>
+            <sort_order>999</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>0</show_in_website>
+            <show_in_store>0</show_in_store>
+            <groups>
+                <dbm_customer_status_images translate="label" module="dbm_share">
+                    <label>Macarons utilisateurs</label>
+                    <sort_order>100</sort_order>
+                    <expanded>1</expanded>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>0</show_in_website>
+                    <show_in_store>0</show_in_store>
+                    <fields>
+                        <dbm_customer_status_0>
+                            <sort_order>10</sort_order>
+                            <label>Statut anonyme</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/customer_status/status_0</upload_dir>
+                            <base_url type="media">applications/customer_status/status_0</base_url>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_customer_status_0>
+                        <dbm_customer_status_1>
+                            <sort_order>20</sort_order>
+                            <label>Statut Membre 1</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/customer_status/status_1</upload_dir>
+                            <base_url type="media">applications/customer_status/status_1</base_url>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_customer_status_1>
+                        <dbm_customer_status_2>
+                            <sort_order>30</sort_order>
+                            <label>Statut Membre 2</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/customer_status/status_2</upload_dir>
+                            <base_url type="media">applications/customer_status/status_2</base_url>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_customer_status_2>
+                        <dbm_customer_status_3>
+                            <sort_order>40</sort_order>
+                            <label>Statut VIP</label>
+                            <comment>Extensions autorisées : png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">applications/customer_status/status_3</upload_dir>
+                            <base_url type="media">applications/customer_status/status_3</base_url>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>0</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </dbm_customer_status_3>
+                    </fields>
+                </dbm_customer_status_images>
+            </groups>
+        </dbm_customer>
+    </sections>
+</config>
+

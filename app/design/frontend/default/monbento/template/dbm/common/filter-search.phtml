@@ -1,0 +1,69 @@
+<?php
+
+$allowedLocales = Mage::helper('dbm_share')->getAllowedLocalesWithoutExcludeLocales();
+$params = Mage::app()->getRequest()->getParams();
+
+?>
+<div id="clubFilterSearch" class="clubFilterSearch">
+    <form action="#clubFilterSearch" method="get" class="clubSearch">
+        <input type="hidden" name="page" value="<?php intval($_GET['page']); ?>" />
+        <div>
+            <ul>
+<?php $i = 0; ?>
+<?php foreach($allowedLocales as $locale): ?>
+    <?php
+    $firstLast = count($allowedLocales) == $i + 1 ? 'last' : null;
+    $firstLast = $i == 0 ? 'first' : $firstLast;
+    $country = current(explode('_', $locale));
+    $onOff = $params['language'][$locale] == 1 ? 'on' : 'off';
+    ?>
+                <li class="<?php echo $onOff; ?> <?php echo $firstLast; ?>"><a href="#" ><?php echo ucfirst($country) ?><input type="hidden" name="language[<?php echo $locale ?>]" value="<?php echo $onOff == 'on' ? 1 : '' ?>" /></a></li>
+    <?php $i++; ?>
+<?php endforeach ?>
+            </ul>
+        </div>
+        <div>
+            <input type="text" class="clubInput receipeSearch" name="q" value="<?php echo $this->escapeHtml($params['q']); ?>" />
+            <input type="submit" class="clubSearchSubmit" />
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+
+var timer;
+
+(function($){
+    $(document).ready(function(){
+
+        timer = new Club_Timer();
+        $(timer).bind(timer.TIMER_COMPLETE, function(){
+            $('.clubFilterSearch form').submit();
+        });
+
+        $('.clubFilterSearch').find('ul li').click(function(event){
+            event.preventDefault();
+            var $this = $(this);
+
+
+
+            if($this.hasClass('on'))
+            {
+                $this.find('input').val('');
+            }
+            else
+            {
+                $this.find('input').val(1);
+            }
+
+            $this.toggleClass('on');
+            $this.toggleClass('off');
+
+            timer.cancel();
+            timer.start(1500);
+            return false;
+        });
+    });
+})(jQuery);
+
+
+</script>

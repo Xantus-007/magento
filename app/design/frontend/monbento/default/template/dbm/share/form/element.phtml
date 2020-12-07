@@ -1,0 +1,199 @@
+<?php
+/* value="<?php echo $this->escapeHtml($params['']) ?>"*/
+$timeUnits = Mage::helper('dbm_share')->getTimeUnits();
+$customerHelper = Mage::helper('dbm_customer');
+
+$params = Mage::app()->getRequest()->getParams();
+$helper = Mage::helper('dbm_share');
+
+$categories = Mage::getModel('dbm_share/category')->getListForType($this->getElementType());
+
+$locale = Mage::helper('dbm_share')->getCurrentLocale();
+$trans = Mage::helper('dbm_share');
+
+$isLoggedIn = $customerHelper->getCurrentCustomer()->getId() ? true : false;
+$isValidAccount = false;
+
+if($isLoggedIn)
+{
+    $isValidAccount = $customerHelper->isValidProfile($customerHelper->getCurrentCustomer());
+}
+
+?>
+<div class="clubElementFormButtonHide clubElementFormButton">
+    <button class="roundedButton subscribe submit iconButton button_<?php echo $this->getElementType(); ?>"><?php echo $trans->__($this->getButtonLabel()); ?></button>
+</div>
+<div class="clubElementForm">
+<?php if($isLoggedIn && $isValidAccount): ?>
+    <div><h2><?php echo $trans->__($this->getButtonLabel()); ?></h2></div>
+    <form action="<?php echo Mage::helper('dbm_share')->getPostElementUrl(); ?>" method="post" enctype="multipart/form-data" id="postElementForm">
+        <input type="hidden" name="type" value="<?php echo $this->getElementType(); ?>" />
+        <ul class="small-12">
+            <li class="small-12 medium-6 columns">
+                <label for="title"><?php echo $this->getElementType() == Dbm_Share_Model_Element::TYPE_PHOTO ? $trans->__('Photo name') : $trans->__('Recipe name'); ?><span>*</span></label>
+                <input type="text" value="<?php echo is_array($params['title']) ? $this->escapeHtml(current($params['title'])) : ''; ?>" class="required-entry" id="title" name="title[<?php echo $locale ?>]" />
+            </li>
+            <li class="small-12 medium-6 columns">
+                <label for="photo">Photo<?php if($this->getElementType() == Dbm_Share_Model_Element::TYPE_PHOTO): ?><span>*</span><?php endif; ?></label>
+                <input type="file" class="<?php if($this->getElementType() != Dbm_Share_Model_Element::TYPE_RECEIPE): ?>required-entry<?php endif; ?>" id="photo" name="photo" />
+            </li>
+        </ul>
+        <ul class="small-12">
+            <li class="small-12 columns">
+                <label for="categories"><?php echo $trans->__('Categories'); ?><span>*</span></label>
+                <dl>
+                <select multiple="multiple" type="file" class="required-entry" id="categories" name="categories[]">
+<?php foreach($categories as $cat): ?>
+                    <dt>
+                    <?php /*<input type="radio" name="categories" id="cat_<?php echo $cat->getId(); ?>" <?php if(is_array($params['categorie']) && in_array($cat->getId(), $params['categorie'])): ?>checked="checked"<?php endif; ?> value="<?php echo $cat->getId(); ?>"  />
+                    <label for="cat_<?php echo $cat->getId(); ?>"><?php echo $cat->getTitle() ?></label> */?>
+                    <option <?php if(is_array($params['categories']) && in_array($cat->getId(), $params['categories'])): ?>selected="selected"<?php endif; ?> value="<?php echo $cat->getId(); ?>" ><?php echo $cat->getTitle() ?></option> ?>
+                    </dt>
+<?php endforeach; ?>
+                </dl>
+                </select>
+            </li>
+<?php if($this->getElementType() == Dbm_Share_Model_Element::TYPE_RECEIPE): ?>
+        </ul>
+        <ul class="small-12">
+            <li class="small-12 medium-6 columns">
+                <label for="level"><?php echo $trans->__('Difficulty') ?><span>*</span></label>
+                <select id="level" name="level" class="required-entry">
+    <?php for($i = 0; $i <= 3; $i++): ?>
+        <?php  $selected = $i == $params['level'] ? 'selected="selected"' : ''; ?>
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $helper->getPrettyLevel($i) ?></option>
+    <?php endfor; ?>
+                </select>
+            </li>
+            <li class="small-12 medium-6 columns">
+                <label for="price"><?php echo $trans->__('Cost') ?><span>*</span></label>
+                <select id="price" name="price" class="required-entry">
+    <?php for($i = 0; $i <= 3; $i++): ?>
+        <?php $selected = $i== $params['price'] ? 'selected="selected"': ''; ?>
+                    <option value="<?php echo $i ?>" <?php echo $selected ?>><?php echo $helper->getPrettyPrice($i) ?></option>
+    <?php endfor; ?>
+                </select>
+            </li>
+        </ul>
+        <ul class="small-12">
+            <li class="small-12 medium-6 columns">
+                <label for="duration"><?php echo $trans->__('Preparation time (in min)') ?><span>*</span></label>
+                <input type="text" class="required-entry" value="<?php echo $this->escapeHtml($params['duration']) ?>" id="duration" name="duration" />
+            </li>
+            <li class="small-12 medium-6 columns">
+                <label for="cooking_duration"><?php echo $trans->__('Cooking time (in min)') ?><span>*</span></label>
+                <input type="text" class="required-entry" value="<?php echo $this->escapeHtml($params['cooking_duration']) ?>" id="cooking_duration" name="cooking_duration" />
+            </li>
+        </ul>
+        <ul>
+            <li class="vert">
+                <label for="ingredients_content"><?php echo $trans->__('List of ingredients (separate them with a line break)'); ?><span>*</span></label>
+                <textarea type="text" class="required-entry" wrap="hard" id="ingredients_content" name="ingredients_content[<?php echo $locale ?>]" rows="10" cols="70"><?php echo $this->escapeHtml($params['ingredients_content']) ?></textarea>
+            </li>
+        </ul>
+        <ul>
+            <li class="vert">
+                <label for="description"><?php echo $trans->__('Your recipe') ?><span>*</span></label>
+                <textarea type="text" class="required-entry" wrap="hard" id="description" name="description[<?php echo $locale ?>]" rows="10" cols="70"><?php echo $this->escapeHtml($params['description']) ?></textarea>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <label for="ingredients_legend"><?php echo $trans->__('Number of people') ?><span>*</span></label>
+                <input type="text" class="required-entry" value="<?php echo $this->escapeHtml($params['ingredients_legend']) ?>" id="ingredients_legend" name="ingredients_legend[<?php echo $locale ?>]" />
+            </li>
+        </ul>
+        <ul class="topTranslator">
+            <li>
+                <select id="receipts_translator">
+                    <option value="null"><?php echo $this->__('Translate'); ?></option>
+                    <?php foreach ($helper->getAllowedLocalesWithoutExcludeLocales() as $l):?>
+                        <?php 
+                            $zLocale = new Zend_Locale($locale);
+                            $sLocaleBase = explode('_', $locale);
+                            $sLocaleData = explode('_', $l);
+                            $languages = $zLocale->getTranslationList('Language', $sLocaleBase[0], 2);
+                        ?>
+                        <?php if($locale != $l):?>
+                            <option value="<?php echo $l; ?>"><?php echo $languages[$sLocaleData[0]];?></option>
+                        <?php endif;?>
+                    <?php endforeach;?>
+                </select>
+            </li>
+            <li></li>
+        </ul>
+        <ul>
+<?php endif; ?>
+            <li class="last">
+                <label><span>*</span> <?php echo $trans->__('Required field') ?></label>
+                <input type="submit" value="<?php echo $trans->__('Submit '.$this->getElementType()); ?>" class="roundedButton submit subscribe" /></li>
+        </ul>
+<?php else: ?>
+        <h2>
+    <?php if($isLoggedIn && !$isValidAccount): ?>
+        <?php echo $trans->__('You must have a nickname and a profile image to post elements on the club') ?>
+    <?php else: ?>
+        <?php echo $trans->__('You must be logged in to post elements on the club') ?>
+    <?php endif; ?>
+        </h2>
+<?php endif; ?>
+    </form>
+</div>
+<script type="text/javascript">
+//<![CDATA[
+    var dataForm = new VarienForm('postElementForm', true);
+    (function($){
+        var translocale = '';
+        $('#receipts_translator').change(function(){
+            if($(this).val() !== 'null'){
+                translocale = $(this).val();
+                $.ajax({
+                    url: "<?php echo Mage::helper('dbm_share')->getReceiptTranslateUrl(); ?>",
+                    type: "POST",
+                    data: {
+                        locale: $(this).val()
+                    },
+                    dataType: "json",
+                    success: function(res) 
+                    {
+                        if(res.ok){
+                            $('.topTranslator').before(res.html);
+                            
+                            var options = $("#receipts_translator").find('option');
+                            options.each(function(){
+                                if(translocale === $(this).attr('value')){
+                                    $(this).attr('disabled', 'disabled');
+                                }
+                            });
+                            $("#receipts_translator").val('null').change();
+                            
+                            $( '#translate_item_' + translocale +' input[type!=submit],\n\
+                                #translate_item_' + translocale +'textarea,\n\
+                                #translate_item_' + translocale +' select').not('.noUniform').uniform({
+                                fileButtonHtml:Globals.translations.chooseFile,
+                                fileDefaultHtml:Globals.translations.fileDefault
+                            });
+                        }
+                    }
+                });
+                
+            }
+        });
+        
+        $('#postElementForm .translate_item span.remove').live('click',function(){
+            var id = $(this).parent().parent().attr('id');
+            var translocale = id.replace('translate_item_', '');
+            
+            var options = $("#receipts_translator").find('option');
+            options.each(function(){
+                if(translocale === $(this).attr('value')){
+                    $(this).removeAttr('disabled');
+                }
+            });
+            
+            $(this).parent().parent().remove();
+        });
+    })(jQuery);
+        
+//]]>
+</script>

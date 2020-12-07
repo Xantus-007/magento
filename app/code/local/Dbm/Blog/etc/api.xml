@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_blog>
+                <title>DBM - Blog api</title>
+                <model>dbm_blog/api</model>
+                <acl>dbm_blog</acl>
+                <methods>
+                    <getTree>
+                        <title>Get full tree</title>
+                        <method>getTree</method>
+                        <acl>dbm_blog/all</acl>
+                    </getTree>
+                    <getCategories>
+                        <title>Get blog categories</title>
+                        <method>getCategories</method>
+                        <acl>dbm_blog/all</acl>
+                    </getCategories>
+                    <getPosts>
+                        <title>Get blog categories</title>
+                        <method>getPosts</method>
+                        <acl>dbm_blog/all</acl>
+                    </getPosts>
+                    <getPost>
+                        <title>Get blog categories</title>
+                        <method>getPost</method>
+                        <acl>dbm_blog/all</acl>
+                    </getPost>
+                    <getFlatPosts>
+                        <title>Get blog flat posts</title>
+                        <method>getFlatPosts</method>
+                        <acl>dbm_blog/all</acl>
+                    </getFlatPosts>
+                </methods>
+            </dbm_blog>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_blog>dbmBlog</dbm_blog>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_blog translate="title" module="dbm_customer">
+                    <title>DBM - Blog</title>
+                    <all translate="title" module="dbm_customer">
+                        <title>DBM - blog</title>
+                    </all>
+                </dbm_blog>
+            </resources>
+        </acl>
+    </api>
+</config>

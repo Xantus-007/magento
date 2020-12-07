@@ -1,0 +1,12 @@
+{
+    "name": "dbm/wp-plugins.simple-fields",
+    "type": "wordpress-plugin",
+    "version": "1.4.13",
+    "authors": [
+        {
+            "name": "Vincent Meron",
+            "email": "v.meron@debussac.net"
+        }
+    ],
+    "require": {}
+}

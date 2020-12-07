@@ -1,0 +1,62 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+$store = Mage::app()->getStore();
+$storeCode = $store->getCode();
+?>
+<div class="block block-banner">
+    <div class="block-content">
+        <div class="block-title">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>">Shipping: 4/7 working days</a></span></strong>
+        </div>
+        <p class="shipping en">
+            <?php if ($storeCode == 'en'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>"><b>Belgium, Luxembourg, Netherlands : </b>7.90 €.<br /> <b>Denmark, Ireland, Portugal : </b>8.90€<br /> <b>Finland, Greece, Sweden : </b>9.90€<br />Free postage from 110 €.<br />
+                    <strong>Other destinations: </strong><span>Click here</span></a>
+            <?php elseif ($storeCode == 'us_en'): ?>
+            <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>">$22 to <b>United States</b><br />Free postage from $90.
+                    Other destinations?  <span>Click here</span></a>
+            <?php elseif ($storeCode == 'uk_en'): ?>
+                <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>"><b>United Kingdom: </b>£6.50.<br />Free postage from £80.<br />
+                    <strong>Other destinations: </strong><span>Click here</span></a>
+            <?php elseif ($storeCode == 'hk_en'): ?>
+            <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>">HK$262 to <b>Australia, China, Hong Kong, South Korea, India, Japan, Vietnam, Taiwan.</b><br />
+                    <strong>Other destinations: </strong><span>Click here</span></a>
+            <?php endif; ?>
+        </p>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-shipping-rates.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/shipping/shipping_' . $storeCode . '.png') ?>" alt="shipping mon bento" width="205" /></a>
+    </div>
+    <div class="block-content">
+        <div class="block-title paiement">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>">Secure payment</a></span></strong>
+        </div>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/paiement/paiement_' . $storeCode . '.png') ?>" alt="Secure payment mon bento" width="205" /></a>
+    </div>
+    <?php if ($storeCode == 'en' || $storeCode == 'uk_en'): ?>
+        <div class="block-content block-gift">
+            <img src="<?php echo $this->getSkinUrl('images/media/en/gift.png') ?>" alt="Gift Card monbento" width="210" height="113" />
+        </div>
+    <?php endif; ?>
+</div>

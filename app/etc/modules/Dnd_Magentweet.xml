@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dnd_Magentweet>
+            <active>true</active>
+            <codePool>community</codePool>
+            <depends>
+                <Mage_Cms />
+            </depends>
+        </Dnd_Magentweet>
+    </modules>
+</config> 

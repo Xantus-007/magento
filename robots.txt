@@ -1,0 +1,60 @@
+User-agent: *
+Allow: /
+Disallow: /monbento/
+Disallow: /catalog/product/view
+Disallow: /admin
+Disallow: /skin
+Disallow: /app/
+
+Disallow: /pdf/
+
+Disallow: /downloader/
+
+Disallow: /js/
+
+Disallow: /checkout/cart/
+
+Disallow: /contact/
+
+Disallow: /media/atos/
+
+Disallow: /media/import/
+
+Disallow: /404/skin
+
+Disallow: /var/
+
+Disallow: /skin/adminhtml/
+
+Disallow: /skin/install/
+
+Disallow: /report/
+
+Disallow: /lib/
+
+Disallow: /pkginfo/
+
+Disallow: /customer/
+
+Disallow: /*?SID
+
+Disallow: /index.php/
+Disallow: /id-recettes/
+
+Disallow: /accessoires-bento/
+Disallow: /bento-accessories/
+Disallow: /bento-classiques/
+Disallow: /bento-enfants/
+Disallow: /bento-trendy/
+Disallow: /bento-vintage/
+Disallow: /bouteilles-et-mugs/
+Disallow: /cuisine-japonaise/
+Disallow: /livres-bento/
+Disallow: /mon-bento-bentos/
+Disallow: /mon-bento-kokeshis-kimmidoll/
+Disallow: /new-bento/
+Disallow: /nouveaux-bentos/
+Disallow: /sacs-bento/
+Disallow: /set-bento-sac/
+Disallow: /soldes-mon-bento/
+Disallow: /vintage-bentos/

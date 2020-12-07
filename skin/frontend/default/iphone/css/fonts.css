@@ -1,0 +1,17 @@
+@font-face {
+  font-family: "quicksand";
+  src: url('fonts/quicksand/Quicksand_Book-webfont.eot');
+  src: url('fonts/quicksand/Quicksand_Book-webfont.eot?#iefix') format('eot'), url('fonts/quicksand/Quicksand_Book-webfont.ttf') format('truetype'), url('fonts/quicksand/Quicksand_Book-webfont.woff') format('woff'), url('fonts/quicksand/Quicksand_Book-webfont.svg') format('svg');
+}
+
+@font-face {
+  font-family: "vag";
+  src: url('fonts/vag/vag_rounded-webfont.eot');
+  src: url('fonts/vag/vag_rounded-webfont.eot?#iefix') format('eot'), url('fonts/vag/vag_rounded-webfont.ttf') format('truetype'), url('fonts/vag/vag_rounded-webfont.woff') format('woff'), url('fonts/vag/vag_rounded-webfont.svg') format('svg');
+}
+
+@font-face {
+  font-family: "opensans";
+  src: url('fonts/open-sans/OpenSans-Regular-webfont.eot');
+  src: url('fonts/open-sans/OpenSans-Regular-webfont.eot?#iefix') format('eot'), url('fonts/open-sans/OpenSans-Regular-webfont.ttf') format('truetype'), url('fonts/open-sans/OpenSans-Regular-webfont.woff') format('woff'), url('fonts/open-sans/OpenSans-Regular-webfont.svg') format('svg');
+}

@@ -1,0 +1,25 @@
+section.o-section--bkgGrey
+    +title--section('Lorem ipsum dolor sit amet')
+
+    .row.c-news__list
+        - var titles = ['Gravlax saumon concombres', 'Fête des mères : l’interview de Claudine, notre ...']
+        - var cats = ['Recettes', 'actus']
+
+        each label, index in titles
+            .columns.medium-6
+                .c-news__item.js-itemEqualizer
+                    .c-thumb
+                        // image format 335x335px
+                        img(src="#{imgDir}c-img__news--01.jpg", alt="")
+                    .c-content
+                        .c-header
+                            .c-category #{cats[index]}
+                            .c-date Mai 2016
+                        a.c-title(href="") #{label}
+                        - if(index === 0)
+                            .c-instruction
+                                i.c-fonticon__icon--clock
+                                span 15min
+                                i.c-fonticon__icon--microwave
+                                span 20min
+                        .c-footer: a.c-linkCst--arrow--subBranding(href="") Lire la suite

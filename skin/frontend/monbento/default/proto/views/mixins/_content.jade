@@ -1,0 +1,86 @@
+mixin itemContent(direction, title, color)
+    .columns.small-6.medium-4.large-3
+        .js-itemEqualizer--holder(class='c-item__content--#{color}--arrow#{direction}')
+            .c-title #{title}
+            .c-separator
+            .c-content Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque laoreet nibh turpis, quis ultrices neque fringilla ac. Integer at lacus sem. Morbi vitae tempus eros, nec ultricies augue. Sed a tellus volutpat.
+            a.c-linkCst--arrow--white(href="") Voir tout les produits
+
+mixin table-row()
+    tr
+        td.product-cart-image
+            a(href="")
+                // format 150x150px
+                img(src="#{imgDir}c-img__product--150x150.png", alt="")
+
+        td.product-cart-info
+            a.c-title(href="") MBProduct Name
+            .c-baseline Designation Designation Designation Designation Designation Designation
+
+        td.medium-hide.product-cart-price
+            .c-priceBox
+                .c-price 35.00 €
+
+        td.product-cart-actions
+            .c-quantity.js-form__quantity
+                .c-input__button.js-quantity__decrease: button: span -
+                .c-input__text: input(type="text", value="1", disabled)
+                .c-input__button.js-quantity__increase: button: span +
+
+        td.product-cart-total: .o-table: .o-table__cell--valignMiddle
+            .c-priceBox
+                .c-price 35.00 €
+
+        td.product-cart-remove: .o-table: .o-table__cell--valignMiddle
+            a(href=""): i.c-fonticon__icon--cross
+
+mixin table-row__review()
+    tr
+        td.product-cart-image
+            a(href="")
+                // format 150x150px
+                img(src="#{imgDir}c-img__product--150x150.png", alt="")
+
+        td.product-cart-info
+            a.c-title(href="") MBProduct Name
+            .c-baseline Designation
+
+        td.medium-hide.product-cart-price
+            .c-priceBox
+                .c-price 35.00 €
+
+        td.product-cart-actions x1
+
+        td.product-cart-total: .o-table: .o-table__cell--valignMiddle
+            .c-priceBox
+                .c-price 35.00 €
+
+
+mixin radio-inline(descStrong, desc, index, icon, title, name)
+    .c-input__radio--inline
+
+        input(type="radio", id="#{name}__#{index}", name="#{name}")
+        label(for="#{name}__#{index}")
+            .c-icon: img(src="#{imgDir}icon__checkout/c-icon__#{icon}.svg", alt="")
+            .c-title.js-itemEqualizer #{title}
+            .c-price 20.40€
+
+        .c-description
+            strong #{descStrong}
+            | #{desc}
+
+mixin stat-block(type, stat, description, smallText, preNumber, supText)                                                                                                  
+    .js-stat__block(class="c-stat__block--#{type}")
+        .js-stat__number
+            .o-table
+                .o-table__cell--valignBottom
+                    if (preNumber)
+                        .c-stat__preNumber #{preNumber}                                                    
+                    .c-stat__number 
+                        | #{stat}
+                        if (!supText)
+                            | %
+                        if (supText)
+                            sup #{supText}
+        .c-stat__description.js-stat__description #{description}                                
+        .c-text--small.js-stat__smallText #{smallText}

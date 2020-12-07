@@ -1,0 +1,33 @@
+.o-footer {
+    padding-top: rem(35);
+    padding-bottom: rem(35);
+    background: $subBranding;
+
+    &.is-connected {
+        .c-logo--footer {
+            margin-bottom: rem(20);
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+
+            li {
+                font-size: rem(12);
+
+                a {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.c-logo--footer {
+    width: rem(68);
+    margin: 0 auto;
+
+    img {
+        width: 100%;
+    }
+}

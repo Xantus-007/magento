@@ -1,0 +1,398 @@
+.c-b2b {
+    .messages {
+        list-style: none;
+        margin: 0;
+
+        ul {
+            list-style: none;
+        }
+
+        .error-msg {
+            background: $error;
+            color: $white;
+            padding: rem(20);
+
+            @include bp-lt($small) {
+                padding: rem(10);
+            }
+        }
+
+        .success-msg {
+            background: $altBranding;
+            color: $white;
+            padding: rem(20);
+
+            @include bp-lt($small) {
+                padding: rem(10);
+            }
+        }
+    }
+}
+
+.c-form__wrapper {
+    margin-top: rem(50);
+    background: $white;
+    padding: rem(15) 0;
+
+    @include bp-lt($small) {
+        margin-top: rem(10);
+    }
+
+    h2 {
+        font-family: $sofiaPro;
+        font-weight: 700;
+        font-size: rem(28);
+
+        @include bp-lt($desktop) {
+            font-size: rem(25);
+        }
+
+        @include bp-lt($xmedium) {
+            font-size: rem(24);
+        }
+
+        &.c-text__sofiaPro--light--20 {
+            font-family: $sofiaPro;
+            font-weight: 300;
+            font-size: rem(20);
+            color: $grey--03;
+
+            @include bp-lt($small) {
+                font-size: rem(16);
+            }
+        }
+    }
+}
+
+.c-form__holder {
+    padding: rem(60);
+    height: 100%;
+    margin-bottom: rem(60);
+
+    &.no-paddingBottom {
+        padding-bottom: 0;
+        margin-bottom: 0;
+
+        @include bp-lt($tablet) {
+            padding-bottom: rem(20);
+        }
+
+        @include bp-lt($small) {
+            padding-bottom: 0;
+        }
+    }
+
+    @include bp-lt($desktop) {
+        padding: rem(40) rem(30);
+    }
+
+    @include bp-lt($tablet) {
+        padding: rem(30) rem(20);
+    }
+
+    @include bp-lt($small) {
+        padding: rem(5) rem(15);
+    }
+
+    $border : solid rem(1) $grey--light--06;
+    &.has-seperator {
+        position: relative;
+        border-right: $border;
+
+        @include bp-lt($tablet) {
+            padding-bottom: rem(35);
+            border-right: none;
+            border-bottom: $border;
+        }
+
+        .c-separator {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%) translatex(50%);
+            width: rem(41);
+            height: rem(41);
+            padding-top: rem(8);
+            background: $grey--light--06;
+            border-radius: 50%;
+            text-align: center;
+            font-family: $sofiaPro;
+            font-weight: 700;
+            text-transform: uppercase;
+            color: $white;
+
+            @include bp-lt($tablet) {
+                right: initial;
+                left: 50%;
+                top: 100%;
+                transform: translateY(-50%) translatex(-50%);
+            }
+        }
+    }
+
+    [class*="c-button"] {
+        position: absolute;
+        bottom: rem(60);
+        left: rem(60);
+
+        @include bp-lt($desktop) {
+            left: rem(40);
+        }
+
+        @include bp-lt($tablet) {
+            left: rem(20);
+        }
+    }
+}
+
+.c-input__holder {
+    &.is-end {
+        border-bottom: rem(2) solid $grey--01 !important;
+    }
+}
+
+.c-b2b__register {
+    .column + .column:last-child {
+        float: left;
+    }
+
+    .c-form__noMargin {
+        margin-bottom: rem(50);
+
+        @include bp-lt($small) {
+            margin-bottom: rem(30);
+        }
+
+        .column {
+            &:nth-child(5) {
+                .c-input__holder {
+                    border-right-width: rem(1);
+                }
+            }
+
+            &:nth-child(6) {
+                .c-input__holder {
+                    border-left-width: rem(1);
+                }
+            }
+        }
+
+        .c-input__holder {
+            &.is-textarea {
+                margin-bottom: 0;
+            }
+        }
+
+        &:nth-of-type(1) {
+            .column {
+                &:nth-child(4) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(2) {
+            .column {
+                &:nth-child(5) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-right-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(6) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                            border-left-width: rem(2);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(5) {
+            .column {
+                &:nth-child(2) {
+                    .c-input__holder {
+                        border-bottom-width: 0;
+                    }
+                }
+
+                &:nth-child(5) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-right-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(6) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                            border-left-width: rem(2);
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(6) {
+            .column {
+                &:nth-child(3) {
+                    .c-input__holder {
+                        border-bottom-width: 0;
+                    }
+                }
+
+                &:nth-child(4), &:nth-child(6) {
+                    .c-input__holder {
+                        border-left-width: rem(2);
+                        border-right-width: rem(1);
+
+                        @include bp-lt($small) {
+                            border-right-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(5) {
+                    .c-input__holder {
+                        border-right-width: rem(2);
+                    }
+                }
+
+                &:nth-child(5), &:nth-child(7) {
+                    .c-input__holder {
+                        border-left-width: rem(1);
+
+                        @include bp-lt($small) {
+                            border-left-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(7) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(7) {
+            .column {
+                &:nth-child(2), &:nth-child(4), &:nth-child(6) {
+                    .c-input__holder {
+                        border-left-width: rem(2);
+                        border-right-width: rem(1);
+
+                        @include bp-lt($small) {
+                            border-right-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(3), &:nth-child(5), &:nth-child(7) {
+                    .c-input__holder {
+                        border-left-width: rem(1);
+                        border-right-width: rem(2);
+
+                        @include bp-lt($small) {
+                            border-left-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(7) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                        }
+                    }
+                }
+
+                &:nth-child(8) {
+                    .c-input__holder {
+                        border-top-width: rem(0);
+                    }
+                }
+            }
+        }
+
+        &:nth-of-type(8) {
+            .column {
+                &:nth-child(2) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .fieldset_shipping {
+        .c-form__noMargin {
+            .column {
+                &:nth-child(3) {
+                    .c-input__holder {
+                        border-bottom-width: 0;
+                    }
+                }
+
+                &:nth-child(4), &:nth-child(6) {
+                    .c-input__holder {
+                        border-left-width: rem(2);
+                        border-right-width: rem(1);
+
+                        @include bp-lt($small) {
+                            border-right-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(5) {
+                    .c-input__holder {
+                        border-right-width: rem(2);
+                    }
+                }
+
+                &:nth-child(5), &:nth-child(7) {
+                    .c-input__holder {
+                        border-left-width: rem(1);
+
+                        @include bp-lt($small) {
+                            border-left-width: rem(2);
+                        }
+                    }
+                }
+
+                &:nth-child(7) {
+                    .c-input__holder {
+                        @include bp-lt($small) {
+                            border-top: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.c-b2b__password {
+    [class*="c-button--b2b"] {
+        @include bp-lt($small) {
+            margin-top: rem(20);
+        }
+    }
+}

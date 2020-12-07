@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+    <translate>
+      <modules>
+        <Monbento_Showcase>
+          <files>
+            <default>Monbento_Showcase.csv</default>
+          </files>
+        </Monbento_Showcase>
+      </modules>
+    </translate>
+    <acl>
+      <resources>
+        <admin>
+          <children>
+            <showcase_accueil translate="title" module="showcase">
+              <title>Monbento Showcase</title>
+              <sort_order>60</sort_order>
+              <children>
+                <carousel>
+                  <title>Carrousel Accueil</title>
+                </carousel>
+              </children>
+            </showcase_accueil>
+            <system>
+              <children>
+                <config>
+                  <children>
+                    <showcase_accueil>
+                      <title>Carrousel Accueil</title>
+                    </showcase_accueil>
+                    <showcase_shop>
+                      <title>Carrousel Accueil</title>
+                    </showcase_shop>
+                  </children>
+                </config>
+              </children>
+            </system>
+          </children>
+        </admin>
+      </resources>
+    </acl>
+</config>

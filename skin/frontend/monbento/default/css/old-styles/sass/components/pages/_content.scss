@@ -1,0 +1,186 @@
+.cms-page-view {
+    .col-main {
+        @include bp-gt($mb-medium - 1) {
+            width: 748px;
+        }
+    }
+}
+
+.cms-page-view,
+.improve-index-index,
+.contacts-contacts-index,
+.cms-index-noroute,
+.review-product-list {
+    
+    #navigation {
+        li {
+            a.shopLink {
+                background: none;
+            }
+        }
+    }
+    
+    .col-main {                
+        @include bp-lt($mb-medium) {
+            @include box-sizing(border-box);
+            @include grid-column(
+                9,
+                false,
+                false,
+                false,
+                3
+            );
+            margin-right: 0;            
+        }
+        
+        @include bp-lt($mb-small) {
+            @include grid-column(
+                12,
+                false,
+                false,
+                false,
+                0
+            );
+        }
+    }
+    
+    .col-left {
+        @include bp-lt($mb-medium) {
+            @include box-sizing(border-box);
+            @include grid-column(
+                3,
+                false,
+                false,
+                false,
+                false,
+                9
+            );
+            margin-top: 17px;
+        }
+        
+        @include bp-lt($mb-small) {
+            display: none;
+        }
+    }
+    
+    .cms-page {
+        p {
+            img {
+                @include bp-lt ($mb-medium) {
+                    max-width: 100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+}
+
+.contenu {
+    #navigation {
+        @include bp-gt ($mb-medium - 1) {
+            margin-top: 61px;
+        }
+    }
+    #header-link-home {
+        @include bp-gt ($mb-medium - 1) {
+            margin-top: 62px;
+        }
+    }
+    #breadcrumbs {
+        margin-top: 0;
+    }
+}
+
+#recrutement_form {
+    .files {
+        @include bp-lt ($mb-xmedium) {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        
+        li {
+            &,
+            &.first {
+                @include bp-lt ($mb-xmedium) {
+                    margin-right: 0;
+                    float: none;
+                    width: 100%;
+                }
+            }
+        }
+    }
+    
+    li {
+        div {
+            
+            @include bp-lt ($mb-xmedium) {
+                width: 100% !important;
+                @include box-sizing(border-box);
+            }
+            
+            &.first {
+                @include bp-lt ($mb-xmedium) {
+                    margin-right: 0;
+                }
+            }
+            
+            &.radio {
+                label {
+                    @include bp-lt ($mb-xmedium) {
+                        margin-bottom: 10px;
+                    }
+                }
+            }
+        }
+        
+        input[type="text"] {
+            @include bp-lt ($mb-xmedium) {
+                width: 100%;                
+                height: 30px;
+                line-height: 30px;
+                margin-bottom: 15px;
+                @include box-sizing(border-box);
+            }
+        }
+    }
+    
+    label,
+    p.label {
+        @include bp-lt ($mb-xmedium) {
+            display: block;
+            margin-bottom: 5px;
+            float: none;
+            width: 100%;
+        }
+    }       
+    
+    object {
+        @include bp-lt ($mb-xmedium) {
+            width: 100%;
+            height: 30px;
+        }
+    }
+    
+    #file_upload_cv-button,
+    #file_upload_lm-button {
+        @include bp-lt ($mb-xmedium) {
+            height: 30px;
+            line-height: 30px;                
+            @include box-sizing(border-box);
+        }
+    }
+    
+    #actions-buttons {
+        a {
+            @include bp-lt ($mb-xmedium) {
+                float: none;
+                width: 100%;
+                height: 30px;
+                line-height: 30px;
+                margin: 0 0 15px 0;                
+                padding: 0;
+                @include box-sizing(border-box);
+            }
+        }
+    }
+}

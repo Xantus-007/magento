@@ -1,0 +1,26 @@
+<?php 
+$t = Mage::helper('dbm_share');
+?>
+<script type="text/javascript">
+    var userAgent = '<?php echo str_replace("'", "\'", $_SERVER['HTTP_USER_AGENT']); ?>'
+<?php //IPAD userAgent = 'Mozilla/5.0 (iPad; CPU OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Version/5.1 Mobile/9B176 Safari/7534.48.3s'; ?>
+    
+    var iosPreg = /(iPad|iPhone);.*CPU.*OS (\d)_(\d)/i;
+    var pregMatch = iosPreg.exec(userAgent);
+    var uploadAllowed = true;
+    
+    if(null != pregMatch && pregMatch[2] && pregMatch[2] < 6)
+    {
+        uploadAllowed = false;
+    }
+    
+    var translations = {
+        chooseFile : '<?php echo $t->__('Choose file'); ?>',
+        uploadDisabled : "<?php echo $t->__('Upload not allowed, please upgrade your device') ?>",
+        fileDefault : '<?php echo $t->__('No file selected'); ?>',
+        subscribed : "<?php echo $t->__('Subscribed '); ?>",
+        unsubscribed : "<?php echo $t->__('Unsubscribed ') ?>",
+        subscribe : "<?php echo $t->__('Subscribe '); ?>",
+        unsubscribe : "<?php echo $t->__('Unsubscribe ') ?>"
+    }
+</script>

@@ -1,0 +1,72 @@
+.c-mozaic {
+    img {
+        width: 100%;
+    }
+}
+
+.c-mozaic__block {
+    position: relative;
+}
+
+[class*="c-mozaic__link"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: calc(50% - 70px) 9% 0;
+    color: $subBranding;
+
+    @include bp-lt($desktopL) {
+        padding-top: calc(50% - 60px);
+    }
+
+    @include bp-lt($medium) {
+        padding-top: calc(50% - 50px);
+    }
+
+    .c-mozaic__title {
+        font-family: $sofiaPro;
+        font-size: rem(33);
+        line-height: rem(40);
+        font-weight: 700;
+        margin-bottom: rem(35);
+
+        @include bp-lt($bpMozaic) {
+            font-size: rem(28);
+            line-height: rem(30);
+        }
+
+        @include bp-lt($desktopL) {
+            font-size: rem(24);
+            line-height: rem(28);
+            margin-bottom: rem(25);
+        }
+
+        @include bp-lt($medium) {
+            font-size: rem(20);
+            line-height: rem(24);
+        }
+    }
+
+    &[class*="--white"] {
+        color: $white;
+
+        [class*="c-button"] {
+            color: $white;
+            background-image: url(#{$img}c-icon_arrowRight--white.svg);
+        }
+    }
+}
+
+.js-mozaic__equalizer {
+    background: $mainBranding;
+
+    @include bp-lt($small) {
+        height: auto !important;
+    }
+
+    @include bp-gt($gtMedium) {
+        height: auto !important;
+    }
+}

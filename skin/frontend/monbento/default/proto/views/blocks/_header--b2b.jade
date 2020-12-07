@@ -1,0 +1,32 @@
+header.o-header
+    .row
+        .column
+            .c-logo
+                img(src="#{imgDir}c-logo__monbento.svg" alt="")
+            
+            .c-header__columnWrapper.o-inlineBlock__holder            
+                .c-header__column.o-inlineBlock__item
+                    ul.c-b2b__menu
+                        - items = ['Mon compte', 'Mon panier']
+                        - icons = ['account', 'cart']
+                        each item, i in items
+                            li
+                                span(class="c-fonticon__icon--#{icons[i]}")                                    
+                                
+                                if (i == 0)
+                                    | #{item}
+                                    a.c-link(href="") Créer mon compte
+                                else
+                                    a(href="") #{item}
+                                    
+                .c-header__column.o-inlineBlock__item
+                    p Une questions ? #[span.c-tel 04 73 23 72 72]
+                    span.c-text--small (prix d'un appel local)
+                
+                .c-header__column
+                    .dbm_country_switcher
+                        a(href="")
+                            span.c-fonticon__icon--flag
+                            | Pays de livraison et langue
+                            
+    a.c-nav__icon(href=""): i

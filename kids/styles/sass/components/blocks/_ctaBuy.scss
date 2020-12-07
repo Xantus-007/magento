@@ -1,0 +1,42 @@
+// ========================================= //
+// Call To Action Buy
+// ========================================= //
+
+.cta_buy {
+    background: url(../images/bkg_cta_buy.png) no-repeat 50% 50% white;
+    min-height: 530px;
+
+    @include bp-lt($large){
+        background-position: 50% 30px;
+        padding-top: 470px;
+        padding-bottom: 30px;
+        min-height: inherit;
+    }
+
+    @include bp-lt($medium){
+        background: url(../images/bkg_cta_buy_m.png) no-repeat 50% 20px white;
+        padding-top: 290px;
+    }
+
+    .lunch, .break {
+        @include bp-lt($large){
+            text-align: center;
+        }
+
+        .title {
+            font-size: 26px;
+            font-weight: bold;
+            margin-top: 120px;
+            margin-bottom: 15px;
+
+            @include bp-lt($large){
+                margin-top: 0;
+            }
+        }
+
+        .content {
+            font-size: 16px;
+            margin-bottom: 45px;
+        }
+    }
+}

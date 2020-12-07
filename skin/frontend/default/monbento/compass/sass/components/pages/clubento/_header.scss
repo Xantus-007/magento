@@ -1,0 +1,93 @@
+#clubMenuTop {        
+    
+    li {
+        a {
+            img {
+                max-height: 35px;
+            }
+        }
+    }
+
+    .clubWrapped {
+        width: auto;
+        @include bp-lt(940px) {
+            a.logo {
+                display: none;
+            }
+            ul {
+                float: none;
+            }
+        }
+        @include bp-bt(641px, 673px) {
+            ul li,
+            ul li a,
+            ul li.selected > img,
+            ul li.selected > img {
+                width: 120px;
+            }
+        }
+        
+        ul {
+            li {
+                @include bp-lt($mb-xmedium) {
+                    width: 120px;
+                }
+
+                &.selected {
+                    > img {
+                        @include bp-lt ($mb-small) {
+                            display: none;
+                        }
+                    }
+                }
+                
+                &.not-selected {
+                    @include bp-lt($mb-small) {
+                        padding-bottom: 0;
+                    }
+                }
+            }
+        }
+
+        .owl-item {
+            @include bp-lt ($mb-small) {
+                border-left: 1px solid #fff;
+            }
+
+            &:last-child {
+                @include bp-lt ($mb-small) {
+                    border-right: 1px solid #fff;
+                }
+            }
+
+            li {
+                &,
+                a {
+                    @include bp-lt ($mb-small) {
+                        width: 100%;
+                    }
+                }
+
+                a {
+                    @include bp-lt ($mb-small) {
+                        display: block;
+                    }
+
+                    &:hover,
+                    &:focus {
+                        @include bp-lt ($mb-small) {
+                            text-decoration: none;
+                        }
+                    }
+                }
+
+                &.selected {
+                    @include bp-lt ($mb-small) {
+                        border-left: none;
+                        border-right: none;
+                    }
+                }
+            }
+        }      
+    }
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Sales>
+            <active>true</active>
+            <codePool>local</codePool>
+            <depends>
+                <Dbm_Expedition />
+                <Aitoc_Aitpermissions />
+                <Mage_Sales />
+                <Mage_Reports />
+            </depends>
+        </Dbm_Sales>
+    </modules>
+</config>

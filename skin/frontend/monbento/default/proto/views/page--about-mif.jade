@@ -1,0 +1,60 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : À propos - Made in France'
+    - var pageClass = 'cms-made-in-france'
+    - var menu      = false
+    - var aboutMenu = true
+
+append body
+
+    - var labels = ['Home', 'À propos', 'Monbento']
+    +c-breadcrumb(labels)
+
+    .c-landscape--mif
+        .o-table
+            .o-table__cell--valignMiddle
+                h1 
+
+    .o-section--mif.o-section--noPaddingBottom--noPaddingLeft--noPaddingRight
+        section
+            .row
+                .column                
+                    .c-testimonial--about
+                        .c-title--group
+                            h2.c-main MB Original : le best-seller signé monbento devient made in France !
+
+
+
+        section(class=index % 2 == 0 ? 'o-section--bkgGrey--noPaddingTop--noPaddingBottom' : 'o-section--noPaddingTop--noPaddingBottom')
+            .row
+                article.c-item__team
+                    .column.large-5.medium-6(class=index % 2 == 0 ? '' : 'large-push-7 medium-push-6')
+                        //- .c-member__cover.c-product__cover
+                        .c-product__cover
+                            img(src="#{imgDir}c-product--monbento.png" alt="")                        
+                    .column.large-5.medium-6(class=index % 2 == 0 ? 'large-pull-1' : 'large-pull-6 medium-pull-6')
+                        .o-table
+                            .o-table__cell--valignMiddle
+                                .c-team__member
+                                    .c-member__name Faire rimer « French design »#[br]avec « Made in France »
+                                    .c-separator
+                                    .c-member__description: p Après plusieurs années de recherche pour faire rimer French design avec Made in France, le challenge vient d’être relevé ! Le bento MB Original est désormais fabriqué avec passion au coeur même de notre région, l’Auvergne-Rhône-Alpes.#[br]#[br]Une production de proximité, un partenaire au savoir-faire français expert dans son secteur, la même matière haute qualité préservée : tout est réuni pour que chacune de nos pièces reflète l’excellence à la française.
+
+        section(class=index % 2 == 0 ? 'o-section--bkgGrey--noPaddingTop--noPaddingBottom' : 'o-section--noPaddingTop--noPaddingBottom')
+            .row
+                article.c-item__team
+                    .column.js-team__equalizer.large-5.medium-6
+                        .c-member__cover(style="background-image:url(#{imgDir}c-team__member--CEO.jpg)")
+                            img(src="#{imgDir}c-team__member--CEO.jpg" alt="")                        
+                    .column.js-team__equalizer.large-5.medium-6
+                        .o-table
+                            .o-table__cell--valignMiddle
+                                .c-team__member
+                                    .c-member__name Le mot d'Emilie,#[br]PDG de monbento
+                                    .c-separator
+                                    .c-member__description: p « Produire en France était une volonté depuis la création de la société. Avec l’essor grandissant de monbento et son développement à l’international, nos volumes de production nous ont permis de reprendre les recherches de partenaires de fabrication locaux.#[br]#[br]Nos exigences étaient nombreuses : préserver l’ADN de notre bento phare, gagner encore en qualité, maîtriser nos coûts de production… Le chemin a été long mais les efforts ont payé.#[br]#[br]En parfait accord avec nos valeurs, nous sommes fiers aujourd’hui de pouvoir favoriser l’économie locale tout en réduisant notre empreinte carbone. Mais nous ne comptons pas nous en arrêter là : cette première collection Made in France signe le départ d’une nouvelle ère pour notre société ! »
+
+    include blocks/_crossSellingMif

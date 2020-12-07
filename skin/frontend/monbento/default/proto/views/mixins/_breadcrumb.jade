@@ -1,0 +1,52 @@
+//- Generate c-breadcrumb
+mixin c-breadcrumb(labels)
+    section.c-breadcrumb
+        .row: .columns
+            ul.c-breadcrumb__list
+                each label, index in labels
+                    li.c-breadcrumb__item
+                        if index + 1 !== labels.length
+                            a(href="") #{label}
+                        else
+                            | #{label}
+
+mixin c-breadcrumb--backToShop(labels)
+    section.c-breadcrumb
+        .row: .columns
+            ul.c-breadcrumb__list
+                each label, index in labels
+                    li.c-breadcrumb__item
+                        if index + 1 !== labels.length
+                            a(href="") #{label}
+                        else
+                            | #{label}
+            a.c-linkCst--arrowLeft--subBranding(href="") Poursuivre mes achats
+
+
+//- Generate c-breadcrumbFilter
+mixin c-breadcrumbFilter(labels)
+    section.c-breadcrumb.has-filter
+        .row
+            .columns.medium-8.small-6
+                ul.c-breadcrumb__list
+                    each label, index in labels
+                        li.c-breadcrumb__item
+                            if index + 1 !== labels.length
+                                a(href="") #{label}
+                            else
+                                | #{label}
+
+            .columns.medium-4.small-6
+                a.c-filter__toogle(href="")
+                    span.state--open Fermer
+                    span.state--close Filtrer par couleur
+
+        .c-filter
+            .row
+                .columns.text-center
+                    - var colors = ['ffffff', '292929', '636567', 'a69d94', 'a9398f', 'dd7eb1', 'd3424b', 'e97e1d', 'f4d717', '8abf3a', '65c4df', '345e7c']
+
+                    each color, index in colors
+                        .c-filter__item
+                            input(type="checkbox", id="checkbox__color--0#{index}")
+                            label(style='background-color: ##{color};', for="checkbox__color--0#{index}")

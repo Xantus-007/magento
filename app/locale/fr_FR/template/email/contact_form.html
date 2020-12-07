@@ -1,0 +1,63 @@
+<!--@subject Contact - {{var data.subject}} @-->
+<!--@vars
+{"var data.name":"Nom de l'expéditeur",
+"var data.email":"Nom du destinataire",
+"var data.telephone":"Téléphone de l'expéditeur",
+"var data.comment":"Commentaire"}
+@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+<div style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif;">
+<table cellspacing="0" cellpadding="0" border="0" width="98%" style="font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; margin-bottom:10px;">
+<tr>
+    <td align="center" valign="top">
+        <!-- [ middle starts here] -->
+        <table cellspacing="0" cellpadding="0" border="0" width="650">
+            <tr>
+                <td valign="top">
+                    <p><strong>Bonjour</strong>,<br/></p>
+                    <p>Objet : {{var data.subject}}</p>
+
+                    {{depend data.ordernum}}
+                        <p>Numéro de commande : {{var data.ordernum}}</p>
+                    {{/depend}}
+
+                    {{depend data.media}}
+                        <p>Nom du média : {{var data.media}}</p>
+                    {{/depend}}
+
+                    {{depend data.company}}
+                        <p>Société : {{var data.company}}</p>
+                    {{/depend}}
+
+                    {{depend data.city}}
+                        <p>Ville : {{var data.city}}</p>
+                    {{/depend}}
+
+                    {{depend data.country}}
+                        <p>Pays : {{var data.country}}</p>
+                    {{/depend}}
+
+                    {{depend data.name}}
+                        <p>Nom : {{var data.name}}</p>
+                    {{/depend}}
+
+                    {{depend data.email}}
+                        <p>Email : {{var data.email}}</p>
+                    {{/depend}}
+
+                    {{depend data.telephone}}
+                        <p>Téléphone : {{var data.telephone}}</p>
+                    {{/depend}}
+
+                    <br/><p>Commentaire : {{var data.comment}}</p>
+                    <br/>
+                    <p>Merci,<br/><strong>Monbento</strong></p>
+                </td>
+            </tr>
+        </table>
+    </td>
+</tr>
+</table>
+</div>

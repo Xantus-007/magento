@@ -1,0 +1,88 @@
+<?php
+
+?>
+<div id="layer_socolissimo" class="layer"><div id="layer_socolissimo_wrapper" ></div>
+<div id="socolissimo_description_domicile_sign" style="display:none;">
+A l’adresse de votre choix, en mains propres ou en boîte aux lettres.
+</div>
+<div id="socolissimo_description_domicile" style="display:none;">
+A l’adresse de votre choix, en mains propres ou en boîte aux lettres.
+</div>
+<div id="socolissimo_description_rdv" style="display:none;">
+Livraison sur rendez-vous sur Paris entre 17h00 et 21h30 dans un créneau d'1h30 du lundi au vendredi (peut engendrer un suppl&eacute;ment).
+</div>
+<div id="socolissimo_description_poste_be" style="display:none;">
+Livraison dans l'un des bureaux de Poste du groupe BPOST en Belgique.
+</div>
+<div id="socolissimo_description_poste" style="display:none;">
+Livraison dans l'un des 10 000 points de retrait La Poste de votre choix en France.
+</div>
+<div id="socolissimo_description_cityssimo" style="display:none;">
+Livraison dans l'une des 31 consignes automatiques Cityssimo 7j/7 et 24h/24.
+</div>
+<div id="socolissimo_description_commercant" style="display:none;">
+Livraison dans l'un des 3 700 commerces du r&eacute;seau  PICKUP, Groupe La Poste.
+</div>
+<div id="socolissimo_description_commercant_be" style="display:none;">
+Livraison dans l'un des commerces de proximité du réseau BPOST en Belgique.
+</div>
+<script type="text/javascript">
+//<![CDATA[       
+var socolissimoBaseUrl = '<?php echo $this->getUrl('socolissimo/ajax/') ?>';
+if (aoGoToShippingMethodHooks == undefined) {
+	var aoGoToShippingMethodHooks = new Array();
+}
+// initSocolissimoLogos : fonction définie dans socolissimo.js, appellée dans le hokk ci-dessous, pour charger les logos SoColissimo 
+aoGoToShippingMethodHooks[aoGoToShippingMethodHooks.length] = initSocolissimoLogos;
+if ((typeof Checkout) != "undefined") {
+<?php if (version_compare(Mage::getVersion(), '1.8', '>=')) : ?>
+	//On surchage la methode gotoSection de Checkout (voir opcheckout.js) : surcharge identique dans les modules addonline : socolissimo, GLS pour être compatible si on utilise les deux modules 
+	Checkout.prototype.gotoSection = function (section, reloadProgressBlock) 
+	{
+		
+	 		if (reloadProgressBlock) {
+	            this.reloadProgressBlock(this.currentStep);
+	        }
+			//HOOK pour modules de livraison
+	    	if (section == 'shipping_method') {
+	    		
+	    		for (i=0;i<aoGoToShippingMethodHooks.length;i++){
+	    			
+	    			aoGoToShippingMethodHooks[i]();
+	    		} 
+	    	}
+	    	//Après le choix du mode de livraison il faut aussi recharger l'adresse de livraison car on a pu choisir un relais
+			if (section == 'payment') {
+	    		this.reloadProgressBlock('shipping');
+	    	}
+	    	this.currentStep = section;
+	        var sectionElement = $('opc-' + section);
+	        sectionElement.addClassName('allow');
+	        this.accordion.openSection('opc-' + section);
+	        if(!reloadProgressBlock) {
+	            this.resetPreviousSteps();
+	     }
+    }
+<?php else : ?>
+	Checkout.prototype.gotoSection = function (section)
+    {
+		//HOOK pour modules de livraison
+    	if (section == 'shipping_method') {
+    		for (i=0;i<aoGoToShippingMethodHooks.length;i++){
+    			aoGoToShippingMethodHooks[i]();
+    		} 
+    	}
+    	//Après le choix du mode de livraison il faut aussi recharger l'adresse de livraison car on a pu choisir un relais
+		if (section == 'payment') {
+    		this.reloadProgressBlock('shipping');
+    	}
+    	var sectionElement = $('opc-'+section);
+        sectionElement.addClassName('allow');
+        this.accordion.openSection('opc-'+section);
+        this.reloadProgressBlock(section);
+    }
+<?php endif; ?>    
+}
+//]]>
+</script>
+</div>

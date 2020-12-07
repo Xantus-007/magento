@@ -1,0 +1,78 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Product list template
+ *
+ * @see Mage_Catalog_Block_Product_List
+ */
+/* @var $this Mage_Catalog_Block_Product_List */
+?>
+<?php
+$_productCollection = $this->getLoadedProductCollection();
+$_helper = $this->helper('catalog/output');
+$_columnCount = $this->getColumnCount();
+?>
+<?php echo $this->getLayout()->createBlock('dbm_tagmanager/tag_productlist', 'dbm_gtm.similar_products', array('products' => $_productCollection, 'block_name' => $this->__('Changer de couleur')))->toHtml(); ?>
+<div class="c-product__select">
+    <div class="o-table">
+        <div class="o-table__cell--valignMiddle">
+            <a class="c-closed__product__select"><span><?php echo $this->helper('checkout')->__('Close'); ?></span> <i class="c-fonticon__icon--cross"></i></a>
+            <div class="c-grid__product__select">
+                <div class="row collapse">
+                    <div class="columns medium-10 medium-centered">
+                        <div class="row collapse">
+                            <div class="c-slider__productSelect">
+                                <?php $i = 0; foreach ($_productCollection as $_product): ?>
+                                <?php $dataGTM = Mage::helper('dbm_tagmanager')->getProductClickData($_product, $i); ?>
+                                <?php if($i == 0 || $i%18 == 0): ?>
+                                <div class="jx-bxSlider__item">
+                                <?php endif; ?>
+                                <?php $isCurrentProduct = ($_product->getId() == Mage::registry('current_product')->getId()) ? true : false; ?>
+                                <div class="columns medium-2 small-3 c-item <?php if($isCurrentProduct): ?>is-active<?php endif; ?>">
+                                    <?php if($isCurrentProduct): ?><span><?php else: ?><a href="<?php echo $_product->getProductUrl(); ?>" data-gtm='<?php echo $dataGTM ?>'><?php endif; ?>
+                                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/catalog/product' . $_product->getImage(), 150, 150); //$this->helper('catalog/image')->init($_product, 'image', $_product->getImage())->resize(150, 150) ?>" alt="" />
+                                    <?php if($isCurrentProduct): ?></span><?php else: ?></a><?php endif; ?>
+                                </div>
+                                <?php if($i > 0 && $i%17 == 0): ?>
+                                </div>
+                                <?php endif; ?>
+                                <?php $i++; endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <?php if($this->showPersoButton()): ?>
+        <div class="row">
+            <div class="columns text-center"><a href="<?php echo Mage::getModel('catalog/product')->load(Dbm_Share_Helper_Data::CONFIGURABLE_PRODUCT)->getProductUrl(); ?>" class="c-button--mainBranding--arrowRightToRight--noPdgTopBtm"><div class="o-table"><div class="o-table__cell--valignMiddle"><?php echo $this->__('Personnalisez votre MB Original'); ?></div></div></a></div>
+        </div>
+        <?php endif; ?>
+    </div>
+</div>

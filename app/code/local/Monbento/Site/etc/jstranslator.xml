@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<jstranslator>
+    <zipcodefr translate="message" module="monbento_site">
+        <message>This postal code does not correspond to Metropolitan France, for the French overseas departments and territories select the corresponding country.</message>
+    </zipcodefr>
+</jstranslator>

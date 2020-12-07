@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Storelocator>
+            <version>0.1.0</version>
+        </Monbento_Storelocator>
+    </modules>
+
+    <global>
+        <helpers>
+            <ustorelocator>
+                <rewrite>
+                    <data>Monbento_StoreLocator_Helper_Data</data>
+                </rewrite>
+            </ustorelocator>
+        </helpers>
+        <models>
+            <ustorelocator>
+                <rewrite>
+                    <location>Monbento_StoreLocator_Model_Rewrite_Unirgy_Location</location>
+                </rewrite>
+            </ustorelocator>
+        </models>
+        <rewrite>
+            <monbento_storelocator>
+                <from><![CDATA[#^/ustorelocator/location#]]></from>
+                <to>/storelocator/location</to>
+            </monbento_storelocator>
+        </rewrite>
+    </global>
+
+    <frontend>
+        <routers>
+            <ustorelocator>
+                <use>standard</use>
+                <args>
+                    <module>Monbento_StoreLocator</module>
+                    <frontName>storelocator</frontName>
+                </args>
+            </ustorelocator>
+            <storelocator>
+                <args>
+                    <modules>
+                        <Monbento_StoreLocator before="Unirgy_StoreLocator">Monbento_StoreLocator</Monbento_StoreLocator>
+                    </modules>
+                </args>
+            </storelocator>
+        </routers>
+    </frontend>
+</config>

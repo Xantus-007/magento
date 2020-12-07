@@ -1,0 +1,139 @@
+<?php
+$element = $this->getElement();
+$comments = $this->getComments();
+$currentCustomer = Mage::helper('dbm_customer')->getCurrentCustomer();
+
+$cHelper = Mage::helper('dbm_customer');
+$cSizes = Mage::helper('dbm_customer/image')->getSizes();
+$cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+$helper = Mage::helper('dbm_share');
+
+$currentUrl = $this->helper('core/url')->getCurrentUrl();
+
+$i = 0;
+?>
+<div class="clubComments">
+    <div class="clubCommentsHeader line">
+        <div class="commentCount"><?php echo count($comments); ?> <?php echo count($comments) == 1 ? $this->__('comment') : $this->__('comments') ?> <img src="<?php echo $this->getSkinUrl('images/club/comments/icon.png'); ?>" /></div>
+        <div class="commentShare"><a href="#"><?php echo $this->__('Share') ?> <img src="<?php echo $this->getSkinUrl('images/club/form/share.png') ?>" /></a>
+            <div>
+                <a target="_blank" href="https://twitter.com/home?status=<?php echo urlencode($element->getTitle() . $currentUrl); ?>"><img src="<?php echo $this->getSkinUrl('images/club/share/twitter.jpg') ?>" /></a>
+                <a target="_blank" href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($currentUrl) ?>&t=<?php echo urlencode($element->getTitle()).' ' ?>"><img src="<?php echo $this->getSkinUrl('images/club/share/facebook.jpg') ?>" /></a>
+            </div>
+        </div>
+        <div class="commentAddButton">
+            <?php if($element->getIdCustomer() != $currentCustomer->getId()): ?><a id="popup_report_link" href="<?php echo $helper->getAbuseElementUrl($element->getId()) ?>"><img src="<?php echo $this->getSkinUrl('images/club/element/button-abuse.png') ?>" /></a><?php endif; ?>
+            <?php if($element->getIdCustomer() == $currentCustomer->getId()): ?><a id="popup_delete_link" href="<?php echo $helper->getDeleteUrl($element->getId()) ?>"><img src="<?php echo $this->getSkinUrl('images/club/element/button-delete.png'); ?>"/></a><?php endif; ?>
+            <a href="#commentForm"><img src="<?php echo $this->getSkinUrl('images/club/comments/button-add.png'); ?>" /></a>
+        </div>
+        <?php if($element->getType() == Dbm_Share_Model_Element::TYPE_PHOTO): ?><div class="commentLike"><p class="miniLike <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> element_<?php echo $element->getId() ?>"><span><span class="count"><?php echo $element->getLikeCount() ?></span> <img src="<?php echo $element->getLikeImage($currentCustomer); ?>" /></span></p></div><?php endif; ?>
+    </div>
+    <img src="<?php echo $this->getSkinUrl('images/club/comments/separator.png') ?>" class="separator" />
+    <div class="clubElementComments">
+<?php foreach($comments as $comment): ?>
+    <?php
+    $customer = $comment->getCustomer();
+    $customerImageUrl = $cHelper->getCustomerImageUrl($customer, $cSizes['element_list'], $cOptions);
+    $customerImageUrl = $customerImageUrl ? $customerImageUrl : $this->getSkinUrl('images/club/profile/placeholder-mini.png');
+    $evenOdd = $i%2 == 0 ? 'even' : 'odd';
+
+    ?>
+        <div class="clubComment <?php echo $evenOdd; ?>">
+            <div class="commentContent"><?php echo $this->escapeHtml($comment->getMessage()) ?></div>
+            <div class="miniProfile">
+                <div class="nickname icon">
+                    <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><span><img src="<?php echo $customerImageUrl ?>" class="avatar" alt=""><img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-list-'.$evenOdd.'.png') ?>" /></span> <?php echo $this->escapeHtml($customer->getProfileNickname()); ?></a><br />
+                    <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                </div>
+                <div class="date"><?php echo $helper->getPrettyDate($comment->getCreatedAt()) ?></div>
+                <?php if($comment->getIdCustomer() != $currentCustomer->getId()): ?><div class="abuse"><a href="<?php echo $helper->getAbuseCommentUrl($comment->getId())  ?>"><?php echo $this->__('Report abuse') ?></a></div><?php endif; ?>
+            </div>
+        </div>
+    <?php $i++; ?>
+<?php endforeach; ?>
+    </div>
+    <div class="clubCommentForm">
+        <form id="commentForm" action="<?php echo $this->getUrl('club/comment/post') ?>" method="post">
+            <input type="hidden" name="id_element" value="<?php echo $element->getId() ?>" />
+            <label for="comment">Laisser un commentaire</label>
+            <textarea id="comment" rows="10" cols="85" name="message"></textarea>
+            <input type="submit" class="roundedButton submit subscribe" value="publier" />
+        </form>
+    </div>
+</div>
+<?php if($element->getIdCustomer() == $currentCustomer->getId()): ?>
+<div class="popup popup_club_delete popup_club" id="popup_delete" style="width:350px;display:none;">
+    <div class="easylogin">
+        <p class="popup_message"><?php echo $element->getType() == Dbm_Share_Model_Element::TYPE_RECEIPE ? $this->__('Are you sure you want to delete this recipe ?') : $this->__('Are you sure you want to delete this photo ?') ?></p>
+        <p class="popup_options"><a href="<?php echo $helper->getDeleteUrl($element->getId()) ?>" class="popup_option popup_option_yes"><?php echo $this->__('Yes'); ?></a><a href="#" class="popup_closebox popup_option"><?php echo $this->__('No'); ?></span></a></p>
+    </div>
+</div>
+<?php endif; ?>
+<div class="popup popup_club_report popup_club" id="popup_report" style="width:350px;display:none;">
+    <div class="easylogin">
+        <p class="popup_message"><?php echo $element->getType() == Dbm_Share_Model_Element::TYPE_RECEIPE ? $this->__('Are you sure you want to report this recipe ?') : $this->__('Are you sure you want to report this photo ?') ?></p>
+        <p class="popup_options"><a href="<?php echo $helper->getAbuseElementUrl($element->getId()) ?>" class="popup_option popup_option_yes"><?php echo $this->__('Yes'); ?></a><a href="#" class="popup_closebox popup_option"><?php echo $this->__('No'); ?></span></a></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+var deletePopup;
+var reportPopup;
+
+(function($){
+    $(document).ready(function(){
+        if($('#popup_delete_link').length  > 0 ){
+            deletePopup = new Popup('popup_delete', 'popup_delete_link', {
+                modal: true,
+                position:'41%,'+$('#popup_delete_link').offset().top+'px'
+            })
+        }
+
+        reportPopup = new Popup('popup_report', 'popup_report_link', {
+            modal: true,
+            position:'41%,'+$('#popup_report_link').offset().top+'px'
+        })
+    });
+
+    var shareTimer = new Club_Timer();
+
+    $('.clubComment').mouseenter(function(){
+        $(this).find('.abuse').css('display','table-cell');
+    })
+
+    $('.clubComment').mouseleave(function(){
+        $(this).find('.abuse').css('display', 'none');
+    })
+
+    $('.commentShare').mouseenter(function(){
+        shareTimer.cancel();
+        $(this).find('> a').fadeOut();
+        $(this).find('div').fadeIn();
+    });
+
+    $('.commentShare').mouseleave(function(){
+        shareTimer.start(100);
+    });
+
+    $(shareTimer).bind(shareTimer.TIMER_COMPLETE, function(){
+        $('.commentShare > div').fadeOut();
+        $('.commentShare > a').fadeIn();
+    });
+
+    $('.popup_club_delete .popup_closebox,.popup_club_report .popup_closebox').live('click', function(){
+        if(typeof deletePopup != "undefined")
+        {
+            deletePopup.hide();
+        }
+
+        if(typeof reportPopup != "undefined")
+        {
+            reportPopup.hide();
+        }
+
+        return false;
+    })
+
+})(jQuery);
+</script>

@@ -1,0 +1,77 @@
+.row {
+    .c-item__team {
+        @include clearfix;
+        position: relative;
+
+        [class*="column"] {
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+.c-team__member {
+    padding: rem(110) 0;
+
+    @include bp-lt($medium) {
+        padding: rem(50) rem(30);
+    }
+
+    @include bp-lt($small) {
+        padding: rem(30);
+    }
+
+    &.c-ambassador {
+        padding-left: rem(50);
+        padding-right: rem(50);
+    }
+}
+
+.c-team__wanted {
+    height: 100%;
+    background: url(#{$img}c-img__team--wanted.jpg) no-repeat 50% bottom;
+    color: $white;
+    padding: rem(210) 0 0;
+
+    @include bp-lt($xmedium) {
+        padding-top: rem(300);
+        padding-bottom: rem(120);
+        text-align: center;
+    }
+
+    @include bp-lt($small) {
+        background-position: 47% bottom;
+    }
+
+    .o-table {
+        width: rem(340);
+        margin: 0 auto;
+
+        @include bp-lt($small) {
+            width: rem(300);
+        }
+    }
+
+    p {
+        font-size: rem(28);
+        line-height: rem(28);
+        font-weight: 700;
+        font-family: $sofiaPro;
+        margin-bottom: rem(45);
+
+        @include bp-lt($medium) {
+            font-size: rem(24);
+        }
+
+        @include bp-lt($xmedium) {
+            font-size: rem(20);
+            line-height: rem(24);
+        }
+    }
+}
+
+.js-team__equalizer {
+    @include bp-lt($small) {
+        height: auto !important;
+    }
+}

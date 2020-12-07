@@ -1,0 +1,49 @@
+@font-face {
+    font-family: "iconfontCarac";
+    src: url('../../media/fonts/iconsCarac/iconfontCarac.eot');
+    src: url('../../media/fonts/iconsCarac/iconfontCarac.eot?#iefix') format('eot'),
+    url('../../media/fonts/iconsCarac/iconfontCarac.woff') format('woff'),
+    url('../../media/fonts/iconsCarac/iconfontCarac.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class*='c-fonticonCarac']:before {
+    display: inline-block;
+    font-family: "iconfontCarac";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.c-fonticonCarac__icon--0001:before { content: "\EA01" }
+.c-fonticonCarac__icon--0002:before { content: "\EA02" }
+.c-fonticonCarac__icon--0003:before { content: "\EA03" }
+.c-fonticonCarac__icon--0004:before { content: "\EA04" }
+.c-fonticonCarac__icon--0005:before { content: "\EA05" }
+.c-fonticonCarac__icon--0006:before { content: "\EA06" }
+.c-fonticonCarac__icon--0007:before { content: "\EA07" }
+.c-fonticonCarac__icon--0008:before { content: "\EA08" }
+.c-fonticonCarac__icon--0009:before { content: "\EA09" }
+.c-fonticonCarac__icon--0010:before { content: "\EA0A" }
+.c-fonticonCarac__icon--0011:before { content: "\EA0B" }
+.c-fonticonCarac__icon--0012:before { content: "\EA0C" }
+.c-fonticonCarac__icon--0013:before { content: "\EA0D" }
+.c-fonticonCarac__icon--0014:before { content: "\EA0E" }
+.c-fonticonCarac__icon--0015:before { content: "\EA0F" }
+.c-fonticonCarac__icon--0016:before { content: "\EA10" }
+.c-fonticonCarac__icon--0017:before { content: "\EA11" }
+.c-fonticonCarac__icon--0018:before { content: "\EA12" }
+.c-fonticonCarac__icon--0019:before { content: "\EA13" }
+.c-fonticonCarac__icon--0020:before { content: "\EA14" }
+.c-fonticonCarac__icon--0021:before { content: "\EA15" }
+.c-fonticonCarac__icon--0022:before { content: "\EA16" }
+.c-fonticonCarac__icon--0023:before { content: "\EA17" }
+.c-fonticonCarac__icon--0024:before { content: "\EA18" }
+.c-fonticonCarac__icon--0025:before { content: "\EA19" }
+.c-fonticonCarac__icon--0026:before { content: "\EA1A" }
+.c-fonticonCarac__icon--0027:before { content: "\EA1B" }
+.c-fonticonCarac__icon--0028:before { content: "\EA1C" }
+.c-fonticonCarac__icon--0029:before { content: "\EA1D" }

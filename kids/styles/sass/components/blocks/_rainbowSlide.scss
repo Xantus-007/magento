@@ -1,0 +1,126 @@
+// ========================================= //
+// Rainbow Slide
+// ========================================= //
+
+.rainbow_slide {
+    background: url(../images/bkg_rainbow_of_fun.png) no-repeat 50% 80px;
+    padding-top: 285px;
+
+    @include bp-lt($large){
+        background-position: 50% 40px;
+        padding-top: 245px;
+    }
+}
+
+.monbentoKids_home_en .rainbow_slide {
+    background: url(../images/bkg_rainbow_of_fun_en.png) no-repeat 50% 80px;
+
+    @include bp-lt($large){
+        background-position: 50% 40px;
+        padding-top: 250px;
+    }
+}
+
+.rainbow_bxlider_container {
+    max-width: 900px;
+    width: 95%;
+    margin: 0 auto;
+
+    .rainbow_bxlider_startr {
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+
+    .bx-controls {
+        bottom: 84px;
+        position: relative;
+        z-index: 200;
+
+        @include bp-lt($smedium){
+            bottom: 40px;
+        }
+    }
+
+    .bx-pager {
+        width: 205px;
+        height: 60px;
+        margin: 0 auto;
+        background: url(../images/bkg_controls_slide.png) no-repeat 50% 50%;
+        text-align: center;
+
+        .bx-pager-item:nth-child(1) {
+            a {
+                //pink
+                background: $pink_slider;
+
+                &:hover, &.active {
+                    border-color: $pink_slider;
+                }
+            }
+        }
+
+        .bx-pager-item:nth-child(2) {
+            a {
+                //yellow
+                background: $yellow_slider;
+
+                &:hover, &.active {
+                    border-color: $yellow_slider;
+                }
+            }
+        }
+
+        .bx-pager-item:nth-child(3) {
+            a {
+                //green
+                background: $green_slider;
+
+                &:hover, &.active {
+                    border-color: $green_slider;
+                }
+            }
+        }
+
+        .bx-pager-item:nth-child(4) {
+            a {
+                //blue
+                background: $blue_slider;
+
+                &:hover, &.active {
+                    border-color: $blue_slider;
+                }
+            }
+        }
+    }
+
+    .bx-pager-item {
+        display: inline-block;
+        margin: 0 5px;
+        padding-top: 20px;
+
+        a {
+            display: block;
+            text-indent: -9999px;
+            background: grey;
+            width: 11px;
+            height: 11px;
+            border: solid 5px white;
+            @include border-radius(50%);
+            @include box-shadow(rgba($grey_strg, 60%) 0 0 1px 0);
+            @include transition(all .2s ease);
+
+            &:hover, &.active {
+                border: solid 5px grey;
+                @include box-shadow(rgba($grey_strg, 0%) 0 0 1px 0);
+                @include transition(all .2s ease);
+            }
+        }
+    }
+}
+
+.rainbow_bxlider_startr {
+    margin: 0;
+    padding: 0;
+}

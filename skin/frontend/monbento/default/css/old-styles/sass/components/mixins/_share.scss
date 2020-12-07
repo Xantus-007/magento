@@ -1,0 +1,67 @@
+@mixin share() {
+
+    @include bp-lt ($mb-medium) {
+        @include grid-row(nest);      
+        margin: 0;
+        width: 100%;
+    }
+
+    .partage,
+    .fb-like {
+        @include bp-lt ($mb-medium) {
+            @include box-sizing(border-box);
+        }
+    }
+
+    .partage {
+        @include bp-lt ($mb-medium) {
+            @include grid-column(
+                8,
+                false,
+                false,
+                false,
+                4
+            );    
+
+            position: relative;
+        }
+        
+        @include bp-lt ($mb-small) {
+            z-index: 1;
+        }
+
+        .cont-wrapper {
+            @include bp-lt ($mb-medium) {
+                position: absolute;
+                top: 55px;
+                right: 0;                            
+            }
+        }
+
+        .title {
+            .text {
+                @include bp-lt ($mb-medium) {
+                    position: absolute;
+                    top: 0;
+                    left: 50px;
+                    width: 135px;
+                }
+            }
+        }
+
+    }
+
+    .fb-like {
+        @include bp-lt ($mb-medium) {
+            @include grid-column(
+                4,
+                false,
+                false,
+                false,
+                false,
+                8
+            );
+            padding-left: 0;
+        }
+    }
+}

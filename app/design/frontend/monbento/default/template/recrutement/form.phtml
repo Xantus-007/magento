@@ -1,0 +1,262 @@
+<div class="js-recruitment__section c-recruitment__section">
+    <div class="row">
+        <div class="columns medium-10 large-8 medium-centered">
+            <div id="form_wrapper" class="c-job__form">
+                <form id="recrutement_form" name="recrutement_form" action="<?php echo $this->getUrl('recrutement/') ?>index/post" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="emaildest" value="<?php echo $this->getData('emaildest'); ?>" />
+                    <input type="hidden" name="poste" value="<?php echo Mage::getSingleton('cms/page')->getTitle() ?>" />
+
+                    <div class="row collapse">
+                        <div class="column medium-6">
+                            <label for="" class="required">Civilité<em>*</em></label>
+                            <div class="input-box">
+                                <select name="civilite">
+                                    <option value="M" selected="selected">M</option>
+                                    <option value="Mme">Mme</option>
+                                    <option value="Mlle">Mlle</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="" class="required">Prénom<em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" id="prenom" name="prenom" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6 end">
+                            <label for="" class="required">Nom<em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" id="nom" name="nom" class="required-entry" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row collapse">
+                        <div class="column medium-6">
+                            <label for="" class="required">Adresse<em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" id="adresse" name="adresse" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="">Complément</label>
+                            <div class="input-box">
+                                <input type="text" id="complement" name="complement" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="" class="required">Code postal<em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" id="codepostal" name="codepostal" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="" class="required">Ville<em>*</em></label>
+                            <div class="input-box">
+                                <input type="text" id="ville" name="ville" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6 end">
+                            <label for="">Pays</label>
+                            <div class="input-box">
+                                <input type="text" id="pays" name="pays" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row collapse">
+                        <div class="column medium-6">
+                            <label for="" class="required">Téléphone<em>*</em></label>
+                            <div class="input-box">
+                                <input type="tel" id="telephone" name="telephone" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="" class="required">E-mail<em>*</em></label>
+                            <div class="input-box">
+                                <input type="email" id="email" name="email" class="required-entry" value="">
+                            </div>
+                        </div>
+                        <div class="column medium-6 end">
+                            <label for="">Fax</label>
+                            <div class="input-box">
+                                <input type="tel" id="fax" name="fax" value="">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row collapse">
+                        <div class="column medium-6">
+                            <label for="" class="required">Curriculum vitae<em>*</em></label>
+                            <div class="input-box">
+                                <div class="c-input">
+                                    <input type="file" id="file_upload_cv" name="file_upload_cv" value="">
+                                    <div class="c-input--wrapper">
+                                        <input type="text" readonly class="js-exclude">
+                                    </div>
+                                </div>
+                                <input id="cv" name="cv" type="hidden" class="input-text required-entry js-exclude" />
+                            </div>
+                        </div>
+                        <div class="column medium-6">
+                            <label for="" class="required">Lettre de motivation<em>*</em></label>
+                            <div class="input-box">
+                                <div class="c-input">
+                                    <input type="file" id="file_upload_lm" name="file_upload_lm" value="">
+                                    <div class="c-input--wrapper">
+                                        <input type="text" readonly class="js-exclude">
+                                    </div>
+                                </div>
+                                <input id="lm" name="lm" type="hidden" class="input-text required-entry js-exclude" />
+                            </div>
+                        </div>
+                    </div>
+                    <p><span class="required">*</span> Champs obligatoires</p>
+                    <p>Pièces jointes : extensions acceptées - pdf, doc, docx, rtf, odt ; taille maximale - 2 Mo</p>
+                    <div id="actions-bts" style="display:none;">
+                        <p class="actions-buttons">
+                            <button id="submit-postule" type="submit" class="c-button--mainBranding--arrowRightToRight">Envoyer</button>&nbsp;
+                            <a class="c-button--transparentNoHover--arrowLeftToLeft" href="<?php echo $this->getUrl('monbento-recrute') ?>">Retour aux offres</a>
+                        </p>
+                    </div>
+                    <div class="g-recaptcha"
+                            data-sitekey="<?php echo Mage::getStoreConfig('aminvisiblecaptcha/general/captcha_key'); ?>"
+                            data-callback="onSubmitRecrutementForm"
+                            data-size="invisible">
+                    </div>
+                    <input name="amasty_invisible_token" id="amasty_invisible_token_recrutement" type="hidden" />
+                </form>
+            </div>
+            <p id="actions-buttons">
+                <a href="#" id="bt-postule" class="c-button--mainBranding--arrowRightToRight">Postuler</a>&nbsp;
+                <a class="c-button--transparentNoHover--arrowLeftToLeft" href="<?php echo $this->getUrl('monbento-recrute') ?>">Retour aux offres</a>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    //<![CDATA[
+    var recutementForm = new VarienForm('recrutement_form', true);
+    recutementForm.validate = function() {
+        if (this.validator.validate()) {
+            grecaptcha.execute();
+        }
+    };
+    recutementForm.submit = function (token) {
+        if (this.validator.validate()) {
+            jQuery('#amasty_invisible_token_recrutement').attr('value', token);
+            var formdata = new FormData(document.getElementById("recrutement_form"));
+            jQuery.ajax({
+                type: "POST",
+                url: '<?php echo $this->getUrl('recrutement/index/post') ?>',
+                data: formdata,
+                processData: false, // indique à jQuery de ne pas traiter les données
+                contentType: false
+            }).done(function (datas) {
+                if (datas) {
+                    var datas = jQuery.parseJSON(datas);
+                    if (datas.isValid) {
+                        var windowH = jQuery('body').outerHeight();
+                        var windowW = jQuery('body').outerWidth();
+                        var background = jQuery('<div id="background"></div>');
+                        var loading = jQuery('<div id="thanks"></div>');
+                        jQuery('body').append(background);
+                        jQuery('body').append(loading);
+                        background.css({'display': 'none', 'position': 'absolute', 'height': windowH, 'width': windowW, 'top': '0', 'left': '0', 'background': '#fff', 'z-index': '999'});
+                        loading.css({'display': 'none', 'position': 'absolute', 'background': 'url(<?php echo $this->getSkinUrl('images/recrutement.png'); ?>) no-repeat', 'cursor': 'pointer', 'z-index': '999', 'height': '374px', 'width': '516px', 'top': Math.max(0, ((jQuery(window).height() - 374) / 2) + jQuery(window).scrollTop()) + 'px', 'left': Math.max(0, ((jQuery(window).width() - 516) / 2) + jQuery(window).scrollLeft()) + 'px'});
+                        background.css({"opacity": "0.58"}).fadeIn("slow");
+                        loading.fadeIn("slow");
+                        loading.click(function () {
+                            location.reload();
+                        });
+                    } else {
+                        alert(datas.message);
+                    }
+                }
+            });
+        }
+    }.bind(recutementForm);    
+    function onSubmitRecrutementForm(token) {
+        recutementForm.submit(token);
+    }
+    jQuery(document).ready(function () {
+        jQuery('#bt-postule').click(function (e) {
+            jQuery(this).closest('.js-recruitment__section').addClass('o-section--bkgGrey');
+            jQuery('#form_wrapper').slideDown('slow', function () {
+                jQuery('#actions-buttons').hide();
+                jQuery('#actions-bts').show();
+            });
+            e.preventDefault();
+        });
+        jQuery("#recrutement_form").on("submit", function(e) {
+            recutementForm.validate();
+            e.preventDefault();
+        });
+<?php if ($this->getData('typedemande') == 'spontanee') : ?>
+            jQuery('#bt-postule').trigger('click');
+<?php endif; ?>
+<?php $timestamp = time(); ?>
+        if (swfobject.hasFlashPlayerVersion("1")) {
+            jQuery('#file_upload_cv').uploadify({
+                'fileSizeLimit': '2MB',
+                'formData': {
+                    'timestamp': '<?php echo $timestamp; ?>',
+                    'token': '<?php echo md5('unique_salt' . $timestamp); ?>'
+                },
+                'height': '24px',
+                'width': '240px',
+                'multi': false,
+                'fileExt': '*.docx;*.doc;*.pdf;*.rtf;*.odt',
+                'swf': '<?php echo $this->getSkinUrl('js/uploadify/uploadify.swf'); ?>',
+                'uploader': '<?php echo $this->getSkinUrl('js/uploadify/uploadify.php'); ?>',
+                'onUploadSuccess': function (file, data, response) {
+                    if (data != 'Invalid') {
+                        jQuery('#cv').val(data);
+                        jQuery('#file_upload_cv-button .uploadify-button-text').html(file.name);
+                        jQuery('#file_upload_cv-button .uploadify-button-text').addClass('has-file');
+                        jQuery('#file_upload_cv-button .uploadify-button-text').closest('.c-input__holder').addClass('is-focus');
+                    } else {
+                        jQuery('#file_upload_cv-button .uploadify-button-text').html('Type de fichier invalide');
+                        jQuery('#file_upload_cv-button .uploadify-button-text').removeClass('has-file');
+                        jQuery('#file_upload_cv-button .uploadify-button-text').closest('.c-input__holder').removeClass('is-focus');
+
+                    }
+                }
+            });
+            jQuery('#file_upload_lm').uploadify({
+                'fileSizeLimit': '2MB',
+                'formData': {
+                    'timestamp': '<?php echo $timestamp; ?>',
+                    'token': '<?php echo md5('unique_salt' . $timestamp); ?>'
+                },
+                'height': '24px',
+                'width': '100%',
+                'multi': false,
+                'fileExt': '*.docx;*.doc;*.pdf;*.rtf;*.odt',
+                'swf': '<?php echo $this->getSkinUrl('js/uploadify/uploadify.swf'); ?>',
+                'uploader': '<?php echo $this->getSkinUrl('js/uploadify/uploadify.php'); ?>',
+                'onUploadSuccess': function (file, data, response) {
+                    if (data != 'Invalid') {
+                        jQuery('#lm').val(data);
+                        jQuery('#file_upload_lm-button .uploadify-button-text').html(file.name);
+                        jQuery('#file_upload_lm-button .uploadify-button-text').addClass('has-file');
+                        jQuery('#file_upload_lm-button .uploadify-button-text').closest('.c-input__holder').addClass('is-focus');
+                    } else {
+                        jQuery('#file_upload_lm-button .uploadify-button-text').html('Type de fichier invalide');
+                        jQuery('#file_upload_lm-button .uploadify-button-text').removeClass('has-file');
+                        jQuery('#file_upload_lm-button .uploadify-button-text').closest('.c-input__holder').removeClass('is-focus');
+
+                    }
+                }
+            });
+        } else {
+            jQuery('#file_upload_cv').addClass('required-entry');
+            jQuery('#file_upload_lm').addClass('required-entry');
+            jQuery('#cv').removeClass('required-entry');
+            jQuery('#lm').removeClass('required-entry');
+            jQuery('#lm').parent().append('<input id="uploadData" name="uploadData" type="hidden" value="1" />')
+        }
+    });
+    //]]>
+</script>

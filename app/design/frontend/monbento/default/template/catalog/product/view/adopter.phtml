@@ -1,0 +1,55 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $blocs = $this->getBlocs(); ?>
+<?php if(count($blocs) > 0): ?>
+<section class="o-section c-businessCase">
+    <div class="c-title--group">
+        <div class="c-main"><?php echo $this->__('L’adopter c’est...'); ?></div>
+    </div>
+    <div class="row">
+        <?php foreach($blocs as $bloc): ?>
+        <div class="columns medium-4">
+            <div class="c-businessCase__item">
+                <div class="c-icon">
+                    <div class="c-picture">
+                        <img src="<?php echo Mage::getBaseUrl().'media/post/image' . $bloc->getImage(); ?>" alt="<?php echo ($bloc->getImageAlt()) ? $bloc->getImageAlt() : 'Monbento : ' . $bloc->getDisplayTitle(); ?>">
+                    </div>
+                    <div class="c-background">
+                        <svg version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px" width="84px" height="99px" viewbox="0 0 84 99" enable-background="new 0 0 84 99" xml:space="preserve">
+                            <path fill="#<?php echo Mage::registry('current_product')->getCodeHexa(); ?>" d="M83.2,41.7C83.2,18.9,64.8,0.5,42,0.5S0.8,18.9,0.8,41.7c0,20.2,14.5,37,33.7,40.5l6.1,15.3 c0.6,1.3,2.4,1.3,2.9,0l6.1-15.3C68.7,78.7,83.2,61.9,83.2,41.7z"></path>
+                        </svg>
+                    </div>
+                </div>
+                <div class="c-title"><?php echo $bloc->getDisplayTitle(); ?></div>
+                <div style="background: #<?php echo Mage::registry('current_product')->getCodeHexa(); ?>;" class="c-separator"></div>
+                <div class="c-content"><?php echo $bloc->getPostContent(); ?></div>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>
+<?php endif; ?>

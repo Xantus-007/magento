@@ -1,0 +1,20 @@
+mixin content(row, index)
+    .columns.medium-2.small-3.c-item(class=index == 0 && row == 0 ? "is-active" : "", class=index)
+        - if(index==0)
+            span: img(src="#{imgDir}c-img__product--150x150.png", alt="")
+        - else
+            a(href=""): img(src="#{imgDir}c-img__product--150x150.png", alt="")
+
+.c-product__select
+    a.c-closed__product__select(href="")
+        span Fermer
+        i.c-fonticon__icon--cross
+    .c-grid__product__select
+        .row.collapse: .columns.medium-10.medium-centered: .row.collapse
+            .c-slider__productSelect
+                - for(var i=0; i<2; i++)
+                    .jx-bxSlider__item
+                        - for(var j=0; j<18; j++)
+                            +content(i, j)
+
+    .row: .columns.text-center: a.c-button--mainBranding--arrowRightToRight(href="") Couleurs personnalisées

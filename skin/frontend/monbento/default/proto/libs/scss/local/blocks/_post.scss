@@ -1,0 +1,101 @@
+.c-post__list {
+    margin-top: rem(70);
+
+    @include bp-lt($small) {
+        display: none;
+    }
+
+    & + [class*="c-wrapper__button"] {
+        @include bp-lt($small) {
+            padding-top: 0;
+        }
+    }
+}
+
+.c-post__wrapper {
+    @include bp-lt($small) {
+        height: auto !important;
+    }
+}
+
+.c-post {
+    background: $white;
+
+    @include bp-lt($small) {
+        margin-bottom: rem(35);
+    }
+
+    .c-title {
+        font-size: rem(28);
+        font-weight: 700;
+
+        @include bp-lt($small) {
+            font-size: rem(24);
+        }
+
+        span {
+            display: block;
+            font-size: rem(18);
+            line-height: rem(18);
+            font-weight: 300;
+
+            @include bp-lt($small) {
+                font-size: rem(16);
+                line-height: rem(16);
+            }
+        }
+
+        &:after {
+            content: '';
+            display: block;
+            width: rem(26);
+            height: rem(4);
+            background: $b2b--blue;
+            margin: rem(35) 0;
+
+            @include bp-lt($small) {
+                margin: rem(20) 0;
+            }
+        }
+    }
+}
+
+.c-post__content {
+    padding: rem(50) rem(40);
+    font-weight: 300;
+    font-size: rem(20);
+    line-height: rem(28);
+
+    @include bp-lt($medium) {
+        padding: rem(40) rem(30);
+        font-size: rem(16);
+        line-height: rem(20);
+    }
+
+    @include bp-lt($small) {
+        padding: rem(25);
+        font-size: rem(14);
+    }
+}
+
+.c-post__link {
+    margin-top: rem(55);
+
+    @include bp-lt($small) {
+        margin-top: rem(20);
+    }
+}
+
+.c-post__image {
+    img {
+        margin: 0 auto;
+        display: block;
+        width: 100%;
+    }
+}
+
+.js-equalizer__postItem {
+    @include bp-lt($small) {
+        height: auto !important;
+    }
+}

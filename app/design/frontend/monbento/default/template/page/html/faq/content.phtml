@@ -1,0 +1,81 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="c-faq__nav">
+    <div class="row">
+        <div class="column">
+            <ul>
+                <?php foreach($this->getFirtLevelCat() as $catId => $catName): ?>
+                <li><a href="#c-anchor__faq--<?php echo $catId ?>" class="js-anchor--offset"><?php echo $catName ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</div>
+<section class="o-section--bkgGrey c-faq__recurring">
+    <div class="row">
+        <div class="column small-12 medium-10 large-8 medium-centered">
+            <h2 class="c-faq__recurring__title"><?php echo $this->__('Questions récurrentes') ?></h2>
+            <ul class="c-faq__recurring__list">
+                <?php foreach($this->getRecurringQuestion() as $askId => $ask): ?>
+                <li><a href="#c-anchor__recurring--<?php echo $askId ?>" class="js-anchor--offset"><?php echo $ask ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+    </div>
+</section>
+<section class="o-section">
+    <div class="row">
+        <div class="column small-12 medium-10 large-8 medium-centered c-faq__content">
+            <?php foreach($this->getFirtLevelCat() as $catId => $catName): ?>
+            <div id="c-anchor__faq--<?php echo $catId ?>" class="c-faq__section__title c-title--sub"><?php echo $catName ?></div>
+            <?php $subCats = $this->getSecondLevelCat($catId); ?>
+            <?php if(count($subCats) == 0) $subCats = array($catId => ''); ?>
+            <?php foreach($subCats as $subcatId => $subcatName): ?>
+            <div class="c-faq__item">
+                <?php if(!empty($subcatName)): ?>
+                <div class="c-faq__item__header">
+                    <h3 class="c-faq__item__title"><?php echo $subcatName ?></h3>
+                </div>
+                <?php endif; ?>
+                <div class="c-faq__item__content">
+                    <?php foreach($this->getQuestionByCat($subcatId) as $askContent): ?>
+                    <div id="c-anchor__recurring--<?php echo $askContent->getId() ?>" class="c-faq__subItem js-accordion__item">
+                        <div class="c-faq__subItem__header">
+                            <h4 class="c-faq__item__subtitle"><?php echo $askContent->getPostTitle() ?></h4>
+                        </div>
+                        <div class="c-faq__subItem__content">
+                            <p><?php echo $askContent->getPostContent() ?></p>
+                        </div>
+                    </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+            <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>

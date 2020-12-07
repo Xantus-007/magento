@@ -1,0 +1,48 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page category'
+    - var pageClass = ''
+    - var pageColor = ''
+    - var pageType = ''
+
+append body
+    include blocks/_home--slider
+
+    - var labels = ['Home', 'Shop', 'LunchBox']
+    +c-breadcrumbFilter(labels)
+
+    section.o-section--bkgGrey--gridProduct.c-grid
+        .js-grid__product: .c-grid__product
+            .c-row__product: .row.collapse
+                .columns.small-6.medium-4.large-3
+                    .js-itemEqualizer--holder.c-item__content--intro--mainBranding
+                        h1.c-title Lunchbox
+                        .c-separator
+                        .c-content
+                            p Parfaitement adaptée aux collations ou déjeuners pris au bureau, en virée shopping ou encore en séance de sport, la collection de lunch box est porteuse d’une philosophie: celle de pouvoir manger où et comme on le souhaite !
+                            p Du bento MB Original, premier-né de la Gamme, au MB Tresor, le bento des enfants.
+
+                include blocks/_productItem--outOfStock
+                include blocks/_productItem--mif
+
+                - for (var i=0; i<21; i++)
+                    case i
+                        when 6
+                            .columns.small-6.medium-4.large-3
+                                .js-itemEqualizer--holder.text-center
+                                    a(href=""): img(src="#{imgDir}c-img__lanceur--01.jpg", alt="")
+                        when 11
+                            .columns.small-6.medium-4.large-3
+                                .js-itemEqualizer--holder.text-center
+                                    a(href=""): img(src="#{imgDir}c-img__lanceur--02.jpg", alt="")
+                        when 18
+                            .columns.small-6.medium-4.large-3
+                                .js-itemEqualizer--holder.text-center
+                                    a(href=""): img(src="#{imgDir}c-img__lanceur--03.jpg", alt="")
+                        default
+                            include blocks/_productItem
+
+    include blocks/_reassuranceShop

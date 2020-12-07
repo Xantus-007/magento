@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layout version="0.1.0">
+     <default>
+          <reference name="after_body_start">
+              <block name="dbm_country_topbar" type="dbm_country/topbar" template="dbm/country/ajax/topbar.phtml" />
+              <block name="dbm_country_popup" type="dbm_country/switch" template="dbm/country/ajax/popup.phtml" />
+          </reference>
+      </default>
+</layout>

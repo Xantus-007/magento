@@ -1,0 +1,81 @@
+<?php $_option = $this->getOption() ?>
+<?php $_selections = $_option->getSelections() ?>
+<?php $_showSingle = (count($_selections) == 1 && $_option->getRequired()) ?>
+<?php $optionTitle = explode('-',$_option->getTitle()) ?>
+<?php if ($optionTitle[0]==10 ||$optionTitle[0]==5) : ?>
+<div class="options-grouped" id="options-group-<?php echo $optionTitle[0] ?>">
+<?php if (Mage::app()->getStore()->getCode() == "fr") : ?>
+<p class="title"><?php echo $optionTitle[0]==10?'Choisissez votre récipient':'Choisissez votre couvercle intermédiaire'; ?></p>
+<?php elseif (Mage::app()->getStore()->getCode() == "en" || Mage::app()->getStore()->getCode() == "us_en" || Mage::app()->getStore()->getCode() == "hk_en" || Mage::app()->getStore()->getCode() == "uk_en") : ?>
+<p class="title"><?php echo $optionTitle[0]==10?'Pick your container color':'Pick your intermediary lid color'; ?></p>
+<?php elseif (Mage::app()->getStore()->getCode() == "de") : ?>
+<p class="title"><?php echo $optionTitle[0]==10?'Wählen Sie Ihren Behälter':'Wählen Sie Ihren Zwischendeckel'; ?></p>
+<?php elseif (Mage::app()->getStore()->getCode() == "es") : ?>
+<p class="title"><?php echo $optionTitle[0]==10?'Elija su recipiente':'Elija su tapa intermedia'; ?></p>
+<?php elseif (Mage::app()->getStore()->getCode() == "it") : ?>
+<p class="title"><?php echo $optionTitle[0]==10?'Scegli il tuo recipienti':'Scegli il tuo coperchi intermedi'; ?></p>
+<?php endif; ?>
+<?php endif; ?>
+<div id="options-<?php echo $optionTitle[0] ?>" class="option-wrapper">
+<dt><span class="qty-holder">
+        <?php if ($_default = $_option->getDefaultSelection()): ?>
+            <?php $_defaultQty = $_default->getSelectionQty()*1 ?>
+            <?php $_canChangeQty = $_default->getSelectionCanChangeQty() ?>
+        <?php else: ?>
+            <?php if (!$_showSingle): ?>
+                <?php $_defaultQty = '0' ?>
+                <?php $_canChangeQty = false ?>
+            <?php else: ?>
+                <?php $_defaultQty = $_selections[0]->getSelectionQty()*1 ?>
+                <?php $_canChangeQty = $_selections[0]->getSelectionCanChangeQty() ?>
+            <?php endif; ?>
+        <?php endif; ?>
+        <input id="bundle-option-<?php echo $_option->getId() ?>-qty-input" class="input-text qty<?php echo $_canChangeQty?'':' qty-disabled' ?>" type="hidden" name="bundle_option_qty[<?php echo $_option->getId() ?>]" value="<?php echo $_defaultQty ?>" />
+    </span>
+    <label<?php if ($_option->getRequired()) echo ' class="required"' ?>><?php echo $this->htmlEscape( $optionTitle[1]) ?></label>
+</dt>
+<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+    <div class="input-box">
+    <?php if ($_showSingle): ?>
+        <?php echo $this->getSelectionTitlePrice($_selections[0]) ?>
+        <input type="hidden" name="bundle_option[<?php echo $_option->getId() ?>]" value="<?php echo $_selections[0]->getSelectionId() ?>" />
+    <?php else:?>
+    <?php $_defaultselection = false;
+			 $isSelected = false; ?>
+        <?php foreach($_selections as $_selection): ?>
+        <?php if($_selection->isSaleable()) : ?>
+             <?php  		 
+			 $_imageType = $this->getCustomImageType($optionTitle[0]);
+			 $_attributes = $_selection->getAttributes();
+			 if ($_GET['bundle-option-'.$_option->getId()]==$_selection->getSelectionId() || (!isset($_GET['bundle-option-'.$_option->getId()]) && $_selection->getIsDefault())) {
+			 $isSelected = true;
+			 $_defaultselection=$_selection->getIsDefault()?$_selection->getSelectionId():$_GET['bundle-option-'.$_option->getId()];
+			 } else {
+			 $isSelected = false;
+			 }
+			 if ($_attributes['image_bundle_motif']->getFrontend()->getValue($_selection) && $_attributes['image_bundle_motif']->getFrontend()->getValue($_selection)!='no_selection') {
+			     $_background = $this->helper('catalog/image')->init($_selection, 'image_bundle_motif')->resize(15);
+				 $_background = 'url('.$_background.')';
+				 $_hover = true;
+			 } else {
+				 $_background = '#'.$_attributes['color_hexa']->getFrontend()->getValue($_selection);
+				 $_hover = false;
+			 }
+			 if ($_attributes[$_imageType]->getFrontend()->getValue($_selection) && $_attributes[$_imageType]->getFrontend()->getValue($_selection)!='no_selection') {
+			   $_customImage = true;
+			 } else {
+			   $_customImage = false;
+			}
+             ?>
+            <span class="bundle-color<?php echo $isSelected?' active':''; ?>" id="option_<?php echo $_selection->getSelectionId();?>-<?php echo $optionTitle[0] ?>-<?php echo $_selection->getEntityId() ?>" rel="<?php echo $_selection->getSelectionId();?>,<?php echo $optionTitle[0] ?>,<?php echo $_selection->getEntityId() ?>"><?php echo $_hover?'<span class="hover" style="background:url('.$this->helper('catalog/image')->init($_selection, 'image_bundle_motif')->resize(212,106).')"></span>':''; ?><span<?php echo ($_background!='#Non'&&$_background!='#No')?' style="background:'.$_background.'"':'';?><?php echo $_customImage?' rel="'.$this->helper('catalog/image')->init($_selection, $_imageType)->resize(332).'"':''; ?>></span></span>
+    	<?php endif; ?>
+        <?php endforeach;?>
+        <input type="hidden" onchange="bundle.changeSelection(this)" id="bundle-option-<?php echo $_option->getId() ?>" name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> change-container-classname"<?php echo $_defaultselection?' value="'.$_defaultselection.'"':'';?> />
+        
+    <?php endif; ?>
+    </div>
+</dd>
+</div>
+<?php if ($optionTitle[0]==11 ||$optionTitle[0]==6) : ?>
+</div>
+<?php endif; ?>

@@ -1,0 +1,83 @@
+.c-form__login {
+    max-width: rem(350);
+    margin: 0 auto;
+    position: relative;
+    height: 100%;
+
+    @include bp-lt($small) {
+        max-width: 100%;
+    }
+
+    .c-checkbox--inline {
+        .c-checkbox {
+            @include bp-lt($b2b--tablet) {
+                float: none;
+            }
+
+            @include bp-lt($tablet) {
+                float: left;
+            }
+
+            @include bp-lt($mobileS) {
+                float: none;
+            }
+        }
+    }
+
+    h2, .c-subTitle {
+        @include bp-lt($tablet) {
+            text-align: center;
+        }
+
+        @include bp-lt($small) {
+            display: none;
+        }
+    }
+
+    [class*="c-linkCst"] {
+        margin-bottom: rem(30);
+
+        @include bp-lt($b2b--tablet) {
+            float: none !important;
+            top: 0 !important;
+            margin-top: rem(10);
+            margin-bottom: rem(40);
+        }
+
+        @include bp-lt($tablet) {
+            float: right !important;
+            margin-top: 0;
+            margin-bottom: rem(20);
+            top: rem(-6) !important;
+        }
+
+        @include bp-lt($mobileS) {
+            float: none !important;
+            top: 0 !important;
+            margin-top: rem(10);
+        }
+    }
+
+    [class*="c-button"] {
+        left: 0;
+
+        @include bp-lt($b2b--tablet) {
+            position: static;
+            margin-bottom: rem(60);
+        }
+
+        @include bp-lt($tablet) {
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            text-align: center;
+            max-width: rem(240);
+        }
+
+        & + [class*="c-button"] {
+            @include bp-lt($tablet) {
+                margin-top: rem(20);
+            }
+        }
+    }
+}

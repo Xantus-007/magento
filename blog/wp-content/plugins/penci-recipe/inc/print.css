@@ -1,0 +1,314 @@
+/* = Penci Recipe
+----------------------------------------------------*/
+body {
+    font-family: 'PT Serif', serif;
+    color: #313131;
+    background-color: #FFF;
+    font-size: 14px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    letter-spacing: 1px;
+    font-weight: bold;
+	margin-bottom: 17px;
+}
+h1 {
+	font-size: 24px;
+}
+h2 {
+	font-size: 22px;
+}
+h3 {
+	font-size: 20px;
+}
+h4 {
+	font-size: 18px;
+}
+h5 {
+	font-size: 16px;
+}
+h6 {
+	font-size: 14px;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+hr {
+	border: 0;
+	height: 0;
+	border-bottom: 1px solid #DEDEDE;
+	clear: both;
+}
+.penci-recipe {
+	border: 1px solid #dedede;
+	padding: 18px 25px 6px;
+	margin-bottom: 25px;
+	margin-top: 20px;
+}
+.penci-hide-tagupdated{
+	display: none !important;
+}
+.penci-recipe-thumb {
+    float: left;
+    width: 100px;
+    margin-right: 20px;
+}
+.penci-recipe-thumb img {
+	width: 100px;
+	height: auto;
+	display: block !important;
+}
+.penci-recipe-metades {
+    display: block;
+    overflow: hidden;
+}
+.penci-recipe-heading {
+	border-bottom: 1px solid #dedede;
+	margin: 0 -25px 25px -25px;
+	padding: 0 25px 20px;
+	overflow: hidden;
+}
+.post-entry .penci-recipe-heading h2 {
+	font-size: 22px;
+	float: left;
+	color: #313131;
+	margin-bottom: 8px;
+	clear: none;
+}
+.penci-recipe-heading a.penci-recipe-print {
+	display: none;
+}
+.penci-recipe-heading a.penci-recipe-print:hover {
+	background: #6eb48c;
+	color: #fff;
+	border-color: #6eb48c;
+	text-decoration: none;
+}
+.penci-recipe-heading .penci-recipe-meta,
+.penci-nutrition {
+	clear: both;
+	color: #888;
+	font-size: 13px;
+	line-height: 1.5;
+}
+.penci-recipe-heading .penci-recipe-meta span {
+	margin-right: 15px;
+}
+.penci-recipe-heading .penci-recipe-meta span.servings {
+	margin-right: 0;
+}
+.penci-recipe-heading .penci-recipe-meta span i {
+	font-size: 14px;
+	margin-right: 4px;
+	color: #aaa;
+	display: none;
+}
+.post-entry .penci-recipe-title {
+	font-size: 14px;
+	color: #888;
+	margin-bottom: 18px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+.penci-recipe-ingredients {
+	border-bottom: 1px solid #dedede;
+	margin: 0 -25px 25px -25px;
+	padding: 0 20px 30px;
+}
+.penci-recipe-not-visual ul {
+	margin: 0 !important;
+	padding-left: 18px !important;
+}
+.penci-recipe-not-visual ul li {
+	padding-bottom: 6px !important;
+	line-height: 1.6 !important;
+	list-style: none !important;
+	position: relative;
+	margin-bottom: 0 !important;
+}
+.penci-recipe-ingredients h4.recipe-ingredient-heading {
+    font-size: 16px;
+    margin: 15px 0 15px -18px;
+}
+.penci-recipe-not-visual ul li:before {
+	content: "";
+	position: absolute;
+	width: 5px;
+	height: 5px;
+	border: 1px solid #b3b3b3;
+	display: inline-block;
+	top: 8px;
+	left: -16px;
+	transform: rotate(-13deg);
+	-webkit-transform: rotate(-13deg);
+}
+.penci-recipe-not-visual ul li:last-child{
+	margin: 0;
+	padding: 0;
+}
+.penci-recipe-notes {
+	border-top: 1px solid #dedede;
+	margin: 10px -25px 0;
+	padding: 25px 25px 10px;
+}
+.post-entry p{
+	margin-bottom: 17px;
+}
+.post-entry .penci-recipe-notes p {
+	margin: 0;
+}
+.penci-recipe-notes .penci-recipe-title {
+	margin-bottom: 8px;
+}
+.penci-recipe-review{
+	display: none;
+}
+.penci-nutrition{
+	display: none;
+}
+.penci-nutrition.penci-show-nutrition{
+	display: block;
+}
+.penci-hide-nutrition {
+	display: none;
+}
+.penci-nutrition > .nutrition-item:after{
+	content: ',';
+	font-family: inherit;
+	color: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	letter-spacing: inherit;
+	margin-right: 5px;
+}
+.penci-nutrition > .nutrition-item:last-child:after{
+	content: none;
+	display: none;
+}
+.nutrition-lable {
+	margin-right: 5px;
+}
+img.wp-smiley, img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
+.penci-recipe img {
+	max-width: 100%;
+	height: auto;
+}
+.penci-recipe ul,
+.penci-recipe ol {
+	padding-left: 18px;
+}
+.penci-recipe hr, 
+.penci-recipe hr {
+    border: 0;
+    height: 0;
+    border-bottom: 1px solid #dedede;
+    clear: both;
+}
+.penci-recipe ul li{
+    margin-bottom: 7px;
+    position: relative;
+    list-style-type: square;
+    line-height: 1.7;
+}
+.penci-recipe ol li {
+	margin-bottom: 7px;
+    position: relative;
+    line-height: 1.7;
+}
+.alignnone {
+	margin: 5px 20px 20px 0;
+}
+.aligncenter,
+div.aligncenter,
+.video-align-center {
+	display: block;
+	margin: 5px auto 20px auto;
+}
+.alignright, .video-align-right {
+	float: right;
+	margin: 5px 0 20px 20px;
+}
+.alignleft, .video-align-left {
+	float: left;
+	margin: 5px 20px 20px 0;
+}
+.video-align-left,
+.video-align-right {
+	display: block;
+    width: 100%;
+}
+.aligncenter {
+	display: block;
+	margin: 5px auto 5px auto;
+}
+a img.alignright {
+	float: right;
+	margin: 5px 0 22px 30px;
+}
+a img.alignnone {
+	margin: 5px 20px 20px 0;
+}
+a img.alignleft {
+	float: left;
+	margin: 5px 30px 22px 0;
+}
+a img.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto
+}
+.wp-caption {
+	background: #fff;
+	border: none;
+	padding: 0;
+	max-width: 100%;
+	text-align: center;
+	position: relative;
+	overflow: hidden;
+}
+.wp-caption.alignnone {
+	margin: 5px 0 17px 0;
+}
+.wp-caption.alignleft {
+	margin: 5px 30px 17px 0;
+}
+.wp-caption.alignright {
+	margin: 5px 0 17px 30px;
+}
+.wp-caption img {
+	border: 0 none;
+	height: auto;
+	margin: 0;
+	max-width: 100%;
+	padding: 0;
+	width: 100%;
+}
+.wp-caption p.wp-caption-text,
+.penci-featured-caption {
+	font-size: 14px;
+	line-height: 1.4;
+	margin: 0;
+	padding: 5px 0 0;
+	color: #313131;
+	font-style: italic;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.penci-hide-images-print img,
+.penci-hide-images-print .wp-caption,
+.penci-hide-images-print .penci-featured-caption{
+	display: none;
+}

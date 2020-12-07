@@ -1,0 +1,133 @@
+.c-about__column--customisation {
+    background: url(#{$img}c-bkg__about--customisation.jpg) no-repeat;
+    background-size: cover;
+    background-position: right bottom;
+
+    @include bp-lt($medium) {
+        background-position: 50% 50%;
+    }
+}
+
+[class*="c-section__about"] {
+    .c-main {
+        line-height: rem(40);
+
+        @include bp-lt($medium) {
+            line-height: rem(36);
+        }
+
+        @include bp-lt($small) {
+            line-height: rem(24);
+        }
+    }
+}
+
+.c-section__about--customisation {
+    @include bp-lt($small) {
+        height: rem(600);
+        padding-top: rem(310);
+        background-position: 65% 65% !important;
+    }
+        
+    .row {
+        //background: $mainBranding;
+    }
+
+    .js-itemEqualizer {
+        @include bp-lt($medium) {
+            height: auto !important;
+        }
+
+        &.c-about__column--customisation {
+            @include bp-lt($medium) {
+                height: rem(300) !important;
+            }
+
+            @include bp-lt($small) {
+                height: rem(200) !important;
+            }
+        }
+    }
+}
+
+.c-section__about--history {
+    background: url(#{$img}c-bkg--map.jpg) no-repeat;
+    background-size: cover !important;
+    background-position: 50% top;
+    padding-top: rem(100);
+    padding-bottom: rem(140);
+
+    @include bp-lt($medium) {
+        padding-top: rem(50);
+        padding-bottom: rem(50);
+    }
+
+    @include bp-lt($small) {
+        padding-top: rem(30);
+        padding-bottom: rem(30);
+    }
+
+    .c-separator {
+        color: $mainBranding;
+        font-size: rem(62);
+        margin-top: rem(-20);
+
+        @include bp-lt($medium) {
+            font-size: rem(40);
+        }
+    }
+
+    .js-history__equalize {
+        @include bp-lt($small) {
+            height: auto !important;
+        }
+    }
+}
+
+.c-about__keyFigures {
+    padding-left: $gutter;
+    padding-right: $gutter;
+
+    img {
+        width: 100%;
+    }
+
+    .column {
+        &:last-child {
+            img {
+                @include bp-lt($small) {
+                    position: relative;
+                    left: rem(-3);
+                    margin-top: rem(12);
+                }
+            }
+        }
+    }
+}
+
+.c-about__baseline {
+    line-height: rem(28);
+
+    @include bp-lt($small) {
+        line-height: rem(24);
+    }
+}
+
+.c-section__aboutTeam {
+
+    &[class*='o-section'] {
+        padding-bottom: rem(40);
+        padding-left: 0;
+        padding-right: 0;
+
+        @include bp-lt($small) {
+            padding-bottom: rem(5);
+        }
+    }
+
+    .c-separator {
+        color: $mainBranding;
+        font-size: rem(46);
+        line-height: 1em;
+    }
+}

@@ -1,0 +1,28 @@
+<?php
+/* @var Cartsguru_CartRecovery_Helper_Data $_helper */
+$_helper = $this->helper('cartsguru_cartrecovery');
+$_facebookEnabled = $_helper->getFacebook();
+$_pixel = $_helper->getPixel();
+$_catalogId = $_helper->getCatalogId();
+$_lastOrder = Mage::getModel('sales/order')->load(Mage::getSingleton('checkout/session')->getLastOrderId());
+
+if ($_facebookEnabled && $_pixel && $_catalogId && $_lastOrder):
+    $_items = $_lastOrder->getAllVisibleItems();
+    $_productIds = array();
+
+    foreach ($_items as $_item) {
+        $_productIds[] = $_item->getId();
+    }
+    $_total = number_format((double)$_lastOrder->getGrandTotal(), 2, '.', '');
+    ?>
+    <script>
+        fbq('track', 'Purchase', {
+            content_ids: <?php echo Zend_Json::encode($_productIds); ?>,
+            content_type: 'product',
+            value: <?php echo $_total; ?>,
+            currency: '<?php echo Mage::app()->getStore()->getCurrentCurrencyCode(); ?>',
+            product_catalog_id: '<?php echo $_catalogId; ?>'
+        });
+    </script>
+
+<?php endif; ?>

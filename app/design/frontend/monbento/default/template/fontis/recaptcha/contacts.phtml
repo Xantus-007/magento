@@ -1,0 +1,215 @@
+<?php
+/**
+ * Fontis Recaptcha Extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Fontis
+ * @package    Fontis_Recaptcha
+ * @author     Denis Margetic
+ * @author     Chris Norton
+ * @copyright  Copyright (c) 2009 Fontis Pty. Ltd. (http://www.fontis.com.au)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+$intro = Mage::helper('monbentocontact')->getIntro();
+$subjects = Mage::helper('monbentocontact')->getSubjectValues();
+$countries = Mage::helper('monbentocontact')->getCountries();
+
+?>
+<?php if($this->getType() == 'page'): ?>
+<div class="c-title--page">
+    <div class="row">
+        <div class="columns"><h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1></div>
+    </div>
+</div>
+<?php echo $this->getChildHtml('breadcrumbs'); ?>
+<section>
+    <div class="row">
+        <div class="columns medium-10 large-8 medium-centered">
+<?php endif; ?>
+            <form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" enctype="multipart/form-data">
+                <div class="fieldset">
+
+                    <div class="column">
+                        <p><?= $intro ?></p>
+                    </div>
+                    <div class="column">
+                        <div class="c-input__holder">
+                            <label for="contactsubject" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('How can we help you ?') ?></label>
+                            <select id="contactsubject" class="required-entry" name="subject">
+                                <?php $i=0;foreach($subjects as $category=>$subject): $i++; ?>
+                                    <?php if($i==1): ?>
+                                        <option value=""><?php echo Mage::helper('contacts')->__('Choose an object from the list') ?></option>
+                                    <?php endif; ?>
+                                    <optgroup label="<?= $category ?>">
+                                        <?php if($subject): ?>
+                                            <?php foreach($subject as $k=>$v): ?>
+                                                <?php if(isset($v['text']) && $v['text']): ?>
+                                                    <option data-condition='<?= $v['condition'] ?>' value="<?= $k ?>"><?= $v['text'] ?></option>
+                                                <?php endif; ?>
+                                            <?php endforeach; ?>
+                                        <?php endif; ?>
+                                    </optgroup>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder is-order">
+                            <label for="ordernum" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Order number') ?></label>
+                            <div class="input-box">
+                                <input name="ordernum" id="ordernum" title="<?php echo Mage::helper('contacts')->__('Order number') ?>" value="" class="input-text hide" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder is-file">
+                            <label for="photo"><?php echo Mage::helper('contacts')->__('Please attach a photo') ?></label>
+                            <div class="input-box">
+                                <input name="photo" id="photo" title="<?php echo Mage::helper('contacts')->__('Please attach a photo') ?>" value="" class="input-text not-focus inputfile js-exclude" type="file" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder is-file">
+                            <label for="invoice" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Your invoice') ?></label>
+                            <div class="input-box">
+                                <input name="invoice" id="invoice" title="<?php echo Mage::helper('contacts')->__('Invoice') ?>" value="" class="input-text  not-focus js-exclude inputfile required-one" type="file" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder">
+                            <label for="company" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Company') ?></label>
+                            <div class="input-box">
+                                <input name="company" id="company" title="<?php echo Mage::helper('contacts')->__('Company') ?>" value="" class="input-text " type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder">
+                            <label for="city" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('City') ?></label>
+                            <div class="input-box">
+                                <input name="city" id="city" title="<?php echo Mage::helper('contacts')->__('City') ?>" value="" class="input-text hide" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder">
+                            <label for="country" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Country') ?></label>
+                            <div class="input-box">
+                                <select class="hide" name="country" id="country">
+                                    <?php foreach($countries as $k => $country): ?>
+                                        <option value="<?php echo (!$k) ? '' : $country['label'] ?>"><?= $country['label'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column hide fieldcondition">
+                        <div class="c-input__holder">
+                            <label for="media"><em>*</em><?php echo Mage::helper('contacts')->__('Name of the media') ?></label>
+                            <div class="input-box">
+                                <input name="media" id="media" title="<?php echo Mage::helper('contacts')->__('Name of the media') ?>" value="" class="input-text hide" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="c-input__holder">
+                            <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                            <div class="input-box">
+                                <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="column">
+                        <div class="c-input__holder">
+                            <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                            <div class="input-box">
+                                <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->htmlEscape($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="c-input__holder">
+                            <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                            <div class="input-box">
+                                <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="text" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                        <div class="c-input__holder">
+                            <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                            <div class="input-box">
+                                <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column">
+                 <?php 
+			$currentStoreId = Mage::app()->getStore()->getCode();
+			$helper = Mage::helper('monbento_site/data');
+			$us = "";
+			if($currentStoreId ==="us_en") { $us = "/en"; }
+			$urlKey = $us.$helper->getKeyUrlPageCms($currentStoreId);
+		?>
+        <div class="politic">
+            <div class="c-checkbox--inline">
+                <div class="c-checkbox">
+                    <input type="checkbox" name="rgpdformnewsletter" value="1" id="checkbox_newsletter" class="checkbox required-entry">
+                    <label for="checkbox_newsletter".<?= $currentStoreId ?>>
+                        <?php echo $this->__("I agree that my data is processed in accordance with <a href='%s' target='_blank'>policy of management of the personal data</a>.", $urlKey) ?>
+                    </label>
+                </div>
+            </div>
+        </div>
+                    </div>
+                </div>
+
+                <?php
+                // recaptcha
+                if (!(Mage::getStoreConfig("fontis_recaptcha/recaptcha/when_loggedin") && (Mage::getSingleton('customer/session')->isLoggedIn()))) {
+                    if (Mage::getStoreConfig("fontis_recaptcha/recaptcha/contacts"))
+                        echo $this->getChildHtml('recaptcha_box');
+                }
+                ?>
+
+                <div class="buttons-set">
+                    <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+                    <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+                    <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="c-button--mainBranding--arrowRightToRight"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+                </div>
+             <!--   <div class="c-info__policy">
+                    <p><?php //echo Mage::helper('dbm_rgpd')->getMessage('contact_policy') ?></p>
+                </div> -->
+            </form>
+            <script type="text/javascript">
+                //<![CDATA[
+                var contactForm = new VarienForm('contactForm', true);
+                Translator.add('Please enter the following information: Your order number or your invoice',"<?php echo Mage::helper('contacts')->__('Please enter the following information: Your order number or your invoice')?>");
+                //]]>
+            </script>
+<?php if($this->getType() == 'page'): ?>
+        </div>
+    </div>
+</section>
+<?php endif; ?>

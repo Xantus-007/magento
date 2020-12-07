@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<config>
+    <tabs>
+        <monbento translate="label">
+            <label>Monbento</label>
+            <sort_order>0</sort_order>
+        </monbento>
+    </tabs>
+    <sections>
+        <monbento_kiosk>
+            <label>Configuration kiosk</label>
+            <sort_order>40</sort_order>
+            <show_in_default>1</show_in_default>
+            <show_in_website>1</show_in_website>
+            <show_in_store>1</show_in_store>
+            <tab>monbento</tab>
+            <groups>
+                <general translate="label">
+                    <label>Général</label>
+                    <comment></comment>
+                    <sort_order>10</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <url_video translate="label">
+                            <label>URL de la vidéo</label>
+                            <frontend_input>text</frontend_input>
+                            <sort_order>100</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </url_video>
+                        <image translate="label comment">
+                            <label>Visuel si pas de vidéo</label>
+                            <comment>jpeg, gif, png</comment>
+                            <frontend_type>image</frontend_type>
+                            <backend_model>adminhtml/system_config_backend_image</backend_model>
+                            <upload_dir config="system/filesystem/media" scope_info="1">kiosk</upload_dir>
+                            <base_url type="media" scope_info="1">kiosk</base_url>
+                            <sort_order>200</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </image>
+                        <template translate="label">
+                            <label>Template mail sauvegarde panier</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_email_template</source_model>
+                            <sort_order>300</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </template>
+                    </fields>
+                </general>
+            </groups>
+        </monbento_kiosk>
+    </sections>
+</config>

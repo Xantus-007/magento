@@ -1,0 +1,101 @@
+<div id="cartsguru-welcome" class="">
+    <div class="header">
+        <div class="inner-section">
+            <div class="container-fluid">
+                <form class="form form-big-padding" method="post" onsubmit="return formSubmit(event);">
+                    <?php echo $this->getBlockHtml('formkey') ?>
+                    <div class="form-title text-center"><?= $this->__('You are one step away from your free-trial') ?></div>
+                    <a class="close-form-btn back-btn"
+                       href="<?php echo $this->getUrl('adminhtml/cartsguruadmin/index'); ?>">< Back</a>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="input full-width" name="firstname"
+                                   value="<?php echo $this->getFirstName(); ?>"
+                                   placeholder="<?= $this->__('First name') ?>" required/>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="input full-width" name="lastname" value="<?php echo $this->getLastName(); ?>"
+                                   placeholder="<?= $this->__('Last name') ?>" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input class="input full-width" name="phonenumber"
+                                   placeholder="<?= $this->__('Phone number') ?>" required/>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="input full-width" type="email" name="email"
+                                   value="<?php echo $this->getEmail(); ?>"
+                                   placeholder="<?= $this->__('Email adress') ?>" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div id="select-country" class="full-width">
+                                <?php
+                                echo $country = Mage::getBlockSingleton('directory/data')->getCountryHtmlSelect();
+                                ?>
+                            </div>
+                            <div id="select-state" class="full-width" style="display:block">
+                                <?php echo Mage::getBlockSingleton('directory/data')->getRegionHtmlSelect(); ?>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input class="input full-width" type="password" name="password" id="password"
+                                   placeholder="<?= $this->__('Password') ?>" onchange="onPasswordInputChange(event)"
+                                   required/>
+                            <div id="passwordErrorLabel"
+                                 style="display: none; text-align: left;color: #e97171;margin-top: 10px;">
+                                <span><?= $this->__('The password should contain from 7 to 64 symbols, at least one digit and at least one letter') ?></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input class="input full-width" value="<?php echo $this->getWebsiteURL(); ?>" name="website"
+                                   placeholder="<?= $this->__('Website Url') ?>" required/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 text-center">
+                            <button class="btn-full" name="submitSubscribe"><?= $this->__('Connect it now') ?></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script type="text/javascript">
+            var elem = document.getElementById("country");
+            var password = document.getElementById("password");
+            var isPasswordValid = false;
+            var passwordErrorLabel = document.getElementById('passwordErrorLabel');
+
+            elem.onchange = function () {
+                var hiddenDiv = document.getElementById("select-state");
+                hiddenDiv.style.display = (this.value === "US") ? "block" : "none";
+            };
+
+            function validatePassword(value) {
+                var regexp = /^(?=.*[0-9])(?=.*[a-zA-Z])(.+)$/;
+                var isValid = value && value.length >= 7 && value.length < 64 && regexp.test(value);
+
+                return isValid;
+            }
+
+            function onPasswordInputChange(event) {
+                var value = event && event.target && event.target.value;
+
+                if (value) {
+                    isPasswordValid = validatePassword(value);
+                    passwordErrorLabel.style.display = (isPasswordValid) ? 'none' : 'block';
+                }
+            }
+
+            function formSubmit(evt) {
+                if (!isPasswordValid) {
+                    evt.preventDefault();
+                    return false;
+                }
+            }
+        </script>
+    </div>

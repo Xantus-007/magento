@@ -1,0 +1,108 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Top menu for store
+ *
+ * @see Mage_Page_Block_Html_Topmenu
+ */
+?>
+<?php $_menu = $this->getHtml('level-top') ?>
+<?php $_isMobile = Mage::helper('mobiledetect')->isMobile(); ?>
+<?php switch(Mage::app()->getStore()->getId()) {
+        case 1:
+        case 7:
+            $_urlPro = 'http://pro.monbento.com/';
+            $_urlBlog = 'https://www.monbento.com/blog/';
+            break;
+        case 10:
+            $_urlPro = 'http://ukpro.monbento.com/';
+            $_urlBlog = 'https://en.monbento.com/blog/';
+            break;
+        case 6:
+            $_urlPro = 'http://uspro.monbento.com/';
+            $_urlBlog = 'https://en.monbento.com/blog/';
+            break;
+        default:
+            $_urlBlog = 'https://en.monbento.com/blog/';
+            $_urlPro = 'http://proen.monbento.com/';
+            break;
+} ?>
+
+<?php if($_menu): ?>
+    <ul class="c-nav__level0">
+        <li>
+            <a href="<?php if($page = $this->helper('monbento_site')->getAproposPage()) echo Mage::getUrl($page->getIdentifier()); ?>" class="<?php echo ($this->helper('monbento_site')->isInCms()) ? 'is-active' : ''; ?>">
+                <span>
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle"><?php echo $this->__('About Us'); ?></div>
+                    </div>
+                </span>
+            </a>
+            <div class="c-nav__show">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--arrowToRight"></i></div>
+                </div>
+            </div>
+            <ul class="c-nav__level1 <?php if($this->helper('monbento_site')->isInCms()): ?>is-visible<?php endif; ?>">
+                <div class="c-nav__hide">
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--arrowToLeft"></i><span><?php echo $this->__('Précédent'); ?></span></div>
+                    </div>
+                </div>
+                <?php foreach($this->getCmsMenu() as $page): ?>
+                <li>
+                    <a href="<?php echo Mage::getUrl($page->getIdentifier()); ?>" class="<?php echo ($this->helper('monbento_site')->isInCms() && Mage::getSingleton('cms/page')->getIdentifier() == $page->getIdentifier()) ? 'is-active' : ''; ?>">
+                        <div class="o-table">
+                            <div class="o-table__cell--valignMiddle"><span><?php echo ($page->getIdentifier() == 'made-in-france')? $page->getLibelle(): $page->getTitle(); ?></span></div>
+                        </div>
+                    </a>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </li>
+        <li>
+            <a href="<?php echo $_urlPro; ?>" target="_blank">
+                <span>
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle"><?php echo $this->__('espace pro'); ?></div>
+                    </div>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="<?php echo $_urlBlog; ?>" target="_blank">
+                <span>
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle"><?php echo $this->__('recettes & news'); ?></div>
+                    </div>
+                </span>
+            </a>
+        </li>
+        <?php echo $_menu ?>
+    </ul>
+<?php endif ?>

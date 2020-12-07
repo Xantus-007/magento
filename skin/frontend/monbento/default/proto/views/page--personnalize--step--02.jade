@@ -1,0 +1,61 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : Personnaliser Step 01'
+    - var pageClass = ''
+    - var pageType = 'default'
+    - var headLess = true
+
+append body
+    .c-personnalize
+        .c-personnalize__content
+            .c-personnalize__heading.is-madeinfrance
+                .c-personnalize__title MB ORIGINAL 2 étages / 500ml + 500ML
+                .c-personnalize__price 35,00€
+
+            .c-personnalize__product: .js-bxSlider
+                .c-personnalize__product__item
+                    .c-img__holder
+                        img(src="#{imgDir}c-img__bento--custom--01.png", alt="")
+                .c-personnalize__product__item
+                    .c-img__holder
+                        img(src="#{imgDir}c-img__bento--custom--01.png", alt="")
+
+            .c-personnalize__actions
+                .c-item: a(href="", title="Recommencer"): i.c-fonticon__icon--rubber
+                .c-item: a(href="", title="Lancer un modèle aléatoire"): i.c-fonticon__icon--shuffle
+                .c-item: a(href="", title="Télécharger"): i.c-fonticon__icon--downloadPicture
+                .c-item: a(href="", title="Partager"): i.c-fonticon__icon--export
+
+        .c-personnalize__controler
+            .c-personnalize__controler__option
+                .c-personnalize__controler__option__header
+                    img(src="#{imgDir}custom/c-img__custom__controler--couverclesup.png", alt="")
+
+                .c-personnalize__controler__option__content
+                    .c-personnalize__controler__option__group
+                        .c-personnalize__controler__option__content__title SOFT TOUCH
+                        ul.c-personnalize__controler__option__content__list
+                            - for (var i=0; i<9; i++)
+                                li
+                                    a(href="")
+                                        span.c-color(style="background: #D46AA4;")
+                                        span.c-label COLOR NAME
+
+                    .c-personnalize__controler__option__group
+                        .c-personnalize__controler__option__content__title BOIS
+                        ul.c-personnalize__controler__option__content__list
+                            - for (var y=0; y<3; y++)
+                                li.is-active
+                                    a(href="")
+                                        span.c-color(style="background: #D46AA4;")
+                                        span.c-label
+                                            | COLOR NAME
+                                            small.c-price +50,00€
+
+            .c-personnalize__controler__action
+                a.c-button--noRadius--white.js-personnalize__cancel(href=""): .o-table: .o-table__cell--valignMiddle
+                    span.c-fonticon__icon--arrowToRight
+                    | Annuler

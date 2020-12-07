@@ -1,0 +1,170 @@
+// ========================================= //
+// blocks.container
+// ========================================= //
+
+%c-link {
+    position: relative;
+    display: inline-block;
+    margin-bottom: rem(15);
+    padding-bottom: rem(5);
+    font-size: rem(14);
+    font-family: $fontBody;
+    color: $subBranding;
+    text-decoration: none;
+    transition: $ease;
+    border-bottom: solid rem(1) $subBranding;
+
+    &:after {
+        position: relative;
+        top: rem(5);
+        margin-left: rem(10);
+        content: "\EA06";
+        font-family: $iconFont;
+        color: $subBranding;
+        font-size: rem(20);
+        transition: $ease;
+    }
+}
+
+.c-account {
+    .c-link {
+        @extend %c-link;
+    }
+}
+
+.o-layout__account {
+    .c-account {
+        background: transparent;
+        padding: 0;
+        border: none;
+
+        @include bp-lt($desktop) {
+            width: 100% !important;
+            float: none !important;
+        }
+    }
+
+    ul.form-list {
+        margin: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    // * {
+    //     box-sizing: border-box;
+    //     font-family: $fontBody;
+    //     color: $white;
+    // }
+
+    // table, .box, .c-box, .fieldset, form {
+    //     * {
+    //         color: $mainFont;
+    //     }
+    // }
+
+    $border: solid rem(2) $grey--02;
+    .data-table {
+        width: 100%;
+        margin-bottom: rem(38);
+        border-bottom: solid rem(6) $grey--01;
+        border-left: none;
+        border-right: none;
+
+        thead {
+            background: $grey--01;
+
+            @include bp-lt($small) {
+                display: none;
+            }
+
+            tr th {
+                height: rem(70);
+                font-family: $fontBody;
+                font-size: rem(16);
+                font-weight: 300;
+                color: $subBranding;
+            }
+        }
+
+        tbody {
+            tr {
+                &:nth-child(even) {
+                    background: $grey--00;
+                }
+
+                &:nth-child(odd) {
+                    background: $white;
+                }
+            }
+        }
+
+        thead,
+        tbody {
+            tr th,
+            tr td {
+                border-right: $border;
+
+                &:last-of-type {
+                    border-right: none;
+                }
+            }
+        }
+    }
+
+    .box .box-content,
+    .item .box-content {
+        background: $grey--00;
+    }
+
+    .box-fidelity-sponsorship .box .box-content {
+        background: $altBranding;
+        font-weight: 300;
+        color: $subBranding;
+        font-family: $fontBody;
+
+        .c-margin--btm {
+            margin-bottom: rem(30);
+        }
+
+        .c-count__label {
+            font-size: rem(20);
+
+        }
+        .c-count__int {
+            font-size: rem(30);
+            font-weight: 300;
+            color: $white;
+            position: relative;
+            top: rem(4);
+            margin-left: rem(5);
+        }
+
+        a.c-link {
+            @extend %c-link;
+        }
+    }
+}
+
+.col-main.c-account {
+    background: $grey--00;
+
+    .c-bkg__white,
+    .my-account {
+        background: $white;
+    }
+
+    .c-bkg__white {
+        padding-top: rem(28);
+    }
+
+    .my-account {
+        max-width: 59.125rem;
+        margin-left: auto;
+        margin-right: auto;
+
+        @include bp-lt($medium) {
+            padding-left: rem(14);
+            padding-right: rem(14);
+        }
+    }
+}

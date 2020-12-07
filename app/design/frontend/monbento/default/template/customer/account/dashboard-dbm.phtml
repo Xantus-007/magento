@@ -1,0 +1,51 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="dashboard c-dashboard">
+    <!-- <div class="c-welcome__text">
+        <h2><?php echo $this->__('Bonjour, %s!', Mage::getSingleton('customer/session')->getCustomer()->getName()); ?></h2>
+        <p><?php echo $this->__('Depuis le tableau de bord \'Mon compte\', vous pouvez avoir un aperçu de vos récentes activités et mettre à jour les informations de votre compte. Sélectionnez un lien ci-dessus pour voir ou modifier les informations.'); ?></p>
+    </div> -->
+    <?php echo $this->getMessagesBlock()->getGroupedHtmlMonbento() ?>
+    <?php echo $this->getChildHtml('top') ?>
+    <div class="box-account box-info">
+        <div class="box-head">
+            <h2><?php echo $this->__('Account Information') ?></h2>
+        </div>
+        <?php echo $this->getChildHtml('info') ?>
+        <?php echo $this->getChildHtml('address') ?>
+    </div>
+    <div class="box-account">
+        <div class="col2-set">
+            <div class="col-1">
+                <?php echo $this->getChildHtml('info1') ?>
+            </div>
+            <div class="col-2">
+                <?php echo $this->getChildHtml('info2') ?>
+            </div>
+        </div>
+    </div>
+</div>

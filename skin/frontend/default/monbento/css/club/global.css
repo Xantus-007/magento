@@ -1,0 +1,172 @@
+/* Global */
+.club {
+    font-family: vag;
+}
+
+.clubWrapped {
+    width: 1000px;
+    max-width: 1000px;
+    margin:auto;
+    overflow:hidden;
+}
+
+.clubWrapped .messages {
+    width:770px;
+    padding:20px;
+}
+
+.club .messages > li {
+    margin:20px 0px 10px 0;
+}
+
+.club a {
+    text-decoration: none;
+    color: #272625;
+}
+
+.club a.selected {
+    color: #8B176A;
+}
+
+.club .col-main {
+    border-left:1px solid #D8D5D5;
+    padding-left: 40px !important;
+    margin-top: 4px;
+}
+
+.club hr {
+    height:4px;
+    width:100%;
+    background-color: #EEE;
+    border:none;
+    margin:10px 0 0 0;
+    display: block;
+}
+
+.roundedButton {
+    text-align: center;
+    display: block;
+    cursor: pointer;
+    font-family: opensans;
+    padding: 10px 20px;
+    font-size:1.1em;
+
+    border: 1px solid;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+
+button.subscribe,
+input.subscribe {
+    background: #8B176A;
+    border-color: #8B176A;
+    color: #FFF;
+}
+
+button.subscribed,
+input.subscribed {
+    border-color: #aaa;
+    background:#aaa;
+    color:#FFF;
+}
+
+/* Titles */
+.bestTitle {
+    color:#8A1366;
+    font-family: quicksand;
+    font-size:2.5em;
+    margin-bottom:0!important;
+
+}
+
+/* Profile */
+.miniProfile {
+    /*padding-left: 20px;*/
+    vertical-align: middle;
+    line-height: 23px;
+}
+
+.miniProfile .nickname {
+    border-right: 1px solid #B0ABAB;
+    width:70%;
+    padding-right:20px;
+    min-width:170px;
+}
+
+.miniProfile .date {
+    padding-left:20px;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.miniProfile > div {
+    display: table-cell;
+}
+
+.miniProfile a {
+    color:inherit;
+    font-size:1.3em;
+    vertical-align: middle;
+}
+
+.miniProfile span {
+    display:inline;
+    float:left;
+    vertical-align: middle;
+    margin-right:10px;
+    position:relative;
+}
+
+.icon a {
+    position:relative;
+}
+
+.profileMask {
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+/* Like */
+.miniLike {
+    text-align: center;
+    font-size:1.5em;
+    cursor: pointer;
+}
+
+.miniLike.notLoggedIn {
+    cursor: default;
+}
+
+.miniLike img {
+    vertical-align: -3px;
+    
+}
+
+.miniLike span .count {
+    display:inline!important;
+}
+
+/* Geoloc */
+.club .geoloc {
+    font-size:1.2em;
+    padding-left:30px;
+    color:#8A1568;
+    background:url('../../images/club/element/coords.png') top left no-repeat;
+    min-height: 30px;
+}
+
+.club .geoloc a {
+    color:inherit;
+    line-height:30px;
+}
+
+.club .geoloc span {
+    color:#717180;
+}
+
+.clubPage {
+    padding-top:30px;
+    padding-left:30px;
+}

@@ -1,0 +1,35 @@
+#########################################################################
+#
+# Pathfile
+#
+# Liste fichiers parametres utilisés par le module de paiement
+#
+#########################################################################
+
+# ------------------------------------------------------------------------
+# Chemin vers le répertoire des logos depuis le web alias
+# Exemple pour le répertoire www.merchant.com/cyberplus/payment/logo/
+# indiquer:
+# ------------------------------------------------------------------------
+#
+D_LOGO!http://www.monbento.com/atos/i/m/g/!
+#
+#------------------------------------------------------------------------
+#  Fichiers paramètres lies à l'api cyberplus paiement
+#------------------------------------------------------------------------
+#
+# Certificat du commercant
+#
+F_CERTIFICATE!/data/www/monbento/monbento/prod/lib/atos/certif!
+#
+# Fichier paramètre commercant
+#
+F_PARAM!/data/www/monbento/monbento/prod/lib/atos/parmcom!
+#
+# Fichier des paramètres communs
+#
+F_DEFAULT!/data/www/monbento/monbento/prod/lib/atos/pathfile.parmcom.051123944400017!
+#
+# --------------------------------------------------------------------------
+# End of file
+# --------------------------------------------------------------------------

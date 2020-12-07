@@ -1,0 +1,499 @@
+/***************/
+/* SOCOLISSIMO */
+
+.layer {
+  position: relative;
+  z-index: 9;
+  display: none;
+  width: 649px;
+  border: 3px solid #fff;
+  background: #e9e9e9;
+}
+
+.layer > div > div {
+  overflow: auto;
+}
+
+.layer img.close {
+  position: absolute;
+  top: 7px;
+  right: 13px;
+  cursor: pointer;
+}
+
+#layer_socolissimo {
+	width: 885px;
+	/*min-height: 300px;*/
+	z-index: 1000;
+	text-align: left;
+}
+
+#layer_socolissimo > div > div {
+	padding: 15px;	
+}
+
+#layer_socolissimo .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+	background: url(../images/socolissimo/close.gif) 0 100%;
+	width: 17px;
+	height: 17px;
+}
+
+#layer_socolissimo .close:hover {
+	background-position: 0 0;
+}
+
+#layer_socolissimo .loader-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+
+#layer_socolissimo .loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background: #000;
+	opacity: 0.2;
+}
+
+#layer_socolissimo .loader-wheel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -16px;
+	width: 100px;
+	background: #fff;
+	border: 1px solid 000;
+	border-radius: 3px;
+	text-align: center;
+	z-index: 1001;
+	color: #878787;
+	font-style: italic;
+}
+
+#layer_socolissimo .loader-wheel img {
+	display: block;
+	margin: auto;
+}
+
+.checkout-onepage-success .socolissimo_logo_type {
+	vertical-align: middle;
+	margin: 0 0 0 15px;	
+}
+
+#socolissimo-map form {
+	width: 100%;
+}
+
+#socolissimo-map .contenu {
+	background: #fff;
+	color: #3b3836;
+	font-size: 11px;
+	font-weight: normal;
+	padding: 12px 0 12px 14px;
+	margin-bottom: 15px;
+	overflow: auto;
+}
+#socolissimo-map input, #socolissimo-map select {
+	font-size: 12px;
+}
+#socolissimo-map .col1, #socolissimo-map .col2 {
+	width: 406px;
+	float: left;
+	height: 185px;
+}
+#socolissimo-map .col1 b, #socolissimo-map .col2 b {
+	color: #645258;
+}
+#socolissimo-map .col1 {
+	border-right: 1px solid #d1cdcd;
+}
+#socolissimo-map .ligne1 {
+	border-bottom: 1px solid #dcd4cf;
+	padding-bottom: 15px;
+	margin: 0 14px 0 0;
+	background: url(../images/socolissimo/bg.png) 0px 57px no-repeat;
+}
+#socolissimo-map .col2 {
+	border-left: 1px solid #ffffff;
+	padding-left: 16px;
+}
+#socolissimo-map .ligne2 {
+	border-top: 1px solid #ffffff;
+	padding: 5px 0 0 0;
+}
+#socolissimo-map .titre {
+	color: #cc3333;
+	font-size: 14px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+#socolissimo-map .titre1 {
+	float: left;
+}
+#socolissimo-map .titre2 {
+	float: right;
+	margin-top: 10px;
+}
+#socolissimo-map .titres {
+	width: 100%;
+	overflow: hidden;
+	*margin-bottom: 15px;
+}
+#socolissimo-map .ligne2 .choix {
+	margin-left: 60px;
+}
+#socolissimo-map .ligne2 .choix1 {
+	margin-left: 0;
+}
+#socolissimo-map .choix {
+	float: left;
+}
+#socolissimo-map .ligne2 input {
+	margin: 6px 0 0 0;	
+}
+#socolissimo-map .choix img {
+	float: left;
+	margin-left: 5px;
+	margin-top: -3px;
+	margin-right: 8px;
+}
+#socolissimo-map .choix .txt {
+	float: left;
+	width: 270px;
+}
+#socolissimo-map .choix .txt2 {
+	float: left;
+	width: 160px;
+	padding: 6px 0 0 44px;
+	background: url(../images/socolissimo/picto_cityssimo.png) no-repeat 10px 0;
+	text-align: left;
+}
+#socolissimo-map .choix2 .txt2 {
+	background-image: url(../images/socolissimo/picto_poste.png);
+}
+#socolissimo-map .choix3 .txt2 {
+	background-image: url(../images/socolissimo/picto_commercant.png);
+}
+#socolissimo-map .choix .txt2 b {
+	color: #645258;
+}
+#socolissimo-map .col2 .choix .txt {
+	width: 330px;
+}
+#socolissimo-map input {
+	float: left;
+	background: #fff;
+}
+#socolissimo-map a.valide {
+	margin-top: 12px;
+	margin-left: 404px;
+}
+#socolissimo-map .ligne1 .titre, #socolissimo-map .ligne2 .titre {
+	margin-bottom: 15px;
+	text-align: left;
+}
+#socolissimo-map input.adresse {
+	float: left;
+	width: 239px;
+	border: 1px solid #b8acaf;
+	line-height: 19px;
+	height: 19px;
+	padding: 0;
+	padding-left: 9px;
+	color: #3b3836;
+	*margin-left: -48px;
+}
+#socolissimo-map input.cp {
+	width: 73px;
+	border: 1px solid #b8acaf;
+	line-height: 19px;
+	height: 19px;
+	float: left;
+	padding: 0;
+	padding-left: 9px;
+	color: #54343f;
+	*margin-left: -8px;
+}
+#socolissimo-map select {
+	background: none;
+	border: none;
+	opacity: 0;
+	filter: alpha(opacity=0);
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 237px;
+	font-size: 12px;
+	color: #54343f;
+}
+#socolissimo-map option {
+	background-color: #FFFFFF;
+	color: #54343f;
+	padding-left: 9px;
+}
+#socolissimo-map .select {
+	float: left;
+	position: relative;
+}
+#socolissimo-map .select span {
+	background: url(../images/socolissimo/bg_select.gif) no-repeat;
+	display: block;
+	width: 228px;
+	height: 21px;
+	color: #54343f;
+	line-height: 21px;
+	padding-left: 9px;
+}
+#socolissimo-map label {
+	float: left;
+	line-height: 18px;
+	height: 18px;
+	*width: 100%;
+}
+#socolissimo-map .col {
+	float: left;
+}
+#socolissimo-map .col.adresse {
+	width: 251px;
+	margin-left: 48px;
+}
+#socolissimo-map .col.cp {
+	width: 84px;
+	margin-left: 8px;
+}
+#socolissimo-map .col.commune {
+	width: 237px;
+	margin-left: 8px;
+}
+#socolissimo-map .obli {
+	color: #ff0056;
+	font-size: 11px;
+}
+#btn_modifierAdresse {
+	margin: 18px 0 0 10px;
+}
+#socolissimo-map .colgauche, #socolissimo-map .coldroite {
+	float: left;
+}
+#socolissimo-map .adresses {
+	clear: both;
+	height: 424px;
+	background: #fff;
+	position: relative;
+}
+
+#socolissimo-map .liste {
+	color: #3B3836;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	height: 424px;
+	overflow-y: scroll;
+	position:relative;
+}
+#socolissimo-map .colgauche {
+	width: 265px;
+	overflow : hidden;
+}
+#socolissimo-map .coldroite {
+	width: 590px;
+	height: 424px;
+}
+#socolissimo-map .point_retrait {
+	border-bottom: 1px dotted #54343F;
+	float: left;
+	margin: 0 7px;
+	padding-bottom: 12px;
+	width: 230px;
+	margin-top: 10px;
+	display: inline-block;
+}
+#socolissimo-map .point_retrait .distance {
+	font-size: 11px;
+	color: #3b3836;
+	float: left;
+	line-height: 26px;
+}
+#socolissimo-map .adresse_point {
+	text-align: right;
+	clear: both;
+	padding: 7px 0 0 0;
+	margin: 0 0 12px 0;
+}
+#socolissimo-map .point {
+	font-weight: bold;
+	line-height: 26px;
+	float: right;
+	font-size: 11px;
+	padding: 0 0 0 30px;
+	background: url(../images/socolissimo/picto_commercant.png) no-repeat;
+}
+#socolissimo-map .handicap {
+	clear: both;
+	float: right;	
+}
+#socolissimo-map .point.poste {
+	background-image: url(../images/socolissimo/picto_poste.png);
+}
+#socolissimo-map .point.cityssimo {
+	background-image: url(../images/socolissimo/picto_cityssimo.png);
+}
+#socolissimo-map .btn_socolissimoChoisir {
+	height: 30px;
+	background-repeat: no-repeat;
+	float:right;
+}
+
+#socolissimo-map .close {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	cursor: pointer;
+	background: #dcdcdc;
+	border: 1px solid #666666;
+	color: #666666;
+	padding: 0 5px;
+	font-size: 10px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+#socolissimo-map .close:hover {
+	background: #666666;
+	border: 1px solid #dcdcdc;
+	color: #dcdcdc;
+}
+
+#socolissimo-map h3 {
+	font-size: 16px;
+	font-weight: bold;
+	color: #cc3333;
+	text-transform: uppercase;
+	margin: 0 0 11px 0;
+	text-align: center;
+}
+
+#socolissimo-map .loader-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+}
+
+#socolissimo-map .loader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1000;
+	background: #000;
+	opacity: 0.2;
+}
+
+#socolissimo-map .loader-wheel {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin: -50px 0 0 -16px;
+	width: 100px;
+	background: #fff;
+	border: 1px solid 000;
+	border-radius: 3px;
+	text-align: center;
+	z-index: 1001;
+	color: #878787;
+	font-style: italic;
+}
+
+#socolissimo-map .loader-wheel img {
+	display: block;
+	margin: auto;
+}
+
+.onestepcheckout-location > div{
+	background: none !important;
+}
+
+.onestepcheckout-location-dl{
+	width: 100% !important;
+}
+
+/* Mode de paiement */
+.s_method_socolissimo {
+	
+}
+
+.s_method_socolissimo ul li label .price {float:right;}
+
+.s_method_socolissimo li,
+.onestepcheckout-index-index .s_method_socolissimo {
+	position: relative;
+	padding: 15px 0 0;
+}
+
+.s_method_socolissimo li:first-child {
+    padding-top: 0px;
+}
+
+.s_method_socolissimo li.first,
+.onestepcheckout-index-index .s_method_socolissimo.first {
+		border-bottom: 1px solid #e0e0e0;
+		padding-bottom: 15px;
+	}
+
+.s_method_socolissimo .radio,
+.onestepcheckout-index-index .s_method_socolissimo input {
+	margin: 0 37px 0 0;
+}
+
+.s_method_socolissimo img {
+	position: absolute;
+	top: 11px;
+	left: 20px;
+}
+
+.s_method_socolissimo label {
+	font: bold 12px/normal Arial;
+	color: #fb4f14;
+}
+
+.s_method_socolissimo label span {
+	color: #666;
+}
+
+.s_method_socolissimo div {
+	margin: 10px 0 0 53px;
+}
+
+.s_method_socolissimo-title img {
+	vertical-align: middle;
+	position: relative;
+	top: -2px;
+}
+
+#socolissimo-telephone h3 {
+	color: #CC3333;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0 0 11px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#socolissimo-telephone-form .rdv {
+	display: block;
+    margin: 0 0 10px;
+}

@@ -1,0 +1,85 @@
+// ========================================= //
+// Your Games
+// ========================================= //
+
+.your_game {
+    padding-top: 60px;
+    padding-bottom: 40px;
+
+    .title {
+        margin-bottom: 45px !important;
+    }
+
+    .triptic_content {
+        @include clearfix-micro;
+        max-width: 900px;
+        margin: 0 auto;
+
+        .triptic_pink, .triptic_green, .triptic_yellow {
+            @include bp-lt($small) {
+                margin-bottom: 25px;
+            }
+        }
+
+        .thumb {
+            border: solid 10px;
+            @include border-radius(50%);
+            max-width: 240px;
+            max-height: 240px;
+            overflow: hidden;
+            margin: 0 auto 25px;
+            @include box-shadow(transparent 0 0 0 10px);
+            @include transition(border .2s ease);
+
+            &:hover {
+                border: solid 20px;
+                @include transition(border .2s ease);
+            }
+
+            img {
+                display: block;
+                width: 100%;
+            }
+        }
+
+        .triptic_pink {
+            .thumb {
+                border-color: $pink_text;
+            }
+        }
+
+        .triptic_green {
+            .thumb {
+                border-color: $green_slider;
+            }
+        }
+
+        .triptic_yellow {
+            .thumb { 
+                border-color: $orange_text;
+            }
+        }
+
+        .title {
+            font-size: 28px;
+            margin-bottom: 25px !important;
+        }
+
+        .content, .quote {
+            max-width: 240px;
+            margin: 0 auto;
+            display: block;
+            text-align: center;
+            line-height: 25px;
+        }
+
+        .content {
+            font-size: 15px;
+            margin-bottom: 25px;
+        }
+
+        .quote {
+            font-family: $sofia;
+        }
+    }
+}

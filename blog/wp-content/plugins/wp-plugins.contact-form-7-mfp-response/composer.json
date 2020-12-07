@@ -1,0 +1,16 @@
+{
+    "name": "dbm/wp-plugins.contact-form-7-mfp-response",
+    "description": "Plugin Contact Form 7 Magnific Popup Response",
+    "type": "wordpress-plugin",
+    "version": "1.2",
+    "authors": [
+        {
+            "name": "Michael Espeche",
+            "email": "m.espeche@debussac.net"
+        },
+        {
+            "name": "Kevin Pignot",
+            "email": "k.pignot@debussac.net"
+        }
+    ]
+}

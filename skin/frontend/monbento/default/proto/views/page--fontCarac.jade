@@ -1,0 +1,29 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : page font caractéristique'
+    - var pageClass = ''
+
+append body
+    +c-title--page('Font Caractéristique')
+
+    - var iconsId = ['0001' ,'0002' ,'0003' ,'0004' ,'0005' ,'0006' ,'0007' ,'0008' ,'0009' ,'0010' ,'0011' ,'0012' ,'0013' ,'0014' ,'0015' ,'0016' ,'0017' ,'0018' ,'0019' ,'0020' ,'0021' ,'0022' ,'0023' ,'0024' ,'0025' ,'0026' ,'0027', '0028', '0029']
+    - var iconsPrefix = ['uEA01', 'uEA02', 'uEA03', 'uEA04', 'uEA05', 'uEA06', 'uEA07', 'uEA08', 'uEA09', 'uEA0A', 'uEA0B', 'uEA0C', 'uEA0D', 'uEA0E', 'uEA0F', 'uEA10', 'uEA11', 'uEA12', 'uEA13', 'uEA14', 'uEA15', 'uEA16', 'uEA17', 'uEA18', 'uEA19', 'uEA1A', 'uEA1B', 'uEA1C', 'uEA1D']
+    section.o-section
+        .row
+            .columns.medium-10.large-8.medium-centered
+                h2 Icons
+                .row
+                    each id, index in iconsId
+                        .columns
+                            i.c-icon__medium(class="c-fonticonCarac__icon--#{id}")
+                            span.c-text__sofiaPro--light--20
+                                html.
+                                    &lsaquo;i class='c-icon__medium c-fonticonCarac__icon--#{id}'&rsaquo;&lsaquo;/i&rsaquo;
+
+                //- h2 Lien direct vers les svg
+                //- .row
+                //-     each prefix, index in iconsPrefix
+                //-         .columns.small-2.end: img(src="#{mediaDir}iconsCarac/#{prefix}-icon--#{iconsId[index]}.svg", alt="")

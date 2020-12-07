@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<IcebergCommerce_TagSearchFriendlyUrls>
+			<version>1.0.2</version>
+		</IcebergCommerce_TagSearchFriendlyUrls>
+	</modules>
+
+	<global>
+		<models>
+			<icebergcommerce_tagsearchfriendlyurls>
+				<class>IcebergCommerce_TagSearchFriendlyUrls_Model</class>
+			</icebergcommerce_tagsearchfriendlyurls>
+			<tag>
+				<rewrite>
+					<tag>IcebergCommerce_TagSearchFriendlyUrls_Model_Tag</tag>
+				</rewrite>
+			</tag>
+		</models>
+		
+		<helpers>
+			<icebergcommerce_tagsearchfriendlyurls>
+				<class>IcebergCommerce_TagSearchFriendlyUrls_Helper</class>
+			</icebergcommerce_tagsearchfriendlyurls>
+		</helpers>
+		
+		<events>
+			<controller_front_init_routers>
+				<observers>
+					<icebergcommerce_tagsearchfriendlyurls>
+						<type>singleton</type>
+						<class>IcebergCommerce_TagSearchFriendlyUrls_Controller_Router</class>
+						<method>initControllerRouters</method>
+					</icebergcommerce_tagsearchfriendlyurls>
+				</observers>
+			</controller_front_init_routers>
+		</events>
+	</global>
+</config>

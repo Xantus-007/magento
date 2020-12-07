@@ -1,0 +1,20 @@
+<?php if (Mage::getStoreConfig('facebooklb/general/enabled')) : ?>
+<?php
+    /*
+    $facebookUrl = 'https://www.facebook.com/plugins/like.php?' .
+        'api_key = ' . Mage::getStoreConfig('facebooklb/general/appkey') .
+        '&amp;href=' .  $this->helper('core/url')->getCurrentUrl() .
+        '&amp;layout=button_count' .
+        '&amp;node_type=link&amp;sdk=joey' .
+        '&amp;show_faces=false' .
+        '&amp;action=' . Mage::getStoreConfig('facebooklb/general/verb') .
+        '&amp;font=' . Mage::getStoreConfig('facebooklb/general/font') .
+        '&amp;colorscheme=' . Mage::getStoreConfig('facebooklb/general/color') . '" scrolling="no" frameborder="0" allowTransparency="true" style="border:none; overflow:hidden; margin:25px 0; width:' . Mage::getStoreConfig('facebooklb/general/width') . 'px; height:' . Mage::getStoreConfig('facebooklb/general/height') . 'px">'
+        ;
+    */
+    $facebookUrl = 'https://www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fpages%2Fmonbentocom%2F188804934499072&amp;width=292&amp;colorscheme=light&amp;show_faces=false&amp;border_color&amp;stream=false&amp;header=false&amp;height=62" scrolling="no" frameborder="0">';
+    ?>
+
+    <iframe src="<?php echo $facebookUrl; ?>" </iframe>
+
+<?php endif; ?>

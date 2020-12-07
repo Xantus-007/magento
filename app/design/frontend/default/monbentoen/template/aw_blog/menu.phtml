@@ -1,0 +1,69 @@
+<div class="block block-blog">
+	<div class="block-content">
+		<div class="first">
+			<form id="blog-search" action="/blog/search/" method="post">
+				<input class="text" type="text" value="" name="cherche" />
+				<input class="submit" type="submit" value="Search" />
+			</form>
+		</div>
+		<div>
+			<span class="st_sharethis" displayText="Share us!"> </span>
+			<script type="text/javascript" src="https://w.sharethis.com/button/buttons.js"></script>
+			<script type="text/javascript">
+				stLight.options({publisher:'fe1456c3-2dec-4c1d-82aa-1c1bad6552d6',tracking:'google'});
+			</script>
+		</div>
+		<div>
+			<a href="https://www.facebook.com/monbento.europe" class="blog-facebook" target="_blank"><strong>Join us on</strong><br />Facebook</a>
+		</div>
+		<div class="social-buttons">
+			<span>Follow us here too:</span>
+			<ul class="blog-buttons">
+				<li class="item1"><a href="https://twitter.com/#!/monbento_world"></a></li>
+				<li class="item2"><a href="https://monbento-world.tumblr.com"></a></li>
+				<li class="item3"><a href="https://www.flickr.com/photos/monbento"></a></li>
+				<li class="item4"><a href="https://en.monbento.com/blog/cat/actu-mon-bento/rss"></a></li>
+			</ul>
+		</div>
+  </div>
+  <div class="block-title en">Read More:</div>
+	<div class="block-content bis">
+
+		<?php if($this->getCategories()->count() && Mage::getStoreConfig('blog/menu/category')): ?>
+		<div class="menu-categories first2">
+    	<h5>Categories :</h5>
+    	<ul>
+				<?php $cats = $this->getCategories(); ?>
+				<?php $nb = $this->getCategories()->count(); ?>
+				<?php $i = 0; ?>
+				<?php foreach ($cats as $cat): ?>
+				<?php $i++; ?>
+				<li>
+					<a href="<?php echo $cat->getAddress(); ?>" ><?php echo $cat->getTitle();?></a>
+				<?php if ($i != $nb) echo ' - '; ?>
+				</li>
+				<?php endforeach; ?>
+    	</ul>
+		</div>
+		<?php endif;?>
+
+		<?php if ($posts = $this->getRecent()): ?>
+		<div class="menu-recent">
+			<h5>Recent posts:</h5>
+			<ul>
+			<?php foreach ($posts as $post): ?>
+				<li><a href="<?php echo $post->getAddress(); ?>" ><?php echo $post->getTitle();?></a></li>
+			<?php endforeach; ?>
+      </ul>
+		</div>
+		<?php endif; ?>
+
+		<?php echo $this->getChildHtml('blog_tags');?>
+	</div>
+</div>
+<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('blog_sidebar')->toHtml() ?>
+<div id="voir-boutique">
+	<a href="<?php echo Mage::getBaseUrl('web'); ?>">
+		<img src="<?php echo Mage::getDesign()->getSkinUrl('aw_blog/images/view-shop.png'); ?>" />
+	</a>
+</div>

@@ -1,0 +1,32 @@
+<?php if(!Mage::getSingleton('checkout/session')->getGaClientId()): ?>
+<script>
+	function getGaClientId() {
+        if (typeof ga !== 'undefined') {
+            var trackers = ga.getAll();            
+            if (trackers.length > 0) {
+                for (var i = 0; i < trackers.length; i++) {
+                    currentTracker = trackers[i];
+                    if (currentTracker.get('trackingId') === '<?php echo Mage::getStoreConfig(Mage_GoogleAnalytics_Helper_Data::XML_PATH_ACCOUNT) ?>') {
+                        return currentTracker.get('clientId');
+                    }
+                }
+            }            
+        }
+        return null;
+    }            
+    function setGaCliendIdOnLoad(func) {
+        if (window.attachEvent) {
+            window.attachEvent('onload', func);
+        } else {
+            window.addEventListener('load', func);
+        }
+    }
+    setGaCliendIdOnLoad(function () {
+        var clientId = getGaClientId();
+        console.log(clientId);
+        if (clientId) {
+            jQuery.post("<?php echo Mage::getUrl('ga-site-front/ganalytics/addclient'); ?>", {id: clientId});
+        }
+    });
+</script>
+<?php endif; ?>

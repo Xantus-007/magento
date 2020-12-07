@@ -1,0 +1,186 @@
+// ========================================= //
+// blocks.nav
+// ========================================= //
+
+.c-account {
+    .c-nav__link {
+        display: block;
+        text-align: center;
+        margin-bottom: rem(25);
+
+        ul {
+            list-style: none;
+            margin: 0;
+
+            li {
+                display: inline-block;
+
+                @include bp-lt($small) {
+                    display: block;
+                }
+
+                &:after {
+                    content: '|';
+                    color: rgba($white, .3);
+                    font-size: rem(13);
+                    margin-left: rem(10);
+                    margin-right: rem(10);
+
+                    @include bp-lt($small) {
+                        display: none;
+                    }
+                }
+
+                &:last-of-type:after { display: none; }
+
+                &.current {
+                    a {
+                        color: $mainBranding;
+                    }
+                }
+            }
+
+            a {
+                font-size: rem(13);
+                color: $white;
+            }
+        }
+    }
+
+    $height--button--large: rem(152);
+    .c-nav__button {
+        display: block;
+        margin-bottom: rem(40);        
+
+        ul {
+            list-style: none;
+            margin: 0 rem(-10);
+            @include clearfix();
+
+            li {
+                display: block;
+                width: 20%;
+                height: $height--button--large;
+                padding-left: rem(10);
+                padding-right: rem(10);
+                float: left;
+
+                @include bp-lt($small) {
+                    height: rem(40);
+                }
+
+                a, strong {
+                    position: relative;
+                    display: block;
+                    width: 100%;
+                    height: $height--button--large;
+                    padding-top: rem(90);
+                    padding-left: rem(20);
+                    padding-right: rem(20);
+                    color: $grey;
+                    text-align: center;
+                    font-size: rem(14);
+                    border-radius: rem(3);
+                    font-weight: 400;
+
+                    @include bp-lt($small) {
+                        padding: 0;                    
+                        text-indent: rem(-9999);    
+                        height: rem(40);                
+                    }
+
+                    &:after {
+                        @include bp-lt($small) {
+                            text-indent: 0;
+                            font-size: rem(30);
+                            width: auto;
+                            height: auto;         
+                            padding: 0; 
+                            top: 0;                  
+                        }
+                    }
+                }
+
+                a {
+                    background: $white;
+                    transition: $ease;                    
+
+                    &:hover {
+                        background: $mainBranding;
+                        color: $white;
+
+                        &:after {
+                            color: $white;                                                
+                        }
+                    }
+                }
+
+                &.current a {
+                    background: $mainBranding;
+                    color: $white;
+
+                    &:after {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+[class*='c-nav__item'] {
+    a:after,
+    strong:after {
+        font-size: rem(45);
+        color: $grey;
+        position: absolute;
+        width: rem(70);
+        height: rem(70);
+        top: rem(25);
+        right: 0; left: 0;
+        margin-left: auto;
+        margin-right: auto;
+        z-index: $zindex--hover;
+        font-family: "iconfont";
+        text-align: center;
+        padding-left: rem(10);
+        padding-right: rem(10);
+        transition: $ease;
+    }
+
+    &[class*='dashboard'] {
+        a:after,
+        strong:after {
+            content: "\EA01"
+        }
+    }
+
+    &[class*='history'] {
+        a:after,
+        strong:after {
+            content: "\EA02"
+        }
+    }
+
+    &[class*='book'] {
+        a:after,
+        strong:after {
+            content: "\EA03"
+        }
+    }
+
+    &[class*='edit'] {
+        a:after,
+        strong:after {
+            content: "\EA04"; font-size: rem(55);
+        }
+    }
+
+    &[class*='wishlist'] {
+        a:after,
+        strong:after {
+            content: "\EA05"
+        }
+    }
+
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<config>
+    <menu>
+        <configurablebundle module="configurablebundle">
+            <title>Wizkunde Configurable Bundle</title>
+            <sort_order>71</sort_order>
+            <children>
+                <wizkunde_configurablebundle_images translate="title" module="configurablebundle">
+                    <title>Manage Composite Images</title>
+                    <action>adminhtml/configurablebundle_images</action>
+                </wizkunde_configurablebundle_images>
+            </children>
+        </configurablebundle>
+    </menu>
+
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <configurablebundle>
+                                        <title>Configurable Bundle</title>
+                                        <sort_order>50</sort_order>
+                                    </configurablebundle>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                    <configurablebundle>
+                        <children>
+                            <wizkunde_configurablebundle_images>
+                                <title>Manage Composite Images</title>
+                            </wizkunde_configurablebundle_images>
+                        </children>
+                    </configurablebundle>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

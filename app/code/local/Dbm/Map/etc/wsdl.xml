@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            
+            <complexType name="dbmMapBounds">
+                <all>
+                    <element name="south_west" type="typens:dbmMapCoords" />
+                    <element name="north_east" type="typens:dbmMapCoords" />
+                </all>
+            </complexType>
+            
+            <complexType name="dbmMapCoords">
+                <all>
+                    <element name="lat" type="xsd:string" />
+                    <element name="lng" type="xsd:string" />
+                </all>
+            </complexType>
+            
+        </schema>
+    </types>
+
+    <!-- google places predictions -->
+    <message name="dbmMapAutocompleteRequest" >
+        <part name="sessionId" type="xsd:string" />
+        <part name="request" type="xsd:string" />
+    </message>
+    <message name="dbmMapAutocompleteResponse">
+        <part name="result" type="typens:ArrayOfString" />
+    </message>
+
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmMapAutocomplete">
+            <documentation>Get global config</documentation>
+            <input message="typens:dbmMapAutocompleteRequest" />
+            <output message="typens:dbmMapAutocompleteResponse" />
+        </operation>
+    </portType>
+    
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmMapAutocomplete">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

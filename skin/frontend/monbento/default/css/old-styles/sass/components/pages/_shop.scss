@@ -1,0 +1,67 @@
+.cms-page-view {
+    &.cms-shop {
+        .col-main {
+            width: 100%;
+            
+            @include bp-lt($mb-medium){
+                @include grid-column(
+                    12,
+                    false,
+                    false,
+                    false,
+                    0
+                );
+            }
+        }  
+
+        .bx-pager {
+            @include bp-lt($mb-small){
+                display: none;
+            }
+        }      
+    }
+}
+
+#listCatShop {
+    margin-top: 11px;
+    
+    .row {
+        margin: 0 (-(rem-calc(16)/2));
+        
+        @include bp-lt($mb-medium){
+            margin: 0;
+        }
+    }
+    
+    .columns {
+        margin-bottom: 15px;
+        padding-left: (rem-calc(16) / 2);
+        padding-right: (rem-calc(16) / 2);
+        
+        + .columns:last-child {
+            @include bp-gt($mb-small - 1){
+                float: left;
+            }
+        }
+        
+        a {
+            background-position: 0 0;
+            background-size: cover !important;
+
+            img {
+                @include bp-lt($mb-small){
+                    -webkit-opacity: 0 !important;
+                    -moz-opacity: 0 !important;
+                    -ms-opacity: 0 !important;
+                    -o-opacity: 0 !important;
+                    opacity: 0 !important;
+                }
+            }
+        }
+        
+        img {            
+            @include img-responsive();
+        }
+    }
+    
+}

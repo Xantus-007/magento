@@ -1,0 +1,65 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $blocs = $this->getBlocsAmbassadeur(); ?>
+<?php if (count($blocs) > 0): ?>
+<section class="o-section--bkgGrey c-section__aboutTeam">
+    <div class="row">
+        <div class="column">
+            <div class="c-title--group">
+                <h2 class="c-main"><?php echo $this->__('Les Ambassadeurs'); ?></h2>
+                <div class="c-separator"><span class="c-fonticon__icon--wave"></span></div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php $i = 0;foreach ($blocs as $bloc): ?>
+    <section class="o-section<?php if($i%2 == 0): ?>--bkgGrey<?php endif; ?>--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight">
+        <div class="row c-ambassador">
+            <article class="c-item__team">
+                <?php if($i == 0): ?><div class="c-ambassador__logo"></div><?php endif; ?>
+                <div class="column js-team__equalizer large-8 medium-6<?php if($i%2 != 0) echo ' large-push-4 medium-push-6' ?>">
+                    <div style="background-image:url(<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $bloc->getImage(), 960, 499, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>)" class="c-member__cover"><img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/post/image' . $bloc->getImage(), 960, 499, array('constrainOnly' => true, 'mode' => 'inner_resize', 'keepFrame' => false, 'useAdaptive' => true)); ?>" alt="<?php echo ($bloc->getImageAlt()) ? $bloc->getImageAlt() : 'Monbento : ' . $bloc->getPostTitle(); ?>"></div>
+                </div>
+                <div class="column js-team__equalizer large-4 medium-6<?php if($i%2 != 0) echo ' large-pull-8 medium-pull-6' ?>">
+                    <div class="o-table">
+                        <div class="o-table__cell--valignMiddle">
+                            <div class="c-team__member c-ambassador">
+                                <div class="c-member__name"><?php echo $bloc->getPostTitle(); ?></div>
+                                <div class="c-member__status"><?php echo $bloc->getData('texte_3'); ?></div>
+                                <div class="c-separator"></div>
+                                <div class="c-member__description">
+                                  <p><?php echo $bloc->getPostContent(); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </section>
+    <?php $i++; endforeach; ?>
+<?php endif; ?>

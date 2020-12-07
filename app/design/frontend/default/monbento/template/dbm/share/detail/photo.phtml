@@ -1,0 +1,86 @@
+<?php
+$element = $this->getElement();
+$currentCustomer = Mage::helper('dbm_customer')->getCurrentCustomer();
+
+if($element && $element->getId()):
+    $me = Mage::helper('dbm_customer')->getCurrentCustomer();
+    $sizes = Mage::helper('dbm_share/image')->getSizes();
+    $options = Mage::helper('dbm_share/image')->getOptionsForDetail();
+    $pOptions = Mage::helper('dbm_share/image')->getOptionsForDetailPhotos();
+    $customer = $element->getCustomer();
+
+    $cHelper = Mage::helper('dbm_customer');
+    $cSizes = Mage::helper('dbm_customer/image')->getSizes();
+    $cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+    $helper = Mage::helper('dbm_share');
+
+    $customerImageUrl = $cHelper->getCustomerImageUrl($customer, $cSizes['element_list'], $cOptions);
+    $customerImageUrl = $customerImageUrl ? $customerImageUrl : $this->getSkinUrl('images/club/profile/placeholder-mini.png');
+    $photo = $element->getPhotos()->getFirstItem();
+?>
+<div class="clubPhoto <?php if($this->getDisplayBest()): ?>bestElement<?php endif; ?> small-12">
+    <div class="clubBack"><a href="javascript:history.go(-1)"><img src="<?php echo $this->getSkinUrl('images/club/element/detail-back.png') ?>" /></a></div>
+    <?php if($this->getDisplayBest()): ?><p class="bestTitle"><?php echo $this->__('Most popular') ?></p><?php endif; ?>
+    <a class="h2" href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>"><h2><?php echo $this->escapeHtml($element->getTitle()); ?></h2></a>
+    <p class="geoloc"><?php if($photo && $photo->getGmapsLabel()): ?><a href="/club/index/map/type/photo/"><?php echo $photo->getGmapsLabel() ?></a><br /><?php endif; ?><span><?php echo $helper->getPrettyDate($element->getCreatedAt()); ?><span></p>
+    <?php //if($this->getDisplayBest()): ?>
+    <div class="miniProfile">
+        <div class="nickname icon">
+            <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>">
+                <span><img src="<?php echo $cHelper->getCustomerImageUrl($customer, $cSizes['element_list'], $cOptions); ?>" alt=""><img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-list-white.png') ?>" /><?php if($customer->getProfileStatus() == 3): ?><img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini2.png'); ?>" /><?php endif; ?></span> <?php echo $this->escapeHtml($customer->getProfileNickname()); ?>
+            </a><br />
+            <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+        </div>
+    </div>
+    <?php //endif; ?>
+
+    <a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>">
+        <img src="<?php  echo $this->getImageUrl($element, $sizes['detail_photo'], $pOptions); ?>" />
+    </a>
+
+        <?php if($this->getDisplayBest()): ?>
+    <div class="clubComments bestElement small-12">
+        <div class="clubCommentsHeader line">
+            <div class="commentCount"><?php echo count($comments); ?> <?php echo count($comments) == 1 ? $this->__('comment') : $this->__('comments') ?> <img src="<?php echo $this->getSkinUrl('images/club/comments/icon.png'); ?>" /></div>
+            <div class="commentShare"><a href="#"><?php echo $this->__('Share'); ?> <img src="<?php echo $this->getSkinUrl('images/club/form/share.png') ?>" /></a>
+                <div>
+                    <a target="_blank" href="https://twitter.com/home?status=<?php echo urlencode($element->getTitle() . $currentUrl); ?>"><img src="<?php echo $this->getSkinUrl('images/club/share/twitter.jpg') ?>" /></a>
+                    <a target="_blank" href="https://www.facebook.com/sharer.php?u=<?php echo urlencode($currentUrl) ?>&t=<?php echo urlencode($element->getTitle()).' ' ?>"><img src="<?php echo $this->getSkinUrl('images/club/share/facebook.jpg') ?>" /></a>
+                </div>
+            </div>
+            <div class="commentLike"><p class="miniLike <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> element_<?php echo $element->getId() ?>"><span><span class="count"><?php echo $element->getLikeCount() ?></span> <img src="<?php echo $element->getLikeImage($currentCustomer); ?>" /></span></p></div>
+        </div>
+    </div>
+    <?php endif; ?>
+</div>
+<?php endif; ?>
+<script type="text/javascript">
+(function($){
+    var shareTimer = new Club_Timer();
+
+    $('.clubComment').mouseenter(function(){
+        $(this).find('.abuse').css('display','table-cell');
+    })
+
+    $('.clubComment').mouseleave(function(){
+        $(this).find('.abuse').css('display', 'none');
+    })
+
+    $('.commentShare').mouseenter(function(){
+        shareTimer.cancel();
+        $(this).find('> a').fadeOut();
+        $(this).find('div').fadeIn();
+    });
+
+    $('.commentShare').mouseleave(function(){
+        shareTimer.start(100);
+    });
+
+    $(shareTimer).bind(shareTimer.TIMER_COMPLETE, function(){
+        $('.commentShare > div').fadeOut();
+        $('.commentShare > a').fadeIn();
+    });
+
+})(jQuery);
+</script>

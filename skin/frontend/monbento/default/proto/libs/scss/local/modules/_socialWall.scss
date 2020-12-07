@@ -1,0 +1,163 @@
+// ========================================= //
+// socialWall
+// ========================================= //
+
+.c-socialWall {
+
+    @include bp-lt($small) {
+        padding-left: $gutter;
+        padding-right: $gutter;
+    }
+
+    & > .row {
+        // max-width: $socialWallLayout;
+
+        & > .columns.medium-3,
+        & > .columns.medium-2,
+        & > .columns.medium-4 {
+            @include bp-lt($tablet) {
+                width: 100%;
+            }
+
+            &.tablet-8 {
+                @include bp-lt($tablet) {
+                    width: percentage(2/3);
+                }
+            }
+
+            &.tablet-4 {
+                @include bp-lt($tablet) {
+                    width: percentage(1/3);
+                }
+            }
+        }
+
+        & > .columns.medium-3 .tablet-6 {
+            @include bp-lt($tablet) {
+                &:first-child { padding-right: rem(7); }
+                &:last-child { padding-left: rem(7); }
+            }
+
+            @include bp-lt($small) {
+                &:first-child { padding-right: rem(5); }
+                &:last-child { padding-left: rem(5); }
+            }
+        }
+    }
+
+    .row {
+        [class*="column"] {
+            @include bp-lt($small) {
+                padding-left: rem(5);
+                padding-right: rem(5);
+            }
+        }
+    }
+}
+
+.c-sociallWall__block,
+.c-sociallWall__item {
+    display: block;
+    margin-bottom: rem(2*7);
+
+    @include bp-lt($small) {
+        margin-bottom: rem(8);
+    }
+
+    &.tablet-6 {
+        @include bp-lt($tablet) {
+            width: 50%;
+            float: left;
+
+        }
+    }
+
+    &.tablet-4 {
+        @include bp-lt($tablet) {
+            width: percentage(1/3);
+            float: left;
+        }
+    }
+
+    img {
+        position: relative;
+        display: block;
+        z-index: $zindex--background;
+    }
+}
+
+.c-sociallWall__item {
+    position: relative;
+
+    &:before,
+    &:after {
+        content: '';
+        position: absolute;
+        z-index: $zindex--content;
+        background: rgba($mainBranding, .5);
+        width: 100%;
+        height: 100%;
+        top: 0;
+        opacity: 0;
+    }
+
+    &:before {
+        transform: scale(.2);
+        transition: $ease--long;
+    }
+
+    &:after {
+        transform: scale(.5);
+        transition: $ease;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    &:hover {
+        &:after, &:before {
+            transform: scale(1);
+            opacity: 1;
+        }
+    }
+}
+
+.c-sociallWall__block {
+    position: relative;
+
+    .c-sociallWall__block__fixed--content,
+    .c-sociallWall__block__fixed--bkg {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    .c-sociallWall__block__fixed--content {
+        z-index: $zindex--hover;
+        color: $white;
+        font-family: $sofiaPro;
+        font-size: rem(30);
+        line-height: rem(30);
+        font-weight: 700;
+        padding: rem(20);
+
+        @include bp-lt($large) {
+            font-size: 1.875vw;
+            line-height: 2vw;
+        }
+
+        @include bp-lt($tablet) {
+            font-size: calc(2*1.875vw);
+            line-height: calc(2*2vw);
+            padding: rem(10);
+        }
+    }
+
+    .c-sociallWall__block__fixed--bkg {
+        z-index: $zindex--content;
+        background-color: $mainBranding;
+        opacity: .7;
+    }
+}

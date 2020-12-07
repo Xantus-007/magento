@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Sellry_OrderSync>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Sellry_OrderSync>
+    </modules>
+</config> 

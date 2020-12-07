@@ -1,0 +1,157 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     default_iphone
+ * @copyright   Copyright (c) 2010 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php if (!($_shippingRateGroups = $this->getShippingRates())): ?>
+    <strong><?php echo $this->__('Sorry, no quotes are available for this order at this time.') ?></strong>
+<?php else: ?>
+<dl class="shipment-methods">
+    <?php $_sole = count($_shippingRateGroups) == 1; foreach ($_shippingRateGroups as $code => $_rates): ?>
+        <dt><?php //echo $this->getCarrierName($code) ?></dt>
+        <dd>
+            <ul>
+            <?php $_sole = $_sole && count($_rates) == 1; foreach ($_rates as $_rate): 
+                
+                switch($_rate->getMethodTitle())
+                {
+                    case 'Chronopost':
+                        $className = 'domicile chrono';
+                        break;
+                    case 'GLS':
+                    case 'GLS Livraison offerte':
+                        $className = 'domicile gls';
+                        break;
+                    case 'GLS relais':
+                        $className = 'relais gls';
+                        break;
+                    default:
+                        $className = '';
+                        break;
+                }
+                
+                $class = $className != '' ? ' class="'.$className.'"' : '';
+                
+                ?>
+                <li<?php echo $class; ?>>
+                   <?php if ($_rate->getErrorMessage()): ?>
+                    <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+                   <?php else: ?>
+                        <?php //if ($_sole) : ?>
+                        <!--<span class="no-display"><input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>" checked="checked" /></span>-->
+                        <?php //else: ?>
+                        <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if($_rate->getCode()===$this->getAddressShippingMethod()) echo ' checked="checked"' ?> />
+                        <?php //endif; ?>
+                        <label for="s_method_<?php echo $_rate->getCode() ?>"><?php echo $_rate->getMethodTitle() ?>
+                        <strong>
+                        <?php $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax()); ?>
+                        <?php $_incl = $this->getShippingPrice($_rate->getPrice(), true); ?>
+                        <?php echo $_excl; ?>
+                        <?php if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl): ?>
+                            (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                        <?php endif; ?>
+                        </strong>
+                        </label>
+                   <?php endif ?>
+                </li>
+            <?php endforeach; ?>
+            </ul>
+        </dd>
+    <?php endforeach; ?>
+</dl>
+<script type="text/javascript">
+(function($){
+    if($('.relais').size() > 0)
+    {
+        var $lines_relais  = $('li.relais');
+        
+        $lines_relais.each(function(){
+            var relais = $(this);
+            var $li = $(this);
+            var Prelais = relais.parents("dd");
+            
+            var image = '';
+            var description = '';
+            
+            if($li.hasClass('gls'))
+            {
+                //image = '<?php echo $this->getSkinUrl('images/gls/picto_gls.jpg') ?>';
+                $li.find("img").addClass("socolissimo_pictos");
+                if($('.shipment-methods').find('h3').size() < 2) $li.find("img").addClass("encart");
+                description = '<div id="gls_description" style="display:block;">Livraison dans un point relais GLS.</div>'
+            }
+            
+            var socolissimo = jQuery("dd.s_method_socolissimo > ul");
+            
+            socolissimo.append(relais);
+            
+            if($('.shipment-methods').find('h3').size() < 2) $li.prepend('<h3>Près de chez vous</h3>');
+            if(image.length) $li.prepend('<img class="socolissimo_pictos" src="'+image+'">');
+            if(description.length) $li.append(description);
+        });
+    }
+        
+    if($('.domicile').size() > 0)
+    {
+        var $lines  = $('li.domicile');
+        
+        $lines.each(function(){
+            var chrono = $(this);
+            var $li = $(this);
+            var Pchrono = chrono.parents("dd");
+            
+            Pchrono.prev().remove();
+            Pchrono.remove();
+            var image = '';
+            var description = '';
+            
+            if($li.hasClass('chrono'))
+            {
+                image = '<?php echo $this->getSkinUrl('images/socolissimo/picto_chronopost.png') ?>';
+                description = '<div id="chronopost_description" style="display:block;"><strong>Livraison express en 24H</strong><br />Merci de passer commande avant 12h00</div>';
+            }
+            
+            if($li.hasClass('gls'))
+            {
+                //image = '<?php echo $this->getSkinUrl('images/gls/picto_gls.jpg') ?>';
+                $li.find("img").addClass("encart");
+                $li.find("img").addClass("socolissimo_pictos");
+                description = '<div id="gls_description" style="display:block;"><strong>Avec signature</strong><br />Livraison à l’adresse de votre choix.</div>'
+            }
+            
+            var socolissimo = jQuery("dd.s_method_socolissimo > ul");
+            var titreso = socolissimo.find("h3:first");
+            
+            titreso.remove();
+            chrono.prepend(titreso);
+            socolissimo.prepend(chrono);
+            
+            $li.next().find("img").removeClass("encart");
+            if(image.length) $li.prepend('<img class="socolissimo_pictos encart" src="'+image+'">');
+            if(description.length) $li.append(description);
+        });
+    }
+})(jQuery);
+</script>
+<?php endif; ?>

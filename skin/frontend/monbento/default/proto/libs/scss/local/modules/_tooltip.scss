@@ -1,0 +1,156 @@
+// ========================================= //
+// tooltip
+// ========================================= //
+
+.c-info__tooltip {
+    $side : rem(20);
+
+    width: $side;
+    height: $side;
+    background: $grey--light--06;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @extend %links--hover--active;
+
+    &:hover, &.is-active {
+        .c-tooltip {
+            opacity: 1;
+            transform: translateX(rem(-174)) translateY(-30px);
+            pointer-events: auto;
+
+            @include bp-lt($tooltip--xlarge) {
+                transform: translateX(rem(-250)) translateY(-30px);
+            }
+
+            @include bp-lt($medium) {
+                transform: translateX(rem(-295)) translateY(-30px);
+            }
+
+            @include bp-lt($mobileL) {
+                transform: translateX(rem(-265)) translateY(-30px);
+            }
+        }
+    }
+
+    [class*='c-fonticon__icon'] {
+        position: relative;
+        width: 100%;
+        text-align: center;
+        position: relative;
+        top: rem(2);
+        color: $white;
+        font-size: rem(12);
+    }
+
+    .c-tooltip {
+        position: absolute;
+        z-index: $zindex--hover;
+        bottom: 0;
+        width: rem(348);
+        height: rem(195);
+        padding-left: rem(25);
+        padding-right: rem(25);
+        padding-bottom: rem(16);
+        text-align: center;
+        left: 50%;
+        transform: translateX(rem(-174)) translateY(0px);
+        background: $grey--light--04;
+        text-align: center;
+        border-radius: rem(10);
+        box-shadow: rem(7) rem(7) rem(13) rgba($subBranding, .23);
+        font-family: $merriWeather;
+        font-size: rem(14);
+        line-height: rem(28);
+        color: $mainFont;
+        font-weight: 300;
+        opacity: 0;
+        pointer-events: none;
+        transition: $ease;
+
+        @include bp-lt($tooltip--xlarge) {
+            transform: translateX(rem(-250)) translateY(0);
+        }
+
+        @include bp-lt($medium) {
+            transform: translateX(rem(-295)) translateY(0);
+        }
+
+        @include bp-lt($mobileL) {
+            width: rem(300);
+            transform: translateX(rem(-265)) translateY(0);
+        }
+
+        strong {
+            font-weight: 700;
+            display: block;
+        }
+
+        &:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            bottom: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: rem(16);
+            background: $white;
+            border-radius: 0 0 rem(10) rem(10);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-9px);
+            display: block;
+            border-top: solid rem(8) $white;
+            border-left: solid rem(9) transparent;
+            border-right: solid rem(9) transparent;
+            bottom: rem(-8);
+
+            @include bp-lt($tooltip--xlarge) {
+                left: rem(249);
+            }
+
+            @include bp-lt($medium) {
+                left: rem(294);
+            }
+
+            @include bp-lt($mobileL) {
+                left: rem(264);
+            }
+        }
+    }
+}
+
+.checkout-cart-index,
+.c-row__personnalize {
+    .c-tooltip {
+        transform: translateX(rem(-305)) translateY(0);
+
+        @include bp-lt($mobileL) {
+            transform: translateX(rem(-265)) translateY(0);
+        }
+
+        &:after {
+            left: rem(304);
+
+            @include bp-lt($mobileL) {
+                left: rem(264);
+            }
+        }
+    }
+
+    &:hover, &.is-active {
+        .c-tooltip {
+            transform: translateX(rem(-305)) translateY(-30px);
+
+            @include bp-lt($mobileL) {
+                transform: translateX(rem(-265)) translateY(-30px);
+            }
+        }
+    }
+}
+

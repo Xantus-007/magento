@@ -1,0 +1,30 @@
+=====================================
+This file describes changes between versions of module ET_Reviewnotify for Magento.
+
+Legend:
+* bug fix
++ added functionality
+- removed functionality
+
+=====================================
+ver. 0.2.4
++ Added anti spam protection for review form on frontend (relevant when review writing for guests is allowed)
+
+ver. 0.2.3
+* Fixed broken Pending Reviews RSS link when Add Store Code to Urls is set to Yes.
+
+ver. 0.2.2
+* cleaned layout code, to avoid toolbar dublication in ver. > 1.4
+
+ver. 0.2.1
+* changed developer name in the package
+
+ver. 0.2.0
++ added notification in admin standart notification toolbar
+* send separate mails for each notification recipient
+
+ver. 0.1.1
+* added Helper (not worked - Transactional mails - add new template) - actual for Magento ver. 1.4.õ
+
+ver. 0.1.0
++ stable release

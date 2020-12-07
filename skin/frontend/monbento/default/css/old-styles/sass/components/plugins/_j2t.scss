@@ -1,0 +1,76 @@
+// Popup managment
+div.j2tajax-confirm {
+    width: 467px;    
+    
+    @include bp-lt($mb-medium) {
+        width: 467px !important;
+        height: auto !important;
+    }
+    
+    @include bp-lt($mb-small) {
+        width: 80% !important;
+        top: 20px !important;
+        z-index: 16000003 !important;
+    }
+    
+    div.j2tajax-checkout-img {
+        @include bp-lt($mb-small) {
+            float: none !important;
+            margin-bottom: 10px;
+            margin-right: 0 !important;
+            text-align: center;
+        }
+    }
+
+    .j2tajax-checkout-txt {
+        @include bp-lt($mb-small) {
+            font-size: 16px;
+        }
+    }
+
+    div.j2t-cart-bts {
+        @include bp-lt($mb-small) {
+            margin-top: 10px;
+        }
+
+        a {
+            &.j2t-continue-link, 
+            &.j2t-checkout-link {
+                @include bp-lt($mb-small) {
+                    font-size: 13px;
+                    line-height: 20px;
+                    margin-left: 0;
+                    height: auto;
+                }
+            }
+        }
+    }
+        
+    div.j2t-cart-bts {
+        a {
+            &.j2t-continue-link, 
+            &.j2t-checkout-link {
+                @include bp-lt($mb-xsmall) {
+                    font-size: 12px;
+                }
+            }
+        }
+    }
+    
+}
+
+div.j2tajax-confirm,
+div.j2tajax-progress {
+    height: auto;
+    margin:0 auto;
+    left: 0 !important;
+    right: 0 !important;    
+}
+
+div.j2tajax-progress {
+    width: 282px;
+    
+    @include bp-lt($mb-small) {
+        top: 100px !important;
+    }
+}

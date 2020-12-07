@@ -1,0 +1,83 @@
+// ========================================= //
+// Settings
+// ========================================= //
+
+// *Import Font
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,900);
+@import url(http://fonts.googleapis.com/css?family=Sofia);
+@import url(http://fonts.googleapis.com/css?family=Oswald:700);
+
+@font-face {
+    font-family: 'dirty_headlineregular';
+    src: url('../fonts/dirty_headline/Dirty_Headline.eot');
+    src: url('../fonts/dirty_headline/Dirty_Headline.woff') format('woff');
+    src: url('../fonts/dirty_headline/Dirty_Headline.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// *Define Font
+$lato                   : 'Lato', sans-serif;
+$oswald                 : 'Oswald', sans-serif;
+$dirty_headline         : 'dirty_headlineregular', $oswald, sans-serif;
+$sofia                  : 'Sofia', cursive;
+
+// *Define Font Size
+
+// *Define Color
+// **Background
+$grey_bkgsection        : #f4f6f8;
+$pink_gift              : #913c7c;
+
+// **Font
+$lightgrey_std          : #5f6061;
+$grey_strg              : #3f4040;
+$grey_language          : #b3b3b3;
+
+$purple_linkhover       : #903c7c;
+$purple_boostedafternoon: #8d3b7a;
+
+$orange_boxshadow       : #ff6f0b;
+
+$pink_slider            : #ff4795;
+$yellow_slider          : #ffd600;
+$green_slider           : #c3d500;
+$blue_slider            : #4dc1df;
+
+$pink_text              : #a60063;
+$lightpink_text         : #d872c0;
+$orange_text            : #e97200;
+
+$facebook               : #4463a3;
+$twitter                : #449ecd;
+$instagram              : #86664e;
+
+$succes                 : #43ac6a;
+$error                  : #f04124;
+
+// *Define Breakpoints
+$xsmall                 : 360px!default;
+$small                  : 480px!default;
+$smedium                : 600px!default;
+$medium                 : 750px!default;
+$xmedium                : 900px!default; 
+$large                  : 980px!default;
+$xlarge                 : 1260px!default;
+$xxlarge                : 1360px!default;
+
+$bp_largeSlide          : 1030px;
+
+// *Grid Option
+$gridWidth              : 1180px;
+$gridColumns            : 12;
+
+// *Susy Options
+$susy: (
+    columns: 12,
+    gutters: 1/4,
+    math: fluid,
+    output: float,
+    gutter-position: inside,
+);
+
+$shorthand: 12 1/4 fluid float inside;

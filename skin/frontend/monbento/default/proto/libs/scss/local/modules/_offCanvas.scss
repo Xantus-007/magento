@@ -1,0 +1,107 @@
+// ========================================= //
+// offCanvas
+// ========================================= //
+
+.o-nav { z-index: 350 !important; }
+.o-nav .c-nav__level1 { z-index: 355 !important; }
+.o-nav .c-nav__level2--holder { z-index: 360 !important; }
+
+.o-nav,
+.o-nav .c-nav__level1,
+.o-nav .c-nav__level2--holder {
+    right: 0;
+    transition: $ease;
+
+    @include bp-lt($medium) {
+        right: rem(-280);
+    }
+
+    &.is-inViewport {
+        @include bp-lt($medium) {
+            right: 0;
+        }
+    }
+}
+
+.c-nav__icon {
+    $sideMenu: rem(35);
+    position: relative;
+    background: darken($subBranding, 8%);
+
+    i {
+        $strokeHeight: rem(2);
+
+        display: block;
+        text-indent: -9999px;
+        width: $sideMenu;
+        height: $strokeHeight;
+        position: relative;
+        top: rem(42);
+        left: rem(28);
+        transform: rotate(0deg);
+        transition: $ease;
+        pointer-events: none;
+        border-radius: rem(1);
+
+        &:before,
+        &:after {
+            display: block;
+            position: absolute;
+            content: '';
+            width: $sideMenu;
+            height: $strokeHeight;
+            transition: $ease;
+            border-radius: rem(2);
+        }
+
+        &:before {
+            top: rem(-11);
+            transform: rotate(0deg);
+        }
+
+        &:after {
+            bottom: rem(-11);
+            transform: rotate(0deg);
+        }
+    }
+
+    i, i:before, i:after {
+        background: $white;
+    }
+
+    &.is-active {
+        i {
+            background-color: transparent;
+            transform: rotate(180deg);
+
+        &:before {
+                top: 0;
+                transform: rotate(45deg);
+            }
+
+            &:after {
+                bottom: 0;
+                transform: rotate(-45deg);
+            }
+        }
+    }
+}
+
+.c-nav__close {
+    position: fixed;
+    z-index: 300;
+    width: 100vw;
+    height: 100vh;
+    top: 0; left: 0;
+    opacity: 0;
+    pointer-events: none;
+    background: $mainBranding;
+    transition: opacity .3s ease;
+    display: none;
+
+    &.is-active {
+        display: block;
+        opacity: .7 !important;
+        pointer-events: auto;
+    }
+}

@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<config>
+    <api>
+        <resources>
+            <dbm_map>
+                <title>DBM - Map API methods</title>
+                <model>dbm_map/api</model>
+                <acl>dbm_map</acl>
+                <methods>
+                    <autocomplete>
+                        <title>Predict map search autocomplete</title>
+                        <method>autocomplete</method>
+                        <acl>dbm_map/all</acl>
+                    </autocomplete>
+                </methods>
+            </dbm_map>
+        </resources>
+        <v2>
+            <resources_function_prefix>
+                <dbm_map>dbmMap</dbm_map>
+            </resources_function_prefix>
+        </v2>
+        <acl>
+            <resources>
+                <dbm_map translate="title" module="dbm_map">
+                    <title>DBM - Map</title>
+                    <all translate="title" module="dbm_map">
+                        <title>DBM - All</title>
+                    </all>
+                </dbm_map>
+            </resources>
+        </acl>
+    </api>
+</config>

@@ -1,0 +1,71 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+$_productsByCategory = $this->getProductsByCategory();
+?>
+<section class="o-section--bkgGrey c-grid c-section__custom">
+    <div class="c-title--group">
+        <div class="c-baseline"><?php echo Mage::getStoreConfig('monbento_customize/general/title_modele') ?></div>
+        <div class="js-grid__product">
+            <div class="c-grid__product c-grid__product--custom">
+                <?php $i=1; foreach($_productsByCategory as $catList): ?>
+                <?php $colWidth = ($i == 1) ? '2' : '1'; ?>
+                <?php $largeWidth = ($i == 1) ? '6' : '12'; ?>
+                <div class="c-grid__custom--col<?php echo $colWidth ?>">
+                    <div class="c-row__product">
+                        <div class="row collapse">
+                            <div class="columns">
+                                <div class="c-grid__product__subtitle"><?php echo $catList['name'] ?><?php if($i == 1): ?><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/c-logo__mif.svg') ?>" alt=""><?php endif; ?></div>
+                            </div>
+                            <?php foreach ($catList['products'] as $_product): ?>
+                            <div class="columns large-<?php echo $largeWidth ?> small-6">
+                                <a href="<?php echo Mage::getUrl('monbento-site/index/customize', array('id' => $_product->getId())); ?>" class="c-item__product js-itemEqualizer--holder">
+                                    <div class="c-thumb">
+                                        <img src="<?php echo Mage::helper('dbm_utils/image')->resizeImage('media/catalog/product' . $_product->getSmallImage(), 220, 220); ?>" alt="<?php echo Mage::helper('dbm_seo')->getAltProductImage($_product) ?>">
+                                    </div>
+                                    <div class="js-itemEqualizer">
+                                        <div class="c-title"><?php echo $_product->getName() ?></div>
+                                        <div class="c-baseline"><?php echo $_product->getBaseline() ?></div>
+                                    </div>
+                                </a>
+                            </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                </div>
+                <?php $i++; endforeach; ?>
+            </div>
+        </div>
+    </div>
+</section>

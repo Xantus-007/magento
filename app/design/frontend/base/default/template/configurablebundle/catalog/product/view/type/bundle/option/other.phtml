@@ -1,0 +1,198 @@
+<?php
+
+/**
+ * The current option
+ */
+$_option = $this->getOption();
+
+/**
+ * All the selections of the current option
+ */
+$_selections = $_option->getSelections();
+
+/**
+ * The default selection of the current option
+ */
+$_default = $_option->getDefaultSelection();
+
+/**
+ * Get the essential selection configurable data
+ */
+
+$firstProduct = current($_option->getSelections());
+
+// Make sure the first product is fully loaded!
+$firstProduct->load($firstProduct->getId());
+
+?>
+
+<script>var updateStatus = <?php echo Zend_Json::encode($this->getUpdateStatus()) ?>;</script>
+<script>var swatchDimensions = <?php echo Zend_Json::encode($this->getSwatchSettings()) ?></script>
+<script>var swatchImages = <?php echo Zend_Json::encode($this->getSwatchImages()) ?>;</script>
+
+<div id="baseurl" data-baseurl="<?php echo rtrim(Mage::getBaseUrl(), '/') ?>"></div>
+
+<section class="bundle-option">
+    <div class="bundle-info">
+        <?php $required = ($_option->getRequired()) ? '<span class="option-required">*</span>' : '' ?>
+        <div class="bundle-option-title h2" id="bundle-option-name-<?php echo $_option->getId() ?>"><?php echo $_option->getTitle() ?><?php echo $required ?></div>
+
+        <div class="bundle-title">
+            <?php foreach ($_selections as $product): ?>
+                <div class="product-option-data">
+                    <div id="prod-desc-<?php echo $_option->getId() ?>-<?php echo $product->getSelectionId() ?>"><?php echo $product->getShortDescription() ?></div>
+                    <div id="prod-name-<?php echo $_option->getId() ?>-<?php echo $product->getSelectionId() ?>"><?php echo $product->getName() ?></div>
+                    <div id="prod-image-<?php echo $_option->getId() ?>-<?php echo $product->getSelectionId() ?>"><?php echo $this->helper('catalog/image')->init($product, 'image')->resize(100) ?></div>
+                </div>
+            <?php endforeach; ?>
+
+            <div class="bundle-option-qty">
+                <?php
+                if ($_default):
+                    $_defaultQty = $_default->getSelectionQty()*1;
+                    $_canChangeQty = $_default->getSelectionCanChangeQty();
+                else:
+                    if($firstProduct !== false) {
+                        $_defaultQty = $firstProduct->getSelectionQty()*1;
+                        $_canChangeQty = $firstProduct->getSelectionCanChangeQty();
+                    }
+                endif;
+                ?>
+                <?php if (in_array($_option->getType(), array('multi','checkbox')) == false) : ?>
+                    <input type="text" id="bundle-option-<?php echo $_option->getId() ?>-qty-input" onkeyup="bundle.changeOptionQty(this, event)" onblur="bundle.changeOptionQty(this, event)" class="input-text qty<?php echo $_canChangeQty?'':' qty-disabled' ?>" <?php echo $_canChangeQty?'' : 'disabled="disabled"'?> name="bundle_option_qty[<?php echo $_option->getId() ?>]" value="<?php echo $_defaultQty ?>" />
+                <?php endif; ?>
+            </div>
+
+            <?php if ($_option->getRequired() == true && count($_option->getSelections()) == 1) : ?>
+                <?php $_selection = current($_option->getSelections()); ?>
+                <div class="configurablebundle-selection-header h1">
+                    <?php echo $this->getSelectionTitlePrice($_selection, false) ?>
+                </div>
+                <select onchange="bundle.changeSelection(this);" id="bundle-option-<?php echo $_option->getId() ?>-select" name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> bundle-option-input bundle-option-select change-container-classname bundle-option-nochoice">
+                    <?php if ($_option->getRequired() == false) : ?>
+                        <option value=""><?php echo $this->__('Choose a selection...') ?></option>
+                    <?php endif; ?>
+                    <?php foreach ($_option->getSelections() as $_selection): ?>
+                        <option value="<?php echo $_selection->getSelectionId() ?>"<?php if ($this->_isSelected($_selection)) echo ' selected="selected"' ?><?php if (!$_selection->isSaleable()) echo ' disabled="disabled"' ?>><?php echo $this->getSelectionTitlePrice($_selection, false) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            <?php else : ?>
+                <?php if ($_option->getType() == 'select') : ?>
+                    <select onchange="bundle.changeSelection(this);" id="bundle-option-<?php echo $_option->getId() ?>-select" name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> bundle-option-input bundle-option-select change-container-classname">
+                        <?php if ($_option->getRequired() == false) : ?>
+                            <option value=""><?php echo $this->__('Choose a selection...') ?></option>
+                        <?php endif; ?>
+                        <?php foreach ($_option->getSelections() as $_selection): ?>
+                            <option value="<?php echo $_selection->getSelectionId() ?>"<?php if ($this->_isSelected($_selection)) echo ' selected="selected"' ?><?php if (!$_selection->isSaleable()) echo ' disabled="disabled"' ?>><?php echo $this->getSelectionTitlePrice($_selection, false) ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                <?php elseif ($_option->getType() == 'radio') : ?>
+                    <?php foreach ($_option->getSelections() as $_selection): ?>
+                        <input type="radio" onchange="bundle.changeSelection(this);" id="bundle-option-<?php echo $_option->getId() ?>-radio-<?php echo $_selection->getSelectionId() ?>" name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> bundle-option-input bundle-option-radio change-container-classname" value="<?php echo $_selection->getSelectionId() ?>"<?php if ($this->_isSelected($_selection)) echo ' selected="selected"' ?>><?php echo $this->getSelectionTitlePrice($_selection, false) ?><br />
+                    <?php endforeach; ?>
+                    </select>
+                <?php elseif ($_option->getType() == 'checkbox') : ?>
+
+                    <div>
+                        <div style="width: 40%; float: left; clear: left;border-bottom: 1px solid #000;">
+                            <b>Name</b>
+                        </div>
+                        <div style="width: 25%; float: left;border-bottom: 1px solid #000;">
+                            <b>Options</b>
+                        </div>
+                        <div style="width: 15%; float: left;border-bottom: 1px solid #000;">
+                            <b>Qty</b>
+                        </div>
+                        <div style="width: 20%; float: left;border-bottom: 1px solid #000;">
+                            <b>Price</b>
+                        </div>
+                    </div>
+
+                    <?php foreach ($_option->getSelections() as $_selection): ?>
+                        <?php if(in_array($_selection->getTypeId(), array('simple', 'downloadable', 'virtual'))) : ?>
+                            <div style="margin-top: 30px; overflow: auto;">
+                                <div style="width: 40%; float: left; clear: left;">
+                                    <input type="checkbox" id="bundle-option-<?php echo $_option->getId() ?>-<?php echo $_selection->getSelectionId() ?>" name="bundle_option[<?php echo $_option->getId() ?>][<?php echo $_selection->getSelectionId() ?>]" class="bundle-option-<?php echo $_option->getId() ?> bundle-option-input bundle-option-checkbox change-container-classname" value="<?php echo $_selection->getSelectionId() ?>"<?php if ($this->_isSelected($_selection)) echo ' selected="selected"' ?> style="display: none;"><?php echo $this->getSelectionTitlePrice($_selection, false) ?>
+                                </div>
+                                <div style="width: 25%; float: left;">
+                                    <?php if (Mage::helper('configurablebundle/bundle')->hasProductOptions($_selection)) : ?>
+                                        <button title="Configure" type="button" class="button" onclick="jQuery('#custom-option-<?php echo $_option->getId() ?>-<?php echo $_selection->getSelectionId() ?>').toggle();"><span><span>Configure</span></span></button>
+                                    <?php else : ?>
+                                        No Options
+                                    <?php endif; ?>
+                                </div>
+                                <div style="width: 15%; float: left;">
+                                    <input type="text" id="bundle-option-<?php echo $_option->getId() ?>-<?php echo $_selection->getSelectionId() ?>-qty-input" data-option="<?php echo $_option->getId() ?>" data-selection="<?php echo $_selection->getSelectionId() ?>" onkeyup="bundle.changeOptionQty(this, event)" onblur="bundle.changeOptionQty(this, event)" class="input-text bundle-selection-qty qty<?php echo $_canChangeQty?'':' qty-disabled' ?>" <?php echo $_canChangeQty?'' : 'disabled="disabled"'?> name="bundle_option_qty[<?php echo $_option->getId() ?>][<?php echo $_selection->getSelectionId() ?>]" value="0" />
+                                </div>
+
+                                <div style="width: 20%; float: left;">
+                                    <b>&euro;</b> <?php echo $this->getProduct()->getPriceModel()->getSelectionPreFinalPrice($this->getProduct(), $_selection, 1) ?></b>
+                                </div>
+
+                            </div>
+                            <?php if (Mage::helper('configurablebundle/bundle')->hasProductOptions($_selection)) : ?>
+                                <div class="bundle-custom-options simple-options" id="custom-option-<?php echo $_option->getId() ?>-<?php echo $_selection->getSelectionId() ?>">
+                                    <?php echo Mage::helper('configurablebundle/bundle')->getProductOptions($_selection) ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php elseif ($_option->getType() == 'multi') : ?>
+                    <select onchange="bundle.changeSelection(this);" id="bundle-option-<?php echo $_option->getId() ?>-multi" multiple name="bundle_option[<?php echo $_option->getId() ?>]" class="bundle-option-<?php echo $_option->getId() ?><?php if ($_option->getRequired()) echo ' required-entry' ?> bundle-option-input bundle-option-multi change-container-classname">
+                        <?php if ($_option->getRequired() == false) : ?>
+                            <option value=""><?php echo $this->__('Choose a selection...') ?></option>
+                        <?php endif; ?>
+                        <?php foreach ($_option->getSelections() as $_selection): ?>
+                            <?php if($_selection->getTypeId() == 'simple') : ?>
+                                <option value="<?php echo $_selection->getSelectionId() ?>"<?php if ($this->_isSelected($_selection)) echo ' selected="selected"' ?><?php if (!$_selection->isSaleable()) echo ' disabled="disabled"' ?>><?php echo $this->getSelectionTitlePrice($_selection, false) ?></option>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </select>
+                <?php endif; ?>
+            <?php endif; ?>
+
+            <span id="bundle-option-<?php echo $_option->getId() ?>-tier-prices"> </span>
+        </div>
+
+        <?php if (in_array($_option->getType(), array('multi','checkbox')) == false) : ?>
+            <div class="bundle-description">
+                <div class="bundle-option-image">
+                    <?php echo '<img src="'.$this->helper('catalog/image')->init($firstProduct, 'image')->resize(100).'" id="bundle-option-image-' . $_option->getId() .'" alt="" />'; ?>
+                </div>
+
+                <div id="bundle-option-description-<?php echo $_option->getId() ?>"><?php echo $firstProduct->getShortDescription(); ?></div>
+
+                <?php if (in_array($_option->getType(), array('multi','checkbox')) == false) : ?>
+                    <div id="bundle-option-stock-<?php echo $_option->getId() ?>">
+                        <?php if ($firstProduct->getTypeId() == 'downloadable') : ?>
+                            <p class="availability in-stock"><?php echo $this->__('Type:') ?> <span><?php echo $this->__('Downloadable Product') ?></span></p>
+                        <?php else : ?>
+                            <?php if ($firstProduct->isAvailable()): ?>
+                                <p class="availability in-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('In stock') ?></span></p>
+                            <?php else: ?>
+                                <p class="availability out-of-stock"><?php echo $this->__('Availability:') ?> <span><?php echo $this->__('Out of stock') ?></span></p>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    </div>
+                    <div class="error-msg out-of-stock-warning hidden" id="oos-warning-<?php echo $_option->getId() ?>">
+                        This item is not in stock, you cannot put the bundle in the cart with this item.
+                    </div>
+                <?php endif; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if ($firstProduct->getTypeId() == 'downloadable') : ?>
+            <div class="bundle-downloadable">
+                After purchasing the extension, you will can download it from My Downloadable Products in your customer account section<br /><br />
+                Purchasing additional services means you need to provide us with your FTP/SSH details so that we can provide the service.
+            </div>
+        <?php endif; ?>
+
+        <div class="bundle-options" id="bundle-options-<?php echo $_option->getId() ?>">
+        </div>
+
+        <div class="bundle-custom-options" id="custom-option-<?php echo $_option->getId() ?>">
+            <?php echo Mage::helper('configurablebundle/bundle')->getProductOptions($firstProduct) ?>
+        </div>
+    </div>
+</section>

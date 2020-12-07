@@ -1,0 +1,124 @@
+<?php
+$_shippingRateGroups = $this->getShippingRates();
+$isCountryFR = $this->getQuote()->getShippingAddress()->getCountry() == 'FR';
+if ($_shippingRateGroups) {
+    $methodsType = array('domicile' => array(), 'relais' => array());
+    foreach ($_shippingRateGroups as $code => $_rates) {
+        foreach ($_rates as $_rate) {
+            switch ($_rate->getCarrier()) {
+                case 'owebiashipping1':
+                    $className = 'domicile chrono';
+                    $img = 'chronopost';
+                    if (stristr($_rate->getMethodTitle(), 'ups')) {
+                        $img = 'ups';
+                    }
+                    if (stristr($_rate->getMethodTitle(), 'fedex')) {
+                        $img = 'fedex';
+                    }
+                    if (stristr($_rate->getMethodTitle(), 'DHL')) {
+                        $img = 'dhl';
+                    }
+                    break;
+                case 'socolissimo':
+                    $className = 'relais';
+                    $img = 'soColissimo';
+                    break;
+                case 'dpdfrrelais':
+                    $className = 'relais dpd';
+                    $img = 'relaisPickUp';
+                    break;
+                case 'dpdfrpredict':
+                    $className = 'domicile dpd';
+                    $img = 'dpd';
+                    break;
+                case 'dhlint':
+                    $className = 'domicile dhl';
+                    $img = 'dhl';
+                    break;
+                default:
+                    $className = 'domicile';
+                    $img = 'pointRelais';
+                    break;
+            }
+            if (strpos($_rate->getCode(), 'cityssimo') !== false || strpos($_rate->getCode(), 'commercant') !== false) {
+                $img = 'relaisPickUp';
+            }
+            if (strpos($_rate->getCode(), 'poste') !== false) {
+                $img = 'relaisPoste';
+            }
+            $class = $className != '' ? ' class="' . $className . '"' : '';
+            if (strpos($className, 'domicile') !== false || strpos($_rate->getCode(), 'domicile') !== false) {
+                $methodsType['domicile'][] = array('rate' => $_rate, 'classname' => $className, 'img' => $img);
+            } else {
+                $methodsType['relais'][] = array('rate' => $_rate, 'classname' => $className, 'img' => $img);
+            }
+        }
+    }
+}
+?>
+<div class="js-list__radio">
+    <div class="row">
+        <div class="columns text-center">
+            <div class="c-title--sub"><?php echo $this->__('Select Shipping Method'); ?></div>
+        </div>
+    </div>
+    <div class="row">
+        <?php if (!$_shippingRateGroups): ?>
+            <p><?php echo $this->__('Oops! This site does not correspond to your country of delivery.') ?></p>
+            <button type="button" class="button switch_link_button" onclick="jQuery('.dbm_country_switcher.overlay').fadeIn();jQuery('.dbm_country_switcher.popup').fadeIn();"><span><span><?php echo $this->__('Choose my country of delivery.') ?></span></span></button>
+        <?php else: ?>
+            <dl class="sp-methods">
+                <?php foreach ($methodsType as $type => $_rates): ?>
+                    <?php if (count($_rates) > 0): ?>
+                        <div class="columns large-6">
+                            <h3><?php echo ($type == 'domicile') ? $this->__('À votre domicile') : $this->__('Dans un point relais'); ?></h3>
+                            <div class="c-box__input">
+                                <ul class="c-list__radio--<?php echo count($_rates); ?>">
+                                    <?php foreach ($_rates as $dataRate): ?>
+                                        <?php $_rate = $dataRate['rate']; ?>
+                                        <li>
+                                            <?php if ($_rate->getErrorMessage()): ?>
+                                                <ul class="messages"><li class="error-msg"><ul><li><?php echo $_rate->getErrorMessage() ?></li></ul></li></ul>
+                                            <?php else: ?>
+                                                <?php
+                                                $isDhl = (($_rate->getCarrier() === "owebiashipping1" && stristr($_rate->getMethodTitle(), 'DHL') || $_rate->getCarrier() === 'dhlint') !== false);
+                                                $methodTitle = $isDhl ? $this->__('At your home with DHL, against signature.') : Mage::helper('dbm_utils')->__($_rate->getMethodTitle());
+                                                $methodDescription = $isDhl ? $this->__("<strong>Delivery at the address of your choice.</strong>Against signature.") : $_rate->getMethodDescription();
+                                                ?>
+                                                <div class="c-input__radio--inline">
+                                                    <input name="shipping_method" type="radio" value="<?php echo $_rate->getCode() ?>" id="s_method_<?php echo $_rate->getCode() ?>"<?php if ($_rate->getCode() === $this->getAddressShippingMethod()) echo ' checked="checked"' ?> class="radio
+                                                    <?php
+                                                    if (($_rate->getCarrier() == 'dpdfrrelais') && $isCountryFR) {
+                                                        echo ' shipping_modal_dpdfrrelais';
+                                                    } elseif (($_rate->getCarrier() == 'dpdfrpredict') && $isCountryFR) {
+                                                        echo ' shipping_modal_dpdfrpredict';
+                                                    }
+                                                    ?>" />
+                                                    <label for="s_method_<?php echo $_rate->getCode() ?>" data-gtm='<?php echo $this->helper('dbm_tagmanager')->getCheckoutClickData($_rate->getMethodTitle(), 4); ?>'>
+                                                        <div class="c-icon"><img src="<?php echo $this->getSkinUrl('proto/app/assets/media/images/icon__checkout/c-icon__' . $dataRate['img'] . '.svg'); ?>" alt=""></div>
+                                                        <div class="c-title js-itemEqualizer" style="height: 63px;"><?php echo $methodTitle ?></div>
+                                                        <div class="c-price">
+                                                            <?php
+                                                            $_excl = $this->getShippingPrice($_rate->getPrice(), $this->helper('tax')->displayShippingPriceIncludingTax());
+                                                            $_incl = $this->getShippingPrice($_rate->getPrice(), true);
+                                                            echo ($this->helper('monbento_site')->quoteWithFreeShipping(Mage::getModel('checkout/cart')->getQuote())) ? $this->__('OFFERT') : $_excl;
+                                                            if ($this->helper('tax')->displayShippingBothPrices() && $_incl != $_excl):
+                                                            ?>
+                                                                (<?php echo $this->__('Incl. Tax'); ?> <?php echo $_incl; ?>)
+                                                            <?php endif; ?>
+                                                        </div>
+                                                    </label>
+                                                    <div class="c-description"><?php echo $methodDescription ?></div>
+                                                </div>
+                                            <?php endif; ?>
+                                        </li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </dl>
+        <?php endif; ?>
+    </div>
+</div>

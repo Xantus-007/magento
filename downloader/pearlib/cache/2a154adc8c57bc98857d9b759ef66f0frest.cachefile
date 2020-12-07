@@ -1,0 +1,38 @@
+a:14:{s:7:"attribs";a:2:{s:5:"xmlns";s:36:"http://pear.php.net/dtd/rest.release";s:18:"xsi:schemaLocation";s:81:"http://pear.php.net/dtd/rest.release     http://pear.php.net/dtd/rest.release.xsd";}s:1:"p";a:2:{s:7:"attribs";a:1:{s:10:"xlink:href";s:58:"/Chiara_PEAR_Server_REST/p/netzarbeiter_customeractivation";}s:8:"_content";s:31:"Netzarbeiter_CustomerActivation";}s:1:"c";s:37:"connect.magentocommerce.com/community";s:1:"v";s:5:"0.4.1";s:2:"st";s:6:"stable";s:1:"l";s:8:"OSL v3.0";s:1:"m";s:12:"magentoadmin";s:1:"s";s:141:"This small extension makes it impossible for a customer to log in to magento until the account has been activated in the adminhtml interface.";s:1:"d";s:854:"This small extension makes it impossible for a customer to log in to magento,
+until the account has been activated in the adminhtml interface.
+
+Customers > Manage Customers > (select customer) > Account Information > Is activated
+
+You can disable the Extension on a global or website level using the options found under
+System > Configuration > Customer > Customer Activation
+
+You can also select email notifications for the admin (when a new customer registers) and
+for the customer (wehn her account has been activated).
+
+The Extension was designed to be used together with the Netzarbeiter_LoginCatalog extension
+Netzarbeiter_LoginCatalog only shows products to customers that are logged in.
+There also is the Extension Netzarbeiter_GroupsCatalog which may suit your needs better,
+you have to evaluate yourself what is the best solution for your case.";s:2:"da";s:19:"2012-12-04 21:34:47";s:1:"n";s:1138:"This small extension makes it impossible for a customer to log in to magento,
+until the account has been activated in the adminhtml interface.
+
+Customers > Manage Customers > (select customer) > Account Information > Is activated
+
+The Extension was designed to be used together with the Netzarbeiter_LoginCatalog extension
+Netzarbeiter_LoginCatalog only shows products to customers that are logged in.
+There also is the Extension Netzarbeiter_GroupsCatalog which may suit your needs better,
+you have to evaluate yourself what is the best solution for your case.
+
+You can disable the Extension on a global or website level using the options found under
+System > Configuration > Customer > Customer Activation
+
+You can also select email notifications for the admin (when a new customer registers) and
+for the customer (wehn her account has been activated).
+
+With the latest release this module now also works when customer email confirmation is turned
+off.
+
+KNOWN BUGS:
+- None! :D
+
+If you have ideas for improvements or find bugs, please send them to vinai@netzarbeiter.com,
+with Netzarbeiter_CustomerActivation as part of the subject line.";s:1:"f";s:5:"16248";s:1:"g";s:86:"http://connect.magentocommerce.com/community/get/Netzarbeiter_CustomerActivation-0.4.1";s:1:"x";a:1:{s:7:"attribs";a:1:{s:10:"xlink:href";s:17:"package.0.4.1.xml";}}}

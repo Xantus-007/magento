@@ -1,0 +1,84 @@
+<?php
+$element = $this->getElement();
+$customer = $element->getCustomer();
+$helper = Mage::helper('dbm_share');
+$sizes = Mage::helper('dbm_share/image')->getSizes();
+$options = Mage::helper('dbm_share/image')->getOptionsForDetail();
+
+$cHelper = Mage::helper('dbm_customer');
+$cSizes = Mage::helper('dbm_customer/image')->getSizes();
+$cOptions = Mage::helper('dbm_customer/image')->getOptionsForProfile();
+
+$defaultImageUrl = $helper->getDefaultReceipeImageUrl($sizes['detail_receipe'], $options);
+$photos = $element->getPhotos();
+
+if(!count($photos))
+{
+    $photoUrl = $defaultImageUrl;
+}
+else
+{
+    $photoUrl = $this->getImageUrl($element, $sizes['detail_receipe'], $options);
+}
+
+?>
+<?php if($element->getId()): ?>
+<div class="clubReceipe <?php if($this->getDisplayBest()): ?>bestElement<?php endif; ?>">
+    <div class="clubBack"><a href="javascript:history.go(-1)"><img src="<?php echo $this->getSkinUrl('images/club/element/detail-back.png') ?>" /></a></div>
+    <?php if($this->getDisplayBest()): ?><p class="bestTitle"><a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>"><?php echo $this->__('Best rated') ?></a></p><?php endif; ?>
+    <div class="image">
+        <a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>"><img src="<?php echo $photoUrl; ?>" /></a>
+        <div class="title">
+            <h1 class="titleLeft"><a href="<?php echo $this->getUrl('club/index/detail/id/'.$element->getId()); ?>"><?php echo $this->htmlEscape($element->getTitle()); ?></a></h1>
+            <p class="miniLike <?php echo Mage::helper('dbm_share')->getLoggedInClass(); ?> element_<?php echo $element->getId() ?>"><span><span class="count"><?php echo $element->getLikeCount() ?></span> <img src="<?php echo $element->getLikeImage($customer); ?>" /></span></p>
+        </div>
+    </div>
+    <div class="informations">
+        <div class="miniProfile">
+            <div class="nickname icon">
+                <a href="<?php echo $this->getUrl('club/index/profile', array('id' => $customer->getId())) ?>"><span>
+                <img src="<?php echo $cHelper->getCustomerImageUrl($customer, $cSizes['element_list'], $cOptions); ?>"  class="hide-for-small-only" alt="">
+                <img src="<?php echo $cHelper->getCustomerImageUrl($customer, array(92,92), $cOptions); ?>" class="show-for-small-only" alt="">
+                <img class="profileMask" src="<?php echo $this->getSkinUrl('images/club/profile/mask-list-white.png') ?>" />
+                <?php if($customer->getProfileStatus() == 3): ?>
+                    <img class="stamp" src="<?php echo $this->getSkinUrl('images/club/profile/vip-stamp-mini.png'); ?>" />
+                <?php endif; ?></span>
+                <span class="hide-for-small-only"><?php echo $this->escapeHtml($customer->getProfileNickname()); ?><span></a>
+                <br />
+                <span class="hide-for-small-only"><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                <div class="profil-details show-for-small-only">
+                    <?php echo $this->escapeHtml($customer->getProfileNickname()); ?>
+                    <span><?php echo $cHelper->getPrettyStatus($customer); ?></span>
+                </div>
+            </div>
+            <div class="date"><?php echo $helper->getPrettyDate($element->getCreatedAt()); ?></div>
+        </div>
+        <div class="attributes">
+            <div>
+                <div class="attribute">
+                    <?php if($element->getDuration()): ?>
+                    <p><img src="<?php echo $this->getSkinUrl('images/svg/clubento/timer.svg') ?>" /><?php echo $element->getDuration().' '.$helper->getPrettyTimeUnit($element->getDurationUnit()); ?></p>
+                    <?php endif; ?>
+                    <?php if($element->getCookingDuration()): ?>
+                    <p><img src="<?php echo $this->getSkinUrl('images/svg/clubento/microwave.svg'); ?>" alt=""><?php echo $element->getCookingDuration().' '.$helper->getPrettyTimeUnit($element->getCookingDurationUnit()); ?></p>
+                    <?php endif; ?>
+                </div>
+                <div class="attribute"><img src="<?php echo $element->getLevelImage(); ?>" /></div>
+                <div class="attribute last"><img src="<?php echo $element->getPriceImage(); ?>" /></div>    
+            </div>
+        </div>
+    </div>
+    <?php if(!$this->getDisplayBest()): ?>
+    <div class="receipeContents">
+        <div class="ingredients">
+            <p><?php echo $this->__('Ingredients');?><span><?php  echo $element->getIngredientsLegend(); ?></span></p>
+            <ul>
+                <?php echo $helper->ulLize($this->htmlEscape($element->getIngredientsContent())) ?>
+            </ul>
+        </div>
+        <div class="contents"><p><?php echo nl2br($this->htmlEscape($element->getDescription())); ?></p></div>
+    </div>
+    <?php /*TODO: COMMENTS */ ?>
+    <?php endif; ?>
+</div>
+<?php endif; ?>

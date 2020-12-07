@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Ecsso_FacileLogin
+ * @author      Ecsso Team <team@ecommercesoftwaresolutionsonline.com>
+ * @copyright   Copyright (c) 2010 - eCommerce Software Solutions Online Pty. Ltd. (http://www.ecommercesoftwaresolutionsonline.com) 
+ */
+-->
+<config>
+    <modules>
+        <Ecsso_FacileLogin>
+            <active>true</active>
+            <codePool>local</codePool>            
+        </Ecsso_FacileLogin>
+    </modules>
+</config>

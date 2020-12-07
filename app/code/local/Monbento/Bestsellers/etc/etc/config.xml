@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Bestsellers>
+            <version>0.1.0</version>
+        </Monbento_Bestsellers>
+    </modules>
+    <global>
+        <blocks>
+             <bestsellers>
+                <class>Monbento_Bestsellers_Block</class>
+             </bestsellers>
+        </blocks>
+    </global>
+</config>

@@ -1,0 +1,15 @@
+//- layout
+extends _components-layout
+
+//- settings
+append vars
+    - var pageTitle = 'Monbento : home'
+    - var pageClass = 'cms-index-index'
+
+append body
+    include blocks/_home--slider
+    include blocks/_launcher--three
+    include blocks/_carousel--product
+    include blocks/_testimonial
+    include blocks/_news
+    include blocks/_socialWall

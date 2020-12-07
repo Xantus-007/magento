@@ -1,0 +1,41 @@
+// ========================================= //
+// Font style
+// ========================================= //
+
+.custom_box, .your_game, .simple_things {
+    .container {
+        .title {
+            font-family: $dirty_headline;
+            font-size: 36px;        
+            margin-bottom: 18px;
+            color: $grey_strg;
+            text-align: center;
+
+            @include bp-lt($large){
+                padding: 0 20px;
+                font-size: 30px;
+            }
+        }
+
+        .title_sub {
+            font-weight: 700;
+            color: $grey_strg;
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 45px;
+        }
+    }
+}
+
+.clr_pink { color: $pink_text; }
+.clr_lightpink { color: $lightpink_text; }
+.clr_green { color: $green_slider; }
+.clr_yellow { color: $yellow_slider; }
+.clr_orange { color: $orange_text; }
+
+.modal_content p {
+    padding: 0;
+    margin: 0 0 20px 0;
+    font-size: 16px;
+    color: $grey_strg;
+}

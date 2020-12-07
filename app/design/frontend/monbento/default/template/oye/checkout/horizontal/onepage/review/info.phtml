@@ -1,0 +1,55 @@
+<?php echo $this->getChildHtml('checkout.progress.wrapper') ?>
+<?php //echo $this->getChildHtml('items_before'); ?>
+<?php $rowspan = 1; $colspan = 1; ?>
+<div class="c-table__shoppingCart">
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th rowspan="<?php echo $rowspan ?>" colspan="2"><?php echo $this->__('Products') ?></th>
+                <th colspan="<?php echo $colspan ?>" class="medium-hide text-center"><?php echo $this->__('Unit Price') ?></th>
+                <th rowspan="<?php echo $rowspan ?>" class="text-center"><?php echo $this->__('Quantity') ?></th>
+                <th colspan="<?php echo $colspan ?>" class="text-center"><?php echo $this->__('Subtotal') ?></th>
+            </tr>
+        </thead>
+        <tbody>
+        <?php foreach($this->getItems() as $_item): ?>
+            <?php echo $this->getItemHtml($_item)?>
+        <?php endforeach ?>
+        </tbody>
+    </table>
+    <div class="columns medium-6">
+        <a href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>" class="c-linkCst--arrowLeft--subBranding"><?php echo $this->helper('paypal')->__('Edit Shopping Cart'); ?></a>
+    </div>
+</div>
+<?php echo $this->getChildHtml('items_after'); ?>
+<script type="text/javascript">
+//<![CDATA[
+    decorateTable('checkout-review-table');
+    truncateOptions();
+//]]>
+</script>
+<div class="row sidebar">
+    <div class="">
+        <div class="c-price__shoppingCart">
+            <div class="c-price__shoppingCart--inner" id="checkout-review-submit">
+                <?php echo $this->getChildHtml('totals'); ?>
+                <div class="c-cgv">
+                    <div class="c-checkbox">
+                        <?php echo $this->getChildHtml('agreements') ?>
+                    </div>
+                </div>
+                <div id="review-buttons-container">
+                    <?php echo $this->getChildHtml('button') ?>
+                    <span class="please-wait" id="review-please-wait" style="display:none;">
+                        <img src="<?php echo $this->getSkinUrl('images/opc-ajax-loader.gif') ?>" alt="<?php echo $this->__('Submitting order information...') ?>" title="<?php echo $this->__('Submitting order information...') ?>" class="v-middle" /> <?php echo $this->__('Submitting order information...') ?>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    //<![CDATA[
+    review = new Review('<?php echo $this->getUrl('checkout/onepage/saveOrder', array('form_key' => Mage::getSingleton('core/session')->getFormKey())) ?>', '<?php echo $this->getUrl('checkout/onepage/success') ?>', $('checkout-agreements'));
+    //]]>
+</script>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config>
+  <modules>
+    <Monbento_Recrutement>
+      <version>1.0</version>
+    </Monbento_Recrutement>
+  </modules>
+  <frontend>
+    <routers>
+      <recrutement>
+        <use>standard</use>
+        <args>
+          <module>Monbento_Recrutement</module>
+          <frontName>recrutement</frontName>
+        </args>
+      </recrutement>
+    </routers>
+  </frontend>
+</config>

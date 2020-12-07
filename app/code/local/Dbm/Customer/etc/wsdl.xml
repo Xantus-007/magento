@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            <!--
+            <complexType name="dbmCustomerLoginEntity">
+                <all>
+                    <element name="customer_login" type="xsd:string"></element>
+                    <element name="customer_password" type="xsd:string"></element>
+                </all>
+            </complexType>
+            -->
+            <!-- Customer -->
+            <complexType name="dbmCustomerEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCustomerEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCustomerEntity">
+                <all>
+                    <element name="id" type="xsd:int" />
+                    <element name="popup" type="xsd:string" />
+                    <element name="nickname" type="xsd:string" />
+                    <element name="photo" type="xsd:string" />
+                    <element name="status" type="xsd:int" />
+                    <element name="url" type="xsd:string" />
+                    <element name="photo_count" type="xsd:int" />
+                    <element name="receipe_count" type="xsd:int" />
+                    <element name="follower_count" type="xsd:int" />
+                    <element name="like_count" type="xsd:int" />
+                    <element name="notifications" type="xsd:int" minOccurs="0"/>
+                </all>
+            </complexType>
+    
+            <complexType name="dbmCustomerCartEntity">
+                <all>
+                    <element name="items" type="typens:dbmCustomerCartItemEntityArray" />
+                    <element name="coupon_code" type="xsd:string" />
+                    <element name="total" type="xsd:string" />
+                    <element name="total_promo" type="xsd:string" />
+                    <element name="club_rule" type="xsd:string" />
+                    <element name="messages" type="typens:ArrayOfString" minOccurs="0" />
+                </all>
+            </complexType>
+
+            <complexType name="dbmCustomerCartItemEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCustomerCartItemEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCustomerCartItemEntity">
+                <all>
+                    <element name="product" type="typens:dbmCatalogProductEntity" />
+                    <element name="item_id" type="xsd:int" />
+                    <element name="qty" type="xsd:int" />
+                </all>
+            </complexType>
+
+            <complexType name="dbmCustomerCartParams">
+                <all>
+                    <element name="options" type="typens:associativeArray" />
+                    <element name="qtys" type="typens:associativeArray" />
+                    <element name="super_attribute" type="typens:associativeArray" />
+                </all>
+            </complexType>
+            
+            <complexType name="dbmCustomerNotificationEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmCustomerNotificationEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmCustomerNotificationEntity">
+                <all>
+                    <element name="date" type="xsd:string" />
+                    <element name="label" type="xsd:string" />
+                    <element name="url" type="xsd:string" />
+                    <element name="link_element" type="typens:dbmShareElementEntity" minOccurs="0" />
+                    <element name="link_customer" type="typens:dbmCustomerEntity" minOccurs="0" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+    <message name="dbmCustomerLoginRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="login" type="xsd:string" />
+        <part name="password" type="xsd:string" />
+    </message>
+    <message name="dbmCustomerLoginResponse">
+        <part name="result" type="typens:dbmCustomerEntity" />
+    </message>
+    
+    <message name="dbmCustomerFacebookLoginRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="fbId" type="xsd:string" />
+        <part name="accessToken" type="xsd:string" />
+    </message>
+    <message name="dbmCustomerFacebookLoginResponse">
+        <part name="result" type="typens:dbmCustomerEntity" />
+    </message>
+    
+    <message name="dbmCustomerLogoutRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+    </message>
+    <message name="dbmCustomerLogoutResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <message name="dbmCustomerFollowRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idCustomer" type="xsd:int" />
+    </message>
+    <message name="dbmCustomerFollowResponse">
+        <part name="result" type="xsd:boolean" />
+    </message>
+    
+    <message name="dbmCustomerGetFollowersRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idCustomer" type="xsd:int" />
+    </message>
+    <message name="dbmCustomerGetFollowersResponse">
+        <part name="result" type="typens:dbmCustomerEntityArray" />
+    </message>
+    
+    <message name="dbmCustomerGetFollowingRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="idCustomer" type="xsd:int" />
+    </message>
+    <message name="dbmCustomerGetFollowingResponse">
+        <part name="result" type="typens:dbmCustomerEntityArray" />
+    </message>
+    
+    <!-- Add product to cart -->
+    <message name="dbmCustomerAddToCartRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="idProduct" type="xsd:int" />
+        <part name="qty" type="xsd:int" />
+        <part name="params" type="typens:dbmCustomerCartParams" />
+        <part name="replace" type="xsd:boolean" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerAddToCartResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+    
+    <!-- Remove product (all qty) from cart -->
+    <message name="dbmCustomerRemoveFromCartRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="itemId" type="xsd:int" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerRemoveFromCartResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+    
+    <!-- Get cart items -->
+    <message name="dbmCustomerGetCartItemsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerGetCartItemsResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+    
+    <!-- Remove all items -->
+    <message  name="dbmCustomerEmptyCartRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerEmptyCartResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+
+    <!-- Search customer by nickname -->
+    <message name="dbmCustomerSearchRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="search" type="xsd:string" />
+        <part name="page" type="xsd:int" />
+    </message> 
+    <message name="dbmCustomerSearchResponse">
+        <part name="result" type="typens:dbmCustomerEntityArray" />
+    </message>
+
+    <!-- Apply coupon -->
+    <message name="dbmCustomerApplyCouponRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="couponCode" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerApplyCouponResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+
+    <message name="dbmCustomerGetSocialFriendsRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="plateform" type="xsd:string" />
+        <part name="friendsIds" type="typens:ArrayOfInt" />
+    </message>
+    <message name="dbmCustomerGetSocialFriendsResponse">
+        <part name="result" type="typens:dbmCustomerEntityArray" />
+    </message>
+
+    <message name="dbmCustomerGetSponsorPointsRequest">
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="dbmCustomerGetSponsorPointsResponse">
+        <part name="result" type="xsd:int" />
+    </message>
+    
+    <!-- Set qty -->
+    <message name="dbmCustomerSetItemQtyRequest">
+        <part name="sessionId" type="xsd:string" />
+        <part name="storeView" type="xsd:int" />
+        <part name="item_id" type="xsd:int" />
+        <part name="qty" type="xsd:int" />
+        <part name="replace" type="xsd:boolean" />
+        <part name="displayCurrency" type="xsd:boolean" />
+    </message>
+    <message name="dbmCustomerSetItemQtyResponse">
+        <part name="result" type="typens:dbmCustomerCartEntity" />
+    </message>
+    
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmCustomerLogin">
+            <documentation>Customer Login</documentation>
+            <input message="typens:dbmCustomerLoginRequest" />
+            <output message="typens:dbmCustomerLoginResponse" />
+        </operation>
+        <operation name="dbmCustomerFacebookLogin">
+            <documentation>Customer Login</documentation>
+            <input message="typens:dbmCustomerFacebookLoginRequest" />
+            <output message="typens:dbmCustomerFacebookLoginResponse" />
+        </operation>
+        <operation name="dbmCustomerLogout">
+            <documentation>Customer logout</documentation>
+            <input message="typens:dbmCustomerLogoutRequest" />
+            <output message="typens:dbmCustomerLogoutResponse" />
+        </operation>
+        <operation name="dbmCustomerFollow">
+            <documentation>Customer follow</documentation>
+            <input message="typens:dbmCustomerFollowRequest" />
+            <output message="typens:dbmCustomerFollowResponse" />
+        </operation>
+        <operation name="dbmCustomerUnfollow">
+            <documentation>Customer unfollow</documentation>
+            <input message="typens:dbmCustomerFollowRequest" />
+            <output message="typens:dbmCustomerFollowResponse" />
+        </operation>
+        <operation name="dbmCustomerGetFollowers">
+            <documentation>Get followers for current customer</documentation>
+            <input message="typens:dbmCustomerGetFollowersRequest" />
+            <output message="typens:dbmCustomerGetFollowersResponse" />
+        </operation>
+        <operation name="dbmCustomerGetFollowing">
+            <documentation>Get followers for current customer</documentation>
+            <input message="typens:dbmCustomerGetFollowingRequest" />
+            <output message="typens:dbmCustomerGetFollowingResponse" />
+        </operation>
+        <operation name="dbmCustomerAddToCart">
+            <documentation>Add product to cart</documentation>
+            <input message="typens:dbmCustomerAddToCartRequest" />
+            <output message="typens:dbmCustomerAddToCartResponse" />
+        </operation>
+        <operation name="dbmCustomerRemoveFromCart">
+            <documentation>Remove product from cart</documentation>
+            <input message="typens:dbmCustomerRemoveFromCartRequest" />
+            <output message="typens:dbmCustomerRemoveFromCartResponse" />
+        </operation>
+        <operation name="dbmCustomerGetCartItems">
+            <documentation>Get cart items</documentation>
+            <input message="typens:dbmCustomerGetCartItemsRequest" />
+            <output message="typens:dbmCustomerGetCartItemsResponse" />
+        </operation>
+        <operation name="dbmCustomerEmptyCart">
+            <documentation>Search customer by nickname</documentation>
+            <input message="typens:dbmCustomerEmptyCartRequest" />
+            <output message="typens:dbmCustomerEmptyCartResponse" />
+        </operation>
+        <operation name="dbmCustomerSearch">
+            <documentation>Search customer by nickname</documentation>
+            <input message="typens:dbmCustomerSearchRequest" />
+            <output message="typens:dbmCustomerSearchResponse" />
+        </operation>
+        <operation name="dbmCustomerApplyCoupon">
+            <documentation>Search customer by nickname</documentation>
+            <input message="typens:dbmCustomerApplyCouponRequest" />
+            <output message="typens:dbmCustomerApplyCouponResponse" />
+        </operation>
+        <operation name="dbmCustomerGetSocialFriends">
+            <documentation>Search customer by nickname</documentation>
+            <input message="typens:dbmCustomerGetSocialFriendsRequest" />
+            <output message="typens:dbmCustomerGetSocialFriendsResponse" />
+        </operation>
+        <operation name="dbmCustomerGetSponsorPoints">
+            <documentation>Get sponsor points</documentation>
+            <input message="typens:dbmCustomerGetSponsorPointsRequest" />
+            <output message="typens:dbmCustomerGetSponsorPointsResponse" />
+        </operation>
+        <operation name="dbmCustomerSetItemQty">
+            <documentation>Get sponsor points</documentation>
+            <input message="typens:dbmCustomerSetItemQtyRequest" />
+            <output message="typens:dbmCustomerSetItemQtyResponse" />
+        </operation>
+    </portType>
+    
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmCustomerLogin">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerFacebookLogin">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerLogout">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerFollow">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerUnfollow">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerGetFollowers">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerGetFollowing">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerAddToCart">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerRemoveFromCart">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerGetCartItems">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerSearch">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerEmptyCart">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerApplyCoupon">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerGetSocialFriends">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerGetSponsorPoints">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmCustomerSetItemQty">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

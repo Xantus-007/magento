@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Cartpromo>
+            <version>0.0.1</version>
+        </Dbm_Cartpromo>
+    </modules>
+    <global>
+        <helpers>
+            <dbm_cartpromo>
+                <class>Dbm_Cartpromo_Helper</class>
+            </dbm_cartpromo>
+        </helpers>
+    </global>
+</config>

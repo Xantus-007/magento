@@ -1,0 +1,409 @@
+// ========================================= //
+// blocks.storeLocator
+// ========================================= //
+
+.c-storeLocator--gmap {
+    height: rem(760);
+    position: relative;
+
+    @include bp-lt($large) {
+        height: rem(500);
+    }
+
+    .c-storeLocator__list { left: rem(-370); transition: $ease; }
+    .c-storeLocator__toggle { left: 0; transition: $ease; }
+
+    &.is-asideOpen {
+        .c-storeLocator__list { left: 0; }
+        .c-storeLocator__toggle { left: rem(365); }
+
+        @include bp-lt($large) {
+            .c-storeLocator__toggle { left: rem(350); }
+        }
+
+        @include bp-lt($mobileL) {
+            .c-storeLocator__toggle { left: rem(280); }
+        }
+    }
+}
+
+.c-storeLocator__search {
+    position: absolute;
+    z-index: 50;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    max-width: rem(500);
+    width: 100%;
+    height: rem(190);
+    background: $white;
+    text-align: center;
+    border-radius: 0 rem(40) rem(40) 0;
+    box-shadow: rem(-20) 0 rem(30) rgba($black, .3);
+
+    @include bp-lt($large) {
+        max-width: rem(340);
+        height: rem(140);
+    }
+
+    @include bp-lt($small) {
+        max-width: 100%;
+        border-radius: 0;
+        margin: inherit;
+        top: inherit;
+        box-shadow: 0 rem(-10) rem(20) rgba($black, .2);
+    }
+}
+
+.c-storeLocator__search__title {
+    font-size: rem(21);
+    margin-bottom: rem(20);
+
+    @include bp-lt($large) {
+        font-size: rem(18);
+        margin-bottom: rem(10);
+    }
+}
+
+.c-storeLocator__search__form {
+    max-width: rem(360);
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    @include clearfix();
+
+    input[type='number'],
+    [class*='c-button'] {
+        width: 50%;
+        height: rem(60);
+        display: block;
+        min-width: inherit;
+        margin-bottom: 0;
+
+        @include bp-lt($large) {
+            height: rem(40);
+            font-size: rem(16);
+        }
+    }
+
+    input[type='number'] {
+        float: left;
+        border-radius: rem(20) 0 0 rem(20);
+    }
+
+    [class*='c-button'] {
+        float: right;
+        border-radius: 0 rem(20) rem(20) 0;
+    }
+}
+
+.c-storeLocator__list {
+    position: absolute;
+    z-index: 45;
+    max-width: rem(365);
+    width: 100%;
+    height: 100%;
+    background: $white;
+    box-shadow: rem(3) 0 rem(2) rgba($subBranding, 0.1);
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar { width: 0 !important }
+
+    @include bp-lt($large) {
+        max-width: rem(350);
+    }
+
+    @include bp-lt($mobileL) {
+        max-width: rem(280);
+    }
+}
+
+.c-storeLocator__toggle {
+    position: absolute;
+    z-index: 50;
+    width: rem(50);
+    height: rem(50);
+    top: 0;
+    cursor: pointer;
+    text-align: center;
+    font-size: rem(22);
+    color: $grey--10;
+    background: $grey--01;
+    box-shadow: rem(3) rem(3) rem(2) rgba($subBranding, 0.1);
+
+    @include bp-lt($mobileL) {
+        width: rem(40);
+    }
+
+    i {
+        position: relative;
+        top: rem(3);
+        pointer-events: none;
+        transition: $ease;
+
+        @include bp-lt($medium) {
+            top: rem(5);
+        }
+    }
+
+    [class*="o-table"] {
+        pointer-events: none;
+    }
+}
+
+.c-storeLocator__item__heading {
+    padding-top: rem(20);
+    padding-bottom: rem(25);
+    background: $grey--01;
+    color: $white;
+    border-bottom: rem(1) solid $grey--02;
+
+    @include bp-lt($large) {
+        padding-left: rem(15);
+        padding-right: rem(15);
+    }
+
+    .c-label {
+        font-size: rem(20);
+        line-height: rem(28);
+        font-family: $sofiaPro;
+        font-weight: 300;
+        margin-bottom: rem(15);
+        color: $subBranding;
+        text-align: left;
+        padding-left: rem(42);
+        padding-right: rem(42);
+
+        @include bp-lt($large) {
+            font-size: rem(15);
+            line-height: rem(24);
+            padding-left: rem(20);
+            padding-right: rem(20);
+        }
+
+        @include bp-lt($mobileL) {
+            padding-left: rem(3);
+            padding-right: rem(3);
+        }
+    }
+
+    .c-form {
+        width: rem(282);
+        margin-left: auto;
+        margin-right: auto;
+        @include clearfix();
+
+        @include bp-lt($mobileL) {
+            width: rem(250);
+        }
+
+        input[type='number'],
+        input[type='text'],
+        button[type='button'] {
+            height: rem(56);
+            margin-bottom: 0;
+            font-weight: 700;
+            font-size: rem(12);
+            letter-spacing: rem(1);
+            font-family: $sofiaPro;
+            color: $grey--03;
+            text-transform: uppercase;
+
+            @include placeholder-color($grey--03);
+        }
+
+        input[type='number'],
+        input[type='text'] {
+            width: rem(226);
+            float: left;
+            border: none;
+            border-right: rem(2) solid $grey--00;
+            padding: 0 rem(20);
+            box-shadow: none;
+
+            @include bp-lt($mobileL) {
+                width: rem(194);
+            }
+        }
+
+        button[type='button'] {
+            width: rem(56);
+            float: right;
+            background: $white;
+            border: none;
+            padding: 0;
+            font-size: rem(30);
+            color: $grey--10;
+
+            &:hover, &:focus {
+                color: $white;
+                background: $grey--10;
+            }
+
+            span {
+                position: relative;
+                top: rem(2);
+            }
+        }
+    }
+}
+
+.c-storeLocator__gmapHolder {
+    position: absolute;
+    z-index: 40;
+    height: 100%;
+    width: 100%;
+}
+
+.c-storeLocator__item {
+    padding: rem(20) rem(50);
+    border-bottom: $border;
+    transition: $ease;
+    @include clearfix();
+
+    @include bp-lt($large) {
+        padding: rem(20) rem(25);
+    }
+
+    &:hover, &.is-active {
+        background: $grey--00;
+        cursor: pointer;
+
+        .c-item--count {
+            background: url(#{$img}c-icon__count--active.png) no-repeat 50% 50%;
+            background-size: contain;
+
+            @include bp-lt($large) {
+                width: rem(20);
+            }
+        }
+    }
+
+    .c-item--thumb {
+        position: relative;
+        float: left;
+        width: 40%;
+
+        img {
+            display: block;
+            border: $border;
+        }
+    }
+
+    .c-item--count {
+        position: absolute;
+        left: rem(-18);
+        top: 0;
+        margin: auto;
+        display: block;
+        width: rem(23);
+        height: rem(29);
+        background: url(#{$img}c-icon__count.png) no-repeat 50% 50%;
+        background-size: contain;
+        transition: $ease;
+
+        @include bp-lt($large) {
+            left: rem(-12);
+            width: rem(20);
+        }
+    }
+
+    .c-item--name {
+        font-family: $sofiaPro;
+        font-weight: 700;
+        font-size: rem(18);
+        color: $subBranding;
+        display: block;
+    }
+
+    .c-item--content {
+        padding-left: rem(15);
+        position: relative;
+
+        p {
+            font-family: $merriWeather;
+            font-size: rem(14);
+            font-weight: 300;
+            color: $grey--03;
+            line-height: rem(28);
+            margin-bottom: rem(10);
+
+            & + a {
+                font-family: $sofiaPro;
+                font-weight: 300;
+                font-size: rem(14);
+                color: $subBranding;
+            }
+        }
+
+        a {
+            display: block;
+            color: $mainFont;
+
+            [class*='c-fonticon__icon'] {
+                position: relative;
+                top: rem(2);
+                margin-right: rem(5);
+            }
+
+            &[class*="c-link"] {
+                display: inline-block;
+            }
+        }
+    }
+
+    [class*="c-link"] {
+        margin-top: rem(10);
+
+        &, &:hover, &:focus {
+            &, &:before, &:after {
+                color: $mainFont;
+            }
+        }
+
+        &:before {
+            background-color: $mainFont;
+        }
+
+        @include bp-lt($large) {
+            font-size: rem(14);
+        }
+    }
+}
+
+[class*="c-map__label"] {
+    font-weight: 700;
+    font-size: rem(12);
+    color: $mainBranding;
+
+    &[class*="--hover"] {
+        color: $white;
+    }
+}
+
+.pac-container {
+
+    .pac-item {
+        font-family: $sofiaPro;
+        font-weight: 300;
+        color: $mainFont;
+        padding: rem(5);
+
+        &:hover {
+            background: $grey--00;
+
+            .pac-icon-marker {
+                background-image: url(#{$img}c-icon__count--active.png);
+            }
+        }
+    }
+
+    .pac-icon-marker {
+        width: rem(15);
+        height: rem(19);
+        background: url(#{$img}c-icon__count.png) no-repeat 50% 50%;
+        background-size: contain;
+    }
+}

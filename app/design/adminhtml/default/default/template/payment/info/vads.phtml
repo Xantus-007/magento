@@ -1,0 +1,12 @@
+<?php
+// Display something in the "payment method" block
+?>
+<p><b><?php echo $this->getMethod()->getTitle();?></b></p>
+<?php if($this->getInfo()->getData('cc_trans_id')) : ?>
+<?php echo $this->getInfo()->getData('cc_status_description') . ' (' . $this->getInfo()->getData('cc_status') . ')';?><br>
+<?php echo $this->__('Transaction ID') . ' : ' . $this->getInfo()->getData('cc_trans_id');?><br>
+<?php echo $this->__('Credit Card Number') . ' : ' . $this->getInfo()->getData('cc_number_enc');?><br>
+<?php echo $this->__('Expiration Date') . ' : ' . str_pad($this->getInfo()->getData('cc_exp_month'), 2, '0', STR_PAD_LEFT) . 
+	' / ' . $this->getInfo()->getData('cc_exp_year');?><br>
+<?php echo $this->__('Payment Mean') . ' : ' . $this->getInfo()->getData('cc_type');?>
+<?php endif;?>

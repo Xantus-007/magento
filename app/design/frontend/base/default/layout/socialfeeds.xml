@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+
+<layout version="0.1.0">
+    <cms_index_index>
+        <reference name="content">
+            <block type="socialfeeds/items" name="instagram" template="socialfeeds/instagram/items.phtml">
+                <action method="setData"><name>offset</name><value>0</value></action>
+                <action method="setData"><name>limit</name><value>16</value></action>
+                <action method="setData"><name>size</name><value>small</value></action>
+            </block>
+            <block type="socialfeeds/items" name="twitter" template="socialfeeds/twitter/items.phtml">
+                <action method="setData"><name>offset</name><value>0</value></action>
+                <action method="setData"><name>limit</name><value>16</value></action>
+                <action method="setData"><name>size</name><value>small</value></action>
+            </block>
+            <block type="socialfeeds/items" name="facebook" template="socialfeeds/facebook/items.phtml">
+                <action method="setData"><name>offset</name><value>0</value></action>
+                <action method="setData"><name>limit</name><value>16</value></action>
+                <action method="setData"><name>size</name><value>small</value></action>
+            </block>
+        </reference>
+    </cms_index_index>
+</layout>

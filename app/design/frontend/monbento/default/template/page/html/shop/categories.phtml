@@ -1,0 +1,58 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $categories = $this->getCatsCollection(); ?>
+<?php $shopItems = array(); ?>
+<?php $iteratorCats = 0; ?>
+<section class="o-section--bkgGrey--gridProduct c-grid">
+    <div class="js-grid__product">
+        <div class="c-grid__product">
+        <?php foreach($categories as $categoryElement): ?>
+            <?php $classWrapper = ($categoryElement['items']->getSize() == 3) ? 'has-3Items' : 'has-7Items'; ?>
+            <?php $classEven = ($iteratorCats % 2 == 0) ? 'is-odd' : 'is-even'; ?>
+            <?php $classArrow = ($iteratorCats % 2 == 0) ? 'c-item__content--mainBranding--arrowRight' : 'c-item__content--mainBranding--arrowLeft'; ?>
+            <div class="c-row__product <?php echo $classEven; ?> <?php echo $classWrapper; ?>">
+                <div class="row collapse">
+                    <div class="columns small-6 medium-4 large-3">
+                        <div class="js-itemEqualizer--holder <?php echo ($categoryElement['category']->getName() == 'Outlet') ? 'c-item__content--alt--arrowLeft' : $classArrow; ?>">
+                            <h2 class="c-title"><?php echo $categoryElement['category']->getName(); ?></h2>
+                            <div class="c-separator"></div>
+                            <div class="c-content"><?php echo $categoryElement['category']->getDescriptionShop(); ?></div>
+                            <a href="<?php echo $categoryElement['category']->getUrl(); ?>" class="c-linkCst--arrow--white"><?php echo $this->__('Voir tous les produits'); ?></a>
+                        </div>
+                    </div>
+                    <?php
+                        $this->getChild("shop_categories.items")->setCollection($categoryElement['items']);
+                        echo $this->getChildHtml('shop_categories.items', false);
+                    ?>
+                </div>
+            </div>
+            <?php foreach($categoryElement['items'] as $item): $shopItems[] = $item; endforeach; ?>
+        <?php $iteratorCats++; endforeach; ?>
+        </div>
+    </div>
+</section>
+<?php echo $this->getLayout()->createBlock('dbm_tagmanager/tag_productlist', 'dbm_gtm.shop_products', array('products' => $shopItems, 'block_name' => $this->__('Shop - Page d\'accueil')))->toHtml(); ?>

@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Monbento_Tag>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Monbento_Tag>
+    </modules>
+</config>

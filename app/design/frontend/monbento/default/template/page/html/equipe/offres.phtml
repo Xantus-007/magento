@@ -1,0 +1,61 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $offres = $this->getOffres(); ?>
+<?php if(count($offres) > 0): ?>
+<section class="o-section--bkgMainBranding--noPaddingTop--noPaddingBottom--noPaddingLeft--noPaddingRight">
+    <div class="row js-recruitment c-recruitment">
+        <div class="column medium-5 medium-push-7 js-recruitment__equalizer">
+            <div class="o-table">
+                <div class="o-table__cell--valignMiddle">
+                    <div class="c-list__jobs">
+                        <p><?php echo $this->__('En ce moment nous cherchons&nbsp;:'); ?></p>
+                        <ul>
+                            <?php $i = 0; foreach($offres as $offre): ?>
+                            <li><span><?php echo $offre->getTitle(); ?></span><a href="<?php echo Mage::getUrl($offre->getIdentifier()); ?>" class="c-linkCst--arrow--subBranding"><?php echo $this->__('Voir l\'annonce'); ?></a></li>
+                            <?php if($i == 2) break; ?>
+                            <?php $i++; endforeach; ?>
+                        </ul>
+                        <?php if(count($offres) > 3): ?>
+                        <a href="<?php echo Mage::getUrl('monbento-recrute'); ?>" class="c-button--transparentNoHover--arrowRightToRight"><?php echo $this->__('Voir toutes les offres'); ?></a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column medium-7 medium-pull-5 js-recruitment__equalizer">
+            <div class="c-team__wanted">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle">
+                        <p><?php echo $this->__('De nouveaux talents à embarquer dans notre aventure.'); ?></p>
+                        <a href="<?php echo Mage::getUrl('candidature-spontanee'); ?>" class="c-button--transparentNoHover--arrowRightToRight"><?php echo $this->__('Candidature libre'); ?></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>

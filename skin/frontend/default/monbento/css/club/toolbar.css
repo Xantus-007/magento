@@ -1,0 +1,44 @@
+.clubListToolbar {
+    display: block;
+    clear:both;
+    overflow: hidden;
+    margin-left:40px;
+}
+
+.clubListToolbar li, .clubListToolbar .paginator > * {
+    display: table-cell;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.paginator a {
+    color:#B0ABAB;
+}
+
+.paginator li.current {
+    color:#8A1467;
+}
+
+.paginator .last,
+.paginator .first {
+    width:50px;
+}
+
+.clubListToolbar .perPage {
+    margin:20px 0;
+    float:left;
+}
+
+.clubListToolbar .paginator {
+    float:right;
+}
+
+.clubListToolbar .paginator ul {
+    display:table;
+}
+
+.clubListToolbar .paginator li {
+    text-align: center;
+    vertical-align: middle;
+    padding:0 10px;
+}

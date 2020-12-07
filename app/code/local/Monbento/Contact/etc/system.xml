@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<config>
+    <sections>
+        <contacts>
+            <groups>
+                <monbentocontact translate="label" module="monbentocontact">
+                    <label>Contact Subjects</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>30</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <intro_message translate="label">
+                            <label>Introduction</label>
+                            <frontend_type>editor</frontend_type>
+                            <frontend_model>monbentocontact/adminhtml_system_config_editor</frontend_model>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </intro_message>
+                        <subjects translate="label">
+                            <label>Subjects</label>
+                            <frontend_model>monbentocontact/config_subjects</frontend_model>
+                            <backend_model>adminhtml/system_config_backend_serialized_array</backend_model>
+                            <sort_order>20</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </subjects>
+                    </fields>
+                </monbentocontact>
+            </groups>
+        </contacts>
+    </sections>
+</config>

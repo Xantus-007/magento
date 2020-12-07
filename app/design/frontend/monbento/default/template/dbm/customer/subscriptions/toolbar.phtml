@@ -1,0 +1,8 @@
+<div class="clubCustomerToolbar">
+    <?php echo $this->getChildHtml() ?>
+    <form class="clubSearch" action="" method="get">
+        <input type="hidden" name="page" value="<?php echo $this->escapeHtml($_GET['page']); ?>" />
+        <input name="q" type="text" value="<?php echo $this->escapeHtml($_GET['q']); ?>" class="clubInput customerSearch"  />
+        <input type="submit" class="clubSearchSubmit" />
+    </form>
+</div>

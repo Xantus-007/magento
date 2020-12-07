@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <customer_account>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/customer/edit.css</stylesheet></action>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="addLink"><name>customer-profile</name><path>club-customer/account/edit</path><label>Mon profil</label></action>
+        </reference>
+    </customer_account>
+
+    <dbm_customer_public_account_edit>
+        <reference name="root">
+            <block type="core/messages" name="global_messages" as="global_messages"/>
+            <action method="setTemplate"><template>page/club.phtml</template></action>
+        </reference>
+        
+        <reference name="left">
+            <remove name="cart_sidebar" />
+            <remove name="sale.reorder.sidebar" />
+        </reference>
+        
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+        
+        <reference name="content">
+            <block type="dbm_customer/profile_edit" name="dbm_customer.profile_edit" template="dbm/customer/profile/edit.phtml" />
+        </reference>
+    </dbm_customer_public_account_edit>
+    
+    <auguria_sponsorship_index_index>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+    </auguria_sponsorship_index_index>
+    
+    <auguria_sponsorship_points_fidelity>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+    </auguria_sponsorship_points_fidelity>
+    
+    <auguria_sponsorship_points_accumulated>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+    </auguria_sponsorship_points_accumulated>
+    
+    <auguria_sponsorship_points_change>
+        <reference name="head">
+            <action method="addCss"><stylesheet>css/club/global.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/fonts.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/menu.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/sidebar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/profile.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/list.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/toolbar.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/detail.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/comments.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/form.css</stylesheet></action>
+            <action method="addCss"><stylesheet>css/club/news.css</stylesheet></action>
+        </reference>
+        
+        <reference name="header">
+            <block type="dbm_share/menu_top" name="dbm_share.topmenu" template="dbm/share/menu/top.phtml" />
+        </reference>
+    </auguria_sponsorship_points_change>
+</layout>

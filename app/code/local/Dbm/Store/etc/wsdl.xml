@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:typens="urn:{{var wsdl.name}}" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns="http://schemas.xmlsoap.org/wsdl/"
+    name="{{var wsdl.name}}" targetNamespace="urn:{{var wsdl.name}}">
+    <types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="urn:Magento">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/" />
+            
+            <!-- Element array definition -->
+            <complexType name="dbmStoreEntityArray">
+                <complexContent>
+                    <restriction base="soapenc:Array">
+                        <attribute ref="soapenc:arrayType" wsdl:arrayType="typens:dbmStoreEntity[]" />
+                    </restriction>
+                </complexContent>
+            </complexType>
+            <complexType name="dbmStoreEntity">
+                <all>
+                    <element name="id" type="xsd:string" />
+                    <element name="title" type="xsd:string" />
+                    <element name="address" type="xsd:string" />
+                    <element name="lat" type="xsd:string" />
+                    <element name="lng" type="xsd:string" />
+                    <element name="phone" type="xsd:string" />
+                </all>
+            </complexType>
+        </schema>
+    </types>
+    
+    <!-- Stores -->
+    <message name="dbmStoreGetStoresRequest" >
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="dbmStoreGetStoresResponse">
+        <part name="result" type="typens:dbmStoreEntityArray" />
+    </message>
+
+    <!-- Spots -->
+    <message name="dbmStoreGetSpotsRequest" >
+        <part name="sessionId" type="xsd:string" />
+    </message>
+    <message name="dbmStoreGetSpotsResponse">
+        <part name="result" type="typens:dbmStoreEntityArray" />
+    </message>
+
+    <portType name="{{var wsdl.handler}}PortType">
+        <operation name="dbmStoreGetStores">
+            <documentation>Get stores</documentation>
+            <input message="typens:dbmStoreGetStoresRequest" />
+            <output message="typens:dbmStoreGetStoresResponse" />
+        </operation>
+        <operation name="dbmStoreGetSpots">
+            <documentation>Get spots</documentation>
+            <input message="typens:dbmStoreGetSpotsRequest" />
+            <output message="typens:dbmStoreGetSpotsResponse" />
+        </operation>
+    </portType>
+    <binding name="{{var wsdl.handler}}Binding" type="typens:{{var wsdl.handler}}PortType">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http" />
+        <operation name="dbmStoreGetStores">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+        <operation name="dbmStoreGetSpots">
+            <soap:operation soapAction="urn:{{var wsdl.handler}}Action" />
+            <input>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </input>
+            <output>
+                <soap:body namespace="urn:{{var wsdl.name}}" use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" />
+            </output>
+        </operation>
+    </binding>
+</definitions>

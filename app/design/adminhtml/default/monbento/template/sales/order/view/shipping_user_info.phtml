@@ -1,0 +1,20 @@
+<?php if($this->getOrder()): ?>
+    <?php if($value = $this->getOrder()->getSenderAdminId()): ?>
+    <?php 
+        $admin = Mage::getModel('admin/user')->load($value);
+        if($admin->getId())
+            $value = ucfirst($admin->getFirstname()) . ' ' . strtoupper($admin->getLastname());
+    ?>
+    <div class="entry-edit">
+        <div class="entry-edit-head">
+            <h4><?php echo Mage::helper('sales')->__('Expédié par') ?></h4>
+        </div>
+        <fieldset>
+            <tr>
+                <td class="label"></td>
+                <td class="value"><label><strong><?php echo $value ?></strong></label></td>
+            </tr>
+        </fieldset>
+    </div>
+    <?php endif; ?>
+<?php endif; ?>

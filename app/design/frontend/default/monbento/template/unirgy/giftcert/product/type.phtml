@@ -1,0 +1,166 @@
+<?php
+/**
+ * Unirgy_Giftcert extension
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @copyright  Copyright (c) 2008 Unirgy LLC
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @category   Unirgy
+ * @package    Unirgy_Giftcert
+ * @author     Boris (Moshe) Gurevich <moshe@unirgy.com>
+ */
+?>
+<?php
+/* @var $this Unirgy_Giftcert_Block_Product_Type */
+$_amountConfig = $this->getAmountConfig('ugiftcert_amount_config');
+
+$emailTpl = isset($_amountConfig['email_template']) ? $_amountConfig['email_template'] : $this->getProduct()->getData('ugiftcert_email_template');
+$pdfTpl = isset($_amountConfig['pdf_template']) ? $_amountConfig['pdf_template'] : $this->getProduct()->getData('ugiftcert_pdf_tpl_id');
+?>
+<style type="text/css">
+    #ugc-address-form input, #ugc-address-form textarea { width: 100%}
+    #ugc-address-form input[type='checkbox'] {width:20px;}
+    #ugc-printout, #ugc-form-container { margin: 0 0 10px;}
+    #ugc-address-form .disabled {color: #666666; background-color: #EDDEDE}
+</style>
+<div class="gift-card-info">
+    <p><?php echo $this->getAmountHtml($_amountConfig);?></p>
+    
+    <p>
+        <label for="u_pdf_template"><?php echo $this->__("Select a design :");?></label><br />
+        <?php $collection = Mage::getModel('ugiftcert/pdf_model')->getCollection(); ?>
+        <?php foreach($collection as $template) {
+            $product = Mage::getModel('catalog/product')->load($this->getProduct()->getId());
+            $img = $product->getMediaGalleryImages()->getItemByColumnValue('label',$template->getTitle())->getUrl();
+            //$img = Mage::getModel('catalog/product')->load($this->getProduct()->getId())->getMediaGalleryImages()->getItemByColumnValue('label',$template->getTitle())->getFile();
+            
+            /*$settings    = Zend_Json::decode($template->getSettings());
+            $imgSettings = isset($settings['image_settings']) ? $settings['image_settings'] : array();
+            foreach ($imgSettings as $image) {
+                $img = $image['url'];
+                $img = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_MEDIA) . $img;
+            }*/
+            //echo '<span class="pdf-visuel" id="pdf-visuel-'.$template->getId().'" rel="'.$template->getId().'"><span class="hover" style="background:url('.$img.')"></span><span style="background:url('.$img.');background-size:cover;" rel="'.$img.'"></span></span>';
+            echo '<span class="pdf-visuel" id="pdf-visuel-'.$template->getId().'" rel="'.$template->getId().'"><img class="hover" src="'.$img.'" /><span style="background:url('.$img.');background-size:cover;" rel="'.$img.'"></span></span>';
+        } ?>
+        <input type="hidden" name="email_template" id="u_email_template" value="<?php echo $emailTpl;?>"<?php echo empty($emailTpl) ? 'disabled="disabled"' : '';?>>
+        <input type="hidden" name="pdf_template" id="u_pdf_template" value="<?php echo $pdfTpl;?>" />
+        <div class="clearer"></div>
+    </p>
+        <label><?php echo $this->__("Send for :");?></label>
+        <div id="ugc-form-container">
+            <?php echo $this->getChildHtml("ugiftcert.address.form");?>
+            <div class="clearer"></div>
+            <div id="ugc-form-link-add-recipient"></div>
+            <div class="clearer"></div>
+        </div>
+        <?php if ($this->getAllowSchduled()) : ?>
+            <div id="ugc-send-on" class="ugc-form-data-part clearer">
+                <?php echo $this->getDatePicker();?>
+            </div>
+        <?php endif;?>
+    <?php if (Mage::getStoreConfig('ugiftcert/email/pdf_enabled')) : ?>
+        <div id="ugc-printout">
+            <button type="button" class="button ugc-button" id="ugc-printout-button"><span><span><?php echo $this->__("Preview PDF");?></span></span></button>
+        </div>
+    <?php endif;?>
+</div>
+<script type="text/javascript">
+    jQuery(".pdf-visuel").click( function() {
+        jQuery(".pdf-visuel").removeClass("active");
+        var idTmpl = jQuery(this).attr("rel");
+        var image = jQuery(this).find("span:last").attr("rel");
+        jQuery("#u_pdf_template").attr("value",idTmpl);
+        jQuery(".product-img-box").find("a").attr("href",image);
+        jQuery(".product-img-box").find("img").attr("src",image);
+        jQuery(this).addClass("active");
+    });
+    jQuery(".pdf-visuel").hover( function() {
+        jQuery(this).find("img").show();
+    },function(){
+        jQuery(this).find("img").hide();
+    });
+</script>
+<script type="text/javascript" src="<?php echo $this->getSkinUrl('js/ugiftcert.js')?>"></script>
+<script type="text/javascript">
+
+    function processMessage(message) {
+        var message = $(message);
+        if (!message) {
+            return;
+        }
+
+    <?php if ($this->getMessageMaxLength()): ?>
+        var maxLength = <?php echo $this->getMessageMaxLength() ?>;
+        var remaining = maxLength - message.value.length;
+        if (remaining < 0) {
+            message.value = lastValidMessage;
+            remaining = maxLength - message.value.length;
+        } else {
+            lastValidMessage = message.value;
+        }
+        message.next('.counter').down('.gift-card-message-length').innerHTML = remaining;
+        <?php endif; ?>
+
+        var preview = $('gift-card-message-preview');
+        preview && (preview.innerHTML = message.value.replace(/\n/g, '<br/>'));
+    }
+
+    Validation.addAllThese([
+        ['validate-number-range', '<?php echo addslashes(
+            $this->__('Amount is not within the specified range.')
+        )?>', function (v, el) {
+            var m = el.className.match(/\Wfrom-([0-9.]+)-to-([0-9.]+)\W/);
+            if (!m) return true;
+            v = parseNumber(v);
+            return v >= m[1] && v <= m[2];
+        }],
+
+        ['validate-recipient-address', '<?php echo addslashes(
+            $this->__("Please enter recipient's email or postal address")
+        )?>', function (v, el) {
+            var email = $(el).up('div').down('.recipient_email');
+            var addr = $(el).up('div').down('.recipient_address');
+            if (!$('recipient_type_someone').checked || !(email && addr)) {
+                return true;
+            }
+            return email.value || addr.value;
+        }]
+    ]);
+
+
+    Event.observe(window, 'load', function (e) {
+        initiateDeliveryTypes();
+        if (typeof ugcMultiple != 'undefined') {
+            var config = {
+                'tabs_container_id':'ugc-form-data',
+                'add_title':'<?php echo $this->__("Add Recipient");?>',
+                'recipient_label':'<?php echo $this->__("Recipient #{recipient}");?>',
+                'missingContainerMsg':'<?php echo $this->__("Recipient info container not found");?>'
+            };
+            ugcMultiple(config);
+        }
+
+        initPdfPreview('ugc-printout-button', '<?php echo $this->getUrl('ugiftcert/customer/printout');?>');
+    });
+
+</script>
+<?php if(isset($_GET['pdf_template'])): ?>
+<script type="text/javascript">
+    jQuery(document).ready( function() {
+        jQuery("#pdf-visuel-<?php echo $_GET['pdf_template'] ?>").click();
+        jQuery("#amount").val("<?php echo $_GET['amount'] ?>");
+    });
+</script>
+<?php endif; ?>

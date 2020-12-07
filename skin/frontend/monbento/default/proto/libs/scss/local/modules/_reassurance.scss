@@ -1,0 +1,352 @@
+// ========================================= //
+// reassurance
+// ========================================= //
+
+.catalog-product-view {
+
+    .c-slider--product {
+        .js-gallery {
+            .bx-has-pager {
+                @include bp-lt ($small) {
+                    text-align: center;
+                    padding-bottom: 20px;
+                    margin: 0 -14px 20px;
+                    border-bottom: 1px solid rgba($grey--02, .6);
+                }
+                .bx-pager-item {
+                    display: inline-block;
+                    padding: 6px;
+                    .bx-pager-link {
+                        background: rgba($black-dots, .5);
+                        width: 7px;
+                        height: 7px;
+                        border-radius: 50%;
+                        font-size: 0;
+                        display: block;
+                        &.active {
+                            background: $black-dots;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .c-product__personalize {
+        padding-bottom: 40px;
+        @include bp-lt ($small) {
+            padding-bottom: 20px;
+        }
+    }
+
+    .c-reassurance {
+        padding-top: rem(20);
+        padding-bottom: rem(20);
+        text-align: center;
+        @include bp-lt ($mobileXl) {
+            padding: 10px 20px 0;
+        }
+
+        .c-reassurance__item {
+            @include bp-lt ($mobileXl) {
+                border-bottom: 1px solid $grey--light--05;
+                border-right: 0;
+            }
+        }
+
+        .savoir-plus {
+            text-align: right;
+            padding-right: 170px;
+            margin-top: -30px;
+            background: transparent;
+            z-index: 2;
+            @include bp-lt ($medium) {
+                padding-right: 80px;
+            }
+            @include bp-lt ($xmedium) {
+                padding-right: 60px;
+            }
+            @include bp-lt ($small) {
+                text-align: center;
+                padding-right: 0;
+                margin-top: 0;
+            }
+        }
+
+        .c-linkCst--arrow {
+            color: $subBranding;
+            margin-bottom: 0;
+            @include bp-lt ($small) {
+                margin-bottom: 25px;
+            }
+            &:before {
+                background: $grey--07;
+            }
+            &:after {
+                color: $subBranding;
+            }
+            &:hover {
+                &:after {
+                    color: $subBranding;
+                }
+            }
+        }
+    }
+
+    .c-product__personalize {
+
+    }
+
+    .c-title--group {
+        .c-main {
+            @include bp-lt ($small) {
+                font-size: rem(30);
+            }
+        }
+    }
+
+    .c-product__select {
+        .c-closed__product__select {
+            z-index: 100;
+        }
+    }
+
+    .c-product__action {
+        .c-title,
+        .c-baseline {
+            color: $grey--regular--05;
+            @include bp-lt ($small) {
+                font-size: rem(20);
+            }
+            strong {
+                color: $subBranding;
+                @include bp-lt ($small) {
+                    font-size: rem(21);
+                }
+            }
+        }
+        .c-title {
+            margin-bottom: 10px;
+        }
+        .c-baseline {
+            @include bp-lt ($small) {
+                margin-bottom: 15px;
+            }
+        }
+        .c-warning {
+            @include bp-lt ($small) {
+                margin-bottom: 6px;
+            }
+        }
+        .c-product__priceBox {
+            .c-priceBox {
+                margin-bottom: 15px;
+                @include bp-lt ($small) {
+                    margin-bottom: 15px;
+                }
+                .c-price {
+                    @include bp-lt ($small) {
+                        font-size: rem(24);
+                    }
+                }
+            }
+        }
+        .c-product__controls {
+            background: transparent;
+            .c-color__switcher__toggle {
+                width: 100%;
+                float: none;
+                height: auto;
+            }
+        }
+    }
+    .c-info--tall {
+        color: $grey--regular--05;
+        @include bp-lt ($small) {
+            margin-bottom: 10px;
+        }
+    }
+
+    .c-email {
+        margin-bottom: 40px;
+        @include bp-lt ($small) {
+            margin-bottom: 10px;
+        }
+        +[class*='c-button'] {
+            padding: 0 30px;
+            background-image: none;
+            &:hover {
+                background: $red--1 !important;
+            }
+        }
+    }
+
+    .c-crossSelling {
+        .c-title--group {
+            .c-main {
+                @include bp-lt ($small) {
+                    font-size: rem(26);
+                }
+            }
+            .c-baseline {
+                @include bp-lt ($small) {
+                    font-size: rem(21);
+                }
+            }
+        }
+    }
+
+    .c-businessCase__item {
+        .c-title {
+            @include bp-lt ($medium ) {
+                font-size: rem(24);
+            }
+        }
+    }
+
+    .c-crossSelling {
+        .c-grid__product {
+            .c-item__product {
+                &:hover {
+                    .c-button--transparentNoHover--arrowRightToRight {
+                        color: $white;
+                        background: $mainBranding url(#{$img}c-icon_arrowRight--white.svg) no-repeat top 50% right 1.5625rem;
+                        box-shadow: 0.0625rem 0 0.3125rem rgba($mainBranding,0.6);
+                        border-color: $mainBranding;
+                        @include bp-lt ($mobileL) {
+                            background-position: top 50% right .625rem;
+                            padding-right: 2.1875rem;
+                        }
+                    }
+                }
+                .c-button--transparentNoHover--arrowRightToRight {
+                    &:hover {
+                        color: $white;
+                        background: $mainBranding url(#{$img}c-icon_arrowRight--white.svg) no-repeat top 50% right .3375rem;
+                        box-shadow: 0.0625rem 0 0.3125rem rgba($mainBranding,0.6);
+                        border-color: $mainBranding;
+                    }
+                    @include bp-lt ($small) {
+                        line-height: 16px;
+                        &:hover {
+                            background: $mainBranding url(#{$img}c-icon_arrowRight--white.svg) no-repeat top 50% right 0.325rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+}
+
+.c-reassurance {
+    padding-top: rem(20);
+    padding-bottom: rem(20);
+    text-align: center;
+}
+
+.c-reassurance__item {
+    width: 30%;
+    display: inline-block;
+    padding-left: rem(7);
+    padding-right: rem(7);
+    height: rem(84);
+    text-align: center;
+    border: 0;
+    &:not(:last-child) {
+        border-right: solid rem(1) $grey--light--07;
+    }
+
+    @include bp-lt($mobileXl) {
+        width: 100%;
+        height: auto;
+        margin-top: rem(14);
+        margin-bottom: rem(14);
+        border-right: none;
+    }
+
+    &:last-of-type {
+        border-right: none;
+    }
+}
+
+
+// shop
+.c-reassuranceShop {
+    text-align: center;
+
+    .c-reassuranceShop--item {
+        position: relative;
+        height: rem(130);
+        padding-top: rem(30);
+
+        @include bp-lt($mobileL) {
+            height: rem(100);
+            padding-top: rem(15);
+        }
+
+        &:after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: rem(-10);
+            display: block;
+            width: rem(1);
+            height: rem(70);
+            transform: translateY(-50%);
+            background: $grey--regular--03;
+
+            @include bp-lt($mobileL) {
+                width: rem(70);
+                height: rem(1);
+                top: initial;
+                right: initial;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+            }
+        }
+
+        .c-fonticon__icon--truck {
+            font-size: rem(40);
+            display: block;
+            height: rem(30);
+        }
+    }
+
+    .columns {
+        @include bp-lt($mobileL) {
+            width: 100%;
+        }
+
+        &:last-of-type .c-reassuranceShop--item:after { display: none; }
+    }
+
+    [class*='c-fonticon__icon'] {
+        margin-bottom: rem(14);
+        color: $mainBranding;
+        font-size: rem(28);
+    }
+
+    .c-title {
+        font-family: $sofiaPro;
+        font-size: rem(12);
+        text-transform: uppercase;
+        color: $grey--regular--04;
+
+        @include bp-lt($small) {
+            font-size: rem(10);
+        }
+    }
+
+    .c-baseline {
+        font-family: $merriWeather;
+        font-weight: 300;
+        font-size: rem(12);
+        color: $grey--regular--04;
+
+        @include bp-lt($small) {
+            font-size: rem(10);
+        }
+    }
+}

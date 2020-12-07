@@ -1,0 +1,267 @@
+// ========================================= //
+// mfp
+// ========================================= //
+
+$border : solid rem(1) $grey--light--04;
+
+.c-mfp__addtobasket, .c-mfp__comparator {
+    position: relative;
+    max-width: rem(691);
+    min-height: rem(150);
+    margin-left: auto;
+    margin-right: auto;
+    background: $white;
+
+    @include bp-lt($medium) { width: 80%; }
+    @include bp-lt($small) { width: 90%; }
+
+    .c-mfp__content {}
+
+    .c-mfp__footer {
+        [class*='c-button'] {
+            width: 100%;
+            display: block;
+        }
+    }
+
+    .c-mfp--addbasket__content {
+        padding: rem(28);
+        font-family: $sofiaPro;
+        color: $mainFont;
+
+        .c-title {
+            margin-bottom: rem(28);
+            font-size: rem(20);
+            text-transform: uppercase;
+        }
+
+        .c-decli {
+            font-size: rem(20);
+            margin-bottom: rem(14);
+
+            @include bp-lt($medium) {
+                font-size: rem(16);
+            }
+        }
+
+        .c-info {
+            font-size: rem(14);
+            font-weight: 300;
+        }
+    }
+}
+
+.c-empty__modal {
+    height: rem(150);
+
+    img {
+        margin-right: rem(15);
+    }
+
+    span {
+        font-family: $sofiaPro;
+        font-size: rem(16);
+        color: $mainFont;
+    }
+}
+
+button.mfp-arrow.mfp-arrow-left,
+button.mfp-arrow.mfp-arrow-right {
+    $side : rem(57);
+    $side--small : rem(37);
+
+    position: absolute;
+    top: 55%;
+    display: block;
+    width: $side;
+    height: $side;
+    padding: 0;
+    background-color: $white;
+    background-repeat: no-repeat;
+    font-size: 0;
+    border: solid rem(2) $grey--light--03;
+    border-radius: 50%;
+    transition: $ease;
+    outline: none;
+
+    @include bp-lt($tabletS) {
+        width: $side--small;
+        height: $side--small;
+        background-size: 50% 50%;
+    }
+
+    &:hover, &:focus, &.is-active {
+        background-color: $grey--light--02;
+    }
+}
+
+button.mfp-arrow.mfp-arrow-left {
+    left: rem(10);
+    background-image: url(#{$img}c-icon__prev.svg);
+    background-position: 48% 50%;
+
+    &:hover, &:focus, &.is-active {
+        background-position: 35% 50%;
+    }
+}
+
+button.mfp-arrow.mfp-arrow-right {
+    right: rem(10);
+    background-image: url(#{$img}c-icon__next.svg);
+    background-position: 52% 50%;
+
+    &:hover, &:focus, &.is-active {
+        background-position: 65% 50%;
+    }
+}
+
+.mfp-arrow-left:before,
+.mfp-arrow-left:after,
+.mfp-arrow-right:before,
+.mfp-arrow-right:after {
+    display: none;
+}
+
+#mbt-newsletter {
+    max-width: 686px;
+    margin: 0 auto;
+    background: $white;
+    padding: 19px;
+    position: relative;
+
+    .c-headNewsletter-top {
+        padding: 25px;
+        position: relative;
+        z-index: 1;
+        @include bp-lt ($small) {
+            padding: 25px 20px 0;
+        }
+
+        .head-img {
+            position: absolute;
+            bottom: -30px;
+            right: -50px;
+            max-width: 370px;
+            @include bp-lt ($small) {
+                position: relative;
+                bottom: -20px;
+            }
+        }
+    }
+
+    .c-formNewsletter {
+        background: $subBranding;
+        overflow: hidden;
+
+        .c-headNewsletter {
+            background: url(#{$img}bg-fruits.png) center no-repeat;
+            background-size: cover;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 0;
+                background: rgba($subBranding, .62);
+                opacity: .62;
+            }
+        }
+    }
+
+    .mfp-close {
+        background: $grey--18;
+        border-radius: 50%;
+        color: $white;
+        opacity: 1;
+        margin: 0;
+        width: 28px;
+        height: 28px;
+        top: 8px;
+        right: 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: normal;
+    }
+
+    .title {
+        color: $white;
+        font-family: $sofiaPro; 
+        font-size: rem(30);
+        line-height: 35px;
+        font-weight: 300;
+        display: block;
+        width: 100%;
+        text-align: left;
+        margin-bottom: 30px;
+        max-width: 330px;
+        @include bp-lt($small){
+            font-size: rem(26);
+            line-height: 30px;
+            margin-bottom: 10px;
+        }
+    }
+
+    p {
+        font-size: 16px;
+        line-height: 22px;
+        color: #273745;
+        font-family: $sofiaPro;
+        font-weight: 400;
+        letter-spacing: .0625rem;
+        margin: 0;
+        margin-bottom: 15px;
+    }
+
+    .newsletter-validate-detail-popup {
+        padding: 30px 20px 20px;
+    }
+
+    .c-input__holder {
+        max-width: 422px;
+        margin: 0 auto;
+    }
+
+    .c-input__submit {
+        button {
+            background-color: $mainBranding;
+            &:hover,
+            &:active,
+            &:focus  {
+                background-color: $red--1;
+            }
+        }
+    }
+
+    input[type="checkbox"]+label:before {
+        border-color: $grey--03;
+        background: transparent;
+        width: 19px;
+        height: 19px;
+        top: 5px;
+    }
+
+    input[type="checkbox"]+label:after {
+        background: transparent url(#{$img}c-icon__check--1.svg) no-repeat 50% 50%;
+        background-size: 11px;
+        left: 2px;
+        top: 7px;
+    }
+
+    .politic {
+        label {
+            font-size: rem(10);
+        }
+        a {
+            font-size: rem(10);
+            color: $white;
+            opacity: .6;
+            text-decoration: underline;
+            transition: all .15s ease-in-out;
+        }
+    }
+}

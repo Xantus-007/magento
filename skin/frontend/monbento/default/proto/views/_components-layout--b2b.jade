@@ -1,0 +1,66 @@
+block vars
+    - var pageTitle     = 'Monbento B2B'
+    - var pageClass     = ''
+    - var cssDirLocal   = 'assets/styles/local/'
+    - var cssDirVendor  = 'assets/styles/vendor/'
+    - var imgDir        = 'assets/media/images/'
+    - var mediaDir      = 'assets/media/'
+    - var jsDirLocal    = 'assets/scripts/local/'
+    - var jsDirVendor   = 'assets/scripts/vendor/'
+    - var pageColor     = ''
+    - var pageType      = ''
+    - var menu          = true
+
+doctype html
+html
+    head
+        //- Title
+        title #{pageTitle}
+
+        //- Metas
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+        meta(name="format-detection" content="telephone=no")
+
+        //- Fonts
+        link(href='https://fonts.googleapis.com/css?family=Merriweather+Sans:400,300,300italic,400italic,700,700italic' rel='stylesheet' type='text/css')
+        link(href='https://fonts.googleapis.com/css?family=Arbutus+Slab' rel='stylesheet' type='text/css')
+
+        //- Html5 Shiv
+        //[if lt IE 9]> <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> <![endif]
+
+        //- Styles
+        include _components-styles-b2b
+
+        //- Favicon
+        include _components-favicon
+
+        //- Mixins
+        include _mixins-placeholder
+        include _mixins-lipsum
+        include _mixins-picture
+        include mixins/_config
+
+    body(class="#{pageClass}")    
+        .c-wrapper__offcanvas.is-expand
+            a.c-nav__close(href="")
+            
+            include blocks/_languageSwitcher
+
+            include blocks/_header--b2b
+            
+            block body
+            
+            include blocks/_footer--b2b
+            
+            button.c-action__gototop(type="button"): img(src="#{imgDir}c-icon__goToTop.svg", alt="")
+        
+        //-- local
+        block scripts
+        
+        //- Script
+        //-- vendor
+        include _components-scripts-b2b
+        //-- local
+        block scripts

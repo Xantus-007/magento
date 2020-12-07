@@ -1,0 +1,90 @@
+.c-recruitment {
+    [class*="c-button"] {
+        &[class*='--transparentNoHover'] {
+            &[class*='--arrowRightToRight'] {
+                color: $white;
+                background-image: url(#{$img}c-icon_arrowRight--white.svg);
+                border-color: rgba($grey--02, 0.5);
+            }
+        }
+    }
+
+    .c-list__jobs {
+        padding-bottom: 0;
+    }
+
+    .c-team__wanted {
+        @include bp-lt($small) {
+            padding-top: rem(265);
+        }
+    }
+}
+
+.c-recruitement__description {
+    padding-right: rem(20);
+
+    @include bp-lt($xmedium) {
+        padding: 0 rem(50);
+    }
+
+    @include bp-lt($small) {
+        padding: 0;
+    }
+
+    p {
+        font-size: rem(20);
+        line-height: rem(28);
+        color: $subBranding;
+        font-weight: 300;
+
+        @include bp-lt($medium) {
+            font-size: rem(18);
+            line-height: rem(24);
+        }
+
+        @include bp-lt($small) {
+            font-size: rem(14);
+            line-height: rem(20);
+        }
+    }
+}
+
+.js-recruitment__equalizer {
+    min-height: rem(600);
+
+    @include bp-lt($xmedium) {
+        min-height: 0;
+        height: auto !important;
+        width: 100%;
+        left: 0;
+        right: 0;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+}
+
+.c-recruitement__title {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: rem(28);
+    color: $subBranding;
+    margin-bottom: rem(50);
+
+    @include bp-lt($medium) {
+        font-size: rem(24);
+        margin-bottom: rem(30);
+    }
+
+    @include bp-lt($small) {
+        font-size: rem(20);
+        margin-bottom: rem(20);
+        padding-left: rem(30);
+        padding-right: rem(30);
+    }
+}
+
+.c-recruitment__section {
+    padding-bottom: rem(30);
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

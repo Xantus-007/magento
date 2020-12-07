@@ -1,0 +1,128 @@
+div.j2tajax-confirm div.j2tajax-checkout-img{
+    float:left; margin-right:5px;
+}
+
+div.j2tajax-confirm .success-msg {
+    background:none;
+    color:#000;
+    padding: 8px !important;
+    text-align:left;
+    border:none !important;
+}
+
+div.j2t-cart-bts {clear:both; height:45px;margin-top:20px;}
+
+
+div.j2tajax-confirm, div.j2tajax-progress{
+    border:#ccc solid 1px; z-index: 199;
+    text-align:center;
+}
+div.j2tajax-progress{padding:5px; z-index: 199;}
+
+
+div.j2t-overlay{
+    width: 100%;
+    height: 100%;
+    background: black;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 198;
+}
+
+a.j2t-checkout-link{
+    background:#841667;
+    border-radius:5px;
+    display: block;
+    float: right;
+    font-size:11px;
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin-right:10px;
+}
+
+a:link.j2t-checkout-link, a:visited.j2t-checkout-link, a:active.j2t-checkout-link{
+    color: #fff; /*button text color*/
+}
+
+a.j2t-checkout-link span{
+    background:#841667;
+    border-radius:5px;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.j2t-checkout-link:hover{ /* Hover state CSS */
+    //background-position: bottom left;
+}
+
+a.j2t-checkout-link:hover span{ /* Hover state CSS */
+    //background-position: bottom right;
+    //color: black;
+}
+
+
+
+span.j2t-or{
+    display:none;
+}
+a.j2t-continue-link{
+    background:#841667;
+    border-radius:5px;
+    display: block;
+    float: left;
+    font-size:11px;
+    line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+    height: 24px; /* Height of button background height */
+    padding-left: 11px; /* Width of left menu image */
+    text-decoration: none;
+    margin-left:10px;
+}
+
+a:link.j2t-continue-link, a:visited.j2t-continue-link, a:active.j2t-continue-link{
+    color: #fff; /*button text color*/
+}
+
+a.j2t-continue-link span{
+    background:#841667;
+    border-radius:5px;
+    display: block;
+    padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.j2t-continue-link:hover{ /* Hover state CSS */
+    //background-position: bottom left;
+}
+
+a.j2t-continue-link:hover span{ /* Hover state CSS */
+    //background-position: bottom right;
+    //color: black;
+}
+
+span.j2t-upsells-list-wrapper {display:block; text-align:left;}
+
+table.j2t-upsell-product-table {clear:both;}
+table td.j2t-upsells-list-item h5.j2t-product-lnk {}
+table td.j2t-upsells-list-item h5.j2t-product-lnk a {font-size: 11px; font-weight: normal;}
+h4.j2t-upsells-title {display:block; clear:both; padding-left:10px;padding-top:5px;}
+
+div.j2tajax-progress, div.j2tajax-confirm {background:#fff;padding:10px 10px 0;}
+
+@media screen and (max-device-width: 480px) {
+  .j2tajax-checkout-img img {width:150px;height:150px;}
+  .j2tajax-checkout-txt{font-size:24px;}
+    a.j2t-continue-link, a.j2t-checkout-link{
+      background: #841669;
+      border-radius:10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+      line-height: 65px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+      height: 70px; /* Height of button background height */
+      padding-left: 11px; /* Width of left menu image */
+      text-decoration: none;
+      margin-left:10px;
+      font-size:35px;
+  }
+  a.j2t-continue-link span, a.j2t-checkout-link span{background:none;color:#fff;}
+}

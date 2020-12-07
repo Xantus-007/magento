@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "iconfont";
+    src: url('../../media/fonts/iconfont/iconfont.eot');
+    src: url('../../media/fonts/iconfont/iconfont.eot?#iefix') format('eot'),
+    url('../../media/fonts/iconfont/iconfont.woff') format('woff'),
+    url('../../media/fonts/iconfont/iconfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class*='c-fonticon']:before {
+    display: inline-block;
+    font-family: "iconfont";
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.c-fonticon__icon--dashboard:before { content: "\EA01" }
+.c-fonticon__icon--history:before { content: "\EA02" }
+.c-fonticon__icon--book:before { content: "\EA03" }
+.c-fonticon__icon--edit:before { content: "\EA04" }
+.c-fonticon__icon--wishlist:before { content: "\EA05" }
+.c-fonticon__icon--view:before { content: "\EA06" }
+.c-fonticon__icon--addToCart:before { content: "\EA07" }
+.c-fonticon__icon--pencil:before { content: "\EA08" }
+.c-fonticon__icon--cross:before { content: "\EA09" }
+.c-fonticon__icon--download:before { content: "\EA0A" }

@@ -1,0 +1,18 @@
+section.c-product__presentation
+    .row.collapse
+        .columns.large-4.js-itemEqualizer: .o-table: .o-table__cell--valignMiddle
+            .c-content__aside
+                .c-title Le MBOriginal
+                // change color here
+                .c-separator(style="color: #{pageColor};"): i.c-fonticon__icon--wave
+                .c-wysiwyg
+                    .c-text__sofiaPro--light--20.text-justify Premier né de la collection monbento®, le bento MBOriginal est le compagnon idéal pour les déjeuners au bureau, les pique-niques ou les plateaux-télé.#[br]#[br]
+                    p.text-justify Fabriquée à partir d’un matériau plastique de haute qualité et doublé d’un revêtement « soft touch », cette lunchbox qui allie solidité et esthétisme a été récompensée plusieurs fois, à travers le monde, pour son design.
+        .columns.large-8.js-itemEqualizer
+            .c-slider--productPresentation
+                .js-bxslider
+                    - for (var i=0; i<4; i++)
+                        // format image 960x600
+                        img(src="#{imgDir}c-img__product--960x600.jpg", alt="")
+
+                include _slider__pager

@@ -1,0 +1,49 @@
+<?php
+/*
+$_main_categories = Mage::getModel('catalog/category')
+		->getCollection()
+		->addAttributeToSelect('*')
+		->addIsActiveFilter()
+		->addLevelFilter(3)
+		->addOrderField('name');
+?>
+<div id="footerprodlist">
+<?php
+if($_main_categories) {
+
+	$colnb = array(0, 0, 0, 0, 0);
+
+	foreach ($_main_categories as $_main_category) {
+		$category = new Mage_Catalog_Model_Category();
+		$category->load($_main_category->getId());
+
+		$productCollection = Mage::getModel('catalog/category')->load($_main_category->getId())
+    		->getProductCollection()
+    		->addUrlRewrite()
+    		->addAttributeToSelect('*')
+    		->addAttributeToFilter('status', 1)
+    		->addAttributeToFilter('visibility', 4);
+
+		if($productCollection->count()) {
+			$col = array_search(min($colnb), $colnb);
+
+			$var  = '<div>';
+			$var .= '<strong>'.$_main_category->getName().'</strong>';
+			$var .= '<ul>';
+
+			foreach($productCollection as $product) {
+				$var .= '<li><a href="'.$product->getProductUrl().'" title="'.$this->htmlEscape($product->getName()).'">'.$this->htmlEscape($product->getName()).'</a></li>';
+				$colnb[$col]++;
+			}
+
+			$var .= '</ul>';
+			$var .= '</div>';
+
+			$colarr[$col].=$var;
+		}
+	}
+	echo '<div class="col">'.implode('</div><div class="col">', $colarr).'</div>';
+}
+?>
+</div>
+*/

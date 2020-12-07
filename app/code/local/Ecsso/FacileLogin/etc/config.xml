@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @package     Ecsso_FacileLogin
+ * @author      Ecsso Team <team@ecommercesoftwaresolutionsonline.com>
+ * @copyright   Copyright (c) 2010 - eCommerce Software Solutions Online Pty. Ltd. (http://www.ecommercesoftwaresolutionsonline.com) 
+ */
+-->
+<config>
+    <modules>
+        <Ecsso_FacileLogin>
+            <version>0.1.0</version>
+        </Ecsso_FacileLogin>
+    </modules>
+    <frontend>
+        <routers>
+            <facilelogin>
+                <use>standard</use>
+                <args>                  
+                    <frontName>facilelogin</frontName>
+                </args>
+            </facilelogin>
+        </routers>
+        <layout>
+            <updates>
+                <facilelogin>
+                    <file>facilelogin.xml</file>
+                </facilelogin>
+            </updates>
+        </layout>
+    </frontend>
+    <admin>
+        <routers>
+			<facilelogin>
+				<use>admin</use>
+				<args>					
+					<frontName>facilelogin</frontName>
+				</args>
+			</facilelogin>
+        </routers>
+    </admin>
+    <adminhtml>		
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <ecsso_facilelogin>
+                                            <title>Facile Login</title>
+                                        </ecsso_facilelogin>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>				
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<facilelogin>
+					<file>facilelogin.xml</file>
+				</facilelogin>
+			</updates>
+		</layout>
+    </adminhtml>   
+    <global>        
+        <helpers>
+            <facilelogin>
+                <class>Ecsso_FacileLogin_Helper</class>
+            </facilelogin>
+        </helpers>
+       
+    </global>
+    
+</config>

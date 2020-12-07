@@ -1,0 +1,81 @@
+// ========================================= //
+// color
+// ========================================= //
+
+$white                  : #ffffff !default;
+$black                  : #000000 !default;
+$error                  : #da4f4f !default;
+$grey                   : #9d9da6 !default;
+$red                    : #ba2327 !default;
+$red--1                 : #f43c5e !default;
+$orange                 : #ffa279 !default;
+$lightBlue              : #bbdbdf !default;
+$dark                   : #2C3947 !default;
+
+$mainBranding           : #f65e7a !default;
+$mainBranding--active   : darken($mainBranding, 7%) !default;
+
+$subBranding            : #273745 !default;
+$subBranding--alt       : #354450 !default;
+$subBranding--lighten   : #4a5662 !default;
+$subBranding--01        : #3d4b58 !default;
+
+$altBranding            : #83de9a !default;
+
+$mainFont               : $subBranding !default;
+
+$checkoutBkg            : $lightBlue !default;
+$formError              : $orange !default;
+
+$grey--00               : #f7f9fb !default;
+$grey--01               : #eceff2 !default;
+$grey--02               : #e1e3e5 !default;
+$grey--03               : #6f777e !default;
+$grey--04               : #82898f !default;
+$grey--05               : #f0f1f2 !default;
+$grey--06               : #eceff2 !default;
+$grey--07               : #bec3c7 !default;
+$grey--08               : #ecf0f3 !default;
+$grey--09               : #eba1b0 !default;
+$grey--10               : #4b4b4b !default;
+$grey--11               : #dedcdc !default;
+$grey--12               : #eceef0 !default;
+$grey--13               : #f3f4f7 !default;
+$grey--14               : #d1d3d4 !default;
+$grey--15               : #e0e3e6 !default;
+$grey--16               : #4c4c4c !default;
+$grey--17               : #243746 !default;
+$grey--18               : #939ba2 !default;
+
+$grey--light--00        : #f7f9fb !default;
+$grey--light--01        : #bec8ce !default;
+$grey--light--02        : #f3f4f6 !default;
+$grey--light--03        : #ebecee !default;
+$grey--light--04        : #eceff2 !default;
+$grey--light--05        : #f2f4f6 !default;
+$grey--light--06        : #e1e3e5 !default;
+$grey--light--07        : #f1f0f0 !default;
+$grey--light--08        : #dbd8d9 !default;
+$grey--light--09        : #fafbfc !default;
+$grey--light--10        : #e5e3e3 !default;
+$grey--light--11        : #d5d4d7 !default;
+
+$grey--regular--00      : #8f98a0 !default;
+$grey--regular--01      : #a8a8a8 !default;
+$grey--regular--02      : #6f777e !default;
+$grey--regular--03      : #d7d4d4 !default;
+$grey--regular--04      : #525f6a !default;
+$grey--regular--05      : #6f777e !default;
+$grey--regular--06      : #c1c5c9 !default;
+
+$pink--02               : #ec607a !default;
+
+$label__product         : $mainBranding !default;
+$label__product--alt    : $altBranding !default;
+$label__warning         : $orange !default;
+
+$navLink--active        : #ce5a72 !default;
+
+$b2b--blue              : #82b9bf;
+
+$black-dots 			: #18222b !default;

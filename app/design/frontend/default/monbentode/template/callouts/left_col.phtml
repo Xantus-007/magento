@@ -1,0 +1,21 @@
+<?php
+$storeCode = Mage::app()->getStore()->getCode();
+?><div class="block block-banner">
+    <div class="block-content">
+        <div class="block-title">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('portokosten') ?>">Versand: 4-7 Werktage</a></span></strong>
+        </div>
+        <p class="shipping en"><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('portokosten') ?>"><b>Deutschland, Luxemburg : </b>7.90 €.<br /><b>Österreich :</b> 8.90€. <br/> Portokosten gratis ab 110€ Einkaufswert.<br />
+                <strong>Anderer Versandort: </strong><br /><span>Klicken Sie hier</span></a></p>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('portokosten') ?>"><img src="<?php echo $this->getSkinUrl('images/media/shipping/shipping_' . $storeCode . '.png') ?>" alt="" width="205" /></a>
+    </div>
+    <div class="block-content">
+        <div class="block-title paiement">
+            <strong><span><a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>">Sichere Zahlung</a></span></strong>
+        </div>
+        <a href="<?php echo Mage::getModel('core/url')->getDirectUrl('mon-bento-security.html') ?>"><img src="<?php echo $this->getSkinUrl('images/media/paiement/paiement_' . $storeCode . '.png') ?>" alt="Sichere Zahlung" width="205" /></a>
+    </div>
+    <div class="block-content block-gift">
+        <img src="<?php echo $this->getSkinUrl('images/media/de/gift.png') ?>" alt="" width="210" height="113" />
+    </div>
+</div>

@@ -1,0 +1,18 @@
+<?php if (Mage::getStoreConfig(AW_Blog_Helper_Config::XML_TAGCLOUD_SIZE) && $this->getCollection()->count()): ?>
+<div class="menu-tags">
+<h5>Tags</h5>
+<ul class="tagcloud">
+	<?php $nb = $this->getCollection()->count(); ?>
+	<?php $i = 0; ?>
+	<?php foreach($this->getCollection() as $tag):?>
+		<?php $i++; ?>
+		<?php $a = $tag->getTag(); ?>
+		<?php if (!empty($a)) { ?>
+		<li>
+			<a class="tag-count-<?php echo $this->getTagWeight($tag)?>" href="<?php echo $this->getTagHref($tag)?>"><?php echo $a; ?></a><?php if ($i != $nb) echo ', '; ?>
+		</li>
+		<?php } ?>
+	<?php endforeach;?>
+</ul>
+</div>
+<?php endif;?>

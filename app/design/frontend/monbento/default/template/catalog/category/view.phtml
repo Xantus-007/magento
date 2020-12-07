@@ -1,0 +1,71 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php
+/**
+ * Category view template
+ *
+ * @see Mage_Catalog_Block_Category_View
+ */
+?>
+<?php
+$_helper = $this->helper('catalog/output');
+$_category = $this->getCurrentCategory();
+?>
+<?php if(!Mage::helper('dbm_customer')->isCategoryAllowedForCurrentCustomer($_category)): ?>
+<div class="dbm_catalog_gourmet overlay"></div>
+<div class="dbm_catalog_gourmet popup" style="<?php if(Mage::helper('dbm_catalog')->getPopupBackground() != false): ?>background-image: url(<?php echo Mage::helper('dbm_catalog')->getPopupBackground(); ?>);<?php endif;?>">
+    <div class="close">
+        <a href="javascript:void(0);"><?php echo $this->__('Close');?>X</a>
+    </div>
+</div>
+<?php endif; ?>
+<?php echo $this->getChildHtml('promotions_slider') ?>
+<?php echo $this->getChildHtml('breadcrumbs') ?>
+<section class="o-section--bkgGrey--gridProduct c-grid">
+    <div class="js-grid__product">
+        <div class="c-row__product">
+            <div id="loading" class="please-wait" style="display: none;text-align: center; z-index: 999;">
+                <img alt="" src="<?php echo $this->getSkinUrl('images/ajax-loader.gif'); ?>"> <?php echo $this->__('Chargement en cours ...'); ?>
+            </div>
+            <div class="row collapse">
+                <div id="catalog-listing">
+                    <?php echo $this->getProductListHtml() ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<?php if($descComplete = $_category->getDescriptionBas()): ?>
+<section>
+    <div class="row">
+        <div class="o-section-desc">
+            <div class="c-wysiwyg"><?php echo $descComplete; ?></div>
+        </div>
+    </div>
+</section>
+<?php endif; ?>
+<?php echo $this->getChildHtml('shop_reassurance'); ?>

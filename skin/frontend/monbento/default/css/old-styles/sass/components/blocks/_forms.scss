@@ -1,0 +1,211 @@
+
+.customer-name-prefix,
+.customer-dob {
+    @include bp-lt ($mb-medium) {
+        @include grid-row(nest);
+    }
+}
+    
+.form-list {
+
+    .input-box,
+    .input-text,
+    input.input-text,
+    .field {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+        }
+
+        &.name-prefix,
+        &.name-firstname,
+        &.name-lastname {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(4);
+                @include box-sizing(border-box);
+            }
+
+            @include bp-lt ($mb-small) {
+                @include grid-column(12);                    
+            } 
+            
+            select {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .customer-name-prefix {
+        .name-firstname {
+            input.input-text {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .customer-dob {
+        @include bp-lt ($mb-medium) {
+            width: auto;
+        }
+
+        .dob-day,
+        .dob-month,
+        .dob-year {
+            @include bp-lt ($mb-medium) {
+                @include grid-column(4);
+                @include box-sizing(border-box);
+            }
+
+            @include bp-lt ($mb-small) {
+                @include grid-column(12);                    
+            }    
+
+            input.input-text {
+                @include bp-lt ($mb-medium) {
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    .input-text,
+    select {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            @include box-sizing(border-box);
+        }
+    }
+
+    .field {
+        @include bp-lt ($mb-medium) {
+            margin-bottom: 15px;
+        }
+    }
+
+    textarea.input-text {
+        @include bp-lt ($mb-medium) {
+            height: auto;                
+        }
+    }
+    
+    textarea {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+            height: auto;                
+        }
+    }
+
+    li.wide {
+        input.input-text,
+        .input-box,
+        textarea,
+        select {
+            @include bp-lt ($mb-medium) {
+                width: 100%;
+            }
+        }
+    }
+}
+
+.buttons-set,
+#btn_modifierAdresse {
+    @include bp-lt ($mb-xmedium) {
+        position: relative;
+    }
+
+    &,
+    button,
+    span {
+        @include bp-lt ($mb-xmedium) {
+            width: 100%;
+            padding: 0;
+        }                  
+    }
+
+    button.button {
+        @include bp-lt ($mb-xmedium) {
+            margin-bottom: 30px;
+        }
+
+        span {
+            @include bp-lt ($mb-xmedium) {
+                height: 30px;
+                line-height: 30px;
+                position: static;
+                padding: 0;
+            }
+        }
+    }
+
+    span {
+        span {
+            @include bp-lt ($mb-xmedium) {
+                position: static;
+            }
+        }
+    }
+
+    > a {
+        @include bp-lt ($mb-xmedium) {
+            position: absolute;
+            left: 0;
+            bottom: 7px;
+        }
+
+        @include bp-lt ($mb-xsmall) {
+            bottom: 0;
+        }
+
+
+        &.fb_button_ps {                                        
+            @include bp-lt ($mb-xmedium) {
+                left: auto;
+                right: 0;                        
+                bottom: 3px;                        
+                padding: 0;
+                margin: 0;
+            }
+
+            @include bp-lt ($mb-small) {
+                right: auto;
+                left: 0;
+                bottom: -15px;
+            }
+
+            @include bp-lt ($mb-xsmall) {
+                right: 0;
+                left: auto;
+                bottom: 0;
+            }
+        }
+    }
+    
+    .back-link {
+        @include bp-lt ($mb-medium) {
+            float: none;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+#recaptcha_widget {
+    #recaptcha_image {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+        }
+    }
+    
+    #recaptcha_response_field {
+        @include bp-lt ($mb-medium) {
+            width: 100%;
+            height: 30px;
+            line-height: 30px;
+            @include box-sizing(border-box);
+        }
+    }
+}

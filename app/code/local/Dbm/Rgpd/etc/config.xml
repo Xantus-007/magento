@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Dbm_Rgpd>
+            <version>0.0.1</version>
+        </Dbm_Rgpd>
+    </modules>
+    <global>
+        <helpers>
+            <dbm_rgpd>
+                <class>Dbm_Rgpd_Helper</class>
+            </dbm_rgpd>
+        </helpers>
+    </global>
+</config>

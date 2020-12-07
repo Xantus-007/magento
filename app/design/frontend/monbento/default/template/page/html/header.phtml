@@ -1,0 +1,83 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2014 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+?>
+<?php $isMenuNotOpen = $this->helper('monbento_site')->menuShopIsNotOpen(); ?>
+<div class="c-stickyNav <?php if(!$isMenuNotOpen): ?>has-subMenuOpen<?php endif; ?> <?php if(Mage::helper('dbm_utils')->isHomePage()) echo 'has-languageSwitcherOpen'; ?>">
+    <div class="c-topline">
+        <?php echo $this->getChildHtml('topSearch') ?>
+        <?php echo $this->getChildHtml('dbm_country_topbar', false) ?>
+        <a href="<?php echo Mage::getBaseUrl() ?>" class="c-logo">
+            <div class="o-table">
+                <?php if($this->helper('monbento_site')->showHnForLogo()): ?><h1 class="o-table__cell--valignMiddle"><?php else: ?><div class="o-table__cell--valignMiddle"><?php endif; ?>
+                    <svg version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink" x="0px" y="0px" width="90px" height="56.9px" viewbox="0 0 90 56.9" enable-background="new 0 0 90 56.9" xml:space="preserve" class="c-logo__monbento--svg">
+                        <g>
+                            <g class="c-logo__illus">
+                                <path fill="#273745" d="M78.2,27c0,3.4-2.7,6.1-6.1,6.1H17.9c-3.4,0-6.1-2.7-6.1-6.1v-5.7H0v8.5c0,4.6,3.7,8.2,8.2,8.2h73.5        c4.6,0,8.3-3.7,8.3-8.2v-8.5H78.2V27z M81.7,0H8.2C3.7,0,0,3.7,0,8.3v8.5h11.8v-5.7c0-3.4,2.7-6.1,6.1-6.1h54.3        c3.4,0,6.1,2.7,6.1,6.1v5.7H90V8.3C90,3.7,86.3,0,81.7,0"></path>
+                                <path fill="#273745" d="M54,19.1c0,5-4,9-9,9c-5,0-9-4-9-9c0-5,4-9,9-9C50,10.1,54,14.1,54,19.1"></path>
+                            </g>
+                            <g class="c-logo__text">
+                                <path fill="#273745" d="M0,47h2.4v1.1c0.4-0.5,0.9-0.8,1.4-1c0.5-0.2,1.1-0.3,1.7-0.3c0.6,0,1.2,0.1,1.6,0.4        c0.5,0.3,0.9,0.7,1.2,1.3c0.4-0.6,0.9-1,1.4-1.3c0.6-0.3,1.2-0.4,1.8-0.4c0.7,0,1.3,0.2,1.8,0.5c0.5,0.3,0.9,0.7,1.1,1.3        c0.2,0.5,0.3,1.4,0.3,2.5v5.7h-2.5v-4.9c0-1.1-0.1-1.8-0.4-2.2c-0.3-0.4-0.7-0.6-1.2-0.6c-0.4,0-0.8,0.1-1.1,0.4        c-0.3,0.2-0.6,0.6-0.7,1c-0.2,0.4-0.2,1.1-0.2,2v4.4H6.2V52c0-0.9-0.1-1.5-0.2-1.9c-0.1-0.4-0.3-0.7-0.6-0.9        c-0.3-0.2-0.6-0.3-0.9-0.3c-0.4,0-0.8,0.1-1.1,0.4c-0.3,0.2-0.6,0.6-0.7,1c-0.2,0.4-0.2,1.1-0.2,2.1v4.3H0V47z"></path>
+                                <path fill="#273745" d="M21.8,46.7c0.9,0,1.8,0.2,2.6,0.7c0.8,0.5,1.4,1.1,1.9,1.9c0.5,0.8,0.7,1.6,0.7,2.5c0,0.9-0.2,1.8-0.7,2.6        c-0.5,0.8-1.1,1.4-1.9,1.9c-0.8,0.4-1.7,0.7-2.6,0.7c-1.4,0-2.6-0.5-3.6-1.5c-1-1-1.5-2.2-1.5-3.6c0-1.5,0.6-2.8,1.7-3.8        C19.4,47.2,20.5,46.7,21.8,46.7 M21.8,49c-0.8,0-1.4,0.3-1.9,0.8c-0.5,0.5-0.8,1.2-0.8,2c0,0.8,0.2,1.5,0.7,2.1        c0.5,0.5,1.1,0.8,1.9,0.8c0.8,0,1.4-0.3,1.9-0.8c0.5-0.5,0.8-1.2,0.8-2c0-0.8-0.2-1.5-0.7-2C23.3,49.3,22.6,49,21.8,49"></path>
+                                <path fill="#273745" d="M29,47h2.4v1c0.6-0.5,1.1-0.8,1.5-1c0.4-0.2,0.9-0.3,1.4-0.3c1,0,1.8,0.3,2.5,1c0.6,0.6,0.8,1.4,0.8,2.5        v6.4h-2.4v-4.3c0-1.2-0.1-1.9-0.2-2.3c-0.1-0.4-0.3-0.7-0.5-0.9c-0.3-0.2-0.6-0.3-1-0.3c-0.5,0-0.9,0.2-1.3,0.5        c-0.4,0.3-0.6,0.8-0.7,1.4c-0.1,0.3-0.1,1-0.1,2v3.9H29V47z"></path>
+                                <path fill="#273745" d="M42.4,43.2V48c0.4-0.4,0.9-0.8,1.4-1c0.5-0.2,1.1-0.3,1.6-0.3c1.3,0,2.3,0.5,3.2,1.4c0.9,1,1.3,2.2,1.3,3.7        c0,1.4-0.5,2.7-1.4,3.6c-0.9,1-2,1.5-3.3,1.5c-0.6,0-1.1-0.1-1.6-0.3c-0.5-0.2-1-0.5-1.4-1v1H40V43.2H42.4z M45,49        c-0.8,0-1.4,0.3-1.9,0.8c-0.5,0.5-0.8,1.2-0.8,2.1c0,0.9,0.3,1.6,0.8,2.1c0.5,0.5,1.1,0.8,1.9,0.8c0.7,0,1.4-0.3,1.9-0.8        c0.5-0.5,0.8-1.2,0.8-2.1c0-0.8-0.3-1.5-0.8-2.1C46.3,49.2,45.7,49,45,49"></path>
+                                <path fill="#273745" d="M61.8,52.5H54c0.1,0.7,0.4,1.2,0.9,1.7c0.5,0.4,1.1,0.6,1.9,0.6c0.9,0,1.7-0.3,2.4-1l2.1,1        c-0.5,0.7-1.1,1.3-1.8,1.6c-0.7,0.3-1.6,0.5-2.5,0.5c-1.5,0-2.8-0.5-3.7-1.4c-1-1-1.4-2.2-1.4-3.6c0-1.5,0.5-2.7,1.4-3.7        c1-1,2.2-1.5,3.6-1.5c1.5,0,2.8,0.5,3.7,1.5c1,1,1.4,2.3,1.4,3.9L61.8,52.5z M59.4,50.6c-0.2-0.5-0.5-1-1-1.3        c-0.5-0.3-1-0.5-1.7-0.5c-0.7,0-1.3,0.2-1.8,0.6c-0.3,0.2-0.6,0.7-0.9,1.3H59.4z"></path>
+                                <path fill="#273745" d="M63.8,47h2.4v1c0.6-0.5,1.1-0.8,1.5-1c0.4-0.2,0.9-0.3,1.4-0.3c1,0,1.8,0.3,2.5,1c0.6,0.6,0.8,1.4,0.8,2.5        v6.4H70v-4.3c0-1.2-0.1-1.9-0.2-2.3c-0.1-0.4-0.3-0.7-0.5-0.9c-0.3-0.2-0.6-0.3-1-0.3c-0.5,0-0.9,0.2-1.3,0.5        c-0.4,0.3-0.6,0.8-0.7,1.4c-0.1,0.3-0.1,1-0.1,2v3.9h-2.4V47z"></path>
+                                <polygon fill="#273745" points="75.1,43.4 77.5,43.4 77.5,47 79,47 79,49.1 77.5,49.1 77.5,56.7 75.1,56.7 75.1,49.1 73.8,49.1         73.8,47 75.1,47     "></polygon>
+                                <path fill="#273745" d="M84.8,46.7c0.9,0,1.8,0.2,2.6,0.7c0.8,0.5,1.4,1.1,1.9,1.9c0.5,0.8,0.7,1.6,0.7,2.5c0,0.9-0.2,1.8-0.7,2.6c-0.5,0.8-1.1,1.4-1.9,1.9c-0.8,0.4-1.7,0.7-2.6,0.7c-1.4,0-2.6-0.5-3.6-1.5c-1-1-1.5-2.2-1.5-3.6c0-1.5,0.6-2.8,1.7-3.8C82.4,47.2,83.6,46.7,84.8,46.7 M84.9,49c-0.8,0-1.4,0.3-1.9,0.8c-0.5,0.5-0.8,1.2-0.8,2c0,0.8,0.2,1.5,0.7,2.1c0.5,0.5,1.1,0.8,1.9,0.8c0.8,0,1.4-0.3,1.9-0.8c0.5-0.5,0.8-1.2,0.8-2c0-0.8-0.2-1.5-0.7-2C86.3,49.3,85.7,49,84.9,49"></path>
+                            </g>
+                        </g>
+                    </svg>
+                <?php if($this->helper('monbento_site')->showHnForLogo()): ?></h1><?php else: ?></div><?php endif; ?>
+            </div>
+        </a>
+        <div class="c-options">
+            <a class="c-language__toggle js-open__languageSwitcher <?php if(Mage::helper('dbm_utils')->isHomePage()) echo 'is-active'; ?>" alt="<?php echo $this->helper('dbm_country')->__('Delivery country and language') ?>" title="<?php echo $this->helper('dbm_country')->__('Delivery country and language') ?>">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--flag"></i></div>
+                </div>
+            </a>
+            <a class="c-search__toggle" alt="<?php echo $this->__('Search') ?>" title="<?php echo $this->__('Search') ?>">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--zoom"></i></div>
+                </div>
+            </a>
+            <a href="<?php echo (Mage::getSingleton('customer/session')->isLoggedIn()) ? Mage::getUrl('customer/account') : Mage::getUrl('customer/account/login'); ?>" class="c-account<?php echo ($this->helper('monbento_site')->isInAccount()) ? ' is-active' : ''; ?>" alt="<?php echo $this->__('My Account') ?>" title="<?php echo $this->__('My Account') ?>">
+                <div class="o-table">
+                    <div class="o-table__cell--valignMiddle"><i class="c-fonticon__icon--account"></i></div>
+                </div>
+            </a>
+            <?php echo $this->getChildHtml('minicart_head') ?>
+            <a class="c-nav__icon"><i></i></a>
+        </div>
+        <div class="o-nav">
+            <?php echo $this->getChildHtml('topMenu') ?>
+        </div>
+    </div>
+</div>
+<?php echo $this->getChildHtml('dbm_customer.profileHeader'); ?>

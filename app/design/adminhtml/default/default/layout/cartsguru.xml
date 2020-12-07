@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <adminhtml_cartsguruadmin_index>
+        <reference name="content">
+            <block type="adminhtml/system_config_switcher" name="adminhtml.system.config.switcher" before="-"/>
+            <block type="adminhtml/template" name="cartsguru.index"
+                   template="cartsguru/cartrecovery/index.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <link>cartsguru/cartrecovery/style.css</link>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addJs">
+                <script>cartsguru/cartrecovery/admin.js</script>
+            </action>
+        </reference>
+    </adminhtml_cartsguruadmin_index>
+
+    <adminhtml_cartsguruadmin_register>
+        <reference name="content">
+            <block type="adminhtml/system_config_switcher" name="adminhtml.system.config.switcher" before="-"/>
+            <block type="cartsguru_cartrecovery/adminhtml_register" name="cartsguru.register"
+                   template="cartsguru/cartrecovery/register.phtml"/>
+        </reference>
+        <reference name="head">
+            <action method="addCss">
+                <link>cartsguru/cartrecovery/style.css</link>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addJs">
+                <script>cartsguru/cartrecovery/admin.js</script>
+            </action>
+        </reference>
+    </adminhtml_cartsguruadmin_register>
+</layout>
